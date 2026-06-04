@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('aura-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA Detailing — Warranty Terms & Registry</title>
+  <meta name="description" content="Check your digital warranty certificate, read warranty coverage policies for ceramic coating and PPF, and explore professional vehicle aftercare guidelines." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            obsidian: '#0B0C10',
+            onyx: '#16181D',
+            gunmetal: '#1A1D24',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+    /* ─── PAGE HERO ─────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      min-height: 52vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(11,12,16,0.85) 70%, #0B0C10 100%),
+        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800&q=80&auto=format') center/cover no-repeat;
+    }
+    [data-theme="light"] .page-hero-bg {
+      background:
+        linear-gradient(to bottom, rgba(244,246,249,0.85) 0%, rgba(244,246,249,0.92) 70%, #F4F6F9 100%),
+        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800&q=80&auto=format') center/cover no-repeat !important;
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 780px; padding-top: 140px; }
+    .page-hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* ─── WARRANTY CONTENT ───────────────────────────── */
+    .warranty-section {
+      padding: 80px 48px 120px;
+    }
+
+    .lookup-container {
+      max-width: 700px;
+      margin: 0 auto 80px;
+      text-align: center;
+    }
+
+    .lookup-input-group {
+      display: flex;
+      gap: 0;
+      margin: 24px auto 12px;
+      max-width: 500px;
+    }
+
+    .lookup-input {
+      background: var(--accent-gold-dim);
+      border: 1px solid var(--border-gold);
+      border-right: none;
+      padding: 14px 20px;
+      color: var(--text-primary);
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      flex: 1;
+    }
+
+    [data-theme="light"] .lookup-input {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.15);
+    }
+
+    .lookup-input:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .lookup-btn {
+      background: var(--accent-gold);
+      color: #0B0C10;
+      border: none;
+      padding: 0 28px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    [data-theme="light"] .lookup-btn {
+      color: #FFFFFF !important;
+    }
+
+    .lookup-btn:hover {
+      background: var(--accent-gold-light);
+    }
+
+    .warranty-layout-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .aftercare-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .aftercare-item {
+      display: flex;
+      gap: 16px;
+    }
+
+    .aftercare-icon-wrap {
+      width: 32px; height: 32px;
+      border: 1px solid var(--border-gold);
+      background: var(--accent-gold-dim);
+      color: var(--accent-gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .aftercare-text strong {
+      display: block;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      font-size: 0.9rem;
+    }
+
+    .aftercare-text p {
+      color: var(--text-secondary);
+      font-size: 0.84rem;
+      line-height: 1.6;
+    }
+
+    /* Claims Form specific */
+    .claims-card {
+      padding: 36px;
+      border: 1px solid var(--border-white);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+    .form-input, .form-select, .form-textarea {
+      background: var(--accent-gold-dim);
+      border: 1px solid var(--border-gold);
+      color: var(--text-primary);
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: all 0.3s ease;
+      width: 100%;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(212,175,55,0.08);
+    }
+    .form-select option { background: var(--bg-surface-solid); color: var(--text-primary); }
+    .form-textarea { resize: vertical; min-height: 100px; }
+
+    [data-theme="light"] .form-input,
+    [data-theme="light"] .form-select,
+    [data-theme="light"] .form-textarea {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.15);
+      color: var(--text-primary);
+    }
+    [data-theme="light"] .form-input:focus,
+    [data-theme="light"] .form-select:focus,
+    [data-theme="light"] .form-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(255,255,255,0.95);
+    }
+
+    @media (max-width: 1024px) {
+      .warranty-layout-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .page-hero { padding: 0 24px 60px; }
+      .warranty-section { padding: 60px 24px 100px; }
+      .claims-card { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition active"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="durability.html">Comparisons</a>
+    <a href="warranty.html">Warranty</a>
+    <a href="services.html#booking">Book Now</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">AURA<span> Detailing</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="durability.html">Comparisons</a></li>
+      <li><a href="warranty.html" class="active">Warranty</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <a href="services.html#booking" class="nav-cta">Book Consultation</a>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════ PAGE HERO ═══════ -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <div class="section-label reveal">Online Registry</div>
+      <h1 class="reveal" data-delay="0.1">
+        Warranty Registry &<br/><em style="font-style:normal; color:var(--accent-gold);">Terms</em>
+      </h1>
+      <p class="reveal" data-delay="0.2">
+        Verify your active certificate details, review specific coverage policies, and understand recommended aftercare guidelines to maintain your lifetime protection warranty.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ WARRANTY CONTENT ═══════ -->
+  <section class="warranty-section">
+    <!-- Certificate Lookup -->
+    <div class="lookup-container reveal">
+      <div class="section-label" style="justify-content:center;">Warranty Verification</div>
+      <h2 class="heading-md" style="margin-top: 10px;">Verify Detailing Certificate</h2>
+      <p style="color:var(--text-secondary); font-size:0.84rem; max-width:480px; margin:8px auto 0;">
+        Enter your unique certificate code (e.g. try sample codes: <strong>AURA-992-8847</strong> or <strong>AURA-SF90-2026</strong>) to load your digital record.
+      </p>
+
+      <div class="lookup-input-group">
+        <input type="text" class="lookup-input" id="cert-code-input" placeholder="AURA-992-8847" />
+        <button class="lookup-btn" id="verify-btn">Verify Record</button>
+      </div>
+      <p id="lookup-feedback" style="font-size:0.75rem; color:#e74c3c; min-height:18px;"></p>
+
+      <!-- Digital Certificate Mock Display Area -->
+      <div id="cert-display-area" style="display: none;" class="reveal">
+        <div class="cert-card">
+          <div class="cert-watermark">Certified</div>
+          <div class="cert-header">
+            <div class="cert-logo">AURA<span> Detailing</span></div>
+            <div class="cert-subtitle">Official Protection Certificate</div>
+          </div>
+          <div class="cert-body">
+            <div class="cert-field text-left">
+              <label>Certificate Code</label>
+              <span id="c-code">AURA-992-8847</span>
+            </div>
+            <div class="cert-field text-right">
+              <label>Activation Date</label>
+              <span id="c-date">May 14, 2025</span>
+            </div>
+            <div class="cert-field text-left">
+              <label>Registered Owner</label>
+              <span id="c-owner">Marco Villanueva</span>
+            </div>
+            <div class="cert-field text-right">
+              <label>Vehicle Profile</label>
+              <span id="c-vehicle">Porsche 992 GT3 RS</span>
+            </div>
+            <div class="cert-field text-left">
+              <label>Coverage System</label>
+              <span id="c-coverage">Ceramic Pro Platinum</span>
+            </div>
+            <div class="cert-field text-right">
+              <label>Warranty Tier</label>
+              <span id="c-tier">Lifetime Guarantee</span>
+            </div>
+            <div class="cert-status">
+              <div class="cert-status-badge"><i class="fas fa-check-circle"></i> Active Coverage</div>
+            </div>
+          </div>
+          <div class="cert-footer">
+            ✦ Registered Installer: AURA Mobile unit 01 · Certified Ceramic Pro Partner ✦
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Layout Grid: Aftercare vs Claims -->
+    <div class="warranty-layout-grid">
+      <!-- Care Guidelines -->
+      <div class="reveal">
+        <div class="section-label">Maintenance Rules</div>
+        <h2 class="heading-lg" style="margin-bottom: 24px;">Recommended Aftercare Guide</h2>
+        <p style="color:var(--text-secondary); font-size:0.92rem; line-height:1.7; margin-bottom:30px;">
+          To ensure your warranty remains valid and your hydrophobic finish continues to deflect water properly, follow our approved wash protocols:
+        </p>
+
+        <div class="aftercare-list">
+          <div class="aftercare-item">
+            <div class="aftercare-icon-wrap"><i class="fas fa-shower"></i></div>
+            <div class="aftercare-text">
+              <strong>Approved Wash Method</strong>
+              <p>Wash your vehicle every 2 to 3 weeks using a pH-neutral snow foam cannon and the two-bucket hand wash method with plush microfibers. Avoid automatic brush washes.</p>
+            </div>
+          </div>
+
+          <div class="aftercare-item">
+            <div class="aftercare-icon-wrap"><i class="fas fa-ban"></i></div>
+            <div class="aftercare-text">
+              <strong>Avoid Harsh Chemicals</strong>
+              <p>Do not apply waxes, sealants, or abrasive polishing compounds over your ceramic coating or PPF. Refrain from washing in direct sunlight to avoid mineral spot etching.</p>
+            </div>
+          </div>
+
+          <div class="aftercare-item">
+            <div class="aftercare-icon-wrap"><i class="fas fa-calendar-check"></i></div>
+            <div class="aftercare-text">
+              <strong>Annual Inspections</strong>
+              <p>Lifetime Ceramic Pro coverage requires an annual inspection and booster top-up to verify surface health and maintain active registration in our global warranty system.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Claim Submission Form -->
+      <div class="glass-card claims-card reveal" data-delay="0.15">
+        <div class="section-label" style="margin-bottom:20px;">Support Concierge</div>
+        <h3 class="heading-md" style="margin-bottom: 12px; font-size: 1.3rem;">Request Warranty Checkup</h3>
+        <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.6; margin-bottom:24px;">
+          Noticing a fade in water-beading performance or have minor clear coat defects? Submit your details to request an assessment.
+        </p>
+
+        <div class="booking-form">
+          <div class="form-group">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-input" id="claim-name" placeholder="Marco Villanueva" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Certificate Code</label>
+              <input type="text" class="form-input" id="claim-cert" placeholder="AURA-992-8847" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" id="claim-phone" placeholder="+1 (555) 000-1234" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Select Issue</label>
+            <select class="form-select" id="claim-issue">
+              <option value="" disabled selected>Select issue type</option>
+              <option>Hydrophobic / Water-beading performance fade</option>
+              <option>Film edge lifting / Bubbling</option>
+              <option>Minor paint correction defect check</option>
+              <option>Scheduled annual inspection checkup</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Detailed Notes</label>
+            <textarea class="form-textarea" id="claim-notes" placeholder="Please describe when you first noticed the issue and the washing products used recently..."></textarea>
+          </div>
+
+          <button type="button" id="submit-claim" class="btn-primary w-full text-center border-none cursor-pointer" style="margin-top:8px;">
+            Submit Checkup Request
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AURA<span style="color:var(--text-primary); font-size:1rem;"> Detailing</span></div>
+        <p class="footer-desc">Mobile ceramic coating and paint protection film for the world's most discerning vehicle owners. We come to you.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
+          <li><a href="durability.html">Comparisons</a></li>
+          <li><a href="warranty.html">Warranty Registry</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="services.html#ceramic">Ceramic Coating</a></li>
+          <li><a href="services.html#ppf">Paint Protection Film</a></li>
+          <li><a href="services.html#correction">Paint Correction</a></li>
+          <li><a href="services.html#tint">Window Tint</a></li>
+          <li><a href="services.html#maintenance">Maintenance Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Stay Informed</div>
+        <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:16px;">Exclusive care tips and launch offers for discerning owners.</p>
+        <div class="email-capture">
+          <input type="email" placeholder="Your email address" />
+          <button>Join</button>
+        </div>
+        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="warranty-badge"><i class="fas fa-award"></i> Ceramic Pro</div>
+          <div class="warranty-badge"><i class="fas fa-shield-halved"></i> XPEL</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 AURA Detailing. All rights reserved.</div>
+      <div style="display:flex; gap:24px;">
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Privacy Policy</a>
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="global.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* MOCK WARRANTY DATABASE */
+      const db = {
+        'AURA-992-8847': {
+          code: 'AURA-992-8847',
+          date: 'May 14, 2025',
+          owner: 'Marco Villanueva',
+          vehicle: 'Porsche 992 GT3 RS',
+          coverage: 'Full PPF Wrap + Ceramic Pro Platinum',
+          tier: 'Lifetime Guarantee'
+        },
+        'AURA-SF90-2026': {
+          code: 'AURA-SF90-2026',
+          date: 'Feb 22, 2026',
+          owner: 'James Keller',
+          vehicle: 'Ferrari SF90 Stradale',
+          coverage: 'Full Body XPEL Ultimate Plus PPF',
+          tier: '10-Year Warranty'
+        }
+      };
+
+      const verifyBtn = document.getElementById('verify-btn');
+      const inputEl = document.getElementById('cert-code-input');
+      const feedbackEl = document.getElementById('lookup-feedback');
+      const displayEl = document.getElementById('cert-display-area');
+
+      function verifyCert() {
+        const code = inputEl.value.trim().toUpperCase();
+        feedbackEl.textContent = '';
+        displayEl.style.display = 'none';
+
+        if (!code) {
+          feedbackEl.textContent = 'Please enter a certificate code.';
+          return;
+        }
+
+        const match = db[code];
+        if (match) {
+          // Prefill UI fields
+          document.getElementById('c-code').textContent = match.code;
+          document.getElementById('c-date').textContent = match.date;
+          document.getElementById('c-owner').textContent = match.owner;
+          document.getElementById('c-vehicle').textContent = match.vehicle;
+          document.getElementById('c-coverage').textContent = match.coverage;
+          document.getElementById('c-tier').textContent = match.tier;
+
+          // Reveal with transition
+          displayEl.style.display = 'block';
+          gsap.from('#cert-display-area', { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' });
+        } else {
+          feedbackEl.textContent = 'Certificate code not found. Please try "AURA-992-8847" or "AURA-SF90-2026".';
+        }
+      }
+
+      verifyBtn.addEventListener('click', verifyCert);
+      inputEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') verifyCert();
+      });
+
+      // Submit checkup handler
+      document.getElementById('submit-claim').addEventListener('click', () => {
+        const name = document.getElementById('claim-name').value;
+        const cert = document.getElementById('claim-cert').value;
+        if (!name || !cert) {
+          alert('Please specify your name and certificate code to request a checkup.');
+          return;
+        }
+        alert(`Thank you, ${name}! Your warranty assessment request has been received. Our mobile service dispatch will contact you to schedule an inspection.`);
+      });
+    });
+  </script>
+</body>
+</html>

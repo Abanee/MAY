@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('aura-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA Detailing — Services & Pricing</title>
+  <meta name="description" content="Explore AURA Detailing's full suite of services: ceramic coating, PPF, paint correction, window tinting and concierge maintenance programs." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { gold: '#D4AF37', obsidian: '#0B0C10', onyx: '#16181D', gunmetal: '#1A1D24' } } }
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+    /* ─── PAGE HERO ─────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      min-height: 55vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(11,12,16,0.85) 70%, #0B0C10 100%),
+        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800&q=80&auto=format') center 40%/cover no-repeat;
+    }
+    [data-theme="light"] .page-hero-bg {
+      background:
+        linear-gradient(to bottom, rgba(244,246,249,0.85) 0%, rgba(244,246,249,0.92) 70%, #F4F6F9 100%),
+        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1800&q=80&auto=format') center 40%/cover no-repeat !important;
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 780px; padding-top: 140px; }
+    .page-hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* ─── QUICK NAV ──────────────────────────────────── */
+    .services-quick-nav {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border-gold);
+      margin: 0 48px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .services-quick-nav::-webkit-scrollbar { display: none; }
+    .sqn-item {
+      flex: 1;
+      min-width: 140px;
+      padding: 20px 24px;
+      border-right: 1px solid var(--border-gold);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+    .sqn-item:last-child { border-right: none; }
+    .sqn-item:hover { background: var(--accent-gold-dim); }
+    .sqn-icon { color: var(--accent-gold); font-size: 1.3rem; }
+    .sqn-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-align: center;
+      transition: color 0.3s ease;
+    }
+    .sqn-item:hover .sqn-label { color: var(--accent-gold); }
+    [data-theme="light"] .services-quick-nav {
+      background: rgba(255,255,255,0.7);
+      box-shadow: 0 2px 16px rgba(12,16,21,0.07);
+    }
+
+    /* ─── SECTION WRAPPERS ───────────────────────────── */
+    .svc-section {
+      padding: 100px 48px;
+      position: relative;
+      border-bottom: 1px solid var(--border-white);
+    }
+    [data-theme="light"] .svc-section { border-bottom-color: rgba(0,0,0,0.07); }
+
+    .svc-section:nth-child(even) { background: rgba(255,255,255,0.01); }
+    [data-theme="light"] .svc-section:nth-child(even) { background: rgba(255,255,255,0.5); }
+
+    .svc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .svc-grid.reverse { direction: rtl; }
+    .svc-grid.reverse > * { direction: ltr; }
+
+    .svc-visual {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+    }
+    .svc-visual img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.16,1,0.3,1);
+    }
+    .svc-visual:hover img { transform: scale(1.04); }
+    .svc-visual-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(11,12,16,0.9) 0%, transparent 100%);
+    }
+    [data-theme="light"] .svc-visual-label {
+      background: linear-gradient(to top, rgba(244,246,249,0.9) 0%, transparent 100%);
+    }
+
+    .svc-meta { display: flex; flex-direction: column; gap: 32px; }
+
+    .svc-badge-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .svc-badge {
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      border: 1px solid var(--border-gold);
+      padding: 5px 14px;
+      background: var(--accent-gold-dim);
+    }
+
+    .svc-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+
+    .svc-desc {
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--text-secondary);
+    }
+
+    .svc-features { display: flex; flex-direction: column; gap: 14px; }
+    .svc-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .svc-feature-icon {
+      width: 28px; height: 28px;
+      flex-shrink: 0;
+      border: 1px solid var(--border-gold);
+      background: var(--accent-gold-dim);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-gold);
+      font-size: 0.7rem;
+      margin-top: 1px;
+    }
+
+    /* ─── PRICING PACKAGES ───────────────────────────── */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 1px solid var(--border-gold);
+      margin-top: 48px;
+    }
+
+    .pkg-card {
+      padding: 40px 32px;
+      border-right: 1px solid var(--border-gold);
+      position: relative;
+      transition: background 0.3s ease;
+    }
+    .pkg-card:last-child { border-right: none; }
+    .pkg-card.featured { background: rgba(212,175,55,0.04); }
+    [data-theme="light"] .pkg-card.featured { background: rgba(160,121,10,0.04); }
+
+    .pkg-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -1px; right: 24px;
+      background: var(--accent-gold);
+      color: #0B0C10;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+    }
+
+    .pkg-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+
+    .pkg-price {
+      font-family: 'Cinzel', serif;
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pkg-price span { font-size: 1rem; font-weight: 400; color: var(--text-secondary); }
+
+    .pkg-vehicle {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .pkg-features {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .pkg-features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+    }
+    .pkg-features li i { color: var(--accent-gold); font-size: 0.65rem; }
+
+    /* ─── PROCESS SECTION ────────────────────────────── */
+    .process-section {
+      padding: 100px 48px;
+      background: var(--bg-surface-solid);
+      border-top: 1px solid var(--border-gold);
+      border-bottom: 1px solid var(--border-gold);
+    }
+    [data-theme="light"] .process-section {
+      background: rgba(255,255,255,0.6);
+    }
+
+    .process-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 60px;
+      border: 1px solid var(--border-gold);
+    }
+
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 0;
+      border-bottom: 1px solid var(--border-white);
+      transition: background 0.3s ease;
+    }
+    [data-theme="light"] .timeline-step { border-bottom-color: rgba(0,0,0,0.07); }
+    .timeline-step:last-child { border-bottom: none; }
+    .timeline-step:hover { background: var(--accent-gold-dim); }
+
+    .ts-num {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: rgba(212,175,55,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      border-right: 1px solid var(--border-white);
+      transition: color 0.3s ease;
+    }
+    [data-theme="light"] .ts-num { color: rgba(160,121,10,0.12); }
+    .timeline-step:hover .ts-num { color: rgba(212,175,55,0.25); }
+
+    .ts-content { padding: 32px 40px; display: flex; align-items: center; gap: 24px; }
+    .ts-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      border: 1px solid var(--border-gold);
+      background: var(--accent-gold-dim);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-gold);
+      font-size: 1.1rem;
+    }
+    .ts-text-wrap { flex: 1; }
+    .ts-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .ts-desc { font-size: 0.86rem; line-height: 1.7; color: var(--text-secondary); }
+    .ts-duration {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* ─── FAQ SECTION ────────────────────────────────── */
+    .faq-section { padding: 100px 48px; }
+
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 60px; }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border-white);
+      padding-bottom: 28px;
+      cursor: pointer;
+    }
+    [data-theme="light"] .faq-item { border-bottom-color: rgba(0,0,0,0.09); }
+
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text-primary);
+      margin-bottom: 0;
+      padding-bottom: 0;
+      transition: color 0.3s ease;
+    }
+    .faq-item.open .faq-question { color: var(--accent-gold); }
+
+    .faq-toggle {
+      width: 28px; height: 28px; flex-shrink: 0;
+      border: 1px solid var(--border-gold);
+      background: var(--accent-gold-dim);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent-gold);
+      font-size: 0.7rem;
+      transition: all 0.3s ease;
+    }
+    .faq-item.open .faq-toggle { background: var(--accent-gold); color: #0B0C10; transform: rotate(45deg); }
+
+    .faq-answer {
+      font-size: 0.86rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16,1,0.3,1), margin-top 0.3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 240px; margin-top: 16px; }
+
+    /* ─── BOOKING SECTION ────────────────────────────── */
+    .booking-section {
+      padding: 100px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.05) 0%, transparent 70%);
+    }
+    .booking-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .booking-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .form-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      background: var(--accent-gold-dim);
+      border: 1px solid var(--border-gold);
+      color: var(--text-primary);
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      width: 100%;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(212,175,55,0.08);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-secondary); }
+    .form-select option { background: var(--bg-surface-solid); color: var(--text-primary); }
+
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    [data-theme="light"] .form-input,
+    [data-theme="light"] .form-select,
+    [data-theme="light"] .form-textarea {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.15);
+      color: var(--text-primary);
+    }
+    [data-theme="light"] .form-input:focus,
+    [data-theme="light"] .form-select:focus,
+    [data-theme="light"] .form-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(255,255,255,0.95);
+    }
+    [data-theme="light"] .form-input::placeholder,
+    [data-theme="light"] .form-textarea::placeholder { color: #9CA3AF; }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .booking-info { display: flex; flex-direction: column; gap: 36px; }
+
+    .info-card {
+      padding: 32px;
+      border: 1px solid var(--border-white);
+      position: relative;
+    }
+    [data-theme="light"] .info-card {
+      background: rgba(255,255,255,0.7);
+      border-color: rgba(0,0,0,0.08);
+      box-shadow: 0 2px 12px rgba(12,16,21,0.06);
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+    }
+
+    .info-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+    }
+
+    .info-list { display: flex; flex-direction: column; gap: 14px; }
+    .info-list-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .info-list-item i {
+      color: var(--accent-gold);
+      font-size: 0.75rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .contact-item {
+      border: 1px solid var(--border-white);
+      padding: 18px 20px;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    [data-theme="light"] .contact-item {
+      border-color: rgba(0,0,0,0.08);
+    }
+    .contact-item:hover { border-color: var(--border-gold); background: var(--accent-gold-dim); }
+    .contact-item i { color: var(--accent-gold); font-size: 0.9rem; }
+    .contact-item-label { font-size: 0.7rem; color: var(--text-secondary); display: block; }
+    .contact-item-value { font-size: 0.82rem; color: var(--text-primary); font-weight: 500; }
+
+    /* ─── MOBILE RESPONSIVE ──────────────────────────── */
+    @media (max-width: 1024px) {
+      .svc-grid, .booking-grid { grid-template-columns: 1fr; gap: 48px; }
+      .svc-grid.reverse { direction: ltr; }
+      .pkg-grid { grid-template-columns: 1fr; }
+      .pkg-card { border-right: none; border-bottom: 1px solid var(--border-gold); }
+      .pkg-card:last-child { border-bottom: none; }
+      .faq-grid { grid-template-columns: 1fr; gap: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero { padding: 0 24px 60px; }
+      .svc-section, .process-section, .faq-section, .booking-section { padding: 70px 24px; }
+      .services-quick-nav { margin: 0 24px; }
+      .svc-visual img { height: 300px; }
+      .timeline-step { grid-template-columns: 70px 1fr; }
+      .ts-num { font-size: 2.5rem; padding: 20px 16px; }
+      .ts-content { padding: 20px 24px; flex-direction: column; align-items: flex-start; gap: 12px; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .pkg-price { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition active"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="durability.html">Comparisons</a>
+    <a href="warranty.html">Warranty</a>
+    <a href="services.html#booking">Book Now</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">AURA<span> Detailing</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="durability.html">Comparisons</a></li>
+      <li><a href="warranty.html">Warranty</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <a href="#booking" class="nav-cta">Book Consultation</a>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════ PAGE HERO ═══════ -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <div class="section-label reveal">Our Offerings</div>
+      <h1 class="reveal" data-delay="0.1">
+        Services Built for<br/><em style="font-style:normal; color:var(--accent-gold);">Perfection</em>
+      </h1>
+      <p class="reveal" data-delay="0.2">
+        From single-layer ceramic coatings to comprehensive multi-stage transformations, every AURA service is performed by certified specialists using only the world's finest materials.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ QUICK NAV ═══════ -->
+  <nav class="services-quick-nav reveal">
+    <a href="#ceramic" class="sqn-item">
+      <div class="sqn-icon"><i class="fas fa-gem"></i></div>
+      <div class="sqn-label">Ceramic Coating</div>
+    </a>
+    <a href="#ppf" class="sqn-item">
+      <div class="sqn-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="sqn-label">PPF</div>
+    </a>
+    <a href="#correction" class="sqn-item">
+      <div class="sqn-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+      <div class="sqn-label">Paint Correction</div>
+    </a>
+    <a href="#tint" class="sqn-item">
+      <div class="sqn-icon"><i class="fas fa-sun"></i></div>
+      <div class="sqn-label">Window Tint</div>
+    </a>
+    <a href="#maintenance" class="sqn-item">
+      <div class="sqn-icon"><i class="fas fa-rotate"></i></div>
+      <div class="sqn-label">Maintenance</div>
+    </a>
+    <a href="#booking" class="sqn-item">
+      <div class="sqn-icon"><i class="fas fa-calendar-check"></i></div>
+      <div class="sqn-label">Book Now</div>
+    </a>
+  </nav>
+
+  <!-- ═══════ CERAMIC COATING ═══════ -->
+  <section class="svc-section" id="ceramic">
+    <div class="svc-grid">
+      <div class="svc-visual reveal">
+        <img src="https://images.unsplash.com/photo-1555353540-64580b51c258?w=900&q=80&auto=format" alt="Ceramic Coating" />
+        <div class="svc-visual-label">
+          <div style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; color:var(--accent-gold);">CERTIFIED INSTALLER</div>
+          <div style="font-family:'Cinzel',serif; font-size:0.95rem; color:var(--text-primary); margin-top:4px;">Ceramic Pro & Gtechniq Partner</div>
+        </div>
+      </div>
+
+      <div class="svc-meta reveal" data-delay="0.15">
+        <div>
+          <div class="svc-badge-row">
+            <div class="svc-badge"><i class="fas fa-gem"></i> Ceramic Coating</div>
+            <div class="svc-badge">Lifetime Warranty Available</div>
+          </div>
+        </div>
+
+        <h2 class="svc-title">Liquid Crystal<br/><em style="font-style:normal; color:var(--accent-gold);">Armour</em></h2>
+
+        <p class="svc-desc">
+          Ceramic coating bonds permanently to your vehicle's paint at the molecular level, creating a semi-permanent layer of 9H hardness glass that repels water, UV rays, chemical fallout, bird strikes, and micro-scratches. The result is a mirror-like depth of shine that factory paint simply cannot match — and protection that endures for years, not weeks.
+        </p>
+
+        <div class="svc-features">
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-shield-halved"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">9H Hardness Rating</strong>Harder than any factory clear coat, resisting surface scratches and swirl marks from routine washing.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-droplet"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Superhydrophobic Surface</strong>Contact angles exceeding 110° cause water, mud, and contamination to bead and roll off instantly.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-sun"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">UV & Oxidation Block</strong>Advanced UV inhibitors prevent paint fade, oxidation, and color degradation from prolonged sun exposure.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-award"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Ceramic Pro Certified</strong>All work performed by factory-trained, Ceramic Pro and Gtechniq certified applicators.</div>
+          </div>
+        </div>
+
+        <!-- Packages -->
+        <div>
+          <div style="font-family:'Cinzel',serif; font-size:0.65rem; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:var(--accent-gold); margin-bottom:20px;">Choose Your Package</div>
+          <div class="pkg-grid">
+            <div class="pkg-card">
+              <div class="pkg-name">Sport</div>
+              <div class="pkg-price">$899<span> /sedan</span></div>
+              <div class="pkg-vehicle">From — varies by vehicle class</div>
+              <ul class="pkg-features">
+                <li><i class="fas fa-check-circle"></i>1 Layer Ceramic Coating</li>
+                <li><i class="fas fa-check-circle"></i>1-Year Warranty</li>
+                <li><i class="fas fa-check-circle"></i>Decontamination Wash</li>
+                <li><i class="fas fa-check-circle"></i>Single-Stage Polish</li>
+              </ul>
+              <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Select Package</a>
+            </div>
+            <div class="pkg-card featured">
+              <div class="pkg-name">Elite</div>
+              <div class="pkg-price">$1,799<span> /sedan</span></div>
+              <div class="pkg-vehicle">From — varies by vehicle class</div>
+              <ul class="pkg-features">
+                <li><i class="fas fa-check-circle"></i>3 Layers Ceramic Pro 9H</li>
+                <li><i class="fas fa-check-circle"></i>3-Year Warranty</li>
+                <li><i class="fas fa-check-circle"></i>Full Decontamination</li>
+                <li><i class="fas fa-check-circle"></i>Two-Stage Paint Correction</li>
+                <li><i class="fas fa-check-circle"></i>Wheel & Glass Coating</li>
+              </ul>
+              <a href="#booking" class="btn-primary" style="font-size:0.68rem; padding:12px 20px;">Select Package</a>
+            </div>
+            <div class="pkg-card">
+              <div class="pkg-name">Lifetime</div>
+              <div class="pkg-price">$3,200<span>+</span></div>
+              <div class="pkg-vehicle">Custom quote by vehicle</div>
+              <ul class="pkg-features">
+                <li><i class="fas fa-check-circle"></i>Multi-Layer Ceramic Pro Platinum</li>
+                <li><i class="fas fa-check-circle"></i>Lifetime Warranty</li>
+                <li><i class="fas fa-check-circle"></i>Full Correction & Prep</li>
+                <li><i class="fas fa-check-circle"></i>Interior Ceramic Application</li>
+                <li><i class="fas fa-check-circle"></i>Annual Inspection Included</li>
+              </ul>
+              <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Request Quote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PPF ═══════ -->
+  <section class="svc-section" id="ppf">
+    <div class="svc-grid reverse">
+      <div class="svc-visual reveal">
+        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=900&q=80&auto=format" alt="Paint Protection Film" />
+        <div class="svc-visual-label">
+          <div style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; color:var(--accent-gold);">XPEL PLATINUM DEALER</div>
+          <div style="font-family:'Cinzel',serif; font-size:0.95rem; color:var(--text-primary); margin-top:4px;">Authorised XPEL & Llumar Installer</div>
+        </div>
+      </div>
+
+      <div class="svc-meta reveal" data-delay="0.15">
+        <div>
+          <div class="svc-badge-row">
+            <div class="svc-badge"><i class="fas fa-shield-halved"></i> Paint Protection Film</div>
+            <div class="svc-badge">Self-Healing Technology</div>
+          </div>
+        </div>
+
+        <h2 class="svc-title">Invisible Shield,<br/><em style="font-style:normal; color:var(--accent-gold);">Total Defence</em></h2>
+
+        <p class="svc-desc">
+          Paint Protection Film (PPF) is a thermoplastic urethane film that physically absorbs and deflects rock chips, road debris, minor abrasions and environmental damage. AURA uses XPEL Ultimate Plus, the industry's most advanced self-healing PPF that erases surface scratches with ambient heat. Applied with computer-cut precision to manufacturer patterns, the result is virtually invisible protection.
+        </p>
+
+        <div class="svc-features">
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-bolt"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Self-Healing Topcoat</strong>Light scratches and swirl marks disappear with exposure to heat — sunlight or warm water activates the film's memory.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-scissors"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Computer-Cut Precision</strong>Every panel is cut from XPEL's proprietary DAP database using 2,000+ vehicle templates for zero-edge lifting.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-eye-slash"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Optically Clear / Matte Finish</strong>Available in gloss (invisible) or XPEL Stealth for a stunning satin matte transformation without respraying.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-rotate-left"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">100% Reversible</strong>PPF can be removed cleanly at any time with no damage to the original factory paint beneath.</div>
+          </div>
+        </div>
+
+        <div>
+          <div style="font-family:'Cinzel',serif; font-size:0.65rem; font-weight:600; letter-spacing:0.25em; text-transform:uppercase; color:var(--accent-gold); margin-bottom:20px;">Coverage Packages</div>
+          <div class="pkg-grid">
+            <div class="pkg-card">
+              <div class="pkg-name">Front Impact</div>
+              <div class="pkg-price">$1,200<span>+</span></div>
+              <div class="pkg-vehicle">Hood, bumper, mirrors, headlights</div>
+              <ul class="pkg-features">
+                <li><i class="fas fa-check-circle"></i>High-impact zone coverage</li>
+                <li><i class="fas fa-check-circle"></i>XPEL Ultimate Plus film</li>
+                <li><i class="fas fa-check-circle"></i>10-Year XPEL Warranty</li>
+                <li><i class="fas fa-check-circle"></i>Gloss or Matte finish</li>
+              </ul>
+              <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Select Package</a>
+            </div>
+            <div class="pkg-card featured">
+              <div class="pkg-name">Full Body</div>
+              <div class="pkg-price">$5,800<span>+</span></div>
+              <div class="pkg-vehicle">Complete exterior coverage</div>
+              <ul class="pkg-features">
+                <li><i class="fas fa-check-circle"></i>Every exterior panel</li>
+                <li><i class="fas fa-check-circle"></i>Door sill & jamb coverage</li>
+                <li><i class="fas fa-check-circle"></i>10-Year XPEL Warranty</li>
+                <li><i class="fas fa-check-circle"></i>Ceramic coating stack option</li>
+                <li><i class="fas fa-check-circle"></i>Gloss or Stealth finish</li>
+              </ul>
+              <a href="#booking" class="btn-primary" style="font-size:0.68rem; padding:12px 20px;">Select Package</a>
+            </div>
+            <div class="pkg-card">
+              <div class="pkg-name">Track Pack</div>
+              <div class="pkg-price">$8,500<span>+</span></div>
+              <div class="pkg-vehicle">For performance vehicles</div>
+              <ul class="pkg-features">
+                <li><i class="fas fa-check-circle"></i>Full body PPF + Ceramic stack</li>
+                <li><i class="fas fa-check-circle"></i>Window tint included</li>
+                <li><i class="fas fa-check-circle"></i>Caliper & rotor coating</li>
+                <li><i class="fas fa-check-circle"></i>Interior protection</li>
+                <li><i class="fas fa-check-circle"></i>Lifetime warranty</li>
+              </ul>
+              <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Request Quote</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PAINT CORRECTION ═══════ -->
+  <section class="svc-section" id="correction">
+    <div class="svc-grid">
+      <div class="svc-visual reveal">
+        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=900&q=80&auto=format" alt="Paint Correction" />
+        <div class="svc-visual-label">
+          <div style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; color:var(--accent-gold);">CORRECTION SPECIALISTS</div>
+          <div style="font-family:'Cinzel',serif; font-size:0.95rem; color:var(--text-primary); margin-top:4px;">Up to 97% Defect Elimination</div>
+        </div>
+      </div>
+
+      <div class="svc-meta reveal" data-delay="0.15">
+        <div>
+          <div class="svc-badge-row">
+            <div class="svc-badge"><i class="fas fa-wand-magic-sparkles"></i> Paint Correction</div>
+            <div class="svc-badge">Machine Polish</div>
+          </div>
+        </div>
+
+        <h2 class="svc-title">Eliminate Every<br/><em style="font-style:normal; color:var(--accent-gold);">Imperfection</em></h2>
+
+        <p class="svc-desc">
+          Paint correction is the art and science of removing paint defects through controlled machine polishing. Using professional dual-action and rotary polishers with varying grades of compound and polish, AURA's technicians systematically eliminate swirl marks, light scratches, oxidation, water spots, etching and buffer trails — restoring the paint to its absolute finest condition before any protective coating is applied.
+        </p>
+
+        <div class="svc-features">
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-microscope"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Paint Depth Analysis</strong>Digital paint gauges measure clear coat thickness on every panel, ensuring removal only of what is safe to remove.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-lightbulb"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Inspection Under Specialist Lighting</strong>3M Sun Gun and Scangrip lighting reveals 100% of defects before and after — we show you the difference.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-layer-group"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Multi-Stage Process</strong>Stage 1 for light swirls, Stage 2 for heavy scratches, Full for complete factory-finish restoration.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-star"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Always Paired with Protection</strong>Correction without protection is temporary. AURA recommends ceramic or PPF immediately after to lock in results.</div>
+          </div>
+        </div>
+
+        <div class="pkg-grid">
+          <div class="pkg-card">
+            <div class="pkg-name">Stage 1</div>
+            <div class="pkg-price">$450<span>+</span></div>
+            <div class="pkg-vehicle">Light swirls & minor defects</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Single-stage machine polish</li>
+              <li><i class="fas fa-check-circle"></i>~60-70% defect removal</li>
+              <li><i class="fas fa-check-circle"></i>Decontamination wash</li>
+              <li><i class="fas fa-check-circle"></i>IPA wipe-down & inspect</li>
+            </ul>
+            <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Select</a>
+          </div>
+          <div class="pkg-card featured">
+            <div class="pkg-name">Stage 2</div>
+            <div class="pkg-price">$950<span>+</span></div>
+            <div class="pkg-vehicle">Moderate to heavy defects</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Cut + refine two-stage polish</li>
+              <li><i class="fas fa-check-circle"></i>~85-95% defect removal</li>
+              <li><i class="fas fa-check-circle"></i>Clay bar decontamination</li>
+              <li><i class="fas fa-check-circle"></i>Panel-by-panel inspection</li>
+              <li><i class="fas fa-check-circle"></i>Before/after documentation</li>
+            </ul>
+            <a href="#booking" class="btn-primary" style="font-size:0.68rem; padding:12px 20px;">Select</a>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-name">Full Correction</div>
+            <div class="pkg-price">$1,800<span>+</span></div>
+            <div class="pkg-vehicle">Severe neglect, paint restoration</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Multi-stage compound & polish</li>
+              <li><i class="fas fa-check-circle"></i>~95-97% defect removal</li>
+              <li><i class="fas fa-check-circle"></i>Full decontamination</li>
+              <li><i class="fas fa-check-circle"></i>Wet sanding where required</li>
+              <li><i class="fas fa-check-circle"></i>Paint depth mapping</li>
+            </ul>
+            <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Request Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ WINDOW TINT ═══════ -->
+  <section class="svc-section" id="tint">
+    <div class="svc-grid reverse">
+      <div class="svc-visual reveal">
+        <img src="https://images.unsplash.com/photo-1570733577524-3a047079e80d?w=900&q=80&auto=format" alt="Window Tint" />
+        <div class="svc-visual-label">
+          <div style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; color:var(--accent-gold);">FORMULA ONE PINNACLE</div>
+          <div style="font-family:'Cinzel',serif; font-size:0.95rem; color:var(--text-primary); margin-top:4px;">Ceramic IR-Rejection Window Film</div>
+        </div>
+      </div>
+
+      <div class="svc-meta reveal" data-delay="0.15">
+        <div>
+          <div class="svc-badge-row">
+            <div class="svc-badge"><i class="fas fa-sun"></i> Window Tint</div>
+            <div class="svc-badge">IR Ceramic Film</div>
+            <div class="svc-badge">UV 99% Block</div>
+          </div>
+        </div>
+
+        <h2 class="svc-title">Cooler Cabin,<br/><em style="font-style:normal; color:var(--accent-gold);">Refined Aesthetic</em></h2>
+
+        <p class="svc-desc">
+          Premium ceramic window film dramatically reduces cabin heat, eliminates 99% of harmful UV rays, and enhances your vehicle's visual stance without the purplish haze of inferior dyed films. AURA installs Formula One Pinnacle ceramic tint — the choice of discerning owners who demand clarity, longevity, and superior heat rejection that won't fade or bubble over time.
+        </p>
+
+        <div class="svc-features">
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-thermometer-half"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Up to 66% Heat Rejection</strong>Nano-ceramic particles block infrared radiation without metallic interference with GPS, radio or cell signals.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-radiation"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">99% UV-A & UV-B Block</strong>Protects occupants from skin damage and prevents interior fade, cracking, and discoloration of leather surfaces.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-eye"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Crystal-Clear Optical Clarity</strong>Ceramic technology delivers darker shades without compromising night visibility — no purple or bronze colour shift.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-clock"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Lifetime Warranty</strong>Formula One Pinnacle carries a lifetime, non-prorated warranty against fade, bubble, delamination, and demetalisation.</div>
+          </div>
+        </div>
+
+        <div class="pkg-grid">
+          <div class="pkg-card">
+            <div class="pkg-name">Privacy</div>
+            <div class="pkg-price">$380<span>+</span></div>
+            <div class="pkg-vehicle">Rear windows only</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Ceramic IR film</li>
+              <li><i class="fas fa-check-circle"></i>35% or 20% VLT</li>
+              <li><i class="fas fa-check-circle"></i>99% UV block</li>
+            </ul>
+            <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Select</a>
+          </div>
+          <div class="pkg-card featured">
+            <div class="pkg-name">Full Vehicle</div>
+            <div class="pkg-price">$799<span>+</span></div>
+            <div class="pkg-vehicle">All windows including windshield</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>All windows + windshield strip</li>
+              <li><i class="fas fa-check-circle"></i>Multiple VLT options</li>
+              <li><i class="fas fa-check-circle"></i>66% heat rejection</li>
+              <li><i class="fas fa-check-circle"></i>Lifetime warranty</li>
+              <li><i class="fas fa-check-circle"></i>Anti-shatter safety benefit</li>
+            </ul>
+            <a href="#booking" class="btn-primary" style="font-size:0.68rem; padding:12px 20px;">Select</a>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-name">Pinnacle Full</div>
+            <div class="pkg-price">$1,299<span>+</span></div>
+            <div class="pkg-vehicle">Windshield full coverage + all glass</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Windshield full film</li>
+              <li><i class="fas fa-check-circle"></i>All side + rear windows</li>
+              <li><i class="fas fa-check-circle"></i>Maximum heat & glare block</li>
+              <li><i class="fas fa-check-circle"></i>Lifetime warranty</li>
+            </ul>
+            <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Request Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ MAINTENANCE ═══════ -->
+  <section class="svc-section" id="maintenance">
+    <div class="svc-grid">
+      <div class="svc-visual reveal">
+        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=900&q=80&auto=format" alt="Maintenance Program" />
+        <div class="svc-visual-label">
+          <div style="font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:0.25em; color:var(--accent-gold);">CONCIERGE SERVICE</div>
+          <div style="font-family:'Cinzel',serif; font-size:0.95rem; color:var(--text-primary); margin-top:4px;">We Come to Your Location</div>
+        </div>
+      </div>
+
+      <div class="svc-meta reveal" data-delay="0.15">
+        <div>
+          <div class="svc-badge-row">
+            <div class="svc-badge"><i class="fas fa-rotate"></i> Maintenance Program</div>
+            <div class="svc-badge">Mobile Concierge</div>
+          </div>
+        </div>
+
+        <h2 class="svc-title">Protection That<br/><em style="font-style:normal; color:var(--accent-gold);">Endures</em></h2>
+
+        <p class="svc-desc">
+          Your ceramic coating or PPF is an investment — regular professional maintenance is what ensures it performs at its peak for the entirety of its warranty period and beyond. AURA's mobile concierge maintenance program brings certified technicians to your home, office, or private garage on a recurring schedule, using only pH-neutral products approved for coated and PPF-wrapped vehicles.
+        </p>
+
+        <div class="svc-features">
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-house"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Fully Mobile</strong>We travel to your location — home, office, private garage, or private estate — across a 60-mile service radius.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-flask"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Coating-Safe Products Only</strong>Every product used is pH-neutral and tested compatible with Ceramic Pro, Gtechniq, and XPEL PPF surfaces.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-calendar-check"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Warranty Preservation</strong>Regular professional maintenance is required to maintain Ceramic Pro warranty validity — AURA logs every service.</div>
+          </div>
+          <div class="svc-feature">
+            <div class="svc-feature-icon"><i class="fas fa-gem"></i></div>
+            <div><strong style="color:var(--text-primary); display:block; margin-bottom:3px;">Coating Boost Top-Up</strong>Annual SiO₂ spray sealant application refreshes hydrophobic performance and extends coating longevity.</div>
+          </div>
+        </div>
+
+        <div class="pkg-grid">
+          <div class="pkg-card">
+            <div class="pkg-name">Quarterly</div>
+            <div class="pkg-price">$299<span> /visit</span></div>
+            <div class="pkg-vehicle">4 visits per year</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Safe foam cannon wash</li>
+              <li><i class="fas fa-check-circle"></i>Iron decontamination spray</li>
+              <li><i class="fas fa-check-circle"></i>Coating inspection</li>
+              <li><i class="fas fa-check-circle"></i>Tyre & trim dressing</li>
+            </ul>
+            <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Select</a>
+          </div>
+          <div class="pkg-card featured">
+            <div class="pkg-name">Annual Elite</div>
+            <div class="pkg-price">$999<span> /year</span></div>
+            <div class="pkg-vehicle">6 visits + annual boost</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Everything in Quarterly</li>
+              <li><i class="fas fa-check-circle"></i>SiO₂ ceramic boost included</li>
+              <li><i class="fas fa-check-circle"></i>Interior vacuum & wipe</li>
+              <li><i class="fas fa-check-circle"></i>Clay decon annually</li>
+              <li><i class="fas fa-check-circle"></i>Priority booking</li>
+            </ul>
+            <a href="#booking" class="btn-primary" style="font-size:0.68rem; padding:12px 20px;">Select</a>
+          </div>
+          <div class="pkg-card">
+            <div class="pkg-name">Bespoke</div>
+            <div class="pkg-price">P.O.A.</div>
+            <div class="pkg-vehicle">Custom schedule for collections</div>
+            <ul class="pkg-features">
+              <li><i class="fas fa-check-circle"></i>Tailored visit frequency</li>
+              <li><i class="fas fa-check-circle"></i>Multi-vehicle collections</li>
+              <li><i class="fas fa-check-circle"></i>Dedicated specialist</li>
+              <li><i class="fas fa-check-circle"></i>Track day prep service</li>
+            </ul>
+            <a href="#booking" class="btn-secondary" style="font-size:0.68rem; padding:12px 20px;">Request Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROCESS ═══════ -->
+  <section class="process-section" id="process">
+    <div class="reveal" style="text-align:center; margin-bottom:0;">
+      <div class="section-label" style="justify-content:center;">How It Works</div>
+      <h2 class="heading-lg">The AURA <em style="font-style:normal; color:var(--accent-gold);">Process</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; max-width:520px; margin:20px auto 0;">
+        From the moment you enquire to long after installation, our process is built around precision, transparency, and total care for your vehicle.
+      </p>
+    </div>
+
+    <div class="process-timeline reveal" data-delay="0.1">
+
+      <div class="timeline-step">
+        <div class="ts-num">01</div>
+        <div class="ts-content">
+          <div class="ts-icon"><i class="fas fa-comments"></i></div>
+          <div class="ts-text-wrap">
+            <div class="ts-title">Complimentary Consultation</div>
+            <div class="ts-desc">You contact AURA via phone, email, or our booking form. We discuss your vehicle, goals, and budget — with zero pressure. A tailored recommendation is provided based on your specific requirements.</div>
+          </div>
+          <div class="ts-duration">Day 1</div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="ts-num">02</div>
+        <div class="ts-content">
+          <div class="ts-icon"><i class="fas fa-file-invoice"></i></div>
+          <div class="ts-text-wrap">
+            <div class="ts-title">Written Quote & Confirmation</div>
+            <div class="ts-desc">A detailed, itemised written quote is provided within 24 hours. No hidden fees. Upon acceptance, your appointment is secured with a 20% deposit and a confirmed service date at your chosen location.</div>
+          </div>
+          <div class="ts-duration">Within 24 hrs</div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="ts-num">03</div>
+        <div class="ts-content">
+          <div class="ts-icon"><i class="fas fa-microscope"></i></div>
+          <div class="ts-text-wrap">
+            <div class="ts-title">Pre-Work Inspection & Documentation</div>
+            <div class="ts-desc">On arrival, we conduct a thorough multi-point inspection. Every pre-existing mark is photographed and documented. Paint depth readings are taken across all panels. You receive a copy of the inspection report before any work begins.</div>
+          </div>
+          <div class="ts-duration">Service Day</div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="ts-num">04</div>
+        <div class="ts-content">
+          <div class="ts-icon"><i class="fas fa-shower"></i></div>
+          <div class="ts-text-wrap">
+            <div class="ts-title">Decontamination & Paint Prep</div>
+            <div class="ts-desc">A deep foam cannon pre-wash is followed by a meticulous two-bucket hand wash, iron fallout removal, clay bar decontamination, and a final IPA panel wipe. The vehicle must be chemically immaculate before any coating or film is applied.</div>
+          </div>
+          <div class="ts-duration">2–4 hours</div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="ts-num">05</div>
+        <div class="ts-content">
+          <div class="ts-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+          <div class="ts-text-wrap">
+            <div class="ts-title">Paint Correction (if required)</div>
+            <div class="ts-desc">Any agreed paint correction stage is performed panel by panel using professional dual-action and rotary polishers. Results are verified under specialist lighting at every stage. The vehicle is inspected again and approved before proceeding.</div>
+          </div>
+          <div class="ts-duration">4–16 hours</div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="ts-num">06</div>
+        <div class="ts-content">
+          <div class="ts-icon"><i class="fas fa-gem"></i></div>
+          <div class="ts-text-wrap">
+            <div class="ts-title">Ceramic / PPF / Tint Application</div>
+            <div class="ts-desc">The agreed protection product is applied by certified specialists in controlled conditions. Ceramic coatings cure under UV lamps. PPF is applied using computer-cut templates with no exposed edges. Window film is heat-shrunk for a contour fit.</div>
+          </div>
+          <div class="ts-duration">4–24 hours</div>
+        </div>
+      </div>
+
+      <div class="timeline-step">
+        <div class="ts-num">07</div>
+        <div class="ts-content">
+          <div class="ts-icon"><i class="fas fa-certificate"></i></div>
+          <div class="ts-text-wrap">
+            <div class="ts-title">Final Inspection & Warranty Registration</div>
+            <div class="ts-desc">A comprehensive final inspection under specialist lighting with you present. We walk through every panel together. Your manufacturer warranty is registered on the spot. Care instructions are provided in a bespoke printed guide.</div>
+          </div>
+          <div class="ts-duration">30 min</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════ FAQ ═══════ -->
+  <section class="faq-section">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Common Questions</div>
+      <h2 class="heading-lg">Frequently Asked <em style="font-style:normal; color:var(--accent-gold);">Questions</em></h2>
+    </div>
+
+    <div class="faq-grid">
+      <div>
+        <div class="faq-item">
+          <div class="faq-question">How long does ceramic coating last? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">With AURA's Elite package using Ceramic Pro 9H, the coating lasts a minimum of 3 years under the Ceramic Pro warranty. Our Lifetime package uses Ceramic Pro Platinum, which carries a lifetime warranty as long as annual inspections are maintained. Longevity also depends on maintenance — properly washed coated vehicles regularly outperform their warranty by years.</div>
+        </div>
+        <div class="faq-item" style="margin-top:24px;">
+          <div class="faq-question">Can ceramic coating prevent rock chips? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">No. Ceramic coating will not stop rock chips or deep impact damage — that is the role of Paint Protection Film (PPF). Ceramic adds hardness, chemical resistance, and UV protection, while PPF provides physical impact absorption. For complete protection, AURA recommends a ceramic coating applied over PPF — this is the ultimate combination for long-term paint preservation.</div>
+        </div>
+        <div class="faq-item" style="margin-top:24px;">
+          <div class="faq-question">How long does PPF installation take? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">A front impact package (hood, bumper, mirrors, headlights) typically takes 1–2 days. A full body wrap on a standard luxury vehicle takes 3–5 days. More complex body shapes — such as exotics with dramatic curves, sills, or splitters — may require additional time. All timelines are confirmed in your written quote.</div>
+        </div>
+        <div class="faq-item" style="margin-top:24px;">
+          <div class="faq-question">Do you work at my home or office? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">Yes. AURA is a 100% mobile service. We bring our professional setup — including power, water, lighting, and controlled environment enclosures where needed — to your home, office, private garage, or estate. No need to drop your vehicle at a detailing shop. We service a 60-mile radius and can arrange further for exceptional vehicles.</div>
+        </div>
+        <div class="faq-item" style="margin-top:24px;">
+          <div class="faq-question">Is window tinting legal? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">Laws vary by state and country. In most US states, rear side windows and rear windows can be tinted to 35% VLT or darker without issue. Front side windows are typically restricted to 35-50% VLT. We are fully familiar with local regulations and will only install legal shades to your specified front windows — darker shades are available for rear windows where legally permitted.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="faq-item">
+          <div class="faq-question">What maintenance does a ceramic coating need? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">Ceramic coated vehicles should be washed every 2–3 weeks using pH-neutral shampoo and the two-bucket method or a foam cannon. Avoid automatic car washes with brushes. Do not use wax or sealant products on top of the coating. An annual SiO₂ ceramic boost spray refreshes the hydrophobic performance. AURA's maintenance program handles all of this for you.</div>
+        </div>
+        <div class="faq-item" style="margin-top:24px;">
+          <div class="faq-question">Can you apply coating to a new vehicle? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">Absolutely — and this is the ideal time. New vehicles still benefit from a decontamination wash and light paint prep since factory paint is not defect-free. Applying ceramic or PPF to a new vehicle from day one means the paint is protected before any damage can occur, maximising the vehicle's long-term condition and resale value.</div>
+        </div>
+        <div class="faq-item" style="margin-top:24px;">
+          <div class="faq-question">Does paint correction damage my paint? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">When performed by trained professionals, paint correction is completely safe. AURA uses paint depth gauges on every panel to ensure sufficient clear coat thickness before polishing. We never remove more than is necessary, and all work is performed with professional-grade machine polishers — not aggressive rotaries in untrained hands. The result is safer and more precise than any automated car wash.</div>
+        </div>
+        <div class="faq-item" style="margin-top:24px;">
+          <div class="faq-question">How much does a full detail cost? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">A comprehensive package combining paint correction, full body PPF, ceramic coating, and window tint typically ranges from $8,500 to $18,000 depending on vehicle size, body complexity, and chosen products. Standard sedans start at the lower end; exotic sports cars and large SUVs are priced higher. AURA provides transparent, itemised quotes — contact us for a precise estimate for your specific vehicle.</div>
+        </div>
+        <div class="faq-item" style="margin-top:24px;">
+          <div class="faq-question">What is your service area? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
+          <div class="faq-answer">AURA's primary service area is within a 60-mile radius of our base. For exceptional vehicles, rare exotics, or private collection commissions, we will travel further — nationally or internationally if required. Please contact us to discuss travel arrangements for out-of-area vehicles.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ BOOKING ═══════ -->
+  <section class="booking-section" id="booking">
+    <div class="reveal" style="text-align:center; margin-bottom:60px; position:relative; z-index:1;">
+      <div class="section-label" style="justify-content:center;">Begin Your Journey</div>
+      <h2 class="heading-lg">Request a <em style="font-style:normal; color:var(--accent-gold);">Consultation</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; max-width:520px; margin:20px auto 0;">
+        Complete the form below and an AURA specialist will contact you within 4 business hours to discuss your vehicle and requirements.
+      </p>
+    </div>
+
+    <div class="booking-grid">
+      <!-- Form -->
+      <div class="reveal" data-delay="0.1">
+        <div class="booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" placeholder="James" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" placeholder="Keller" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" placeholder="james@example.com" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" placeholder="+1 (555) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Vehicle Make & Model</label>
+              <input type="text" class="form-input" placeholder="Porsche 992 GT3 RS" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Vehicle Year</label>
+              <input type="text" class="form-input" placeholder="2024" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Service(s) of Interest</label>
+            <select class="form-select">
+              <option value="" disabled selected>Select a primary service</option>
+              <option>Ceramic Coating</option>
+              <option>Paint Protection Film (PPF)</option>
+              <option>Paint Correction</option>
+              <option>Window Tint</option>
+              <option>Maintenance Program</option>
+              <option>Full Package (Correction + PPF + Ceramic + Tint)</option>
+              <option>Not sure — need advice</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Preferred Date</label>
+              <input type="date" class="form-input" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Service Location</label>
+              <input type="text" class="form-input" placeholder="Your address or zip code" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Additional Notes</label>
+            <textarea class="form-textarea" placeholder="Tell us about any specific concerns, existing damage, or vehicle history that may be relevant..."></textarea>
+          </div>
+
+          <div class="form-note" style="margin-top:4px;">
+            <i class="fas fa-lock" style="color:var(--accent-gold); margin-right:6px;"></i>
+            Your information is kept strictly private. AURA does not share or sell client data.
+          </div>
+
+          <button type="button" class="btn-primary" style="margin-top:8px; width:100%; text-align:center; cursor:pointer; border:none;">
+            Submit Consultation Request
+          </button>
+        </div>
+      </div>
+
+      <!-- Info panels -->
+      <div class="booking-info reveal" data-delay="0.2">
+        <div class="info-card">
+          <div class="info-card-title"><i class="fas fa-clock" style="margin-right:10px;"></i>Response & Service Times</div>
+          <div class="info-list">
+            <div class="info-list-item"><i class="fas fa-check-circle"></i><div>Initial response within <strong style="color:var(--text-primary);">4 business hours</strong> of form submission</div></div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i><div>Written quote delivered within <strong style="color:var(--text-primary);">24 hours</strong> of consultation</div></div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i><div>Standard bookings secured <strong style="color:var(--text-primary);">3–10 business days</strong> in advance</div></div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i><div>Emergency / priority appointments <strong style="color:var(--text-primary);">available on request</strong> for new vehicles</div></div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title"><i class="fas fa-star" style="margin-right:10px;"></i>What's Included in Every Service</div>
+          <div class="info-list">
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>Pre-service vehicle inspection & photo documentation</div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>Full decontamination wash included at no extra charge</div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>Manufacturer warranty registration handled by AURA</div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>Printed care guide and aftercare kit provided</div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>30-day courtesy inspection follow-up included</div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title"><i class="fas fa-phone" style="margin-right:10px;"></i>Get in Touch Directly</div>
+          <div class="contact-grid">
+            <a href="tel:+15550001234" class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <span class="contact-item-label">Call Us</span>
+                <span class="contact-item-value">+1 (555) 000-1234</span>
+              </div>
+            </a>
+            <a href="mailto:hello@auradetailing.com" class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <span class="contact-item-label">Email</span>
+                <span class="contact-item-value">hello@auradetailing.com</span>
+              </div>
+            </a>
+            <a href="#" class="contact-item">
+              <i class="fab fa-instagram"></i>
+              <div>
+                <span class="contact-item-label">Instagram</span>
+                <span class="contact-item-value">@aura.detailing</span>
+              </div>
+            </a>
+            <a href="#" class="contact-item">
+              <i class="fab fa-whatsapp"></i>
+              <div>
+                <span class="contact-item-label">WhatsApp</span>
+                <span class="contact-item-value">Message Us</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AURA<span style="color:var(--text-primary); font-size:1rem;"> Detailing</span></div>
+        <p class="footer-desc">Mobile ceramic coating and paint protection film for the world's most discerning vehicle owners. We come to you.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
+          <li><a href="durability.html">Comparisons</a></li>
+          <li><a href="warranty.html">Warranty Registry</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="#ceramic">Ceramic Coating</a></li>
+          <li><a href="#ppf">Paint Protection Film</a></li>
+          <li><a href="#correction">Paint Correction</a></li>
+          <li><a href="#tint">Window Tint</a></li>
+          <li><a href="#maintenance">Maintenance Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Stay Informed</div>
+        <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:16px;">Exclusive care tips and launch offers for discerning owners.</p>
+        <div class="email-capture">
+          <input type="email" placeholder="Your email address" />
+          <button>Join</button>
+        </div>
+        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="warranty-badge"><i class="fas fa-award"></i> Ceramic Pro</div>
+          <div class="warranty-badge"><i class="fas fa-shield-halved"></i> XPEL</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 AURA Detailing. All rights reserved.</div>
+      <div style="display:flex; gap:24px;">
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Privacy Policy</a>
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="global.js"></script>
+  <script>
+    /* ─── FAQ Accordion ──────────────────────────────── */
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    /* ─── GSAP reveals ───────────────────────────────── */
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.timeline-step').forEach((step, i) => {
+        gsap.from(step, {
+          opacity: 0, x: -30, duration: 0.7, delay: i * 0.06,
+          ease: 'power2.out',
+          scrollTrigger: { trigger: step, start: 'top 88%', once: true }
+        });
+      });
+    }
+  </script>
+</body>
+</html>

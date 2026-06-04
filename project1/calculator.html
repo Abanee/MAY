@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('aura-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AURA Detailing — Bespoke Price Calculator</title>
+  <meta name="description" content="Calculate custom pricing estimates for ceramic coating, PPF, paint correction, and window tint packages for your luxury vehicle." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            obsidian: '#0B0C10',
+            onyx: '#16181D',
+            gunmetal: '#1A1D24',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+    /* ─── PAGE HERO ─────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      min-height: 52vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(11,12,16,0.85) 70%, #0B0C10 100%),
+        url('https://images.unsplash.com/photo-1542362567-b07e54358753?w=1800&q=80&auto=format') center 60%/cover no-repeat;
+    }
+    [data-theme="light"] .page-hero-bg {
+      background:
+        linear-gradient(to bottom, rgba(244,246,249,0.85) 0%, rgba(244,246,249,0.92) 70%, #F4F6F9 100%),
+        url('https://images.unsplash.com/photo-1542362567-b07e54358753?w=1800&q=80&auto=format') center 60%/cover no-repeat !important;
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 780px; padding-top: 140px; }
+    .page-hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* ─── CALCULATOR GRID Layout ────────────────────────── */
+    .calc-container {
+      display: grid;
+      grid-template-columns: 1.7fr 1fr;
+      gap: 40px;
+      padding: 80px 48px;
+      align-items: start;
+    }
+
+    .calc-options-section {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .calc-step {
+      padding: 36px;
+      border: 1px solid var(--border-white);
+    }
+
+    .calc-step-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-white);
+      padding-bottom: 14px;
+    }
+
+    .calc-step-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+
+    .calc-step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    /* Sticky summary card */
+    .calc-summary-wrapper {
+      position: sticky;
+      top: 100px;
+    }
+
+    .summary-card {
+      padding: 32px;
+      border: 1px solid var(--border-gold);
+    }
+
+    .summary-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-white);
+      padding-bottom: 12px;
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .summary-line strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    .summary-divider {
+      height: 1px;
+      background: var(--border-white);
+      margin: 20px 0;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 12px;
+    }
+
+    .summary-total-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-primary);
+    }
+
+    .summary-total-val {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      text-shadow: 0 0 20px rgba(212,175,55,0.25);
+    }
+
+    [data-theme="light"] .summary-total-val {
+      text-shadow: none;
+    }
+
+    /* Form specific */
+    .booking-section {
+      padding: 80px 48px;
+      border-top: 1px solid var(--border-white);
+      background: var(--bg-surface-solid);
+    }
+
+    [data-theme="light"] .booking-section {
+      background: rgba(255,255,255,0.6);
+      border-top-color: rgba(0,0,0,0.07);
+    }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+    .form-input, .form-select, .form-textarea {
+      background: var(--accent-gold-dim);
+      border: 1px solid var(--border-gold);
+      color: var(--text-primary);
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: all 0.3s ease;
+      width: 100%;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(212,175,55,0.08);
+    }
+    .form-select option { background: var(--bg-surface-solid); color: var(--text-primary); }
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    [data-theme="light"] .form-input,
+    [data-theme="light"] .form-select,
+    [data-theme="light"] .form-textarea {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.15);
+      color: var(--text-primary);
+    }
+    [data-theme="light"] .form-input:focus,
+    [data-theme="light"] .form-select:focus,
+    [data-theme="light"] .form-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(255,255,255,0.95);
+    }
+
+    @media (max-width: 1024px) {
+      .calc-container { grid-template-columns: 1fr; }
+      .calc-summary-wrapper { position: static; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .page-hero { padding: 0 24px 60px; }
+      .calc-container, .booking-section { padding: 60px 24px; }
+      .calc-step { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition active"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="durability.html">Comparisons</a>
+    <a href="warranty.html">Warranty</a>
+    <a href="services.html#booking">Book Now</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">AURA<span> Detailing</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="calculator.html" class="active">Calculator</a></li>
+      <li><a href="durability.html">Comparisons</a></li>
+      <li><a href="warranty.html">Warranty</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <a href="#booking-form-section" class="nav-cta">Book Consultation</a>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════ PAGE HERO ═══════ -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <div class="section-label reveal">Price Estimator</div>
+      <h1 class="reveal" data-delay="0.1">
+        Bespoke Detailing<br/><em style="font-style:normal; color:var(--accent-gold);">Price Calculator</em>
+      </h1>
+      <p class="reveal" data-delay="0.2">
+        Customize your paint protection plan. Select your vehicle class and detailing options to receive an instant premium mobile service quote tailored to your exact requirements.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ CALCULATOR INTERFACE ═══════ -->
+  <section class="calc-container">
+    <div class="calc-options-section">
+      <!-- Step 1: Vehicle Class -->
+      <div class="glass-card calc-step reveal">
+        <div class="calc-step-header">
+          <div class="calc-step-num">01</div>
+          <div class="calc-step-title">Select Vehicle Class</div>
+        </div>
+        <p style="color:var(--text-secondary); font-size:0.86rem; margin-bottom:20px; line-height:1.6;">
+          detailing and template alignment prices scale based on the surface area and body complexity of the vehicle.
+        </p>
+        <div class="option-grid">
+          <div class="option-card selected" data-step="vehicle" data-value="sedan" data-multiplier="1.0">
+            <div class="option-card-icon"><i class="fas fa-car"></i></div>
+            <div class="option-card-title">Luxury Sedan / Coupe</div>
+            <div class="option-card-price">Base Rate</div>
+          </div>
+          <div class="option-card" data-step="vehicle" data-value="suv" data-multiplier="1.2">
+            <div class="option-card-icon"><i class="fas fa-truck-pickup"></i></div>
+            <div class="option-card-title">SUV / Truck / Van</div>
+            <div class="option-card-price">+20% Surface Scale</div>
+          </div>
+          <div class="option-card" data-step="vehicle" data-value="exotic" data-multiplier="1.4">
+            <div class="option-card-icon"><i class="fas fa-car-burst animate-pulse"></i></div>
+            <div class="option-card-title">Supercar / Exotic</div>
+            <div class="option-card-price">+40% Complexity Scale</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2: Ceramic Coating -->
+      <div class="glass-card calc-step reveal" data-delay="0.1">
+        <div class="calc-step-header">
+          <div class="calc-step-num">02</div>
+          <div class="calc-step-title">Ceramic Coating Layer</div>
+        </div>
+        <p style="color:var(--text-secondary); font-size:0.86rem; margin-bottom:20px; line-height:1.6;">
+          Nano-ceramic silica matrix options to shield paintwork, wheels, and glass with dynamic hydrophobic gloss.
+        </p>
+        <div class="option-grid">
+          <div class="option-card selected" data-step="ceramic" data-value="none" data-cost="0">
+            <div class="option-card-icon"><i class="fas fa-ban"></i></div>
+            <div class="option-card-title">No Coating</div>
+            <div class="option-card-price">$0</div>
+          </div>
+          <div class="option-card" data-step="ceramic" data-value="sport" data-cost="899">
+            <div class="option-card-icon"><i class="fas fa-certificate"></i></div>
+            <div class="option-card-title">Sport Coating</div>
+            <div class="option-card-price">$899 (1-Yr Guarantee)</div>
+          </div>
+          <div class="option-card" data-step="ceramic" data-value="elite" data-cost="1799">
+            <div class="option-card-icon"><i class="fas fa-gem"></i></div>
+            <div class="option-card-title">Elite Coating</div>
+            <div class="option-card-price">$1,799 (3-Yr Warranty)</div>
+          </div>
+          <div class="option-card" data-step="ceramic" data-value="platinum" data-cost="3200">
+            <div class="option-card-icon"><i class="fas fa-award"></i></div>
+            <div class="option-card-title">Platinum Lifetime</div>
+            <div class="option-card-price">$3,200 (Lifetime Warranty)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3: Paint Protection Film (PPF) -->
+      <div class="glass-card calc-step reveal" data-delay="0.15">
+        <div class="calc-step-header">
+          <div class="calc-step-num">03</div>
+          <div class="calc-step-title">Paint Protection Film (PPF)</div>
+        </div>
+        <p style="color:var(--text-secondary); font-size:0.86rem; margin-bottom:20px; line-height:1.6;">
+          Urethane wrap to physically absorb impact from rock chips and scratches. Equipped with self-healing topcoat.
+        </p>
+        <div class="option-grid">
+          <div class="option-card selected" data-step="ppf" data-value="none" data-cost="0">
+            <div class="option-card-icon"><i class="fas fa-ban"></i></div>
+            <div class="option-card-title">No Film Wrap</div>
+            <div class="option-card-price">$0</div>
+          </div>
+          <div class="option-card" data-step="ppf" data-value="front" data-cost="1200">
+            <div class="option-card-icon"><i class="fas fa-shield-halved"></i></div>
+            <div class="option-card-title">Front Impact Shield</div>
+            <div class="option-card-price">$1,200+</div>
+          </div>
+          <div class="option-card" data-step="ppf" data-value="full" data-cost="5800">
+            <div class="option-card-icon"><i class="fas fa-shield"></i></div>
+            <div class="option-card-title">Full Body Wrap</div>
+            <div class="option-card-price">$5,800+</div>
+          </div>
+          <div class="option-card" data-step="ppf" data-value="track" data-cost="8500">
+            <div class="option-card-icon"><i class="fas fa-gauge-high"></i></div>
+            <div class="option-card-title">Track Package</div>
+            <div class="option-card-price">$8,500+</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4: Window Tinting -->
+      <div class="glass-card calc-step reveal" data-delay="0.2">
+        <div class="calc-step-header">
+          <div class="calc-step-num">04</div>
+          <div class="calc-step-title">Ceramic Window Tinting</div>
+        </div>
+        <p style="color:var(--text-secondary); font-size:0.86rem; margin-bottom:20px; line-height:1.6;">
+          Infrared-rejection window film blockages to drop cabin heat and defend leather surfaces from UV degradation.
+        </p>
+        <div class="option-grid">
+          <div class="option-card selected" data-step="tint" data-value="none" data-cost="0">
+            <div class="option-card-icon"><i class="fas fa-ban"></i></div>
+            <div class="option-card-title">No Window Tint</div>
+            <div class="option-card-price">$0</div>
+          </div>
+          <div class="option-card" data-step="tint" data-value="rear" data-cost="380">
+            <div class="option-card-icon"><i class="fas fa-eye-slash"></i></div>
+            <div class="option-card-title">Rear Privacy Glass</div>
+            <div class="option-card-price">$380</div>
+          </div>
+          <div class="option-card" data-step="tint" data-value="full" data-cost="799">
+            <div class="option-card-icon"><i class="fas fa-sun"></i></div>
+            <div class="option-card-title">Full Vehicle Tint</div>
+            <div class="option-card-price">$799</div>
+          </div>
+          <div class="option-card" data-step="tint" data-value="pinnacle" data-cost="1299">
+            <div class="option-card-icon"><i class="fas fa-crown"></i></div>
+            <div class="option-card-title">Pinnacle Tint Wrap</div>
+            <div class="option-card-price">$1,299</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5: Paint Correction Prep -->
+      <div class="glass-card calc-step reveal" data-delay="0.25">
+        <div class="calc-step-header">
+          <div class="calc-step-num">05</div>
+          <div class="calc-step-title">Paint Correction Prep</div>
+        </div>
+        <p style="color:var(--text-secondary); font-size:0.86rem; margin-bottom:20px; line-height:1.6;">
+          Swirl mark and scratch elimination prior to applying coatings or PPF films. Strongly recommended.
+        </p>
+        <div class="option-grid">
+          <div class="option-card selected" data-step="correction" data-value="none" data-cost="0">
+            <div class="option-card-icon"><i class="fas fa-ban"></i></div>
+            <div class="option-card-title">No Correction</div>
+            <div class="option-card-price">$0</div>
+          </div>
+          <div class="option-card" data-step="correction" data-value="stage1" data-cost="450">
+            <div class="option-card-icon"><i class="fas fa-wand-magic"></i></div>
+            <div class="option-card-title">Stage 1 Polish</div>
+            <div class="option-card-price">$450 (Enhancement)</div>
+          </div>
+          <div class="option-card" data-step="correction" data-value="stage2" data-cost="950">
+            <div class="option-card-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+            <div class="option-card-title">Stage 2 Correction</div>
+            <div class="option-card-price">$950 (Recommended)</div>
+          </div>
+          <div class="option-card" data-step="correction" data-value="full" data-cost="1800">
+            <div class="option-card-icon"><i class="fas fa-star"></i></div>
+            <div class="option-card-title">Full Restoration</div>
+            <div class="option-card-price">$1,800 (Collection Grade)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Estimate Sidebar -->
+    <div class="calc-summary-wrapper reveal" data-delay="0.3">
+      <div class="glass-card summary-card">
+        <div class="summary-title">Estimate Summary</div>
+
+        <div class="summary-line">
+          <span>Vehicle Scale Multiplier</span>
+          <span id="sum-vehicle-mult">1.0x</span>
+        </div>
+        <div class="summary-line">
+          <span>Ceramic Coating</span>
+          <span id="sum-ceramic-cost">$0</span>
+        </div>
+        <div class="summary-line">
+          <span>Paint Protection Film (PPF)</span>
+          <span id="sum-ppf-cost">$0</span>
+        </div>
+        <div class="summary-line">
+          <span>Window Tinting</span>
+          <span id="sum-tint-cost">$0</span>
+        </div>
+        <div class="summary-line">
+          <span>Paint Correction Prep</span>
+          <span id="sum-correction-cost">$0</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-line">
+          <span>Subtotal</span>
+          <span id="sum-subtotal">$0</span>
+        </div>
+        <div class="summary-line">
+          <span>Mobile Service Travel Fee</span>
+          <span id="sum-travel-fee">$150</span>
+        </div>
+        <div class="summary-line" style="color: #2ecc71;" id="multi-svc-discount-row">
+          <span>Combo Pack Discount (-10%)</span>
+          <span id="sum-discount">-$0</span>
+        </div>
+
+        <div class="summary-divider"></div>
+
+        <div class="summary-total">
+          <div class="summary-total-label">Estimated Quote</div>
+          <div class="summary-total-val" id="sum-total">$0</div>
+        </div>
+
+        <p style="color:var(--text-secondary); font-size:0.75rem; line-height:1.6; margin-top:20px; margin-bottom:24px;">
+          *estimates are based on standard luxury profiles. Custom paint conditions and dimensions will be confirmed during the initial consultation.
+        </p>
+
+        <a href="#booking-form-section" class="btn-primary w-full text-center block" style="font-size: 0.72rem; padding: 14px 20px;">
+          Lock Estimate & Book
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PREFILLED BOOKING SECTION ═══════ -->
+  <section class="booking-section" id="booking-form-section">
+    <div class="reveal" style="text-align:center; margin-bottom:50px;">
+      <div class="section-label" style="justify-content:center;">Consultation Form</div>
+      <h2 class="heading-lg">Submit Your <em style="font-style:normal; color:var(--accent-gold);">Estimate</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; max-width:520px; margin:16px auto 0;">
+        We've captured your calculator choices below. Fill in your vehicle details and contact info to request a mobile reservation.
+      </p>
+    </div>
+
+    <div style="max-width: 800px; margin: 0 auto;" class="reveal" data-delay="0.1">
+      <div class="booking-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-input" id="first-name" placeholder="Sofia" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" id="last-name" placeholder="Blackwell" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" id="email" placeholder="sofia@example.com" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-input" id="phone" placeholder="+1 (555) 000-1234" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Vehicle Make & Model</label>
+            <input type="text" class="form-input" id="vehicle-details" placeholder="Porsche 992 GT3 RS" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Vehicle Year</label>
+            <input type="text" class="form-input" id="vehicle-year" placeholder="2025" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Preferred Date</label>
+            <input type="date" class="form-input" id="booking-date" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Service Location</label>
+            <input type="text" class="form-input" id="booking-location" placeholder="Private Garage, Beverly Hills" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Active Estimate Selections</label>
+          <textarea class="form-textarea" id="estimate-details" readonly style="background: rgba(255,255,255,0.02); color: var(--text-secondary);"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Additional Instructions</label>
+          <textarea class="form-textarea" id="notes" placeholder="Please specify if the vehicle has existing wrap, repainted panels, or high chip zones..."></textarea>
+        </div>
+
+        <div style="font-size:0.75rem; color:var(--text-secondary); display:flex; align-items:center; gap:8px; margin-top:8px;">
+          <i class="fas fa-lock" style="color:var(--accent-gold);"></i>
+          Your estimate configurations are locked and encrypted. Safe mobile arrival is guaranteed.
+        </div>
+
+        <button type="button" id="submit-booking" class="btn-primary" style="margin-top:16px; width:100%; text-align:center; cursor:pointer; border:none;">
+          Request Consultation Reservation
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AURA<span style="color:var(--text-primary); font-size:1rem;"> Detailing</span></div>
+        <p class="footer-desc">Mobile ceramic coating and paint protection film for the world's most discerning vehicle owners. We come to you.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
+          <li><a href="durability.html">Comparisons</a></li>
+          <li><a href="warranty.html">Warranty Registry</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="services.html#ceramic">Ceramic Coating</a></li>
+          <li><a href="services.html#ppf">Paint Protection Film</a></li>
+          <li><a href="services.html#correction">Paint Correction</a></li>
+          <li><a href="services.html#tint">Window Tint</a></li>
+          <li><a href="services.html#maintenance">Maintenance Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Stay Informed</div>
+        <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:16px;">Exclusive care tips and launch offers for discerning owners.</p>
+        <div class="email-capture">
+          <input type="email" placeholder="Your email address" />
+          <button>Join</button>
+        </div>
+        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="warranty-badge"><i class="fas fa-award"></i> Ceramic Pro</div>
+          <div class="warranty-badge"><i class="fas fa-shield-halved"></i> XPEL</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 AURA Detailing. All rights reserved.</div>
+      <div style="display:flex; gap:24px;">
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Privacy Policy</a>
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="global.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      /* Interactive Option Selection */
+      const cards = document.querySelectorAll('.option-card');
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          const step = card.dataset.step;
+          // Unselect all other cards in this step
+          document.querySelectorAll(`.option-card[data-step="${step}"]`).forEach(c => {
+            c.classList.remove('selected');
+          });
+          card.classList.add('selected');
+          calculatePrice();
+        });
+      });
+
+      function calculatePrice() {
+        // Vehicle scaling factor
+        const activeVehicle = document.querySelector('.option-card[data-step="vehicle"].selected');
+        const multiplier = parseFloat(activeVehicle.dataset.multiplier);
+        const vehicleName = activeVehicle.querySelector('.option-card-title').textContent.trim();
+
+        // Subtotal summation of additions
+        const activeCeramic = document.querySelector('.option-card[data-step="ceramic"].selected');
+        const ceramicCost = parseFloat(activeCeramic.dataset.cost);
+        const ceramicName = activeCeramic.querySelector('.option-card-title').textContent.trim();
+
+        const activePpf = document.querySelector('.option-card[data-step="ppf"].selected');
+        const ppfCost = parseFloat(activePpf.dataset.cost);
+        const ppfName = activePpf.querySelector('.option-card-title').textContent.trim();
+
+        const activeTint = document.querySelector('.option-card[data-step="tint"].selected');
+        const tintCost = parseFloat(activeTint.dataset.cost);
+        const tintName = activeTint.querySelector('.option-card-title').textContent.trim();
+
+        const activeCorrection = document.querySelector('.option-card[data-step="correction"].selected');
+        const correctionCost = parseFloat(activeCorrection.dataset.cost);
+        const correctionName = activeCorrection.querySelector('.option-card-title').textContent.trim();
+
+        // Calculate scaled items
+        // Detailing scales with multiplier
+        const scaledCeramic = Math.round(ceramicCost * multiplier);
+        const scaledPpf = Math.round(ppfCost * multiplier);
+        const scaledCorrection = Math.round(correctionCost * multiplier);
+        // Window tint does not scale by vehicle size (standard glass quantities)
+        const fixedTint = tintCost;
+
+        const subtotal = scaledCeramic + scaledPpf + scaledCorrection + fixedTint;
+
+        // Travel fee is waived if order is > $1,000
+        const travelFee = (subtotal > 1000 || subtotal === 0) ? 0 : 150;
+
+        // Combo pack discount: if user chooses Ceramic + PPF, or any 3 active services, apply 10%
+        let activeServicesCount = 0;
+        if (ceramicCost > 0) activeServicesCount++;
+        if (ppfCost > 0) activeServicesCount++;
+        if (tintCost > 0) activeServicesCount++;
+        if (correctionCost > 0) activeServicesCount++;
+
+        const hasCombo = (ceramicCost > 0 && ppfCost > 0) || activeServicesCount >= 3;
+        const discount = hasCombo ? Math.round(subtotal * 0.10) : 0;
+
+        const total = subtotal + travelFee - discount;
+
+        // Update UI
+        document.getElementById('sum-vehicle-mult').textContent = multiplier.toFixed(1) + 'x';
+        document.getElementById('sum-ceramic-cost').textContent = '$' + scaledCeramic.toLocaleString();
+        document.getElementById('sum-ppf-cost').textContent = '$' + scaledPpf.toLocaleString();
+        document.getElementById('sum-tint-cost').textContent = '$' + fixedTint.toLocaleString();
+        document.getElementById('sum-correction-cost').textContent = '$' + scaledCorrection.toLocaleString();
+        document.getElementById('sum-subtotal').textContent = '$' + subtotal.toLocaleString();
+        document.getElementById('sum-travel-fee').textContent = travelFee === 0 ? 'WAIVED' : '$' + travelFee;
+        document.getElementById('sum-discount').textContent = '-$' + discount.toLocaleString();
+
+        const discountRow = document.getElementById('multi-svc-discount-row');
+        if (discount > 0) {
+          discountRow.style.display = 'flex';
+        } else {
+          discountRow.style.display = 'none';
+        }
+
+        document.getElementById('sum-total').textContent = '$' + total.toLocaleString();
+
+        // Update prefilled form summary details
+        let textDetails = `[Vehicle Class]: ${vehicleName} (${multiplier.toFixed(1)}x scaling)\n`;
+        textDetails += `[Ceramic Coating]: ${ceramicName} ($${scaledCeramic})\n`;
+        textDetails += `[Paint Protection Film]: ${ppfName} ($${scaledPpf})\n`;
+        textDetails += `[Window Tinting]: ${tintName} ($${fixedTint})\n`;
+        textDetails += `[Paint Correction]: ${correctionName} ($${scaledCorrection})\n`;
+        textDetails += `------------------------------------\n`;
+        textDetails += `Estimated Quote Total: $${total.toLocaleString()}`;
+
+        document.getElementById('estimate-details').value = textDetails;
+      }
+
+      // Initial calculation
+      calculatePrice();
+
+      // Submit consultation handler (mock click)
+      document.getElementById('submit-booking').addEventListener('click', () => {
+        const name = document.getElementById('first-name').value;
+        const phone = document.getElementById('phone').value;
+        if (!name || !phone) {
+          alert('Please fill out your name and contact phone number to request a consultation.');
+          return;
+        }
+        alert(`Thank you, ${name}! Your custom estimate has been locked in. An AURA Detailing concierge will contact you shortly.`);
+      });
+    });
+  </script>
+</body>
+</html>
