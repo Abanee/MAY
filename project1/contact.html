@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('aura-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const savedDir = localStorage.getItem('aura-direction') || 'ltr';
+      document.documentElement.setAttribute('dir', savedDir);
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="Assets/car logo.png" />
+  <title>AURA Detailing — Contact & Consultation</title>
+  <meta name="description" content="Reach out to the AURA Detailing concierge team to discuss ceramic coating, paint protection film, paint correction, or request a custom mobile service booking." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            obsidian: '#0B0C10',
+            onyx: '#16181D',
+            gunmetal: '#1A1D24',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+    /* ─── PAGE HERO ─────────────────────────────────── */
+    .page-hero {
+      position: relative;
+      min-height: 52vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(11,12,16,0.85) 70%, #0B0C10 100%),
+        url('https://images.unsplash.com/photo-1596731902620-7f9e8a8b5e67?w=1800&q=80&auto=format') center/cover no-repeat;
+    }
+    [data-theme="light"] .page-hero-bg {
+      background:
+        linear-gradient(to bottom, rgba(244,246,249,0.85) 0%, rgba(244,246,249,0.92) 70%, #F4F6F9 100%),
+        url('https://images.unsplash.com/photo-1596731902620-7f9e8a8b5e67?w=1800&q=80&auto=format') center/cover no-repeat !important;
+    }
+    .page-hero-content { position: relative; z-index: 2; max-width: 780px; padding-top: 140px; }
+    .page-hero h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .page-hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+
+    /* ─── BOOKING SECTION ────────────────────────────── */
+    .booking-section {
+      padding: 100px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .booking-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(212,175,55,0.05) 0%, transparent 70%);
+    }
+    .booking-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .booking-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .form-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .form-input, .form-select, .form-textarea {
+      background: var(--accent-gold-dim);
+      border: 1px solid var(--border-gold);
+      color: var(--text-primary);
+      padding: 14px 18px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.3s ease, background 0.3s ease;
+      width: 100%;
+      appearance: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(212,175,55,0.08);
+    }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-secondary); }
+    .form-select option { background: var(--bg-surface-solid); color: var(--text-primary); }
+
+    .form-textarea { resize: vertical; min-height: 120px; }
+
+    [data-theme="light"] .form-input,
+    [data-theme="light"] .form-select,
+    [data-theme="light"] .form-textarea {
+      background: rgba(255,255,255,0.8);
+      border-color: rgba(0,0,0,0.15);
+      color: var(--text-primary);
+    }
+    [data-theme="light"] .form-input:focus,
+    [data-theme="light"] .form-select:focus,
+    [data-theme="light"] .form-textarea:focus {
+      border-color: var(--accent-gold);
+      background: rgba(255,255,255,0.95);
+    }
+    [data-theme="light"] .form-input::placeholder,
+    [data-theme="light"] .form-textarea::placeholder { color: #9CA3AF; }
+
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .booking-info { display: flex; flex-direction: column; gap: 36px; }
+
+    .info-card {
+      padding: 32px;
+      border: 1px solid var(--border-white);
+      position: relative;
+    }
+    [data-theme="light"] .info-card {
+      background: rgba(255,255,255,0.7);
+      border-color: rgba(0,0,0,0.08);
+      box-shadow: 0 2px 12px rgba(12,16,21,0.06);
+    }
+
+    .info-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+    }
+
+    .info-card-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 20px;
+    }
+
+    .info-list { display: flex; flex-direction: column; gap: 14px; }
+    .info-list-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .info-list-item i {
+      color: var(--accent-gold);
+      font-size: 0.75rem;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .contact-item {
+      border: 1px solid var(--border-white);
+      padding: 18px 20px;
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    [data-theme="light"] .contact-item {
+      border-color: rgba(0,0,0,0.08);
+    }
+    .contact-item:hover { border-color: var(--border-gold); background: var(--accent-gold-dim); }
+    .contact-item i { color: var(--accent-gold); font-size: 0.9rem; }
+    .contact-item-label { font-size: 0.7rem; color: var(--text-secondary); display: block; }
+    .contact-item-value { font-size: 0.82rem; color: var(--text-primary); font-weight: 500; }
+
+    /* ─── MOBILE RESPONSIVE ──────────────────────────── */
+    @media (max-width: 1024px) {
+      .booking-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 768px) {
+      .page-hero { padding: 0 24px 60px; }
+      .booking-section { padding: 70px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition active"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="durability.html">Comparisons</a>
+    <a href="warranty.html">Warranty</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="nav-cta" style="margin-top: 20px; text-align: center; width: 80%; max-width: 280px; color: #0B0C10 !important;">Login</a>
+    <div class="mobile-settings">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <button class="dir-toggle" aria-label="Toggle direction">
+        RTL
+      </button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo" class="nav-logo-img" />AURA<span> Detailing</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home2.html">Home 2</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="durability.html">Comparisons</a></li>
+      <li><a href="warranty.html">Warranty</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <button class="dir-toggle" aria-label="Toggle direction">
+        RTL
+      </button>
+      <a href="login.html" class="nav-cta">Login</a>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════ PAGE HERO ═══════ -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <div class="section-label reveal">Get in Touch</div>
+      <h1 class="reveal" data-delay="0.1">
+        Contact &<br/><em style="font-style:normal; color:var(--accent-gold);">Consultation</em>
+      </h1>
+      <p class="reveal" data-delay="0.2">
+        Have questions about ceramic coating, paint protection film, or detailing services? Reach out to our concierge team or request a mobile service estimate.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ BOOKING / CONTACT CONTENT ═══════ -->
+  <section class="booking-section" id="booking">
+    <div class="reveal" style="text-align:center; margin-bottom:60px; position:relative; z-index:1;">
+      <div class="section-label" style="justify-content:center;">Begin Your Journey</div>
+      <h2 class="heading-lg">Request a <em style="font-style:normal; color:var(--accent-gold);">Consultation</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; max-width:520px; margin:20px auto 0;">
+        Complete the form below and an AURA specialist will contact you within 4 business hours to discuss your vehicle and requirements.
+      </p>
+    </div>
+
+    <div class="booking-grid">
+      <!-- Form -->
+      <div class="reveal" data-delay="0.1">
+        <div class="booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" id="first-name" placeholder="James" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" id="last-name" placeholder="Keller" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-input" id="email" placeholder="james@example.com" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-input" id="phone" placeholder="+1 (555) 000-0000" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Vehicle Make & Model</label>
+              <input type="text" class="form-input" id="vehicle-model" placeholder="Porsche 992 GT3 RS" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Vehicle Year</label>
+              <input type="text" class="form-input" id="vehicle-year" placeholder="2024" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Service(s) of Interest</label>
+            <select class="form-select" id="service-interest">
+              <option value="" disabled selected>Select a primary service</option>
+              <option>Ceramic Coating</option>
+              <option>Paint Protection Film (PPF)</option>
+              <option>Paint Correction</option>
+              <option>Window Tint</option>
+              <option>Maintenance Program</option>
+              <option>Full Package (Correction + PPF + Ceramic + Tint)</option>
+              <option>Not sure — need advice</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Preferred Date</label>
+              <input type="date" class="form-input" id="preferred-date" />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Service Location</label>
+              <input type="text" class="form-input" id="service-location" placeholder="Your address or zip code" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Additional Notes</label>
+            <textarea class="form-textarea" id="notes" placeholder="Tell us about any specific concerns, existing damage, or vehicle history that may be relevant..."></textarea>
+          </div>
+
+          <div class="form-note" style="margin-top:4px;">
+            <i class="fas fa-lock" style="color:var(--accent-gold); margin-right:6px;"></i>
+            Your information is kept strictly private. AURA does not share or sell client data.
+          </div>
+
+          <button type="button" id="submit-booking" class="btn-primary" style="margin-top:8px; width:100%; text-align:center; cursor:pointer; border:none;">
+            Submit Consultation Request
+          </button>
+        </div>
+      </div>
+
+      <!-- Info panels -->
+      <div class="booking-info reveal" data-delay="0.2">
+        <div class="info-card">
+          <div class="info-card-title"><i class="fas fa-clock" style="margin-right:10px;"></i>Response & Service Times</div>
+          <div class="info-list">
+            <div class="info-list-item"><i class="fas fa-check-circle"></i><div>Initial response within <strong style="color:var(--text-primary);">4 business hours</strong> of form submission</div></div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i><div>Written quote delivered within <strong style="color:var(--text-primary);">24 hours</strong> of consultation</div></div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i><div>Standard bookings secured <strong style="color:var(--text-primary);">3–10 business days</strong> in advance</div></div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i><div>Emergency / priority appointments <strong style="color:var(--text-primary);">available on request</strong> for new vehicles</div></div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title"><i class="fas fa-star" style="margin-right:10px;"></i>What's Included in Every Service</div>
+          <div class="info-list">
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>Pre-service vehicle inspection & photo documentation</div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>Full decontamination wash included at no extra charge</div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>Manufacturer warranty registration handled by AURA</div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>Printed care guide and aftercare kit provided</div>
+            <div class="info-list-item"><i class="fas fa-check-circle"></i>30-day courtesy inspection follow-up included</div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card-title"><i class="fas fa-phone" style="margin-right:10px;"></i>Get in Touch Directly</div>
+          <div class="contact-grid">
+            <a href="tel:+15550001234" class="contact-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <span class="contact-item-label">Call Us</span>
+                <span class="contact-item-value">+1 (555) 000-1234</span>
+              </div>
+            </a>
+            <a href="mailto:hello@auradetailing.com" class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <span class="contact-item-label">Email</span>
+                <span class="contact-item-value">hello@auradetailing.com</span>
+              </div>
+            </a>
+            <a href="#" class="contact-item">
+              <i class="fab fa-instagram"></i>
+              <div>
+                <span class="contact-item-label">Instagram</span>
+                <span class="contact-item-value">@aura.detailing</span>
+              </div>
+            </a>
+            <a href="#" class="contact-item">
+              <i class="fab fa-whatsapp"></i>
+              <div>
+                <span class="contact-item-label">WhatsApp</span>
+                <span class="contact-item-value">Message Us</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AURA<span style="color:var(--text-primary); font-size:1rem;"> Detailing</span></div>
+        <p class="footer-desc">Mobile ceramic coating and paint protection film for the world's most discerning vehicle owners. We come to you.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+      <li><a href="home2.html">Home 2</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
+          <li><a href="durability.html">Comparisons</a></li>
+          <li><a href="warranty.html">Warranty Registry</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Client Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="services.html#ceramic">Ceramic Coating</a></li>
+          <li><a href="services.html#ppf">Paint Protection Film</a></li>
+          <li><a href="services.html#correction">Paint Correction</a></li>
+          <li><a href="services.html#tint">Window Tint</a></li>
+          <li><a href="services.html#maintenance">Maintenance Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Stay Informed</div>
+        <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:16px;">Exclusive care tips and launch offers for discerning owners.</p>
+        <div class="email-capture">
+          <input type="email" placeholder="Your email address" />
+          <button>Join</button>
+        </div>
+        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="warranty-badge"><i class="fas fa-award"></i> Ceramic Pro</div>
+          <div class="warranty-badge"><i class="fas fa-shield-halved"></i> XPEL</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 AURA Detailing. All rights reserved.</div>
+      <div style="display:flex; gap:24px;">
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Privacy Policy</a>
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="global.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Form Submission
+      const submitBtn = document.getElementById('submit-booking');
+      submitBtn.addEventListener('click', () => {
+        const firstName = document.getElementById('first-name').value;
+        const phone = document.getElementById('phone').value;
+        if (!firstName || !phone) {
+          alert('Please fill out your name and contact phone number to request a consultation.');
+          return;
+        }
+        alert(`Thank you, ${firstName}! Your consultation request has been received. An AURA specialist will contact you shortly.`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -6,14 +6,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ── THEME TOGGLE ─────────────────────────────────── */
-  const themeToggle = document.querySelector('.theme-toggle');
+  const themeToggles = document.querySelectorAll('.theme-toggle');
   const html = document.documentElement;
 
   const savedTheme = localStorage.getItem('aura-theme') || 'dark';
   html.setAttribute('data-theme', savedTheme);
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
+  themeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
       const current = html.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';
       html.setAttribute('data-theme', next);
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.appendChild(ripple);
       setTimeout(() => ripple.remove(), 500);
     });
-  }
+  });
 
   /* ── DIRECTION TOGGLE ──────────────────────────────── */
   const dirToggles = document.querySelectorAll('.dir-toggle');

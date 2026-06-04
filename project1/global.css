@@ -243,19 +243,19 @@ body {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 1000;
-  padding: 24px 48px;
+  padding: 16px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: var(--nav-scrolled-bg);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-gold);
   transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
 }
 
 .nav.scrolled {
   padding: 16px 48px;
-  background: var(--nav-scrolled-bg);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--border-gold);
 }
 
 .nav-logo {
@@ -1126,30 +1126,90 @@ footer {
   position: fixed;
   inset: 0;
   background: var(--mobile-menu-bg);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
   z-index: 999;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 40px;
+  gap: 20px;
+  padding: 100px 24px 40px;
 }
 
 .mobile-menu.open { display: flex; }
 .mobile-menu a {
   font-family: 'Cinzel', serif;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   color: var(--text-primary);
   text-decoration: none;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   transition: color 0.3s ease;
 }
 .mobile-menu a:hover { color: var(--accent-gold); }
 
-@media (max-width: 900px) {
-  .nav { padding: 20px 24px; }
-  .nav.scrolled { padding: 14px 24px; }
+/* Mobile Settings / Action Row in Drawer */
+.mobile-settings {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+.mobile-settings .theme-toggle,
+.mobile-settings .dir-toggle {
+  margin: 0 !important;
+}
+
+/* Sibling overrides when menu is open */
+.mobile-menu.open ~ .nav {
+  background: transparent !important;
+  border-bottom: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+.mobile-menu.open ~ .nav .theme-toggle,
+.mobile-menu.open ~ .nav .dir-toggle {
+  display: none !important;
+}
+
+@media (max-width: 1440px) {
+  .nav {
+    padding: 16px 32px;
+  }
+  .nav-links {
+    gap: 20px;
+  }
+  .nav-links a {
+    font-size: 0.75rem;
+  }
+  .nav-logo {
+    font-size: 1.25rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 1250px) {
+  .nav {
+    padding: 14px 24px !important;
+  }
   .nav-links, .nav-cta { display: none; }
   .hamburger { display: flex; }
+  .nav .theme-toggle,
+  .nav .dir-toggle {
+    display: none !important;
+  }
+  .nav-logo {
+    font-size: 1.1rem !important;
+    letter-spacing: 0.1em !important;
+  }
+  .nav-logo-img {
+    height: 26px !important;
+  }
+}
+
+@media (max-width: 900px) {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
   .gallery-grid {
     grid-template-columns: repeat(6, 1fr);

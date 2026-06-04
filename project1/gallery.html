@@ -74,19 +74,9 @@
     /* Extended full-page grid layout */
     .gallery-full-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 72px;
-      gap: 10px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
-
-    .gfi { grid-column: span 4; grid-row: span 4; }
-    .gfi-tall { grid-column: span 4; grid-row: span 5; }
-    .gfi-wide { grid-column: span 6; grid-row: span 4; }
-    .gfi-sm { grid-column: span 3; grid-row: span 3; }
-    .gfi-med { grid-column: span 4; grid-row: span 3; }
-    .gfi-lg { grid-column: span 5; grid-row: span 5; }
-    .gfi-banner { grid-column: span 8; grid-row: span 3; }
-    .gfi-sqr { grid-column: span 3; grid-row: span 4; }
 
     .gallery-full-item {
       position: relative;
@@ -95,6 +85,7 @@
       cursor: pointer;
       background: var(--bg-surface-solid);
       transition: border-color 0.4s ease, box-shadow 0.4s ease;
+      aspect-ratio: 1.5;
     }
 
     .gallery-full-item:hover {
@@ -354,23 +345,18 @@
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1024px) {
       .gallery-full-grid {
-        grid-template-columns: repeat(8, 1fr);
-        grid-auto-rows: 80px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
       }
-      .gfi, .gfi-med { grid-column: span 4; grid-row: span 4; }
-      .gfi-tall, .gfi-lg { grid-column: span 4; grid-row: span 5; }
-      .gfi-wide, .gfi-banner { grid-column: span 8; grid-row: span 4; }
-      .gfi-sm, .gfi-sqr { grid-column: span 4; grid-row: span 3; }
     }
 
     @media (max-width: 700px) {
       .page-hero { padding: 0 24px 60px; }
       .gallery-full { padding: 60px 20px 100px; }
-      .gallery-full-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 100px; }
-      .gfi, .gfi-tall, .gfi-wide, .gfi-sm, .gfi-med, .gfi-lg, .gfi-banner, .gfi-sqr {
-        grid-column: span 1; grid-row: span 2;
+      .gallery-full-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
       }
-      .gfi-wide, .gfi-banner { grid-column: span 2; }
       .gallery-stats { grid-template-columns: 1fr 1fr; margin: 0 20px 60px; }
       .gs-item { border-right: none; border-bottom: 1px solid var(--border-white); }
       .gallery-cta { padding: 80px 24px; }
@@ -383,13 +369,23 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu">
     <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
     <a href="services.html">Services</a>
     <a href="gallery.html">Gallery</a>
     <a href="calculator.html">Calculator</a>
     <a href="durability.html">Comparisons</a>
     <a href="warranty.html">Warranty</a>
-    <a href="services.html#booking">Contact</a>
+    <a href="contact.html">Contact</a>
     <a href="login.html" class="nav-cta" style="margin-top: 20px; text-align: center; width: 80%; max-width: 280px; color: #0B0C10 !important;">Login</a>
+    <div class="mobile-settings">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <button class="dir-toggle" aria-label="Toggle direction">
+        RTL
+      </button>
+    </div>
   </div>
 
   <!-- Navigation -->
@@ -397,12 +393,13 @@
     <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo" class="nav-logo-img" />AURA<span> Detailing</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
+      <li><a href="home2.html">Home 2</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="gallery.html" class="active">Gallery</a></li>
       <li><a href="calculator.html">Calculator</a></li>
       <li><a href="durability.html">Comparisons</a></li>
       <li><a href="warranty.html">Warranty</a></li>
-      <li><a href="services.html#booking">Contact</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-right">
       <button class="theme-toggle" aria-label="Toggle theme">
@@ -472,7 +469,7 @@
 
       <!-- Item 1 -->
       <div class="gallery-full-item gfi-lg" data-category="ceramic">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=900&q=80&auto=format" alt="Ferrari Ceramic Coating" loading="lazy" />
+        <img src="Assets/1.jpg" alt="Ferrari Ceramic Coating" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -485,7 +482,7 @@
 
       <!-- Item 2 -->
       <div class="gallery-full-item gfi-med" data-category="ppf">
-        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=700&q=80&auto=format" alt="Lamborghini PPF" loading="lazy" />
+        <img src="Assets/2.jpg" alt="Lamborghini PPF" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -498,7 +495,7 @@
 
       <!-- Item 3 -->
       <div class="gallery-full-item gfi-sm" data-category="correction">
-        <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?w=600&q=80&auto=format" alt="Paint Correction" loading="lazy" />
+        <img src="Assets/3.jpg" alt="Paint Correction" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -511,7 +508,7 @@
 
       <!-- Item 4 -->
       <div class="gallery-full-item gfi-wide" data-category="ceramic">
-        <img src="https://images.unsplash.com/photo-1555353540-64580b51c258?w=1000&q=80&auto=format" alt="Rolls Royce Ceramic" loading="lazy" />
+        <img src="Assets/4.jpg" alt="Rolls Royce Ceramic" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -524,7 +521,7 @@
 
       <!-- Item 5 -->
       <div class="gallery-full-item gfi-sqr" data-category="tint">
-        <img src="https://images.unsplash.com/photo-1570733577524-3a047079e80d?w=600&q=80&auto=format" alt="Window Tint" loading="lazy" />
+        <img src="Assets/5.jpg" alt="Window Tint" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -537,7 +534,7 @@
 
       <!-- Item 6 -->
       <div class="gallery-full-item gfi" data-category="ppf">
-        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=700&q=80&auto=format" alt="Bentley PPF" loading="lazy" />
+        <img src="Assets/6.jpg" alt="Bentley PPF" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -550,7 +547,7 @@
 
       <!-- Item 7 -->
       <div class="gallery-full-item gfi-banner" data-category="full">
-        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=1100&q=80&auto=format" alt="Full Detail" loading="lazy" />
+        <img src="Assets/7.jpg" alt="Full Detail" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -563,7 +560,7 @@
 
       <!-- Item 8 -->
       <div class="gallery-full-item gfi-sqr" data-category="ceramic">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=80&auto=format" alt="Porsche Ceramic" loading="lazy" />
+        <img src="Assets/8.jpg" alt="Porsche Ceramic" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -576,7 +573,7 @@
 
       <!-- Item 9 -->
       <div class="gallery-full-item gfi-med" data-category="correction">
-        <img src="https://images.unsplash.com/photo-1504215680853-026ed2a45def?w=700&q=80&auto=format" alt="BMW M5 Correction" loading="lazy" />
+        <img src="Assets/9.jpg" alt="BMW M5 Correction" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -589,7 +586,7 @@
 
       <!-- Item 10 -->
       <div class="gallery-full-item gfi-tall" data-category="ppf">
-        <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=700&q=85&auto=format&crop=top" alt="AMG PPF" loading="lazy" />
+        <img src="Assets/10.jpg" alt="AMG PPF" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -602,7 +599,7 @@
 
       <!-- Item 11 -->
       <div class="gallery-full-item gfi-wide" data-category="tint">
-        <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=900&q=80&auto=format" alt="Maserati Tint" loading="lazy" />
+        <img src="Assets/11.jpg" alt="Maserati Tint" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -615,7 +612,7 @@
 
       <!-- Item 12 -->
       <div class="gallery-full-item gfi-sm" data-category="full">
-        <img src="https://images.unsplash.com/photo-1534093607318-f025413f49cb?w=600&q=80&auto=format" alt="Full Detail" loading="lazy" />
+        <img src="Assets/12.jpg" alt="Full Detail" loading="lazy" />
         <div class="gfi-corner tl"></div>
         <div class="gfi-corner br"></div>
         <div class="gfi-overlay">
@@ -626,11 +623,24 @@
         </div>
       </div>
 
+      <!-- Item 13 -->
+      <div class="gallery-full-item gfi" data-category="ceramic">
+        <img src="Assets/13.jpg" alt="Audi R8 V10 Plus Ceramic Coating" loading="lazy" />
+        <div class="gfi-corner tl"></div>
+        <div class="gfi-corner br"></div>
+        <div class="gfi-overlay">
+          <div class="gfi-tag">Ceramic Coating</div>
+          <div class="gfi-title">Audi R8 V10 Plus</div>
+          <div class="gfi-sub">Ceramic Pro 9H · Hydrophobic Gloss</div>
+          <button class="gfi-zoom" onclick="openLightbox(12)"><i class="fas fa-expand"></i></button>
+        </div>
+      </div>
+
     </div><!-- /gallery-full-grid -->
 
     <!-- Load More -->
     <div style="text-align:center; margin-top:60px;">
-      <a href="services.html#booking" class="btn-primary" style="margin-right:16px;">Request a Consultation</a>
+      <a href="contact.html" class="btn-primary" style="margin-right:16px;">Request a Consultation</a>
       <span style="color:var(--text-secondary); font-size:0.8rem; font-family:'Cinzel',serif; letter-spacing:0.15em;">
         ✦ More work available on request ✦
       </span>
@@ -648,7 +658,7 @@
         Schedule a complimentary consultation. We'll assess your vehicle and craft a bespoke protection plan at your location.
       </p>
       <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
-        <a href="services.html#booking" class="btn-primary">Request an Estimate</a>
+        <a href="contact.html" class="btn-primary">Request an Estimate</a>
         <a href="services.html" class="btn-secondary">View All Services</a>
       </div>
     </div>
@@ -671,12 +681,14 @@
         <div class="footer-heading">Navigation</div>
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+      <li><a href="home2.html">Home 2</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="calculator.html">Calculator</a></li>
           <li><a href="durability.html">Comparisons</a></li>
           <li><a href="warranty.html">Warranty Registry</a></li>
-          <li><a href="services.html#booking">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
           <li><a href="login.html">Client Login</a></li>
         </ul>
       </div>

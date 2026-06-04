@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('aura-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const savedDir = localStorage.getItem('aura-direction') || 'ltr';
+      document.documentElement.setAttribute('dir', savedDir);
+    })();
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="Assets/car logo.png" />
+  <title>AURA Detailing — Elite Studio & Experience</title>
+  <meta name="description" content="Experience the next generation of paint protection. Explore our interactive vehicle visualizer, cleanroom detailing labs, and bespoke protective materials." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: '#D4AF37',
+            obsidian: '#0B0C10',
+            onyx: '#16181D',
+            gunmetal: '#1A1D24',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+    /* ─── UNIQUE HERO LAYOUT (Centered Minimalist Luxury) ─── */
+    .hero-v2 {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      overflow: hidden;
+      text-align: center;
+    }
+    .hero-v2-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(11,12,16,0.6) 0%, rgba(11,12,16,0.85) 60%, #0B0C10 100%),
+        url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1800&q=80&auto=format') center/cover no-repeat;
+      transform: scale(1.05);
+      animation: ambientZoom 20s infinite alternate ease-in-out;
+    }
+    [data-theme="light"] .hero-v2-bg {
+      background:
+        linear-gradient(to bottom, rgba(244,246,249,0.7) 0%, rgba(244,246,249,0.92) 60%, #F4F6F9 100%),
+        url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1800&q=80&auto=format') center/cover no-repeat !important;
+    }
+    @keyframes ambientZoom {
+      0% { transform: scale(1.03); }
+      100% { transform: scale(1.08); }
+    }
+    .hero-v2-frame {
+      border: 1px solid var(--border-gold);
+      padding: 60px 40px;
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+      background: rgba(11,12,16,0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    [data-theme="light"] .hero-v2-frame {
+      background: rgba(253,251,247,0.65);
+      border-color: rgba(145,107,22,0.25);
+    }
+
+    /* ─── 360 INTERACTIVE VISUALIZER ─────────────────────── */
+    .visualizer-section {
+      padding: 120px 48px;
+      background: var(--bg-surface-solid);
+      border-top: 1px solid var(--border-white);
+      border-bottom: 1px solid var(--border-white);
+    }
+    [data-theme="light"] .visualizer-section {
+      background: rgba(255,255,255,0.45);
+    }
+    .visualizer-container {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 48px;
+    }
+    .car-display-wrapper {
+      position: relative;
+      width: 100%;
+      border: 1px solid var(--border-white);
+      overflow: hidden;
+      background: rgba(0,0,0,0.2);
+    }
+    .car-display-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* Hotspots */
+    .hotspot {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      background: var(--accent-gold);
+      border: 4px solid #0B0C10;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px var(--accent-gold);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    .hotspot::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 1px solid var(--accent-gold);
+      border-radius: 50%;
+      animation: pulseGold 2s infinite;
+    }
+    @keyframes pulseGold {
+      0% { transform: scale(0.9); opacity: 1; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .hotspot:hover, .hotspot.active {
+      transform: scale(1.2);
+      background: #FFFFFF;
+      box-shadow: 0 0 25px #FFFFFF;
+    }
+    /* Tooltip content sidebar */
+    .protection-detail-card {
+      border: 1px solid var(--border-gold);
+      padding: 36px;
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--accent-gold-dim);
+    }
+
+    /* ─── CLEANROOM STUDIO SHOWCASE ────────────────────────── */
+    .studio-section {
+      padding: 120px 48px;
+    }
+    .studio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .studio-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .studio-photo {
+      border: 1px solid var(--border-white);
+      overflow: hidden;
+      position: relative;
+    }
+    .studio-photo img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .studio-photo:hover img { transform: scale(1.05); }
+
+    /* ─── INTERACTIVE DEFECT ANALYZER ──────────────────────── */
+    .defect-section {
+      padding: 120px 48px;
+      background: var(--bg-surface-solid);
+      border-top: 1px solid var(--border-white);
+    }
+    [data-theme="light"] .defect-section {
+      background: rgba(255,255,255,0.45);
+    }
+    .defect-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 40px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .defect-tab {
+      background: none;
+      border: 1px solid var(--border-gold);
+      color: var(--text-secondary);
+      padding: 12px 28px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .defect-tab:hover, .defect-tab.active {
+      background: var(--accent-gold);
+      color: #0B0C10 !important;
+      box-shadow: var(--glow-gold);
+    }
+    [data-theme="light"] .defect-tab:hover,
+    [data-theme="light"] .defect-tab.active {
+      color: #FFFFFF !important;
+    }
+    .defect-content-box {
+      border: 1px solid var(--border-white);
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      padding: 48px;
+      align-items: center;
+    }
+
+    /* ─── ELITE CONCIERGE MEMBERSHIP ────────────────────────── */
+    .club-section {
+      padding: 140px 48px;
+    }
+    .club-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+    .club-card {
+      border: 1px solid var(--border-white);
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      transition: all 0.4s ease;
+    }
+    .club-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(212,175,55,0.06);
+    }
+    .club-price {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin: 16px 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .visualizer-container, .studio-grid, .defect-content-box { grid-template-columns: 1fr; gap: 40px; }
+      .club-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    @media (max-width: 768px) {
+      .hero-v2-frame { padding: 40px 20px; }
+      .visualizer-section, .studio-section, .defect-section, .club-section { padding: 80px 24px; }
+      .defect-content-box { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-transition active"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="home2.html">Home 2</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="calculator.html">Calculator</a>
+    <a href="durability.html">Comparisons</a>
+    <a href="warranty.html">Warranty</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="nav-cta" style="margin-top: 20px; text-align: center; width: 80%; max-width: 280px; color: #0B0C10 !important;">Login</a>
+    <div class="mobile-settings">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <button class="dir-toggle" aria-label="Toggle direction">
+        RTL
+      </button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo" class="nav-logo-img" />AURA<span> Detailing</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="home2.html" class="active">Home 2</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="durability.html">Comparisons</a></li>
+      <li><a href="warranty.html">Warranty</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" aria-label="Toggle theme">
+        <i class="fas fa-sun icon-sun"></i>
+        <i class="fas fa-moon icon-moon"></i>
+      </button>
+      <button class="dir-toggle" aria-label="Toggle direction">
+        RTL
+      </button>
+      <a href="login.html" class="nav-cta">Login</a>
+      <button class="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════ HERO V2 SECTION ═══════ -->
+  <section class="hero-v2">
+    <div class="hero-v2-bg"></div>
+    <div class="hero-v2-frame reveal">
+      <div class="section-label" style="justify-content:center; margin-bottom:16px;">The Detailing Cleanroom</div>
+      <h1 style="font-family:'Cinzel',serif; font-size:clamp(2rem, 5vw, 4rem); font-weight:800; color:var(--text-primary); line-height:1.1; margin-bottom:24px;">
+        THE APEX OF<br/>SURFACE ARCHITECTURE
+      </h1>
+      <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; max-width:620px; margin:0 auto 36px;">
+        Surgical-grade mobile ceramic coatings, self-healing protection film, and multi-stage paint restoration. We treat your vehicle as a masterpiece.
+      </p>
+      <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+        <a href="#visualizer" class="btn-primary">Explore Protection</a>
+        <a href="contact.html" class="btn-secondary">Request Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ 360 INTERACTIVE VISUALIZER ═══════ -->
+  <section class="visualizer-section" id="visualizer">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">360° Protection System</div>
+      <h2 class="heading-lg">Anatomy of <em style="font-style:normal; color:var(--accent-gold);">Supercar Shielding</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; max-width:540px; margin:16px auto 0; line-height:1.7;">
+        Hover or click on the glowing gold indicators below to explore how we insulate each micro-component of your vehicle against wear.
+      </p>
+    </div>
+
+    <div class="visualizer-container">
+      <!-- Interactive Car Graphic -->
+      <div class="car-display-wrapper glass-card reveal">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80&auto=format" alt="Porsche 911" class="car-display-img" />
+        
+        <!-- Hotspot 1: Hood/Bumper (PPF) -->
+        <div class="hotspot active" style="top: 58%; left: 82%;" data-target="front-impact">
+          <i class="fas fa-shield-halved" style="font-size:0.6rem; color:#0B0C10;"></i>
+        </div>
+        <!-- Hotspot 2: Side Paint (Ceramic) -->
+        <div class="hotspot" style="top: 52%; left: 52%;" data-target="ceramic-paint">
+          <i class="fas fa-droplet" style="font-size:0.6rem; color:#0B0C10;"></i>
+        </div>
+        <!-- Hotspot 3: Wheels (Wheel coat) -->
+        <div class="hotspot" style="top: 66%; left: 24%;" data-target="wheel-coat">
+          <i class="fas fa-circle-dot" style="font-size:0.6rem; color:#0B0C10;"></i>
+        </div>
+        <!-- Hotspot 4: Windshield (Glass coat) -->
+        <div class="hotspot" style="top: 38%; left: 60%;" data-target="glass-shield">
+          <i class="fas fa-wind" style="font-size:0.6rem; color:#0B0C10;"></i>
+        </div>
+        <!-- Hotspot 5: Interior Cabin -->
+        <div class="hotspot" style="top: 48%; left: 45%;" data-target="cabin-leather">
+          <i class="fas fa-couch" style="font-size:0.6rem; color:#0B0C10;"></i>
+        </div>
+      </div>
+
+      <!-- Information Card (Dynamic Content) -->
+      <div class="glass-card protection-detail-card reveal" data-delay="0.15">
+        <div id="detail-content">
+          <div class="section-label" id="detail-tag">Bumper & Hood Protection</div>
+          <h3 class="heading-md" id="detail-title" style="font-size: 1.5rem; margin-top: 10px; margin-bottom:12px;">XPEL Front Impact PPF</h3>
+          <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.7;" id="detail-desc">
+            A high-impact thermoplastic urethane film wrapped around the front bumper, hood, fenders, and side mirrors. Absorbs highway sandblasting and stone impacts, self-healing superficial scratches instantly under sun heat.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CLEANROOM DETAILED SHOWCASE ═══════ -->
+  <section class="studio-section">
+    <div class="studio-grid">
+      <div class="reveal">
+        <div class="section-label">Detailing Lab</div>
+        <h2 class="heading-lg" style="margin-bottom: 24px;">The Detailing <em style="font-style:normal; color:var(--accent-gold);">Cleanroom Lab</em></h2>
+        <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:20px;">
+          For extreme commissions, rare collections, or concourse restorations, our custom detaling cleanroom offers a zero-compromise facility.
+        </p>
+        <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:30px;">
+          Equipped with positive pressure HEPA air filtration to eliminate airborne dust, custom multi-temperature LED lighting walls to reveal 100% of micro-imperfections, and climate-locked moisture levels to ensure proper ceramic covalent bonding.
+        </p>
+        
+        <div style="display:flex; gap:20px; flex-wrap:wrap;">
+          <div style="flex:1; min-width:140px;">
+            <strong style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">99.9%</strong>
+            <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Dust Filtration</span>
+          </div>
+          <div style="flex:1; min-width:140px;">
+            <strong style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">2000LM</strong>
+            <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Color-Correct LEDs</span>
+          </div>
+          <div style="flex:1; min-width:140px;">
+            <strong style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">50% RH</strong>
+            <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Cure-Locked Humidity</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="studio-photos reveal" data-delay="0.15">
+        <div class="studio-photo" style="grid-row: span 2; height: 420px;">
+          <img src="https://images.unsplash.com/photo-1611245582312-d961e058ad64?w=800&q=80&auto=format" alt="Detailing Lab Front" />
+        </div>
+        <div class="studio-photo" style="height: 202px;">
+          <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80&auto=format" alt="Polishing Lab" />
+        </div>
+        <div class="studio-photo" style="height: 202px;">
+          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80&auto=format" alt="Ceramic Application Lab" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PAINT DEFECT ANALYZER ═══════ -->
+  <section class="defect-section">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Inspection Lab</div>
+      <h2 class="heading-lg">Paint Defect <em style="font-style:normal; color:var(--accent-gold);">Analyzer</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; max-width:540px; margin:16px auto 0; line-height:1.7;">
+        Select a common paint anomaly below to analyze how AURA technicians reconstruct the clear coat to restore perfect optical reflection.
+      </p>
+    </div>
+
+    <!-- Interactive tabs -->
+    <div class="defect-tabs reveal">
+      <button class="defect-tab active" data-defect="swirls">Swirl Marks / Spiderwebs</button>
+      <button class="defect-tab" data-defect="etching">Acid / Water Spot Etching</button>
+      <button class="defect-tab" data-defect="fading">UV Fading / Oxidation</button>
+      <button class="defect-tab" data-defect="orangepeel">Factory Orange Peel</button>
+    </div>
+
+    <!-- Active Analyzer Display Box -->
+    <div class="glass-card defect-content-box reveal" data-delay="0.1">
+      <div>
+        <div class="section-label" id="defect-level">Defect Profile: Moderate Surface Scratches</div>
+        <h3 class="heading-md" id="defect-title" style="margin-top: 8px; margin-bottom:16px; font-size:1.4rem;">Swirl Marks & Spiderweb Scratching</h3>
+        <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.7; margin-bottom:16px;" id="defect-desc">
+          Created by improper hand washing, mechanical brushes, or rough wiping. These micro-scratches act as tiny concave mirrors, scattering light rays in multiple directions instead of reflecting them parallel, destroying gloss depth.
+        </p>
+        <div style="border-left: 2px solid var(--accent-gold); padding-left: 16px; margin-top:20px;">
+          <strong style="color:var(--text-primary); font-size:0.84rem; display:block; margin-bottom:4px;">AURA Correction Action:</strong>
+          <span style="color:var(--text-secondary); font-size:0.82rem; line-height:1.6;" id="defect-action">
+            A two-stage paint correction. First, rotary heavy compounding cuts down clear coat surrounding scratches to level surface. Second, dual-action jewel polish refines paint haze to deliver a mirror finish.
+          </span>
+        </div>
+      </div>
+      <!-- Defect Graphic Representation -->
+      <div style="position:relative; width:100%; border:1px solid var(--border-gold); background:rgba(0,0,0,0.3); height:220px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <div style="text-align:center; padding:24px;">
+          <div style="font-size:3rem; color:var(--accent-gold); margin-bottom:12px;" id="defect-icon"><i class="fas fa-rotate"></i></div>
+          <div style="font-family:'Cinzel',serif; font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;" id="defect-metric">Light Scatter: 75% Haze</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CONCIERGE MEMBERSHIP TIER ═══════ -->
+  <section class="club-section">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Exclusive Programs</div>
+      <h2 class="heading-lg">AURA Concierge <em style="font-style:normal; color:var(--accent-gold);">Membership</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; max-width:540px; margin:16px auto 0; line-height:1.7;">
+        Maintain showroom condition indefinitely. Our subscription concierge programs are designed for collectors and luxury vehicle daily drivers.
+      </p>
+    </div>
+
+    <div class="club-grid reveal" data-delay="0.15">
+      <!-- Tier 1 -->
+      <div class="glass-card club-card">
+        <div>
+          <div class="section-label">Apex Guard</div>
+          <div class="club-price">$299<span> /month</span></div>
+          <div class="gold-divider"></div>
+          <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:24px;">
+            Perfect for high-use luxury daily drivers. Professional decontamination washes scheduled monthly.
+          </p>
+          <ul style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 1x Monthly Mobile Decon Wash</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Wheel barrel & brake dust release</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Interior cabin vacuum & wipe</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Hydrophobic booster spray sealant</li>
+          </ul>
+        </div>
+        <a href="contact.html" class="btn-secondary w-full text-center" style="font-size:0.72rem;">Enroll Program</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="glass-card club-card" style="border-color:var(--accent-gold); box-shadow:0 8px 24px rgba(212,175,55,0.04);">
+        <div>
+          <div class="section-label" style="background:var(--accent-gold); color:#0B0C10;">Royal Signature</div>
+          <div class="club-price">$599<span> /month</span></div>
+          <div class="gold-divider"></div>
+          <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:24px;">
+            Bespoke care for high-end sports cars and supercars. Includes fortnightly safe washing and surface checks.
+          </p>
+          <ul style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 2x Monthly Mobile Decon Washes</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Leather rejuvenation & conditioning</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Annual ceramic booster top-up</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Priority scheduling within 24 hours</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 1x Annual wheel-off coating service</li>
+          </ul>
+        </div>
+        <a href="contact.html" class="btn-primary w-full text-center" style="font-size:0.72rem;">Enroll Program</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="glass-card club-card">
+        <div>
+          <div class="section-label">Stradale Club</div>
+          <div class="club-price">$1,299<span> /month</span></div>
+          <div class="gold-divider"></div>
+          <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:24px;">
+            Unlimited support for multi-car garages and active private vehicle collectors. Fully custom schedules.
+          </p>
+          <ul style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Weekly detailing cleanings</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Enclosed trailer vehicle transport</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Private track-day prep & cleanup</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Infinite coating boosters & checkups</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 24/7 dedicated concierge line</li>
+          </ul>
+        </div>
+        <a href="contact.html" class="btn-secondary w-full text-center" style="font-size:0.72rem;">Enroll Program</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">AURA<span style="color:var(--text-primary); font-size:1rem;"> Detailing</span></div>
+        <p class="footer-desc">Mobile ceramic coating and paint protection film for the world's most discerning vehicle owners. We come to you.</p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-heading">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="home2.html">Home 2</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="calculator.html">Calculator</a></li>
+          <li><a href="durability.html">Comparisons</a></li>
+          <li><a href="warranty.html">Warranty Registry</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="login.html">Client Login</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Services</div>
+        <ul class="footer-links">
+          <li><a href="services.html#ceramic">Ceramic Coating</a></li>
+          <li><a href="services.html#ppf">Paint Protection Film</a></li>
+          <li><a href="services.html#correction">Paint Correction</a></li>
+          <li><a href="services.html#tint">Window Tint</a></li>
+          <li><a href="services.html#maintenance">Maintenance Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-heading">Stay Informed</div>
+        <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:16px;">Exclusive care tips and launch offers for discerning owners.</p>
+        <div class="email-capture">
+          <input type="email" placeholder="Your email address" />
+          <button>Join</button>
+        </div>
+        <div style="margin-top:20px; display:flex; gap:10px; flex-wrap:wrap;">
+          <div class="warranty-badge"><i class="fas fa-award"></i> Ceramic Pro</div>
+          <div class="warranty-badge"><i class="fas fa-shield-halved"></i> XPEL</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 AURA Detailing. All rights reserved.</div>
+      <div style="display:flex; gap:24px;">
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Privacy Policy</a>
+        <a href="#" style="color:var(--text-secondary); text-decoration:none; font-size:0.78rem;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="global.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ═══════ VISUALIZER INTERACTION ═══════
+      const visualizerDb = {
+        'front-impact': {
+          tag: 'Bumper & Hood Protection',
+          title: 'XPEL Front Impact PPF',
+          desc: 'A high-impact thermoplastic urethane film wrapped around the front bumper, hood, fenders, and side mirrors. Absorbs highway sandblasting and stone impacts, self-healing superficial scratches instantly under sun heat.'
+        },
+        'ceramic-paint': {
+          tag: 'Clear Coat Enhancement',
+          title: 'Multi-Layer Ceramic Pro 9H',
+          desc: 'Permanent nanostructure protection chemically bonded to factory paint clear coat. Creates an ultra-smooth, superhydrophobic surface that repels industrial fallout, acidic bird droppings, and UV solar rays, ensuring deep glass gloss.'
+        },
+        'wheel-coat': {
+          tag: 'Wheel Barrel & Calipers',
+          title: 'High-Temperature Wheel Coating',
+          desc: 'Formulated with specialized covalent bindings to withstand heat up to 1200°F. Deflects carbon-heavy metallic brake dust and corrosive salts, making wheel barrel cleaning as simple as a touchless foam rinse.'
+        },
+        'glass-shield': {
+          tag: 'All Glass Windshield Film',
+          title: 'Hydrophobic Glass Shield',
+          desc: 'Specialized SiO₂ chemical sealant applied to windshield and side glass. Repels rainwater immediately (improving driving vision at night) and prevents hard mineral water-spot etching from bonding to glass.'
+        },
+        'cabin-leather': {
+          tag: 'Interior Leather & Alcantara',
+          title: 'Nanotechnology Cabin Protection',
+          desc: 'Invisible, breathable fiber coating applied to leather, carbon, and suede fabrics. Shields against dark denim dye transfer, dry abrasion wear, liquid spills, and color fading caused by ultraviolet solar window transmission.'
+        }
+      };
+
+      const hotspots = document.querySelectorAll('.hotspot');
+      const detailTag = document.getElementById('detail-tag');
+      const detailTitle = document.getElementById('detail-title');
+      const detailDesc = document.getElementById('detail-desc');
+
+      hotspots.forEach(hotspot => {
+        hotspot.addEventListener('click', () => {
+          hotspots.forEach(h => h.classList.remove('active'));
+          hotspot.classList.add('active');
+
+          const key = hotspot.dataset.target;
+          const data = visualizerDb[key];
+          if (data) {
+            // Animate card content transition
+            gsap.to('#detail-content', { opacity: 0, y: -10, duration: 0.25, onComplete: () => {
+              detailTag.textContent = data.tag;
+              detailTitle.textContent = data.title;
+              detailDesc.textContent = data.desc;
+              gsap.to('#detail-content', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+            }});
+          }
+        });
+      });
+
+      // ═══════ DEFECT ANALYZER TABS ═══════
+      const defectDb = {
+        'swirls': {
+          level: 'Defect Profile: Moderate Clear Coat Scratches',
+          title: 'Swirl Marks & Spiderweb Scratching',
+          desc: 'Created by improper hand washing, mechanical brushes, or rough wiping. These micro-scratches act as tiny concave mirrors, scattering light rays in multiple directions instead of reflecting them parallel, destroying gloss depth.',
+          action: 'A two-stage paint correction. First, rotary heavy compounding cuts down clear coat surrounding scratches to level surface. Second, dual-action jewel polish refines paint haze to deliver a mirror finish.',
+          icon: '<i class="fas fa-rotate"></i>',
+          metric: 'Light Scatter: 75% Haze'
+        },
+        'etching': {
+          level: 'Defect Profile: Deep Chemical Corrosive Spots',
+          title: 'Acid & Hard Water Etching',
+          desc: 'Formed when mineral-rich water spots or acidic bird droppings dry under hot sun exposure. The acids physically bake and eat holes deep into the paint clear coat, leaving permanent circular outline rings.',
+          action: 'Requires paint thickness mapping followed by precision sanding using 2500-grit micro-abrasives. Once leveled, paint compounding and jeweling processes restore factor transparency.',
+          icon: '<i class="fas fa-droplet-slash"></i>',
+          metric: 'Clear Coat Damage: Acidic Pits'
+        },
+        'fading': {
+          level: 'Defect Profile: Severe Paint Clear Coat Oxidation',
+          title: 'UV Oxidation & Pigment Fading',
+          desc: 'Constant solar UV rays break down the polymers within factory clear coats over time. This makes clear coat chalky, white, and completely opaque, leaving the paint looking faded, dull, and lifeless.',
+          action: 'Severe cases require clear-coat chemical peeling and deep corrective compounding. We remove the dead oxidized layer down to healthy clear coat, then bond Ceramic Pro 9H to seal UV filters permanently.',
+          icon: '<i class="fas fa-sun"></i>',
+          metric: 'Paint Loss: Dead Oxidation'
+        },
+        'orangepeel': {
+          level: 'Defect Profile: Factory Texture Imperfection',
+          title: 'Orange Peel Paint Texture',
+          desc: 'A wavy finish resembling orange skin, found on most premium factory paint jobs due to paint settling dynamics on assembly lines. It causes reflections to look blurred and distorted instead of sharp.',
+          action: 'We perform complete dry sanding using premium Kovax block sanders and micro-abrasive sheets. Levels texture safely down to a flat surface, followed by a three-stage correction to achieve a true mirror reflectivity.',
+          icon: '<i class="fas fa-border-all"></i>',
+          metric: 'Surface Wave: Textures Leveled'
+        }
+      };
+
+      const defectTabs = document.querySelectorAll('.defect-tab');
+      const defectLevel = document.getElementById('defect-level');
+      const defectTitle = document.getElementById('defect-title');
+      const defectDesc = document.getElementById('defect-desc');
+      const defectAction = document.getElementById('defect-action');
+      const defectIcon = document.getElementById('defect-icon');
+      const defectMetric = document.getElementById('defect-metric');
+
+      defectTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          defectTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+
+          const key = tab.dataset.defect;
+          const data = defectDb[key];
+          if (data) {
+            // Animate defect content
+            gsap.to('.defect-content-box', { opacity: 0.8, scale: 0.99, duration: 0.2, onComplete: () => {
+              defectLevel.textContent = data.level;
+              defectTitle.textContent = data.title;
+              defectDesc.textContent = data.desc;
+              defectAction.textContent = data.action;
+              defectIcon.innerHTML = data.icon;
+              defectMetric.textContent = data.metric;
+              gsap.to('.defect-content-box', { opacity: 1, scale: 1, duration: 0.3, ease: 'power1.out' });
+            }});
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
