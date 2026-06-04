@@ -31,6 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ── DIRECTION TOGGLE ──────────────────────────────── */
+  const dirToggles = document.querySelectorAll('.dir-toggle');
+  const savedDir = localStorage.getItem('aura-direction') || 'ltr';
+  html.setAttribute('dir', savedDir);
+
+  const updateDirToggles = (dir) => {
+    dirToggles.forEach(toggle => {
+      toggle.textContent = dir === 'ltr' ? 'RTL' : 'LTR';
+    });
+  };
+
+  updateDirToggles(savedDir);
+
+  dirToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const current = html.getAttribute('dir') || 'ltr';
+      const next = current === 'ltr' ? 'rtl' : 'ltr';
+      html.setAttribute('dir', next);
+      localStorage.setItem('aura-direction', next);
+      updateDirToggles(next);
+    });
+  });
+
   /* ── PAGE TRANSITION ──────────────────────────────── */
   const transition = document.querySelector('.page-transition');
   if (transition) {
