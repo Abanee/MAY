@@ -928,6 +928,9 @@ footer {
 }
 
 .footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   font-family: 'Cinzel', serif;
   font-size: 1.6rem;
   font-weight: 700;
@@ -935,6 +938,18 @@ footer {
   letter-spacing: 0.15em;
   margin-bottom: 16px;
   text-shadow: 0 0 20px rgba(212,175,55,0.3);
+  text-decoration: none;
+}
+
+.footer-logo span {
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+
+.footer-logo-img {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-desc {
