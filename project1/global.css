@@ -430,17 +430,22 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid transparent;
-  background: linear-gradient(var(--bg-base), var(--bg-base)) padding-box,
+  background: linear-gradient(var(--accent-gunmetal), var(--accent-gunmetal)) padding-box,
               linear-gradient(to right, var(--border-gold), var(--border-gold)) border-box;
   transition: all 0.35s ease;
   clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
 }
 
 .btn-secondary:hover {
-  background: var(--accent-gold-dim) padding-box,
+  background: linear-gradient(var(--accent-gold), var(--accent-gold)) padding-box,
               linear-gradient(to right, var(--accent-gold), var(--accent-gold)) border-box;
-  box-shadow: var(--glow-gold);
-  color: var(--accent-gold-light);
+  box-shadow: var(--glow-gold-strong);
+  color: #0B0C10 !important;
+  transform: translateY(-2px);
+}
+
+[data-theme="light"] .btn-secondary:hover {
+  color: #FFFFFF !important;
 }
 
 /* ─── GLASS CARD ────────────────────────────────────── */
