@@ -711,7 +711,15 @@
       padding-left: 20px;
     }
 
-    .testimonial-author { display: flex; align-items: center; gap: 14px; }
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: flex-start !important;
+      text-align: left !important;
+      margin-top: auto;
+      width: 100%;
+    }
 
     .author-avatar {
       width: 44px; height: 44px;
@@ -721,10 +729,19 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--accent-gold);
+      overflow: hidden; /* Ensure image is clipped to circle */
+      flex-shrink: 0;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .author-info {
+      text-align: left !important;
     }
 
     .author-info strong {
@@ -1440,7 +1457,7 @@
         </div>
         <p class="testimonial-text">AURA treated my 992 GT3 RS like the piece of art it is. The ceramic finish is otherworldly — water simply vanishes. Their mobile setup is genuinely impressive.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">JK</div>
+          <div class="author-avatar"><img src="Assets/pro1.jpg" alt="James Keller" /></div>
           <div class="author-info">
             <strong>James Keller</strong>
             <span>Porsche 992 GT3 RS</span>
@@ -1454,7 +1471,7 @@
         </div>
         <p class="testimonial-text">My La Ferrari arrived from the dealer and AURA was there the same afternoon. Full PPF wrap completed in my private garage. Flawless results, exceptional discretion.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">MV</div>
+          <div class="author-avatar"><img src="Assets/pro2.jpg" alt="Marco Villanueva" /></div>
           <div class="author-info">
             <strong>Marco Villanueva</strong>
             <span>Ferrari LaFerrari Aperta</span>
@@ -1468,7 +1485,7 @@
         </div>
         <p class="testimonial-text">The Phantom Black Cullinan now has a depth I didn't think was possible from the factory. AURA's lifetime warranty sealed the deal. True professionals in every sense.</p>
         <div class="testimonial-author">
-          <div class="author-avatar">SB</div>
+          <div class="author-avatar"><img src="Assets/pro3.jpg" alt="Sofia Blackwell" /></div>
           <div class="author-info">
             <strong>Sofia Blackwell</strong>
             <span>Rolls-Royce Cullinan</span>

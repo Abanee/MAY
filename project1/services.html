@@ -219,6 +219,10 @@
       border-right: 1px solid var(--border-gold);
       position: relative;
       transition: background 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
     .pkg-card:last-child { border-right: none; }
     .pkg-card.featured { background: rgba(212,175,55,0.04); }
@@ -251,6 +255,7 @@
       text-transform: uppercase;
       color: var(--accent-gold);
       margin-bottom: 12px;
+      width: 100%;
     }
 
     .pkg-price {
@@ -260,6 +265,7 @@
       color: var(--text-primary);
       line-height: 1;
       margin-bottom: 4px;
+      width: 100%;
     }
     .pkg-price span { font-size: 1rem; font-weight: 400; color: var(--text-secondary); }
 
@@ -267,19 +273,33 @@
       font-size: 0.78rem;
       color: var(--text-secondary);
       margin-bottom: 24px;
+      width: 100%;
     }
 
     .pkg-features {
       list-style: none;
-      display: flex; flex-direction: column; gap: 10px;
-      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+      align-self: stretch;
+      text-align: left;
+      padding-left: 8px;
     }
     .pkg-features li {
-      display: flex; align-items: center; gap: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 0.84rem;
       color: var(--text-secondary);
+      justify-content: flex-start;
     }
     .pkg-features li i { color: var(--accent-gold); font-size: 0.65rem; }
+
+    .pkg-card .btn-primary,
+    .pkg-card .btn-secondary {
+      margin-top: auto;
+    }
 
     /* ─── PROCESS SECTION ────────────────────────────── */
     .process-section {

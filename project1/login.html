@@ -52,13 +52,76 @@
 
   <style>
     .portal-section {
-      min-height: 85vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 140px 24px 80px;
+      padding: 80px 24px;
       position: relative;
       overflow: hidden;
+    }
+
+    /* ─── SOCIAL SIGN-IN ─────────────────────────────── */
+    .oauth-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 24px 0;
+      color: var(--text-secondary);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      width: 100%;
+    }
+    .oauth-divider::before, .oauth-divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--border-white);
+    }
+    [data-theme="light"] .oauth-divider::before, [data-theme="light"] .oauth-divider::after {
+      border-bottom-color: rgba(0,0,0,0.09);
+    }
+    .oauth-divider:not(:empty)::before {
+      margin-right: 16px;
+    }
+    .oauth-divider:not(:empty)::after {
+      margin-left: 16px;
+    }
+    .oauth-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+    .oauth-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px 18px;
+      border: 1px solid var(--border-white);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      width: 100%;
+    }
+    [data-theme="light"] .oauth-btn {
+      background: #FFFFFF;
+      border-color: rgba(0,0,0,0.12);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+    .oauth-btn:hover {
+      border-color: var(--accent-gold);
+      background: var(--accent-gold-dim);
+      color: var(--accent-gold);
+    }
+    .oauth-btn i {
+      font-size: 1rem;
     }
 
     .portal-bg-orbs {
@@ -212,67 +275,7 @@
 <body>
   <div class="page-transition active"></div>
 
-  <!-- Mobile Menu -->
-  <div class="mobile-menu">
-    <div class="mobile-menu-header">
-      <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo" class="nav-logo-img" />AURA<span> Detailing</span></a>
-      <button class="mobile-menu-close" aria-label="Close menu">
-        <i class="fas fa-xmark"></i>
-      </button>
-    </div>
-    <div class="mobile-menu-links">
-      <a href="index.html">Home</a>
-      <a href="home2.html">Home 2</a>
-      <a href="services.html">Services</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="calculator.html">Calculator</a>
-      <a href="durability.html">Comparisons</a>
-      <a href="warranty.html">Warranty</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <div class="mobile-menu-footer">
-      <div class="circle-btn-group">
-        <button class="theme-toggle circle-btn" aria-label="Toggle theme">
-          <i class="fas fa-sun icon-sun"></i>
-          <i class="fas fa-moon icon-moon"></i>
-        </button>
-        <button class="dir-toggle circle-btn" aria-label="Toggle layout direction">
-          RTL
-        </button>
-      </div>
-      <a href="login.html" class="mobile-login-btn">
-        <i class="fas fa-right-to-bracket"></i> Login / Sign Up
-      </a>
-    </div>
-  </div>
 
-  <!-- Navigation -->
-  <nav class="nav">
-    <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo" class="nav-logo-img" />AURA<span> Detailing</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="home2.html">Home 2</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="calculator.html">Calculator</a></li>
-      <li><a href="durability.html">Comparisons</a></li>
-      <li><a href="warranty.html">Warranty</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" aria-label="Toggle theme">
-        <i class="fas fa-sun icon-sun"></i>
-        <i class="fas fa-moon icon-moon"></i>
-      </button>
-      <button class="dir-toggle" aria-label="Toggle direction">
-        RTL
-      </button>
-      <a href="login.html" class="nav-cta active">Login</a>
-      <button class="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
 
   <!-- ═══════ PORTAL LOGIN CARD ═══════ -->
   <section class="portal-section">
@@ -283,6 +286,9 @@
 
     <div class="glass-card portal-card reveal">
       <div class="portal-header">
+        <a href="index.html" class="nav-logo" style="margin-bottom: 24px; justify-content: center; width: 100%;">
+          <img src="Assets/car logo.png" alt="AURA Logo" class="nav-logo-img" />AURA<span> Detailing</span>
+        </a>
         <h1 class="portal-title">Welcome Back</h1>
         <p class="portal-subtitle">Access your digital garage & warranties</p>
       </div>
@@ -316,6 +322,17 @@
         </button>
       </form>
 
+      <div class="oauth-divider">or sign in with</div>
+
+      <div class="oauth-buttons">
+        <button type="button" class="oauth-btn" onclick="handleSocialSignIn('Google')">
+          <i class="fab fa-google"></i> Continue with Google
+        </button>
+        <button type="button" class="oauth-btn" onclick="handleSocialSignIn('Apple')">
+          <i class="fab fa-apple"></i> Continue with Apple
+        </button>
+      </div>
+
       <p style="text-align: center; font-size: 0.8rem; color: var(--text-secondary); margin-top: 28px;">
         New client? <a href="register.html" class="switch-link">Create Portal Account</a>
       </p>
@@ -340,6 +357,11 @@
     function handleLogin() {
       const email = document.getElementById('email').value;
       alert(`Welcome back! Authenticating secure portal session for: ${email}`);
+      window.location.href = 'index.html';
+    }
+
+    function handleSocialSignIn(provider) {
+      alert(`Connecting to ${provider} for secure authentication...`);
       window.location.href = 'index.html';
     }
   </script>

@@ -421,7 +421,6 @@ body {
 
 .btn-secondary {
   display: inline-block;
-  background: transparent;
   color: var(--accent-gold);
   padding: 15px 40px;
   font-family: 'Cinzel', serif;
@@ -430,15 +429,18 @@ body {
   letter-spacing: 0.15em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid var(--border-gold);
+  border: 1px solid transparent;
+  background: linear-gradient(var(--bg-base), var(--bg-base)) padding-box,
+              linear-gradient(to right, var(--border-gold), var(--border-gold)) border-box;
   transition: all 0.35s ease;
   clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
 }
 
 .btn-secondary:hover {
-  background: var(--accent-gold-dim);
-  border-color: var(--accent-gold);
+  background: var(--accent-gold-dim) padding-box,
+              linear-gradient(to right, var(--accent-gold), var(--accent-gold)) border-box;
   box-shadow: var(--glow-gold);
+  color: var(--accent-gold-light);
 }
 
 /* ─── GLASS CARD ────────────────────────────────────── */
@@ -1806,9 +1808,10 @@ footer {
 }
 [dir="rtl"] .testimonial-author {
   flex-direction: row-reverse;
+  justify-content: flex-start !important;
 }
 [dir="rtl"] .author-info {
-  text-align: right;
+  text-align: right !important;
 }
 [dir="rtl"] .social-links {
   justify-content: flex-start;
