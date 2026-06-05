@@ -112,22 +112,50 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
   if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
+    // Dynamically create backdrop overlay if it doesn't exist
+    let overlay = document.querySelector('.mobile-menu-overlay');
+    if (!overlay) {
+      overlay = document.createElement('div');
+      overlay.className = 'mobile-menu-overlay';
+      document.body.appendChild(overlay);
+    }
+
+    const closeMenu = () => {
+      mobileMenu.classList.remove('open');
+      overlay.classList.remove('open');
       const spans = hamburger.querySelectorAll('span');
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    };
+
+    const openMenu = () => {
+      mobileMenu.classList.add('open');
+      overlay.classList.add('open');
+      const spans = hamburger.querySelectorAll('span');
+      spans[0].style.transform = 'rotate(45deg) translateY(6px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translateY(-6px)';
+    };
+
+    hamburger.addEventListener('click', () => {
       if (mobileMenu.classList.contains('open')) {
-        spans[0].style.transform = 'rotate(45deg) translateY(6px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translateY(-6px)';
+        closeMenu();
       } else {
-        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+        openMenu();
       }
     });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        hamburger.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-      });
+
+    // Close button in drawer header
+    const closeBtn = mobileMenu.querySelector('.mobile-menu-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeMenu);
+    }
+
+    // Overlay click
+    overlay.addEventListener('click', closeMenu);
+
+    // Link clicks
+    mobileMenu.querySelectorAll('.mobile-menu-links a, .mobile-login-btn').forEach(link => {
+      link.addEventListener('click', closeMenu);
     });
   }
 
