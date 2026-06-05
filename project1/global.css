@@ -1883,3 +1883,18 @@ footer {
   }
 }
 
+/* ─── PAGE HERO GLOBAL CENTERING ──────────────────── */
+.page-hero {
+  justify-content: center !important;
+}
+.page-hero-content {
+  margin: 0 auto !important;
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+.page-hero-content .section-label {
+  justify-content: center !important;
+  width: 100% !important;
+}
