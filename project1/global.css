@@ -1709,6 +1709,14 @@ footer {
 [dir="rtl"] .warranty-tier:last-child {
   border-left: none;
 }
+[dir="rtl"] .warranty-tier.featured::before {
+  right: auto;
+  left: 32px;
+}
+[dir="rtl"] .pkg-card.featured::before {
+  right: auto;
+  left: 24px;
+}
 [dir="rtl"] .process-step {
   border-right: none;
   border-left: 1px solid var(--border-white);

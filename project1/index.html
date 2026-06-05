@@ -616,7 +616,10 @@
 
     .warranty-tier:last-child { border-right: none; }
 
-    .warranty-tier.featured { background: rgba(212,175,55,0.04); }
+    .warranty-tier.featured {
+      background: rgba(212,175,55,0.04);
+      overflow: visible !important;
+    }
 
     .warranty-tier.featured::before {
       content: 'Most Popular';
@@ -907,7 +910,8 @@
       .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 24px; }
       .stat-item { border-right: none; padding: 0; }
       .value-cards { grid-template-columns: 1fr; }
-      .warranty-grid { grid-template-columns: 1fr; }
+      .warranty-grid { grid-template-columns: 1fr; gap: 30px; border: none; }
+      .warranty-tier { border: 1px solid var(--border-gold); border-right: 1px solid var(--border-gold) !important; }
       .testimonials-track { grid-template-columns: 1fr; }
       .process-steps { grid-template-columns: repeat(2, 1fr); }
       .trust-bar { gap: 20px; }
@@ -1322,12 +1326,12 @@
     </div>
 
     <div class="slider-container" id="beforeAfterSlider">
-      <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=900&q=80&auto=format" alt="Before treatment" style="filter: saturate(0.4) brightness(0.7);" />
+      <img src="Assets/before.jpg" alt="Before treatment" style="filter: saturate(0.4) brightness(0.7);" />
       <div class="slider-after" id="sliderAfter">
-        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=900&q=80&auto=format" alt="After ceramic coating" style="width:900px;" />
+        <img src="Assets/After.png" alt="After ceramic coating" style="width:900px;" />
       </div>
-      <div class="slider-label left">Untreated</div>
-      <div class="slider-label right">Glass Finish</div>
+      <div class="slider-label left">Glass Finish</div>
+      <div class="slider-label right">Untreated</div>
       <div class="slider-handle" id="sliderHandle">
         <div class="slider-btn"><i class="fas fa-arrows-left-right"></i></div>
       </div>
@@ -1605,6 +1609,7 @@
 
     if (slider && sliderAfter && sliderHandle) {
       let isDragging = false;
+      const afterImg = sliderAfter.querySelector('img');
 
       function setSliderPosition(x) {
         const rect = slider.getBoundingClientRect();
@@ -1612,6 +1617,18 @@
         sliderAfter.style.width = pct + '%';
         sliderHandle.style.left = pct + '%';
       }
+
+      function updateSliderWidth() {
+        const rect = slider.getBoundingClientRect();
+        if (afterImg) {
+          afterImg.style.width = rect.width + 'px';
+        }
+      }
+
+      window.addEventListener('resize', updateSliderWidth);
+      // Run once at load
+      updateSliderWidth();
+      setTimeout(updateSliderWidth, 100); // safety fallback
 
       sliderHandle.addEventListener('mousedown', () => isDragging = true);
       document.addEventListener('mouseup', () => isDragging = false);

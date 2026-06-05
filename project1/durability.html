@@ -212,19 +212,85 @@
     }
     .threat-content {
       flex: 1;
+      width: 100%;
     }
     .threat-title {
       font-family: 'Cinzel', serif;
       font-size: 0.95rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin-bottom: 8px;
+      margin-bottom: 0;
       letter-spacing: 0.04em;
     }
     .threat-desc {
       font-size: 0.85rem;
       line-height: 1.7;
       color: var(--text-secondary);
+    }
+    .threat-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+    }
+    .threat-badge-danger {
+      background: rgba(231, 76, 60, 0.12);
+      border: 1px solid #e74c3c;
+      color: #e74c3c;
+      font-size: 0.55rem;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 2px;
+    }
+    .threat-defense-indicators {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 18px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-white);
+      width: 100%;
+    }
+    .defense-stat {
+      display: grid;
+      grid-template-columns: 150px 1fr 40px;
+      align-items: center;
+      gap: 12px;
+    }
+    .defense-label {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+    .defense-progress {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+    [data-theme="light"] .defense-progress {
+      background: rgba(0, 0, 0, 0.04);
+    }
+    .defense-bar {
+      height: 100%;
+      background: var(--accent-gold);
+      box-shadow: var(--glow-gold);
+      border-radius: 2px;
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .defense-value {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent-gold);
+      text-align: right;
     }
 
     @media (max-width: 1024px) {
@@ -236,11 +302,19 @@
     @media (max-width: 600px) {
       .threat-item-card {
         flex-direction: column;
-        gap: 12px;
-        padding: 20px;
+        gap: 16px;
+        padding: 24px;
       }
       .threat-num {
         font-size: 1.8rem;
+      }
+      .defense-stat {
+        grid-template-columns: 1fr auto;
+        gap: 6px;
+      }
+      .defense-progress {
+        grid-column: span 2;
+        margin-bottom: 4px;
       }
     }
   </style>
@@ -487,8 +561,23 @@
         <div class="threat-item-card glass-card reveal" data-delay="0.1">
           <div class="threat-num">01</div>
           <div class="threat-content">
-            <h4 class="threat-title"><i class="fas fa-sun" style="color:var(--accent-gold); margin-right:10px;"></i> UV Degradation & Oxidation</h4>
+            <div class="threat-header-row">
+              <h4 class="threat-title"><i class="fas fa-sun" style="color:var(--accent-gold); margin-right:10px;"></i> UV Degradation & Oxidation</h4>
+              <span class="threat-badge-danger">High Threat</span>
+            </div>
             <p class="threat-desc">Solar radiation breaks down paint resin binders, leading to a chalky, oxidized clear coat. Ceramic coatings absorb UV radiation up to 400nm, acting as a permanent sunblock for your vehicle's paintwork.</p>
+            <div class="threat-defense-indicators">
+              <div class="defense-stat">
+                <span class="defense-label">Ceramic Pro Block</span>
+                <div class="defense-progress"><div class="defense-bar" style="width: 0%;" data-fill="98%"></div></div>
+                <span class="defense-value">98%</span>
+              </div>
+              <div class="defense-stat">
+                <span class="defense-label">PPF UV Shield</span>
+                <div class="defense-progress"><div class="defense-bar" style="width: 0%;" data-fill="85%"></div></div>
+                <span class="defense-value">85%</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -496,8 +585,23 @@
         <div class="threat-item-card glass-card reveal" data-delay="0.2">
           <div class="threat-num">02</div>
           <div class="threat-content">
-            <h4 class="threat-title"><i class="fas fa-biohazard" style="color:var(--accent-gold); margin-right:10px;"></i> Chemical Etching & Acid Rain</h4>
+            <div class="threat-header-row">
+              <h4 class="threat-title"><i class="fas fa-biohazard" style="color:var(--accent-gold); margin-right:10px;"></i> Chemical Etching & Acid Rain</h4>
+              <span class="threat-badge-danger">Severe Threat</span>
+            </div>
             <p class="threat-desc">Bird droppings, bug splatters, and industrial fallout contain corrosive enzymes and acids. The SiO₂ ceramic bond is highly chemically inert, resisting etching from pH 2 (strong acid) up to pH 12 (alkaline washes).</p>
+            <div class="threat-defense-indicators">
+              <div class="defense-stat">
+                <span class="defense-label">Ceramic Pro Resistance</span>
+                <div class="defense-progress"><div class="defense-bar" style="width: 0%;" data-fill="95%"></div></div>
+                <span class="defense-value">95%</span>
+              </div>
+              <div class="defense-stat">
+                <span class="defense-label">PPF Chemical Barrier</span>
+                <div class="defense-progress"><div class="defense-bar" style="width: 0%;" data-fill="75%"></div></div>
+                <span class="defense-value">75%</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -505,8 +609,23 @@
         <div class="threat-item-card glass-card reveal" data-delay="0.3">
           <div class="threat-num">03</div>
           <div class="threat-content">
-            <h4 class="threat-title"><i class="fas fa-road" style="color:var(--accent-gold); margin-right:10px;"></i> Physical Impacts & Debris</h4>
+            <div class="threat-header-row">
+              <h4 class="threat-title"><i class="fas fa-road" style="color:var(--accent-gold); margin-right:10px;"></i> Physical Impacts & Debris</h4>
+              <span class="threat-badge-danger">Extreme Threat</span>
+            </div>
             <p class="threat-desc">High-velocity road rocks and sand blast the front bumpers on highway runs. Only the 150+ micron physical mass of a self-healing Thermoplastic Polyurethane film (PPF) can absorb and disperse this impact energy.</p>
+            <div class="threat-defense-indicators">
+              <div class="defense-stat">
+                <span class="defense-label">Ceramic Pro Defense</span>
+                <div class="defense-progress"><div class="defense-bar" style="width: 0%;" data-fill="10%"></div></div>
+                <span class="defense-value">10%</span>
+              </div>
+              <div class="defense-stat">
+                <span class="defense-label">PPF Rock Chip Armor</span>
+                <div class="defense-progress"><div class="defense-bar" style="width: 0%;" data-fill="99%"></div></div>
+                <span class="defense-value">99%</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -657,7 +776,7 @@
       const progressObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.comp-metric-fill').forEach(fill => {
+            entry.target.querySelectorAll('.comp-metric-fill, .defense-bar').forEach(fill => {
               const targetWidth = fill.dataset.fill;
               fill.style.width = targetWidth;
             });
@@ -668,6 +787,9 @@
 
       const card = document.querySelector('.rating-bars-card');
       if (card) progressObserver.observe(card);
+
+      const threatList = document.querySelector('.threat-list');
+      if (threatList) progressObserver.observe(threatList);
 
       // Spotlight effect for cards
       document.querySelectorAll('.spotlight-card').forEach(card => {
