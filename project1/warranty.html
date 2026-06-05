@@ -249,6 +249,62 @@
       .warranty-section { padding: 60px 24px 100px; }
       .claims-card { padding: 24px; }
     }
+
+    /* ─── FAQ ACCORDION ──────────────────────────────── */
+    .faq-card {
+      transition: all 0.3s ease;
+    }
+    .faq-card.active {
+      border-color: var(--accent-gold) !important;
+      background: var(--accent-gold-dim) !important;
+      box-shadow: var(--glow-gold);
+    }
+    
+    /* ─── WARRANTY TIMELINE ──────────────────────────── */
+    .warranty-timeline {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      padding-left: 32px;
+      border-left: 2px solid var(--border-gold);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 40px;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+    .timeline-node {
+      position: absolute;
+      left: -42px;
+      top: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--bg-base);
+      border: 2px solid var(--accent-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-node-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-gold);
+    }
+
+    [dir="rtl"] .warranty-timeline {
+      padding-left: 0;
+      padding-right: 32px;
+      border-left: none;
+      border-right: 2px solid var(--border-gold);
+    }
+    [dir="rtl"] .timeline-node {
+      left: auto;
+      right: -42px;
+    }
   </style>
 </head>
 <body>
@@ -476,6 +532,107 @@
     </div>
   </section>
 
+  <!-- ═══════ WARRANTY TIMELINE SECTION ═══════ -->
+  <section class="section-before-after" style="padding-top: 0;">
+    <div class="reveal" style="text-align:center; margin-bottom: 50px;">
+      <div class="section-label" style="justify-content:center;">Coverage Lifecycle</div>
+      <h2 class="heading-lg">Warranty <em style="font-style:normal; color:var(--accent-gold);">Milestones</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.9; max-width:550px; margin:16px auto 0;">
+        Follow the timeline of your AURA protective warranty, ensuring your vehicle maintains its premium value year after year.
+      </p>
+    </div>
+
+    <!-- Timeline Wrapper -->
+    <div class="warranty-timeline">
+      <!-- Point 1 -->
+      <div class="reveal timeline-item" data-delay="0.1">
+        <div class="timeline-node">
+          <div class="timeline-node-dot"></div>
+        </div>
+        <h4 class="form-label" style="font-size:0.75rem; color:var(--text-primary); margin-bottom: 6px;">Day 1: Activation</h4>
+        <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.6; margin: 0;">
+          Your digital certificate is generated and registered in the global blockchain system. The 9H coating starts its final cure, and you receive your care guide.
+        </p>
+      </div>
+
+      <!-- Point 2 -->
+      <div class="reveal timeline-item" data-delay="0.2">
+        <div class="timeline-node">
+          <div class="timeline-node-dot"></div>
+        </div>
+        <h4 class="form-label" style="font-size:0.75rem; color:var(--text-primary); margin-bottom: 6px;">Year 1: First Mobile Inspection</h4>
+        <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.6; margin: 0;">
+          Our mobile team performs a decontamination wash at your home, validates the clear coat hydrophobicity, and applies our custom ceramic top-coat booster.
+        </p>
+      </div>
+
+      <!-- Point 3 -->
+      <div class="reveal timeline-item" data-delay="0.3">
+        <div class="timeline-node">
+          <div class="timeline-node-dot"></div>
+        </div>
+        <h4 class="form-label" style="font-size:0.75rem; color:var(--text-primary); margin-bottom: 6px;">Year 5: Resale Transfer Window</h4>
+        <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.6; margin: 0;">
+          If you decide to sell the vehicle, the registry records can be transferred to the new owner, maintaining the car's premium resale value and warranty duration.
+        </p>
+      </div>
+
+      <!-- Point 4 -->
+      <div class="reveal timeline-item" data-delay="0.4">
+        <div class="timeline-node">
+          <div class="timeline-node-dot"></div>
+        </div>
+        <h4 class="form-label" style="font-size:0.75rem; color:var(--accent-gold); margin-bottom: 6px;">Lifetime Concierge Support</h4>
+        <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.6; margin: 0;">
+          Enjoy prioritized support line and scheduling for paint touchups, film re-wraps, and gloss restoration at any partner installer facility globally.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ WARRANTY FAQ SECTION ═══════ -->
+  <section class="section-before-after" style="padding-top: 0;">
+    <div class="reveal" style="text-align:center; margin-bottom: 50px;">
+      <div class="section-label" style="justify-content:center;">Warranty FAQ</div>
+      <h2 class="heading-lg">Coverage <em style="font-style:normal; color:var(--accent-gold);">Questions</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.9; max-width:550px; margin:16px auto 0;">
+        Frequently asked questions regarding our warranties, inspections, and policy transfers.
+      </p>
+    </div>
+
+    <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px;">
+      <div class="glass-card faq-card reveal" style="padding: 24px 30px; cursor: pointer; border: 1px solid var(--border-white); transition: border-color 0.3s ease;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h4 class="form-label" style="font-size:0.75rem; color: var(--text-primary); margin: 0;">How do I transfer the warranty to a new owner?</h4>
+          <span class="faq-toggle" style="color:var(--accent-gold); font-size: 0.8rem; transition: transform 0.3s ease;"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin 0.3s ease; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;">
+          <p style="margin-top: 14px;">AURA warranties are fully transferable to the next owner. To initiate a transfer, contact our concierge desk within 30 days of vehicle sale. An inspection by an AURA technician is required to document the current clear coat status before transferring the registry record.</p>
+        </div>
+      </div>
+
+      <div class="glass-card faq-card reveal" style="padding: 24px 30px; cursor: pointer; border: 1px solid var(--border-white); transition: border-color 0.3s ease;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h4 class="form-label" style="font-size:0.75rem; color: var(--text-primary); margin: 0;">What does the annual maintenance inspection involve?</h4>
+          <span class="faq-toggle" style="color:var(--accent-gold); font-size: 0.8rem; transition: transform 0.3s ease;"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin 0.3s ease; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;">
+          <p style="margin-top: 14px;">During our annual checkup, our mobile unit performs a deep chemical decontamination wash to remove minerals and traffic film that might mask the hydrophobic properties. We inspect the film edges, verify the thickness of the ceramic shield, and apply a booster top-coat to reinforce protection.</p>
+        </div>
+      </div>
+
+      <div class="glass-card faq-card reveal" style="padding: 24px 30px; cursor: pointer; border: 1px solid var(--border-white); transition: border-color 0.3s ease;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h4 class="form-label" style="font-size:0.75rem; color: var(--text-primary); margin: 0;">Is paint yellowing or bubbling covered by warranty?</h4>
+          <span class="faq-toggle" style="color:var(--accent-gold); font-size: 0.8rem; transition: transform 0.3s ease;"><i class="fas fa-chevron-down"></i></span>
+        </div>
+        <div class="faq-answer" style="max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), margin 0.3s ease; color: var(--text-secondary); font-size: 0.88rem; line-height: 1.7;">
+          <p style="margin-top: 14px;">Yes. Our premium XPEL paint protection films include a lifetime warranty against yellowing, bubbling, cracking, and peeling. If any panel shows signs of material degradation, AURA will re-wrap it at our mobile enclosed unit free of charge.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════ FOOTER ═══════ -->
   <footer>
     <div class="footer-grid">
@@ -606,6 +763,28 @@
           return;
         }
         alert(`Thank you, ${name}! Your warranty assessment request has been received. Our mobile service dispatch will contact you to schedule an inspection.`);
+      });
+
+      // FAQ Accordion Handler
+      document.querySelectorAll('.faq-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const answer = card.querySelector('.faq-answer');
+          const toggle = card.querySelector('.faq-toggle');
+          const isOpen = card.classList.contains('active');
+
+          // Close all first (accordion behavior)
+          document.querySelectorAll('.faq-card').forEach(c => {
+            c.classList.remove('active');
+            c.querySelector('.faq-answer').style.maxHeight = null;
+            c.querySelector('.faq-toggle').style.transform = '';
+          });
+
+          if (!isOpen) {
+            card.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            toggle.style.transform = 'rotate(180deg)';
+          }
+        });
       });
     });
   </script>

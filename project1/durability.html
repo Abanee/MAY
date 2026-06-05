@@ -140,6 +140,109 @@
       .durability-content { padding: 60px 24px 100px; }
       .rating-bars-card { padding: 24px; }
     }
+
+    /* ─── THREAT MATRIX ──────────────────────────────── */
+    .threat-matrix-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .vulnerability-card {
+      padding: 40px;
+      border: 1px solid var(--border-gold);
+    }
+    .hardness-scale {
+      margin-top: 20px;
+    }
+    .scale-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .scale-bar {
+      height: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-white);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    [data-theme="light"] .scale-bar {
+      background: rgba(0, 0, 0, 0.04);
+    }
+    .scale-fill {
+      height: 100%;
+      border-radius: 4px;
+      transition: width 1s ease-in-out;
+    }
+    .scale-fill.factory {
+      background: #e74c3c;
+      box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+    }
+    .scale-fill.ceramic {
+      background: var(--accent-gold);
+      box-shadow: var(--glow-gold);
+    }
+    .threat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .threat-item-card {
+      display: flex;
+      gap: 24px;
+      padding: 30px;
+      align-items: flex-start;
+      border: 1px solid var(--border-white);
+      position: relative;
+    }
+    .threat-item-card:hover {
+      border-color: var(--accent-gold);
+      box-shadow: var(--glow-gold);
+    }
+    .threat-num {
+      font-family: 'Cinzel', serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      line-height: 1;
+      opacity: 0.8;
+      width: 50px;
+    }
+    .threat-content {
+      flex: 1;
+    }
+    .threat-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+    .threat-desc {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 1024px) {
+      .threat-matrix-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+    @media (max-width: 600px) {
+      .threat-item-card {
+        flex-direction: column;
+        gap: 12px;
+        padding: 20px;
+      }
+      .threat-num {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -342,6 +445,151 @@
     </div>
   </section>
 
+  <!-- ═══════ HAZARDS PROTECTION SECTION ═══════ -->
+  <section class="section-before-after" style="padding-top: 0;">
+    <div class="reveal" style="text-align:center; margin-bottom: 50px;">
+      <div class="section-label" style="justify-content:center;">Hazard Defense</div>
+      <h2 class="heading-lg">Defeating the <em style="font-style:normal; color:var(--accent-gold);">Elements</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.9; max-width:550px; margin:16px auto 0;">
+        Different protective barriers target different environmental hazards. Analyze clear coat paint vulnerability and defense ratings.
+      </p>
+    </div>
+
+    <!-- Threat Matrix Split Layout -->
+    <div class="threat-matrix-grid">
+      <!-- Left Column: Paint Vulnerability Diagnostic -->
+      <div class="glass-card vulnerability-card reveal">
+        <div class="section-label" style="color:var(--accent-gold); margin-bottom: 12px;">Diagnostic Status</div>
+        <h3 class="heading-md" style="font-size:1.15rem; margin-bottom:12px;">Clear Coat Vulnerability</h3>
+        <p style="color:var(--text-secondary); font-size:0.84rem; line-height:1.75; margin-bottom:24px;">
+          Factory clear coat averages a soft 2H to 4H hardness. AURA protective coatings chemically and physically alter this threshold, creating an impenetrable outer barrier.
+        </p>
+        
+        <!-- Hardness Scale Visual -->
+        <div class="hardness-scale">
+          <div class="scale-label" style="display:flex; justify-content:space-between;">
+            <span>Factory Clear Coat Hardness</span>
+            <span style="color:#e74c3c; font-weight:600;">2H - 4H</span>
+          </div>
+          <div class="scale-bar" style="margin-bottom:18px;"><div class="scale-fill factory" style="width: 35%;"></div></div>
+          
+          <div class="scale-label" style="display:flex; justify-content:space-between;">
+            <span>Ceramic Pro Crystallization</span>
+            <span style="color:var(--accent-gold); font-weight:600;">9H Mohs</span>
+          </div>
+          <div class="scale-bar"><div class="scale-fill ceramic" style="width: 90%;"></div></div>
+        </div>
+      </div>
+
+      <!-- Right Column: The 3 Elements -->
+      <div class="threat-list">
+        <!-- Element 1 -->
+        <div class="threat-item-card glass-card reveal" data-delay="0.1">
+          <div class="threat-num">01</div>
+          <div class="threat-content">
+            <h4 class="threat-title"><i class="fas fa-sun" style="color:var(--accent-gold); margin-right:10px;"></i> UV Degradation & Oxidation</h4>
+            <p class="threat-desc">Solar radiation breaks down paint resin binders, leading to a chalky, oxidized clear coat. Ceramic coatings absorb UV radiation up to 400nm, acting as a permanent sunblock for your vehicle's paintwork.</p>
+          </div>
+        </div>
+
+        <!-- Element 2 -->
+        <div class="threat-item-card glass-card reveal" data-delay="0.2">
+          <div class="threat-num">02</div>
+          <div class="threat-content">
+            <h4 class="threat-title"><i class="fas fa-biohazard" style="color:var(--accent-gold); margin-right:10px;"></i> Chemical Etching & Acid Rain</h4>
+            <p class="threat-desc">Bird droppings, bug splatters, and industrial fallout contain corrosive enzymes and acids. The SiO₂ ceramic bond is highly chemically inert, resisting etching from pH 2 (strong acid) up to pH 12 (alkaline washes).</p>
+          </div>
+        </div>
+
+        <!-- Element 3 -->
+        <div class="threat-item-card glass-card reveal" data-delay="0.3">
+          <div class="threat-num">03</div>
+          <div class="threat-content">
+            <h4 class="threat-title"><i class="fas fa-road" style="color:var(--accent-gold); margin-right:10px;"></i> Physical Impacts & Debris</h4>
+            <p class="threat-desc">High-velocity road rocks and sand blast the front bumpers on highway runs. Only the 150+ micron physical mass of a self-healing Thermoplastic Polyurethane film (PPF) can absorb and disperse this impact energy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!-- ═══════ INTERACTIVE QUIZ ═══════ -->
+  <section class="section-before-after" style="padding-top: 0;">
+    <div class="glass-card reveal" style="max-width: 800px; margin: 0 auto; padding: 40px; border: 1px solid var(--border-gold);">
+      <div class="section-label" style="justify-content:center;">Interactive Matcher</div>
+      <h3 class="heading-md" style="text-align:center; margin-bottom: 8px;">Find Your Perfect Shield</h3>
+      <p style="color:var(--text-secondary); font-size:0.88rem; text-align:center; max-width: 500px; margin: 0 auto 32px;">
+        Answer these questions about your lifestyle and driving habits to reveal your recommended protection profile.
+      </p>
+
+      <!-- Quiz Questions -->
+      <div id="quiz-container">
+        <!-- Question 1 -->
+        <div class="quiz-question" data-step="1">
+          <h4 class="form-label" style="font-size:0.75rem; text-align:center; margin-bottom:16px;">1. Where is the vehicle primarily parked?</h4>
+          <div class="option-grid">
+            <div class="option-card" data-val="garage">
+              <div class="option-card-icon"><i class="fas fa-warehouse"></i></div>
+              <div class="option-card-title">Enclosed Garage</div>
+              <div class="option-card-price">Protected from elements</div>
+            </div>
+            <div class="option-card" data-val="outdoor">
+              <div class="option-card-icon"><i class="fas fa-cloud-sun-rain"></i></div>
+              <div class="option-card-title">Outdoor Driveway</div>
+              <div class="option-card-price">Constant exposure</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="quiz-question" style="display:none;" data-step="2">
+          <h4 class="form-label" style="font-size:0.75rem; text-align:center; margin-bottom:16px;">2. What is the vehicle's driving pattern?</h4>
+          <div class="option-grid">
+            <div class="option-card" data-val="daily">
+              <div class="option-card-icon"><i class="fas fa-car-side"></i></div>
+              <div class="option-card-title">Daily Commute</div>
+              <div class="option-card-price">Frequent highway runs</div>
+            </div>
+            <div class="option-card" data-val="weekend">
+              <div class="option-card-icon"><i class="fas fa-gauge-high"></i></div>
+              <div class="option-card-title">Weekend Toy</div>
+              <div class="option-card-price">Low mileage, leisure trips</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="quiz-question" style="display:none;" data-step="3">
+          <h4 class="form-label" style="font-size:0.75rem; text-align:center; margin-bottom:16px;">3. What is your primary aesthetic goal?</h4>
+          <div class="option-grid">
+            <div class="option-card" data-val="gloss">
+              <div class="option-card-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+              <div class="option-card-title">Maximum Gloss</div>
+              <div class="option-card-price">Mirror finish & easy washes</div>
+            </div>
+            <div class="option-card" data-val="chips">
+              <div class="option-card-icon"><i class="fas fa-shield-halved"></i></div>
+              <div class="option-card-title">Deflect Stone Chips</div>
+              <div class="option-card-price">Physical protection first</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result Card -->
+        <div id="quiz-result" style="display:none; text-align:center;" class="reveal">
+          <div class="section-label" style="justify-content:center; color: var(--accent-gold);">Recommended Package</div>
+          <h4 id="result-title" class="heading-md" style="margin-top: 10px; color: var(--accent-gold);">Fusion Shield Combo</h4>
+          <p id="result-desc" style="color:var(--text-secondary); font-size:0.88rem; line-height:1.7; max-width:550px; margin:12px auto 20px;">
+            Based on your driving style, we recommend wrapping impact zones with self-healing PPF, followed by full 9H Ceramic Sealant across the remaining panel lines.
+          </p>
+          <div style="display:flex; justify-content:center; gap: 16px; margin-top: 24px;">
+            <button id="quiz-reset-btn" class="btn-secondary" style="font-size: 0.7rem; padding: 10px 24px;">Restart Quiz</button>
+            <a href="contact.html" class="btn-primary" style="font-size: 0.7rem; padding: 10px 24px;">Get Estimate</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════ FOOTER ═══════ -->
   <footer>
     <div class="footer-grid">
@@ -420,6 +668,93 @@
 
       const card = document.querySelector('.rating-bars-card');
       if (card) progressObserver.observe(card);
+
+      // Spotlight effect for cards
+      document.querySelectorAll('.spotlight-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mx', x + 'px');
+          card.style.setProperty('--my', y + 'px');
+        });
+      });
+
+      // Lifestyle Matcher Quiz JS
+      const quizSteps = document.querySelectorAll('.quiz-question');
+      const resultCard = document.getElementById('quiz-result');
+      const resetBtn = document.getElementById('quiz-reset-btn');
+      let answers = {};
+
+      document.querySelectorAll('.quiz-question .option-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const parent = card.closest('.quiz-question');
+          const step = parseInt(parent.dataset.step);
+          const val = card.dataset.val;
+
+          answers[step] = val;
+
+          // Toggle option card visual class
+          parent.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+
+          if (step < 3) {
+            // Move to next step
+            gsap.to(parent, { opacity: 0, y: -10, duration: 0.3, onComplete: () => {
+              parent.style.display = 'none';
+              const next = document.querySelector(`.quiz-question[data-step="${step + 1}"]`);
+              next.style.display = 'block';
+              gsap.fromTo(next, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 });
+            }});
+          } else {
+            // Show result
+            gsap.to(parent, { opacity: 0, y: -10, duration: 0.3, onComplete: () => {
+              parent.style.display = 'none';
+              calculateResult();
+            }});
+          }
+        });
+      });
+
+      function calculateResult() {
+        const titleEl = document.getElementById('result-title');
+        const descEl = document.getElementById('result-desc');
+
+        let title = "";
+        let desc = "";
+
+        if (answers[1] === 'garage' && answers[2] === 'weekend' && answers[3] === 'gloss') {
+          title = "9H Ceramic Coating (Ceramic Pro)";
+          desc = "Your garaged weekend cruiser is the perfect candidate for our nano-crystalline Ceramic Pro package. It provides an ultra-hard Mohs 9H layer that maximizes color depth, gloss, and provides superhydrophobic water beading for effortless washing.";
+        } else if (answers[1] === 'outdoor' && answers[2] === 'daily' && answers[3] === 'chips') {
+          title = "XPEL Full Body PPF Wrap";
+          desc = "With constant outdoor parking and daily highway commutes, physical protection from road debris and UV damage is paramount. We recommend a full-body XPEL Ultimate Plus Thermoplastic Film wrap, which absorbs impacts and automatically self-heals wash swirls.";
+        } else {
+          title = "AURA Fusion Package (PPF + Ceramic Stack)";
+          desc = "You get the ultimate dual shield: self-healing XPEL PPF on the high-impact front panels (hood, bumpers, mirrors) to stop rock chips, and 9H Ceramic Coating over the entire vehicle for mirror-slick hydrophobic wash behavior.";
+        }
+
+        titleEl.textContent = title;
+        descEl.textContent = desc;
+
+        resultCard.style.display = 'block';
+        gsap.fromTo(resultCard, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5 });
+      }
+
+      resetBtn.addEventListener('click', () => {
+        answers = {};
+        resultCard.style.display = 'none';
+        
+        quizSteps.forEach(step => {
+          step.style.opacity = '1';
+          step.style.transform = 'none';
+          step.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+        });
+
+        quizSteps[0].style.display = 'block';
+        quizSteps[1].style.display = 'none';
+        quizSteps[2].style.display = 'none';
+      });
     });
   </script>
 </body>

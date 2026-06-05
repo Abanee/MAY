@@ -621,7 +621,7 @@
     .warranty-tier.featured::before {
       content: 'Most Popular';
       position: absolute;
-      top: -1px; right: 32px;
+      top: -11px; right: 32px;
       background: var(--accent-gold);
       color: #0B0C10;
       font-family: 'Cinzel', serif;
@@ -630,6 +630,11 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       padding: 5px 16px;
+      z-index: 10;
+    }
+
+    [data-theme="light"] .warranty-tier.featured::before {
+      color: #FFFFFF !important;
     }
 
     .tier-badge {
@@ -828,6 +833,26 @@
       pointer-events: none;
     }
 
+    /* Section paddings and layouts */
+    .section-stats-wrapper {
+      padding: 0 48px;
+    }
+    .section-royal-standard {
+      padding: 140px 48px;
+    }
+    .section-before-after,
+    .section-warranty,
+    .section-process,
+    .section-testimonials {
+      padding: 0 48px 140px;
+    }
+    .royal-standard-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: end;
+    }
+
     @media (max-width: 1024px) {
       .hero {
         padding: 120px 24px 80px;
@@ -856,6 +881,26 @@
       .hero-showcase {
         order: 2;
       }
+      .scroll-indicator {
+        display: none;
+      }
+      .section-stats-wrapper {
+        padding: 0 24px;
+      }
+      .section-royal-standard {
+        padding: 80px 24px;
+      }
+      .section-before-after,
+      .section-warranty,
+      .section-process,
+      .section-testimonials {
+        padding: 0 24px 80px;
+      }
+      .royal-standard-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        align-items: start;
+      }
     }
 
     @media (max-width: 900px) {
@@ -874,6 +919,29 @@
       .process-steps { grid-template-columns: 1fr; }
       .showcase-card { padding: 16px; }
       .showcase-tab { font-size: 0.58rem; padding: 10px 4px; }
+      .section-stats-wrapper {
+        padding: 0 16px;
+      }
+      .section-royal-standard {
+        padding: 60px 16px;
+      }
+      .section-before-after,
+      .section-warranty,
+      .section-process,
+      .section-testimonials {
+        padding: 0 16px 60px;
+      }
+      .stats-bar {
+        padding: 20px 16px;
+        gap: 16px;
+      }
+      .stat-number {
+        font-size: 2rem;
+      }
+      .stat-label {
+        font-size: 0.65rem;
+        letter-spacing: 0.05em;
+      }
     }
   </style>
 </head>
@@ -1049,7 +1117,7 @@
   <!-- ═══════════════════════════════════════════════════
        STATS BAR
   ═══════════════════════════════════════════════════ -->
-  <section style="padding: 0 48px;">
+  <section class="section-stats-wrapper">
     <div class="stats-bar reveal">
       <div class="stat-item">
         <div class="stat-number" data-count="2400" data-suffix="+">0</div>
@@ -1073,10 +1141,10 @@
   <!-- ═══════════════════════════════════════════════════
        THE ROYAL STANDARD — Value Props
   ═══════════════════════════════════════════════════ -->
-  <section style="padding: 140px 48px;">
+  <section class="section-royal-standard">
     <div class="reveal">
       <div class="section-label">The Royal Standard</div>
-      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end;">
+      <div class="royal-standard-grid">
         <h2 class="heading-lg">Protection Engineered<br/>for <em style="font-style:normal; color:var(--accent-gold);">Perfection</em></h2>
         <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.9; align-self: end; padding-bottom:8px;">
           Every vehicle in our care receives a bespoke treatment plan. We don't offer packages — we offer precision. Your Porsche, Ferrari, or Rolls is deserving of nothing less.
@@ -1247,7 +1315,7 @@
   <!-- ═══════════════════════════════════════════════════
        BEFORE / AFTER SLIDER
   ═══════════════════════════════════════════════════ -->
-  <section style="padding: 0 48px 140px;">
+  <section class="section-before-after">
     <div class="reveal" style="text-align:center; margin-bottom:0;">
       <div class="section-label" style="justify-content:center;">Transformation</div>
       <h2 class="heading-lg">See the <em style="font-style:normal; color:var(--accent-gold);">Difference</em></h2>
@@ -1269,7 +1337,7 @@
   <!-- ═══════════════════════════════════════════════════
        WARRANTY TIERS
   ═══════════════════════════════════════════════════ -->
-  <section style="padding: 0 48px 140px;">
+  <section class="section-warranty">
     <div class="reveal" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">Our Guarantee</div>
       <h2 class="heading-lg">Backed by a <em style="font-style:normal; color:var(--accent-gold);">Royal Warranty</em></h2>
@@ -1315,7 +1383,7 @@
   <!-- ═══════════════════════════════════════════════════
        PROCESS
   ═══════════════════════════════════════════════════ -->
-  <section style="padding: 0 48px 140px;">
+  <section class="section-process">
     <div class="reveal" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">How It Works</div>
       <h2 class="heading-lg">The <em style="font-style:normal; color:var(--accent-gold);">AURA Process</em></h2>
@@ -1355,7 +1423,7 @@
   <!-- ═══════════════════════════════════════════════════
        TESTIMONIALS
   ═══════════════════════════════════════════════════ -->
-  <section style="padding: 0 48px 140px;">
+  <section class="section-testimonials">
     <div class="reveal" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">Client Voices</div>
       <h2 class="heading-lg">Trusted by<br/><em style="font-style:normal; color:var(--accent-gold);">Discerning Owners</em></h2>
@@ -1635,22 +1703,7 @@
         }
       });
 
-      /* GSAP gallery item stagger reveal */
-      gsap.utils.toArray('.gallery-item').forEach((item, i) => {
-        gsap.from(item, {
-          opacity: 0,
-          y: 40,
-          scale: 0.97,
-          duration: 0.8,
-          delay: i * 0.06,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 90%',
-            once: true,
-          }
-        });
-      });
+      // Gallery stagger is handled globally in global.js
     }
   </script>
 </body>

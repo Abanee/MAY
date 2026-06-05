@@ -141,11 +141,17 @@
     .svc-visual-label {
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      padding: 24px;
-      background: linear-gradient(to top, rgba(11,12,16,0.9) 0%, transparent 100%);
+      padding: 32px 24px 24px;
+      background: linear-gradient(to top, rgba(11,12,16,0.95) 0%, rgba(11,12,16,0.6) 60%, transparent 100%);
+      z-index: 5;
     }
-    [data-theme="light"] .svc-visual-label {
-      background: linear-gradient(to top, rgba(244,246,249,0.9) 0%, transparent 100%);
+
+    .svc-visual-label div {
+      color: #FFFFFF !important;
+    }
+    .svc-visual-label div[style*="color:var(--accent-gold)"],
+    .svc-visual-label div[style*="color: var(--accent-gold)"] {
+      color: #D4AF37 !important;
     }
 
     .svc-meta { display: flex; flex-direction: column; gap: 32px; }
@@ -219,7 +225,7 @@
     .pkg-card.featured::before {
       content: 'Most Popular';
       position: absolute;
-      top: -1px; right: 24px;
+      top: -10px; right: 24px;
       background: var(--accent-gold);
       color: #0B0C10;
       font-family: 'Cinzel', serif;
@@ -228,6 +234,11 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       padding: 4px 14px;
+      z-index: 10;
+    }
+
+    [data-theme="light"] .pkg-card.featured::before {
+      color: #FFFFFF !important;
     }
 
     .pkg-name {

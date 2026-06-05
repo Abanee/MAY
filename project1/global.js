@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ── GALLERY GSAP STAGGER ON SCROLL ──────────────── */
-  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && document.querySelector('.gallery-grid')) {
     gsap.from('.gallery-item', {
       opacity: 0,
       y: 50,

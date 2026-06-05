@@ -1823,3 +1823,47 @@ footer {
   text-align: right;
 }
 
+/* ─── RESPONSIVE SECTIONS ───────────────────────────── */
+.section-stats-wrapper {
+  padding: 0 48px;
+}
+.section-royal-standard {
+  padding: 140px 48px;
+}
+.section-before-after,
+.section-warranty,
+.section-process,
+.section-testimonials {
+  padding: 0 48px 140px;
+}
+
+@media (max-width: 1024px) {
+  .section-stats-wrapper {
+    padding: 0 24px;
+  }
+  .section-royal-standard {
+    padding: 80px 24px;
+  }
+  .section-before-after,
+  .section-warranty,
+  .section-process,
+  .section-testimonials {
+    padding: 0 24px 80px;
+  }
+}
+
+@media (max-width: 600px) {
+  .section-stats-wrapper {
+    padding: 0 16px;
+  }
+  .section-royal-standard {
+    padding: 60px 16px;
+  }
+  .section-before-after,
+  .section-warranty,
+  .section-process,
+  .section-testimonials {
+    padding: 0 16px 60px;
+  }
+}
+
