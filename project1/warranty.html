@@ -250,6 +250,27 @@
       .claims-card { padding: 24px; }
     }
 
+    @media (max-width: 500px) {
+      .lookup-input-group {
+        flex-direction: column;
+        gap: 12px;
+        padding: 0 16px;
+      }
+      .lookup-input {
+        border-right: 1px solid var(--border-gold) !important;
+        width: 100%;
+        text-align: center;
+      }
+      [data-theme="light"] .lookup-input {
+        border-right: 1px solid rgba(0,0,0,0.15) !important;
+      }
+      .lookup-btn {
+        padding: 14px 28px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
     /* ─── FAQ ACCORDION ──────────────────────────────── */
     .faq-card {
       transition: all 0.3s ease;
