@@ -449,13 +449,13 @@
 
       <div class="studio-photos reveal" data-delay="0.15">
         <div class="studio-photo" style="grid-row: span 2; height: 420px;">
-          <img src="https://images.unsplash.com/photo-1611245582312-d961e058ad64?w=800&q=80&auto=format" alt="Detailing Lab Front" />
+          <img src="Assets/carin1.jpg" alt="Detailing Lab Front" />
         </div>
         <div class="studio-photo" style="height: 202px;">
-          <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80&auto=format" alt="Polishing Lab" />
+          <img src="Assets/carin2.jpg" alt="Polishing Lab" />
         </div>
         <div class="studio-photo" style="height: 202px;">
-          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80&auto=format" alt="Ceramic Application Lab" />
+          <img src="Assets/carin3.jpg" alt="Ceramic Application Lab" />
         </div>
       </div>
     </div>
@@ -496,9 +496,10 @@
       </div>
       <!-- Defect Graphic Representation -->
       <div style="position:relative; width:100%; border:1px solid var(--border-gold); background:rgba(0,0,0,0.3); height:220px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <div style="text-align:center; padding:24px;">
-          <div style="font-size:3rem; color:var(--accent-gold); margin-bottom:12px;" id="defect-icon"><i class="fas fa-rotate"></i></div>
-          <div style="font-family:'Cinzel',serif; font-size:0.75rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase;" id="defect-metric">Light Scatter: 75% Haze</div>
+        <img src="Assets/carw1.jpg" alt="Paint Defect Visualizer" id="defect-img" style="width:100%; height:100%; object-fit:cover; display:block;" />
+        <!-- Floating overlay with metric -->
+        <div style="position:absolute; bottom:0; left:0; right:0; background:rgba(11,12,16,0.75); padding:10px 16px; text-align:center; z-index: 2;">
+          <div style="font-family:'Cinzel',serif; font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:var(--accent-gold);" id="defect-metric">Light Scatter: 75% Haze</div>
         </div>
       </div>
     </div>
@@ -698,7 +699,7 @@
           title: 'Swirl Marks & Spiderweb Scratching',
           desc: 'Created by improper hand washing, mechanical brushes, or rough wiping. These micro-scratches act as tiny concave mirrors, scattering light rays in multiple directions instead of reflecting them parallel, destroying gloss depth.',
           action: 'A two-stage paint correction. First, rotary heavy compounding cuts down clear coat surrounding scratches to level surface. Second, dual-action jewel polish refines paint haze to deliver a mirror finish.',
-          icon: '<i class="fas fa-rotate"></i>',
+          img: 'Assets/carw1.jpg',
           metric: 'Light Scatter: 75% Haze'
         },
         'etching': {
@@ -706,7 +707,7 @@
           title: 'Acid & Hard Water Etching',
           desc: 'Formed when mineral-rich water spots or acidic bird droppings dry under hot sun exposure. The acids physically bake and eat holes deep into the paint clear coat, leaving permanent circular outline rings.',
           action: 'Requires paint thickness mapping followed by precision sanding using 2500-grit micro-abrasives. Once leveled, paint compounding and jeweling processes restore factor transparency.',
-          icon: '<i class="fas fa-droplet-slash"></i>',
+          img: 'Assets/carw2.jpg',
           metric: 'Clear Coat Damage: Acidic Pits'
         },
         'fading': {
@@ -714,7 +715,7 @@
           title: 'UV Oxidation & Pigment Fading',
           desc: 'Constant solar UV rays break down the polymers within factory clear coats over time. This makes clear coat chalky, white, and completely opaque, leaving the paint looking faded, dull, and lifeless.',
           action: 'Severe cases require clear-coat chemical peeling and deep corrective compounding. We remove the dead oxidized layer down to healthy clear coat, then bond Ceramic Pro 9H to seal UV filters permanently.',
-          icon: '<i class="fas fa-sun"></i>',
+          img: 'Assets/carw3.jpg',
           metric: 'Paint Loss: Dead Oxidation'
         },
         'orangepeel': {
@@ -722,7 +723,7 @@
           title: 'Orange Peel Paint Texture',
           desc: 'A wavy finish resembling orange skin, found on most premium factory paint jobs due to paint settling dynamics on assembly lines. It causes reflections to look blurred and distorted instead of sharp.',
           action: 'We perform complete dry sanding using premium Kovax block sanders and micro-abrasive sheets. Levels texture safely down to a flat surface, followed by a three-stage correction to achieve a true mirror reflectivity.',
-          icon: '<i class="fas fa-border-all"></i>',
+          img: 'Assets/carw4.jpg',
           metric: 'Surface Wave: Textures Leveled'
         }
       };
@@ -732,7 +733,7 @@
       const defectTitle = document.getElementById('defect-title');
       const defectDesc = document.getElementById('defect-desc');
       const defectAction = document.getElementById('defect-action');
-      const defectIcon = document.getElementById('defect-icon');
+      const defectImg = document.getElementById('defect-img');
       const defectMetric = document.getElementById('defect-metric');
 
       defectTabs.forEach(tab => {
@@ -749,7 +750,7 @@
               defectTitle.textContent = data.title;
               defectDesc.textContent = data.desc;
               defectAction.textContent = data.action;
-              defectIcon.innerHTML = data.icon;
+              defectImg.src = data.img;
               defectMetric.textContent = data.metric;
               gsap.to('.defect-content-box', { opacity: 1, scale: 1, duration: 0.3, ease: 'power1.out' });
             }});
