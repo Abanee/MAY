@@ -238,10 +238,39 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.gallery-filter-btn');
   const galleryItems = document.querySelectorAll('.gallery-item');
 
+  function updateHomepageSingleCenter() {
+    const activeBtn = document.querySelector('.gallery-filters .gallery-filter-btn.active') || document.querySelector('.gallery-filter-btn.active');
+    if (!activeBtn) return;
+    const filter = activeBtn.dataset.filter;
+    const visibleItems = [];
+    
+    galleryItems.forEach(item => {
+      item.classList.remove('single-center');
+      const tag = item.dataset.category;
+      const show = filter === 'all' || tag === filter;
+      if (show) {
+        visibleItems.push(item);
+      }
+    });
+    
+    let cols = 3;
+    if (window.innerWidth <= 600) {
+      cols = 1;
+    } else if (window.innerWidth <= 900) {
+      cols = 2;
+    }
+    
+    if (cols > 1 && visibleItems.length % cols === 1) {
+      visibleItems[visibleItems.length - 1].classList.add('single-center');
+    }
+  }
+
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
+
+      updateHomepageSingleCenter();
 
       const filter = btn.dataset.filter;
       galleryItems.forEach((item, i) => {
@@ -266,6 +295,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  if (document.querySelector('.gallery-grid')) {
+    updateHomepageSingleCenter();
+    window.addEventListener('resize', updateHomepageSingleCenter);
+  }
 
   /* ── GALLERY GSAP STAGGER ON SCROLL ──────────────── */
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && document.querySelector('.gallery-grid')) {

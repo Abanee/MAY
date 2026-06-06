@@ -1913,3 +1913,34 @@ footer {
   justify-content: center !important;
   width: 100% !important;
 }
+
+/* ─── SINGLE ORPHAN IMAGE CENTERING ──────────────── */
+.gallery-full-item.single-center,
+.gallery-item.single-center {
+  grid-column: 1 / -1 !important;
+  justify-self: center !important;
+  width: 100% !important;
+}
+
+@media (min-width: 1025px) {
+  .gallery-full-item.single-center {
+    width: calc((100% - 48px) / 3) !important;
+  }
+}
+@media (max-width: 1024px) and (min-width: 701px) {
+  .gallery-full-item.single-center {
+    width: calc((100% - 20px) / 2) !important;
+  }
+}
+
+/* For homepage gallery-grid which has slightly different breakpoints */
+@media (min-width: 901px) {
+  .gallery-item.single-center {
+    width: calc((100% - 48px) / 3) !important;
+  }
+}
+@media (max-width: 900px) and (min-width: 601px) {
+  .gallery-item.single-center {
+    width: calc((100% - 20px) / 2) !important;
+  }
+}
