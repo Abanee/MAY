@@ -532,26 +532,36 @@
     <!-- Threat Matrix Split Layout -->
     <div class="threat-matrix-grid">
       <!-- Left Column: Paint Vulnerability Diagnostic -->
-      <div class="glass-card vulnerability-card reveal">
-        <div class="section-label" style="color:var(--accent-gold); margin-bottom: 12px;">Diagnostic Status</div>
-        <h3 class="heading-md" style="font-size:1.15rem; margin-bottom:12px;">Clear Coat Vulnerability</h3>
-        <p style="color:var(--text-secondary); font-size:0.84rem; line-height:1.75; margin-bottom:24px;">
-          Factory clear coat averages a soft 2H to 4H hardness. AURA protective coatings chemically and physically alter this threshold, creating an impenetrable outer barrier.
-        </p>
-        
-        <!-- Hardness Scale Visual -->
-        <div class="hardness-scale">
-          <div class="scale-label" style="display:flex; justify-content:space-between;">
-            <span>Factory Clear Coat Hardness</span>
-            <span style="color:#e74c3c; font-weight:600;">2H - 4H</span>
-          </div>
-          <div class="scale-bar" style="margin-bottom:18px;"><div class="scale-fill factory" style="width: 35%;"></div></div>
+      <div class="left-column" style="display: flex; flex-direction: column; gap: 24px;">
+        <div class="glass-card vulnerability-card reveal">
+          <div class="section-label" style="color:var(--accent-gold); margin-bottom: 12px;">Diagnostic Status</div>
+          <h3 class="heading-md" style="font-size:1.15rem; margin-bottom:12px;">Clear Coat Vulnerability</h3>
+          <p style="color:var(--text-secondary); font-size:0.84rem; line-height:1.75; margin-bottom:24px;">
+            Factory clear coat averages a soft 2H to 4H hardness. AURA protective coatings chemically and physically alter this threshold, creating an impenetrable outer barrier.
+          </p>
           
-          <div class="scale-label" style="display:flex; justify-content:space-between;">
-            <span>Ceramic Pro Crystallization</span>
-            <span style="color:var(--accent-gold); font-weight:600;">9H Mohs</span>
+          <!-- Hardness Scale Visual -->
+          <div class="hardness-scale">
+            <div class="scale-label" style="display:flex; justify-content:space-between;">
+              <span>Factory Clear Coat Hardness</span>
+              <span style="color:#e74c3c; font-weight:600;">2H - 4H</span>
+            </div>
+            <div class="scale-bar" style="margin-bottom:18px;"><div class="scale-fill factory" style="width: 35%;"></div></div>
+            
+            <div class="scale-label" style="display:flex; justify-content:space-between;">
+              <span>Ceramic Pro Crystallization</span>
+              <span style="color:var(--accent-gold); font-weight:600;">9H Mohs</span>
+            </div>
+            <div class="scale-bar"><div class="scale-fill ceramic" style="width: 90%;"></div></div>
           </div>
-          <div class="scale-bar"><div class="scale-fill ceramic" style="width: 90%;"></div></div>
+        </div>
+
+        <div class="glass-card vulnerability-card reveal" data-delay="0.1">
+          <div class="section-label" style="color:var(--accent-gold); margin-bottom: 12px;">Advanced Protection</div>
+          <h3 class="heading-md" style="font-size:1.15rem; margin-bottom:12px;">The AURA Shield Philosophy</h3>
+          <p style="color:var(--text-secondary); font-size:0.84rem; line-height:1.75;">
+            True protection requires a multi-layered approach. By combining the elastic shock absorption of our Premium TPU Paint Protection Film with the chemical resistance and hydrophobic properties of our 9H Ceramic Coatings, we create a synergistic defense system.
+          </p>
         </div>
       </div>
 
@@ -630,6 +640,7 @@
         </div>
       </div>
     </div>
+  </section>
 
   <!-- ═══════ INTERACTIVE QUIZ ═══════ -->
   <section class="section-before-after" style="padding-top: 0;">
