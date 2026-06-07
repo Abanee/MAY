@@ -352,6 +352,13 @@
 
     /* ─── RESPONSIVE ─────────────────────────────────── */
     @media (max-width: 1024px) {
+      .gallery-filter-wrap {
+        align-items: center !important;
+        text-align: center;
+      }
+      .gallery-filters {
+        justify-content: center;
+      }
       .gallery-full-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -491,7 +498,7 @@
   <!-- ═══════ GALLERY FULL ═══════ -->
   <section class="gallery-full">
     <!-- Filters -->
-    <div style="display:flex; flex-direction:column; align-items:flex-start; gap:16px; margin-bottom:40px;">
+    <div class="gallery-filter-wrap" style="display:flex; flex-direction:column; align-items:flex-start; gap:16px; margin-bottom:40px;">
       <div class="section-label reveal" style="margin-bottom:0;">Our Portfolio</div>
       <div class="gallery-filters reveal" data-delay="0.1" style="margin-top:0;">
         <button class="gallery-filter-btn active" data-filter="all">All Work</button>

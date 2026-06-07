@@ -283,6 +283,343 @@
       .visualizer-section, .studio-section, .defect-section, .club-section { padding: 80px 24px; }
       .defect-content-box { padding: 24px; }
     }
+
+    /* ─── BEFORE / AFTER SLIDER ─────────────────────── */
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 60px auto 0;
+      overflow: hidden;
+      border: 1px solid var(--border-gold);
+      user-select: none;
+    }
+
+    .slider-container img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .slider-after {
+      position: absolute;
+      top: 0; left: 0;
+      width: 50%;
+      overflow: hidden;
+    }
+
+    .slider-after img {
+      position: relative;
+      width: calc(900px);
+      max-width: none;
+    }
+
+    .slider-handle {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      background: var(--accent-gold);
+      cursor: ew-resize;
+      z-index: 10;
+      box-shadow: 0 0 20px rgba(212,175,55,0.6);
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px; height: 52px;
+      background: var(--accent-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0B0C10;
+      font-size: 1rem;
+      box-shadow: 0 0 30px rgba(212,175,55,0.5);
+    }
+
+    .slider-label {
+      position: absolute;
+      top: 20px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      background: rgba(11,12,16,0.8);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold);
+    }
+
+    .slider-label.left { left: 20px; }
+    .slider-label.right { right: 20px; }
+
+    /* ─── WARRANTY TIERS ────────────────────────────── */
+    .warranty-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      margin-top: 60px;
+      border: 1px solid var(--border-gold);
+    }
+
+    .warranty-tier {
+      padding: 48px 48px;
+      border-right: 1px solid var(--border-gold);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .warranty-tier:last-child { border-right: none; }
+
+    .warranty-tier.featured {
+      background: rgba(212,175,55,0.04);
+      overflow: visible !important;
+    }
+
+    .warranty-tier.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -11px; right: 32px;
+      background: var(--accent-gold);
+      color: #0B0C10;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      z-index: 10;
+      height: auto;
+      left: auto;
+    }
+
+    [data-theme="light"] .warranty-tier.featured::before {
+      color: #FFFFFF !important;
+    }
+
+    .tier-badge {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+    }
+
+    .tier-years {
+      font-family: 'Cinzel', serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .tier-unit {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .tier-features li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    .tier-features li i { color: var(--accent-gold); font-size: 0.7rem; }
+
+    /* ─── PROCESS STEPS ─────────────────────────────── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 60px;
+    }
+
+    .process-step {
+      padding: 40px 36px;
+      border-right: 1px solid var(--border-white);
+      position: relative;
+    }
+
+    .process-step:last-child { border-right: none; }
+
+    .step-number {
+      font-family: 'Cinzel', serif;
+      font-size: 4rem;
+      font-weight: 800;
+      color: rgba(212,175,55,0.1);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .step-icon {
+      color: var(--accent-gold);
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+    }
+
+    .step-title {
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .step-text {
+      font-size: 0.84rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+    }
+
+    .step-connector {
+      position: absolute;
+      right: -1px; top: 50%;
+      transform: translateY(-50%);
+      width: 20px; height: 20px;
+      background: var(--bg-base);
+      border: 1px solid var(--accent-gold);
+      border-radius: 50%;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-connector::after {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent-gold);
+      border-radius: 50%;
+    }
+
+    /* ─── TESTIMONIALS ──────────────────────────────── */
+    .testimonials-track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .testimonial-card { padding: 36px 32px; }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      color: var(--accent-gold);
+      font-size: 0.75rem;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-text {
+      font-size: 0.92rem;
+      line-height: 1.85;
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 24px;
+      border-left: 2px solid var(--accent-gold);
+      padding-left: 20px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      justify-content: flex-start !important;
+      text-align: left !important;
+      margin-top: auto;
+      width: 100%;
+    }
+
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--accent-gold-dim);
+      border: 2px solid var(--border-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .author-info {
+      text-align: left !important;
+    }
+
+    .author-info strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      font-family: 'Cinzel', serif;
+    }
+
+    .author-info span { font-size: 0.75rem; color: var(--text-secondary); }
+
+    /* ─── CTA SECTION ───────────────────────────────── */
+    .cta-section {
+      position: relative;
+      padding: 140px 48px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 70%);
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    }
+
+    @media (max-width: 900px) {
+      .warranty-grid { grid-template-columns: 1fr; gap: 30px; border: none; }
+      .warranty-tier { border: 1px solid var(--border-gold); border-right: 1px solid var(--border-gold) !important; }
+      .testimonials-track { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -577,6 +914,177 @@
     </div>
   </section>
 
+  <!-- ═══════ BEFORE / AFTER SLIDER ═══════ -->
+  <section class="section-before-after">
+    <div class="reveal" style="text-align:center; margin-bottom:0;">
+      <div class="section-label" style="justify-content:center;">Transformation</div>
+      <h2 class="heading-lg">See the <em style="font-style:normal; color:var(--accent-gold);">Difference</em></h2>
+    </div>
+
+    <div class="slider-container" id="beforeAfterSlider">
+      <img src="Assets/before.jpg" alt="Before treatment" style="filter: saturate(0.4) brightness(0.7);" />
+      <div class="slider-after" id="sliderAfter">
+        <img src="Assets/After.png" alt="After ceramic coating" style="width:900px;" />
+      </div>
+      <div class="slider-label left">Glass Finish</div>
+      <div class="slider-label right">Untreated</div>
+      <div class="slider-handle" id="sliderHandle">
+        <div class="slider-btn"><i class="fas fa-arrows-left-right"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ WARRANTY TIERS ═══════ -->
+  <section class="section-warranty">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Our Guarantee</div>
+      <h2 class="heading-lg">Backed by a <em style="font-style:normal; color:var(--accent-gold);">Royal Warranty</em></h2>
+    </div>
+
+    <div class="warranty-grid reveal">
+      <div class="warranty-tier glass-card">
+        <div class="tier-badge">Standard Elite</div>
+        <div class="tier-years">5</div>
+        <div class="tier-unit">Year Warranty</div>
+        <div class="gold-divider"></div>
+        <ul class="tier-features">
+          <li><i class="fas fa-check"></i> Ceramic Pro certified application</li>
+          <li><i class="fas fa-check"></i> UV & chemical resistance</li>
+          <li><i class="fas fa-check"></i> Hydrophobic self-cleaning effect</li>
+          <li><i class="fas fa-check"></i> Annual inspection included</li>
+          <li><i class="fas fa-check"></i> Transferable to new owner</li>
+        </ul>
+        <div style="margin-top:auto; padding-top:32px;">
+          <a href="services.html" class="btn-secondary" style="font-size:0.72rem;">Learn More</a>
+        </div>
+      </div>
+      <div class="warranty-tier glass-card featured">
+        <div class="tier-badge">Royal Signature</div>
+        <div class="tier-years" style="color:var(--accent-gold);">∞</div>
+        <div class="tier-unit">Lifetime Warranty</div>
+        <div class="gold-divider"></div>
+        <ul class="tier-features">
+          <li><i class="fas fa-check"></i> Everything in Standard Elite</li>
+          <li><i class="fas fa-check"></i> PPF self-healing coverage</li>
+          <li><i class="fas fa-check"></i> Priority mobile re-service</li>
+          <li><i class="fas fa-check"></i> Annual maintenance top-coat</li>
+          <li><i class="fas fa-check"></i> Global partner network access</li>
+          <li><i class="fas fa-check"></i> Dedicated concierge line</li>
+        </ul>
+        <div style="margin-top:auto; padding-top:32px;">
+          <a href="contact.html" class="btn-primary" style="font-size:0.72rem;">Book This Tier</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PROCESS ═══════ -->
+  <section class="section-process">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">How It Works</div>
+      <h2 class="heading-lg">The <em style="font-style:normal; color:var(--accent-gold);">AURA Process</em></h2>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step reveal" data-delay="0.1">
+        <div class="step-number">01</div>
+        <div class="step-icon"><i class="fas fa-phone-volume"></i></div>
+        <div class="step-title">Consultation</div>
+        <p class="step-text">We begin with a personal consultation to understand your vehicle, lifestyle, and protection goals. Every detail matters to us.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step reveal" data-delay="0.2">
+        <div class="step-number">02</div>
+        <div class="step-icon"><i class="fas fa-magnifying-glass"></i></div>
+        <div class="step-title">Paint Assessment</div>
+        <p class="step-text">Our technicians perform a meticulous paint correction assessment under professional lighting to document every micro-imperfection.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step reveal" data-delay="0.3">
+        <div class="step-number">03</div>
+        <div class="step-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+        <div class="step-title">Application</div>
+        <p class="step-text">In our mobile climate-controlled unit at your location, we apply your chosen protection with surgical precision. No shortcuts. Ever.</p>
+        <div class="step-connector"></div>
+      </div>
+      <div class="process-step reveal" data-delay="0.4">
+        <div class="step-number">04</div>
+        <div class="step-icon"><i class="fas fa-gem"></i></div>
+        <div class="step-title">Certification</div>
+        <p class="step-text">We hand-deliver your warranty certificate, care guide, and introduce you to our concierge maintenance program for ongoing excellence.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ TESTIMONIALS ═══════ -->
+  <section class="section-testimonials">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-label" style="justify-content:center;">Client Voices</div>
+      <h2 class="heading-lg">Trusted by<br/><em style="font-style:normal; color:var(--accent-gold);">Discerning Owners</em></h2>
+    </div>
+
+    <div class="testimonials-track">
+      <div class="glass-card testimonial-card reveal" data-delay="0.1">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">AURA treated my 992 GT3 RS like the piece of art it is. The ceramic finish is otherworldly — water simply vanishes. Their mobile setup is genuinely impressive.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><img src="Assets/pro1.jpg" alt="James Keller" /></div>
+          <div class="author-info">
+            <strong>James Keller</strong>
+            <span>Porsche 992 GT3 RS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card testimonial-card reveal" data-delay="0.2">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">My La Ferrari arrived from the dealer and AURA was there the same afternoon. Full PPF wrap completed in my private garage. Flawless results, exceptional discretion.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><img src="Assets/pro2.jpg" alt="Marco Villanueva" /></div>
+          <div class="author-info">
+            <strong>Marco Villanueva</strong>
+            <span>Ferrari LaFerrari Aperta</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card testimonial-card reveal" data-delay="0.3">
+        <div class="testimonial-stars">
+          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+        </div>
+        <p class="testimonial-text">The Phantom Black Cullinan now has a depth I didn't think was possible from the factory. AURA's lifetime warranty sealed the deal. True professionals in every sense.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar"><img src="Assets/pro3.jpg" alt="Sofia Blackwell" /></div>
+          <div class="author-info">
+            <strong>Sofia Blackwell</strong>
+            <span>Rolls-Royce Cullinan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA SECTION ═══════ -->
+  <section class="cta-section">
+    <div class="reveal" style="position:relative; z-index:1;">
+      <div class="section-label" style="justify-content:center;">Begin Your Journey</div>
+      <h2 class="heading-xl" style="max-width:700px; margin:0 auto 24px;">
+        Your Vehicle<br/>Deserves the <em style="font-style:normal; color:var(--accent-gold);">Finest</em>
+      </h2>
+      <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8; max-width:480px; margin:0 auto 48px;">
+        Request a consultation today. We'll come to you, assess your vehicle, and craft a bespoke protection plan.
+      </p>
+      <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="btn-primary">Request an Estimate</a>
+        <a href="#visualizer" class="btn-secondary">View Protection</a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════ FOOTER ═══════ -->
   <footer>
     <div class="footer-grid">
@@ -757,6 +1265,44 @@
           }
         });
       });
+
+      // ═══════ BEFORE/AFTER SLIDER ═══════
+      const slider = document.getElementById('beforeAfterSlider');
+      const sliderAfter = document.getElementById('sliderAfter');
+      const sliderHandle = document.getElementById('sliderHandle');
+
+      if (slider && sliderAfter && sliderHandle) {
+        let isDragging = false;
+        const afterImg = sliderAfter.querySelector('img');
+
+        function setSliderPosition(x) {
+          const rect = slider.getBoundingClientRect();
+          let pct = Math.max(5, Math.min(95, ((x - rect.left) / rect.width) * 100));
+          sliderAfter.style.width = pct + '%';
+          sliderHandle.style.left = pct + '%';
+        }
+
+        function updateSliderWidth() {
+          const rect = slider.getBoundingClientRect();
+          if (afterImg) {
+            afterImg.style.width = rect.width + 'px';
+          }
+        }
+
+        window.addEventListener('resize', updateSliderWidth);
+        // Run once at load
+        updateSliderWidth();
+        setTimeout(updateSliderWidth, 100); // safety fallback
+
+        sliderHandle.addEventListener('mousedown', () => isDragging = true);
+        document.addEventListener('mouseup', () => isDragging = false);
+        document.addEventListener('mousemove', e => { if (isDragging) setSliderPosition(e.clientX); });
+        sliderHandle.addEventListener('touchstart', () => isDragging = true);
+        document.addEventListener('touchend', () => isDragging = false);
+        document.addEventListener('touchmove', e => {
+          if (isDragging) setSliderPosition(e.touches[0].clientX);
+        });
+      }
     });
   </script>
 </body>
