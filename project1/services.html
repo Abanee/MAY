@@ -578,7 +578,24 @@
     @media (max-width: 768px) {
       .page-hero { padding: 0 24px 60px; }
       .svc-section, .process-section, .faq-section, .booking-section { padding: 70px 24px; }
-      .services-quick-nav { margin: 0 24px; }
+      .services-quick-nav {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin: 0 24px;
+        overflow-x: visible;
+      }
+      .sqn-item {
+        min-width: 0;
+        padding: 16px 8px;
+        border-right: 1px solid var(--border-gold);
+        border-bottom: 1px solid var(--border-gold);
+      }
+      .sqn-item:nth-child(3n) {
+        border-right: none;
+      }
+      .sqn-item:nth-child(n+4) {
+        border-bottom: none;
+      }
       .svc-visual img { height: 300px; }
       .timeline-step { grid-template-columns: 70px 1fr; }
       .ts-num { font-size: 2.5rem; padding: 20px 16px; }
