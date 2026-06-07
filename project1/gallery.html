@@ -327,6 +327,14 @@
       padding: 120px 48px;
       text-align: center;
       overflow: hidden;
+      background:
+        linear-gradient(to bottom, rgba(11,12,16,0.85) 0%, rgba(11,12,16,0.95) 100%),
+        url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1800&q=80&auto=format') center/cover no-repeat;
+    }
+    [data-theme="light"] .gallery-cta {
+      background:
+        linear-gradient(to bottom, rgba(253,251,247,0.88) 0%, rgba(253,251,247,0.95) 100%),
+        url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1800&q=80&auto=format') center/cover no-repeat !important;
     }
     .gallery-cta::before {
       content: '';
@@ -357,8 +365,26 @@
         grid-template-columns: 1fr;
         gap: 16px;
       }
-      .gallery-stats { grid-template-columns: 1fr 1fr; margin: 40px 20px 60px; }
-      .gs-item { border-right: none; border-bottom: 1px solid var(--border-white); }
+      .gallery-stats {
+        grid-template-columns: 1fr 1fr;
+        margin: 40px 20px 60px;
+        align-items: stretch;
+      }
+      .gs-item {
+        border-right: 1px solid var(--border-white);
+        border-bottom: 1px solid var(--border-white);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      .gs-item:nth-child(2n) {
+        border-right: none;
+      }
+      .gs-item:nth-child(n+3) {
+        border-bottom: none;
+      }
       .gallery-cta { padding: 80px 24px; }
     }
   </style>
@@ -465,9 +491,9 @@
   <!-- ═══════ GALLERY FULL ═══════ -->
   <section class="gallery-full">
     <!-- Filters -->
-    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:40px;">
+    <div style="display:flex; flex-direction:column; align-items:flex-start; gap:16px; margin-bottom:40px;">
       <div class="section-label reveal" style="margin-bottom:0;">Our Portfolio</div>
-      <div class="gallery-filters reveal" data-delay="0.1">
+      <div class="gallery-filters reveal" data-delay="0.1" style="margin-top:0;">
         <button class="gallery-filter-btn active" data-filter="all">All Work</button>
         <button class="gallery-filter-btn" data-filter="ceramic">Ceramic</button>
         <button class="gallery-filter-btn" data-filter="ppf">PPF</button>
@@ -677,8 +703,8 @@
     </div><!-- /gallery-full-grid -->
 
     <!-- Load More -->
-    <div style="text-align:center; margin-top:60px;">
-      <a href="contact.html" class="btn-primary" style="margin-right:16px;">Request a Consultation</a>
+    <div style="text-align:center; margin-top:60px; display:flex; flex-direction:column; align-items:center; gap:20px;">
+      <a href="contact.html" class="btn-primary">Request a Consultation</a>
       <span style="color:var(--text-secondary); font-size:0.8rem; font-family:'Cinzel',serif; letter-spacing:0.15em;">
         ✦ More work available on request ✦
       </span>
