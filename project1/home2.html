@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <script>
-    (function() {
+    (function () {
       const savedTheme = localStorage.getItem('aura-theme') || 'dark';
       document.documentElement.setAttribute('data-theme', savedTheme);
       const savedDir = localStorage.getItem('aura-direction') || 'ltr';
@@ -13,12 +14,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="Assets/car logo.png" />
   <title>AURA Detailing — Elite Studio & Experience</title>
-  <meta name="description" content="Experience the next generation of paint protection. Explore our interactive vehicle visualizer, cleanroom detailing labs, and bespoke protective materials." />
+  <meta name="description"
+    content="Experience the next generation of paint protection. Explore our interactive vehicle visualizer, cleanroom detailing labs, and bespoke protective materials." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
 
   <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -62,37 +66,47 @@
       overflow: hidden;
       text-align: center;
     }
+
     .hero-v2-bg {
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(11,12,16,0.6) 0%, rgba(11,12,16,0.85) 60%, #0B0C10 100%),
+        linear-gradient(to bottom, rgba(11, 12, 16, 0.6) 0%, rgba(11, 12, 16, 0.85) 60%, #0B0C10 100%),
         url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1800&q=80&auto=format') center/cover no-repeat;
       transform: scale(1.05);
       animation: ambientZoom 20s infinite alternate ease-in-out;
     }
+
     [data-theme="light"] .hero-v2-bg {
       background:
-        linear-gradient(to bottom, rgba(244,246,249,0.7) 0%, rgba(244,246,249,0.92) 60%, #F4F6F9 100%),
+        linear-gradient(to bottom, rgba(244, 246, 249, 0.7) 0%, rgba(244, 246, 249, 0.92) 60%, #F4F6F9 100%),
         url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=1800&q=80&auto=format') center/cover no-repeat !important;
     }
+
     @keyframes ambientZoom {
-      0% { transform: scale(1.03); }
-      100% { transform: scale(1.08); }
+      0% {
+        transform: scale(1.03);
+      }
+
+      100% {
+        transform: scale(1.08);
+      }
     }
+
     .hero-v2-frame {
       border: 1px solid var(--border-gold);
       padding: 60px 40px;
       max-width: 900px;
       position: relative;
       z-index: 2;
-      background: rgba(11,12,16,0.45);
+      background: rgba(11, 12, 16, 0.45);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
     }
+
     [data-theme="light"] .hero-v2-frame {
-      background: rgba(253,251,247,0.65);
-      border-color: rgba(145,107,22,0.25);
+      background: rgba(253, 251, 247, 0.65);
+      border-color: rgba(145, 107, 22, 0.25);
     }
 
     /* ─── 360 INTERACTIVE VISUALIZER ─────────────────────── */
@@ -102,9 +116,11 @@
       border-top: 1px solid var(--border-white);
       border-bottom: 1px solid var(--border-white);
     }
+
     [data-theme="light"] .visualizer-section {
-      background: rgba(255,255,255,0.45);
+      background: rgba(255, 255, 255, 0.45);
     }
+
     .visualizer-container {
       display: grid;
       grid-template-columns: 1.8fr 1fr;
@@ -112,18 +128,21 @@
       align-items: center;
       margin-top: 48px;
     }
+
     .car-display-wrapper {
       position: relative;
       width: 100%;
       border: 1px solid var(--border-white);
       overflow: hidden;
-      background: rgba(0,0,0,0.2);
+      background: rgba(0, 0, 0, 0.2);
     }
+
     .car-display-img {
       width: 100%;
       height: auto;
       display: block;
     }
+
     /* Hotspots */
     .hotspot {
       position: absolute;
@@ -140,6 +159,7 @@
       transition: all 0.3s ease;
       z-index: 10;
     }
+
     .hotspot::after {
       content: '';
       position: absolute;
@@ -148,15 +168,26 @@
       border-radius: 50%;
       animation: pulseGold 2s infinite;
     }
+
     @keyframes pulseGold {
-      0% { transform: scale(0.9); opacity: 1; }
-      100% { transform: scale(1.6); opacity: 0; }
+      0% {
+        transform: scale(0.9);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(1.6);
+        opacity: 0;
+      }
     }
-    .hotspot:hover, .hotspot.active {
+
+    .hotspot:hover,
+    .hotspot.active {
       transform: scale(1.2);
       background: #FFFFFF;
       box-shadow: 0 0 25px #FFFFFF;
     }
+
     /* Tooltip content sidebar */
     .protection-detail-card {
       border: 1px solid var(--border-gold);
@@ -172,27 +203,36 @@
     .studio-section {
       padding: 120px 48px;
     }
+
     .studio-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: center;
     }
+
     .studio-photos {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
     }
+
     .studio-photo {
       border: 1px solid var(--border-white);
       overflow: hidden;
       position: relative;
     }
+
     .studio-photo img {
-      width: 100%; height: 100%; object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: transform 0.6s ease;
     }
-    .studio-photo:hover img { transform: scale(1.05); }
+
+    .studio-photo:hover img {
+      transform: scale(1.05);
+    }
 
     /* ─── INTERACTIVE DEFECT ANALYZER ──────────────────────── */
     .defect-section {
@@ -200,9 +240,11 @@
       background: var(--bg-surface-solid);
       border-top: 1px solid var(--border-white);
     }
+
     [data-theme="light"] .defect-section {
-      background: rgba(255,255,255,0.45);
+      background: rgba(255, 255, 255, 0.45);
     }
+
     .defect-tabs {
       display: flex;
       justify-content: center;
@@ -211,6 +253,7 @@
       margin-bottom: 48px;
       flex-wrap: wrap;
     }
+
     .defect-tab {
       background: none;
       border: 1px solid var(--border-gold);
@@ -223,15 +266,19 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .defect-tab:hover, .defect-tab.active {
+
+    .defect-tab:hover,
+    .defect-tab.active {
       background: var(--accent-gold);
       color: #0B0C10 !important;
       box-shadow: var(--glow-gold);
     }
+
     [data-theme="light"] .defect-tab:hover,
     [data-theme="light"] .defect-tab.active {
       color: #FFFFFF !important;
     }
+
     .defect-content-box {
       border: 1px solid var(--border-white);
       display: grid;
@@ -245,12 +292,14 @@
     .club-section {
       padding: 140px 48px;
     }
+
     .club-grid {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 32px;
       margin-top: 48px;
     }
+
     .club-card {
       border: 1px solid var(--border-white);
       padding: 40px 36px;
@@ -260,11 +309,13 @@
       height: 100%;
       transition: all 0.4s ease;
     }
+
     .club-card:hover {
       border-color: var(--accent-gold);
       transform: translateY(-4px);
-      box-shadow: 0 10px 30px rgba(212,175,55,0.06);
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.06);
     }
+
     .club-price {
       font-family: 'Cinzel', serif;
       font-size: 1.8rem;
@@ -275,360 +326,274 @@
 
     /* Responsive */
     @media (max-width: 1024px) {
-      .visualizer-container, .studio-grid, .defect-content-box { grid-template-columns: 1fr; gap: 40px; }
-      .club-grid { grid-template-columns: 1fr; gap: 24px; }
+
+      .visualizer-container,
+      .studio-grid,
+      .defect-content-box {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .club-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
     }
+
     @media (max-width: 768px) {
-      .hero-v2-frame { padding: 40px 20px; }
-      .visualizer-section, .studio-section, .defect-section, .club-section { padding: 80px 24px; }
-      .defect-content-box { padding: 24px; }
+      .hero-v2-frame {
+        padding: 40px 20px;
+      }
+
+      .visualizer-section,
+      .studio-section,
+      .defect-section,
+      .club-section {
+        padding: 80px 24px;
+      }
+
+      .defect-content-box {
+        padding: 24px;
+      }
     }
 
-    /* ─── BEFORE / AFTER SLIDER ─────────────────────── */
-    .slider-container {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: 60px auto 0;
-      overflow: hidden;
-      border: 1px solid var(--border-gold);
-      user-select: none;
+    /* ─── MATERIAL SCIENCE SECTION ────────────────────── */
+    .material-science-section {
+      padding: 120px 48px;
+      background: var(--bg-surface-solid);
+      border-top: 1px solid var(--border-white);
+      border-bottom: 1px solid var(--border-white);
     }
-
-    .slider-container img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      display: block;
+    [data-theme="light"] .material-science-section {
+      background: rgba(255,255,255,0.45);
     }
-
-    .slider-after {
-      position: absolute;
-      top: 0; left: 0;
-      width: 50%;
-      overflow: hidden;
-    }
-
-    .slider-after img {
-      position: relative;
-      width: calc(900px);
-      max-width: none;
-    }
-
-    .slider-handle {
-      position: absolute;
-      top: 0; bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 3px;
-      background: var(--accent-gold);
-      cursor: ew-resize;
-      z-index: 10;
-      box-shadow: 0 0 20px rgba(212,175,55,0.6);
-    }
-
-    .slider-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 52px; height: 52px;
-      background: var(--accent-gold);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #0B0C10;
-      font-size: 1rem;
-      box-shadow: 0 0 30px rgba(212,175,55,0.5);
-    }
-
-    .slider-label {
-      position: absolute;
-      top: 20px;
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 6px 14px;
-      background: rgba(11,12,16,0.8);
-      border: 1px solid var(--border-gold);
-      color: var(--accent-gold);
-    }
-
-    .slider-label.left { left: 20px; }
-    .slider-label.right { right: 20px; }
-
-    /* ─── WARRANTY TIERS ────────────────────────────── */
-    .warranty-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0;
-      margin-top: 60px;
-      border: 1px solid var(--border-gold);
-    }
-
-    .warranty-tier {
-      padding: 48px 48px;
-      border-right: 1px solid var(--border-gold);
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .warranty-tier:last-child { border-right: none; }
-
-    .warranty-tier.featured {
-      background: rgba(212,175,55,0.04);
-      overflow: visible !important;
-    }
-
-    .warranty-tier.featured::before {
-      content: 'Most Popular';
-      position: absolute;
-      top: -11px; right: 32px;
-      background: var(--accent-gold);
-      color: #0B0C10;
-      font-family: 'Cinzel', serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      padding: 5px 16px;
-      z-index: 10;
-      height: auto;
-      left: auto;
-    }
-
-    [data-theme="light"] .warranty-tier.featured::before {
-      color: #FFFFFF !important;
-    }
-
-    .tier-badge {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      margin-bottom: 12px;
-    }
-
-    .tier-years {
-      font-family: 'Cinzel', serif;
-      font-size: 3.5rem;
-      font-weight: 800;
-      color: var(--text-primary);
-      line-height: 1;
-      margin-bottom: 4px;
-    }
-
-    .tier-unit {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-    }
-
-    .tier-features {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .tier-features li {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 0.88rem;
-      color: var(--text-secondary);
-    }
-
-    .tier-features li i { color: var(--accent-gold); font-size: 0.7rem; }
-
-    /* ─── PROCESS STEPS ─────────────────────────────── */
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 60px;
-    }
-
-    .process-step {
-      padding: 40px 36px;
-      border-right: 1px solid var(--border-white);
-      position: relative;
-    }
-
-    .process-step:last-child { border-right: none; }
-
-    .step-number {
-      font-family: 'Cinzel', serif;
-      font-size: 4rem;
-      font-weight: 800;
-      color: rgba(212,175,55,0.1);
-      line-height: 1;
-      margin-bottom: 20px;
-    }
-
-    .step-icon {
-      color: var(--accent-gold);
-      font-size: 1.4rem;
-      margin-bottom: 16px;
-    }
-
-    .step-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--text-primary);
-      margin-bottom: 12px;
-    }
-
-    .step-text {
-      font-size: 0.84rem;
-      line-height: 1.75;
-      color: var(--text-secondary);
-    }
-
-    .step-connector {
-      position: absolute;
-      right: -1px; top: 50%;
-      transform: translateY(-50%);
-      width: 20px; height: 20px;
-      background: var(--bg-base);
-      border: 1px solid var(--accent-gold);
-      border-radius: 50%;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .step-connector::after {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--accent-gold);
-      border-radius: 50%;
-    }
-
-    /* ─── TESTIMONIALS ──────────────────────────────── */
-    .testimonials-track {
+    .material-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 60px;
+      gap: 32px;
+      margin-top: 56px;
     }
-
-    .testimonial-card { padding: 36px 32px; }
-
-    .testimonial-stars {
+    .material-card {
+      padding: 40px 36px;
       display: flex;
-      gap: 4px;
-      color: var(--accent-gold);
-      font-size: 0.75rem;
-      margin-bottom: 20px;
-    }
-
-    .testimonial-text {
-      font-size: 0.92rem;
-      line-height: 1.85;
-      color: var(--text-secondary);
-      font-style: italic;
-      margin-bottom: 24px;
-      border-left: 2px solid var(--accent-gold);
-      padding-left: 20px;
-    }
-
-    .testimonial-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      justify-content: flex-start !important;
-      text-align: left !important;
-      margin-top: auto;
-      width: 100%;
-    }
-
-    .author-avatar {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: var(--accent-gold-dim);
-      border: 2px solid var(--border-gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-
-    .author-avatar img {
-      width: 100%;
+      flex-direction: column;
       height: 100%;
-      object-fit: cover;
-      display: block;
+      transition: all 0.4s ease;
     }
-
-    .author-info {
-      text-align: left !important;
+    .material-card:hover {
+      border-color: var(--accent-gold);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(212,175,55,0.06);
     }
-
-    .author-info strong {
-      display: block;
-      font-size: 0.85rem;
+    .material-header {
+      margin-bottom: 24px;
+    }
+    .material-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .material-tech {
+      font-size: 0.72rem;
       font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+    .material-desc {
+      font-size: 0.86rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      flex-grow: 1;
+    }
+    .material-specs {
+      border-top: 1px solid var(--border-white);
+      padding-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+    .spec-row span {
+      color: var(--text-secondary);
+    }
+    .spec-row strong {
+      color: var(--text-primary);
+      font-family: 'Cinzel', serif;
+      font-weight: 600;
+    }
+
+    /* ─── RARE COMMISSIONS REGISTRY ────────────────────── */
+    .commissions-registry-section {
+      padding: 120px 48px;
+    }
+    .registry-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-top: 56px;
+      width: 100%;
+    }
+    .registry-row {
+      display: grid;
+      grid-template-columns: 1.2fr 2.5fr 3.5fr 2fr;
+      align-items: center;
+      padding: 32px 40px;
+      gap: 24px;
+      transition: border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .registry-row:hover {
+      border-color: var(--accent-gold);
+      box-shadow: 0 8px 30px rgba(212,175,55,0.04);
+    }
+    .reg-number {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+    }
+    .reg-status {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .reg-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .reg-dot.active { background: #00FF66; box-shadow: 0 0 10px #00FF66; }
+    .reg-dot.curing { background: #FFCC00; box-shadow: 0 0 10px #FFCC00; animation: pulseYellow 1.5s infinite; }
+    @keyframes pulseYellow {
+      0% { opacity: 0.4; }
+      50% { opacity: 1; }
+      100% { opacity: 0.4; }
+    }
+    .reg-model {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .reg-specs {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+    .reg-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+    .reg-value {
+      font-size: 0.88rem;
+      color: var(--text-primary);
+    }
+    .reg-metric {
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .reg-metric:last-child { margin-bottom: 0; }
+    .reg-metric strong {
       color: var(--text-primary);
       font-family: 'Cinzel', serif;
     }
 
-    .author-info span { font-size: 0.75rem; color: var(--text-secondary); }
-
-    /* ─── CTA SECTION ───────────────────────────────── */
-    .cta-section {
+    /* ─── BESPOKE STUDIO CTA ────────────────────── */
+    .studio-cta-section {
       position: relative;
       padding: 140px 48px;
       text-align: center;
       overflow: hidden;
+      border-top: 1px solid var(--border-white);
     }
-
-    .cta-section::before {
+    .studio-cta-section::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(212,175,55,0.06) 0%, transparent 70%);
+      background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(212,175,55,0.05) 0%, transparent 70%);
+      pointer-events: none;
     }
 
-    .cta-section::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    /* Responsive overrides for new sections */
+    @media (max-width: 1024px) {
+      .material-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .registry-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 24px;
+        text-align: center;
+      }
+      .reg-status {
+        justify-content: center;
+      }
+      .reg-metric {
+        max-width: 320px;
+        margin: 0 auto 6px;
+      }
     }
 
-    @media (max-width: 900px) {
-      .warranty-grid { grid-template-columns: 1fr; gap: 30px; border: none; }
-      .warranty-tier { border: 1px solid var(--border-gold); border-right: 1px solid var(--border-gold) !important; }
-      .testimonials-track { grid-template-columns: 1fr; }
-      .process-steps { grid-template-columns: repeat(2, 1fr); }
-    }
+    @media (max-width: 768px) {
+      .spec-row {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 4px;
+        width: 100%;
+      }
+      .spec-row span {
+        text-align: left !important;
+      }
+      .spec-row strong {
+        text-align: left !important;
+        margin-top: 2px;
+      }
 
-    @media (max-width: 600px) {
-      .process-steps { grid-template-columns: 1fr; }
+      .reg-metric {
+        flex-direction: column;
+        align-items: center !important;
+        text-align: center;
+        gap: 4px;
+        width: 100%;
+        max-width: none !important;
+      }
+      .reg-metric strong {
+        text-align: center !important;
+        margin-top: 2px;
+      }
     }
   </style>
 </head>
+
 <body>
   <div class="page-transition active"></div>
 
   <!-- Mobile Menu -->
   <div class="mobile-menu">
     <div class="mobile-menu-header">
-      <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo" class="nav-logo-img" />AURA<span> Detailing</span></a>
+      <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo"
+          class="nav-logo-img" />AURA<span> Detailing</span></a>
       <button class="mobile-menu-close" aria-label="Close menu">
         <i class="fas fa-xmark"></i>
       </button>
@@ -661,7 +626,8 @@
 
   <!-- Navigation -->
   <nav class="nav">
-    <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo" class="nav-logo-img" />AURA<span> Detailing</span></a>
+    <a href="index.html" class="nav-logo"><img src="Assets/car logo.png" alt="AURA Logo"
+        class="nav-logo-img" />AURA<span> Detailing</span></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="home2.html" class="active">Home 2</a></li>
@@ -692,11 +658,13 @@
     <div class="hero-v2-bg"></div>
     <div class="hero-v2-frame reveal">
       <div class="section-label" style="justify-content:center; margin-bottom:16px;">The Detailing Cleanroom</div>
-      <h1 style="font-family:'Cinzel',serif; font-size:clamp(2rem, 5vw, 4rem); font-weight:800; color:var(--text-primary); line-height:1.1; margin-bottom:24px;">
-        THE APEX OF<br/>SURFACE ARCHITECTURE
+      <h1
+        style="font-family:'Cinzel',serif; font-size:clamp(2rem, 5vw, 4rem); font-weight:800; color:var(--text-primary); line-height:1.1; margin-bottom:24px;">
+        THE APEX OF<br />SURFACE ARCHITECTURE
       </h1>
       <p style="color:var(--text-secondary); font-size:1.05rem; line-height:1.8; max-width:620px; margin:0 auto 36px;">
-        Surgical-grade mobile ceramic coatings, self-healing protection film, and multi-stage paint restoration. We treat your vehicle as a masterpiece.
+        Surgical-grade mobile ceramic coatings, self-healing protection film, and multi-stage paint restoration. We
+        treat your vehicle as a masterpiece.
       </p>
       <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
         <a href="#visualizer" class="btn-primary">Explore Protection</a>
@@ -709,17 +677,20 @@
   <section class="visualizer-section" id="visualizer">
     <div class="reveal" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">360° Protection System</div>
-      <h2 class="heading-lg">Anatomy of <em style="font-style:normal; color:var(--accent-gold);">Supercar Shielding</em></h2>
+      <h2 class="heading-lg">Anatomy of <em style="font-style:normal; color:var(--accent-gold);">Supercar Shielding</em>
+      </h2>
       <p style="color:var(--text-secondary); font-size:0.95rem; max-width:540px; margin:16px auto 0; line-height:1.7;">
-        Hover or click on the glowing gold indicators below to explore how we insulate each micro-component of your vehicle against wear.
+        Hover or click on the glowing gold indicators below to explore how we insulate each micro-component of your
+        vehicle against wear.
       </p>
     </div>
 
     <div class="visualizer-container">
       <!-- Interactive Car Graphic -->
       <div class="car-display-wrapper glass-card reveal">
-        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80&auto=format" alt="Porsche 911" class="car-display-img" />
-        
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80&auto=format"
+          alt="Porsche 911" class="car-display-img" />
+
         <!-- Hotspot 1: Hood/Bumper (PPF) -->
         <div class="hotspot active" style="top: 58%; left: 82%;" data-target="front-impact">
           <i class="fas fa-shield-halved" style="font-size:0.6rem; color:#0B0C10;"></i>
@@ -746,9 +717,11 @@
       <div class="glass-card protection-detail-card reveal" data-delay="0.15">
         <div id="detail-content">
           <div class="section-label" id="detail-tag">Bumper & Hood Protection</div>
-          <h3 class="heading-md" id="detail-title" style="font-size: 1.5rem; margin-top: 10px; margin-bottom:12px;">XPEL Front Impact PPF</h3>
+          <h3 class="heading-md" id="detail-title" style="font-size: 1.5rem; margin-top: 10px; margin-bottom:12px;">XPEL
+            Front Impact PPF</h3>
           <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.7;" id="detail-desc">
-            A high-impact thermoplastic urethane film wrapped around the front bumper, hood, fenders, and side mirrors. Absorbs highway sandblasting and stone impacts, self-healing superficial scratches instantly under sun heat.
+            A high-impact thermoplastic urethane film wrapped around the front bumper, hood, fenders, and side mirrors.
+            Absorbs highway sandblasting and stone impacts, self-healing superficial scratches instantly under sun heat.
           </p>
         </div>
       </div>
@@ -760,26 +733,39 @@
     <div class="studio-grid">
       <div class="reveal">
         <div class="section-label">Detailing Lab</div>
-        <h2 class="heading-lg" style="margin-bottom: 24px;">The Detailing <em style="font-style:normal; color:var(--accent-gold);">Cleanroom Lab</em></h2>
+        <h2 class="heading-lg" style="margin-bottom: 24px;">The Detailing <em
+            style="font-style:normal; color:var(--accent-gold);">Cleanroom Lab</em></h2>
         <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:20px;">
-          For extreme commissions, rare collections, or concourse restorations, our custom detaling cleanroom offers a zero-compromise facility.
+          For extreme commissions, rare collections, or concourse restorations, our custom detaling cleanroom offers a
+          zero-compromise facility.
         </p>
         <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.8; margin-bottom:30px;">
-          Equipped with positive pressure HEPA air filtration to eliminate airborne dust, custom multi-temperature LED lighting walls to reveal 100% of micro-imperfections, and climate-locked moisture levels to ensure proper ceramic covalent bonding.
+          Equipped with positive pressure HEPA air filtration to eliminate airborne dust, custom multi-temperature LED
+          lighting walls to reveal 100% of micro-imperfections, and climate-locked moisture levels to ensure proper
+          ceramic covalent bonding.
         </p>
-        
+
         <div style="display:flex; gap:20px; flex-wrap:wrap;">
           <div style="flex:1; min-width:140px;">
-            <strong style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">99.9%</strong>
-            <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Dust Filtration</span>
+            <strong
+              style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">99.9%</strong>
+            <span
+              style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Dust
+              Filtration</span>
           </div>
           <div style="flex:1; min-width:140px;">
-            <strong style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">2000LM</strong>
-            <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Color-Correct LEDs</span>
+            <strong
+              style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">2000LM</strong>
+            <span
+              style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Color-Correct
+              LEDs</span>
           </div>
           <div style="flex:1; min-width:140px;">
-            <strong style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">50% RH</strong>
-            <span style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Cure-Locked Humidity</span>
+            <strong style="font-family:'Cinzel',serif; font-size:1.8rem; color:var(--accent-gold); display:block;">50%
+              RH</strong>
+            <span
+              style="color:var(--text-secondary); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em;">Cure-Locked
+              Humidity</span>
           </div>
         </div>
       </div>
@@ -804,7 +790,8 @@
       <div class="section-label" style="justify-content:center;">Inspection Lab</div>
       <h2 class="heading-lg">Paint Defect <em style="font-style:normal; color:var(--accent-gold);">Analyzer</em></h2>
       <p style="color:var(--text-secondary); font-size:0.95rem; max-width:540px; margin:16px auto 0; line-height:1.7;">
-        Select a common paint anomaly below to analyze how AURA technicians reconstruct the clear coat to restore perfect optical reflection.
+        Select a common paint anomaly below to analyze how AURA technicians reconstruct the clear coat to restore
+        perfect optical reflection.
       </p>
     </div>
 
@@ -820,23 +807,34 @@
     <div class="glass-card defect-content-box reveal" data-delay="0.1">
       <div>
         <div class="section-label" id="defect-level">Defect Profile: Moderate Surface Scratches</div>
-        <h3 class="heading-md" id="defect-title" style="margin-top: 8px; margin-bottom:16px; font-size:1.4rem;">Swirl Marks & Spiderweb Scratching</h3>
-        <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.7; margin-bottom:16px;" id="defect-desc">
-          Created by improper hand washing, mechanical brushes, or rough wiping. These micro-scratches act as tiny concave mirrors, scattering light rays in multiple directions instead of reflecting them parallel, destroying gloss depth.
+        <h3 class="heading-md" id="defect-title" style="margin-top: 8px; margin-bottom:16px; font-size:1.4rem;">Swirl
+          Marks & Spiderweb Scratching</h3>
+        <p style="color:var(--text-secondary); font-size:0.86rem; line-height:1.7; margin-bottom:16px;"
+          id="defect-desc">
+          Created by improper hand washing, mechanical brushes, or rough wiping. These micro-scratches act as tiny
+          concave mirrors, scattering light rays in multiple directions instead of reflecting them parallel, destroying
+          gloss depth.
         </p>
         <div style="border-left: 2px solid var(--accent-gold); padding-left: 16px; margin-top:20px;">
-          <strong style="color:var(--text-primary); font-size:0.84rem; display:block; margin-bottom:4px;">AURA Correction Action:</strong>
+          <strong style="color:var(--text-primary); font-size:0.84rem; display:block; margin-bottom:4px;">AURA
+            Correction Action:</strong>
           <span style="color:var(--text-secondary); font-size:0.82rem; line-height:1.6;" id="defect-action">
-            A two-stage paint correction. First, rotary heavy compounding cuts down clear coat surrounding scratches to level surface. Second, dual-action jewel polish refines paint haze to deliver a mirror finish.
+            A two-stage paint correction. First, rotary heavy compounding cuts down clear coat surrounding scratches to
+            level surface. Second, dual-action jewel polish refines paint haze to deliver a mirror finish.
           </span>
         </div>
       </div>
       <!-- Defect Graphic Representation -->
-      <div style="position:relative; width:100%; border:1px solid var(--border-gold); background:rgba(0,0,0,0.3); height:220px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
-        <img src="Assets/carw1.jpg" alt="Paint Defect Visualizer" id="defect-img" style="width:100%; height:100%; object-fit:cover; display:block;" />
+      <div
+        style="position:relative; width:100%; border:1px solid var(--border-gold); background:rgba(0,0,0,0.3); height:220px; display:flex; align-items:center; justify-content:center; overflow:hidden;">
+        <img src="Assets/carw1.jpg" alt="Paint Defect Visualizer" id="defect-img"
+          style="width:100%; height:100%; object-fit:cover; display:block;" />
         <!-- Floating overlay with metric -->
-        <div style="position:absolute; bottom:0; left:0; right:0; background:rgba(11,12,16,0.75); padding:10px 16px; text-align:center; z-index: 2;">
-          <div style="font-family:'Cinzel',serif; font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#FFFFFF;" id="defect-metric">Light Scatter: 75% Haze</div>
+        <div
+          style="position:absolute; bottom:0; left:0; right:0; background:rgba(11,12,16,0.75); padding:10px 16px; text-align:center; z-index: 2;">
+          <div
+            style="font-family:'Cinzel',serif; font-size:0.7rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#FFFFFF;"
+            id="defect-metric">Light Scatter: 75% Haze</div>
         </div>
       </div>
     </div>
@@ -846,9 +844,11 @@
   <section class="club-section">
     <div class="reveal" style="text-align:center;">
       <div class="section-label" style="justify-content:center;">Exclusive Programs</div>
-      <h2 class="heading-lg">AURA Concierge <em style="font-style:normal; color:var(--accent-gold);">Membership</em></h2>
+      <h2 class="heading-lg">AURA Concierge <em style="font-style:normal; color:var(--accent-gold);">Membership</em>
+      </h2>
       <p style="color:var(--text-secondary); font-size:0.95rem; max-width:540px; margin:16px auto 0; line-height:1.7;">
-        Maintain showroom condition indefinitely. Our subscription concierge programs are designed for collectors and luxury vehicle daily drivers.
+        Maintain showroom condition indefinitely. Our subscription concierge programs are designed for collectors and
+        luxury vehicle daily drivers.
       </p>
     </div>
 
@@ -862,18 +862,24 @@
           <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:24px;">
             Perfect for high-use luxury daily drivers. Professional decontamination washes scheduled monthly.
           </p>
-          <ul style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 1x Monthly Mobile Decon Wash</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Wheel barrel & brake dust release</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Interior cabin vacuum & wipe</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Hydrophobic booster spray sealant</li>
+          <ul
+            style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 1x Monthly Mobile Decon
+              Wash</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Wheel barrel & brake
+              dust release</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Interior cabin vacuum &
+              wipe</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Hydrophobic booster
+              spray sealant</li>
           </ul>
         </div>
         <a href="contact.html" class="btn-secondary w-full text-center" style="font-size:0.72rem;">Enroll Program</a>
       </div>
 
       <!-- Tier 2 -->
-      <div class="glass-card club-card" style="border-color:var(--accent-gold); box-shadow:0 8px 24px rgba(212,175,55,0.04);">
+      <div class="glass-card club-card"
+        style="border-color:var(--accent-gold); box-shadow:0 8px 24px rgba(212,175,55,0.04);">
         <div>
           <div class="section-label" style="background:var(--accent-gold); color:#FFFFFF;">Royal Signature</div>
           <div class="club-price">$599<span> /month</span></div>
@@ -881,12 +887,18 @@
           <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:24px;">
             Bespoke care for high-end sports cars and supercars. Includes fortnightly safe washing and surface checks.
           </p>
-          <ul style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 2x Monthly Mobile Decon Washes</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Leather rejuvenation & conditioning</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Annual ceramic booster top-up</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Priority scheduling within 24 hours</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 1x Annual wheel-off coating service</li>
+          <ul
+            style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 2x Monthly Mobile Decon
+              Washes</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Leather rejuvenation &
+              conditioning</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Annual ceramic booster
+              top-up</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Priority scheduling
+              within 24 hours</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 1x Annual wheel-off
+              coating service</li>
           </ul>
         </div>
         <a href="contact.html" class="btn-primary w-full text-center" style="font-size:0.72rem;">Enroll Program</a>
@@ -901,12 +913,18 @@
           <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:24px;">
             Unlimited support for multi-car garages and active private vehicle collectors. Fully custom schedules.
           </p>
-          <ul style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Weekly detailing cleanings</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Enclosed trailer vehicle transport</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Private track-day prep & cleanup</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Infinite coating boosters & checkups</li>
-            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 24/7 dedicated concierge line</li>
+          <ul
+            style="color:var(--text-secondary); font-size:0.8rem; display:flex; flex-direction:column; gap:12px; margin-bottom:32px;">
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Weekly detailing
+              cleanings</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Enclosed trailer
+              vehicle transport</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Private track-day prep
+              & cleanup</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> Infinite coating
+              boosters & checkups</li>
+            <li><i class="fas fa-check" style="color:var(--accent-gold); margin-right:8px;"></i> 24/7 dedicated
+              concierge line</li>
           </ul>
         </div>
         <a href="contact.html" class="btn-secondary w-full text-center" style="font-size:0.72rem;">Enroll Program</a>
@@ -914,173 +932,153 @@
     </div>
   </section>
 
-  <!-- ═══════ BEFORE / AFTER SLIDER ═══════ -->
-  <section class="section-before-after">
-    <div class="reveal" style="text-align:center; margin-bottom:0;">
-      <div class="section-label" style="justify-content:center;">Transformation</div>
-      <h2 class="heading-lg">See the <em style="font-style:normal; color:var(--accent-gold);">Difference</em></h2>
-    </div>
-
-    <div class="slider-container" id="beforeAfterSlider">
-      <img src="Assets/before.jpg" alt="Before treatment" style="filter: saturate(0.4) brightness(0.7);" />
-      <div class="slider-after" id="sliderAfter">
-        <img src="Assets/After.png" alt="After ceramic coating" style="width:900px;" />
-      </div>
-      <div class="slider-label left">Glass Finish</div>
-      <div class="slider-label right">Untreated</div>
-      <div class="slider-handle" id="sliderHandle">
-        <div class="slider-btn"><i class="fas fa-arrows-left-right"></i></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ WARRANTY TIERS ═══════ -->
-  <section class="section-warranty">
+  <!-- ═══════ ADVANCED MATERIAL SCIENCE LAB ═══════ -->
+  <section class="material-science-section">
     <div class="reveal" style="text-align:center;">
-      <div class="section-label" style="justify-content:center;">Our Guarantee</div>
-      <h2 class="heading-lg">Backed by a <em style="font-style:normal; color:var(--accent-gold);">Royal Warranty</em></h2>
+      <div class="section-label" style="justify-content:center;">Material Engineering</div>
+      <h2 class="heading-lg">Advanced <em style="font-style:normal; color:var(--accent-gold);">Material Science</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; max-width:540px; margin:16px auto 0; line-height:1.7;">
+        Under the microscope: explore the nanotechnology and polymer chemistry powering the protective performance of AURA treatments.
+      </p>
     </div>
 
-    <div class="warranty-grid reveal">
-      <div class="warranty-tier glass-card">
-        <div class="tier-badge">Standard Elite</div>
-        <div class="tier-years">5</div>
-        <div class="tier-unit">Year Warranty</div>
-        <div class="gold-divider"></div>
-        <ul class="tier-features">
-          <li><i class="fas fa-check"></i> Ceramic Pro certified application</li>
-          <li><i class="fas fa-check"></i> UV & chemical resistance</li>
-          <li><i class="fas fa-check"></i> Hydrophobic self-cleaning effect</li>
-          <li><i class="fas fa-check"></i> Annual inspection included</li>
-          <li><i class="fas fa-check"></i> Transferable to new owner</li>
-        </ul>
-        <div style="margin-top:auto; padding-top:32px;">
-          <a href="services.html" class="btn-secondary" style="font-size:0.72rem;">Learn More</a>
+    <div class="material-grid reveal">
+      <!-- Card 1 -->
+      <div class="glass-card material-card">
+        <div class="material-header">
+          <div class="material-title">Covalent Nanostructure</div>
+          <div class="material-tech">Ceramic Pro 9H</div>
+        </div>
+        <p class="material-desc">
+          Silicon dioxide (SiO₂) nanopolymer chains form high-density covalent cross-links with factory clear coats. Increases surface hardness above 9H on the Mohs scale, preventing fine contact abrasions and locking in permanent gloss depth.
+        </p>
+        <div class="material-specs">
+          <div class="spec-row"><span>Binding Type:</span><strong>Covalent Molecular</strong></div>
+          <div class="spec-row"><span>Hardness:</span><strong>>9H Mohs Scale</strong></div>
+          <div class="spec-row"><span>Layer Thickness:</span><strong>2.0 microns / coat</strong></div>
         </div>
       </div>
-      <div class="warranty-tier glass-card featured">
-        <div class="tier-badge">Royal Signature</div>
-        <div class="tier-years" style="color:var(--accent-gold);">∞</div>
-        <div class="tier-unit">Lifetime Warranty</div>
-        <div class="gold-divider"></div>
-        <ul class="tier-features">
-          <li><i class="fas fa-check"></i> Everything in Standard Elite</li>
-          <li><i class="fas fa-check"></i> PPF self-healing coverage</li>
-          <li><i class="fas fa-check"></i> Priority mobile re-service</li>
-          <li><i class="fas fa-check"></i> Annual maintenance top-coat</li>
-          <li><i class="fas fa-check"></i> Global partner network access</li>
-          <li><i class="fas fa-check"></i> Dedicated concierge line</li>
-        </ul>
-        <div style="margin-top:auto; padding-top:32px;">
-          <a href="contact.html" class="btn-primary" style="font-size:0.72rem;">Book This Tier</a>
+
+      <!-- Card 2 -->
+      <div class="glass-card material-card">
+        <div class="material-header">
+          <div class="material-title">Elastomeric Polymer</div>
+          <div class="material-tech">XPEL Self-Healing</div>
+        </div>
+        <p class="material-desc">
+          Constructed with a highly flexible thermoplastic polyurethane (TPU) base. Features shape-memory elastomeric polymers that self-heal swirl marks and light road debris impacts when heated by direct sunlight or engine heat.
+        </p>
+        <div class="material-specs">
+          <div class="spec-row"><span>Material Base:</span><strong>Aliphatic Polyurethane</strong></div>
+          <div class="spec-row"><span>Elongation:</span><strong>Up to 400% stretch</strong></div>
+          <div class="spec-row"><span>Healing Trigger:</span><strong>Direct Heat (80°F+)</strong></div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="glass-card material-card">
+        <div class="material-header">
+          <div class="material-title">Spectral Filtration</div>
+          <div class="material-tech">Infrared Ceramic</div>
+        </div>
+        <p class="material-desc">
+          Nano-ceramic particles suspended in optical-grade polyester block infrared solar radiation. Rejects up to 96% of cabin-heating wavelengths while maintaining absolute transparency and zero signal interference for devices.
+        </p>
+        <div class="material-specs">
+          <div class="spec-row"><span>IR Rejection:</span><strong>96% (900-1000nm)</strong></div>
+          <div class="spec-row"><span>UV Block:</span><strong>99.9% SPF 1000+</strong></div>
+          <div class="spec-row"><span>Material Spec:</span><strong>Antimony Tin Oxide</strong></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════ PROCESS ═══════ -->
-  <section class="section-process">
+  <!-- ═══════ RARE COMMISSIONS REGISTRY ═══════ -->
+  <section class="commissions-registry-section">
     <div class="reveal" style="text-align:center;">
-      <div class="section-label" style="justify-content:center;">How It Works</div>
-      <h2 class="heading-lg">The <em style="font-style:normal; color:var(--accent-gold);">AURA Process</em></h2>
+      <div class="section-label" style="justify-content:center;">Cleanroom Archives</div>
+      <h2 class="heading-lg">Commissions <em style="font-style:normal; color:var(--accent-gold);">Registry</em></h2>
+      <p style="color:var(--text-secondary); font-size:0.95rem; max-width:540px; margin:16px auto 0; line-height:1.7;">
+        An archival record of our most complex recent transformations. Authenticated cleanroom builds.
+      </p>
     </div>
 
-    <div class="process-steps">
-      <div class="process-step reveal" data-delay="0.1">
-        <div class="step-number">01</div>
-        <div class="step-icon"><i class="fas fa-phone-volume"></i></div>
-        <div class="step-title">Consultation</div>
-        <p class="step-text">We begin with a personal consultation to understand your vehicle, lifestyle, and protection goals. Every detail matters to us.</p>
-        <div class="step-connector"></div>
-      </div>
-      <div class="process-step reveal" data-delay="0.2">
-        <div class="step-number">02</div>
-        <div class="step-icon"><i class="fas fa-magnifying-glass"></i></div>
-        <div class="step-title">Paint Assessment</div>
-        <p class="step-text">Our technicians perform a meticulous paint correction assessment under professional lighting to document every micro-imperfection.</p>
-        <div class="step-connector"></div>
-      </div>
-      <div class="process-step reveal" data-delay="0.3">
-        <div class="step-number">03</div>
-        <div class="step-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
-        <div class="step-title">Application</div>
-        <p class="step-text">In our mobile climate-controlled unit at your location, we apply your chosen protection with surgical precision. No shortcuts. Ever.</p>
-        <div class="step-connector"></div>
-      </div>
-      <div class="process-step reveal" data-delay="0.4">
-        <div class="step-number">04</div>
-        <div class="step-icon"><i class="fas fa-gem"></i></div>
-        <div class="step-title">Certification</div>
-        <p class="step-text">We hand-deliver your warranty certificate, care guide, and introduce you to our concierge maintenance program for ongoing excellence.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ TESTIMONIALS ═══════ -->
-  <section class="section-testimonials">
-    <div class="reveal" style="text-align:center;">
-      <div class="section-label" style="justify-content:center;">Client Voices</div>
-      <h2 class="heading-lg">Trusted by<br/><em style="font-style:normal; color:var(--accent-gold);">Discerning Owners</em></h2>
-    </div>
-
-    <div class="testimonials-track">
-      <div class="glass-card testimonial-card reveal" data-delay="0.1">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+    <div class="registry-container reveal">
+      <!-- Item 1 -->
+      <div class="registry-row glass-card">
+        <div class="registry-meta-col">
+          <div class="reg-number">#REG-089</div>
+          <div class="reg-status"><span class="reg-dot active"></span> Active Log</div>
         </div>
-        <p class="testimonial-text">AURA treated my 992 GT3 RS like the piece of art it is. The ceramic finish is otherworldly — water simply vanishes. Their mobile setup is genuinely impressive.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar"><img src="Assets/pro1.jpg" alt="James Keller" /></div>
-          <div class="author-info">
-            <strong>James Keller</strong>
-            <span>Porsche 992 GT3 RS</span>
-          </div>
+        <div class="registry-info-col">
+          <div class="reg-model">Ferrari Daytona SP3</div>
+          <div class="reg-specs">Rosso Libano · Carbon Aero Pack</div>
+        </div>
+        <div class="registry-treatment-col">
+          <div class="reg-label">Installed Treatment</div>
+          <div class="reg-value">XPEL Stealth Custom Matte PPF & Ceramic Pro Covalent Shield</div>
+        </div>
+        <div class="registry-metrics-col">
+          <div class="reg-metric"><span>Optical Clarity:</span><strong>99.8%</strong></div>
+          <div class="reg-metric"><span>Curing Phase:</span><strong>100% Cured</strong></div>
         </div>
       </div>
 
-      <div class="glass-card testimonial-card reveal" data-delay="0.2">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      <!-- Item 2 -->
+      <div class="registry-row glass-card">
+        <div class="registry-meta-col">
+          <div class="reg-number">#REG-112</div>
+          <div class="reg-status"><span class="reg-dot active"></span> Active Log</div>
         </div>
-        <p class="testimonial-text">My La Ferrari arrived from the dealer and AURA was there the same afternoon. Full PPF wrap completed in my private garage. Flawless results, exceptional discretion.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar"><img src="Assets/pro2.jpg" alt="Marco Villanueva" /></div>
-          <div class="author-info">
-            <strong>Marco Villanueva</strong>
-            <span>Ferrari LaFerrari Aperta</span>
-          </div>
+        <div class="registry-info-col">
+          <div class="reg-model">McLaren Speedtail</div>
+          <div class="reg-specs">Liquid Titanium Metallic · 3-Seat Config</div>
+        </div>
+        <div class="registry-treatment-col">
+          <div class="reg-label">Installed Treatment</div>
+          <div class="reg-value">Windshield Armor, Carbon Interior Wrap & High-Temp Wheel Cure</div>
+        </div>
+        <div class="registry-metrics-col">
+          <div class="reg-metric"><span>Optical Clarity:</span><strong>100%</strong></div>
+          <div class="reg-metric"><span>Curing Phase:</span><strong>100% Cured</strong></div>
         </div>
       </div>
 
-      <div class="glass-card testimonial-card reveal" data-delay="0.3">
-        <div class="testimonial-stars">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      <!-- Item 3 -->
+      <div class="registry-row glass-card">
+        <div class="registry-meta-col">
+          <div class="reg-number">#REG-143</div>
+          <div class="reg-status"><span class="reg-dot curing"></span> Curing Phase</div>
         </div>
-        <p class="testimonial-text">The Phantom Black Cullinan now has a depth I didn't think was possible from the factory. AURA's lifetime warranty sealed the deal. True professionals in every sense.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar"><img src="Assets/pro3.jpg" alt="Sofia Blackwell" /></div>
-          <div class="author-info">
-            <strong>Sofia Blackwell</strong>
-            <span>Rolls-Royce Cullinan</span>
-          </div>
+        <div class="registry-info-col">
+          <div class="reg-model">Porsche 918 Spyder</div>
+          <div class="reg-specs">Liquid Metal Chrome Blue · Weissach Package</div>
+        </div>
+        <div class="registry-treatment-col">
+          <div class="reg-label">Installed Treatment</div>
+          <div class="reg-value">Multi-Stage Correction, Full-body XPEL Ultimate Plus & Nano-Leather</div>
+        </div>
+        <div class="registry-metrics-col">
+          <div class="reg-metric"><span>Optical Clarity:</span><strong>99.6%</strong></div>
+          <div class="reg-metric"><span>Curing Phase:</span><strong>85% (18h left)</strong></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════ CTA SECTION ═══════ -->
-  <section class="cta-section">
+  <!-- ═══════ BESPOKE STUDIO CTA ═══════ -->
+  <section class="studio-cta-section">
     <div class="reveal" style="position:relative; z-index:1;">
-      <div class="section-label" style="justify-content:center;">Begin Your Journey</div>
-      <h2 class="heading-xl" style="max-width:700px; margin:0 auto 24px;">
-        Your Vehicle<br/>Deserves the <em style="font-style:normal; color:var(--accent-gold);">Finest</em>
+      <div class="section-label" style="justify-content:center;">Cleanroom Access</div>
+      <h2 class="heading-xl" style="max-width:750px; margin:0 auto 24px;">
+        Request a Cleanroom<br/>Paint Thickness & <em style="font-style:normal; color:var(--accent-gold);">Spec Analysis</em>
       </h2>
-      <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8; max-width:480px; margin:0 auto 48px;">
-        Request a consultation today. We'll come to you, assess your vehicle, and craft a bespoke protection plan.
+      <p style="color:var(--text-secondary); font-size:1rem; line-height:1.8; max-width:520px; margin:0 auto 48px;">
+        Schedule a private consultation at our cleanroom lab or request a white-glove diagnostic assessment at your secure location.
       </p>
       <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
-        <a href="contact.html" class="btn-primary">Request an Estimate</a>
-        <a href="#visualizer" class="btn-secondary">View Protection</a>
+        <a href="contact.html" class="btn-primary">Book Lab Assessment</a>
+        <a href="services.html" class="btn-secondary">View Studio Rates</a>
       </div>
     </div>
   </section>
@@ -1089,8 +1087,10 @@
   <footer>
     <div class="footer-grid">
       <div>
-        <a href="index.html" class="footer-logo"><img src="Assets/car logo.png" alt="AURA Logo" class="footer-logo-img" />AURA<span> Detailing</span></a>
-        <p class="footer-desc">Mobile ceramic coating and paint protection film for the world's most discerning vehicle owners. We come to you.</p>
+        <a href="index.html" class="footer-logo"><img src="Assets/car logo.png" alt="AURA Logo"
+            class="footer-logo-img" />AURA<span> Detailing</span></a>
+        <p class="footer-desc">Mobile ceramic coating and paint protection film for the world's most discerning vehicle
+          owners. We come to you.</p>
         <div class="social-links">
           <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
           <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
@@ -1124,7 +1124,8 @@
       </div>
       <div>
         <div class="footer-heading">Stay Informed</div>
-        <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:16px;">Exclusive care tips and launch offers for discerning owners.</p>
+        <p style="color:var(--text-secondary); font-size:0.82rem; line-height:1.7; margin-bottom:16px;">Exclusive care
+          tips and launch offers for discerning owners.</p>
         <div class="email-capture">
           <input type="email" placeholder="Your email address" />
           <button>Join</button>
@@ -1190,12 +1191,14 @@
           const data = visualizerDb[key];
           if (data) {
             // Animate card content transition
-            gsap.to('#detail-content', { opacity: 0, y: -10, duration: 0.25, onComplete: () => {
-              detailTag.textContent = data.tag;
-              detailTitle.textContent = data.title;
-              detailDesc.textContent = data.desc;
-              gsap.to('#detail-content', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
-            }});
+            gsap.to('#detail-content', {
+              opacity: 0, y: -10, duration: 0.25, onComplete: () => {
+                detailTag.textContent = data.tag;
+                detailTitle.textContent = data.title;
+                detailDesc.textContent = data.desc;
+                gsap.to('#detail-content', { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+              }
+            });
           }
         });
       });
@@ -1253,57 +1256,22 @@
           const data = defectDb[key];
           if (data) {
             // Animate defect content
-            gsap.to('.defect-content-box', { opacity: 0.8, scale: 0.99, duration: 0.2, onComplete: () => {
-              defectLevel.textContent = data.level;
-              defectTitle.textContent = data.title;
-              defectDesc.textContent = data.desc;
-              defectAction.textContent = data.action;
-              defectImg.src = data.img;
-              defectMetric.textContent = data.metric;
-              gsap.to('.defect-content-box', { opacity: 1, scale: 1, duration: 0.3, ease: 'power1.out' });
-            }});
+            gsap.to('.defect-content-box', {
+              opacity: 0.8, scale: 0.99, duration: 0.2, onComplete: () => {
+                defectLevel.textContent = data.level;
+                defectTitle.textContent = data.title;
+                defectDesc.textContent = data.desc;
+                defectAction.textContent = data.action;
+                defectImg.src = data.img;
+                defectMetric.textContent = data.metric;
+                gsap.to('.defect-content-box', { opacity: 1, scale: 1, duration: 0.3, ease: 'power1.out' });
+              }
+            });
           }
         });
       });
-
-      // ═══════ BEFORE/AFTER SLIDER ═══════
-      const slider = document.getElementById('beforeAfterSlider');
-      const sliderAfter = document.getElementById('sliderAfter');
-      const sliderHandle = document.getElementById('sliderHandle');
-
-      if (slider && sliderAfter && sliderHandle) {
-        let isDragging = false;
-        const afterImg = sliderAfter.querySelector('img');
-
-        function setSliderPosition(x) {
-          const rect = slider.getBoundingClientRect();
-          let pct = Math.max(5, Math.min(95, ((x - rect.left) / rect.width) * 100));
-          sliderAfter.style.width = pct + '%';
-          sliderHandle.style.left = pct + '%';
-        }
-
-        function updateSliderWidth() {
-          const rect = slider.getBoundingClientRect();
-          if (afterImg) {
-            afterImg.style.width = rect.width + 'px';
-          }
-        }
-
-        window.addEventListener('resize', updateSliderWidth);
-        // Run once at load
-        updateSliderWidth();
-        setTimeout(updateSliderWidth, 100); // safety fallback
-
-        sliderHandle.addEventListener('mousedown', () => isDragging = true);
-        document.addEventListener('mouseup', () => isDragging = false);
-        document.addEventListener('mousemove', e => { if (isDragging) setSliderPosition(e.clientX); });
-        sliderHandle.addEventListener('touchstart', () => isDragging = true);
-        document.addEventListener('touchend', () => isDragging = false);
-        document.addEventListener('touchmove', e => {
-          if (isDragging) setSliderPosition(e.touches[0].clientX);
-        });
-      }
     });
   </script>
 </body>
+
 </html>
