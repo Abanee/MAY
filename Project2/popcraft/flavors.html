@@ -53,14 +53,48 @@
   MOBILE MENU OVERLAY
 ======================================================= -->
 <nav id="mobile-menu" aria-label="Mobile navigation">
-  <a href="index.html"        class="mob-link">Home</a>
-  <a href="home2.html"        class="mob-link">Home 2</a>
-  <a href="flavors.html"      class="mob-link" style="color:var(--accent-gold)">Our Flavors</a>
-  <a href="subscription.html" class="mob-link">Subscription</a>
-  <a href="gift-tins.html"    class="mob-link">Gift Tins</a>
-  <a href="find-us.html"      class="mob-link">Find Us</a>
-  <a href="flavors.html" class="mob-link btn-primary mt-6" style="font-size:0.82rem;padding:0.9rem 2.5rem;font-style:normal">Shop Now →</a>
-  <p class="mob-menu-footer">© 2025 PopCraft Artisan Co.</p>
+  <!-- Mobile Menu Header -->
+  <div class="mob-menu-header">
+    <div class="mob-menu-brand">
+      <div class="mob-menu-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <ellipse cx="8" cy="7" rx="3" ry="3.5"/>
+          <ellipse cx="16" cy="7" rx="2.5" ry="3"/>
+          <ellipse cx="12" cy="5" rx="2" ry="2.5"/>
+          <ellipse cx="5"  cy="12" rx="2.5" ry="3"/>
+          <ellipse cx="19" cy="12" rx="2" ry="2.5"/>
+          <ellipse cx="12" cy="13" rx="3.5" ry="4"/>
+          <path d="M4 13h16l-2 8H6z" fill-opacity=".7"/>
+        </svg>
+      </div>
+      <div class="mob-menu-brand-text">
+        <span class="mob-menu-title">PopCraft</span>
+        <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
+      </div>
+    </div>
+    <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
+  </div>
+
+  <!-- Mobile Menu Links -->
+  <div class="mob-menu-links">
+    <a href="index.html" class="mob-link-item">Home</a>
+    <a href="home2.html" class="mob-link-item">Home 2</a>
+    <a href="flavors.html" class="mob-link-item active">Our Flavors</a>
+    <a href="subscription.html" class="mob-link-item">Subscription</a>
+    <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
+    <a href="find-us.html" class="mob-link-item">Find Us</a>
+  </div>
+
+  <!-- Mobile Menu Actions (Excludes Dashboard) -->
+  <div class="mob-menu-actions">
+    <a href="login.html" class="mob-btn-outline">Login</a>
+  </div>
+
+  <!-- Mobile Menu Footer Controls -->
+  <div class="mob-menu-footer-controls">
+    <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
+    <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
+  </div>
 </nav>
 
 <!-- ======================================================
@@ -101,18 +135,22 @@
 
       <!-- Right Controls -->
       <div class="flex items-center gap-3 sm:gap-4">
-        <div class="flex items-center gap-2">
-          <button id="theme-toggle" class="toggle-pill" aria-label="Toggle dark mode">
-            <div class="toggle-knob"></div>
+        <!-- Theme & Direction Toggles -->
+        <div class="hidden lg:flex items-center gap-1 sm:gap-1.5">
+          <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]" aria-label="Toggle dark mode">
+            🌙
           </button>
-          <span id="theme-icon" class="hidden sm:block text-base select-none" aria-hidden="true">🌙</span>
+          <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
+          <button id="dir-toggle" class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]" style="color: var(--text-primary);" aria-label="Toggle layout direction">
+            LTR
+          </button>
         </div>
         <button class="relative p-1.5" aria-label="View cart">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="color:var(--text-primary)"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
           <span id="cart-count" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center" style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
         </button>
-        <a href="#" class="btn-primary hidden sm:inline-flex">
-          Build Bundle
+        <a href="login.html" class="btn-primary hidden sm:inline-flex">
+          Login
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <button id="hamburger" class="hamburger lg:hidden" aria-label="Open mobile menu">

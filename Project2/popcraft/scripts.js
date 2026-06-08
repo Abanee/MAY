@@ -7,15 +7,19 @@
 'use strict';
 
 /* ============================================================
-   0.  IMMEDIATE THEME BOOTSTRAP
-   Apply saved theme before DOM paint to avoid flash
+   0.  IMMEDIATE BOOTSTRAP (Theme + Direction)
+   Apply saved settings before DOM paint to avoid flash
    ============================================================ */
-(function bootstrapTheme() {
-  const saved   = localStorage.getItem('popcraft-theme');
-  const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  if (saved === 'dark' || (!saved && prefers)) {
+(function bootstrapSettings() {
+  // Theme
+  const savedTheme   = localStorage.getItem('popcraft-theme');
+  const prefersTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (savedTheme === 'dark' || (!savedTheme && prefersTheme)) {
     document.documentElement.classList.add('dark');
   }
+  // Direction (LTR/RTL)
+  const savedDir = localStorage.getItem('popcraft-dir') || 'ltr';
+  document.documentElement.dir = savedDir;
 })();
 
 
@@ -25,25 +29,52 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ----------------------------------------------------------
-     1. THEME TOGGLE
+     1. THEME & DIRECTION TOGGLES
      ---------------------------------------------------------- */
   const themeToggle = document.getElementById('theme-toggle');
-  const themeIconEl = document.getElementById('theme-icon');
+  const themeToggleMob = document.getElementById('theme-toggle-mob');
+  const dirToggle   = document.getElementById('dir-toggle');
+  const dirToggleMob = document.getElementById('dir-toggle-mob');
 
   function syncThemeUI() {
     const isDark = document.documentElement.classList.contains('dark');
-    themeToggle?.classList.toggle('active', isDark);
-    if (themeIconEl) themeIconEl.textContent = isDark ? '☀️' : '🌙';
+    const text = isDark ? '☀️' : '🌙';
+    if (themeToggle) themeToggle.textContent = text;
+    if (themeToggleMob) themeToggleMob.textContent = text;
   }
 
-  // Sync on load
+  // Sync theme UI
   syncThemeUI();
 
-  themeToggle?.addEventListener('click', () => {
+  const handleThemeToggle = () => {
     const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('popcraft-theme', isDark ? 'dark' : 'light');
     syncThemeUI();
-  });
+  };
+
+  themeToggle?.addEventListener('click', handleThemeToggle);
+  themeToggleMob?.addEventListener('click', handleThemeToggle);
+
+  function syncDirUI() {
+    const isRtl = document.documentElement.dir === 'rtl';
+    const text = isRtl ? 'RTL' : 'LTR';
+    if (dirToggle) dirToggle.textContent = text;
+    if (dirToggleMob) dirToggleMob.textContent = text;
+  }
+
+  // Sync direction UI
+  syncDirUI();
+
+  const handleDirToggle = () => {
+    const isRtl = document.documentElement.dir === 'rtl';
+    const newDir = isRtl ? 'ltr' : 'rtl';
+    document.documentElement.dir = newDir;
+    localStorage.setItem('popcraft-dir', newDir);
+    syncDirUI();
+  };
+
+  dirToggle?.addEventListener('click', handleDirToggle);
+  dirToggleMob?.addEventListener('click', handleDirToggle);
 
 
   /* ----------------------------------------------------------
@@ -51,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
      ---------------------------------------------------------- */
   const hamburger  = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobile-menu');
+  const mobCloseBtn = document.getElementById('mob-close-btn');
 
   function closeMobileMenu() {
     hamburger?.classList.remove('open');
@@ -63,6 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburger.classList.toggle('open', isOpen);
     document.body.style.overflow = isOpen ? 'hidden' : '';
   });
+
+  mobCloseBtn?.addEventListener('click', closeMobileMenu);
 
   // Close on link click
   mobileMenu?.querySelectorAll('a').forEach(link =>
@@ -987,4 +1021,75 @@ document.addEventListener('DOMContentLoaded', () => {
     processSteps[0]?.click();
   }
 
+  /* ----------------------------------------------------------
+     23. AUTH FORM HANDLING (LOGIN & SIGNUP)
+     ---------------------------------------------------------- */
+  const loginForm = document.getElementById('login-form');
+  const signupForm = document.getElementById('signup-form');
+
+  loginForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = document.getElementById('login-email')?.value.trim();
+    const password = document.getElementById('login-password')?.value.trim();
+
+    if (!email || !password) {
+      showToast('Please fill out all fields.');
+      return;
+    }
+
+    // Simulate login success
+    showToast('✓ Successfully logged in! Redirecting...');
+    setTimeout(() => {
+      window.location.href = 'index.html';
+    }, 2000);
+  });
+
+  signupForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('signup-name')?.value.trim();
+    const email = document.getElementById('signup-email')?.value.trim();
+    const password = document.getElementById('signup-password')?.value.trim();
+    const confirm = document.getElementById('signup-confirm')?.value.trim();
+    const terms = document.getElementById('terms')?.checked;
+
+    if (!name || !email || !password || !confirm) {
+      showToast('Please fill out all fields.');
+      return;
+    }
+
+    if (password.length < 8) {
+      showToast('Password must be at least 8 characters.');
+      return;
+    }
+
+    if (password !== confirm) {
+      showToast('Passwords do not match.');
+      return;
+    }
+
+    if (!terms) {
+      showToast('You must agree to the Terms of Service.');
+      return;
+    }
+
+    // Simulate signup success
+    showToast('✓ Account created successfully! Redirecting...');
+    setTimeout(() => {
+      window.location.href = 'login.html';
+    }, 2000);
+  });
+
+  // Bind simulated Apple / Google clicks
+  const socialButtons = document.querySelectorAll('.social-btn');
+  socialButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const provider = btn.querySelector('span')?.textContent.trim() || 'Social';
+      showToast(`Redirecting to ${provider} authentication...`);
+      setTimeout(() => {
+        showToast(`✓ Authenticated via ${provider}!`);
+      }, 1500);
+    });
+  });
+
 }); // END DOMContentLoaded
+

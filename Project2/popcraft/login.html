@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PopCraft — Log in to your premium artisan popcorn account to manage subscriptions, orders, and details." />
+  <meta name="theme-color" content="#D97706" />
+  <title>Log In — PopCraft Gourmet Popcorn Co.</title>
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><circle cx='12' cy='12' r='4' fill='white' opacity='.9'/><circle cx='20' cy='11' r='3' fill='white' opacity='.9'/><circle cx='10' cy='19' r='3' fill='white' opacity='.8'/><circle cx='19' cy='20' r='4' fill='white' opacity='.9'/><circle cx='15' cy='22' r='2.5' fill='white' opacity='.7'/></svg>" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display:    ['"Playfair Display"', 'serif'],
+            cormorant:  ['"Cormorant Garamond"', 'serif'],
+            body:       ['"DM Sans"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Global Stylesheet -->
+  <link rel="stylesheet" href="global.css" />
+</head>
+<body>
+
+<!-- ======================================================
+  SCROLL PROGRESS BAR
+======================================================= -->
+<div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+<!-- ======================================================
+  GRAIN OVERLAY
+======================================================= -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- ======================================================
+  CART TOAST NOTIFICATION
+======================================================= -->
+<div id="cart-toast" role="alert" aria-live="polite">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toast-text">Item added to cart!</span>
+</div>
+
+<!-- ======================================================
+  MOBILE MENU OVERLAY
+======================================================= -->
+<nav id="mobile-menu" aria-label="Mobile navigation">
+  <!-- Mobile Menu Header -->
+  <div class="mob-menu-header">
+    <div class="mob-menu-brand">
+      <div class="mob-menu-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <ellipse cx="8" cy="7" rx="3" ry="3.5"/>
+          <ellipse cx="16" cy="7" rx="2.5" ry="3"/>
+          <ellipse cx="12" cy="5" rx="2" ry="2.5"/>
+          <ellipse cx="5"  cy="12" rx="2.5" ry="3"/>
+          <ellipse cx="19" cy="12" rx="2" ry="2.5"/>
+          <ellipse cx="12" cy="13" rx="3.5" ry="4"/>
+          <path d="M4 13h16l-2 8H6z" fill-opacity=".7"/>
+        </svg>
+      </div>
+      <div class="mob-menu-brand-text">
+        <span class="mob-menu-title">PopCraft</span>
+        <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
+      </div>
+    </div>
+    <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
+  </div>
+
+  <!-- Mobile Menu Links -->
+  <div class="mob-menu-links">
+    <a href="index.html" class="mob-link-item">Home</a>
+    <a href="home2.html" class="mob-link-item">Home 2</a>
+    <a href="flavors.html" class="mob-link-item">Our Flavors</a>
+    <a href="subscription.html" class="mob-link-item">Subscription</a>
+    <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
+    <a href="find-us.html" class="mob-link-item">Find Us</a>
+  </div>
+
+  <!-- Mobile Menu Actions -->
+  <div class="mob-menu-actions">
+    <a href="login.html" class="mob-btn-outline">Login</a>
+  </div>
+
+  <!-- Mobile Menu Footer Controls -->
+  <div class="mob-menu-footer-controls">
+    <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
+    <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
+  </div>
+</nav>
+
+<!-- ======================================================
+  NAVIGATION BAR
+======================================================= -->
+<header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
+        <div class="nav-logo-badge">
+          <!-- Popcorn icon (SVG) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <ellipse cx="8" cy="7" rx="3" ry="3.5"/>
+            <ellipse cx="16" cy="7" rx="2.5" ry="3"/>
+            <ellipse cx="12" cy="5" rx="2" ry="2.5"/>
+            <ellipse cx="5"  cy="12" rx="2.5" ry="3"/>
+            <ellipse cx="19" cy="12" rx="2" ry="2.5"/>
+            <ellipse cx="12" cy="13" rx="3.5" ry="4"/>
+            <path d="M4 13h16l-2 8H6z" fill-opacity=".7"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-baseline gap-0.5">
+            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
+            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--accent-gold)">Craft</span>
+          </div>
+          <p style="font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-secondary);margin-top:-2px">Artisan Popcorn Co.</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
+        <a href="index.html"        class="nav-link">Home</a>
+        <a href="home2.html"        class="nav-link">Home 2</a>
+        <a href="flavors.html"      class="nav-link">Our Flavors</a>
+        <a href="subscription.html" class="nav-link">Subscription</a>
+        <a href="gift-tins.html"    class="nav-link">Gift Tins</a>
+        <a href="find-us.html"      class="nav-link">Find Us</a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Theme & Direction Toggles -->
+        <div class="hidden lg:flex items-center gap-1 sm:gap-1.5">
+          <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]" aria-label="Toggle dark mode">
+            🌙
+          </button>
+          <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
+          <button id="dir-toggle" class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]" style="color: var(--text-primary);" aria-label="Toggle layout direction">
+            LTR
+          </button>
+        </div>
+
+        <!-- Cart Icon -->
+        <button class="relative p-1.5" aria-label="View cart (0 items)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="color:var(--text-primary)"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span id="cart-count" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center text-gold" style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
+        </button>
+
+        <!-- CTA -->
+        <a href="login.html" class="btn-primary hidden sm:inline-flex">
+          Login
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Hamburger (mobile) -->
+        <button id="hamburger" class="hamburger lg:hidden" aria-label="Open mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ======================================================
+  MAIN CONTENT (LOGIN FORM CARD)
+======================================================= -->
+<main class="auth-section">
+  <!-- Decorative Background Glows -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-20 dark:opacity-10" aria-hidden="true">
+    <div class="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full bg-[var(--accent-gold)] filter blur-[120px]"></div>
+    <div class="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] rounded-full bg-[var(--accent-caramel)] filter blur-[120px]"></div>
+  </div>
+
+  <div class="auth-card">
+    <div class="text-center">
+      <h1 class="auth-title">Welcome Back</h1>
+      <p class="auth-subtitle mt-2">Log in to manage your popcorn subscriptions, view order history, and access exclusive flavor drops.</p>
+    </div>
+
+    <!-- Social Login Buttons -->
+    <div class="social-login-group">
+      <button type="button" class="social-btn" id="google-login-btn" aria-label="Sign in with Google">
+        <!-- Google Icon -->
+        <svg width="18" height="18" viewBox="0 0 24 24">
+          <path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.67 1.53 15.01 1 12 1 7.35 1 3.4 3.67 1.48 7.57l3.83 2.97c.9-2.7 3.4-4.5 6.69-4.5z"/>
+          <path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.36H12v4.51h6.46c-.29 1.48-1.14 2.73-2.42 3.58l3.77 2.92c2.2-2.03 3.48-5.02 3.48-8.65z"/>
+          <path fill="#FBBC05" d="M5.31 10.54c-.24-.72-.38-1.5-.38-2.3c0-.8.14-1.58.38-2.3L1.48 2.97C.54 4.87 0 7.02 0 9.27c0 2.25.54 4.4 1.48 6.3l3.83-3.03z"/>
+          <path fill="#34A853" d="M12 17.5c2.97 0 5.46-.98 7.28-2.66l-3.77-2.92c-1.01.68-2.29 1.07-3.51 1.07-3.29 0-6.09-2.21-7.09-5.18L1.08 10.8c1.92 3.9 5.87 6.7 10.92 6.7z"/>
+        </svg>
+        <span>Google</span>
+      </button>
+      <button type="button" class="social-btn" id="apple-login-btn" aria-label="Sign in with Apple">
+        <!-- Apple Icon -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.22.67-2.94 1.52-.64.74-1.2 1.88-1.05 3 .9.07 2.34-.65 3-1.46z"/>
+        </svg>
+        <span>Apple</span>
+      </button>
+    </div>
+
+    <div class="auth-divider">or log in with email</div>
+
+    <form class="auth-form" id="login-form" autocomplete="on">
+      <div class="form-group">
+        <label for="login-email" class="form-label">Email Address</label>
+        <input type="email" id="login-email" class="auth-input" placeholder="you@example.com" required autocomplete="username" />
+      </div>
+
+      <div class="form-group">
+        <div class="flex justify-between items-center">
+          <label for="login-password" class="form-label">Password</label>
+          <a href="#" class="auth-link text-xs">Forgot password?</a>
+        </div>
+        <input type="password" id="login-password" class="auth-input" placeholder="••••••••" required autocomplete="current-password" />
+      </div>
+
+      <div class="auth-options">
+        <label class="auth-checkbox-label">
+          <input type="checkbox" id="remember-me" />
+          <span>Keep me logged in</span>
+        </label>
+      </div>
+
+      <button type="submit" class="auth-btn">
+        Log In
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      Don't have an account? <a href="signup.html" class="auth-link">Sign up</a>
+    </div>
+  </div>
+</main>
+
+<!-- ======================================================
+  SECTION 6 — FOOTER
+======================================================= -->
+<footer id="site-footer" role="contentinfo">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10 pt-16 pb-10">
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-14">
+
+      <!-- Brand Column -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-5">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><ellipse cx="8" cy="7" rx="3" ry="3.5"/><ellipse cx="16" cy="7" rx="2.5" ry="3"/><ellipse cx="12" cy="5" rx="2" ry="2.5"/><ellipse cx="5" cy="12" rx="2.5" ry="3"/><ellipse cx="19" cy="12" rx="2" ry="2.5"/><ellipse cx="12" cy="13" rx="3.5" ry="4"/><path d="M4 13h16l-2 8H6z" fill-opacity=".7"/></svg>
+          </div>
+          <div>
+            <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
+            <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">Artisan Popcorn Co.</p>
+          </div>
+        </div>
+        <p style="font-size:0.85rem;line-height:1.75;color:rgba(245,245,244,0.5);max-width:280px;margin-bottom:1.5rem">
+          Handcrafted in small batches since 2019. We believe that the best snacks are made with the best ingredients and a little bit of love.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex items-center gap-3" aria-label="Social media links">
+          <!-- Instagram -->
+          <a href="#" class="social-icon" aria-label="Follow us on Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <!-- Twitter/X -->
+          <a href="#" class="social-icon" aria-label="Follow us on X">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" class="social-icon" aria-label="Follow us on Facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <!-- Pinterest -->
+          <a href="#" class="social-icon" aria-label="Follow us on Pinterest">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 00-3.56 19.32c-.05-.4-.1-1.02.02-1.46.13-.44.84-2.82.84-2.82s-.21-.43-.21-1.06c0-1 .58-1.74 1.3-1.74.61 0 .91.46.91 1.01 0 .61-.39 1.53-.6 2.38-.17.71.36 1.29 1.06 1.29 1.27 0 2.25-1.34 2.25-3.27 0-1.71-1.23-2.9-2.98-2.9-2.03 0-3.22 1.52-3.22 3.1 0 .61.23 1.27.53 1.63.06.07.07.13.05.2-.05.22-.18.71-.2.81-.03.13-.1.16-.23.1-.87-.4-1.41-1.68-1.41-2.71 0-2.2 1.6-4.23 4.62-4.23 2.42 0 4.31 1.73 4.31 4.04 0 2.41-1.52 4.35-3.62 4.35-.71 0-1.37-.37-1.6-.8l-.43 1.62c-.16.6-.58 1.35-.87 1.81A10 10 0 1022 12 10 10 0 0012 2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Shop -->
+      <div>
+        <h4 class="footer-heading">Shop</h4>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+          <li><a href="#flavors" class="footer-link">All Flavors</a></li>
+          <li><a href="#club"    class="footer-link">Subscription Box</a></li>
+          <li><a href="#gifting" class="footer-link">Gift Tins</a></li>
+          <li><a href="#gifting" class="footer-link">Catering</a></li>
+          <li><a href="#"        class="footer-link">Seasonal Specials</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="footer-heading">Company</h4>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+          <li><a href="#" class="footer-link">Our Story</a></li>
+          <li><a href="#" class="footer-link">Ingredients &amp; Sourcing</a></li>
+          <li><a href="#" class="footer-link">Sustainability</a></li>
+          <li><a href="#" class="footer-link">Press Kit</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 class="footer-heading">Stay in the Loop</h4>
+        <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">
+          New flavors, limited drops, and member-only discounts — straight to your inbox.
+        </p>
+        <form id="newsletter-form" novalidate>
+          <div class="newsletter-wrap">
+            <input
+              type="email"
+              class="newsletter-input"
+              placeholder="your@email.com"
+              aria-label="Email address"
+              required
+            />
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe</button>
+          </div>
+          <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam, ever. Unsubscribe any time.</p>
+        </form>
+      </div>
+
+    </div><!-- /footer grid -->
+
+    <!-- Bottom Bar -->
+    <div class="footer-divider"></div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">
+        © 2025 PopCraft Artisan Popcorn Co. All rights reserved.
+      </p>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
+        <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Use</a>
+        <a href="#" class="footer-link" style="font-size:0.72rem">Accessibility</a>
+        <a href="#" class="footer-link" style="font-size:0.72rem">Do Not Sell My Data</a>
+      </div>
+    </div>
+
+  </div><!-- /max-w -->
+</footer>
+
+
+<!-- ======================================================
+  SCRIPTS
+======================================================= -->
+<script src="scripts.js"></script>
+
+</body>
+</html>
