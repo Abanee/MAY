@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PopCraft Gift Tins — Beautiful handcrafted popcorn gift tins for every occasion. Birthdays, holidays, corporate gifting, and more." />
+  <meta name="theme-color" content="#D97706" />
+  <title>Gift Tins — PopCraft Artisan Popcorn Co.</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><circle cx='12' cy='12' r='4' fill='white' opacity='.9'/><circle cx='20' cy='11' r='3' fill='white' opacity='.9'/><circle cx='10' cy='19' r='3' fill='white' opacity='.8'/><circle cx='19' cy='20' r='4' fill='white' opacity='.9'/><circle cx='15' cy='22' r='2.5' fill='white' opacity='.7'/></svg>" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display:   ['"Playfair Display"', 'serif'],
+            cormorant: ['"Cormorant Garamond"', 'serif'],
+            body:      ['"DM Sans"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="global.css" />
+
+  <style>
+    /* ── Gift Hero ── */
+    .gift-hero {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-primary);
+    }
+    .gift-hero-bg {
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 80% 30%, rgba(217,119,6,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 15% 70%, rgba(180,83,9,0.08) 0%, transparent 45%);
+    }
+    .gift-hero-dots {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(217,119,6,0.055) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+
+    /* ── Occasion Tabs ── */
+    .occ-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .occ-tab {
+      padding: 0.55rem 1.3rem;
+      border-radius: 30px;
+      border: 1.5px solid var(--border-color);
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text-secondary);
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .occ-tab:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+    .occ-tab.active {
+      background: var(--accent-gold);
+      border-color: var(--accent-gold);
+      color: #fff;
+    }
+
+    /* ── Tin Product Cards ── */
+    .tin-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94),
+                  box-shadow 0.35s ease,
+                  border-color 0.25s ease;
+    }
+    .tin-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-gold);
+    }
+    .tin-img {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+    .tin-img-bg {
+      position: absolute; inset: 0;
+      transition: transform 0.55s ease;
+    }
+    .tin-card:hover .tin-img-bg { transform: scale(1.06); }
+    .tin-tag {
+      position: absolute;
+      top: 1rem; left: 1rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+    }
+    .tin-body { padding: 1.5rem; }
+    .tin-flavors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin: 0.75rem 0 1.25rem;
+    }
+    .tin-flavor-pill {
+      font-size: 0.63rem;
+      font-weight: 500;
+      padding: 0.2rem 0.55rem;
+      border-radius: 20px;
+      background: var(--bg-surface-2);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+    }
+
+    /* ── Customization Section ── */
+    .custom-section {
+      background: var(--bg-surface-2);
+      position: relative;
+      overflow: hidden;
+    }
+    .custom-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .custom-num {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: var(--accent-gold);
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 6px 16px rgba(217,119,6,0.28);
+    }
+
+    /* ── Corporate Banner ── */
+    .corp-banner {
+      background: linear-gradient(135deg, #2D1200 0%, #451A03 50%, #7C2D12 100%);
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .corp-banner::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 85% 50%, rgba(245,158,11,0.15) 0%, transparent 40%),
+        radial-gradient(circle, rgba(217,119,6,0.05) 1px, transparent 1px);
+      background-size: auto, 30px 30px;
+    }
+    .corp-stat {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .corp-stat:last-child { border-right: none; }
+
+    /* ── Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .reveal.revealed { opacity: 1; transform: translateY(0); }
+    .d-100 { transition-delay: 0.10s; }
+    .d-200 { transition-delay: 0.20s; }
+    .d-300 { transition-delay: 0.30s; }
+    .d-400 { transition-delay: 0.40s; }
+
+    /* ── Tin hidden state ── */
+    .tin-card[data-hidden="true"] { display: none; }
+
+    /* ── Feature row ── */
+    .feature-row {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-size: 0.83rem;
+      color: var(--text-secondary);
+    }
+    .feature-row-icon {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: rgba(217,119,6,0.1);
+      color: var(--accent-gold);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── Gift size badge ── */
+    .size-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.28rem 0.7rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+<div class="grain-overlay" aria-hidden="true"></div>
+<div id="cart-toast" role="alert" aria-live="polite">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toast-text">Item added to cart!</span>
+</div>
+
+<!-- ======================================================
+  MOBILE MENU
+======================================================= -->
+<nav id="mobile-menu" aria-label="Mobile navigation">
+  <a href="index.html"        class="mob-link">Home</a>
+  <a href="home2.html"        class="mob-link">Home 2</a>
+  <a href="flavors.html"      class="mob-link">Our Flavors</a>
+  <a href="subscription.html" class="mob-link">Subscription</a>
+  <a href="gift-tins.html"    class="mob-link" style="color:var(--accent-gold)">Gift Tins</a>
+  <a href="find-us.html"      class="mob-link">Find Us</a>
+  <a href="#tins" class="mob-link btn-primary mt-6" style="font-size:0.82rem;padding:0.9rem 2.5rem;font-style:normal">Shop Gift Tins →</a>
+  <p class="mob-menu-footer">© 2025 PopCraft Artisan Co.</p>
+</nav>
+
+<!-- ======================================================
+  NAVIGATION BAR
+======================================================= -->
+<header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
+        <div class="nav-logo-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+            <ellipse cx="8" cy="7" rx="3" ry="3.5"/><ellipse cx="16" cy="7" rx="2.5" ry="3"/>
+            <ellipse cx="12" cy="5" rx="2" ry="2.5"/><ellipse cx="5" cy="12" rx="2.5" ry="3"/>
+            <ellipse cx="19" cy="12" rx="2" ry="2.5"/><ellipse cx="12" cy="13" rx="3.5" ry="4"/>
+            <path d="M4 13h16l-2 8H6z" fill-opacity=".7"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-baseline gap-0.5">
+            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
+            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--accent-gold)">Craft</span>
+          </div>
+          <p class="hidden sm:block" style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">Artisan Popcorn Co.</p>
+        </div>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
+        <a href="index.html"        class="nav-link">Home</a>
+        <a href="home2.html"        class="nav-link">Home 2</a>
+        <a href="flavors.html"      class="nav-link">Our Flavors</a>
+        <a href="subscription.html" class="nav-link">Subscription</a>
+        <a href="gift-tins.html"    class="nav-link active">Gift Tins</a>
+        <a href="find-us.html"      class="nav-link">Find Us</a>
+      </nav>
+
+      <div class="flex items-center gap-3 sm:gap-4">
+        <div class="flex items-center gap-2">
+          <button id="theme-toggle" class="toggle-pill" aria-label="Toggle dark mode">
+            <div class="toggle-knob"></div>
+          </button>
+          <span id="theme-icon" class="hidden sm:block text-base select-none" aria-hidden="true">🌙</span>
+        </div>
+        <button class="relative p-1.5" aria-label="View cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="color:var(--text-primary)"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span id="cart-count" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center" style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
+        </button>
+        <a href="#tins" class="btn-primary hidden sm:inline-flex">
+          Shop Tins
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <button id="hamburger" class="hamburger lg:hidden" aria-label="Open mobile menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ======================================================
+  HERO
+======================================================= -->
+<section class="gift-hero" aria-label="Gift tins hero">
+  <div class="gift-hero-bg" aria-hidden="true"></div>
+  <div class="gift-hero-dots" aria-hidden="true"></div>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-10 w-full py-16 lg:py-24">
+    <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+
+      <!-- Left: Copy -->
+      <div>
+        <p class="section-label reveal" style="margin-bottom:1.2rem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z"/></svg>
+          Artisan Gift Tins
+        </p>
+        <h1 class="font-display font-black reveal d-100"
+            style="font-size:clamp(2.8rem,6.5vw,5.2rem);line-height:1.04;color:var(--text-primary);margin-bottom:1.5rem">
+          The Gift That<br>
+          <em style="color:var(--accent-gold)">Pops Open.</em>
+        </h1>
+        <p class="reveal d-200" style="font-size:1.05rem;color:var(--text-secondary);line-height:1.8;max-width:480px;margin-bottom:2rem">
+          Beautifully curated popcorn gift tins for every celebration. 
+          From intimate birthdays to large-scale corporate gifting — 
+          we've got the perfect tin.
+        </p>
+        <div class="flex flex-wrap gap-4 reveal d-300">
+          <a href="#tins" class="btn-primary">
+            Browse Gift Tins
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#corporate" class="btn-outline">Corporate Orders</a>
+        </div>
+        <div class="flex flex-wrap gap-5 reveal d-400" style="margin-top:2.5rem">
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-gold)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">Luxury Packaging</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-gold)"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">Custom Message Cards</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-gold)"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">Ships in 2–3 Days</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Tin stack visual -->
+      <div class="relative hidden lg:block" aria-hidden="true">
+        <div class="relative mx-auto" style="width:380px;height:420px">
+          <div class="absolute" style="width:450px;height:450px;background:radial-gradient(circle,rgba(217,119,6,0.15) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;"></div>
+
+          <!-- Bottom tin -->
+          <div class="absolute" style="bottom:0;left:50%;transform:translateX(-50%);width:260px;height:200px;background:linear-gradient(145deg,#3B1208,#7C2D12);border-radius:12px 12px 6px 6px;box-shadow:0 20px 50px rgba(0,0,0,0.35)">
+            <div style="width:100%;padding:1.25rem;display:flex;flex-direction:column;align-items:center;gap:0.4rem">
+              <p style="font-size:0.5rem;letter-spacing:0.25em;color:rgba(255,255,255,0.35);text-transform:uppercase">PopCraft</p>
+              <p style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff">Grand Tin</p>
+              <p style="font-size:0.58rem;color:rgba(255,255,255,0.45)">14 flavors · 24 oz</p>
+            </div>
+            <div style="position:absolute;bottom:0;left:0;right:0;height:70px;background:linear-gradient(145deg,#2D1200,#451A03);border-radius:0 0 6px 6px;display:flex;align-items:center;justify-content:center">
+              <div style="width:44px;height:44px;background:var(--accent-gold);border-radius:50%;display:flex;align-items:center;justify-content:center">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><ellipse cx="8" cy="7" rx="3" ry="3.5"/><ellipse cx="16" cy="7" rx="2.5" ry="3"/><ellipse cx="12" cy="5" rx="2" ry="2.5"/><ellipse cx="5" cy="12" rx="2.5" ry="3"/><ellipse cx="19" cy="12" rx="2" ry="2.5"/><ellipse cx="12" cy="13" rx="3.5" ry="4"/><path d="M4 13h16l-2 8H6z" fill-opacity=".7"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle tin (slightly rotated) -->
+          <div class="absolute" style="top:80px;left:20px;width:180px;height:140px;background:linear-gradient(145deg,#7C2D12,#C05621);border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,0.25);transform:rotate(-8deg)">
+            <div style="padding:1rem;text-align:center">
+              <p style="font-family:'Playfair Display',serif;font-size:0.9rem;font-weight:700;color:#fff">Duo Tin</p>
+              <p style="font-size:0.55rem;color:rgba(255,255,255,0.5)">2 flavors · 6 oz</p>
+            </div>
+          </div>
+
+          <!-- Small tin top right -->
+          <div class="absolute" style="top:50px;right:10px;width:130px;height:100px;background:linear-gradient(145deg,#C05621,#D97706);border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.2);transform:rotate(7deg)">
+            <div style="padding:0.75rem;text-align:center">
+              <p style="font-family:'Playfair Display',serif;font-size:0.8rem;font-weight:700;color:#fff">Mini Tin</p>
+              <p style="font-size:0.52rem;color:rgba(255,255,255,0.55)">1 flavor · 2 oz</p>
+            </div>
+          </div>
+
+          <!-- Ribbon -->
+          <div class="absolute" style="top:-10px;left:50%;transform:translateX(-50%);font-size:2.5rem;animation:floatRibbon 3s ease-in-out infinite">🎀</div>
+          <div class="absolute" style="top:30px;right:0;font-size:1.4rem;animation:floatRibbon 4s ease-in-out infinite reverse">✨</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+  TIN COLLECTION
+======================================================= -->
+<section id="tins" style="padding:6rem 0;background:var(--bg-primary)" aria-label="Gift tin collection">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-8">
+      <div>
+        <p class="section-label reveal">Our Collection</p>
+        <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);margin-top:0.5rem">
+          Gift Tins for Every Occasion
+        </h2>
+      </div>
+    </div>
+
+    <!-- Occasion Tabs -->
+    <div class="occ-tabs reveal" role="tablist" aria-label="Filter by occasion">
+      <button class="occ-tab active" data-occ="all"       role="tab" aria-selected="true">🌟 All Tins</button>
+      <button class="occ-tab"        data-occ="birthday"  role="tab" aria-selected="false">🎂 Birthday</button>
+      <button class="occ-tab"        data-occ="holiday"   role="tab" aria-selected="false">🎄 Holiday</button>
+      <button class="occ-tab"        data-occ="corporate" role="tab" aria-selected="false">💼 Corporate</button>
+      <button class="occ-tab"        data-occ="wedding"   role="tab" aria-selected="false">💍 Wedding</button>
+      <button class="occ-tab"        data-occ="everyday"  role="tab" aria-selected="false">🌸 Just Because</button>
+    </div>
+
+    <!-- Tin Cards Grid -->
+    <div id="tins-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Mini Tin -->
+      <div class="tin-card reveal" data-occ="everyday birthday">
+        <div class="tin-img">
+          <div class="tin-img-bg" style="background:linear-gradient(145deg,#D97706,#B45309);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:4rem;margin-bottom:0.5rem">🍿</div>
+              <p style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:rgba(255,255,255,0.9)">Mini Tin</p>
+            </div>
+          </div>
+          <div class="tin-tag" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.2)">
+            <span class="size-pill" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85)">1 Flavor · 2 oz</span>
+          </div>
+        </div>
+        <div class="tin-body">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Sweet Mini</h3>
+            <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$18</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.2rem">
+            Perfect for party favors, stocking stuffers, or a thoughtful little treat.
+          </p>
+          <div class="tin-flavors">
+            <span class="tin-flavor-pill">Honey Butter</span>
+            <span class="tin-flavor-pill">Caramel Classic</span>
+            <span class="tin-flavor-pill">White Cheddar</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.5rem">
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Choose 1 flavor from 12 options</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Optional handwritten gift card</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Signature kraft ribbon</div>
+          </div>
+          <a href="#" class="btn-primary w-full" style="justify-content:center">Add to Cart</a>
+        </div>
+      </div>
+
+      <!-- Duo Tin -->
+      <div class="tin-card reveal d-100" data-occ="birthday everyday wedding">
+        <div class="tin-img">
+          <div class="tin-img-bg" style="background:linear-gradient(145deg,#B45309,#7C2D12);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:3.5rem;margin-bottom:0.5rem">🎁</div>
+              <p style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:rgba(255,255,255,0.9)">Duo Tin</p>
+            </div>
+          </div>
+          <div class="tin-tag" style="background:rgba(217,119,6,0.9);color:#fff">
+            ⭐ Best Seller
+          </div>
+        </div>
+        <div class="tin-body">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Duo Tin</h3>
+            <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$32</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.2rem">
+            Two curated flavors in a beautiful split-compartment tin. A classic crowd-pleaser.
+          </p>
+          <div class="tin-flavors">
+            <span class="tin-flavor-pill">2 Flavors</span>
+            <span class="tin-flavor-pill">6 oz total</span>
+            <span class="tin-flavor-pill">Your choice</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.5rem">
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Choose any 2 flavors</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Custom gift message included</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Reusable collector's tin</div>
+          </div>
+          <a href="#" class="btn-primary w-full" style="justify-content:center">Add to Cart</a>
+        </div>
+      </div>
+
+      <!-- Classic Gift Tin -->
+      <div class="tin-card reveal d-200" data-occ="birthday holiday everyday">
+        <div class="tin-img">
+          <div class="tin-img-bg" style="background:linear-gradient(145deg,#451A03,#B45309);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:3.5rem;margin-bottom:0.5rem">🎊</div>
+              <p style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:rgba(255,255,255,0.9)">Classic</p>
+            </div>
+          </div>
+          <div class="tin-tag" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.2)">
+            <span class="size-pill" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85)">4 Flavors · 12 oz</span>
+          </div>
+        </div>
+        <div class="tin-body">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Classic Tin</h3>
+            <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$48</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.2rem">
+            Four handpicked flavors in our signature collector's tin — the go-to gift.
+          </p>
+          <div class="tin-flavors">
+            <span class="tin-flavor-pill">Truffle Sea Salt</span>
+            <span class="tin-flavor-pill">Honey Sriracha</span>
+            <span class="tin-flavor-pill">Dark Chocolate</span>
+            <span class="tin-flavor-pill">Classic Caramel</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.5rem">
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Choose or use our curated selection</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Printed flavor tasting notes card</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Matte-finish collector's tin</div>
+          </div>
+          <a href="#" class="btn-primary w-full" style="justify-content:center">Add to Cart</a>
+        </div>
+      </div>
+
+      <!-- Holiday Tin -->
+      <div class="tin-card reveal" data-occ="holiday birthday">
+        <div class="tin-img">
+          <div class="tin-img-bg" style="background:linear-gradient(145deg,#1B4332,#2D6A4F);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:3.5rem;margin-bottom:0.5rem">🎄</div>
+              <p style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:rgba(255,255,255,0.9)">Holiday Tin</p>
+            </div>
+          </div>
+          <div class="tin-tag" style="background:#D97706;color:#fff">
+            Limited Edition
+          </div>
+        </div>
+        <div class="tin-body">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Holiday Tin</h3>
+            <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$58</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.2rem">
+            Our festive limited-edition tin with seasonal flavors crafted just for the holiday season.
+          </p>
+          <div class="tin-flavors">
+            <span class="tin-flavor-pill">Cinnamon Sugar</span>
+            <span class="tin-flavor-pill">Peppermint Bark</span>
+            <span class="tin-flavor-pill">Spiced Caramel</span>
+            <span class="tin-flavor-pill">+ 3 more</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.5rem">
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>6 seasonal flavors · 18 oz</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Festive tin with foil embossing</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Gift wrap &amp; tissue paper included</div>
+          </div>
+          <a href="#" class="btn-primary w-full" style="justify-content:center">Add to Cart</a>
+        </div>
+      </div>
+
+      <!-- Wedding Favor Tin -->
+      <div class="tin-card reveal d-100" data-occ="wedding">
+        <div class="tin-img">
+          <div class="tin-img-bg" style="background:linear-gradient(145deg,#9D174D,#DB2777);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:3.5rem;margin-bottom:0.5rem">💍</div>
+              <p style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:rgba(255,255,255,0.9)">Wedding</p>
+            </div>
+          </div>
+          <div class="tin-tag" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.2)">
+            <span class="size-pill" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85)">Min. 25 tins</span>
+          </div>
+        </div>
+        <div class="tin-body">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">Wedding Favors</h3>
+            <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$14<span style="font-size:0.9rem;font-weight:500">/ea</span></span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.2rem">
+            Custom-branded favor tins with the couple's names and wedding date. Minimum 25 units.
+          </p>
+          <div class="tin-flavors">
+            <span class="tin-flavor-pill">Mini Tin · 2 oz</span>
+            <span class="tin-flavor-pill">Custom label</span>
+            <span class="tin-flavor-pill">Any 1 flavor</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.5rem">
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Custom lid printing with your design</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Ribbon color matching available</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Bulk pricing tiers from 25–1000+</div>
+          </div>
+          <a href="#corporate" class="btn-primary w-full" style="justify-content:center">Request Quote</a>
+        </div>
+      </div>
+
+      <!-- Grand Tin -->
+      <div class="tin-card reveal d-200" data-occ="holiday corporate birthday">
+        <div class="tin-img">
+          <div class="tin-img-bg" style="background:linear-gradient(145deg,#3B1208,#7C2D12);display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div style="font-size:3.5rem;margin-bottom:0.5rem">👑</div>
+              <p style="font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:rgba(255,255,255,0.9)">Grand Tin</p>
+            </div>
+          </div>
+          <div class="tin-tag" style="background:var(--accent-gold);color:#fff">
+            Premium Pick
+          </div>
+        </div>
+        <div class="tin-body">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Grand Tin</h3>
+            <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$98</span>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:0.2rem">
+            Our flagship gift — a showstopper tin featuring all 14 current flavors in one luxurious package.
+          </p>
+          <div class="tin-flavors">
+            <span class="tin-flavor-pill">All 14 Flavors</span>
+            <span class="tin-flavor-pill">24 oz total</span>
+            <span class="tin-flavor-pill">3 exclusives</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.5rem">
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Includes 3 subscriber-exclusive flavors</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Leather-embossed luxury lid</div>
+            <div class="feature-row"><div class="feature-row-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Complimentary gift wrap &amp; card</div>
+          </div>
+          <a href="#" class="btn-primary w-full" style="justify-content:center">Add to Cart</a>
+        </div>
+      </div>
+
+    </div><!-- /tins-grid -->
+  </div>
+</section>
+
+
+<!-- ======================================================
+  CUSTOMIZATION
+======================================================= -->
+<section id="customize" class="custom-section" style="padding:6rem 0" aria-label="Customize your tin">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <div>
+        <p class="section-label reveal">Personalization</p>
+        <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);margin-top:0.5rem;margin-bottom:1.5rem">
+          Make It Truly<br><em style="color:var(--accent-gold)">One of a Kind</em>
+        </h2>
+        <p class="reveal d-200" style="font-size:0.95rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2.5rem">
+          Every tin can be customized to match your occasion. From handwritten message cards to custom lid printing — we take care of every detail so your gift feels truly special.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:1.5rem">
+          <div class="custom-step reveal d-100">
+            <div class="custom-num">1</div>
+            <div>
+              <h4 class="font-display font-semibold text-lg mb-1" style="color:var(--text-primary)">Choose Your Tin Size</h4>
+              <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.65">Mini, Duo, Classic, or Grand — each size is designed to impress.</p>
+            </div>
+          </div>
+          <div class="custom-step reveal d-200">
+            <div class="custom-num">2</div>
+            <div>
+              <h4 class="font-display font-semibold text-lg mb-1" style="color:var(--text-primary)">Pick Your Flavors</h4>
+              <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.65">Mix and match from our full catalog of 14 artisan popcorn flavors.</p>
+            </div>
+          </div>
+          <div class="custom-step reveal d-300">
+            <div class="custom-num">3</div>
+            <div>
+              <h4 class="font-display font-semibold text-lg mb-1" style="color:var(--text-primary)">Add Your Personal Touch</h4>
+              <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.65">Custom message card, ribbon color, gift wrapping, or lid branding for bulk orders.</p>
+            </div>
+          </div>
+          <div class="custom-step reveal d-400">
+            <div class="custom-num">4</div>
+            <div>
+              <h4 class="font-display font-semibold text-lg mb-1" style="color:var(--text-primary)">We Ship It Beautifully</h4>
+              <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.65">Arrives in a protective outer box with care instructions — ready to gift straight from the doorstep.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#tins" class="btn-primary reveal" style="margin-top:2.5rem">
+          Start Building Your Tin
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: features grid -->
+      <div class="grid grid-cols-2 gap-4 reveal d-200">
+        <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:10px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:0.75rem">✍️</div>
+          <h4 class="font-display font-semibold" style="color:var(--text-primary);margin-bottom:0.4rem">Handwritten Cards</h4>
+          <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6">We write your message in our signature calligraphy style. Free on all orders.</p>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:10px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:0.75rem">🎀</div>
+          <h4 class="font-display font-semibold" style="color:var(--text-primary);margin-bottom:0.4rem">Ribbon Colors</h4>
+          <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6">Choose from 8 ribbon colors to match your occasion's color palette.</p>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:10px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:0.75rem">🖨️</div>
+          <h4 class="font-display font-semibold" style="color:var(--text-primary);margin-bottom:0.4rem">Custom Lid Print</h4>
+          <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6">Upload your logo or design for bulk orders of 25+ tins. Full color printing.</p>
+        </div>
+        <div style="background:var(--bg-surface);border:1px solid var(--border-color);border-radius:10px;padding:1.5rem">
+          <div style="font-size:2rem;margin-bottom:0.75rem">📦</div>
+          <h4 class="font-display font-semibold" style="color:var(--text-primary);margin-bottom:0.4rem">Gift Wrapping</h4>
+          <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.6">Premium kraft paper or seasonal wrapping available. Always looks impeccable.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+  CORPORATE
+======================================================= -->
+<section id="corporate" style="padding:6rem 0;background:var(--bg-primary)" aria-label="Corporate gifting">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="corp-banner p-10 lg:p-16 reveal">
+      <div class="relative z-10">
+        <div class="grid lg:grid-cols-3 gap-8 mb-10">
+          <div class="lg:col-span-2">
+            <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.75rem">Corporate Gifting</p>
+            <h2 class="font-display font-bold" style="font-size:clamp(1.8rem,4vw,3rem);color:#fff;line-height:1.1;margin-bottom:1rem">
+              Impress Clients &amp;<br><em style="color:#F59E0B">Delight Your Team</em>
+            </h2>
+            <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75;max-width:500px;margin-bottom:2rem">
+              From employee appreciation boxes to client holiday gifts, PopCraft delivers premium branded experiences at scale. Minimum 25 units, custom branding available, dedicated account manager assigned.
+            </p>
+            <div class="flex flex-wrap gap-3">
+              <a href="mailto:corporate@popcraft.co" class="btn-primary" style="background:#fff;color:#3B1208">
+                Get a Quote
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="tel:+18005550199" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8)">
+                Call Us
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 border border-white border-opacity-10 rounded-lg overflow-hidden">
+          <div class="corp-stat">
+            <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#F59E0B">340+</p>
+            <p style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.25rem;letter-spacing:0.06em">Corporate Clients</p>
+          </div>
+          <div class="corp-stat">
+            <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#F59E0B">50k+</p>
+            <p style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.25rem;letter-spacing:0.06em">Tins Shipped</p>
+          </div>
+          <div class="corp-stat">
+            <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#F59E0B">25</p>
+            <p style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.25rem;letter-spacing:0.06em">Min. Order Qty</p>
+          </div>
+          <div class="corp-stat">
+            <p style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#F59E0B">48h</p>
+            <p style="font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:0.25rem;letter-spacing:0.06em">Quote Turnaround</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+  FOOTER
+======================================================= -->
+<footer id="site-footer" role="contentinfo">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10 pt-16 pb-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-14">
+
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-5">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><ellipse cx="8" cy="7" rx="3" ry="3.5"/><ellipse cx="16" cy="7" rx="2.5" ry="3"/><ellipse cx="12" cy="5" rx="2" ry="2.5"/><ellipse cx="5" cy="12" rx="2.5" ry="3"/><ellipse cx="19" cy="12" rx="2" ry="2.5"/><ellipse cx="12" cy="13" rx="3.5" ry="4"/><path d="M4 13h16l-2 8H6z" fill-opacity=".7"/></svg>
+          </div>
+          <div>
+            <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
+            <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">Artisan Popcorn Co.</p>
+          </div>
+        </div>
+        <p style="font-size:0.85rem;line-height:1.75;color:rgba(245,245,244,0.5);max-width:280px;margin-bottom:1.5rem">
+          Handcrafted in small batches since 2019. We believe the best snacks are made with the best ingredients and a little bit of love.
+        </p>
+        <div class="flex items-center gap-3">
+          <a href="#" class="social-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" class="social-icon" aria-label="Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="social-icon" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Shop</h4>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+          <li><a href="flavors.html"      class="footer-link">All Flavors</a></li>
+          <li><a href="subscription.html" class="footer-link">Subscription</a></li>
+          <li><a href="gift-tins.html"    class="footer-link">Gift Tins</a></li>
+          <li><a href="find-us.html"      class="footer-link">Find Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Company</h4>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+          <li><a href="index.html" class="footer-link">Home</a></li>
+          <li><a href="home2.html" class="footer-link">Home 2</a></li>
+          <li><a href="#" class="footer-link">Our Story</a></li>
+          <li><a href="#" class="footer-link">Sustainability</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-heading">Stay in the Loop</h4>
+        <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">New flavors, limited drops, and member-only discounts.</p>
+        <form id="newsletter-form" novalidate>
+          <div class="newsletter-wrap">
+            <input type="email" class="newsletter-input" placeholder="your@email.com" aria-label="Email address" required />
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </div>
+          <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam. Unsubscribe any time.</p>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-divider"></div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">© 2025 PopCraft Artisan Popcorn Co. All rights reserved.</p>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
+        <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Use</a>
+        <a href="#" class="footer-link" style="font-size:0.72rem">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="scripts.js"></script>
+<script>
+  // Occasion tab filter
+  const occTabs = document.querySelectorAll('.occ-tab');
+  const tinCards = document.querySelectorAll('#tins-grid .tin-card');
+
+  occTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      occTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+
+      const filter = tab.dataset.occ;
+      tinCards.forEach((card, i) => {
+        const occs = card.dataset.occ || '';
+        const show = filter === 'all' || occs.includes(filter);
+        card.dataset.hidden = show ? 'false' : 'true';
+        card.style.display = show ? '' : 'none';
+        if (show) {
+          card.classList.remove('revealed');
+          setTimeout(() => card.classList.add('revealed'), i * 60);
+        }
+      });
+    });
+  });
+
+  // Floating animation
+  const styleTag = document.createElement('style');
+  styleTag.textContent = `
+    @keyframes floatRibbon { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-15px) rotate(10deg)} }
+  `;
+  document.head.appendChild(styleTag);
+</script>
+</body>
+</html>

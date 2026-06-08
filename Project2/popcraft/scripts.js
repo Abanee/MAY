@@ -1,0 +1,990 @@
+/**
+ * POPCRAFT — Main Scripts
+ * Artisan Gourmet Popcorn Co.
+ * Version: 1.0.0
+ */
+
+'use strict';
+
+/* ============================================================
+   0.  IMMEDIATE THEME BOOTSTRAP
+   Apply saved theme before DOM paint to avoid flash
+   ============================================================ */
+(function bootstrapTheme() {
+  const saved   = localStorage.getItem('popcraft-theme');
+  const prefers = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  if (saved === 'dark' || (!saved && prefers)) {
+    document.documentElement.classList.add('dark');
+  }
+})();
+
+
+/* ============================================================
+   MAIN INIT — runs when DOM is ready
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ----------------------------------------------------------
+     1. THEME TOGGLE
+     ---------------------------------------------------------- */
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIconEl = document.getElementById('theme-icon');
+
+  function syncThemeUI() {
+    const isDark = document.documentElement.classList.contains('dark');
+    themeToggle?.classList.toggle('active', isDark);
+    if (themeIconEl) themeIconEl.textContent = isDark ? '☀️' : '🌙';
+  }
+
+  // Sync on load
+  syncThemeUI();
+
+  themeToggle?.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('popcraft-theme', isDark ? 'dark' : 'light');
+    syncThemeUI();
+  });
+
+
+  /* ----------------------------------------------------------
+     2. MOBILE MENU
+     ---------------------------------------------------------- */
+  const hamburger  = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function closeMobileMenu() {
+    hamburger?.classList.remove('open');
+    mobileMenu?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Close on link click
+  mobileMenu?.querySelectorAll('a').forEach(link =>
+    link.addEventListener('click', closeMobileMenu)
+  );
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && mobileMenu?.classList.contains('open')) {
+      closeMobileMenu();
+    }
+  });
+
+
+  /* ----------------------------------------------------------
+     3. SMOOTH SCROLL FOR ANCHOR LINKS
+     ---------------------------------------------------------- */
+  const NAV_HEIGHT = 80;
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      const href = anchor.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - NAV_HEIGHT;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+
+
+  /* ----------------------------------------------------------
+     4. STICKY NAV — hide on scroll-down, show on scroll-up
+     ---------------------------------------------------------- */
+  const mainNav = document.getElementById('main-nav');
+  let lastY    = 0;
+  let ticking  = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        if (mainNav) {
+          if (currentY > 120 && currentY > lastY) {
+            mainNav.style.transform = 'translateY(-105%)';
+          } else {
+            mainNav.style.transform = 'translateY(0)';
+          }
+        }
+        lastY   = currentY;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+
+  /* ----------------------------------------------------------
+     5. SCROLL PROGRESS BAR
+     ---------------------------------------------------------- */
+  const progressBar = document.getElementById('scroll-progress');
+
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total    = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = `${(scrolled / total) * 100}%`;
+    }, { passive: true });
+  }
+
+
+  /* ----------------------------------------------------------
+     6. ACTIVE NAV HIGHLIGHT ON SCROLL
+     ---------------------------------------------------------- */
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
+  if (navLinks.length && sections.length) {
+    const sectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            const isActive = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('active', isActive);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+    sections.forEach(s => sectionObserver.observe(s));
+  }
+
+
+  /* ----------------------------------------------------------
+     7. SCROLL REVEAL (IntersectionObserver)
+     ---------------------------------------------------------- */
+  const revealSelectors = '.reveal, .reveal-left, .reveal-right, .reveal-scale';
+  const revealEls = document.querySelectorAll(revealSelectors);
+
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -60px 0px'
+  });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+
+  /* ----------------------------------------------------------
+     8. CART NOTIFICATION TOAST
+     ---------------------------------------------------------- */
+  const cartToast    = document.getElementById('cart-toast');
+  const toastText    = document.getElementById('toast-text');
+  let   toastTimer   = null;
+  let   cartCount    = 0;
+  const cartCountEl  = document.getElementById('cart-count');
+
+  function showToast(message) {
+    if (!cartToast) return;
+    if (toastText) toastText.textContent = message;
+    cartToast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => cartToast.classList.remove('show'), 3200);
+  }
+
+  document.querySelectorAll('.add-to-cart').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const card       = this.closest('.flavor-card');
+      const flavorName = card?.querySelector('.flavor-name')?.textContent ?? 'Item';
+      cartCount++;
+      if (cartCountEl) cartCountEl.textContent = cartCount;
+      showToast(`${flavorName} added to cart!`);
+
+      // Brief button feedback
+      const orig = this.innerHTML;
+      this.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> Added!`;
+      this.style.background = 'var(--accent-gold)';
+      this.style.color = '#fff';
+      setTimeout(() => {
+        this.innerHTML = orig;
+        this.style.background = '';
+        this.style.color = '';
+      }, 1800);
+    });
+  });
+
+
+  /* ----------------------------------------------------------
+     9. PRICING TOGGLE (Monthly ↔ Annual)
+     ---------------------------------------------------------- */
+  const billingToggle = document.getElementById('billing-toggle');
+  const billingLabel  = document.getElementById('billing-label');
+  const monthlyPrices = document.querySelectorAll('.price-monthly');
+  const annualPrices  = document.querySelectorAll('.price-annual');
+  const annualSavings = document.querySelectorAll('.annual-saving');
+
+  let isAnnual = false;
+
+  billingToggle?.addEventListener('click', () => {
+    isAnnual = !isAnnual;
+    billingToggle.classList.toggle('active', isAnnual);
+
+    monthlyPrices.forEach(el => el.classList.toggle('hidden', isAnnual));
+    annualPrices.forEach(el => el.classList.toggle('hidden', !isAnnual));
+    annualSavings.forEach(el => {
+      el.style.opacity = isAnnual ? '1' : '0';
+      el.style.transform = isAnnual ? 'translateY(0)' : 'translateY(4px)';
+    });
+
+    if (billingLabel) {
+      billingLabel.textContent = isAnnual ? 'Annual  — Save 20%' : 'Monthly';
+    }
+  });
+
+  // Init annual saving styles
+  annualSavings.forEach(el => {
+    el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+    el.style.opacity    = '0';
+    el.style.transform  = 'translateY(4px)';
+  });
+
+
+  /* ----------------------------------------------------------
+     10. STORE LOCATOR — MOCK SEARCH
+     ---------------------------------------------------------- */
+  const zipInput      = document.getElementById('zip-input');
+  const searchBtn     = document.getElementById('zip-search-btn');
+  const storeResults  = document.getElementById('store-results');
+  const storeEmpty    = document.getElementById('store-empty');
+
+  const STORES = [
+    {
+      type:     'Specialty Food Store',
+      name:     'The Gourmet Pantry',
+      address:  '142 West 73rd St, New York, NY 10023',
+      phone:    '(212) 555-0192',
+      hours:    'Mon – Sat: 9 am – 9 pm  •  Sun: 10 am – 7 pm',
+      distance: '0.3 mi',
+    },
+    {
+      type:     'Artisan Market',
+      name:     'Fine & Fancy Foods',
+      address:  '88 Newbury Street, Boston, MA 02116',
+      phone:    '(617) 555-0148',
+      hours:    'Daily: 10 am – 8 pm',
+      distance: '0.7 mi',
+    },
+    {
+      type:     'Luxury Grocer',
+      name:     'Provisions Market',
+      address:  '340 Valencia St, San Francisco, CA 94103',
+      phone:    '(415) 555-0231',
+      hours:    'Mon – Sun: 8 am – 10 pm',
+      distance: '1.2 mi',
+    },
+  ];
+
+  function renderStores(list = STORES) {
+    if (!storeResults) return;
+    storeResults.innerHTML = '';
+
+    if (storeEmpty) storeEmpty.classList.toggle('hidden', list.length > 0);
+
+    list.forEach((store, i) => {
+      const el = document.createElement('div');
+      el.className = `store-card reveal`;
+      el.setAttribute('style', `transition-delay: ${i * 80}ms`);
+      el.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+          <div class="flex-1">
+            <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:0.4rem">${store.type}</p>
+            <h4 style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;margin-bottom:0.25rem;color:var(--text-primary)">${store.name}</h4>
+            <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:0.2rem">${store.address}</p>
+            <p style="font-size:0.78rem;color:var(--text-secondary)">${store.hours}</p>
+          </div>
+          <div class="shrink-0 text-right">
+            <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--accent-gold);display:block">${store.distance}</span>
+            <span style="font-size:0.7rem;color:var(--text-secondary)">from you</span>
+          </div>
+        </div>
+        <div style="margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--border-color);display:flex;gap:0.65rem;flex-wrap:wrap">
+          <a href="https://maps.google.com?q=${encodeURIComponent(store.address)}" target="_blank" rel="noopener" class="btn-primary" style="font-size:0.7rem;padding:0.5rem 1rem">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Directions
+          </a>
+          <a href="tel:${store.phone.replace(/\D/g,'')}" class="btn-ghost" style="font-size:0.7rem;padding:0.5rem 1rem">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 4.18 2 2 0 015 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            ${store.phone}
+          </a>
+        </div>
+      `;
+      storeResults.appendChild(el);
+      // Trigger reveal after append
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('revealed')));
+    });
+  }
+
+  // Initial render
+  renderStores();
+
+  function doSearch() {
+    const zip = zipInput?.value.trim();
+    if (!zip) return;
+
+    // Animate out
+    if (storeResults) {
+      storeResults.style.opacity = '0';
+      storeResults.style.transform = 'translateY(10px)';
+      storeResults.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+    }
+    setTimeout(() => {
+      renderStores(STORES); // always show all 3 (mock)
+      if (storeResults) {
+        storeResults.style.opacity = '1';
+        storeResults.style.transform = 'translateY(0)';
+      }
+    }, 280);
+  }
+
+  searchBtn?.addEventListener('click', doSearch);
+  zipInput?.addEventListener('keydown', e => { if (e.key === 'Enter') doSearch(); });
+
+
+  /* ----------------------------------------------------------
+     11. NEWSLETTER FORM
+     ---------------------------------------------------------- */
+  const newsletterForm = document.getElementById('newsletter-form');
+
+  newsletterForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    const input = newsletterForm.querySelector('input');
+    const btn   = newsletterForm.querySelector('button');
+
+    if (!input?.value.trim()) return;
+
+    if (btn) {
+      btn.textContent = '✓ Subscribed!';
+      btn.style.background = '#059669';
+      input.value = '';
+      input.disabled = true;
+    }
+    setTimeout(() => {
+      if (btn) { btn.textContent = 'Subscribe'; btn.style.background = ''; }
+      if (input) input.disabled = false;
+    }, 5000);
+  });
+
+
+  /* ----------------------------------------------------------
+     12. MARQUEE — duplicate content for seamless loop
+     ---------------------------------------------------------- */
+  const marqueeTrack = document.querySelector('.marquee-track');
+  if (marqueeTrack) {
+    const originalContent = marqueeTrack.innerHTML;
+    marqueeTrack.innerHTML = originalContent + originalContent;
+  }
+
+
+  /* ----------------------------------------------------------
+     13. LAZY PARALLAX ON HERO DECORATION
+     ---------------------------------------------------------- */
+  const heroDeco = document.getElementById('hero-deco-circle');
+  if (heroDeco) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY * 0.25;
+      heroDeco.style.transform = `translateY(${y}px)`;
+    }, { passive: true });
+  }
+
+  /* ----------------------------------------------------------
+     14. FLAVOR CATALOG PAGE — Filter, Sort, Search
+     ---------------------------------------------------------- */
+  const filterChips    = document.querySelectorAll('.filter-chip');
+  const sortSelect     = document.getElementById('sort-select');
+  const catalogSearch  = document.getElementById('catalog-search');
+  const flavorCards    = document.querySelectorAll('.flavor-card-detail');
+  const resultsCountEl = document.getElementById('results-count');
+  const noResultsEl    = document.getElementById('no-results');
+
+  if (filterChips.length && flavorCards.length) {
+    let activeFilter = 'all';
+    let activeSort   = 'default';
+    let searchQuery  = '';
+
+    function getCardMeta(card) {
+      return {
+        category: card.dataset.category || '',
+        price:    parseFloat(card.dataset.price) || 0,
+        name:     (card.dataset.name    || '').toLowerCase(),
+        order:    parseInt(card.dataset.order)   || 0,
+        isNew:    card.dataset.new      === 'true',
+      };
+    }
+
+    function applyFiltersAndSort() {
+      const grid = document.getElementById('flavor-catalog-grid');
+      if (!grid) return;
+
+      let visible   = 0;
+      const cardArr = Array.from(flavorCards);
+
+      // 1. Filter visibility
+      cardArr.forEach(card => {
+        const { category, name } = getCardMeta(card);
+        const matchFilter = activeFilter === 'all' || category.split(' ').includes(activeFilter);
+        const matchSearch = !searchQuery || name.includes(searchQuery);
+        const show = matchFilter && matchSearch;
+        card.dataset.hidden = show ? 'false' : 'true';
+        card.style.display  = show ? '' : 'none';
+        if (show) visible++;
+      });
+
+      // 2. Sort visible cards
+      const visibleCards = cardArr.filter(c => c.dataset.hidden !== 'true');
+      visibleCards.sort((a, b) => {
+        const am = getCardMeta(a), bm = getCardMeta(b);
+        if (activeSort === 'price-asc')  return am.price - bm.price;
+        if (activeSort === 'price-desc') return bm.price - am.price;
+        if (activeSort === 'name-asc')   return am.name.localeCompare(bm.name);
+        if (activeSort === 'newest')     return (bm.isNew ? 1 : 0) - (am.isNew ? 1 : 0);
+        return am.order - bm.order;
+      });
+
+      // 3. Re-append in sorted order
+      visibleCards.forEach(card => grid.appendChild(card));
+
+      // 4. Update results count
+      if (resultsCountEl) {
+        resultsCountEl.innerHTML =
+          `Showing <strong>${visible}</strong> of <strong>${flavorCards.length}</strong> flavors`;
+      }
+
+      // 5. No-results state
+      if (noResultsEl) noResultsEl.classList.toggle('hidden', visible > 0);
+
+      // 6. Re-trigger scroll reveals
+      visibleCards.forEach((card, i) => {
+        card.classList.remove('revealed');
+        card.style.transitionDelay = `${i * 55}ms`;
+        requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('revealed')));
+      });
+    }
+
+    // Filter chips
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeFilter = chip.dataset.filter;
+        applyFiltersAndSort();
+      });
+    });
+
+    // Sort dropdown
+    sortSelect?.addEventListener('change', e => {
+      activeSort = e.target.value;
+      applyFiltersAndSort();
+    });
+
+    // Live search
+    let searchDebounce;
+    catalogSearch?.addEventListener('input', e => {
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        applyFiltersAndSort();
+      }, 220);
+    });
+
+    // Initial render
+    applyFiltersAndSort();
+  }
+
+  /* ----------------------------------------------------------
+     15. WISHLIST TOGGLE (Flavor Catalog)
+     ---------------------------------------------------------- */
+  document.querySelectorAll('.wishlist-btn').forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      this.classList.toggle('active');
+      const on = this.classList.contains('active');
+      this.setAttribute('aria-label', on ? 'Remove from wishlist' : 'Add to wishlist');
+    });
+  });
+
+  /* ----------------------------------------------------------
+     16. INTERACTIVE CINEMATIC CANVAS POPCORN PHYSICS
+     ---------------------------------------------------------- */
+  const canvas = document.getElementById('popcorn-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    const heroSection = document.getElementById('hero');
+    const heroImage = document.getElementById('hero-image');
+
+    // Preload image assets
+    const imgCorn1 = new Image();
+    imgCorn1.src = 'Assets/corn1.png';
+    const imgCorn2 = new Image();
+    imgCorn2.src = 'Assets/corn2.png';
+    const cornImages = [imgCorn1, imgCorn2];
+
+    let canvasWidth = 0;
+    let canvasHeight = 0;
+
+    function resizeCanvas() {
+      if (!heroSection) return;
+      canvasWidth = heroSection.clientWidth;
+      canvasHeight = heroSection.clientHeight;
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
+    }
+    
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Mouse interactive state
+    const mouse = { x: -1000, y: -1000, active: false };
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
+      mouse.active = true;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      mouse.active = false;
+    });
+
+    class PopcornPiece {
+      constructor(isInitial = false) {
+        this.reset(isInitial);
+      }
+
+      reset(isInitial = false) {
+        this.x = Math.random() * canvasWidth;
+        // If initial, scatter vertically; otherwise start above screen
+        this.y = isInitial ? Math.random() * (canvasHeight * 0.7) - 100 : -50;
+        this.vx = (Math.random() - 0.5) * 2;
+        this.vy = Math.random() * 2 + 1;
+        this.gravity = 0.12 + Math.random() * 0.08;
+        this.size = Math.random() * 22 + 20; // 20px to 42px scale
+        this.angle = Math.random() * Math.PI * 2;
+        this.vAngle = (Math.random() - 0.5) * 0.04;
+        this.img = cornImages[Math.floor(Math.random() * cornImages.length)];
+        this.bounces = 0;
+        this.opacity = 1;
+        this.isInsideBucket = false;
+        this.life = 1.0;
+      }
+
+      update(heroRect) {
+        // Apply physics
+        this.vy += this.gravity;
+        this.vy *= 0.99; // Vertical friction
+        this.vx *= 0.985; // Horizontal friction
+        
+        // Wind drift
+        this.vx += Math.sin(Date.now() * 0.0012 + this.x * 0.01) * 0.04;
+
+        this.x += this.vx;
+        this.y += this.vy;
+        this.angle += this.vAngle;
+
+        // Bouncing/collision with cursor
+        if (mouse.active) {
+          const dx = this.x - mouse.x;
+          const dy = this.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 90) {
+            const force = (90 - dist) / 90;
+            const forceAngle = Math.atan2(dy, dx);
+            this.vx += Math.cos(forceAngle) * force * 2.2;
+            this.vy += Math.sin(forceAngle) * force * 2.2;
+            this.vAngle += (Math.random() - 0.5) * 0.08;
+          }
+        }
+
+        // Bouncing/collision with bucket rim
+        if (heroImage && heroRect && !this.isInsideBucket) {
+          const imgX = heroRect.left;
+          const imgY = heroRect.top;
+          const imgW = heroRect.width;
+          const imgH = heroRect.height;
+
+          // Define collision rim at the top of the bucket
+          // PopCraft gourmet popcorn bucket is centered in the image
+          const rimMinX = imgX + imgW * 0.22;
+          const rimMaxX = imgX + imgW * 0.78;
+          const rimY = imgY + imgH * 0.35; // Top opening of the bucket in Hero.png
+
+          if (this.x > rimMinX && this.x < rimMaxX) {
+            // Slight concave dipping curve for bucket opening
+            const dx = (this.x - (rimMinX + rimMaxX) / 2) / (rimMaxX - rimMinX); // -0.5 to 0.5
+            const rimCurveY = rimY + Math.abs(dx) * 10;
+
+            if (this.y + this.size / 2 >= rimCurveY && this.y - this.size / 2 <= rimCurveY + 20 && this.vy > 0) {
+              if (this.bounces < 2) {
+                // Bounce!
+                this.vy = -this.vy * (0.35 + Math.random() * 0.15); // Reverse and dampen velocity
+                this.vx = (this.x - (imgX + imgW / 2)) / (imgW / 2) * 2.5 + (Math.random() - 0.5) * 1.5;
+                this.vAngle = (Math.random() - 0.5) * 0.2;
+                this.bounces++;
+                // Push slightly out of bounds to avoid repeating checks
+                this.y = rimCurveY - this.size / 2 - 2;
+              } else {
+                // Fades into bucket
+                this.isInsideBucket = true;
+              }
+            }
+          }
+        }
+
+        // Slide into bucket fading logic
+        if (this.isInsideBucket) {
+          this.opacity -= 0.045;
+          this.vy *= 0.84;
+          this.vx *= 0.84;
+        }
+
+        // Boundary checks
+        if (this.y > canvasHeight + 60 || this.x < -60 || this.x > canvasWidth + 60) {
+          return false;
+        }
+        if (this.opacity <= 0.02) {
+          return false;
+        }
+
+        return true;
+      }
+
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.globalAlpha = Math.max(0, Math.min(1, this.opacity));
+        ctx.drawImage(this.img, -this.size / 2, -this.size / 2, this.size, this.size);
+        ctx.restore();
+      }
+    }
+
+    const particles = [];
+    const maxParticles = 35;
+    let spawnTimer = 0;
+    const spawnInterval = 380; // milliseconds
+    let lastTime = 0;
+
+    // Fill screen with some initial scattered particles so it has kernels from start
+    for (let i = 0; i < 8; i++) {
+      particles.push(new PopcornPiece(true));
+    }
+
+    function animate(timestamp) {
+      if (!lastTime) lastTime = timestamp;
+      const dt = timestamp - lastTime;
+      lastTime = timestamp;
+
+      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+      // Get image rect bounds
+      let heroRect = null;
+      if (heroImage) {
+        const imgBounds = heroImage.getBoundingClientRect();
+        const canvasBounds = canvas.getBoundingClientRect();
+        heroRect = {
+          left: imgBounds.left - canvasBounds.left,
+          top: imgBounds.top - canvasBounds.top,
+          width: imgBounds.width,
+          height: imgBounds.height
+        };
+      }
+
+      // Update and draw
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        if (p.update(heroRect)) {
+          p.draw();
+        } else {
+          particles.splice(i, 1);
+        }
+      }
+
+      // Spawn manager
+      spawnTimer += dt;
+      if (spawnTimer >= spawnInterval && particles.length < maxParticles) {
+        spawnTimer = 0;
+        particles.push(new PopcornPiece(false));
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    // Load control
+    let loadedCount = 0;
+    let animationStarted = false;
+    function assetLoaded() {
+      loadedCount++;
+      if (loadedCount >= cornImages.length && !animationStarted) {
+        animationStarted = true;
+        requestAnimationFrame(animate);
+      }
+    }
+
+    imgCorn1.onload = assetLoaded;
+    imgCorn2.onload = assetLoaded;
+    
+    // Fallback if cached
+    if (imgCorn1.complete) assetLoaded();
+    if (imgCorn2.complete) assetLoaded();
+  }
+
+  /* ----------------------------------------------------------
+     17. HOME 2 - BEVERAGE PAIRING TOOL
+     ---------------------------------------------------------- */
+  const pairingOptions = document.querySelectorAll('.pairing-option');
+  const pairingResultBox = document.getElementById('pairing-result-box');
+
+  const PAIRINGS = {
+    wine: {
+      title: "Chardonnay / Pinot Noir & Truffle Parmesan",
+      desc: "The buttery, rich profile of an oak-aged Chardonnay matches our white truffle aroma perfectly, while a light Pinot Noir brings out the earthiness of real aged Parmesan.",
+      emoji: "🍄",
+      flavor: "Truffle Parmesan",
+      intensity: "70%",
+      notes: ["Black Truffle", "Aged Parmesan", "Sea Salt"]
+    },
+    beer: {
+      title: "Crisp IPA & Sriracha Lime",
+      desc: "A hoppy, crisp India Pale Ale cuts right through the bold heat of our sriracha glaze, with the lime zest highlighting citrusy hop notes.",
+      emoji: "🌿",
+      flavor: "Sriracha Lime",
+      intensity: "80%",
+      notes: ["Sriracha", "Key Lime", "Black Pepper"]
+    },
+    coffee: {
+      title: "Dark Roast Espresso & Miso Butterscotch",
+      desc: "The bold bitterness of dark roast coffee or espresso creates a spectacular contrast with the buttery, sweet, and salty umami notes of our miso butterscotch.",
+      emoji: "🫙",
+      flavor: "Miso Butterscotch",
+      intensity: "60%",
+      notes: ["White Miso", "Butterscotch", "Demerara Sugar"]
+    },
+    tea: {
+      title: "Ceremonial Matcha & Matcha White Chocolate",
+      desc: "Earthy, green ceremonial matcha tea balances the sweet, creamy notes of white chocolate, creating a clean and sophisticated afternoon pairing.",
+      emoji: "🍵",
+      flavor: "Matcha White Chocolate",
+      intensity: "55%",
+      notes: ["Ceremonial Matcha", "White Chocolate", "Coconut Sugar"]
+    }
+  };
+
+  if (pairingOptions.length && pairingResultBox) {
+    pairingOptions.forEach(option => {
+      option.addEventListener('click', () => {
+        const beverage = option.getAttribute('data-beverage');
+        const data = PAIRINGS[beverage];
+        if (!data) return;
+
+        // Toggle active class
+        pairingOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+
+        // Fade out result box, update, and fade in
+        pairingResultBox.classList.remove('show');
+        
+        setTimeout(() => {
+          pairingResultBox.innerHTML = `
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+              <div style="font-size: 3.5rem; line-height: 1;" class="shrink-0 select-none">${data.emoji}</div>
+              <div class="flex-1">
+                <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.35rem;">Recommended Pairing</div>
+                <h4 class="font-display text-xl font-bold mb-2" style="color: var(--text-primary);">${data.title}</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">${data.desc}</p>
+                
+                <div class="flex flex-wrap items-center gap-6 mt-4">
+                  <div>
+                    <span style="font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary);">Flavor</span>
+                    <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary);">${data.flavor}</div>
+                  </div>
+                  <div>
+                    <span style="font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary);">Intensity</span>
+                    <div style="font-size: 0.9rem; font-weight: 600; color: var(--accent-gold);">${data.intensity}</div>
+                  </div>
+                  <div>
+                    <span style="font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-secondary);">Notes</span>
+                    <div class="flex flex-wrap gap-1.5 mt-1">
+                      ${data.notes.map(n => `<span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.1rem 0.5rem; background: var(--bg-surface-2); border: 1px solid var(--border-color); border-radius: 20px; color: var(--text-secondary);">${n}</span>`).join('')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+          pairingResultBox.classList.add('show');
+        }, 250);
+      });
+    });
+
+    // Trigger first item
+    pairingOptions[0]?.click();
+  }
+
+  /* ----------------------------------------------------------
+     18. HOME 2 - TASTING FLIGHT BUILDER
+     ---------------------------------------------------------- */
+  const flightSlots = document.querySelectorAll('.flight-slot');
+  const flightAddBtns = document.querySelectorAll('.flight-add-btn');
+  const flightOrderBtn = document.getElementById('flight-order-btn');
+  let flightState = [null, null, null]; // holds { name: '...', emoji: '...' } or null
+
+  function updateFlightUI() {
+    flightSlots.forEach((slot, idx) => {
+      const item = flightState[idx];
+      if (item) {
+        slot.classList.add('filled');
+        slot.innerHTML = `
+          <button class="flight-remove-btn" data-idx="${idx}" aria-label="Remove ${item.name}">✕</button>
+          <span style="font-size: 2rem;">${item.emoji}</span>
+          <span class="flight-slot-label" style="font-size: 0.65rem; text-align: center; max-width: 90px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.name}</span>
+        `;
+        // Bind remove event
+        slot.querySelector('.flight-remove-btn').addEventListener('click', (e) => {
+          e.stopPropagation();
+          removeFlightItem(idx);
+        });
+      } else {
+        slot.classList.remove('filled');
+        slot.innerHTML = `
+          <span style="font-size: 1.25rem; color: var(--text-secondary); opacity: 0.5;">+</span>
+          <span class="flight-slot-label">Slot ${idx + 1}</span>
+        `;
+      }
+    });
+
+    // Enable/disable order button
+    if (flightOrderBtn) {
+      const filledCount = flightState.filter(Boolean).length;
+      if (filledCount === 3) {
+        flightOrderBtn.disabled = false;
+        flightOrderBtn.textContent = "Order Custom Flight Box ($39.99)";
+        flightOrderBtn.style.opacity = "1";
+        flightOrderBtn.style.cursor = "pointer";
+      } else {
+        flightOrderBtn.disabled = true;
+        flightOrderBtn.textContent = `Select ${3 - filledCount} More Flavor${3 - filledCount > 1 ? 's' : ''}`;
+        flightOrderBtn.style.opacity = "0.6";
+        flightOrderBtn.style.cursor = "not-allowed";
+      }
+    }
+  }
+
+  function addFlightItem(name, emoji) {
+    const emptyIdx = flightState.indexOf(null);
+    if (emptyIdx === -1) {
+      showToast("Your Flight Box is full! Remove an item to add another.");
+      return;
+    }
+    flightState[emptyIdx] = { name, emoji };
+    updateFlightUI();
+    showToast(`${name} added to slot ${emptyIdx + 1}!`);
+  }
+
+  function removeFlightItem(idx) {
+    const item = flightState[idx];
+    flightState[idx] = null;
+    updateFlightUI();
+    if (item) {
+      showToast(`Removed ${item.name} from slot ${idx + 1}`);
+    }
+  }
+
+  if (flightSlots.length) {
+    flightAddBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-flavor');
+        const emoji = btn.getAttribute('data-emoji') || '🍿';
+        addFlightItem(name, emoji);
+      });
+    });
+
+    if (flightOrderBtn) {
+      flightOrderBtn.addEventListener('click', () => {
+        const items = flightState.filter(Boolean).map(i => i.name).join(', ');
+        cartCount++;
+        if (cartCountEl) cartCountEl.textContent = cartCount;
+        showToast(`Added Flight Box (${items}) to cart!`);
+        // Reset state
+        flightState = [null, null, null];
+        updateFlightUI();
+      });
+    }
+
+    // Initialize UI
+    updateFlightUI();
+  }
+
+  /* ----------------------------------------------------------
+     19. HOME 2 - INTERACTIVE PROCESS TIMELINE
+     ---------------------------------------------------------- */
+  const processSteps = document.querySelectorAll('.process-step-trigger');
+  const processContent = document.getElementById('process-detail-content');
+
+  const PROCESS_DETAILS = {
+    1: {
+      title: "1. Premium Seed Selection",
+      desc: "We source our single-origin organic kernels exclusively from heritage farms in Nebraska and Indiana. We select only the highest density kernels to ensure maximum expansion and fluffiness when popped.",
+      tip: "We use white mushroom kernels for caramel coating and butterfly kernels for savory rubs."
+    },
+    2: {
+      title: "2. Precision Air-Popping",
+      desc: "Instead of bathing kernels in oil, we pop them using dry high-velocity air at exactly 460°F. This creates a clean, crunchier canvas and eliminates heavy oil odors.",
+      tip: "Air-popping preserves the organic grain's natural fiber and nutty aroma."
+    },
+    3: {
+      title: "3. Small-Batch Seasoning",
+      desc: "Each batch is transferred to a hand-rotated copper drum. We drizzle warm organic ghee or olive oil, then hand-dust our signature custom-ground spice blends.",
+      tip: "This ensures every single kernel has perfect, even coverage without getting soggy."
+    },
+    4: {
+      title: "4. Slow-Bake Curing",
+      desc: "After seasoning, the popcorn is slowly cured in warm ovens for 12 minutes to set the flavor profile and locked-in caramel crunchiness.",
+      tip: "Bake-curing ensures that the crunch stays fresh for weeks without any artificial preservatives."
+    }
+  };
+
+  if (processSteps.length && processContent) {
+    processSteps.forEach(step => {
+      step.addEventListener('click', () => {
+        const stepNum = step.getAttribute('data-step');
+        const data = PROCESS_DETAILS[stepNum];
+        if (!data) return;
+
+        // Update active class
+        processSteps.forEach(s => {
+          s.classList.remove('active');
+          s.style.borderColor = 'var(--border-color)';
+        });
+        step.classList.add('active');
+        step.style.borderColor = 'var(--accent-gold)';
+
+        // Update content
+        processContent.innerHTML = `
+          <h4 class="font-display text-2xl font-bold mb-3" style="color:var(--text-primary)">${data.title}</h4>
+          <p class="leading-relaxed mb-4" style="color:var(--text-secondary); font-size: 0.95rem;">${data.desc}</p>
+          <div class="p-4 rounded" style="background: var(--bg-surface-2); border-left: 3px solid var(--accent-gold);">
+            <div style="font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--accent-gold); margin-bottom: 0.25rem;">Pro Tip</div>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin:0;">${data.tip}</p>
+          </div>
+        `;
+      });
+    });
+
+    // Click first step to init
+    processSteps[0]?.click();
+  }
+
+}); // END DOMContentLoaded
