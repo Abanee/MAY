@@ -1025,8 +1025,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Filter / Sort Bar */
 .filter-bar {
-  position: sticky;
-  top: 80px;
+  position: relative;
   z-index: 40;
   background: var(--nav-bg);
   backdrop-filter: blur(16px);
@@ -1100,12 +1099,22 @@ h1, h2, h3, h4, h5, h6 {
 }
 .catalog-search-input {
   background: transparent;
-  border: none;
-  outline: none;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  -webkit-appearance: none;
+  appearance: none;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.82rem;
   color: var(--text-primary);
   width: 160px;
+}
+.catalog-search-input::-webkit-search-decoration,
+.catalog-search-input::-webkit-search-cancel-button,
+.catalog-search-input::-webkit-search-results-button,
+.catalog-search-input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  appearance: none;
 }
 .catalog-search-input::placeholder { color: var(--text-secondary); }
 
