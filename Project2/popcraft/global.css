@@ -806,6 +806,9 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .gift-card:hover {
   transform: translateY(-5px);
@@ -816,12 +819,21 @@ h1, h2, h3, h4, h5, h6 {
   height: 220px;
   position: relative;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .gift-card-img .img-bg {
   position: absolute; inset: 0;
   transition: transform 0.5s ease;
 }
 .gift-card:hover .img-bg { transform: scale(1.04); }
+
+.gift-card-body {
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
 
 /* ============================================
    19. STORE LOCATOR
@@ -830,8 +842,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .store-search-wrap {
   display: flex;
+  align-items: center;
   border: 1.5px solid var(--border-color);
-  border-radius: 3px;
+  border-radius: 4px;
   overflow: hidden;
   background: var(--bg-surface);
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -844,13 +857,14 @@ h1, h2, h3, h4, h5, h6 {
 
 .store-input {
   flex: 1;
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1.1rem;
   font-family: 'DM Sans', sans-serif;
   font-size: 0.9rem;
   color: var(--text-primary);
   background: transparent;
   border: none;
   outline: none;
+  min-width: 0;
 }
 .store-input::placeholder { color: var(--text-secondary); }
 
@@ -863,6 +877,10 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0 1.5rem;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background 0.2s ease;
   border: none;
   cursor: pointer;
@@ -1478,6 +1496,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 .home2-floating-item-2 {
   animation: hero-item-float-2 6s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .home2-floating-item-1 {
+    transform: scale(0.75);
+    transform-origin: left top;
+  }
+  .home2-floating-item-2 {
+    transform: scale(0.75);
+    transform-origin: right bottom;
+  }
 }
 
 /* Beverage Pairing Option Pills */

@@ -343,6 +343,43 @@
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45) !important;
       z-index: 2 !important;
     }
+
+    #sparkle-canvas {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100vw;
+      max-width: 520px;
+      height: 560px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @media (min-width: 1024px) {
+      #sparkle-canvas {
+        left: -80px;
+        transform: none;
+        width: 520px;
+      }
+    }
+
+    @media (max-width: 1023px) {
+      .card-stack {
+        transform: scale(0.8);
+        transform-origin: center;
+      }
+      .card-stack:hover .card-gold {
+        transform: translate(35px, 60px) rotate(10deg) scale(1.02) !important;
+      }
+      .card-stack:hover .card-connoisseur {
+        transform: translate(-45px, -55px) rotate(-10deg) scale(0.98) !important;
+      }
+      .card-stack-container {
+        max-width: 100%;
+        overflow: visible;
+      }
+    }
   </style>
 </head>
 <body>
@@ -511,12 +548,12 @@
       </div>
 
       <!-- Right: Cards visual with Sparkle Canvas -->
-      <div class="relative hidden lg:block" aria-hidden="true" style="perspective: 1200px;">
+      <div class="relative flex items-center justify-center py-10 lg:py-0" aria-hidden="true" style="perspective: 1200px;">
         <!-- Canvas for dynamic particle sparkles -->
-        <canvas id="sparkle-canvas" class="absolute pointer-events-none" style="top:-80px; left:-80px; width:520px; height:560px; z-index:0;"></canvas>
+        <canvas id="sparkle-canvas"></canvas>
         
         <!-- Floating box mockup replaced with Luxury Membership Cards stack -->
-        <div class="relative mx-auto" style="width:360px;height:400px">
+        <div class="relative mx-auto card-stack-container" style="width:360px;height:400px">
           <!-- Glow -->
           <div class="absolute" style="width:420px;height:420px;background:radial-gradient(circle,rgba(217,119,6,0.2) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;"></div>
           

@@ -323,6 +323,14 @@ document.addEventListener('DOMContentLoaded', () => {
       hours:    'Mon – Sun: 8 am – 10 pm',
       distance: '1.2 mi',
     },
+    {
+      type:     'Artisan Market',
+      name:     'The Artisan Cellar',
+      address:  '530 N Michigan Ave, Chicago, IL 60611',
+      phone:    '(312) 555-0374',
+      hours:    'Mon – Sat: 10 am – 8 pm  •  Sun: 11 am – 6 pm',
+      distance: '1.8 mi',
+    }
   ];
 
   function renderStores(list = STORES) {
@@ -330,6 +338,11 @@ document.addEventListener('DOMContentLoaded', () => {
     storeResults.innerHTML = '';
 
     if (storeEmpty) storeEmpty.classList.toggle('hidden', list.length > 0);
+
+    const countEl = document.getElementById('results-count');
+    if (countEl) {
+      countEl.innerHTML = `Showing <strong>${list.length}</strong> retail locations`;
+    }
 
     list.forEach((store, i) => {
       const el = document.createElement('div');
@@ -1092,6 +1105,36 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast(`✓ Authenticated via ${provider}!`);
       }, 1500);
     });
+  });
+
+  // Contact Form Simulator (Find Us page)
+  const contactForm = document.getElementById('findus-contact-form');
+  contactForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('contact-name')?.value.trim();
+    const email = document.getElementById('contact-email')?.value.trim();
+    const subject = document.getElementById('contact-subject')?.value.trim();
+    const message = document.getElementById('contact-message')?.value.trim();
+
+    if (!name || !email || !subject || !message) {
+      showToast('Please fill out all fields.');
+      return;
+    }
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const origContent = submitBtn.innerHTML;
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `Sending...`;
+    submitBtn.style.background = 'var(--text-secondary)';
+
+    setTimeout(() => {
+      showToast('✓ Message sent successfully! We will contact you soon.');
+      contactForm.reset();
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = origContent;
+      submitBtn.style.background = '';
+    }, 1500);
   });
 
 }); // END DOMContentLoaded

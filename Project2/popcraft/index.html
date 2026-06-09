@@ -194,7 +194,7 @@
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center py-16 lg:py-0">
 
       <!-- LEFT: Copy -->
-      <div class="order-2 lg:order-1">
+      <div class="order-1 lg:order-1">
         <p class="section-label reveal">Small-Batch &nbsp;·&nbsp; Handcrafted &nbsp;·&nbsp; Non-GMO</p>
 
         <h1 class="font-display font-black reveal d-100"
@@ -241,7 +241,7 @@
       </div>
 
       <!-- RIGHT: Hero Image & Bouncing Canvas -->
-      <div class="order-1 lg:order-2 flex items-center justify-center py-8 lg:py-0 reveal-right relative">
+      <div class="order-2 lg:order-2 flex items-center justify-center py-8 lg:py-0 reveal-right relative">
         <div class="relative flex items-center justify-center hero-image-container w-full max-w-[480px]">
           <!-- Glowing background behind bucket -->
           <div class="absolute rounded-full hero-bucket-glow" aria-hidden="true"></div>
@@ -309,10 +309,9 @@
           01
         </div>
         <h3 class="font-display text-xl font-semibold mb-4 text-primary">Heritage Heirloom Grains</h3>
-        <p class="text-muted text-sm leading-relaxed mb-6">
+        <p class="text-muted text-sm leading-relaxed" style="margin-bottom: 0;">
           We partner with multi-generational family farms to source premium, non-GMO heirloom kernels. These ancient grains pop into fluffy, structurally robust shapes that hold toppings beautifully.
         </p>
-        <div style="font-size: 2.2rem; margin-top: auto;" aria-hidden="true">🌽</div>
       </article>
 
       <!-- Step 2 -->
@@ -321,10 +320,9 @@
           02
         </div>
         <h3 class="font-display text-xl font-semibold mb-4 text-primary">Controlled Batch Popping</h3>
-        <p class="text-muted text-sm leading-relaxed mb-6">
+        <p class="text-muted text-sm leading-relaxed" style="margin-bottom: 0;">
           Instead of drowning kernels in heavy commercial oils, we pop in custom-engineered kettles using organic coconut oil. Meticulous temperature controls ensure every pop is perfectly crisp.
         </p>
-        <div style="font-size: 2.2rem; margin-top: auto;" aria-hidden="true">🔥</div>
       </article>
 
       <!-- Step 3 -->
@@ -333,10 +331,9 @@
           03
         </div>
         <h3 class="font-display text-xl font-semibold mb-4 text-primary">Hand-Tossed Gourmet Spices</h3>
-        <p class="text-muted text-sm leading-relaxed mb-6">
+        <p class="text-muted text-sm leading-relaxed" style="margin-bottom: 0;">
           While the popcorn is warm, we tumble and toss it by hand with artisanal seasonings — from French fleur de sel to aged Parmigiano-Reggiano. Even coating, zero compromise.
         </p>
-        <div style="font-size: 2.2rem; margin-top: auto;" aria-hidden="true">👨‍🍳</div>
       </article>
 
     </div>
@@ -516,30 +513,31 @@
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
       <!-- Card: Corporate Gifting -->
-      <div class="gift-card lg:col-span-2 reveal d-100">
-        <div class="gift-card-img" style="height:280px">
+      <div class="gift-card reveal d-100">
+        <div class="gift-card-img">
           <div class="img-bg" style="background:linear-gradient(135deg,#451A03 0%,#7C2D12 40%,#C05621 70%,#D97706 100%)"></div>
-          <div class="absolute inset-0 flex flex-col justify-end p-8 z-10" style="background:linear-gradient(to top,rgba(41,37,36,0.85) 0%,transparent 60%)">
+          <div class="absolute inset-0 flex flex-col justify-end p-6 z-10" style="background:linear-gradient(to top,rgba(41,37,36,0.85) 0%,transparent 60%)">
             <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:0.5rem">Corporate &amp; B2B</span>
-            <h3 class="font-display text-2xl font-bold text-white">Corporate Gift Tins</h3>
+            <h3 class="font-display text-xl font-bold text-white">Corporate Gift Tins</h3>
           </div>
         </div>
-        <div style="padding:1.75rem">
-          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75;margin-bottom:1.25rem">
-            Impress clients, reward teams, and celebrate milestones with custom-branded tins filled with your chosen flavor selection. Minimum order of 12 tins, custom label design included. Bulk pricing available.
+        <div class="gift-card-body">
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem">
+            Impress clients, reward teams, and celebrate milestones with custom-branded tins filled with your chosen flavor selection. Bulk pricing available.
           </p>
-          <div class="flex flex-wrap gap-2 mb-5">
-            <span style="font-size:0.7rem;border:1px solid var(--border-color);padding:0.25rem 0.75rem;border-radius:2px;color:var(--text-secondary)">12–1,000+ tins</span>
-            <span style="font-size:0.7rem;border:1px solid var(--border-color);padding:0.25rem 0.75rem;border-radius:2px;color:var(--text-secondary)">Custom branding</span>
-            <span style="font-size:0.7rem;border:1px solid var(--border-color);padding:0.25rem 0.75rem;border-radius:2px;color:var(--text-secondary)">3-day rush available</span>
-            <span style="font-size:0.7rem;border:1px solid var(--border-color);padding:0.25rem 0.75rem;border-radius:2px;color:var(--text-secondary)">Net 30 invoicing</span>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">12–1,000+ tins</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Custom Branding</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Bulk Pricing</span>
+            </div>
+            <a href="#" class="btn-ghost" style="font-size:0.72rem">Learn More →</a>
           </div>
-          <a href="#" class="btn-ghost">Learn More →</a>
         </div>
       </div>
 
       <!-- Card: Party & Event Catering -->
-      <div class="gift-card reveal d-200">
+      <div class="gift-card reveal d-150">
         <div class="gift-card-img">
           <div class="img-bg" style="background:linear-gradient(135deg,#1E3A5F 0%,#2563EB 50%,#7DD3FC 100%)"></div>
           <div class="absolute inset-0 flex flex-col justify-end p-6 z-10" style="background:linear-gradient(to top,rgba(30,58,95,0.8) 0%,transparent 60%)">
@@ -547,45 +545,114 @@
             <h3 class="font-display text-xl font-bold text-white">Party &amp; Event Bars</h3>
           </div>
         </div>
-        <div style="padding:1.5rem">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem">
-            Interactive popcorn bars for weddings, product launches, and galas. Guests choose their flavors, we handle everything else. From 50 to 5,000 guests.
+        <div class="gift-card-body">
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem">
+            Interactive popcorn bars for weddings, product launches, and gala events. Guests choose their flavors, we handle everything else. From 50 to 5,000 guests.
           </p>
-          <a href="#" class="btn-ghost" style="font-size:0.72rem">Inquire →</a>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">50–5,000 guests</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Full Service</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Live Popping</span>
+            </div>
+            <a href="#" class="btn-ghost" style="font-size:0.72rem">Inquire Now →</a>
+          </div>
         </div>
       </div>
 
       <!-- Card: Personalized Tins -->
-      <div class="gift-card reveal d-150">
-        <div class="gift-card-img" style="height:180px">
+      <div class="gift-card reveal d-200">
+        <div class="gift-card-img">
           <div class="img-bg" style="background:linear-gradient(135deg,#4C1D95 0%,#7C3AED 50%,#DDD6FE 100%)"></div>
           <div class="absolute inset-0 flex flex-col justify-end p-6 z-10" style="background:linear-gradient(to top,rgba(76,29,149,0.8) 0%,transparent 60%)">
             <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#C4B5FD;margin-bottom:0.5rem">Personal</span>
             <h3 class="font-display text-xl font-bold text-white">Custom Tin Design</h3>
           </div>
         </div>
-        <div style="padding:1.5rem">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem">
-            Upload your photo, monogram, or artwork. Our designers bring your vision to a keepsake tin. Perfect for birthdays, anniversaries, and holidays.
+        <div class="gift-card-body">
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem">
+            Upload your photo, monogram, or custom artwork. Our designers bring your vision to a beautiful keepsake tin. Perfect for birthdays and anniversaries.
           </p>
-          <a href="#" class="btn-ghost" style="font-size:0.72rem">Design Yours →</a>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">No Minimum</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Photo Printing</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Keepsake Tins</span>
+            </div>
+            <a href="#" class="btn-ghost" style="font-size:0.72rem">Design Yours →</a>
+          </div>
         </div>
       </div>
 
       <!-- Card: Seasonal Collections -->
       <div class="gift-card reveal d-250">
-        <div class="gift-card-img" style="height:180px">
+        <div class="gift-card-img">
           <div class="img-bg" style="background:linear-gradient(135deg,#14532D 0%,#166534 50%,#86EFAC 100%)"></div>
           <div class="absolute inset-0 flex flex-col justify-end p-6 z-10" style="background:linear-gradient(to top,rgba(20,83,45,0.8) 0%,transparent 60%)">
             <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#86EFAC;margin-bottom:0.5rem">Holiday</span>
             <h3 class="font-display text-xl font-bold text-white">Seasonal Collections</h3>
           </div>
         </div>
-        <div style="padding:1.5rem">
-          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1rem">
-            Holiday hampers, Valentine's Day duos, and harvest collections. Limited quantities, released quarterly. Subscribe to notifications.
+        <div class="gift-card-body">
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem">
+            Holiday gift hampers, Valentine's Day duos, and harvest collections. Limited quantities released quarterly. Subscribe to receive launch notifications.
           </p>
-          <a href="#" class="btn-ghost" style="font-size:0.72rem">View Collection →</a>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Limited Editions</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Curated Flavors</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Gift Packs</span>
+            </div>
+            <a href="#" class="btn-ghost" style="font-size:0.72rem">View Collections →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Wholesale & Retail Boutique -->
+      <div class="gift-card reveal d-300">
+        <div class="gift-card-img">
+          <div class="img-bg" style="background:linear-gradient(135deg,#78350F 0%,#C2410C 50%,#FBBF24 100%)"></div>
+          <div class="absolute inset-0 flex flex-col justify-end p-6 z-10" style="background:linear-gradient(to top,rgba(120,53,15,0.8) 0%,transparent 60%)">
+            <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#FBBF24;margin-bottom:0.5rem">Wholesale</span>
+            <h3 class="font-display text-xl font-bold text-white">Wholesale &amp; Retail</h3>
+          </div>
+        </div>
+        <div class="gift-card-body">
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem">
+            Stock PopCraft gourmet popcorn in your boutique, upscale market, or cafe. Access wholesale pricing, customized shelf displays, and POS materials.
+          </p>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Retail Pricing</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Shelf Displays</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Quick Restock</span>
+            </div>
+            <a href="#" class="btn-ghost" style="font-size:0.72rem">Explore Wholesale →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card: Flavor Lab Collabs -->
+      <div class="gift-card reveal d-350">
+        <div class="gift-card-img">
+          <div class="img-bg" style="background:linear-gradient(135deg,#0F172A 0%,#334155 50%,#94A3B8 100%)"></div>
+          <div class="absolute inset-0 flex flex-col justify-end p-6 z-10" style="background:linear-gradient(to top,rgba(15,23,42,0.8) 0%,transparent 60%)">
+            <span style="font-size:0.62rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#94A3B8;margin-bottom:0.5rem">Gourmet Lab</span>
+            <h3 class="font-display text-xl font-bold text-white">Co-Branded Collabs</h3>
+          </div>
+        </div>
+        <div class="gift-card-body">
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.7;margin-bottom:1.25rem">
+            Work directly with our flavor artisans to develop a bespoke, co-branded popcorn flavor and custom packaging tailored specifically for your brand or event.
+          </p>
+          <div>
+            <div class="flex flex-wrap gap-1.5 mb-5">
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Bespoke Flavor</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Custom Packaging</span>
+              <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Flavor Lab</span>
+            </div>
+            <a href="#" class="btn-ghost" style="font-size:0.72rem">Start Collab →</a>
+          </div>
         </div>
       </div>
 
