@@ -1590,12 +1590,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .flight-slot-label {
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-secondary);
-  margin-top: 4px;
+  margin-top: 0;
+  white-space: nowrap;
 }
 
 .flight-slot.filled .flight-slot-label {

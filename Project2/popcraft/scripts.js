@@ -801,7 +801,7 @@ document.addEventListener('DOMContentLoaded', () => {
     wine: {
       title: "Chardonnay / Pinot Noir & Truffle Parmesan",
       desc: "The buttery, rich profile of an oak-aged Chardonnay matches our white truffle aroma perfectly, while a light Pinot Noir brings out the earthiness of real aged Parmesan.",
-      emoji: "🍄",
+      image: "Assets/fla1.jpg",
       flavor: "Truffle Parmesan",
       intensity: "70%",
       notes: ["Black Truffle", "Aged Parmesan", "Sea Salt"]
@@ -809,7 +809,7 @@ document.addEventListener('DOMContentLoaded', () => {
     beer: {
       title: "Crisp IPA & Sriracha Lime",
       desc: "A hoppy, crisp India Pale Ale cuts right through the bold heat of our sriracha glaze, with the lime zest highlighting citrusy hop notes.",
-      emoji: "🌿",
+      image: "Assets/fla8.jpg",
       flavor: "Sriracha Lime",
       intensity: "80%",
       notes: ["Sriracha", "Key Lime", "Black Pepper"]
@@ -817,7 +817,7 @@ document.addEventListener('DOMContentLoaded', () => {
     coffee: {
       title: "Dark Roast Espresso & Miso Butterscotch",
       desc: "The bold bitterness of dark roast coffee or espresso creates a spectacular contrast with the buttery, sweet, and salty umami notes of our miso butterscotch.",
-      emoji: "🫙",
+      image: "Assets/fla7.jpg",
       flavor: "Miso Butterscotch",
       intensity: "60%",
       notes: ["White Miso", "Butterscotch", "Demerara Sugar"]
@@ -825,7 +825,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tea: {
       title: "Ceremonial Matcha & Matcha White Chocolate",
       desc: "Earthy, green ceremonial matcha tea balances the sweet, creamy notes of white chocolate, creating a clean and sophisticated afternoon pairing.",
-      emoji: "🍵",
+      image: "Assets/fla3.jpg",
       flavor: "Matcha White Chocolate",
       intensity: "55%",
       notes: ["Ceremonial Matcha", "White Chocolate", "Coconut Sugar"]
@@ -849,7 +849,9 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           pairingResultBox.innerHTML = `
             <div class="flex flex-col md:flex-row gap-6 items-start">
-              <div style="font-size: 3.5rem; line-height: 1;" class="shrink-0 select-none">${data.emoji}</div>
+              <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 border border-[var(--border-color)]">
+                <img src="${data.image}" alt="${data.flavor}" class="w-full h-full object-cover" />
+              </div>
               <div class="flex-1">
                 <div style="font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.35rem;">Recommended Pairing</div>
                 <h4 class="font-display text-xl font-bold mb-2" style="color: var(--text-primary);">${data.title}</h4>
@@ -889,7 +891,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const flightSlots = document.querySelectorAll('.flight-slot');
   const flightAddBtns = document.querySelectorAll('.flight-add-btn');
   const flightOrderBtn = document.getElementById('flight-order-btn');
-  let flightState = [null, null, null]; // holds { name: '...', emoji: '...' } or null
+  let flightState = [null, null, null]; // holds { name: '...', image: '...' } or null
 
   function updateFlightUI() {
     flightSlots.forEach((slot, idx) => {
@@ -898,8 +900,8 @@ document.addEventListener('DOMContentLoaded', () => {
         slot.classList.add('filled');
         slot.innerHTML = `
           <button class="flight-remove-btn" data-idx="${idx}" aria-label="Remove ${item.name}">✕</button>
-          <span style="font-size: 2rem;">${item.emoji}</span>
-          <span class="flight-slot-label" style="font-size: 0.65rem; text-align: center; max-width: 90px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${item.name}</span>
+          <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover rounded-full" />
+          <span class="flight-slot-label">${item.name}</span>
         `;
         // Bind remove event
         slot.querySelector('.flight-remove-btn').addEventListener('click', (e) => {
@@ -932,13 +934,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function addFlightItem(name, emoji) {
+  function addFlightItem(name, image) {
     const emptyIdx = flightState.indexOf(null);
     if (emptyIdx === -1) {
       showToast("Your Flight Box is full! Remove an item to add another.");
       return;
     }
-    flightState[emptyIdx] = { name, emoji };
+    flightState[emptyIdx] = { name, image };
     updateFlightUI();
     showToast(`${name} added to slot ${emptyIdx + 1}!`);
   }
@@ -956,8 +958,8 @@ document.addEventListener('DOMContentLoaded', () => {
     flightAddBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const name = btn.getAttribute('data-flavor');
-        const emoji = btn.getAttribute('data-emoji') || '🍿';
-        addFlightItem(name, emoji);
+        const image = btn.getAttribute('data-image') || 'Assets/fla1.jpg';
+        addFlightItem(name, image);
       });
     });
 
