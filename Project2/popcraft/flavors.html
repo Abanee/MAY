@@ -927,44 +927,7 @@
         </div>
       </article>
 
-      <!-- ─────────────────────────────────────────────
-           CARD 12 — Pumpkin Spice
-      ───────────────────────────────────────────── -->
-      <article class="flavor-card-detail reveal d-300"
-               role="listitem"
-               data-category="sweet vegan limited"
-               data-price="14"
-               data-name="pumpkin spice"
-               data-order="12"
-               data-new="true"
-               aria-label="Pumpkin Spice">
-        <div class="fcd-img">
-          <div class="fcd-bg" style="background: url('Assets/fla12.jpg') no-repeat center/cover;"></div>
-          <div class="fcd-overlay">
-            <div class="flex justify-between items-start">
-              <div class="flex flex-wrap gap-1.5">
-                <span class="flavor-tag tag-new" style="font-size:0.58rem">Fall Only</span>
-                <span class="flavor-tag" style="background:rgba(0,0,0,0.3);color:rgba(255,255,255,0.75);font-size:0.58rem;border-radius:2px;padding:0.2rem 0.55rem">Sweet · Vegan</span>
-              </div>
-              <button class="wishlist-btn" aria-label="Add to wishlist">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-              </button>
-            </div>
-            <div>
-              <div class="flex flex-wrap gap-1">
-                <span class="taste-note">Cozy</span>
-                <span class="taste-note">Spiced</span>
-                <span class="taste-note">Autumnal</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style="padding:1.25rem;display:flex;flex-direction:column;flex:1">
-          <h3 class="flavor-name" style="font-size:1.05rem;margin-bottom:0.35rem">Pumpkin Spice</h3>
-          <p class="flavor-desc" style="font-size:0.8rem;margin-bottom:0.75rem;flex:1">
-            Real pumpkin purée glaze with cinnamon, nutmeg, and ginger. The season's most anticipated flavor — back by popular demand each autumn.
-          </p>
-          <div style="margin-bottom:0.9rem">
+      <!-- ──────────────────────────�          <div style="margin-bottom:0.9rem">
             <div style="font-size:0.62rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.4rem">Flavor Intensity</div>
             <div class="intensity-bar"><div class="intensity-fill" style="width:50%"></div></div>
             <div class="flavor-notes" style="margin-top:0.5rem">
@@ -1009,18 +972,18 @@
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
       <!-- Left: Copy -->
-      <div class="reveal-left">
+      <div class="reveal-left flex flex-col items-center lg:items-start text-center lg:text-left">
         <p class="section-label" style="color:rgba(245,158,11,0.8)">Flavor of the Month</p>
         <h2 class="font-display font-bold" style="font-size:clamp(2.2rem,5vw,4rem);color:#fff;line-height:1.1;margin-bottom:1.25rem">
           Bourbon<br>
           <em style="color:#F59E0B">Pecan</em>
         </h2>
-        <p style="font-size:0.95rem;color:rgba(245,245,244,0.65);line-height:1.8;max-width:440px;margin-bottom:2rem">
+        <p class="mx-auto lg:mx-0" style="font-size:0.95rem;color:rgba(245,245,244,0.65);line-height:1.8;max-width:440px;margin-bottom:2rem">
           October's spotlight belongs to our cult-classic limited release. Barrel-aged Kentucky bourbon reduction married to candied Georgia pecans, finished with a touch of Madagascar vanilla. Complex, warming, and utterly unforgettable — only available while stock lasts.
         </p>
 
         <!-- Tasting Notes -->
-        <div style="margin-bottom:2.5rem">
+        <div style="margin-bottom:2.5rem;width:100%" class="max-w-md mx-auto lg:mx-0">
           <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(245,158,11,0.6);margin-bottom:1rem">Tasting Notes</p>
           <div class="grid grid-cols-2 gap-3">
             <div style="display:flex;align-items:center;gap:0.6rem;color:rgba(245,245,244,0.7)">
@@ -1043,7 +1006,7 @@
         </div>
 
         <!-- Stock indicator -->
-        <div style="margin-bottom:2rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:1rem 1.25rem">
+        <div style="margin-bottom:2rem;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:1rem 1.25rem;width:100%" class="max-w-md mx-auto lg:mx-0">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.6rem">
             <span style="font-size:0.75rem;color:rgba(245,245,244,0.6)">Monthly Stock</span>
             <span style="font-size:0.75rem;font-weight:600;color:#F59E0B">Only 48 bags left!</span>
@@ -1053,8 +1016,8 @@
           </div>
         </div>
 
-        <div style="display:flex;flex-wrap:wrap;gap:0.85rem;align-items:center">
-          <button class="btn-primary add-to-cart" data-flavor="Bourbon Pecan">
+        <div class="flex flex-wrap justify-center lg:justify-start w-full" style="gap:0.85rem;align-items:center">
+          <button class="btn-primary add-to-cart" data-flavor="Bourbon Pecan" style="color:#fff;border:none;padding:0.82rem 1.8rem;">
             Add to Cart — $17
           </button>
           <a href="index.html#club" class="btn-outline" style="border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.7)">
@@ -1070,11 +1033,11 @@
           <div class="absolute rounded-full" style="width:320px;height:320px;background:radial-gradient(circle,rgba(217,119,6,0.2) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%)" aria-hidden="true"></div>
 
           <!-- Large flavor display circle -->
-          <div class="absolute" style="width:280px;height:280px;border-radius:50%;background:linear-gradient(145deg,#92400E 0%,#D97706 50%,#F59E0B 100%);top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 32px 64px rgba(0,0,0,0.5),inset 0 2px 0 rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:0.5rem;text-align:center;padding:2rem">
-            <div style="font-size:4rem;line-height:1" aria-hidden="true">🥃</div>
-            <div style="font-family:'Playfair Display',serif;color:#fff;font-size:1.1rem;font-weight:700;line-height:1.2">Bourbon<br>Pecan</div>
-            <div style="width:32px;height:1px;background:rgba(255,255,255,0.3);margin:4px 0"></div>
-            <div style="font-family:'DM Sans',sans-serif;color:rgba(255,255,255,0.5);font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase">Limited Edition</div>
+          <div class="absolute" style="width:280px;height:280px;border-radius:50%;background:url('Assets/fla6.jpg') no-repeat center/cover;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:0 32px 64px rgba(0,0,0,0.5);border:4px solid var(--accent-gold);overflow:hidden;">
+            <!-- Premium bottom tag -->
+            <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 60%);display:flex;align-items:center;justify-content:end;flex-direction:column;padding-bottom:1rem;text-align:center;">
+              <span style="font-family:'DM Sans',sans-serif;color:#fff;font-weight:700;font-size:0.6rem;letter-spacing:0.22em;text-transform:uppercase;">Limited Edition</span>
+            </div>
           </div>
 
           <!-- Orbiting flavor notes -->
