@@ -78,7 +78,6 @@
       color: #fff;
     }
 
-    /* ── Tin Product Cards ── */
     .tin-card {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
@@ -87,6 +86,9 @@
       transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94),
                   box-shadow 0.35s ease,
                   border-color 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     .tin-card:hover {
       transform: translateY(-8px);
@@ -113,7 +115,15 @@
       padding: 0.25rem 0.7rem;
       border-radius: 20px;
     }
-    .tin-body { padding: 1.5rem; }
+    .tin-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .tin-body .btn-primary {
+      margin-top: auto;
+    }
     .tin-flavors {
       display: flex;
       flex-wrap: wrap;
@@ -439,8 +449,8 @@
       <div class="tin-card reveal" data-occ="everyday birthday">
         <div class="tin-img">
           <div class="tin-img-bg" style="background: url('Assets/tin_mini.png') no-repeat center/cover;"></div>
-          <div class="tin-tag" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.2)">
-            <span class="size-pill" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85)">1 Flavor · 2 oz</span>
+          <div class="tin-tag" style="background:rgba(45,18,0,0.85);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.25)">
+            <span class="size-pill" style="border-color:rgba(255,255,255,0.35);color:#fff">1 Flavor · 2 oz</span>
           </div>
         </div>
         <div class="tin-body">
@@ -499,8 +509,8 @@
       <div class="tin-card reveal d-200" data-occ="birthday holiday everyday">
         <div class="tin-img">
           <div class="tin-img-bg" style="background: url('Assets/tin_classic.png') no-repeat center/cover;"></div>
-          <div class="tin-tag" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.2)">
-            <span class="size-pill" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85)">4 Flavors · 12 oz</span>
+          <div class="tin-tag" style="background:rgba(45,18,0,0.85);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.25)">
+            <span class="size-pill" style="border-color:rgba(255,255,255,0.35);color:#fff">4 Flavors · 12 oz</span>
           </div>
         </div>
         <div class="tin-body">
@@ -561,8 +571,8 @@
       <div class="tin-card reveal d-100" data-occ="wedding">
         <div class="tin-img">
           <div class="tin-img-bg" style="background: url('Assets/tin_wedding.png') no-repeat center/cover;"></div>
-          <div class="tin-tag" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.2)">
-            <span class="size-pill" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.85)">Min. 25 tins</span>
+          <div class="tin-tag" style="background:rgba(45,18,0,0.85);backdrop-filter:blur(6px);color:#fff;border:1px solid rgba(255,255,255,0.25)">
+            <span class="size-pill" style="border-color:rgba(255,255,255,0.35);color:#fff">Min. 25 tins</span>
           </div>
         </div>
         <div class="tin-body">
@@ -709,24 +719,22 @@
   <div class="max-w-7xl mx-auto px-5 lg:px-10">
     <div class="corp-banner p-10 lg:p-16 reveal">
       <div class="relative z-10">
-        <div class="grid lg:grid-cols-3 gap-8 mb-10">
-          <div class="lg:col-span-2">
-            <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.75rem">Corporate Gifting</p>
-            <h2 class="font-display font-bold" style="font-size:clamp(1.8rem,4vw,3rem);color:#fff;line-height:1.1;margin-bottom:1rem">
-              Impress Clients &amp;<br><em style="color:#F59E0B">Delight Your Team</em>
-            </h2>
-            <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75;max-width:500px;margin-bottom:2rem">
-              From employee appreciation boxes to client holiday gifts, PopCraft delivers premium branded experiences at scale. Minimum 25 units, custom branding available, dedicated account manager assigned.
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <a href="mailto:corporate@popcraft.co" class="btn-primary" style="background:#fff;color:#3B1208">
-                Get a Quote
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="tel:+18005550199" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8)">
-                Call Us
-              </a>
-            </div>
+        <div class="max-w-3xl mx-auto text-center mb-10">
+          <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin-bottom:0.75rem">Corporate Gifting</p>
+          <h2 class="font-display font-bold" style="font-size:clamp(1.8rem,4vw,3rem);color:#fff;line-height:1.1;margin-bottom:1rem">
+            Impress Clients &amp;<br><em style="color:#F59E0B">Delight Your Team</em>
+          </h2>
+          <p style="font-size:0.95rem;color:rgba(255,255,255,0.6);line-height:1.75;max-width:500px;margin-bottom:2rem;margin-left:auto;margin-right:auto">
+            From employee appreciation boxes to client holiday gifts, PopCraft delivers premium branded experiences at scale. Minimum 25 units, custom branding available, dedicated account manager assigned.
+          </p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="mailto:corporate@popcraft.co" class="btn-primary" style="background:#fff;color:#3B1208">
+              Get a Quote
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="tel:+18005550199" class="btn-outline" style="border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.8)">
+              Call Us
+            </a>
           </div>
         </div>
 
