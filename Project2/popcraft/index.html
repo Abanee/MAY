@@ -211,7 +211,7 @@
         </p>
 
         <div class="flex flex-wrap gap-4 mt-10 reveal d-300">
-          <a href="#flavors" class="btn-primary">
+          <a href="flavors.html" class="btn-primary">
             Explore Flavors
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -281,186 +281,71 @@
 
 
 <!-- ======================================================
-  SECTION 2 — FLAVOR CATALOG
+  SECTION 2 — THE ARTISAN PROCESS
 ======================================================= -->
-<section id="flavors" class="py-24 lg:py-32" style="background:var(--bg-primary)">
+<section id="process" class="py-24 lg:py-32" style="background:var(--bg-primary)">
   <div class="max-w-7xl mx-auto px-5 lg:px-10">
 
     <!-- Section Header -->
-    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-14">
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
       <div>
-        <p class="section-label reveal">Flavor Catalog</p>
+        <p class="section-label reveal">The PopCraft Method</p>
         <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(2rem,4.5vw,3.2rem);color:var(--text-primary)">
-          Every Kernel,<br>
-          <em style="color:var(--accent-gold)">A Masterpiece.</em>
+          The Craft Behind<br>
+          <em style="color:var(--accent-gold)">The Perfect Crunch.</em>
         </h2>
       </div>
-      <p class="max-w-sm reveal d-150" style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">
-        Twelve rotating flavors inspired by global cuisines — from the forests of Perigord to the night markets of Tokyo.
+      <p class="max-w-md reveal d-150" style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7">
+        We don't believe in shortcuts. From sourcing rare, heritage grain kernels to hand-tossing spices, our three-step method guarantees a popping experience unlike any other.
       </p>
     </div>
 
-    <!-- Flavor Grid -->
-    <div class="flavor-grid">
-
-      <!-- Card 1: Truffle Parmesan -->
-      <article class="flavor-card reveal d-100" aria-label="Truffle Parmesan flavor">
-        <div class="flavor-card-img">
-          <div class="img-pattern" style="background:linear-gradient(135deg,#292524 0%,#44403C 50%,#1C1917 100%)"></div>
-          <!-- Decorative overlay text -->
-          <div class="absolute inset-0 flex items-center justify-center z-10" style="background:linear-gradient(160deg,rgba(41,37,36,0.2) 0%,rgba(69,26,3,0.5) 100%)">
-            <div class="text-center">
-              <div style="font-size:3rem" aria-hidden="true">🍄</div>
-              <div style="font-family:'Playfair Display',serif;color:rgba(255,255,255,0.85);font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.5rem">Black Truffle · Aged Parmesan</div>
-            </div>
-          </div>
+    <!-- Process Steps -->
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <!-- Step 1 -->
+      <article class="surface-card p-8 reveal d-100 flex flex-col h-full border border-theme" style="transition:transform 0.3s ease;">
+        <div class="w-12 h-12 rounded-full mb-6 flex items-center justify-center font-display text-xl font-bold" style="background:rgba(217,119,6,0.08);color:var(--accent-gold)">
+          01
         </div>
-        <div class="flavor-card-body">
-          <span class="flavor-tag tag-gold">Best Seller</span>
-          <h3 class="flavor-name">Truffle Parmesan</h3>
-          <p class="flavor-desc">Shaved black truffle and 24-month aged Parmigiano-Reggiano. Earthy, decadent, unapologetically luxurious.</p>
-          <div class="flavor-footer">
-            <div class="flavor-price">$16<small>/bag</small></div>
-            <button class="add-to-cart" aria-label="Add Truffle Parmesan to cart">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add to Cart
-            </button>
-          </div>
-        </div>
+        <h3 class="font-display text-xl font-semibold mb-4 text-primary">Heritage Heirloom Grains</h3>
+        <p class="text-muted text-sm leading-relaxed mb-6">
+          We partner with multi-generational family farms to source premium, non-GMO heirloom kernels. These ancient grains pop into fluffy, structurally robust shapes that hold toppings beautifully.
+        </p>
+        <div style="font-size: 2.2rem; margin-top: auto;" aria-hidden="true">🌽</div>
       </article>
 
-      <!-- Card 2: Spicy Caramel -->
-      <article class="flavor-card reveal d-150" aria-label="Spicy Caramel flavor">
-        <div class="flavor-card-img">
-          <div class="img-pattern" style="background:linear-gradient(135deg,#7C2D12 0%,#C05621 40%,#D97706 100%)"></div>
-          <div class="absolute inset-0 flex items-center justify-center z-10" style="background:linear-gradient(160deg,rgba(124,45,18,0.2) 0%,rgba(217,119,6,0.35) 100%)">
-            <div class="text-center">
-              <div style="font-size:3rem" aria-hidden="true">🌶️</div>
-              <div style="font-family:'Playfair Display',serif;color:rgba(255,255,255,0.9);font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.5rem">Cayenne · Brown Sugar · Smoked Salt</div>
-            </div>
-          </div>
+      <!-- Step 2 -->
+      <article class="surface-card p-8 reveal d-200 flex flex-col h-full border border-theme" style="transition:transform 0.3s ease;">
+        <div class="w-12 h-12 rounded-full mb-6 flex items-center justify-center font-display text-xl font-bold" style="background:rgba(217,119,6,0.08);color:var(--accent-gold)">
+          02
         </div>
-        <div class="flavor-card-body">
-          <span class="flavor-tag tag-spicy">🔥 Fan Favorite</span>
-          <h3 class="flavor-name">Spicy Caramel</h3>
-          <p class="flavor-desc">Slow-cooked caramel with a cayenne kick and smoked sea salt finish. Sweet heat in perfect harmony.</p>
-          <div class="flavor-footer">
-            <div class="flavor-price">$14<small>/bag</small></div>
-            <button class="add-to-cart" aria-label="Add Spicy Caramel to cart">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add to Cart
-            </button>
-          </div>
-        </div>
+        <h3 class="font-display text-xl font-semibold mb-4 text-primary">Controlled Batch Popping</h3>
+        <p class="text-muted text-sm leading-relaxed mb-6">
+          Instead of drowning kernels in heavy commercial oils, we pop in custom-engineered kettles using organic coconut oil. Meticulous temperature controls ensure every pop is perfectly crisp.
+        </p>
+        <div style="font-size: 2.2rem; margin-top: auto;" aria-hidden="true">🔥</div>
       </article>
 
-      <!-- Card 3: Matcha White Chocolate -->
-      <article class="flavor-card reveal d-200" aria-label="Matcha White Chocolate flavor">
-        <div class="flavor-card-img">
-          <div class="img-pattern" style="background:linear-gradient(135deg,#14532D 0%,#166534 50%,#4ADE80 100%)"></div>
-          <div class="absolute inset-0 flex items-center justify-center z-10" style="background:linear-gradient(160deg,rgba(20,83,45,0.3) 0%,rgba(22,101,52,0.5) 100%)">
-            <div class="text-center">
-              <div style="font-size:3rem" aria-hidden="true">🍵</div>
-              <div style="font-family:'Playfair Display',serif;color:rgba(255,255,255,0.9);font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.5rem">Ceremonial Matcha · Valrhona White</div>
-            </div>
-          </div>
+      <!-- Step 3 -->
+      <article class="surface-card p-8 reveal d-300 flex flex-col h-full border border-theme" style="transition:transform 0.3s ease;">
+        <div class="w-12 h-12 rounded-full mb-6 flex items-center justify-center font-display text-xl font-bold" style="background:rgba(217,119,6,0.08);color:var(--accent-gold)">
+          03
         </div>
-        <div class="flavor-card-body">
-          <span class="flavor-tag tag-green">Vegan</span>
-          <h3 class="flavor-name">Matcha White Chocolate</h3>
-          <p class="flavor-desc">Ceremonial-grade Japanese matcha draped in Valrhona white chocolate. Floral, complex, and beautifully bitter-sweet.</p>
-          <div class="flavor-footer">
-            <div class="flavor-price">$15<small>/bag</small></div>
-            <button class="add-to-cart" aria-label="Add Matcha White Chocolate to cart">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add to Cart
-            </button>
-          </div>
-        </div>
+        <h3 class="font-display text-xl font-semibold mb-4 text-primary">Hand-Tossed Gourmet Spices</h3>
+        <p class="text-muted text-sm leading-relaxed mb-6">
+          While the popcorn is warm, we tumble and toss it by hand with artisanal seasonings — from French fleur de sel to aged Parmigiano-Reggiano. Even coating, zero compromise.
+        </p>
+        <div style="font-size: 2.2rem; margin-top: auto;" aria-hidden="true">👨‍🍳</div>
       </article>
 
-      <!-- Card 4: Classic Sea Salt -->
-      <article class="flavor-card reveal d-250" aria-label="Classic Sea Salt flavor">
-        <div class="flavor-card-img">
-          <div class="img-pattern" style="background:linear-gradient(135deg,#0C4A6E 0%,#0369A1 50%,#7DD3FC 100%)"></div>
-          <div class="absolute inset-0 flex items-center justify-center z-10" style="background:linear-gradient(160deg,rgba(12,74,110,0.3) 0%,rgba(3,105,161,0.4) 100%)">
-            <div class="text-center">
-              <div style="font-size:3rem" aria-hidden="true">🌊</div>
-              <div style="font-family:'Playfair Display',serif;color:rgba(255,255,255,0.9);font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.5rem">Brittany Fleur de Sel · Cultured Butter</div>
-            </div>
-          </div>
-        </div>
-        <div class="flavor-card-body">
-          <span class="flavor-tag tag-green">Gluten-Free</span>
-          <h3 class="flavor-name">Classic Sea Salt</h3>
-          <p class="flavor-desc">Cultured grass-fed butter and Breton fleur de sel on heritage white corn. The original, perfected over decades.</p>
-          <div class="flavor-footer">
-            <div class="flavor-price">$12<small>/bag</small></div>
-            <button class="add-to-cart" aria-label="Add Classic Sea Salt to cart">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </article>
+    </div>
 
-      <!-- Card 5: Lavender Honey -->
-      <article class="flavor-card reveal d-300" aria-label="Lavender Honey flavor">
-        <div class="flavor-card-img">
-          <div class="img-pattern" style="background:linear-gradient(135deg,#4C1D95 0%,#6D28D9 50%,#C4B5FD 100%)"></div>
-          <div class="absolute inset-0 flex items-center justify-center z-10" style="background:linear-gradient(160deg,rgba(76,29,149,0.3) 0%,rgba(109,40,217,0.4) 100%)">
-            <div class="text-center">
-              <div style="font-size:3rem" aria-hidden="true">🌸</div>
-              <div style="font-family:'Playfair Display',serif;color:rgba(255,255,255,0.9);font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.5rem">Provence Lavender · Wildflower Honey</div>
-            </div>
-          </div>
-        </div>
-        <div class="flavor-card-body">
-          <span class="flavor-tag tag-new">Seasonal</span>
-          <h3 class="flavor-name">Lavender Honey</h3>
-          <p class="flavor-desc">Delicate Provence lavender blossoms with raw wildflower honey. A fragrant, floral escape in every handful.</p>
-          <div class="flavor-footer">
-            <div class="flavor-price">$15<small>/bag</small></div>
-            <button class="add-to-cart" aria-label="Add Lavender Honey to cart">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 6: Bourbon Pecan -->
-      <article class="flavor-card reveal d-350" aria-label="Bourbon Pecan flavor">
-        <div class="flavor-card-img">
-          <div class="img-pattern" style="background:linear-gradient(135deg,#451A03 0%,#92400E 45%,#D97706 100%)"></div>
-          <div class="absolute inset-0 flex items-center justify-center z-10" style="background:linear-gradient(160deg,rgba(69,26,3,0.2) 0%,rgba(146,64,14,0.5) 100%)">
-            <div class="text-center">
-              <div style="font-size:3rem" aria-hidden="true">🥃</div>
-              <div style="font-family:'Playfair Display',serif;color:rgba(255,255,255,0.9);font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;margin-top:0.5rem">Kentucky Bourbon · Candied Pecan</div>
-            </div>
-          </div>
-        </div>
-        <div class="flavor-card-body">
-          <span class="flavor-tag tag-gold">Limited Run</span>
-          <h3 class="flavor-name">Bourbon Pecan</h3>
-          <p class="flavor-desc">Barrel-aged Kentucky bourbon reduction with candied Georgia pecans and a whisper of vanilla. Warmth in a bag.</p>
-          <div class="flavor-footer">
-            <div class="flavor-price">$17<small>/bag</small></div>
-            <button class="add-to-cart" aria-label="Add Bourbon Pecan to cart">
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      </article>
-
-    </div><!-- /flavor-grid -->
-
-    <!-- View All CTA -->
-    <div class="flex justify-center mt-12 reveal d-200">
-      <a href="#" class="btn-outline">
-        View All 12 Flavors
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <!-- Interactive Call to Action -->
+    <div class="flex justify-center mt-14 reveal d-200">
+      <a href="flavors.html" class="btn-primary">
+        See Our Flavor Universe
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
 
@@ -527,7 +412,7 @@
     </div>
 
     <!-- Pricing Cards -->
-    <div class="grid md:grid-cols-3 gap-6 lg:gap-8 items-start">
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
 
       <!-- Basic -->
       <div class="pricing-card reveal d-100">
@@ -736,7 +621,7 @@
 <footer id="site-footer" role="contentinfo">
   <div class="max-w-7xl mx-auto px-5 lg:px-10 pt-16 pb-10">
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-14">
+    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-14">
 
       <!-- Brand Column -->
       <div class="lg:col-span-2">
@@ -777,7 +662,7 @@
       <div>
         <h4 class="footer-heading">Shop</h4>
         <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
-          <li><a href="#flavors" class="footer-link">All Flavors</a></li>
+          <li><a href="flavors.html" class="footer-link">All Flavors</a></li>
           <li><a href="#club"    class="footer-link">Subscription Box</a></li>
           <li><a href="#gifting" class="footer-link">Gift Tins</a></li>
           <li><a href="#gifting" class="footer-link">Catering</a></li>
@@ -798,7 +683,7 @@
       </div>
 
       <!-- Newsletter -->
-      <div>
+      <div class="lg:col-span-2">
         <h4 class="footer-heading">Stay in the Loop</h4>
         <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">
           New flavors, limited drops, and member-only discounts — straight to your inbox.
@@ -824,7 +709,7 @@
     <div class="footer-divider"></div>
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
       <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">
-        © 2025 PopCraft Artisan Popcorn Co. All rights reserved.
+        © 2026 PopCraft Artisan Popcorn Co. All rights reserved.
       </p>
       <div class="flex flex-wrap items-center gap-5">
         <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>

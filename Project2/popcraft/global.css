@@ -723,6 +723,12 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.pricing-card ul {
+  flex-grow: 1;
 }
 .pricing-card:hover {
   transform: translateY(-6px);
@@ -930,6 +936,7 @@ h1, h2, h3, h4, h5, h6 {
   background: transparent;
   border: none;
   outline: none;
+  min-width: 0;
 }
 .newsletter-input::placeholder { color: rgba(255,255,255,0.3); }
 

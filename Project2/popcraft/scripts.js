@@ -181,8 +181,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
           navLinks.forEach(link => {
-            const isActive = link.getAttribute('href') === `#${id}`;
-            link.classList.toggle('active', isActive);
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              const isActive = href === `#${id}`;
+              link.classList.toggle('active', isActive);
+            }
           });
         }
       });
