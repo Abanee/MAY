@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+  <!-- Popcorn box/bucket -->
+  <path d="M6 13 L18 13 L16.2 20.5 C16.1 21.3, 15.4 22, 14.6 22 L9.4 22 C8.6 22, 7.9 21.3, 7.8 20.5 Z" />
+  <!-- Popcorn fluffs -->
+  <circle cx="12" cy="11" r="3.2" />
+  <circle cx="8.5" cy="9.5" r="2.8" />
+  <circle cx="15.5" cy="9.5" r="2.8" />
+  <circle cx="12" cy="6.8" r="3" />
+</svg>

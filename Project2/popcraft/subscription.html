@@ -169,6 +169,9 @@
       border-radius: 8px;
       padding: 2rem;
       box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
     .stars {
       color: var(--accent-gold);
@@ -399,15 +402,7 @@
   <div class="mob-menu-header">
     <div class="mob-menu-brand">
       <div class="mob-menu-logo">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <ellipse cx="8" cy="7" rx="3" ry="3.5"/>
-          <ellipse cx="16" cy="7" rx="2.5" ry="3"/>
-          <ellipse cx="12" cy="5" rx="2" ry="2.5"/>
-          <ellipse cx="5"  cy="12" rx="2.5" ry="3"/>
-          <ellipse cx="19" cy="12" rx="2" ry="2.5"/>
-          <ellipse cx="12" cy="13" rx="3.5" ry="4"/>
-          <path d="M4 13h16l-2 8H6z" fill-opacity=".7"/>
-        </svg>
+        <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
       </div>
       <div class="mob-menu-brand-text">
         <span class="mob-menu-title">PopCraft</span>
@@ -448,12 +443,8 @@
 
       <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
         <div class="nav-logo-badge">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true">
-            <ellipse cx="8" cy="7" rx="3" ry="3.5"/><ellipse cx="16" cy="7" rx="2.5" ry="3"/>
-            <ellipse cx="12" cy="5" rx="2" ry="2.5"/><ellipse cx="5" cy="12" rx="2.5" ry="3"/>
-            <ellipse cx="19" cy="12" rx="2" ry="2.5"/><ellipse cx="12" cy="13" rx="3.5" ry="4"/>
-            <path d="M4 13h16l-2 8H6z" fill-opacity=".7"/>
-          </svg>
+          <!-- Popcorn icon -->
+          <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
         </div>
         <div>
           <div class="flex items-baseline gap-0.5">
@@ -512,18 +503,18 @@
     <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
       <!-- Left: Copy -->
-      <div>
-        <p class="section-label reveal" style="margin-bottom:1.2rem">Monthly Snack Subscription</p>
+      <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+        <p class="section-label justify-center lg:justify-start reveal" style="margin-bottom:1.2rem">Monthly Snack Subscription</p>
         <h1 class="font-display font-black reveal d-100"
             style="font-size:clamp(2.8rem,6.5vw,5.2rem);line-height:1.04;color:var(--text-primary);margin-bottom:1.5rem">
           Curated Pop.<br>
           <em style="color:var(--accent-gold)">Every Month.</em>
         </h1>
-        <p class="reveal d-200" style="font-size:1.05rem;color:var(--text-secondary);line-height:1.8;max-width:480px;margin-bottom:2rem">
+        <p class="reveal d-200 mx-auto lg:mx-0" style="font-size:1.05rem;color:var(--text-secondary);line-height:1.8;max-width:480px;margin-bottom:2rem">
           Hand-selected seasonal flavors, exclusive member-only drops, and craft collaborations — 
           packaged beautifully and delivered straight to your door.
         </p>
-        <div class="flex flex-wrap gap-4 reveal d-300">
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4 reveal d-300">
           <a href="#plans" class="btn-primary">
             Choose Your Plan
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -531,7 +522,7 @@
           <a href="#how-it-works" class="btn-outline">How It Works</a>
         </div>
         <!-- Trust badges -->
-        <div class="flex flex-wrap gap-5 reveal d-400" style="margin-top:2.5rem">
+        <div class="flex flex-wrap justify-center lg:justify-start gap-5 reveal d-400" style="margin-top:2.5rem">
           <div class="flex items-center gap-2">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-gold)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">Cancel Anytime</span>
@@ -930,7 +921,7 @@
         <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
           "Getting my PopCraft box is genuinely the highlight of the month. The exclusive flavors are unreal — truffle sea salt with honey drizzle? I would never have discovered that on my own."
         </p>
-        <div style="display:flex;align-items:center;gap:0.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
           <div class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
             <img src="Assets/s1.jpg" alt="Meera S." class="w-full h-full object-cover" />
           </div>
@@ -946,7 +937,7 @@
         <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
           "Worth every penny. The Connoisseur box comes with a beautiful little tasting journal and the packaging quality is unlike anything I've seen from a subscription service."
         </p>
-        <div style="display:flex;align-items:center;gap:0.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
           <div class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
             <img src="Assets/s2.jpg" alt="Daniel K." class="w-full h-full object-cover" />
           </div>
@@ -962,7 +953,7 @@
         <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
           "I started with the Taster box just to try it and upgraded to Classic after month one. The flavors are creative and fresh every time — never the same box twice."
         </p>
-        <div style="display:flex;align-items:center;gap:0.75rem">
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
           <div class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
             <img src="Assets/s3.jpg" alt="Priya R." class="w-full h-full object-cover" />
           </div>
@@ -1081,7 +1072,7 @@
       <div class="lg:col-span-2">
         <div class="flex items-center gap-3 mb-5">
           <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><ellipse cx="8" cy="7" rx="3" ry="3.5"/><ellipse cx="16" cy="7" rx="2.5" ry="3"/><ellipse cx="12" cy="5" rx="2" ry="2.5"/><ellipse cx="5" cy="12" rx="2.5" ry="3"/><ellipse cx="19" cy="12" rx="2" ry="2.5"/><ellipse cx="12" cy="13" rx="3.5" ry="4"/><path d="M4 13h16l-2 8H6z" fill-opacity=".7"/></svg>
+            <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-5 h-5" />
           </div>
           <div>
             <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
