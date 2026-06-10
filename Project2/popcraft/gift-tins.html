@@ -88,7 +88,7 @@
                   border-color 0.25s ease;
       display: flex;
       flex-direction: column;
-      height: 100%;
+      height: auto;
     }
     .tin-card:hover {
       transform: translateY(-8px);
@@ -231,6 +231,28 @@
       border-radius: 20px;
       border: 1px solid var(--border-color);
       color: var(--text-secondary);
+    }
+
+    /* ── Mobile Responsive Overrides ── */
+    @media (max-width: 640px) {
+      .occ-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+      .occ-tab {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+      .tin-card {
+        height: auto !important;
+      }
+      .tin-body {
+        height: auto !important;
+        flex: none !important;
+      }
     }
   </style>
 </head>

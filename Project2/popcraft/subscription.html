@@ -32,10 +32,12 @@
     .sub-hero {
       min-height: 88vh;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      justify-content: center;
       position: relative;
       overflow: hidden;
-      padding-top: 80px;
+      padding-top: 100px;
+      padding-bottom: 40px;
       background: var(--bg-primary);
     }
     .sub-hero-bg {
@@ -359,6 +361,14 @@
       pointer-events: none;
     }
 
+    .card-stack-container {
+      width: 360px;
+      height: 400px;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     @media (min-width: 1024px) {
       #sparkle-canvas {
         left: -80px;
@@ -369,7 +379,7 @@
 
     @media (max-width: 1023px) {
       .card-stack {
-        transform: scale(0.8);
+        transform: scale(0.85);
         transform-origin: center;
       }
       .card-stack:hover .card-gold {
@@ -379,8 +389,20 @@
         transform: translate(-45px, -55px) rotate(-10deg) scale(0.98) !important;
       }
       .card-stack-container {
+        width: 300px;
+        height: 340px;
         max-width: 100%;
         overflow: visible;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-stack {
+        transform: scale(0.7) !important;
+      }
+      .card-stack-container {
+        width: 260px;
+        height: 300px;
       }
     }
   </style>
@@ -508,7 +530,7 @@
       <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
         <p class="section-label justify-center lg:justify-start reveal" style="margin-bottom:1.2rem">Monthly Snack Subscription</p>
         <h1 class="font-display font-black reveal d-100"
-            style="font-size:clamp(2.8rem,6.5vw,5.2rem);line-height:1.04;color:var(--text-primary);margin-bottom:1.5rem">
+            style="font-size:clamp(2.3rem,6.5vw,5.2rem);line-height:1.04;color:var(--text-primary);margin-bottom:1.5rem">
           Curated Pop.<br>
           <em style="color:var(--accent-gold)">Every Month.</em>
         </h1>
@@ -546,7 +568,7 @@
         <canvas id="sparkle-canvas"></canvas>
         
         <!-- Floating box mockup replaced with Luxury Membership Cards stack -->
-        <div class="relative mx-auto card-stack-container" style="width:360px;height:400px">
+        <div class="relative mx-auto card-stack-container">
           <!-- Glow -->
           <div class="absolute" style="width:420px;height:420px;background:radial-gradient(circle,rgba(217,119,6,0.2) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;"></div>
           
