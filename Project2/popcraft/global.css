@@ -950,6 +950,18 @@ h1, h2, h3, h4, h5, h6 {
   transition: background-color 0.35s ease;
 }
 
+.footer-logo-badge {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--accent-gold);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+a.group:hover .footer-logo-badge {
+  transform: rotate(-12deg) scale(1.08);
+}
+
 .footer-logo-text {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
