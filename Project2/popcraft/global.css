@@ -381,6 +381,7 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   padding: 0.82rem 1.8rem;
   border-radius: 2px;
+  border: 1.5px solid transparent; /* Align with btn-outline height */
   transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
 }
@@ -896,6 +897,9 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1.5rem;
   box-shadow: var(--shadow-sm);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .store-card:hover {
   border-color: var(--accent-gold);
