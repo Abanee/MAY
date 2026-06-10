@@ -593,6 +593,9 @@ h1, h2, h3, h4, h5, h6 {
               border-color 0.25s ease;
   box-shadow: var(--shadow-sm);
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .flavor-card:hover {
   transform: translateY(-10px);
@@ -612,7 +615,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 .flavor-card:hover .img-pattern { transform: scale(1.06); }
 
-.flavor-card-body { padding: 1.4rem; }
+.flavor-card-body {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.flight-add-btn {
+  margin-top: auto;
+}
 
 .flavor-tag {
   display: inline-block;
