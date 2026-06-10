@@ -1356,6 +1356,23 @@ document.addEventListener('DOMContentLoaded', () => {
           </ul>
           <blockquote>"Let your guests experiment. Popcorn is the ultimate culinary chameleon."</blockquote>
         `
+      },
+      'sustaining-soil': {
+        tag: 'Sourcing',
+        title: 'Sustaining the Soil: The Story of Our Single-Origin Kernels',
+        date: 'March 12, 2026',
+        readTime: '5 min read',
+        author: 'Marcus Vance · Sourcing Lead',
+        image: 'Assets/ind7.png',
+        content: `
+          <p>At PopCraft, we believe that exceptional popcorn starts long before the kettle is turned on. It begins in the rich, volcanic soil of the Midwest, where our dedicated family farmers nurture heritage, non-GMO heirloom corn varieties that have been passed down for generations.</p>
+          <p>By prioritizing regenerative agriculture, crop rotation, and chemical-free cultivation, our farming partners ensure that the soil remains fertile and resilient. This sustainable commitment not only preserves the ecosystem but also concentrates the natural, nutty corn flavors inside every single kernel.</p>
+          <h2>Rooted in Partnership</h2>
+          <p>We work directly with growers on a fair-trade basis, bypassing large industrial brokers. This direct relationship guarantees that our farmers are fairly compensated for their meticulous craftsmanship, while giving us complete traceability from the farm field to your snack bag.</p>
+          <blockquote>"We don't just buy ingredients; we invest in communities. Sustainable farming is the only way to ensure that the crunch we love today will be enjoyed by generations to come."</blockquote>
+          <h3>A Difference You Can Taste</h3>
+          <p>When you enjoy a handful of PopCraft popcorn, you are tasting the rewards of patient, sustainable agriculture. Our kernels pop larger, feel lighter, and carry a rich flavor profile that simply cannot be replicated by mass-produced, hybridized corn crops.</p>
+        `
       }
     };
     
