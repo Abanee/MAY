@@ -175,11 +175,11 @@
        style="width:400px;height:400px;background:radial-gradient(circle,rgba(217,119,6,0.08) 0%,transparent 70%);left:-150px;bottom:-100px;"></div>
 
   <div class="max-w-7xl mx-auto px-5 lg:px-10 w-full">
-    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center py-16 lg:py-0">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center py-16 lg:pt-24 lg:pb-16">
 
       <!-- LEFT: Copy -->
       <div class="order-1 lg:order-1 flex flex-col items-center lg:items-start text-center lg:text-left">
-        <p class="section-label reveal">Small-Batch &nbsp;·&nbsp; Handcrafted &nbsp;·&nbsp; Non-GMO</p>
+        <p class="section-label reveal mb-6 lg:mb-8">Small-Batch &nbsp;·&nbsp; Handcrafted &nbsp;·&nbsp; Non-GMO</p>
 
         <h1 class="font-display font-black reveal d-100"
             style="font-size:clamp(3rem,7vw,5.6rem);line-height:1.04;color:var(--text-primary)">
@@ -337,23 +337,23 @@
 <!-- ======================================================
   STATS STRIP
 ======================================================= -->
-<div style="background:var(--bg-surface-2);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)">
+<div id="stats-strip" style="background:var(--bg-surface-2);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)">
   <div class="max-w-7xl mx-auto px-5 lg:px-10 py-14">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
       <div class="text-center reveal">
-        <div class="stat-number">12</div>
+        <div class="stat-number" data-target="12" data-suffix="">12<span style="font-size:2rem">+</span></div>
         <div class="stat-label">Unique Flavors</div>
       </div>
       <div class="text-center reveal d-100">
-        <div class="stat-number">40K<span style="font-size:2rem">+</span></div>
+        <div class="stat-number" data-target="40" data-suffix="K">40K<span style="font-size:2rem">+</span></div>
         <div class="stat-label">Happy Snackers</div>
       </div>
       <div class="text-center reveal d-200">
-        <div class="stat-number">50</div>
+        <div class="stat-number" data-target="50" data-suffix="">50<span style="font-size:2rem">+</span></div>
         <div class="stat-label">States Shipped To</div>
       </div>
       <div class="text-center reveal d-300">
-        <div class="stat-number">6</div>
+        <div class="stat-number" data-target="6" data-suffix="">6<span style="font-size:2rem">+</span></div>
         <div class="stat-label">Years Artisan Crafting</div>
       </div>
     </div>
@@ -515,7 +515,7 @@
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Custom Branding</span>
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Bulk Pricing</span>
             </div>
-            <a href="#" class="btn-ghost" style="font-size:0.72rem">Learn More →</a>
+            <a href="#" class="btn-primary" style="font-size:0.72rem">Learn More →</a>
           </div>
         </div>
       </div>
@@ -539,7 +539,7 @@
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Full Service</span>
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Live Popping</span>
             </div>
-            <a href="#" class="btn-ghost" style="font-size:0.72rem">Inquire Now →</a>
+            <a href="#" class="btn-primary" style="font-size:0.72rem">Inquire Now →</a>
           </div>
         </div>
       </div>
@@ -563,7 +563,7 @@
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Photo Printing</span>
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Keepsake Tins</span>
             </div>
-            <a href="#" class="btn-ghost" style="font-size:0.72rem">Design Yours →</a>
+            <a href="#" class="btn-primary" style="font-size:0.72rem">Design Yours →</a>
           </div>
         </div>
       </div>
@@ -587,7 +587,7 @@
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Curated Flavors</span>
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Gift Packs</span>
             </div>
-            <a href="#" class="btn-ghost" style="font-size:0.72rem">View Collections →</a>
+            <a href="#" class="btn-primary" style="font-size:0.72rem">View Collections →</a>
           </div>
         </div>
       </div>
@@ -611,7 +611,7 @@
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Shelf Displays</span>
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Quick Restock</span>
             </div>
-            <a href="#" class="btn-ghost" style="font-size:0.72rem">Explore Wholesale →</a>
+            <a href="#" class="btn-primary" style="font-size:0.72rem">Explore Wholesale →</a>
           </div>
         </div>
       </div>
@@ -635,7 +635,7 @@
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Custom Packaging</span>
               <span class="flavor-note-pill" style="font-size: 0.62rem; padding: 0.15rem 0.5rem;">Flavor Lab</span>
             </div>
-            <a href="#" class="btn-ghost" style="font-size:0.72rem">Start Collab →</a>
+            <a href="#" class="btn-primary" style="font-size:0.72rem">Start Collab →</a>
           </div>
         </div>
       </div>

@@ -1139,5 +1139,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 1500);
   });
 
+  /* ----------------------------------------------------------
+     24. STATS COUNTER ANIMATION (Index Page)
+     ---------------------------------------------------------- */
+  const statsSection = document.getElementById('stats-strip');
+  const statNumbers = document.querySelectorAll('.stat-number');
+
+  if (statsSection && statNumbers.length) {
+    const animateCounters = () => {
+      statNumbers.forEach(stat => {
+        const target = parseInt(stat.getAttribute('data-target'), 10);
+        const suffix = stat.getAttribute('data-suffix') || '';
+        const duration = 1500; // 1.5 seconds
+        const startTime = performance.now();
+
+        const updateCounter = (currentTime) => {
+          const elapsedTime = currentTime - startTime;
+          const progress = Math.min(elapsedTime / duration, 1);
+          // Easing out quad
+          const easeProgress = progress * (2 - progress);
+          const currentValue = Math.floor(easeProgress * target);
+
+          stat.innerHTML = `${currentValue}${suffix}<span style="font-size:2rem">+</span>`;
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            stat.innerHTML = `${target}${suffix}<span style="font-size:2rem">+</span>`;
+          }
+        };
+
+        requestAnimationFrame(updateCounter);
+      });
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(statsSection);
+  }
+
 }); // END DOMContentLoaded
 
