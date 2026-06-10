@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The PopCraft Journal — Learn about our heirloom grains, sustainable farming practices, gourmet recipe pairings, and behind-the-scenes stories." />
+  <title>The PopCraft Journal — Artisan Gourmet Popcorn Co.</title>
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><circle cx='12' cy='12' r='4' fill='white' opacity='.9'/><circle cx='20' cy='11' r='3' fill='white' opacity='.9'/><circle cx='10' cy='19' r='3' fill='white' opacity='.8'/><circle cx='19' cy='20' r='4' fill='white' opacity='.9'/><circle cx='15' cy='22' r='2.5' fill='white' opacity='.7'/></svg>" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            display:    ['"Playfair Display"', 'serif'],
+            cormorant:  ['"Cormorant Garamond"', 'serif'],
+            body:       ['"DM Sans"', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Global Stylesheet -->
+  <link rel="stylesheet" href="global.css" />
+</head>
+<body>
+
+<!-- ======================================================
+  SCROLL PROGRESS BAR
+======================================================= -->
+<div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+
+<!-- ======================================================
+  GRAIN OVERLAY
+======================================================= -->
+<div class="grain-overlay" aria-hidden="true"></div>
+
+<!-- ======================================================
+  CART TOAST NOTIFICATION
+======================================================= -->
+<div id="cart-toast" role="alert" aria-live="polite">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toast-text">Item added to cart!</span>
+</div>
+
+<!-- ======================================================
+  MOBILE MENU OVERLAY
+======================================================= -->
+<nav id="mobile-menu" aria-label="Mobile navigation">
+  <!-- Mobile Menu Header -->
+  <div class="mob-menu-header">
+    <div class="mob-menu-brand">
+      <div class="mob-menu-logo">
+        <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
+      </div>
+      <div class="mob-menu-brand-text">
+        <span class="mob-menu-title">PopCraft</span>
+        <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
+      </div>
+    </div>
+    <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
+  </div>
+
+  <!-- Mobile Menu Links -->
+  <div class="mob-menu-links">
+    <a href="index.html" class="mob-link-item">Home</a>
+    <a href="home2.html" class="mob-link-item">Home 2</a>
+    <a href="flavors.html" class="mob-link-item">Our Flavors</a>
+    <a href="subscription.html" class="mob-link-item">Subscription</a>
+    <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
+    <a href="blog.html" class="mob-link-item active">Blog</a>
+    <a href="find-us.html" class="mob-link-item">Find Us</a>
+  </div>
+
+  <!-- Mobile Menu Actions (Excludes Dashboard) -->
+  <div class="mob-menu-actions">
+    <a href="login.html" class="mob-btn-outline">Login</a>
+  </div>
+
+  <!-- Mobile Menu Footer Controls -->
+  <div class="mob-menu-footer-controls">
+    <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
+    <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
+  </div>
+</nav>
+
+<!-- ======================================================
+  NAVIGATION BAR
+======================================================= -->
+<header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="flex items-center justify-between h-20">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
+        <div class="nav-logo-badge">
+          <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
+        </div>
+        <div>
+          <div class="flex items-baseline gap-0.5">
+            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
+            <span class="font-display text-xl font-bold tracking-tight text-gold">Craft</span>
+          </div>
+          <p class="hidden sm:block" style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">Artisan Popcorn Co.</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-8" aria-label="Primary navigation">
+        <a href="index.html"        class="nav-link">Home</a>
+        <a href="home2.html"        class="nav-link">Home 2</a>
+        <a href="flavors.html"      class="nav-link">Our Flavors</a>
+        <a href="subscription.html" class="nav-link">Subscription</a>
+        <a href="gift-tins.html"    class="nav-link">Gift Tins</a>
+        <a href="blog.html"         class="nav-link active">Blog</a>
+        <a href="find-us.html"      class="nav-link">Find Us</a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="flex items-center gap-3 sm:gap-4">
+        <!-- Theme & Direction Toggles -->
+        <div class="hidden lg:flex items-center gap-1 sm:gap-1.5">
+          <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]" aria-label="Toggle dark mode">
+            🌙
+          </button>
+          <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
+          <button id="dir-toggle" class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]" style="color: var(--text-primary);" aria-label="Toggle layout direction">
+            LTR
+          </button>
+        </div>
+
+        <!-- Cart Icon -->
+        <button class="relative p-1.5" aria-label="View cart (0 items)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="color:var(--text-primary)"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span id="cart-count" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center text-gold" style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
+        </button>
+
+        <!-- CTA -->
+        <a href="login.html" class="btn-primary hidden sm:inline-flex">
+          Login
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Hamburger (mobile) -->
+        <button id="hamburger" class="hamburger lg:hidden" aria-label="Open mobile menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ======================================================
+  PAGE HERO — The PopCraft Journal
+======================================================= -->
+<section class="catalog-hero" aria-label="Journal hero">
+  <div class="catalog-hero-bg"></div>
+  <div class="catalog-hero-pattern"></div>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-10 w-full relative z-10 py-10 lg:py-16">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      
+      <!-- LEFT Column: Copy -->
+      <div class="order-1 lg:order-1 max-w-2xl flex flex-col items-center lg:items-start text-center lg:text-left">
+        <p class="section-label justify-center lg:justify-start reveal">Behind the Kernel</p>
+        <h1 class="font-display font-black reveal d-100"
+            style="font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.05;color:var(--text-primary)">
+          The PopCraft<br>
+          <em style="color:var(--accent-gold); font-style:italic">Journal.</em>
+        </h1>
+        <p class="mt-5 leading-relaxed reveal d-200 max-w-lg mx-auto lg:mx-0"
+           style="font-size:1rem;color:var(--text-secondary)">
+          Exploring the culinary artistry, organic agricultural partnerships, and sensory science that elevate the humble popcorn kernel into a luxury snack.
+        </p>
+
+        <!-- Stats row inside hero -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-6 mt-8 reveal d-300">
+          <div>
+            <div class="font-display text-2xl font-bold" style="color:var(--accent-gold)">6</div>
+            <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary)">Stories</div>
+          </div>
+          <div style="width:1px;background:var(--border-color)"></div>
+          <div>
+            <div class="font-display text-2xl font-bold" style="color:var(--accent-gold)">100%</div>
+            <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary)">Handcrafted</div>
+          </div>
+          <div style="width:1px;background:var(--border-color)"></div>
+          <div>
+            <div class="font-display text-2xl font-bold" style="color:var(--accent-gold)">Chef</div>
+            <div style="font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-secondary)">Perspective</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- RIGHT Column: Hero Image -->
+      <div class="order-2 lg:order-2 flex items-center justify-center relative reveal-right">
+        <div class="relative flex items-center justify-center hero-image-container w-full max-w-[420px]">
+          <!-- Glow -->
+          <div class="absolute rounded-full hero-bucket-glow" aria-hidden="true" style="width: 320px; height: 320px;"></div>
+          <!-- Hero Image -->
+          <img src="Assets/ind5.jpg" alt="PopCraft Gourmet Popcorn Journal Hero" class="hero-catalog-img z-20 relative select-none rounded-lg" style="object-fit: cover; aspect-ratio: 4/3;" />
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
+  FEATURED STORY SHOWCASE
+======================================================= -->
+<section style="background:var(--bg-primary); padding: 4rem 0 2rem;">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div style="margin-bottom: 2rem;">
+      <p class="section-label mb-2">Featured Showcase</p>
+      <h2 class="font-display font-bold text-3xl" style="color:var(--text-primary)">Latest Story</h2>
+    </div>
+    
+    <article class="featured-blog-post reveal" data-id="heirloom-grains">
+      <div class="fbp-img">
+        <img src="Assets/ind1.jpg" alt="Heirloom corn grains on table" class="fbp-img-inner" />
+      </div>
+      <div class="fbp-body">
+        <span class="fbp-tag">Artisan Craft</span>
+        <h3 class="fbp-title">The Secret to the Perfect Crunch: Heirloom Grains Explained</h3>
+        <p class="fbp-excerpt">Have you ever wondered why some popcorn is light and fluffy while other kernels pop into small, dense, and tooth-cracking shards? The secret lies in the genetics of the grain...</p>
+        <div class="fbp-meta">
+          <span>June 8, 2026</span>
+          <div style="width:4px; height:4px; border-radius:50%; background:var(--text-secondary); margin: 0 4px; display:inline-block; vertical-align:middle;"></div>
+          <span>5 min read</span>
+          <div style="width:4px; height:4px; border-radius:50%; background:var(--text-secondary); margin: 0 4px; display:inline-block; vertical-align:middle;"></div>
+          <button class="fbp-read-more font-bold text-xs uppercase tracking-wider text-[var(--accent-gold)] hover:underline">Read Story →</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<!-- ======================================================
+  FILTER & SEARCH BAR (STICKY)
+======================================================= -->
+<div class="filter-bar py-4" role="toolbar" aria-label="Blog filters and search">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4">
+
+      <!-- Filter Chips -->
+      <div class="flex items-center gap-2 flex-wrap flex-1">
+        <button class="filter-chip blog-filter-chip active" data-filter="all">
+          All Stories
+        </button>
+        <button class="filter-chip blog-filter-chip" data-filter="Artisan Craft">
+          🌾 Artisan Craft
+        </button>
+        <button class="filter-chip blog-filter-chip" data-filter="Recipes">
+          🍳 Recipes
+        </button>
+        <button class="filter-chip blog-filter-chip" data-filter="Sourcing">
+          🌍 Sourcing
+        </button>
+        <button class="filter-chip blog-filter-chip" data-filter="Science">
+          🧬 Science
+        </button>
+        <button class="filter-chip blog-filter-chip" data-filter="Company">
+          🏢 Company
+        </button>
+      </div>
+
+      <!-- Right Search Wrapper -->
+      <div class="flex items-center gap-2 shrink-0 w-full md:w-auto">
+        <div class="catalog-search-wrap w-full md:w-auto">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-secondary);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input
+            type="search"
+            id="blog-search"
+            class="catalog-search-input"
+            placeholder="Search stories…"
+            aria-label="Search stories"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================================
+  BLOG STORIES CATALOG GRID
+======================================================= -->
+<section style="background:var(--bg-primary); padding: 4rem 0 5rem;">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    
+    <div id="blog-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Story 1: Wine Pairing -->
+      <article class="blog-card reveal" data-id="wine-pairing" data-category="Recipes" data-title="Popcorn & Fine Wine: The Ultimate Pairing Guide" data-excerpt="Think popcorn is just for movie nights? Think again. The world of gourmet snack pairings is rapidly evolving...">
+        <div class="blog-card-img-wrap">
+          <img src="Assets/ind2.jpg" alt="Wine glass and gourmet popcorn" class="blog-card-img" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-category">Recipes</span>
+          <h3 class="blog-card-title">Popcorn & Fine Wine: The Ultimate Pairing Guide</h3>
+          <p class="blog-card-excerpt">Think popcorn is just for movie nights? Think again. The world of gourmet snack pairings is rapidly evolving...</p>
+          <div class="blog-card-meta">
+            <span>May 28, 2026 · 7 min read</span>
+            <button class="blog-card-read-more font-bold text-xs uppercase tracking-wider text-[var(--accent-gold)] hover:underline">Read Story →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Story 2: Sourcing Lavender -->
+      <article class="blog-card reveal d-100" data-id="sourcing-lavender" data-category="Sourcing" data-title="Behind the Scenes: Sourcing Lavender from Provence" data-excerpt="Every spring, the hills of Provence, France, transform into a rolling sea of purple. This is the home of our lavender...">
+        <div class="blog-card-img-wrap">
+          <img src="Assets/ind3.jpg" alt="Lavender fields in France" class="blog-card-img" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-category">Sourcing</span>
+          <h3 class="blog-card-title">Behind the Scenes: Sourcing Lavender from Provence</h3>
+          <p class="blog-card-excerpt">Every spring, the hills of Provence, France, transform into a rolling sea of purple. This is the home of our lavender...</p>
+          <div class="blog-card-meta">
+            <span>May 15, 2026 · 6 min read</span>
+            <button class="blog-card-read-more font-bold text-xs uppercase tracking-wider text-[var(--accent-gold)] hover:underline">Read Story →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Story 3: Taste Science -->
+      <article class="blog-card reveal d-200" data-id="taste-science" data-category="Science" data-title="Sweet vs. Savory: The Science of Taste Balancing" data-excerpt="Why is it that after eating a bag of salty chips, we immediately crave something sweet? The science behind it...">
+        <div class="blog-card-img-wrap">
+          <img src="Assets/ind4.jpg" alt="Ingredients and spices in small bowls" class="blog-card-img" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-category">Science</span>
+          <h3 class="blog-card-title">Sweet vs. Savory: The Science of Taste Balancing</h3>
+          <p class="blog-card-excerpt">Why is it that after eating a bag of salty chips, we immediately crave something sweet? The science behind it...</p>
+          <div class="blog-card-meta">
+            <span>April 29, 2026 · 4 min read</span>
+            <button class="blog-card-read-more font-bold text-xs uppercase tracking-wider text-[var(--accent-gold)] hover:underline">Read Story →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Story 4: Our Story -->
+      <article class="blog-card reveal" data-id="our-story" data-category="Company" data-title="The Story of PopCraft: From a Single Copper Kettle" data-excerpt="Before PopCraft was in boutique stores across the country, it was just a smell. A warm, rich, buttery aroma wafting out of a small garage...">
+        <div class="blog-card-img-wrap">
+          <img src="Assets/ind5.jpg" alt="Vintage copper kettle popping corn" class="blog-card-img" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-category">Company</span>
+          <h3 class="blog-card-title">The Story of PopCraft: From a Single Copper Kettle</h3>
+          <p class="blog-card-excerpt">Before PopCraft was in boutique stores across the country, it was just a smell. A warm, rich, buttery aroma wafting out of a small garage...</p>
+          <div class="blog-card-meta">
+            <span>April 10, 2026 · 8 min read</span>
+            <button class="blog-card-read-more font-bold text-xs uppercase tracking-wider text-[var(--accent-gold)] hover:underline">Read Story →</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Story 5: Topping Bars -->
+      <article class="blog-card reveal d-100" data-id="topping-bars" data-category="Recipes" data-title="Upgrade Your Movie Night: Gourmet Popcorn Topping Bars" data-excerpt="Gourmet movie nights: how setting up an interactive topping bar with fresh ingredients elevates a simple evening into a tasting party...">
+        <div class="blog-card-img-wrap">
+          <img src="Assets/ind6.jpg" alt="Popcorn topping bar setup" class="blog-card-img" />
+        </div>
+        <div class="blog-card-body">
+          <span class="blog-card-category">Recipes</span>
+          <h3 class="blog-card-title">Upgrade Your Movie Night: Gourmet Popcorn Topping Bars</h3>
+          <p class="blog-card-excerpt">Gourmet movie nights: how setting up an interactive topping bar with fresh ingredients elevates a simple evening into a tasting party...</p>
+          <div class="blog-card-meta">
+            <span>March 20, 2026 · 5 min read</span>
+            <button class="blog-card-read-more font-bold text-xs uppercase tracking-wider text-[var(--accent-gold)] hover:underline">Read Story →</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- No Results State -->
+    <p id="blog-no-results" class="hidden text-center py-16" style="color:var(--text-secondary)">
+      No stories match your search or filter. <button onclick="document.getElementById('blog-search').value=''; document.querySelector('.blog-filter-chip[data-filter=\'all\']').click();" style="color:var(--accent-gold); font-weight:600; text-decoration:underline;">Reset filters</button>
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ======================================================
+  ARTICLE DETAIL MODAL
+======================================================= -->
+<div id="blog-modal" class="blog-modal" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="blog-modal-container">
+    <button id="blog-modal-close" class="blog-modal-close-btn" aria-label="Close article">&times;</button>
+    <div class="blog-modal-content">
+      <header class="blog-modal-header">
+        <span class="blog-modal-tag">Category</span>
+        <h2 class="blog-modal-title">Title</h2>
+        <div class="blog-modal-meta">
+          <!-- Populated dynamically -->
+        </div>
+      </header>
+      <div class="blog-modal-hero-img-wrap">
+        <!-- Populated dynamically -->
+      </div>
+      <article class="blog-modal-body-text">
+        <!-- Populated dynamically -->
+      </article>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================================================
+  FOOTER
+======================================================= -->
+<footer id="site-footer" role="contentinfo">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10 pt-16 pb-10">
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-14">
+
+      <!-- Brand Column -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-5">
+          <div style="width:40px;height:40px;border-radius:50%;background:var(--accent-gold);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-5 h-5" />
+          </div>
+          <div>
+            <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
+            <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">Artisan Popcorn Co.</p>
+          </div>
+        </div>
+        <p style="font-size:0.85rem;line-height:1.75;color:rgba(245,245,244,0.5);max-width:280px;margin-bottom:1.5rem">
+          Handcrafted in small batches since 2019. We believe that the best snacks are made with the best ingredients and a little bit of love.
+        </p>
+        <!-- Social Icons -->
+        <div class="flex items-center gap-3" aria-label="Social media links">
+          <a href="#" class="social-icon" aria-label="Follow us on Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Follow us on X">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-icon" aria-label="Follow us on Facebook">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Shop -->
+      <div>
+        <h4 class="footer-heading">Shop</h4>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+          <li><a href="flavors.html" class="footer-link">All Flavors</a></li>
+          <li><a href="subscription.html" class="footer-link">Subscription Box</a></li>
+          <li><a href="gift-tins.html" class="footer-link">Gift Tins</a></li>
+          <li><a href="gift-tins.html" class="footer-link">Catering</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div>
+        <h4 class="footer-heading">Company</h4>
+        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+          <li><a href="#" class="footer-link">Our Story</a></li>
+          <li><a href="#" class="footer-link">Ingredients &amp; Sourcing</a></li>
+          <li><a href="#" class="footer-link">Sustainability</a></li>
+          <li><a href="#" class="footer-link">Careers</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div class="lg:col-span-2">
+        <h4 class="footer-heading">Stay in the Loop</h4>
+        <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">
+          New flavors, limited drops, and member-only discounts — straight to your inbox.
+        </p>
+        <form id="newsletter-form" novalidate>
+          <div class="newsletter-wrap">
+            <input
+              type="email"
+              class="newsletter-input"
+              placeholder="your@email.com"
+              aria-label="Email address"
+              required
+            />
+            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe</button>
+          </div>
+          <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam, ever. Unsubscribe any time.</p>
+        </form>
+      </div>
+
+    </div><!-- /footer grid -->
+
+    <!-- Bottom Bar -->
+    <div class="footer-divider"></div>
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">
+        © 2026 PopCraft Artisan Popcorn Co. All rights reserved.
+      </p>
+      <div class="flex flex-wrap items-center gap-5">
+        <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
+        <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Use</a>
+        <a href="#" class="footer-link" style="font-size:0.72rem">Accessibility</a>
+      </div>
+    </div>
+
+  </div><!-- /max-w -->
+</footer>
+
+
+<!-- ======================================================
+  SCRIPTS
+======================================================= -->
+<script src="scripts.js"></script>
+
+</body>
+</html>

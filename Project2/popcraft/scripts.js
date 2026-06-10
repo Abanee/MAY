@@ -1185,5 +1185,272 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(statsSection);
   }
 
+  /* ----------------------------------------------------------
+     18. BLOG PAGE — Filter, Search, and Modal Detail View
+     ---------------------------------------------------------- */
+  const blogChips = document.querySelectorAll('.blog-filter-chip');
+  const blogSearch = document.getElementById('blog-search');
+  const blogCards = document.querySelectorAll('.blog-card');
+  const blogModal = document.getElementById('blog-modal');
+  const blogModalClose = document.getElementById('blog-modal-close');
+  
+  if (blogCards.length > 0) {
+    let activeFilter = 'all';
+    let searchQuery = '';
+    
+    function applyBlogFilters() {
+      let visible = 0;
+      blogCards.forEach(card => {
+        const category = card.dataset.category || '';
+        const title = (card.dataset.title || '').toLowerCase();
+        const excerpt = (card.dataset.excerpt || '').toLowerCase();
+        
+        const matchesFilter = activeFilter === 'all' || category.split(' ').includes(activeFilter);
+        const matchesSearch = !searchQuery || title.includes(searchQuery) || excerpt.includes(searchQuery);
+        
+        const show = matchesFilter && matchesSearch;
+        card.dataset.hidden = show ? 'false' : 'true';
+        card.style.display = show ? '' : 'none';
+        
+        if (show) visible++;
+      });
+      
+      const noResults = document.getElementById('blog-no-results');
+      if (noResults) {
+        noResults.classList.toggle('hidden', visible > 0);
+      }
+      
+      // Re-trigger reveal animation for visible cards
+      const visibleCards = Array.from(blogCards).filter(c => c.dataset.hidden !== 'true');
+      visibleCards.forEach((card, i) => {
+        card.classList.remove('revealed');
+        card.style.transitionDelay = `${i * 40}ms`;
+        requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('revealed')));
+      });
+    }
+    
+    blogChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        blogChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeFilter = chip.dataset.filter;
+        applyBlogFilters();
+      });
+    });
+    
+    let searchDebounce;
+    blogSearch?.addEventListener('input', e => {
+      clearTimeout(searchDebounce);
+      searchDebounce = setTimeout(() => {
+        searchQuery = e.target.value.trim().toLowerCase();
+        applyBlogFilters();
+      }, 200);
+    });
+    
+    // Article Content Database (high-fidelity data)
+    const ARTICLE_DATA = {
+      'heirloom-grains': {
+        tag: 'Artisan Craft',
+        title: 'The Secret to the Perfect Crunch: Heirloom Grains Explained',
+        date: 'June 8, 2026',
+        readTime: '5 min read',
+        author: 'Marcus Vance · Sourcing Lead',
+        image: 'Assets/ind1.jpg',
+        content: `
+          <p>Have you ever wondered why some popcorn is light, fluffy, and tender, while other kernels pop into small, dense, and tooth-cracking shards? The secret isn't the temperature of the oil or the shape of the pot — it's the genetics of the grain itself.</p>
+          <p>At PopCraft, we strictly source non-GMO heirloom heritage grains. These ancient grains have been preserved by family farms for generations, selected for their thin, soft hulls that break down completely during the popping process. This means virtually zero hulls get stuck in your teeth, resulting in a cleaner, more enjoyable crunch.</p>
+          <h2>The Anatomy of a Kernel</h2>
+          <p>Every popcorn kernel contains a tiny droplet of water surrounded by a hard circle of starch. When heated, the water turns to steam, creating pressure. Once the hull can no longer hold the pressure, it explodes. Our heirloom grains pop up to 40 times their original size, creating huge surface areas designed to catch and hold our hand-tossed spices.</p>
+          <blockquote>"The standard commercial popcorn kernel has been bred for durability during machine harvesting and cross-country transport — not for taste. Heirloom grains, on the other hand, are bred entirely for flavor, texture, and aroma."</blockquote>
+          <h3>Why Non-GMO Matters</h3>
+          <p>By keeping our grains completely non-hybridized and organic, we preserve the rich, nutty corn flavor that is lost in industrialized farming. When you bite into PopCraft popcorn, you are tasting the grain exactly as nature intended.</p>
+        `
+      },
+      'wine-pairing': {
+        tag: 'Recipes',
+        title: 'Popcorn & Fine Wine: The Ultimate Pairing Guide',
+        date: 'May 28, 2026',
+        readTime: '7 min read',
+        author: 'Elena Rostova · Flavor Sommelier',
+        image: 'Assets/ind2.jpg',
+        content: `
+          <p>Think popcorn is just for movie nights and soda cans? Think again. The world of gourmet snack pairings is rapidly evolving, and our artisan popcorn is finding its place on the most sophisticated tasting menus. With its complex fat, salt, and acid profiles, PopCraft popcorn makes a surprising and delicious companion to fine wines.</p>
+          <p>Here is our official sommelier guide to bringing your next wine and popcorn tasting to life.</p>
+          <h2>1. Truffle Parmesan & Oaked Chardonnay</h2>
+          <p>The rich, earthy flavors of our shaved black truffle and the sharp tang of 24-month aged Parmigiano-Reggiano demand a wine with body. An oaked Chardonnay from Napa Valley offers buttery tones and balanced acidity that slice through the richness of the cheese while complementing the woodsy truffle notes.</p>
+          <h2>2. Spicy Caramel & Off-Dry Riesling</h2>
+          <p>Spicy foods can easily overwhelm a highly tannic red wine. Instead, pair our fiery cayenne-infused Spicy Caramel with a chilled, off-dry German Riesling. The subtle sweetness of the wine tempers the heat, while its vibrant, crisp acidity cleanses the palate after each buttery bite.</p>
+          <blockquote>"A great pairing is a conversation. One element highlights what is hidden in the other."</blockquote>
+          <h2>3. Classic Sea Salt & Champagne</h2>
+          <p>When in doubt, go classic. The natural salinity of Breton fleur de sel combined with grass-fed cultured butter is a match made in heaven for the high acidity and effervescence of a true French Champagne or a premium Cava. The bubbles cut through the fat, creating a light, airy flavor sensation.</p>
+        `
+      },
+      'sourcing-lavender': {
+        tag: 'Sourcing',
+        title: 'Behind the Scenes: Sourcing Lavender from Provence',
+        date: 'May 15, 2026',
+        readTime: '6 min read',
+        author: 'Chloé Mercier · Botanical Buyer',
+        image: 'Assets/ind3.jpg',
+        content: `
+          <p>Every spring, the hills of Provence, France, transform into a rolling sea of vibrant purple. This is the home of <em>Lavandula angustifolia</em>, the culinary-grade lavender that gives our seasonal Lavender Honey popcorn its signature floral notes.</p>
+          <p>Sourcing botanical ingredients for gourmet foods is a delicate craft. Too much lavender, and the popcorn tastes like soap; too little, and the botanical aroma is lost. Here is how we ensure we get the perfect harvest every year.</p>
+          <h2>The Altitude Difference</h2>
+          <p>True culinary lavender grows best at high altitudes (above 800 meters). At these elevations, the plants grow slower, concentrating their essential oils and producing a sweeter, less camphorous aroma. We partner with a family-owned cooperative in the Luberon Valley that has been harvesting lavender by hand for over a century.</p>
+          <blockquote>"We harvest during the brief two-week window in July when the flowers are in full bloom and the bees are most active. This is when the sugar content in the nectar is at its absolute peak."</blockquote>
+          <h3>The Drying Process</h3>
+          <p>Once harvested, the flowers are naturally dried in the Provencal sun before the buds are gently shaken from the stems. These pure, fragrant buds are then shipped directly to our kitchen, where they are infused into warm organic wildflower honey to glaze our fresh-popped kernels.</p>
+        `
+      },
+      'taste-science': {
+        tag: 'Science',
+        title: 'Sweet vs. Savory: The Science of Taste Balancing',
+        date: 'April 29, 2026',
+        readTime: '4 min read',
+        author: 'Dr. Aris Thorne · Food Scientist',
+        image: 'Assets/ind4.jpg',
+        content: `
+          <p>Why is it that after eating a bag of salty chips, we immediately crave something sweet? And after eating chocolate, why do we want a salty pretzel? This is not just a lack of self-control; it's a physiological phenomenon known as sensory-specific satiety, and it lies at the heart of our flavor development process.</p>
+          <h2>The Magic of Contrast</h2>
+          <p>Our brains are wired to seek out a variety of nutrients. When we consume salt, our tongue's sweet receptors (specifically a protein called SGLT1) are activated, preparing our body to absorb sugars. By combining these two contrasting flavors in a single snack, we create a tasting loop that keeps the palate excited.</p>
+          <blockquote>"By balancing sweet butterscotch with Japanese shiro miso, we satisfy both cravings simultaneously, achieving what food scientists call 'hedonic escalation' — where each bite tastes even better than the last."</blockquote>
+          <h2>Designing Miso Butterscotch</h2>
+          <p>When developing our Miso Butterscotch flavor, we tested over thirty ratios of salt, sugar, and umami. The key was shiro (white) miso. It offers a mild, creamy salinity and fermented depth that tempers the sweet intensity of Demerara sugar, creating a perfect balance that never fatigue your tastebuds.</p>
+        `
+      },
+      'our-story': {
+        tag: 'Company',
+        title: 'The Story of PopCraft: From a Single Copper Kettle',
+        date: 'April 10, 2026',
+        readTime: '8 min read',
+        author: 'Abigail Sterling · Founder',
+        image: 'Assets/ind5.jpg',
+        content: `
+          <p>Before PopCraft was in boutique stores and kitchens across the country, it was just a smell. A warm, rich, buttery aroma wafting out of a small garage in Brooklyn, New York.</p>
+          <p>It started in 2019 with a single, battered copper kettle, a bag of Indiana heirloom corn, and a simple question: Why has popcorn been relegated to cheap stadium food and microwave bags filled with chemicals?</p>
+          <h2>The Early Batches</h2>
+          <p>For the first six months, I burned more corn than I popped. I experimented with different oils — olive, avocado, sunflower — before discovering that organic, cold-pressed coconut oil provided the cleanest, light-tasting base. I hand-stirred every batch with a wooden paddle, testing spice blends on friends and neighbors.</p>
+          <blockquote>"We sold our first fifty bags at a local farmers' market. They sold out in twenty minutes. That's when I knew we were onto something."</blockquote>
+          <h3>Growing But Staying Small</h3>
+          <p>Today, while our kitchen has grown, our core philosophy remains unchanged. We still pop in relatively small batches. We still toss our seasonings by hand. We refuse to use artificial preservatives, colors, or flavor enhancers. Because some things are simply better made the hard way.</p>
+        `
+      },
+      'topping-bars': {
+        tag: 'Recipes',
+        title: 'Upgrade Your Movie Night: Gourmet Popcorn Topping Bars',
+        date: 'March 20, 2026',
+        readTime: '5 min read',
+        author: 'Elena Rostova · Flavor Sommelier',
+        image: 'Assets/ind6.jpg',
+        content: `
+          <p>The standard movie night is getting an upgrade. While a bag of warm, salted popcorn is always a classic, setting up an interactive gourmet topping bar is an easy way to turn a simple night in into a memorable tasting party.</p>
+          <p>Whether you're hosting a birthday, a movie marathon, or a casual get-together, here is how to build the ultimate popcorn bar.</p>
+          <h2>The Base Selection</h2>
+          <p>Start with three distinct bases. We recommend our **Classic Sea Salt** (neutral savory), **Truffle Parmesan** (rich savory), and **Spicy Caramel** (sweet/spicy). This ensures all your guests have a canvas that suits their preferences.</p>
+          <h2>Elevated Toppings</h2>
+          <p>Set out small bowls filled with gourmet mix-ins. Some of our favorite combinations include:</p>
+          <ul>
+            <li><strong>The Mediterranean:</strong> Toasted pine nuts, finely crumbled feta, and fresh rosemary needles to mix into Classic Sea Salt.</li>
+            <li><strong>The Sweet Treat:</strong> Dark chocolate shavings, freeze-dried raspberries, and toasted coconut flakes to pair with Spicy Caramel.</li>
+            <li><strong>The Umami Bomb:</strong> Furikake seasoning, toasted sesame seeds, and a light drizzle of sriracha on Truffle Parmesan.</li>
+          </ul>
+          <blockquote>"Let your guests experiment. Popcorn is the ultimate culinary chameleon."</blockquote>
+        `
+      }
+    };
+    
+    // Open modal handler
+    const openModal = (articleId) => {
+      const article = ARTICLE_DATA[articleId];
+      if (!article || !blogModal) return;
+      
+      // Populate content
+      const tagEl = blogModal.querySelector('.blog-modal-tag');
+      const titleEl = blogModal.querySelector('.blog-modal-title');
+      const metaEl = blogModal.querySelector('.blog-modal-meta');
+      const imgWrap = blogModal.querySelector('.blog-modal-hero-img-wrap');
+      const bodyEl = blogModal.querySelector('.blog-modal-body-text');
+      
+      if (tagEl) tagEl.textContent = article.tag;
+      if (titleEl) titleEl.textContent = article.title;
+      if (metaEl) {
+        metaEl.innerHTML = `
+          <span>${article.date}</span>
+          <div style="width:4px; height:4px; border-radius:50%; background:var(--text-secondary); margin: 0 4px; display: inline-block; vertical-align: middle;"></div>
+          <span>${article.readTime}</span>
+          <div style="width:4px; height:4px; border-radius:50%; background:var(--text-secondary); margin: 0 4px; display: inline-block; vertical-align: middle;"></div>
+          <span>${article.author}</span>
+        `;
+      }
+      if (imgWrap) {
+        imgWrap.innerHTML = `<img src="${article.image}" alt="${article.title}" class="blog-modal-hero-img" />`;
+      }
+      if (bodyEl) bodyEl.innerHTML = article.content;
+      
+      // Open modal
+      blogModal.classList.add('open');
+      blogModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      
+      // Accessibility: trap focus
+      const closeBtn = blogModal.querySelector('.blog-modal-close-btn');
+      closeBtn?.focus();
+    };
+    
+    // Close modal handler
+    const closeModal = () => {
+      if (!blogModal) return;
+      blogModal.classList.remove('open');
+      blogModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    
+    // Wire up blog cards and read-more buttons
+    blogCards.forEach(card => {
+      const articleId = card.dataset.id;
+      if (!articleId) return;
+      
+      // Clicking the card title, image, or read more button opens the modal
+      const clickableElements = card.querySelectorAll('.blog-card-title, .blog-card-img-wrap, .blog-card-read-more');
+      clickableElements.forEach(el => {
+        el.style.cursor = 'pointer';
+        el.addEventListener('click', (e) => {
+          e.preventDefault();
+          openModal(articleId);
+        });
+      });
+    });
+    
+    // Featured post click
+    const featuredPost = document.querySelector('.featured-blog-post');
+    if (featuredPost) {
+      const articleId = featuredPost.dataset.id;
+      if (articleId) {
+        const clickable = featuredPost.querySelectorAll('.fbp-title, .fbp-img, .fbp-read-more');
+        clickable.forEach(el => {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(articleId);
+          });
+        });
+      }
+    }
+    
+    // Close events
+    blogModalClose?.addEventListener('click', closeModal);
+    blogModal.addEventListener('click', (e) => {
+      if (e.target === blogModal) {
+        closeModal();
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && blogModal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+  }
+
+
 }); // END DOMContentLoaded
 
