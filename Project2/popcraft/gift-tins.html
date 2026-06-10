@@ -115,13 +115,13 @@
       padding: 0.25rem 0.7rem;
       border-radius: 20px;
     }
-    .tin-body {
+    .gift-tin-body {
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
     }
-    .tin-body .btn-primary {
+    .gift-tin-body .btn-primary {
       margin-top: auto;
     }
     .tin-flavors {
@@ -236,20 +236,24 @@
     /* ── Mobile Responsive Overrides ── */
     @media (max-width: 640px) {
       .occ-tabs {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
         margin-bottom: 1.5rem;
+        justify-content: center;
       }
       .occ-tab {
-        width: 100%;
+        width: auto;
+        padding: 0.45rem 0.85rem;
+        font-size: 0.75rem;
         justify-content: center;
         box-sizing: border-box;
+        white-space: nowrap;
       }
       .tin-card {
         height: auto !important;
       }
-      .tin-body {
+      .gift-tin-body {
         height: auto !important;
         flex: none !important;
       }
@@ -465,7 +469,7 @@
             <span class="size-pill" style="border-color:rgba(255,255,255,0.35);color:#fff">1 Flavor · 2 oz</span>
           </div>
         </div>
-        <div class="tin-body">
+        <div class="gift-tin-body">
           <div class="flex items-start justify-between gap-2 mb-1">
             <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Sweet Mini</h3>
             <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$18</span>
@@ -495,7 +499,7 @@
             ⭐ Best Seller
           </div>
         </div>
-        <div class="tin-body">
+        <div class="gift-tin-body">
           <div class="flex items-start justify-between gap-2 mb-1">
             <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Duo Tin</h3>
             <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$32</span>
@@ -525,7 +529,7 @@
             <span class="size-pill" style="border-color:rgba(255,255,255,0.35);color:#fff">4 Flavors · 12 oz</span>
           </div>
         </div>
-        <div class="tin-body">
+        <div class="gift-tin-body">
           <div class="flex items-start justify-between gap-2 mb-1">
             <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Classic Tin</h3>
             <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$48</span>
@@ -556,7 +560,7 @@
             Limited Edition
           </div>
         </div>
-        <div class="tin-body">
+        <div class="gift-tin-body">
           <div class="flex items-start justify-between gap-2 mb-1">
             <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Holiday Tin</h3>
             <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$58</span>
@@ -587,7 +591,7 @@
             <span class="size-pill" style="border-color:rgba(255,255,255,0.35);color:#fff">Min. 25 tins</span>
           </div>
         </div>
-        <div class="tin-body">
+        <div class="gift-tin-body">
           <div class="flex items-start justify-between gap-2 mb-1">
             <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">Wedding Favors</h3>
             <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$14<span style="font-size:0.9rem;font-weight:500">/ea</span></span>
@@ -617,7 +621,7 @@
             Premium Pick
           </div>
         </div>
-        <div class="tin-body">
+        <div class="gift-tin-body">
           <div class="flex items-start justify-between gap-2 mb-1">
             <h3 class="font-display font-bold text-xl" style="color:var(--text-primary)">The Grand Tin</h3>
             <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--accent-gold)">$98</span>
