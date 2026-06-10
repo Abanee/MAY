@@ -908,7 +908,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0 1rem;
+  padding: 0 0.85rem;
   align-self: stretch;
   display: flex;
   align-items: center;
@@ -929,12 +929,17 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  padding: 1.5rem;
+  padding: 1rem;
   box-shadow: var(--shadow-sm);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+@media (min-width: 640px) {
+  .store-card {
+    padding: 1.5rem;
+  }
 }
 .store-card:hover {
   border-color: var(--accent-gold);
