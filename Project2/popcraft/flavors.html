@@ -55,15 +55,15 @@
 <nav id="mobile-menu" aria-label="Mobile navigation">
   <!-- Mobile Menu Header -->
   <div class="mob-menu-header">
-    <div class="mob-menu-brand">
+    <a href="index.html" class="mob-menu-brand" aria-label="PopCraft Home">
       <div class="mob-menu-logo">
         <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
       </div>
       <div class="mob-menu-brand-text">
-        <span class="mob-menu-title">PopCraft</span>
+        <span class="mob-menu-title">Pop<span class="text-gold">Craft</span></span>
         <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
       </div>
-    </div>
+    </a>
     <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
   </div>
 
@@ -246,9 +246,9 @@
       </div>
 
       <!-- Right: Search + Sort -->
-      <div class="flex items-center gap-2 shrink-0">
+      <div class="flex items-center gap-2 w-full sm:w-auto">
         <!-- Search -->
-        <div class="catalog-search-wrap">
+        <div class="catalog-search-wrap flex-1 sm:flex-initial">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-secondary);flex-shrink:0"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           <input
             type="search"

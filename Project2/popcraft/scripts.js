@@ -356,17 +356,17 @@ document.addEventListener('DOMContentLoaded', () => {
             <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:0.2rem">${store.address}</p>
             <p style="font-size:0.78rem;color:var(--text-secondary)">${store.hours}</p>
           </div>
-          <div class="shrink-0 text-right">
+          <div class="shrink-0 text-left sm:text-right">
             <span style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--accent-gold);display:block">${store.distance}</span>
             <span style="font-size:0.7rem;color:var(--text-secondary)">from you</span>
           </div>
         </div>
-        <div style="margin-top:1.1rem;padding-top:1.1rem;border-top:1px solid var(--border-color);display:flex;align-items:center;gap:0.65rem;flex-wrap:wrap">
-          <a href="https://maps.google.com?q=${encodeURIComponent(store.address)}" target="_blank" rel="noopener" class="btn-primary" style="font-size:0.7rem;padding:0.5rem 1.1rem;border:1px solid transparent;display:inline-flex;align-items:center;gap:0.35rem">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 w-full mt-4 pt-4 border-t border-[var(--border-color)]">
+          <a href="https://maps.google.com?q=${encodeURIComponent(store.address)}" target="_blank" rel="noopener" class="btn-primary w-full sm:w-auto justify-center" style="font-size:0.7rem;padding:0.5rem 1.1rem;border:1px solid transparent;display:inline-flex;align-items:center;gap:0.35rem">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             DIRECTIONS
           </a>
-          <a href="tel:${store.phone.replace(/\D/g,'')}" class="btn-ghost" style="font-size:0.7rem;padding:0.5rem 1.1rem;display:inline-flex;align-items:center;gap:0.35rem">
+          <a href="tel:${store.phone.replace(/\D/g,'')}" class="btn-ghost w-full sm:w-auto justify-center" style="font-size:0.7rem;padding:0.5rem 1.1rem;display:inline-flex;align-items:center;gap:0.35rem">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.79 19.79 0 013.09 4.18 2 2 0 015 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
             ${store.phone}
           </a>
