@@ -1914,8 +1914,11 @@ a.group:hover .footer-logo-badge {
   min-height: 380px;
   overflow: hidden;
   position: relative;
+  min-width: 0;
 }
 .fbp-img-inner {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -1930,6 +1933,7 @@ a.group:hover .footer-logo-badge {
   flex-direction: column;
   justify-content: center;
   position: relative;
+  min-width: 0;
 }
 .fbp-tag {
   display: inline-block;
