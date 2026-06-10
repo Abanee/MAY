@@ -65,11 +65,17 @@
   <div class="auth-card">
     <div class="text-center">
       <!-- Back to Home Logo link -->
-      <a href="index.html" class="inline-flex items-center gap-2 mb-6 group" aria-label="PopCraft Home">
-        <div class="nav-logo-badge" style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent-gold); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.25s ease;">
-          <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-4 h-4" />
+      <a href="index.html" class="flex items-center justify-center gap-3 mb-6 group" aria-label="PopCraft Home">
+        <div class="nav-logo-badge">
+          <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
         </div>
-        <span class="font-display text-xl font-bold tracking-tight text-[var(--text-primary)]">Pop<span style="color:var(--accent-gold)">Craft</span></span>
+        <div class="text-left">
+          <div class="flex items-baseline gap-0.5">
+            <span class="font-display text-xl font-bold tracking-tight text-[var(--text-primary)]">Pop</span>
+            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--accent-gold)">Craft</span>
+          </div>
+          <p style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">Artisan Popcorn Co.</p>
+        </div>
       </a>
       <h1 class="auth-title">Welcome Back</h1>
       <p class="auth-subtitle mt-2">Log in to manage your popcorn subscriptions, view order history, and access exclusive flavor drops.</p>
@@ -82,11 +88,22 @@
       </div>
 
       <div class="form-group">
-        <div class="flex justify-between items-center">
-          <label for="login-password" class="form-label">Password</label>
+        <label for="login-password" class="form-label">Password</label>
+        <div class="relative">
+          <input type="password" id="login-password" class="auth-input" placeholder="••••••••" required autocomplete="current-password" style="padding-right: 2.75rem;" />
+          <button type="button" class="toggle-password-btn absolute right-3 top-1/2 -translate-y-1/2 text-[var(--text-secondary)] hover:text-[var(--text-primary)]" style="position: absolute; right: 0.75rem; top: 50%; transform: translateY(-50%); background: none; border: none; outline: none;" aria-label="Toggle password visibility">
+            <svg class="eye-open w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <svg class="eye-closed w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l18 18" />
+            </svg>
+          </button>
+        </div>
+        <div class="flex justify-end mt-1.5">
           <a href="#" class="auth-link text-xs">Forgot password?</a>
         </div>
-        <input type="password" id="login-password" class="auth-input" placeholder="••••••••" required autocomplete="current-password" />
       </div>
 
       <div class="auth-options">
