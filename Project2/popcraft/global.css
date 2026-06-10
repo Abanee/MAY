@@ -319,21 +319,21 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: center;
   width: 100%;
   padding: 0.85rem;
-  border: 1px solid var(--border-color);
+  border: 1px solid transparent;
   border-radius: 0.5rem;
-  color: var(--text-primary);
+  color: #ffffff !important;
   font-family: 'DM Sans', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
   cursor: pointer;
-  background: transparent;
+  background: var(--accent-gold);
 }
 .mob-btn-outline:hover {
-  background: rgba(217, 119, 6, 0.05);
-  border-color: var(--accent-gold);
-  color: var(--accent-gold);
+  background: var(--accent-caramel);
+  border-color: transparent;
+  color: #ffffff !important;
 }
 
 /* Bottom Controls */
