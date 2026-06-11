@@ -29,6 +29,16 @@
 
   <!-- Global Stylesheet -->
   <link rel="stylesheet" href="global.css" />
+
+  <style>
+    /* Specific styling for stats strip to maintain equal height and perfect baseline alignment */
+    #stats-strip .stat-label {
+      min-height: 2.5rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+    }
+  </style>
 </head>
 <body>
 
@@ -344,21 +354,21 @@
 <div id="stats-strip" style="background:var(--bg-surface-2);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)">
   <div class="max-w-7xl mx-auto px-5 lg:px-10 py-14">
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-10">
-      <div class="text-center reveal">
+      <div class="text-center reveal flex flex-col items-center justify-start h-full">
         <div class="stat-number" data-target="12" data-suffix="">12<span style="font-size:2rem">+</span></div>
         <div class="stat-label">Unique Flavors</div>
       </div>
-      <div class="text-center reveal d-100">
+      <div class="text-center reveal d-100 flex flex-col items-center justify-start h-full">
         <div class="stat-number" data-target="40" data-suffix="K">40K<span style="font-size:2rem">+</span></div>
         <div class="stat-label">Happy Snackers</div>
       </div>
-      <div class="text-center reveal d-200">
+      <div class="text-center reveal d-200 flex flex-col items-center justify-start h-full">
         <div class="stat-number" data-target="50" data-suffix="">50<span style="font-size:2rem">+</span></div>
         <div class="stat-label">States Shipped To</div>
       </div>
-      <div class="text-center reveal d-300">
+      <div class="text-center reveal d-300 flex flex-col items-center justify-start h-full">
         <div class="stat-number" data-target="6" data-suffix="">6<span style="font-size:2rem">+</span></div>
-        <div class="stat-label">Years Artisan Crafting</div>
+        <div class="stat-label">Years Artisan </div>
       </div>
     </div>
   </div>
