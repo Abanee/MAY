@@ -2255,4 +2255,21 @@ a.group:hover .footer-logo-badge {
   }
 }
 
+/* ── CTA Banner ── */
+.sub-cta {
+  background: linear-gradient(135deg, #451A03 0%, #7C2D12 45%, #C05621 100%);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sub-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(245, 158, 11, 0.12) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+
 
