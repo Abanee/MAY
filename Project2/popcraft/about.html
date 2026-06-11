@@ -150,8 +150,15 @@
 <!-- ======================================================
   ABOUT HERO
 ======================================================= -->
-<section class="relative py-32 lg:py-40 overflow-hidden" style="background:var(--bg-primary);">
-  <div class="absolute inset-0 bg-grid opacity-10" style="background-image: radial-gradient(circle, var(--border-color) 1.5px, transparent 1.5px); background-size: 44px 44px;" aria-hidden="true"></div>
+<section class="relative py-36 lg:py-48 overflow-hidden" style="background:var(--bg-primary);">
+  <!-- Hero Background Image (Does not affect text readability) -->
+  <div class="absolute inset-0 overflow-hidden select-none pointer-events-none" aria-hidden="true">
+    <img src="Assets/about_hero.png" alt="PopCraft Hero Banner" class="w-full h-full object-cover object-center opacity-[0.12] dark:opacity-[0.08]" />
+    <!-- Gradient overlays to fade into primary background color -->
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, var(--bg-primary) 0%, transparent 35%, transparent 65%, var(--bg-primary) 100%);"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-[var(--bg-primary)] via-transparent to-[var(--bg-primary)] opacity-80"></div>
+  </div>
+  <div class="absolute inset-0 bg-grid opacity-[0.06] dark:opacity-[0.04]" style="background-image: radial-gradient(circle, var(--border-color) 1.5px, transparent 1.5px); background-size: 44px 44px;" aria-hidden="true"></div>
   
   <div class="max-w-7xl mx-auto px-5 lg:px-10 relative z-10">
     <div class="text-center max-w-3xl mx-auto">
@@ -254,6 +261,185 @@
           While the popped kernels are warm, we tumble them in small copper bowls, hand-drizzling pure grass-fed ghee or botanical syrups, and dusting proprietary dry spice rubs for uniform flavor distribution.
         </p>
       </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+  GLOBAL SOURCING & INGREDIENT COMMITMENT
+======================================================= -->
+<section class="py-24" style="background:var(--bg-surface-2);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color);">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="section-label justify-center">Seed to Kernel</p>
+      <h2 class="font-display font-bold" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--text-primary)">
+        Ethical Sourcing, <em class="text-gold">Pure Ingredients</em>
+      </h2>
+      <p class="leading-relaxed mt-4" style="font-size:0.95rem;color:var(--text-secondary);">
+        We travel the globe and partner with single-source cooperatives to ensure every ingredient in PopCraft meets our rigorous standards.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <!-- Sourcing Card 1 -->
+      <article class="surface-card p-8 rounded-xl border border-theme flex flex-col justify-between" style="background:var(--bg-surface);transition:transform 0.3s ease;">
+        <div>
+          <div class="w-14 h-14 rounded-xl mb-6 flex items-center justify-center" style="background:rgba(217,119,6,0.06);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-gold);">01. Heritage Kernels</span>
+          <h3 class="font-display text-xl font-bold mt-2 mb-4" style="color:var(--text-primary);">Indiana Family Farms</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">
+            We grow our organic non-GMO "Ruby Red" and "Mushroom" grains on dedicated family acreage in Indiana. Our specific grain choices produce thick, round kernels that pop cleanly and minimize sharp debris.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-theme flex items-center gap-2 text-xs font-semibold" style="color:var(--text-secondary);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Direct Trade Certified
+        </div>
+      </article>
+
+      <!-- Sourcing Card 2 -->
+      <article class="surface-card p-8 rounded-xl border border-theme flex flex-col justify-between" style="background:var(--bg-surface);transition:transform 0.3s ease;">
+        <div>
+          <div class="w-14 h-14 rounded-xl mb-6 flex items-center justify-center" style="background:rgba(217,119,6,0.06);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-gold);">02. Clean Base</span>
+          <h3 class="font-display text-xl font-bold mt-2 mb-4" style="color:var(--text-primary);">Cold-Pressed Oils</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">
+            Rather than frying or coating in high-heat canola or palm oils, we use 100% organic, cold-pressed virgin coconut oil harvested in Southern Luzon. This ensures a clean, buttery flavor note and zero trans fats.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-theme flex items-center gap-2 text-xs font-semibold" style="color:var(--text-secondary);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          100% Organic &amp; Non-GMO
+        </div>
+      </article>
+
+      <!-- Sourcing Card 3 -->
+      <article class="surface-card p-8 rounded-xl border border-theme flex flex-col justify-between" style="background:var(--bg-surface);transition:transform 0.3s ease;">
+        <div>
+          <div class="w-14 h-14 rounded-xl mb-6 flex items-center justify-center" style="background:rgba(217,119,6,0.06);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+          </div>
+          <span style="font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent-gold);">03. Global Seasonings</span>
+          <h3 class="font-display text-xl font-bold mt-2 mb-4" style="color:var(--text-primary);">Single-Origin Spices</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.7;">
+            We curate our spices directly from global cooperatives—from organic Tellicherry pepper from Kerala, India, to real Fleur de Sel harvested from ancient French salt marshes. No artificial flavor dust, ever.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-theme flex items-center gap-2 text-xs font-semibold" style="color:var(--text-secondary);">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Direct Sourced From Farms
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+  OUR MILESTONES (TIMELINE) & NUMBERS
+======================================================= -->
+<section class="py-24" style="background:var(--bg-primary);">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-5 gap-16 items-start">
+      
+      <!-- Stats Col (Left 2 cols) -->
+      <div class="lg:col-span-2 space-y-8">
+        <div>
+          <p class="section-label">PopCraft by the Numbers</p>
+          <h2 class="font-display font-bold mb-4" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--text-primary);">
+            Crafted Without <em class="text-gold">Compromise</em>
+          </h2>
+          <p style="font-size:0.95rem;color:var(--text-secondary);line-height:1.7;">
+            Every batch popped under our roof represents our commitment to culinary execution and snack refinement.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 pt-4">
+          <!-- Stat 1 -->
+          <div class="p-6 rounded-xl border border-theme" style="background:var(--bg-surface-2);">
+            <div class="font-display text-3xl lg:text-4xl font-black text-gold mb-1">100%</div>
+            <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-primary);">Heirloom Kernels</p>
+            <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.4;margin-top:0.25rem;">Direct trade &amp; non-GMO grains only.</p>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="p-6 rounded-xl border border-theme" style="background:var(--bg-surface-2);">
+            <div class="font-display text-3xl lg:text-4xl font-black text-gold mb-1">15+</div>
+            <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-primary);">Curated Flavors</p>
+            <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.4;margin-top:0.25rem;">Hand-blended seasonal creations.</p>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="p-6 rounded-xl border border-theme" style="background:var(--bg-surface-2);">
+            <div class="font-display text-3xl lg:text-4xl font-black text-gold mb-1">460°F</div>
+            <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-primary);">Air-Pop Heat</p>
+            <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.4;margin-top:0.25rem;">Optimal crisp canvas with zero grease.</p>
+          </div>
+
+          <!-- Stat 4 -->
+          <div class="p-6 rounded-xl border border-theme" style="background:var(--bg-surface-2);">
+            <div class="font-display text-3xl lg:text-4xl font-black text-gold mb-1">Zero</div>
+            <p style="font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-primary);">Artificial Spices</p>
+            <p style="font-size:0.78rem;color:var(--text-secondary);line-height:1.4;margin-top:0.25rem;">No flavor-dust, synthetic colors or MSG.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline Col (Right 3 cols) -->
+      <div class="lg:col-span-3 lg:pl-10">
+        <p class="section-label">Our Journey</p>
+        <h2 class="font-display font-bold mb-10" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--text-primary);">
+          Evolution of <em class="text-gold">The Pop</em>
+        </h2>
+
+        <div class="relative border-l border-theme ml-3 pl-8 space-y-12">
+          <!-- Timeline Item 1 -->
+          <div class="relative">
+            <span class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full border border-theme flex items-center justify-center" style="background:var(--accent-gold); border-width: 4px;"></span>
+            <div class="font-display text-2xl font-bold mb-2 text-gold">2019</div>
+            <h4 class="text-lg font-bold mb-2" style="color:var(--text-primary);">The Spark &amp; The Kettle</h4>
+            <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75;">
+              Abigail Sterling pops the first batch of Sweet &amp; Salty Caramel in a 10-gallon copper kettle in a small Brooklyn garage. We began selling locally at neighborhood greenmarkets.
+            </p>
+          </div>
+
+          <!-- Timeline Item 2 -->
+          <div class="relative">
+            <span class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full border border-theme flex items-center justify-center" style="background:var(--accent-gold); border-width: 4px;"></span>
+            <div class="font-display text-2xl font-bold mb-2 text-gold">2021</div>
+            <h4 class="text-lg font-bold mb-2" style="color:var(--text-primary);">First Artisan Kitchen</h4>
+            <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75;">
+              PopCraft establishes its brick-and-mortar storefront and commercial popping room in Brooklyn. Customers are lured in by the intoxicating aroma of roasting pecans and bubbling brown sugar.
+            </p>
+          </div>
+
+          <!-- Timeline Item 3 -->
+          <div class="relative">
+            <span class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full border border-theme flex items-center justify-center" style="background:var(--accent-gold); border-width: 4px;"></span>
+            <div class="font-display text-2xl font-bold mb-2 text-gold">2024</div>
+            <h4 class="text-lg font-bold mb-2" style="color:var(--text-primary);">Nationwide Shipping</h4>
+            <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75;">
+              We launch the monthly PopCraft subscription club. Handcrafted signature tins begin arriving fresh on doorsteps nationwide, maintaining our small-batch standards at scale.
+            </p>
+          </div>
+
+          <!-- Timeline Item 4 -->
+          <div class="relative">
+            <span class="absolute -left-[41px] top-1.5 w-6 h-6 rounded-full border border-theme flex items-center justify-center" style="background:var(--accent-gold); border-width: 4px;"></span>
+            <div class="font-display text-2xl font-bold mb-2 text-gold">2026</div>
+            <h4 class="text-lg font-bold mb-2" style="color:var(--text-primary);">Sustainable Frontiers</h4>
+            <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75;">
+              Our roasting kitchen transitions to 100% solar power and we pilot fully compostable plant-based bags for our kernel catalog, paving the way for low-impact gourmet snacking.
+            </p>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
