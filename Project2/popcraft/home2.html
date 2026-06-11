@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="PopCraft Artisan Popcorn Co. Home 2 — Cinematic flavor, customized tasting flights, beverage pairing tool, and raw ingredient details." />
+  <meta name="description"
+    content="PopCraft Artisan Popcorn Co. Home 2 — Cinematic flavor, customized tasting flights, beverage pairing tool, and raw ingredient details." />
   <title>Artisan Popcorn Co. — PopCraft Home 2</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><g fill='white' transform='translate(4, 4)'><path d='M6 13 L18 13 L16.2 20.5 C16.1 21.3, 15.4 22, 14.6 22 L9.4 22 C8.6 22, 7.9 21.3, 7.8 20.5 Z' /><circle cx='12' cy='11' r='3.2' /><circle cx='8.5' cy='9.5' r='2.8' /><circle cx='15.5' cy='9.5' r='2.8' /><circle cx='12' cy='6.8' r='3' /></g></svg>" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><g fill='white' transform='translate(4, 4)'><path d='M6 13 L18 13 L16.2 20.5 C16.1 21.3, 15.4 22, 14.6 22 L9.4 22 C8.6 22, 7.9 21.3, 7.8 20.5 Z' /><circle cx='12' cy='11' r='3.2' /><circle cx='8.5' cy='9.5' r='2.8' /><circle cx='15.5' cy='9.5' r='2.8' /><circle cx='12' cy='6.8' r='3' /></g></svg>" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,9 +20,9 @@
       theme: {
         extend: {
           fontFamily: {
-            display:   ['"Playfair Display"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
             cormorant: ['"Cormorant Garamond"', 'serif'],
-            body:      ['"DM Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
           },
         },
       },
@@ -29,765 +32,876 @@
   <!-- Global CSS -->
   <link rel="stylesheet" href="global.css" />
 </head>
+
 <body>
 
-<!-- ======================================================
+  <!-- ======================================================
   SCROLL PROGRESS
 ======================================================= -->
-<div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
-<!-- ======================================================
+  <!-- ======================================================
   GRAIN OVERLAY
 ======================================================= -->
-<div class="grain-overlay" aria-hidden="true"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
 
-<!-- ======================================================
+  <!-- ======================================================
   CART TOAST NOTIFICATION
 ======================================================= -->
-<div id="cart-toast" role="alert" aria-live="polite">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-  <span id="toast-text">Item added to cart!</span>
-</div>
+  <div id="cart-toast" role="alert" aria-live="polite">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+    <span id="toast-text">Item added to cart!</span>
+  </div>
 
-<!-- ======================================================
+  <!-- ======================================================
   MOBILE MENU OVERLAY
 ======================================================= -->
-<nav id="mobile-menu" aria-label="Mobile navigation">
-  <!-- Mobile Menu Header -->
-  <div class="mob-menu-header">
-    <a href="index.html" class="mob-menu-brand" aria-label="PopCraft Home">
-      <div class="mob-menu-logo">
-        <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
-      </div>
-      <div class="mob-menu-brand-text">
-        <span class="mob-menu-title">Pop<span class="text-gold">Craft</span></span>
-        <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
-      </div>
-    </a>
-    <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
-  </div>
-
-  <!-- Mobile Menu Links -->
-  <div class="mob-menu-links">
-    <a href="index.html" class="mob-link-item">Home</a>
-    <a href="home2.html" class="mob-link-item active">Home 2</a>
-    <a href="flavors.html" class="mob-link-item">Our Flavors</a>
-    <a href="subscription.html" class="mob-link-item">Subscription</a>
-    <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
-    <a href="about.html" class="mob-link-item">About Us</a>
-    <a href="blog.html" class="mob-link-item">Blog</a>
-    <a href="find-us.html" class="mob-link-item">Contact Us</a>
-  </div>
-
-  <!-- Mobile Menu Actions (Excludes Dashboard) -->
-  <div class="mob-menu-actions">
-    <a href="login.html" class="mob-btn-outline">Login</a>
-  </div>
-
-  <!-- Mobile Menu Footer Controls -->
-  <div class="mob-menu-footer-controls">
-    <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
-    <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
-  </div>
-</nav>
-
-<!-- ======================================================
-  NAVIGATION BAR
-======================================================= -->
-<header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
-    <div class="flex items-center justify-between h-20">
-
-      <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
-        <div class="nav-logo-badge">
-          <!-- Popcorn icon -->
+  <nav id="mobile-menu" aria-label="Mobile navigation">
+    <!-- Mobile Menu Header -->
+    <div class="mob-menu-header">
+      <a href="index.html" class="mob-menu-brand" aria-label="PopCraft Home">
+        <div class="mob-menu-logo">
           <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
         </div>
-        <div>
-          <div class="flex items-baseline gap-0.5">
-            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
-            <span class="font-display text-xl font-bold tracking-tight text-gold">Craft</span>
-          </div>
-          <p class="block" style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">Artisan Popcorn Co.</p>
+        <div class="mob-menu-brand-text">
+          <span class="mob-menu-title">Pop<span class="text-gold">Craft</span></span>
+          <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
         </div>
       </a>
+      <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
+    </div>
 
-      <!-- Desktop Nav Links -->
-      <nav class="hidden xl:flex items-center gap-8" aria-label="Primary navigation">
-        <a href="index.html"        class="nav-link">Home</a>
-        <a href="home2.html"        class="nav-link active">Home 2</a>
-        <a href="flavors.html"      class="nav-link">Our Flavors</a>
-        <a href="subscription.html" class="nav-link">Subscription</a>
-        <a href="gift-tins.html"    class="nav-link">Gift Tins</a>
-        <a href="about.html"        class="nav-link">About Us</a>
-        <a href="blog.html"         class="nav-link">Blog</a>
-        <a href="find-us.html"      class="nav-link">Contact Us</a>
-      </nav>
-      <!-- Right Controls -->
-      <div class="flex items-center gap-3 sm:gap-4">
-        <!-- Theme & Direction Toggles -->
-        <div class="hidden xl:flex items-center gap-1 sm:gap-1.5">
-          <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]" aria-label="Toggle dark mode">
-            🌙
-          </button>
-          <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
-          <button id="dir-toggle" class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]" style="color: var(--text-primary);" aria-label="Toggle layout direction">
-            LTR
-          </button>
-        </div>
+    <!-- Mobile Menu Links -->
+    <div class="mob-menu-links">
+      <a href="index.html" class="mob-link-item">Home</a>
+      <a href="home2.html" class="mob-link-item active">Home 2</a>
+      <a href="flavors.html" class="mob-link-item">Our Flavors</a>
+      <a href="subscription.html" class="mob-link-item">Subscription</a>
+      <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
+      <a href="about.html" class="mob-link-item">About Us</a>
+      <a href="blog.html" class="mob-link-item">Blog</a>
+      <a href="find-us.html" class="mob-link-item">Contact Us</a>
+    </div>
 
-        <!-- Cart Icon -->
-        <button class="relative p-1.5" aria-label="View cart (0 items)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="color:var(--text-primary)"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          <span id="cart-count" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center text-gold" style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
-        </button>
+    <!-- Mobile Menu Actions (Excludes Dashboard) -->
+    <div class="mob-menu-actions">
+      <a href="login.html" class="mob-btn-outline">Login</a>
+    </div>
 
-        <!-- CTA -->
-        <a href="login.html" class="btn-primary hidden xl:inline-flex">
-          Login
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <!-- Mobile Menu Footer Controls -->
+    <div class="mob-menu-footer-controls">
+      <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
+      <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
+    </div>
+  </nav>
+
+  <!-- ======================================================
+  NAVIGATION BAR
+======================================================= -->
+  <header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
+          <div class="nav-logo-badge">
+            <!-- Popcorn icon -->
+            <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
+          </div>
+          <div>
+            <div class="flex items-baseline gap-0.5">
+              <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
+              <span class="font-display text-xl font-bold tracking-tight text-gold">Craft</span>
+            </div>
+            <p class="block"
+              style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">
+              Artisan Popcorn Co.</p>
+          </div>
         </a>
 
-        <!-- Hamburger (mobile) -->
-        <button id="hamburger" class="hamburger xl:hidden" aria-label="Open mobile menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+        <!-- Desktop Nav Links -->
+        <nav class="hidden xl:flex items-center gap-8" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="home2.html" class="nav-link active">Home 2</a>
+          <a href="flavors.html" class="nav-link">Our Flavors</a>
+          <a href="subscription.html" class="nav-link">Subscription</a>
+          <a href="gift-tins.html" class="nav-link">Gift Tins</a>
+          <a href="about.html" class="nav-link">About Us</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="find-us.html" class="nav-link">Contact Us</a>
+        </nav>
+        <!-- Right Controls -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Theme & Direction Toggles -->
+          <div class="hidden xl:flex items-center gap-1 sm:gap-1.5">
+            <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]"
+              aria-label="Toggle dark mode">
+              🌙
+            </button>
+            <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
+            <button id="dir-toggle"
+              class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]"
+              style="color: var(--text-primary);" aria-label="Toggle layout direction">
+              LTR
+            </button>
+          </div>
+
+          <!-- Cart Icon -->
+          <button class="relative p-1.5" aria-label="View cart (0 items)">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+              style="color:var(--text-primary)">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
+            <span id="cart-count"
+              class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center text-gold"
+              style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
+          </button>
+
+          <!-- CTA -->
+          <a href="login.html" class="btn-primary hidden xl:inline-flex">
+            Login
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+
+          <!-- Hamburger (mobile) -->
+          <button id="hamburger" class="hamburger xl:hidden" aria-label="Open mobile menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- ======================================================
+  <!-- ======================================================
   SECTION 1: HERO (CENTERED TEXT & ORBITING INGREDINTS)
 ======================================================= -->
-<section id="hero" class="hero-section" aria-label="Welcome to PopCraft">
-  <div class="hero-grid-bg" aria-hidden="true"></div>
+  <section id="hero" class="hero-section" aria-label="Welcome to PopCraft">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
 
-  <!-- Centered Content Wrapper Redesigned to Split Grid -->
-  <div class="max-w-7xl mx-auto px-5 lg:px-10 w-full relative z-10 py-16 lg:py-24">
-    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-      
-      <!-- LEFT Column: Copy & Highlights -->
-      <div class="lg:col-span-7 text-center lg:text-left order-1 lg:order-1 flex flex-col justify-center items-center lg:items-start">
-        <p class="section-label justify-center lg:justify-start reveal mb-4">✦ Handcrafted Cinematic Flavor ✦</p>
-        
-        <h1 class="font-display font-black tracking-tight leading-none reveal d-100 mb-6" style="font-size:clamp(2.8rem,5.5vw,4.5rem); color:var(--text-primary)">
-          Artisan Kernels.<br>
-          <em style="color:var(--accent-gold); font-style:italic">Cinematic Taste.</em>
-        </h1>
-        
-        <p class="leading-relaxed reveal d-200 mb-8 max-w-xl text-center lg:text-left" style="font-size:1.05rem; color:var(--text-secondary)">
-          Obsessed with every pop. Welcome to a curated culinary universe of gourmet popcorn, where clean, organic ingredients meet bold, chef‑driven imagination.
-        </p>
+    <!-- Centered Content Wrapper Redesigned to Split Grid -->
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 w-full relative z-10 py-16 lg:py-24">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-        <!-- CTA Buttons -->
-        <div class="flex flex-wrap justify-center lg:justify-start gap-4 reveal d-300 mb-10">
-          <a href="#flight-section" class="btn-primary">
-            Build a Flight Pack
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/></svg>
-          </a>
-          <a href="flavors.html" class="btn-outline">
-            Explore All Flavors
-          </a>
-        </div>
+        <!-- LEFT Column: Copy & Highlights -->
+        <div
+          class="lg:col-span-7 text-center lg:text-left order-1 lg:order-1 flex flex-col justify-center items-center lg:items-start">
+          <p class="section-label justify-center lg:justify-start reveal mb-4">✦ Handcrafted Cinematic Flavor ✦</p>
 
-        <!-- Trust Stats Highlight Row -->
-        <div class="grid grid-cols-3 gap-6 pt-8 border-t border-[var(--border-color)] reveal d-400 mt-2 w-full text-center lg:text-left">
-          <div>
-            <div class="font-display text-2xl font-black text-[var(--accent-gold)]">100%</div>
-            <div class="text-[0.68rem] tracking-wider uppercase font-bold text-[var(--text-secondary)] mt-1">Organic Corn</div>
+          <h1 class="font-display font-black tracking-tight leading-none reveal d-100 mb-6"
+            style="font-size:clamp(2.8rem,5.5vw,4.5rem); color:var(--text-primary)">
+            Artisan Kernels.<br>
+            <em style="color:var(--accent-gold); font-style:italic">Cinematic Taste.</em>
+          </h1>
+
+          <p class="leading-relaxed reveal d-200 mb-8 max-w-xl text-center lg:text-left"
+            style="font-size:1.05rem; color:var(--text-secondary)">
+            Obsessed with every pop. Welcome to a curated culinary universe of gourmet popcorn, where clean, organic
+            ingredients meet bold, chef‑driven imagination.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 reveal d-300 mb-10">
+            <a href="#flight-section" class="btn-primary">
+              Build a Flight Pack
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                <line x1="9" y1="3" x2="9" y2="21" />
+                <line x1="15" y1="3" x2="15" y2="21" />
+              </svg>
+            </a>
+            <a href="flavors.html" class="btn-outline">
+              Explore All Flavors
+            </a>
           </div>
-          <div>
-            <div class="font-display text-2xl font-black text-[var(--accent-gold)]">Chef</div>
-            <div class="text-[0.68rem] tracking-wider uppercase font-bold text-[var(--text-secondary)] mt-1">Driven Recipes</div>
-          </div>
-          <div>
-            <div class="font-display text-2xl font-black text-[var(--accent-gold)]">Zero</div>
-            <div class="text-[0.68rem] tracking-wider uppercase font-bold text-[var(--text-secondary)] mt-1">Preservatives</div>
-          </div>
-        </div>
-      </div>
 
-      <!-- RIGHT Column: Orbiting/Floating Visual Centerpiece -->
-      <div class="lg:col-span-5 flex justify-center items-center order-2 lg:order-2 relative py-8 lg:py-0">
-        
-        <!-- Central Bucket Graphic with float animation -->
-        <div class="relative z-20 flex justify-center items-center hero-bucket-img">
-          <div class="absolute rounded-full hero-bucket-glow" aria-hidden="true"></div>
-          <div class="relative rounded-full overflow-hidden border-4 border-[var(--accent-gold)] shadow-2xl bg-[#090706]" style="width: 380px; height: 380px; max-width: 85vw; max-height: 85vw;">
-            <img src="Assets/home2_hero.png" alt="PopCraft Gourmet Popcorn Centerpiece" class="w-full h-full object-cover select-none scale-105 transition duration-700 hover:scale-110" />
-          </div>
-        </div>
-
-        <!-- Left Floating Ingredient (Truffle Parm) -->
-        <div class="home2-floating-item-1 absolute left-[-15px] sm:left-[-35px] lg:left-[-50px] top-[15%] z-30 hidden xs:block">
-          <div class="surface-card p-4 rounded-lg border-theme shadow-md flex items-center gap-3" style="background: linear-gradient(135deg,#292524 0%,#44403C 55%,#1C1917 100%); width: 200px; border: 1.5px solid var(--accent-gold);">
-            <span style="font-size:1.8rem;" class="select-none">🍄</span>
-            <div class="text-left">
-              <h4 class="font-display font-bold text-xs text-white">Truffle Parmesan</h4>
-              <p style="font-size:0.6rem; color:rgba(245,245,244,0.65); line-height:1.3; margin-top:2px;">Black truffle & aged Parmigiano.</p>
+          <!-- Trust Stats Highlight Row -->
+          <div
+            class="grid grid-cols-3 gap-6 pt-8 border-t border-[var(--border-color)] reveal d-400 mt-2 w-full text-center lg:text-left">
+            <div>
+              <div class="font-display text-2xl font-black text-[var(--accent-gold)]">100%</div>
+              <div class="text-[0.68rem] tracking-wider uppercase font-bold text-[var(--text-secondary)] mt-1">Organic
+                Corn</div>
+            </div>
+            <div>
+              <div class="font-display text-2xl font-black text-[var(--accent-gold)]">Chef</div>
+              <div class="text-[0.68rem] tracking-wider uppercase font-bold text-[var(--text-secondary)] mt-1">Driven
+                Recipes</div>
+            </div>
+            <div>
+              <div class="font-display text-2xl font-black text-[var(--accent-gold)]">Zero</div>
+              <div class="text-[0.68rem] tracking-wider uppercase font-bold text-[var(--text-secondary)] mt-1">
+                Preservatives</div>
             </div>
           </div>
         </div>
 
-        <!-- Right Floating Ingredient (Spicy Caramel) -->
-        <div class="home2-floating-item-2 absolute right-[-15px] sm:right-[-35px] lg:right-[-50px] bottom-[20%] z-30 hidden xs:block">
-          <div class="surface-card p-4 rounded-lg border-theme shadow-md flex items-center gap-3" style="background: linear-gradient(135deg,#7C2D12 0%,#C05621 45%,#D97706 100%); width: 200px; border: 1.5px solid var(--accent-gold);">
-            <span style="font-size:1.8rem;" class="select-none">🌶️</span>
-            <div class="text-left">
-              <h4 class="font-display font-bold text-xs text-white">Spicy Caramel</h4>
-              <p style="font-size:0.6rem; color:rgba(245,245,244,0.65); line-height:1.3; margin-top:2px;">Rich brown sugar & cayenne.</p>
+        <!-- RIGHT Column: Orbiting/Floating Visual Centerpiece -->
+        <div class="lg:col-span-5 flex justify-center items-center order-2 lg:order-2 relative py-8 lg:py-0">
+
+          <!-- Central Bucket Graphic with float animation -->
+          <div class="relative z-20 flex justify-center items-center hero-bucket-img">
+            <div class="absolute rounded-full hero-bucket-glow" aria-hidden="true"></div>
+            <div
+              class="relative rounded-full overflow-hidden border-4 border-[var(--accent-gold)] shadow-2xl bg-[#090706]"
+              style="width: 380px; height: 380px; max-width: 85vw; max-height: 85vw;">
+              <img src="Assets/home2_hero.png" alt="PopCraft Gourmet Popcorn Centerpiece"
+                class="w-full h-full object-cover select-none scale-105 transition duration-700 hover:scale-110" />
             </div>
           </div>
+
+          <!-- Left Floating Ingredient (Truffle Parm) -->
+          <div
+            class="home2-floating-item-1 absolute left-[-15px] sm:left-[-35px] lg:left-[-50px] top-[15%] z-30 hidden xs:block">
+            <div class="surface-card p-4 rounded-lg border-theme shadow-md flex items-center gap-3"
+              style="background: linear-gradient(135deg,#292524 0%,#44403C 55%,#1C1917 100%); width: 200px; border: 1.5px solid var(--accent-gold);">
+              <span style="font-size:1.8rem;" class="select-none">🍄</span>
+              <div class="text-left">
+                <h4 class="font-display font-bold text-xs text-white">Truffle Parmesan</h4>
+                <p style="font-size:0.6rem; color:rgba(245,245,244,0.65); line-height:1.3; margin-top:2px;">Black
+                  truffle & aged Parmigiano.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Floating Ingredient (Spicy Caramel) -->
+          <div
+            class="home2-floating-item-2 absolute right-[-15px] sm:right-[-35px] lg:right-[-50px] bottom-[20%] z-30 hidden xs:block">
+            <div class="surface-card p-4 rounded-lg border-theme shadow-md flex items-center gap-3"
+              style="background: linear-gradient(135deg,#7C2D12 0%,#C05621 45%,#D97706 100%); width: 200px; border: 1.5px solid var(--accent-gold);">
+              <span style="font-size:1.8rem;" class="select-none">🌶️</span>
+              <div class="text-left">
+                <h4 class="font-display font-bold text-xs text-white">Spicy Caramel</h4>
+                <p style="font-size:0.6rem; color:rgba(245,245,244,0.65); line-height:1.3; margin-top:2px;">Rich brown
+                  sugar & cayenne.</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </div>
-      
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ======================================================
+  <!-- ======================================================
   MARQUEE BRAND TICKER
 ======================================================= -->
-<div class="marquee-outer" aria-hidden="true">
-  <div class="marquee-track">
-    <div class="marquee-item">✦ Organic Kernel Sourcing</div>
-    <div class="marquee-dot"></div>
-    <div class="marquee-item">✦ Air-Popped in Small Batches</div>
-    <div class="marquee-dot"></div>
-    <div class="marquee-item">✦ 100% Clean Label Spices</div>
-    <div class="marquee-dot"></div>
-    <div class="marquee-item">✦ Zero Artificial Preservatives</div>
-    <div class="marquee-dot"></div>
-    <!-- Duplicate for scroll continuity -->
-    <div class="marquee-item">✦ Organic Kernel Sourcing</div>
-    <div class="marquee-dot"></div>
-    <div class="marquee-item">✦ Air-Popped in Small Batches</div>
-    <div class="marquee-dot"></div>
-    <div class="marquee-item">✦ 100% Clean Label Spices</div>
-    <div class="marquee-dot"></div>
-    <div class="marquee-item">✦ Zero Artificial Preservatives</div>
-    <div class="marquee-dot"></div>
+  <div class="marquee-outer" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-item">✦ Organic Kernel Sourcing</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">✦ Air-Popped in Small Batches</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">✦ 100% Clean Label Spices</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">✦ Zero Artificial Preservatives</div>
+      <div class="marquee-dot"></div>
+      <!-- Duplicate for scroll continuity -->
+      <div class="marquee-item">✦ Organic Kernel Sourcing</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">✦ Air-Popped in Small Batches</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">✦ 100% Clean Label Spices</div>
+      <div class="marquee-dot"></div>
+      <div class="marquee-item">✦ Zero Artificial Preservatives</div>
+      <div class="marquee-dot"></div>
+    </div>
   </div>
-</div>
 
-<!-- ======================================================
+  <!-- ======================================================
   SECTION 2: POPPING PROCESS TIMELINE
 ======================================================= -->
-<section style="background: var(--bg-surface-2); transition: background-color 0.35s ease;" class="py-20 lg:py-24" aria-label="Our popping process">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+  <section style="background: var(--bg-surface-2); transition: background-color 0.35s ease;" class="py-20 lg:py-24"
+    aria-label="Our popping process">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
 
-    <div class="text-center mb-16">
-      <p class="section-label justify-center reveal">The Popping Process</p>
-      <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight reveal d-100" style="color:var(--text-primary)">
-        The Art of the <em style="color:var(--accent-gold); font-style:italic">Kernel.</em>
-      </h2>
-      <p class="mt-4 leading-relaxed max-w-xl mx-auto reveal d-150" style="color:var(--text-secondary)">
-        From raw seed to gourmet crunch: explore the steps that make PopCraft popcorn uniquely premium.
-      </p>
-    </div>
-
-    <!-- Timeline Grid Layout -->
-    <div class="grid lg:grid-cols-12 gap-8 items-center mt-12">
-      
-      <!-- Left triggers (Timeline Steps) -->
-      <div class="lg:col-span-5 flex flex-col gap-4 relative">
-        <!-- Connecting Vertical Line (styled via CSS or relative divs) -->
-        <div class="absolute left-[36px] top-4 bottom-4 w-[2px] bg-stone-300 dark:bg-stone-700 hidden lg:block z-0" style="background: var(--border-color)"></div>
-
-        <!-- Step 1 -->
-        <button class="process-step-trigger text-left flex items-center gap-5 p-5 rounded-lg border border-theme transition bg-surface relative z-10 outline-none w-full" data-step="1">
-          <div class="process-step-num shrink-0">I</div>
-          <div>
-            <h3 class="font-display font-bold text-lg" style="color:var(--text-primary)">Seed Selection</h3>
-            <p style="font-size:0.75rem; color:var(--text-secondary);">Organic, single-origin kernels.</p>
-          </div>
-        </button>
-
-        <!-- Step 2 -->
-        <button class="process-step-trigger text-left flex items-center gap-5 p-5 rounded-lg border border-theme transition bg-surface relative z-10 outline-none w-full" data-step="2">
-          <div class="process-step-num shrink-0">II</div>
-          <div>
-            <h3 class="font-display font-bold text-lg" style="color:var(--text-primary)">Air-Popping</h3>
-            <p style="font-size:0.75rem; color:var(--text-secondary);">Oil-free, 460°F high velocity steam.</p>
-          </div>
-        </button>
-
-        <!-- Step 3 -->
-        <button class="process-step-trigger text-left flex items-center gap-5 p-5 rounded-lg border border-theme transition bg-surface relative z-10 outline-none w-full" data-step="3">
-          <div class="process-step-num shrink-0">III</div>
-          <div>
-            <h3 class="font-display font-bold text-lg" style="color:var(--text-primary)">Small-Batch Seasoning</h3>
-            <p style="font-size:0.75rem; color:var(--text-secondary);">Hand-rotated drum spice coat.</p>
-          </div>
-        </button>
-
-        <!-- Step 4 -->
-        <button class="process-step-trigger text-left flex items-center gap-5 p-5 rounded-lg border border-theme transition bg-surface relative z-10 outline-none w-full" data-step="4">
-          <div class="process-step-num shrink-0">IV</div>
-          <div>
-            <h3 class="font-display font-bold text-lg" style="color:var(--text-primary)">Slow-Bake Curing</h3>
-            <p style="font-size:0.75rem; color:var(--text-secondary);">Oven-set crispiness lock.</p>
-          </div>
-        </button>
+      <div class="text-center mb-16">
+        <p class="section-label justify-center reveal">The Popping Process</p>
+        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight reveal d-100"
+          style="color:var(--text-primary)">
+          The Art of the <em style="color:var(--accent-gold); font-style:italic">Kernel.</em>
+        </h2>
+        <p class="mt-4 leading-relaxed max-w-xl mx-auto reveal d-150" style="color:var(--text-secondary)">
+          From raw seed to gourmet crunch: explore the steps that make PopCraft popcorn uniquely premium.
+        </p>
       </div>
 
-      <!-- Right dynamic display -->
-      <div class="lg:col-span-7 flex flex-col justify-center min-h-[300px]">
-        <div id="process-detail-content" class="surface-card p-8 md:p-10 border-theme shadow-md rounded-lg relative overflow-hidden transition-all duration-300" style="background:var(--bg-surface)">
-          <!-- Dynamic contents inserted via scripts.js -->
+      <!-- Timeline Grid Layout -->
+      <div class="grid lg:grid-cols-12 gap-8 items-center mt-12">
+
+        <!-- Left triggers (Timeline Steps) -->
+        <div class="lg:col-span-5 flex flex-col gap-4 relative">
+          <!-- Connecting Vertical Line (styled via CSS or relative divs) -->
+          <div class="absolute left-[36px] top-4 bottom-4 w-[2px] bg-stone-300 dark:bg-stone-700 hidden lg:block z-0"
+            style="background: var(--border-color)"></div>
+
+          <!-- Step 1 -->
+          <button
+            class="process-step-trigger text-left flex items-center gap-5 p-5 rounded-lg border border-theme transition bg-surface relative z-10 outline-none w-full"
+            data-step="1">
+            <div class="process-step-num shrink-0">I</div>
+            <div>
+              <h3 class="font-display font-bold text-lg" style="color:var(--text-primary)">Seed Selection</h3>
+              <p style="font-size:0.75rem; color:var(--text-secondary);">Organic, single-origin kernels.</p>
+            </div>
+          </button>
+
+          <!-- Step 2 -->
+          <button
+            class="process-step-trigger text-left flex items-center gap-5 p-5 rounded-lg border border-theme transition bg-surface relative z-10 outline-none w-full"
+            data-step="2">
+            <div class="process-step-num shrink-0">II</div>
+            <div>
+              <h3 class="font-display font-bold text-lg" style="color:var(--text-primary)">Air-Popping</h3>
+              <p style="font-size:0.75rem; color:var(--text-secondary);">Oil-free, 460°F high velocity steam.</p>
+            </div>
+          </button>
+
+          <!-- Step 3 -->
+          <button
+            class="process-step-trigger text-left flex items-center gap-5 p-5 rounded-lg border border-theme transition bg-surface relative z-10 outline-none w-full"
+            data-step="3">
+            <div class="process-step-num shrink-0">III</div>
+            <div>
+              <h3 class="font-display font-bold text-lg" style="color:var(--text-primary)">Small-Batch Seasoning</h3>
+              <p style="font-size:0.75rem; color:var(--text-secondary);">Hand-rotated drum spice coat.</p>
+            </div>
+          </button>
+
+          <!-- Step 4 -->
+          <button
+            class="process-step-trigger text-left flex items-center gap-5 p-5 rounded-lg border border-theme transition bg-surface relative z-10 outline-none w-full"
+            data-step="4">
+            <div class="process-step-num shrink-0">IV</div>
+            <div>
+              <h3 class="font-display font-bold text-lg" style="color:var(--text-primary)">Slow-Bake Curing</h3>
+              <p style="font-size:0.75rem; color:var(--text-secondary);">Oven-set crispiness lock.</p>
+            </div>
+          </button>
         </div>
+
+        <!-- Right dynamic display -->
+        <div class="lg:col-span-7 flex flex-col justify-center min-h-[300px]">
+          <div id="process-detail-content"
+            class="surface-card p-8 md:p-10 border-theme shadow-md rounded-lg relative overflow-hidden transition-all duration-300"
+            style="background:var(--bg-surface)">
+            <!-- Dynamic contents inserted via scripts.js -->
+          </div>
+        </div>
+
       </div>
 
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- ======================================================
+  <!-- ======================================================
   SECTION 3: BEVERAGE PAIRING TOOL
 ======================================================= -->
-<section style="background: var(--bg-primary); transition: background-color 0.35s ease;" class="py-20 lg:py-24" aria-label="Beverage pairings">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
-    
-    <div class="grid lg:grid-cols-12 gap-12 items-center">
-      
-      <!-- Copy -->
-      <div class="lg:col-span-5 max-w-md">
-        <p class="section-label reveal">Sommelier Corner</p>
-        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight leading-tight reveal d-100" style="color:var(--text-primary)">
-          Find Your<br>
-          Perfect <em style="color:var(--accent-gold); font-style:italic">Pour.</em>
-        </h2>
-        <p class="mt-4 leading-relaxed reveal d-150" style="color:var(--text-secondary); font-size:0.95rem">
-          Artisan snacking is an experience. Select your beverage of choice and let our culinary team map the absolute finest popcorn flavor companion.
-        </p>
+  <section style="background: var(--bg-primary); transition: background-color 0.35s ease;" class="py-20 lg:py-24"
+    aria-label="Beverage pairings">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
 
-        <!-- Dynamic Pairing Options Pills Grid -->
-        <div class="flex flex-wrap gap-3 mt-8 reveal d-200">
-          <button class="pairing-option active" data-beverage="wine">Wine</button>
-          <button class="pairing-option" data-beverage="beer">Beer</button>
-          <button class="pairing-option" data-beverage="coffee">Coffee</button>
-          <button class="pairing-option" data-beverage="tea">Tea</button>
-        </div>
-      </div>
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
 
-      <!-- Display box -->
-      <div class="lg:col-span-7">
-        <div id="pairing-result-box" class="pairing-result-box shadow-md rounded-lg p-6 md:p-8">
-          <!-- Dynamic contents populated by JS -->
+        <!-- Copy -->
+        <div class="lg:col-span-5 max-w-md">
+          <p class="section-label reveal">Sommelier Corner</p>
+          <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight leading-tight reveal d-100"
+            style="color:var(--text-primary)">
+            Find Your<br>
+            Perfect <em style="color:var(--accent-gold); font-style:italic">Pour.</em>
+          </h2>
+          <p class="mt-4 leading-relaxed reveal d-150" style="color:var(--text-secondary); font-size:0.95rem">
+            Artisan snacking is an experience. Select your beverage of choice and let our culinary team map the absolute
+            finest popcorn flavor companion.
+          </p>
+
+          <!-- Dynamic Pairing Options Pills Grid -->
+          <div class="flex flex-wrap gap-3 mt-8 reveal d-200">
+            <button class="pairing-option active" data-beverage="wine">Wine</button>
+            <button class="pairing-option" data-beverage="beer">Beer</button>
+            <button class="pairing-option" data-beverage="coffee">Coffee</button>
+            <button class="pairing-option" data-beverage="tea">Tea</button>
+          </div>
         </div>
+
+        <!-- Display box -->
+        <div class="lg:col-span-7">
+          <div id="pairing-result-box" class="pairing-result-box shadow-md rounded-lg p-6 md:p-8">
+            <!-- Dynamic contents populated by JS -->
+          </div>
+        </div>
+
       </div>
 
     </div>
+  </section>
 
-  </div>
-</section>
-
-<!-- ======================================================
+  <!-- ======================================================
   SECTION 4: TASTING FLIGHT BUILDER
 ======================================================= -->
-<section id="flight-section" style="background: var(--bg-surface-2); transition: background-color 0.35s ease;" class="py-20 lg:py-24" aria-label="Flight pack builder">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+  <section id="flight-section" style="background: var(--bg-surface-2); transition: background-color 0.35s ease;"
+    class="py-20 lg:py-24" aria-label="Flight pack builder">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
 
-    <div class="text-center mb-12">
-      <p class="section-label justify-center reveal">Custom Gifting</p>
-      <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight reveal d-100" style="color:var(--text-primary)">
-        Gourmet <em style="color:var(--accent-gold); font-style:italic">Flight Box.</em>
-      </h2>
-      <p class="mt-4 leading-relaxed max-w-xl mx-auto reveal d-150" style="color:var(--text-secondary)">
-        Curate a personalized 3-bag tasting box. Hand-select your favorites and we'll pack them in our copper-foiled gift box.
-      </p>
-    </div>
-
-    <!-- Interactive Builder Slots UI -->
-    <div class="max-w-3xl mx-auto bg-stone-100 dark:bg-stone-900 border border-theme p-6 rounded-xl shadow-inner flex flex-col items-center gap-6 reveal d-200" style="background:var(--bg-surface); border:1px solid var(--border-color)">
-      <div class="flex justify-center items-center gap-6 sm:gap-12 flex-wrap pb-6">
-        <div class="flight-slot" data-slot="0"></div>
-        <div style="width:20px; height:1px; background:var(--border-color)" class="hidden sm:block"></div>
-        <div class="flight-slot" data-slot="1"></div>
-        <div style="width:20px; height:1px; background:var(--border-color)" class="hidden sm:block"></div>
-        <div class="flight-slot" data-slot="2"></div>
+      <div class="text-center mb-12">
+        <p class="section-label justify-center reveal">Custom Gifting</p>
+        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight reveal d-100"
+          style="color:var(--text-primary)">
+          Gourmet <em style="color:var(--accent-gold); font-style:italic">Flight Box.</em>
+        </h2>
+        <p class="mt-4 leading-relaxed max-w-xl mx-auto reveal d-150" style="color:var(--text-secondary)">
+          Curate a personalized 3-bag tasting box. Hand-select your favorites and we'll pack them in our copper-foiled
+          gift box.
+        </p>
       </div>
 
-      <button id="flight-order-btn" class="btn-primary w-full max-w-md select-none mt-2" disabled>
-        Select 3 Flavors to Build Box
-      </button>
+      <!-- Interactive Builder Slots UI -->
+      <div
+        class="max-w-3xl mx-auto bg-stone-100 dark:bg-stone-900 border border-theme p-6 rounded-xl shadow-inner flex flex-col items-center gap-6 reveal d-200"
+        style="background:var(--bg-surface); border:1px solid var(--border-color)">
+        <div class="flex justify-center items-center gap-6 sm:gap-12 flex-wrap pb-6">
+          <div class="flight-slot" data-slot="0"></div>
+          <div style="width:20px; height:1px; background:var(--border-color)" class="hidden sm:block"></div>
+          <div class="flight-slot" data-slot="1"></div>
+          <div style="width:20px; height:1px; background:var(--border-color)" class="hidden sm:block"></div>
+          <div class="flight-slot" data-slot="2"></div>
+        </div>
+
+        <button id="flight-order-btn" class="btn-primary w-full max-w-md select-none mt-2" disabled>
+          Select 3 Flavors to Build Box
+        </button>
+      </div>
+
+      <!-- Small catalogue grid for selections -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+
+        <!-- Catalog Choice 1 -->
+        <article class="flavor-card reveal" style="background:var(--bg-surface)">
+          <div class="flavor-card-img" style="height: 140px;">
+            <img src="Assets/fla1.jpg" alt="Truffle Parmesan"
+              class="img-pattern w-full h-full object-cover select-none" />
+          </div>
+          <div class="flavor-card-body" style="padding: 1.25rem;">
+            <h3 class="flavor-name" style="font-size: 1rem;">Truffle Parmesan</h3>
+            <p class="flavor-desc" style="font-size: 0.75rem; margin-bottom: 0.75rem;">French black truffle & aged
+              Parmesan.</p>
+            <button class="flight-add-btn btn-outline w-full justify-center" data-flavor="Truffle Parmesan"
+              data-image="Assets/fla1.jpg" style="font-size:0.65rem; padding:0.5rem 1rem">
+              + Add to Flight
+            </button>
+          </div>
+        </article>
+
+        <!-- Catalog Choice 2 -->
+        <article class="flavor-card reveal d-50" style="background:var(--bg-surface)">
+          <div class="flavor-card-img" style="height: 140px;">
+            <img src="Assets/fla2.jpg" alt="Spicy Caramel" class="img-pattern w-full h-full object-cover select-none" />
+          </div>
+          <div class="flavor-card-body" style="padding: 1.25rem;">
+            <h3 class="flavor-name" style="font-size: 1rem;">Spicy Caramel</h3>
+            <p class="flavor-desc" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Brown sugar caramel & cayenne.
+            </p>
+            <button class="flight-add-btn btn-outline w-full justify-center" data-flavor="Spicy Caramel"
+              data-image="Assets/fla2.jpg" style="font-size:0.65rem; padding:0.5rem 1rem">
+              + Add to Flight
+            </button>
+          </div>
+        </article>
+
+        <!-- Catalog Choice 3 -->
+        <article class="flavor-card reveal d-100" style="background:var(--bg-surface)">
+          <div class="flavor-card-img" style="height: 140px;">
+            <img src="Assets/fla3.jpg" alt="Matcha White Choc"
+              class="img-pattern w-full h-full object-cover select-none" />
+          </div>
+          <div class="flavor-card-body" style="padding: 1.25rem;">
+            <h3 class="flavor-name" style="font-size: 1rem;">Matcha White Choc</h3>
+            <p class="flavor-desc" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Kyoto ceremonial matcha.</p>
+            <button class="flight-add-btn btn-outline w-full justify-center" data-flavor="Matcha White Choc"
+              data-image="Assets/fla3.jpg" style="font-size:0.65rem; padding:0.5rem 1rem">
+              + Add to Flight
+            </button>
+          </div>
+        </article>
+
+        <!-- Catalog Choice 4 -->
+        <article class="flavor-card reveal d-150" style="background:var(--bg-surface)">
+          <div class="flavor-card-img" style="height: 140px;">
+            <img src="Assets/fla4.jpg" alt="Classic Sea Salt"
+              class="img-pattern w-full h-full object-cover select-none" />
+          </div>
+          <div class="flavor-card-body" style="padding: 1.25rem;">
+            <h3 class="flavor-name" style="font-size: 1rem;">Classic Sea Salt</h3>
+            <p class="flavor-desc" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Fleur de sel & grass-fed butter.
+            </p>
+            <button class="flight-add-btn btn-outline w-full justify-center" data-flavor="Classic Sea Salt"
+              data-image="Assets/fla4.jpg" style="font-size:0.65rem; padding:0.5rem 1rem">
+              + Add to Flight
+            </button>
+          </div>
+        </article>
+
+      </div>
+
     </div>
+  </section>
 
-    <!-- Small catalogue grid for selections -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-      
-      <!-- Catalog Choice 1 -->
-      <article class="flavor-card reveal" style="background:var(--bg-surface)">
-        <div class="flavor-card-img" style="height: 140px;">
-          <img src="Assets/fla1.jpg" alt="Truffle Parmesan" class="img-pattern w-full h-full object-cover select-none" />
-        </div>
-        <div class="flavor-card-body" style="padding: 1.25rem;">
-          <h3 class="flavor-name" style="font-size: 1rem;">Truffle Parmesan</h3>
-          <p class="flavor-desc" style="font-size: 0.75rem; margin-bottom: 0.75rem;">French black truffle & aged Parmesan.</p>
-          <button class="flight-add-btn btn-outline w-full justify-center" data-flavor="Truffle Parmesan" data-image="Assets/fla1.jpg" style="font-size:0.65rem; padding:0.5rem 1rem">
-            + Add to Flight
-          </button>
-        </div>
-      </article>
-
-      <!-- Catalog Choice 2 -->
-      <article class="flavor-card reveal d-50" style="background:var(--bg-surface)">
-        <div class="flavor-card-img" style="height: 140px;">
-          <img src="Assets/fla2.jpg" alt="Spicy Caramel" class="img-pattern w-full h-full object-cover select-none" />
-        </div>
-        <div class="flavor-card-body" style="padding: 1.25rem;">
-          <h3 class="flavor-name" style="font-size: 1rem;">Spicy Caramel</h3>
-          <p class="flavor-desc" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Brown sugar caramel & cayenne.</p>
-          <button class="flight-add-btn btn-outline w-full justify-center" data-flavor="Spicy Caramel" data-image="Assets/fla2.jpg" style="font-size:0.65rem; padding:0.5rem 1rem">
-            + Add to Flight
-          </button>
-        </div>
-      </article>
-
-      <!-- Catalog Choice 3 -->
-      <article class="flavor-card reveal d-100" style="background:var(--bg-surface)">
-        <div class="flavor-card-img" style="height: 140px;">
-          <img src="Assets/fla3.jpg" alt="Matcha White Choc" class="img-pattern w-full h-full object-cover select-none" />
-        </div>
-        <div class="flavor-card-body" style="padding: 1.25rem;">
-          <h3 class="flavor-name" style="font-size: 1rem;">Matcha White Choc</h3>
-          <p class="flavor-desc" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Kyoto ceremonial matcha.</p>
-          <button class="flight-add-btn btn-outline w-full justify-center" data-flavor="Matcha White Choc" data-image="Assets/fla3.jpg" style="font-size:0.65rem; padding:0.5rem 1rem">
-            + Add to Flight
-          </button>
-        </div>
-      </article>
-
-      <!-- Catalog Choice 4 -->
-      <article class="flavor-card reveal d-150" style="background:var(--bg-surface)">
-        <div class="flavor-card-img" style="height: 140px;">
-          <img src="Assets/fla4.jpg" alt="Classic Sea Salt" class="img-pattern w-full h-full object-cover select-none" />
-        </div>
-        <div class="flavor-card-body" style="padding: 1.25rem;">
-          <h3 class="flavor-name" style="font-size: 1rem;">Classic Sea Salt</h3>
-          <p class="flavor-desc" style="font-size: 0.75rem; margin-bottom: 0.75rem;">Fleur de sel & grass-fed butter.</p>
-          <button class="flight-add-btn btn-outline w-full justify-center" data-flavor="Classic Sea Salt" data-image="Assets/fla4.jpg" style="font-size:0.65rem; padding:0.5rem 1rem">
-            + Add to Flight
-          </button>
-        </div>
-      </article>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ======================================================
+  <!-- ======================================================
   SECTION 5: INGREDIENT SPOTLIGHT
 ======================================================= -->
-<section style="background: var(--bg-primary); transition: background-color 0.35s ease;" class="py-20 lg:py-24" aria-label="Ingredient spotlight">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+  <section style="background: var(--bg-primary); transition: background-color 0.35s ease;" class="py-20 lg:py-24"
+    aria-label="Ingredient spotlight">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
 
-    <div class="text-center mb-16">
-      <p class="section-label justify-center reveal">Clean Label</p>
-      <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight reveal d-100" style="color:var(--text-primary)">
-        Raw. Rare. <em style="color:var(--accent-gold); font-style:italic">Real.</em>
-      </h2>
-      <p class="mt-4 leading-relaxed max-w-xl mx-auto reveal d-150" style="color:var(--text-secondary)">
-        No shortcuts. No fillers. We source the world’s most premium clean-label elements for pure taste intensity.
-      </p>
+      <div class="text-center mb-16">
+        <p class="section-label justify-center reveal">Clean Label</p>
+        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight reveal d-100"
+          style="color:var(--text-primary)">
+          Raw. Rare. <em style="color:var(--accent-gold); font-style:italic">Real.</em>
+        </h2>
+        <p class="mt-4 leading-relaxed max-w-xl mx-auto reveal d-150" style="color:var(--text-secondary)">
+          No shortcuts. No fillers. We source the world’s most premium clean-label elements for pure taste intensity.
+        </p>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+        <!-- Spotlight 1 -->
+        <div class="surface-card p-6 border-theme shadow-sm rounded-lg reveal flex flex-col justify-between"
+          style="background:var(--bg-surface)">
+          <div>
+            <div
+              class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-[var(--border-color)] shrink-0 shadow-sm">
+              <img src="Assets/fla1.jpg" alt="Black Truffles" class="w-full h-full object-cover" />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Black Truffles</h3>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6">
+              Périgord black truffles hand-foraged in France, shaved and freeze-dried to lock in maximum earthy, complex
+              aroma.
+            </p>
+          </div>
+          <div
+            style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 0.08em;">
+            Origin: France</div>
+        </div>
+
+        <!-- Spotlight 2 -->
+        <div class="surface-card p-6 border-theme shadow-sm rounded-lg reveal d-50 flex flex-col justify-between"
+          style="background:var(--bg-surface)">
+          <div>
+            <div
+              class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-[var(--border-color)] shrink-0 shadow-sm">
+              <img src="Assets/ghee.png" alt="Grass-Fed Ghee" class="w-full h-full object-cover" />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Grass-Fed Ghee</h3>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6">
+              Pasteur-raised cows' butter clarified slowly over open fires in small batches, yielding an incredibly rich
+              and nutty dairy profile.
+            </p>
+          </div>
+          <div
+            style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 0.08em;">
+            Origin: Iowa, USA</div>
+        </div>
+
+        <!-- Spotlight 3 -->
+        <div class="surface-card p-6 border-theme shadow-sm rounded-lg reveal d-100 flex flex-col justify-between"
+          style="background:var(--bg-surface)">
+          <div>
+            <div
+              class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-[var(--border-color)] shrink-0 shadow-sm">
+              <img src="Assets/fla4.jpg" alt="Fleur de Sel" class="w-full h-full object-cover" />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Fleur de Sel</h3>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6">
+              Delicate sea salt crystals hand-harvested from medieval marshes in Brittany. A soft crunch with clean
+              mineral sweetness.
+            </p>
+          </div>
+          <div
+            style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 0.08em;">
+            Origin: Brittany, FR</div>
+        </div>
+
+        <!-- Spotlight 4 -->
+        <div class="surface-card p-6 border-theme shadow-sm rounded-lg reveal d-150 flex flex-col justify-between"
+          style="background:var(--bg-surface)">
+          <div>
+            <div
+              class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-[var(--border-color)] shrink-0 shadow-sm">
+              <img src="Assets/fla3.jpg" alt="Uji Matcha" class="w-full h-full object-cover" />
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Uji Matcha</h3>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6">
+              Shade-grown stone-ground tea leaves from historical plantations in Uji, Japan, bringing vibrant color and
+              rich floral umami.
+            </p>
+          </div>
+          <div
+            style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 0.08em;">
+            Origin: Kyoto, JP</div>
+        </div>
+
+      </div>
+
     </div>
+  </section>
 
-    <!-- Grid -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      
-      <!-- Spotlight 1 -->
-      <div class="surface-card p-6 border-theme shadow-sm rounded-lg reveal flex flex-col justify-between" style="background:var(--bg-surface)">
-        <div>
-          <div class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-[var(--border-color)] shrink-0 shadow-sm">
-            <img src="Assets/fla1.jpg" alt="Black Truffles" class="w-full h-full object-cover" />
-          </div>
-          <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Black Truffles</h3>
-          <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6">
-            Périgord black truffles hand-foraged in France, shaved and freeze-dried to lock in maximum earthy, complex aroma.
-          </p>
-        </div>
-        <div style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 0.08em;">Origin: France</div>
-      </div>
-
-      <!-- Spotlight 2 -->
-      <div class="surface-card p-6 border-theme shadow-sm rounded-lg reveal d-50 flex flex-col justify-between" style="background:var(--bg-surface)">
-        <div>
-          <div class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-[var(--border-color)] shrink-0 shadow-sm">
-            <img src="Assets/ghee.png" alt="Grass-Fed Ghee" class="w-full h-full object-cover" />
-          </div>
-          <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Grass-Fed Ghee</h3>
-          <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6">
-            Pasteur-raised cows' butter clarified slowly over open fires in small batches, yielding an incredibly rich and nutty dairy profile.
-          </p>
-        </div>
-        <div style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 0.08em;">Origin: Iowa, USA</div>
-      </div>
-
-      <!-- Spotlight 3 -->
-      <div class="surface-card p-6 border-theme shadow-sm rounded-lg reveal d-100 flex flex-col justify-between" style="background:var(--bg-surface)">
-        <div>
-          <div class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-[var(--border-color)] shrink-0 shadow-sm">
-            <img src="Assets/fla4.jpg" alt="Fleur de Sel" class="w-full h-full object-cover" />
-          </div>
-          <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Fleur de Sel</h3>
-          <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6">
-            Delicate sea salt crystals hand-harvested from medieval marshes in Brittany. A soft crunch with clean mineral sweetness.
-          </p>
-        </div>
-        <div style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 0.08em;">Origin: Brittany, FR</div>
-      </div>
-
-      <!-- Spotlight 4 -->
-      <div class="surface-card p-6 border-theme shadow-sm rounded-lg reveal d-150 flex flex-col justify-between" style="background:var(--bg-surface)">
-        <div>
-          <div class="w-16 h-16 rounded-full overflow-hidden mb-4 border border-[var(--border-color)] shrink-0 shadow-sm">
-            <img src="Assets/fla3.jpg" alt="Uji Matcha" class="w-full h-full object-cover" />
-          </div>
-          <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Uji Matcha</h3>
-          <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.6">
-            Shade-grown stone-ground tea leaves from historical plantations in Uji, Japan, bringing vibrant color and rich floral umami.
-          </p>
-        </div>
-        <div style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; margin-top: 1.5rem; letter-spacing: 0.08em;">Origin: Kyoto, JP</div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ======================================================
+  <!-- ======================================================
   SECTION 6: THE SNACKER GRID (REVIEWS & SOCIAL FEED)
 ======================================================= -->
-<section style="background: var(--bg-surface-2); transition: background-color 0.35s ease;" class="py-20 lg:py-24" aria-label="Customer feedback">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+  <section style="background: var(--bg-surface-2); transition: background-color 0.35s ease;" class="py-20 lg:py-24"
+    aria-label="Customer feedback">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
 
-    <div class="text-center mb-16">
-      <p class="section-label justify-center reveal">Testimonials</p>
-      <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight reveal d-100" style="color:var(--text-primary)">
-        The Snacker <em style="color:var(--accent-gold); font-style:italic">Grid.</em>
-      </h2>
-      <p class="mt-4 leading-relaxed max-w-xl mx-auto reveal d-150" style="color:var(--text-secondary)">
-        What the gourmet community, certified chefs, and local movie-buffs say about our popcorn obsession.
-      </p>
+      <div class="text-center mb-16">
+        <p class="section-label justify-center reveal">Testimonials</p>
+        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight reveal d-100"
+          style="color:var(--text-primary)">
+          The Snacker <em style="color:var(--accent-gold); font-style:italic">Grid.</em>
+        </h2>
+        <p class="mt-4 leading-relaxed max-w-xl mx-auto reveal d-150" style="color:var(--text-secondary)">
+          What the gourmet community, certified chefs, and local movie-buffs say about our popcorn obsession.
+        </p>
+      </div>
+
+      <!-- Masonry-like Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Review 1 -->
+        <div class="testimonial-card flex flex-col justify-between reveal">
+          <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
+            "This isn't popcorn, it's fine dining in a bag. The Truffle Parm is so deeply flavorful and earthy. It
+            elevates our film night to a sommelier standard."
+          </p>
+          <div class="flex items-center gap-3 mt-6">
+            <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/che11.jpg" alt="Chef Elena R." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Chef Elena R.</h4>
+              <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="testimonial-card flex flex-col justify-between reveal d-50">
+          <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
+            "The Sriracha Lime is clean heat perfection. A bag lasts approximately four minutes in our house. Absolute
+            snack wizardry."
+          </p>
+          <div class="flex items-center gap-3 mt-6">
+            <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/chef12.jpg" alt="Marcus K." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Marcus K.</h4>
+              <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="testimonial-card flex flex-col justify-between reveal d-100">
+          <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
+            "Pairing the Truffle Parm with Chardonnay was a complete revelation. The butteriness matches up. I am a
+            customer for life."
+          </p>
+          <div class="flex items-center gap-3 mt-6">
+            <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/chef13.jpg" alt="Sophia L." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Sophia L.</h4>
+              <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 4 -->
+        <div class="testimonial-card flex flex-col justify-between reveal d-150">
+          <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
+            "Clean ingredients, incredible crunch. My kids love the Classic Salt and I love that it is air-popped,
+            meaning zero heavy greasy fingers."
+          </p>
+          <div class="flex items-center gap-3 mt-6">
+            <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/chef14.jpg" alt="David T." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">David T.</h4>
+              <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 5 -->
+        <div class="testimonial-card flex flex-col justify-between reveal d-200">
+          <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
+            "The Flight Box is the ultimate gift. You build it yourself, choose your exact favorites, and it comes in a
+            premium copper box. Absolutely gorgeous design."
+          </p>
+          <div class="flex items-center gap-3 mt-6">
+            <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/chef15.jpg" alt="Julia W." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Julia W.</h4>
+              <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Review 6 -->
+        <div class="testimonial-card flex flex-col justify-between reveal d-250">
+          <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
+            "Miso Butterscotch sounds unusual but it works so well. Sweet, slightly salty, full-on umami overload. I'm
+            subscription tier now."
+          </p>
+          <div class="flex items-center gap-3 mt-6">
+            <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/chef16.jpg" alt="Thomas B." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Thomas B.</h4>
+              <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
+  </section>
 
-    <!-- Masonry-like Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <!-- Review 1 -->
-      <div class="testimonial-card flex flex-col justify-between reveal">
-        <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
-          "This isn't popcorn, it's fine dining in a bag. The Truffle Parm is so deeply flavorful and earthy. It elevates our film night to a sommelier standard."
-        </p>
-        <div class="flex items-center gap-3 mt-6">
-          <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/che11.jpg" alt="Chef Elena R." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Chef Elena R.</h4>
-            <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 2 -->
-      <div class="testimonial-card flex flex-col justify-between reveal d-50">
-        <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
-          "The Sriracha Lime is clean heat perfection. A bag lasts approximately four minutes in our house. Absolute snack wizardry."
-        </p>
-        <div class="flex items-center gap-3 mt-6">
-          <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/chef12.jpg" alt="Marcus K." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Marcus K.</h4>
-            <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 3 -->
-      <div class="testimonial-card flex flex-col justify-between reveal d-100">
-        <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
-          "Pairing the Truffle Parm with Chardonnay was a complete revelation. The butteriness matches up. I am a customer for life."
-        </p>
-        <div class="flex items-center gap-3 mt-6">
-          <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/chef13.jpg" alt="Sophia L." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Sophia L.</h4>
-            <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 4 -->
-      <div class="testimonial-card flex flex-col justify-between reveal d-150">
-        <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
-          "Clean ingredients, incredible crunch. My kids love the Classic Salt and I love that it is air-popped, meaning zero heavy greasy fingers."
-        </p>
-        <div class="flex items-center gap-3 mt-6">
-          <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/chef14.jpg" alt="David T." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">David T.</h4>
-            <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 5 -->
-      <div class="testimonial-card flex flex-col justify-between reveal d-200">
-        <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
-          "The Flight Box is the ultimate gift. You build it yourself, choose your exact favorites, and it comes in a premium copper box. Absolutely gorgeous design."
-        </p>
-        <div class="flex items-center gap-3 mt-6">
-          <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/chef15.jpg" alt="Julia W." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Julia W.</h4>
-            <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Review 6 -->
-      <div class="testimonial-card flex flex-col justify-between reveal d-250">
-        <p class="font-cormorant italic text-lg leading-relaxed" style="color:var(--text-primary)">
-          "Miso Butterscotch sounds unusual but it works so well. Sweet, slightly salty, full-on umami overload. I'm subscription tier now."
-        </p>
-        <div class="flex items-center gap-3 mt-6">
-          <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/chef16.jpg" alt="Thomas B." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <h4 style="font-size: 0.82rem; font-weight: 600; color: var(--text-primary)">Thomas B.</h4>
-            <div class="flex gap-0.5 text-xs text-gold">★★★★★</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<!-- ======================================================
+  <!-- ======================================================
   FOOTER
 ======================================================= -->
-<footer id="site-footer" role="contentinfo">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10 pt-16 pb-10">
+  <footer id="site-footer" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 pt-16 pb-10">
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-14">
+      <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-14">
 
-      <!-- Brand Column -->
-      <div class="lg:col-span-2">
-        <a href="index.html" class="flex items-center gap-3 mb-5 group" aria-label="PopCraft Home">
-          <div class="footer-logo-badge">
-            <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-5 h-5" />
+        <!-- Brand Column -->
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 mb-5 group" aria-label="PopCraft Home">
+            <div class="footer-logo-badge">
+              <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-5 h-5" />
+            </div>
+            <div>
+              <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
+              <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">
+                Artisan Popcorn Co.</p>
+            </div>
+          </a>
+          <p
+            style="font-size:0.85rem;line-height:1.75;color:rgba(245,245,244,0.5);max-width:280px;margin-bottom:1.5rem">
+            Handcrafted in small batches since 2019. We believe that the best snacks are made with the best ingredients
+            and a little bit of love.
+          </p>
+          <!-- Social Icons -->
+          <div class="flex items-center gap-3" aria-label="Social media links">
+            <a href="#" class="social-icon" aria-label="Follow us on Instagram">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow us on X">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow us on Facebook">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Follow us on Pinterest">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M12 2a10 10 0 00-3.56 19.32c-.05-.4-.1-1.02.02-1.46.13-.44.84-2.82.84-2.82s-.21-.43-.21-1.06c0-1 .58-1.74 1.3-1.74.61 0 .91.46.91 1.01 0 .61-.39 1.53-.6 2.38-.17.71.36 1.29 1.06 1.29 1.27 0 2.25-1.34 2.25-3.27 0-1.71-1.23-2.9-2.98-2.9-2.03 0-3.22 1.52-3.22 3.1 0 .61.23 1.27.53 1.63.06.07.07.13.05.2-.05.22-.18.71-.2.81-.03.13-.1.16-.23.1-.87-.4-1.41-1.68-1.41-2.71 0-2.2 1.6-4.23 4.62-4.23 2.42 0 4.31 1.73 4.31 4.04 0 2.41-1.52 4.35-3.62 4.35-.71 0-1.37-.37-1.6-.8l-.43 1.62c-.16.6-.58 1.35-.87 1.81A10 10 0 1022 12 10 10 0 0012 2z" />
+              </svg>
+            </a>
           </div>
-          <div>
-            <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
-            <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">Artisan Popcorn Co.</p>
-          </div>
-        </a>
-        <p style="font-size:0.85rem;line-height:1.75;color:rgba(245,245,244,0.5);max-width:280px;margin-bottom:1.5rem">
-          Handcrafted in small batches since 2019. We believe that the best snacks are made with the best ingredients and a little bit of love.
+        </div>
+
+        <!-- Shop -->
+        <div>
+          <h4 class="footer-heading">Shop</h4>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+            <li><a href="flavors.html" class="footer-link">All Flavors</a></li>
+            <li><a href="subscription.html" class="footer-link">Subscription Box</a></li>
+            <li><a href="gift-tins.html" class="footer-link">Gift Tins</a></li>
+            <li><a href="gift-tins.html" class="footer-link">Catering</a></li>
+            <li><a href="flavors.html" class="footer-link">Seasonal Specials</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+            <li><a href="#" class="footer-link">Our Story</a></li>
+            <li><a href="#" class="footer-link">Ingredients &amp; Sourcing</a></li>
+            <li><a href="#" class="footer-link">Sustainability</a></li>
+            <li><a href="#" class="footer-link">Press Kit</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="lg:col-span-2">
+          <h4 class="footer-heading">Stay in the Loop</h4>
+          <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">
+            New flavors, limited drops, and member-only discounts — straight to your inbox.
+          </p>
+          <form id="newsletter-form" novalidate>
+            <div class="newsletter-wrap">
+              <input type="email" class="newsletter-input" placeholder="your@email.com" aria-label="Email address"
+                required />
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe</button>
+            </div>
+            <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam, ever. Unsubscribe any
+              time.</p>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-divider"></div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">
+          © 2026 PopCraft Artisan Popcorn Co. All rights reserved.
         </p>
-        <!-- Social Icons -->
-        <div class="flex items-center gap-3" aria-label="Social media links">
-          <a href="#" class="social-icon" aria-label="Follow us on Instagram">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="Follow us on X">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="Follow us on Facebook">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="Follow us on Pinterest">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 00-3.56 19.32c-.05-.4-.1-1.02.02-1.46.13-.44.84-2.82.84-2.82s-.21-.43-.21-1.06c0-1 .58-1.74 1.3-1.74.61 0 .91.46.91 1.01 0 .61-.39 1.53-.6 2.38-.17.71.36 1.29 1.06 1.29 1.27 0 2.25-1.34 2.25-3.27 0-1.71-1.23-2.9-2.98-2.9-2.03 0-3.22 1.52-3.22 3.1 0 .61.23 1.27.53 1.63.06.07.07.13.05.2-.05.22-.18.71-.2.81-.03.13-.1.16-.23.1-.87-.4-1.41-1.68-1.41-2.71 0-2.2 1.6-4.23 4.62-4.23 2.42 0 4.31 1.73 4.31 4.04 0 2.41-1.52 4.35-3.62 4.35-.71 0-1.37-.37-1.6-.8l-.43 1.62c-.16.6-.58 1.35-.87 1.81A10 10 0 1022 12 10 10 0 0012 2z"/></svg>
-          </a>
+        <div class="flex flex-wrap items-center gap-5">
+          <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
+          <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Use</a>
+          <a href="#" class="footer-link" style="font-size:0.72rem">Accessibility</a>
+          <a href="#" class="footer-link" style="font-size:0.72rem">Do Not Sell My Data</a>
         </div>
       </div>
 
-      <!-- Shop -->
-      <div>
-        <h4 class="footer-heading">Shop</h4>
-        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
-          <li><a href="flavors.html" class="footer-link">All Flavors</a></li>
-          <li><a href="subscription.html" class="footer-link">Subscription Box</a></li>
-          <li><a href="gift-tins.html" class="footer-link">Gift Tins</a></li>
-          <li><a href="gift-tins.html" class="footer-link">Catering</a></li>
-          <li><a href="flavors.html" class="footer-link">Seasonal Specials</a></li>
-        </ul>
-      </div>
-
-      <!-- Company -->
-      <div>
-        <h4 class="footer-heading">Company</h4>
-        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
-          <li><a href="#" class="footer-link">Our Story</a></li>
-          <li><a href="#" class="footer-link">Ingredients &amp; Sourcing</a></li>
-          <li><a href="#" class="footer-link">Sustainability</a></li>
-          <li><a href="#" class="footer-link">Press Kit</a></li>
-          <li><a href="#" class="footer-link">Careers</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div class="lg:col-span-2">
-        <h4 class="footer-heading">Stay in the Loop</h4>
-        <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">
-          New flavors, limited drops, and member-only discounts — straight to your inbox.
-        </p>
-        <form id="newsletter-form" novalidate>
-          <div class="newsletter-wrap">
-            <input
-              type="email"
-              class="newsletter-input"
-              placeholder="your@email.com"
-              aria-label="Email address"
-              required
-            />
-            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe</button>
-          </div>
-          <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam, ever. Unsubscribe any time.</p>
-        </form>
-      </div>
-
     </div>
+  </footer>
 
-    <!-- Bottom Bar -->
-    <div class="footer-divider"></div>
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">
-        © 2026 PopCraft Artisan Popcorn Co. All rights reserved.
-      </p>
-      <div class="flex flex-wrap items-center gap-5">
-        <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
-        <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Use</a>
-        <a href="#" class="footer-link" style="font-size:0.72rem">Accessibility</a>
-        <a href="#" class="footer-link" style="font-size:0.72rem">Do Not Sell My Data</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
-
-<!-- ======================================================
+  <!-- ======================================================
   SCRIPTS
 ======================================================= -->
-<script src="scripts.js"></script>
+  <script src="scripts.js"></script>
 
 </body>
+
 </html>

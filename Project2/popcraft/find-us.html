@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Find PopCraft Near You — Locate specialty grocers, food stores, and artisan markets carrying premium PopCraft popcorn across the United States." />
+  <meta name="description"
+    content="Find PopCraft Near You — Locate specialty grocers, food stores, and artisan markets carrying premium PopCraft popcorn across the United States." />
   <title>Find Us — PopCraft Artisan Popcorn Co.</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><g fill='white' transform='translate(4, 4)'><path d='M6 13 L18 13 L16.2 20.5 C16.1 21.3, 15.4 22, 14.6 22 L9.4 22 C8.6 22, 7.9 21.3, 7.8 20.5 Z' /><circle cx='12' cy='11' r='3.2' /><circle cx='8.5' cy='9.5' r='2.8' /><circle cx='15.5' cy='9.5' r='2.8' /><circle cx='12' cy='6.8' r='3' /></g></svg>" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><g fill='white' transform='translate(4, 4)'><path d='M6 13 L18 13 L16.2 20.5 C16.1 21.3, 15.4 22, 14.6 22 L9.4 22 C8.6 22, 7.9 21.3, 7.8 20.5 Z' /><circle cx='12' cy='11' r='3.2' /><circle cx='8.5' cy='9.5' r='2.8' /><circle cx='15.5' cy='9.5' r='2.8' /><circle cx='12' cy='6.8' r='3' /></g></svg>" />
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,9 +20,9 @@
       theme: {
         extend: {
           fontFamily: {
-            display:   ['"Playfair Display"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
             cormorant: ['"Cormorant Garamond"', 'serif'],
-            body:      ['"DM Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
           },
         },
       },
@@ -41,446 +44,520 @@
       border-bottom: 1px solid var(--border-color);
       padding-top: 80px;
     }
+
     .findus-hero-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(to right, var(--bg-primary) 38%, rgba(253, 251, 247, 0.82) 58%, rgba(253, 251, 247, 0.2) 100%);
       pointer-events: none;
     }
+
     .dark .findus-hero-overlay {
       background: linear-gradient(to right, var(--bg-primary) 38%, rgba(28, 25, 23, 0.82) 58%, rgba(28, 25, 23, 0.2) 100%);
     }
+
     @media (max-width: 1024px) {
       .findus-hero {
         min-height: auto;
         padding-top: 100px;
         padding-bottom: 40px;
       }
+
       .findus-hero-overlay {
         background: linear-gradient(to bottom, var(--bg-primary) 65%, rgba(253, 251, 247, 0.88) 85%, rgba(253, 251, 247, 0.4) 100%);
       }
+
       .dark .findus-hero-overlay {
         background: linear-gradient(to bottom, var(--bg-primary) 65%, rgba(28, 25, 23, 0.88) 85%, rgba(28, 25, 23, 0.4) 100%);
       }
     }
+
     /* Google Map Iframe Custom Dark Mode / Premium Filter */
     #google-map-iframe {
       filter: grayscale(0.2) contrast(1.05);
       transition: filter 0.35s ease;
     }
+
     .dark #google-map-iframe {
       filter: invert(0.9) hue-rotate(180deg) grayscale(0.5) contrast(1.15);
     }
   </style>
 </head>
+
 <body>
 
-<!-- ======================================================
+  <!-- ======================================================
   SCROLL PROGRESS
 ======================================================= -->
-<div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
 
-<!-- ======================================================
+  <!-- ======================================================
   GRAIN OVERLAY
 ======================================================= -->
-<div class="grain-overlay" aria-hidden="true"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
 
-<!-- ======================================================
+  <!-- ======================================================
   CART TOAST
 ======================================================= -->
-<div id="cart-toast" role="alert" aria-live="polite">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-  <span id="toast-text">Item added to cart!</span>
-</div>
+  <div id="cart-toast" role="alert" aria-live="polite">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+    <span id="toast-text">Item added to cart!</span>
+  </div>
 
-<!-- ======================================================
+  <!-- ======================================================
   MOBILE MENU OVERLAY
 ======================================================= -->
-<nav id="mobile-menu" aria-label="Mobile navigation">
-  <!-- Mobile Menu Header -->
-  <div class="mob-menu-header">
-    <a href="index.html" class="mob-menu-brand" aria-label="PopCraft Home">
-      <div class="mob-menu-logo">
-        <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
-      </div>
-      <div class="mob-menu-brand-text">
-        <span class="mob-menu-title">Pop<span class="text-gold">Craft</span></span>
-        <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
-      </div>
-    </a>
-    <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
-  </div>
-
-  <!-- Mobile Menu Links -->
-  <div class="mob-menu-links">
-    <a href="index.html" class="mob-link-item">Home</a>
-    <a href="home2.html" class="mob-link-item">Home 2</a>
-    <a href="flavors.html" class="mob-link-item">Our Flavors</a>
-    <a href="subscription.html" class="mob-link-item">Subscription</a>
-    <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
-    <a href="about.html" class="mob-link-item">About Us</a>
-    <a href="blog.html" class="mob-link-item">Blog</a>
-    <a href="find-us.html" class="mob-link-item active">Contact Us</a>
-  </div>
-
-  <!-- Mobile Menu Actions (Excludes Dashboard) -->
-  <div class="mob-menu-actions">
-    <a href="login.html" class="mob-btn-outline">Login</a>
-  </div>
-
-  <!-- Mobile Menu Footer Controls -->
-  <div class="mob-menu-footer-controls">
-    <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
-    <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
-  </div>
-</nav>
-
-<!-- ======================================================
-  NAVIGATION BAR
-======================================================= -->
-<header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
-  <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10">
-    <div class="flex items-center justify-between h-20">
-
-      <!-- Logo -->
-      <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
-        <div class="nav-logo-badge">
-          <!-- Popcorn icon -->
+  <nav id="mobile-menu" aria-label="Mobile navigation">
+    <!-- Mobile Menu Header -->
+    <div class="mob-menu-header">
+      <a href="index.html" class="mob-menu-brand" aria-label="PopCraft Home">
+        <div class="mob-menu-logo">
           <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
         </div>
-        <div>
-          <div class="flex items-baseline gap-0.5">
-            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
-            <span class="font-display text-xl font-bold tracking-tight text-gold">Craft</span>
-          </div>
-          <p class="block" style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">Artisan Popcorn Co.</p>
+        <div class="mob-menu-brand-text">
+          <span class="mob-menu-title">Pop<span class="text-gold">Craft</span></span>
+          <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
         </div>
       </a>
+      <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
+    </div>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden xl:flex items-center gap-8" aria-label="Primary navigation">
-        <a href="index.html"        class="nav-link">Home</a>
-        <a href="home2.html"        class="nav-link">Home 2</a>
-        <a href="flavors.html"      class="nav-link">Our Flavors</a>
-        <a href="subscription.html" class="nav-link">Subscription</a>
-        <a href="gift-tins.html"    class="nav-link">Gift Tins</a>
-        <a href="about.html"        class="nav-link">About Us</a>
-        <a href="blog.html"         class="nav-link">Blog</a>
-        <a href="find-us.html"      class="nav-link active">Contact Us</a>
-      </nav>
+    <!-- Mobile Menu Links -->
+    <div class="mob-menu-links">
+      <a href="index.html" class="mob-link-item">Home</a>
+      <a href="home2.html" class="mob-link-item">Home 2</a>
+      <a href="flavors.html" class="mob-link-item">Our Flavors</a>
+      <a href="subscription.html" class="mob-link-item">Subscription</a>
+      <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
+      <a href="about.html" class="mob-link-item">About Us</a>
+      <a href="blog.html" class="mob-link-item">Blog</a>
+      <a href="find-us.html" class="mob-link-item active">Contact Us</a>
+    </div>
 
-      <!-- Right Controls -->
-      <div class="flex items-center gap-3 sm:gap-4">
-        <!-- Theme & Direction Toggles -->
-        <div class="hidden xl:flex items-center gap-1 sm:gap-1.5">
-          <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]" aria-label="Toggle dark mode">
-            🌙
+    <!-- Mobile Menu Actions (Excludes Dashboard) -->
+    <div class="mob-menu-actions">
+      <a href="login.html" class="mob-btn-outline">Login</a>
+    </div>
+
+    <!-- Mobile Menu Footer Controls -->
+    <div class="mob-menu-footer-controls">
+      <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
+      <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
+    </div>
+  </nav>
+
+  <!-- ======================================================
+  NAVIGATION BAR
+======================================================= -->
+  <header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10">
+      <div class="flex items-center justify-between h-20">
+
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
+          <div class="nav-logo-badge">
+            <!-- Popcorn icon -->
+            <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
+          </div>
+          <div>
+            <div class="flex items-baseline gap-0.5">
+              <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
+              <span class="font-display text-xl font-bold tracking-tight text-gold">Craft</span>
+            </div>
+            <p class="block"
+              style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">
+              Artisan Popcorn Co.</p>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden xl:flex items-center gap-8" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="home2.html" class="nav-link">Home 2</a>
+          <a href="flavors.html" class="nav-link">Our Flavors</a>
+          <a href="subscription.html" class="nav-link">Subscription</a>
+          <a href="gift-tins.html" class="nav-link">Gift Tins</a>
+          <a href="about.html" class="nav-link">About Us</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="find-us.html" class="nav-link active">Contact Us</a>
+        </nav>
+
+        <!-- Right Controls -->
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Theme & Direction Toggles -->
+          <div class="hidden xl:flex items-center gap-1 sm:gap-1.5">
+            <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]"
+              aria-label="Toggle dark mode">
+              🌙
+            </button>
+            <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
+            <button id="dir-toggle"
+              class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]"
+              style="color: var(--text-primary);" aria-label="Toggle layout direction">
+              LTR
+            </button>
+          </div>
+          <button class="relative p-1.5" aria-label="View cart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+              style="color:var(--text-primary)">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
+            <span id="cart-count"
+              class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center"
+              style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
           </button>
-          <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
-          <button id="dir-toggle" class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]" style="color: var(--text-primary);" aria-label="Toggle layout direction">
-            LTR
+          <a href="login.html" class="btn-primary hidden xl:inline-flex">
+            Login
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <button id="hamburger" class="hamburger xl:hidden" aria-label="Open mobile menu">
+            <span></span><span></span><span></span>
           </button>
         </div>
-        <button class="relative p-1.5" aria-label="View cart">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="color:var(--text-primary)"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          <span id="cart-count" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center" style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
-        </button>
-        <a href="login.html" class="btn-primary hidden xl:inline-flex">
-          Login
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <button id="hamburger" class="hamburger xl:hidden" aria-label="Open mobile menu">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
 
-<!-- ======================================================
+  <!-- ======================================================
   PAGE HERO — Find Us Page
 ======================================================= -->
-<section class="findus-hero" aria-label="Find Us hero">
-  <div class="findus-hero-overlay" aria-hidden="true"></div>
+  <section class="findus-hero" aria-label="Find Us hero">
+    <div class="findus-hero-overlay" aria-hidden="true"></div>
 
-  <!-- Content -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10 w-full relative z-10 py-10 lg:py-16">
-    <div class="max-w-2xl flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0">
-      <p class="section-label justify-center lg:justify-start reveal">Retail Locations</p>
-      <h1 class="font-display font-black reveal d-100"
+    <!-- Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10 w-full relative z-10 py-10 lg:py-16">
+      <div class="max-w-2xl flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0">
+        <p class="section-label justify-center lg:justify-start reveal">Retail Locations</p>
+        <h1 class="font-display font-black reveal d-100"
           style="font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.05;color:var(--text-primary)">
-        Find Us<br>
-        <em style="color:var(--accent-gold); font-style:italic">Near You.</em>
-      </h1>
-      <p class="mt-5 leading-relaxed reveal d-200"
-         style="font-size:1rem;color:var(--text-secondary)">
-        Stocked in 340+ specialty food stores, luxury grocers, and organic boutiques across the United States. Enter your zip code below to find your nearest PopCraft partner.
-      </p>
+          Find Us<br>
+          <em style="color:var(--accent-gold); font-style:italic">Near You.</em>
+        </h1>
+        <p class="mt-5 leading-relaxed reveal d-200" style="font-size:1rem;color:var(--text-secondary)">
+          Stocked in 340+ specialty food stores, luxury grocers, and organic boutiques across the United States. Enter
+          your zip code below to find your nearest PopCraft partner.
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ======================================================
+  <!-- ======================================================
   STORE LOCATOR SECTION
 ======================================================= -->
-<section id="stores" class="py-20" style="background:var(--bg-primary)">
-  <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10">
+  <section id="stores" class="py-20" style="background:var(--bg-primary)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10">
 
-    <div class="grid lg:grid-cols-3 gap-12 items-start">
-      
-      <!-- Search Column -->
-      <div class="lg:col-span-1 bg-surface border border-theme p-4 sm:p-6 rounded-lg shadow-sm lg:sticky lg:top-28 relative reveal">
-        <h2 class="font-display font-bold text-2xl mb-4" style="color:var(--text-primary)">Store Search</h2>
-        <p class="text-sm mb-6" style="color:var(--text-secondary)">Enter your ZIP code or city name to query active retail partners in your region.</p>
-        
-        <label for="zip-input" class="sr-only">Enter your zip code</label>
-        <div class="store-search-wrap mb-4">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-secondary);margin-left:0.75rem;flex-shrink:0" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input
-            type="text"
-            id="zip-input"
-            class="store-input"
-            placeholder="ZIP code or city…"
-            maxlength="10"
-            aria-label="Zip code or city"
-          />
-          <button id="zip-search-btn" class="store-search-btn" aria-label="Search for nearby stores">
-            Search
-          </button>
-        </div>
-        <p style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:6px">
-          Try these test locations:
-        </p>
-        <div class="flex gap-2 flex-wrap">
-          <button onclick="document.getElementById('zip-input').value='10023'; document.getElementById('zip-search-btn').click();" class="text-xs border border-theme px-2.5 py-1 rounded hover:border-gold hover:text-gold" style="color:var(--text-secondary)">New York (10023)</button>
-          <button onclick="document.getElementById('zip-input').value='02116'; document.getElementById('zip-search-btn').click();" class="text-xs border border-theme px-2.5 py-1 rounded hover:border-gold hover:text-gold" style="color:var(--text-secondary)">Boston (02116)</button>
-          <button onclick="document.getElementById('zip-input').value='94103'; document.getElementById('zip-search-btn').click();" class="text-xs border border-theme px-2.5 py-1 rounded hover:border-gold hover:text-gold" style="color:var(--text-secondary)">San Francisco (94103)</button>
-        </div>
-      </div>
+      <div class="grid lg:grid-cols-3 gap-12 items-start">
 
-      <!-- Results Column -->
-      <div class="lg:col-span-2">
-        <div class="flex items-center justify-between mb-6">
-          <p id="results-count" class="results-count">
-            Showing <strong>4</strong> retail locations
+        <!-- Search Column -->
+        <div
+          class="lg:col-span-1 bg-surface border border-theme p-4 sm:p-6 rounded-lg shadow-sm lg:sticky lg:top-28 relative reveal">
+          <h2 class="font-display font-bold text-2xl mb-4" style="color:var(--text-primary)">Store Search</h2>
+          <p class="text-sm mb-6" style="color:var(--text-secondary)">Enter your ZIP code or city name to query active
+            retail partners in your region.</p>
+
+          <label for="zip-input" class="sr-only">Enter your zip code</label>
+          <div class="store-search-wrap mb-4">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              style="color:var(--text-secondary);margin-left:0.75rem;flex-shrink:0" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+            <input type="text" id="zip-input" class="store-input" placeholder="ZIP code or city…" maxlength="10"
+              aria-label="Zip code or city" />
+            <button id="zip-search-btn" class="store-search-btn" aria-label="Search for nearby stores">
+              Search
+            </button>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:6px">
+            Try these test locations:
+          </p>
+          <div class="flex gap-2 flex-wrap">
+            <button
+              onclick="document.getElementById('zip-input').value='10023'; document.getElementById('zip-search-btn').click();"
+              class="text-xs border border-theme px-2.5 py-1 rounded hover:border-gold hover:text-gold"
+              style="color:var(--text-secondary)">New York (10023)</button>
+            <button
+              onclick="document.getElementById('zip-input').value='02116'; document.getElementById('zip-search-btn').click();"
+              class="text-xs border border-theme px-2.5 py-1 rounded hover:border-gold hover:text-gold"
+              style="color:var(--text-secondary)">Boston (02116)</button>
+            <button
+              onclick="document.getElementById('zip-input').value='94103'; document.getElementById('zip-search-btn').click();"
+              class="text-xs border border-theme px-2.5 py-1 rounded hover:border-gold hover:text-gold"
+              style="color:var(--text-secondary)">San Francisco (94103)</button>
+          </div>
+        </div>
+
+        <!-- Results Column -->
+        <div class="lg:col-span-2">
+          <div class="flex items-center justify-between mb-6">
+            <p id="results-count" class="results-count">
+              Showing <strong>4</strong> retail locations
+            </p>
+          </div>
+
+          <div id="store-results" class="grid grid-cols-1 md:grid-cols-2 gap-5" role="list"
+            aria-label="Nearby store results" style="transition:opacity 0.3s ease,transform 0.3s ease">
+            <!-- Populated by scripts.js -->
+          </div>
+          <p id="store-empty" class="hidden text-center py-12" style="color:var(--text-secondary)">
+            No stores found near that location. <a href="#" style="color:var(--accent-gold)">Try another search
+              terms</a>.
           </p>
         </div>
 
-        <div id="store-results" class="grid grid-cols-1 md:grid-cols-2 gap-5" role="list" aria-label="Nearby store results" style="transition:opacity 0.3s ease,transform 0.3s ease">
-          <!-- Populated by scripts.js -->
+      </div>
+
+      <!-- Partnership CTA -->
+      <div class="mt-20 surface-card p-4 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 reveal">
+        <div class="flex-1">
+          <h3 class="font-display text-xl font-semibold mb-2" style="color:var(--text-primary)">Become a Retail Partner
+          </h3>
+          <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.65">
+            Join our growing network of 340+ retail partners. We offer competitive wholesale pricing, merchandising
+            support, and co-marketing opportunities.
+          </p>
         </div>
-        <p id="store-empty" class="hidden text-center py-12" style="color:var(--text-secondary)">
-          No stores found near that location. <a href="#" style="color:var(--accent-gold)">Try another search terms</a>.
-        </p>
+        <a href="mailto:wholesale@popcraft.co"
+          class="btn-primary w-full sm:w-auto justify-center whitespace-nowrap shrink-0">Become a Partner</a>
       </div>
 
     </div>
-
-    <!-- Partnership CTA -->
-    <div class="mt-20 surface-card p-4 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-6 reveal">
-      <div class="flex-1">
-        <h3 class="font-display text-xl font-semibold mb-2" style="color:var(--text-primary)">Become a Retail Partner</h3>
-        <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.65">
-          Join our growing network of 340+ retail partners. We offer competitive wholesale pricing, merchandising support, and co-marketing opportunities.
-        </p>
-      </div>
-      <a href="mailto:wholesale@popcraft.co" class="btn-primary w-full sm:w-auto justify-center whitespace-nowrap shrink-0">Become a Partner</a>
-    </div>
-
-  </div>
-</section>
+  </section>
 
 
-<!-- ======================================================
+  <!-- ======================================================
   CONTACT, MAP & REGIONAL OFFICES
 ======================================================= -->
-<section class="py-20 border-t border-theme" style="background:var(--bg-surface-2)" aria-label="Contact and Map">
-  <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10">
-    <div class="grid lg:grid-cols-2 gap-12 items-stretch">
-      
-      <!-- Left: Contact Form -->
-      <div class="bg-surface border border-theme p-4 sm:p-8 rounded-lg shadow-sm flex flex-col justify-between reveal">
-        <div>
-          <p class="section-label mb-2">Get in Touch</p>
-          <h2 class="font-display font-bold text-3xl mb-4" style="color:var(--text-primary)">Contact Retail Support</h2>
-          <p class="text-sm mb-6" style="color:var(--text-secondary)">Have questions about retail distribution, boutique placement, or bulk custom orders? Drop us a line and our partner success team will get back to you within 24 hours.</p>
-        </div>
-        
-        <form id="findus-contact-form" class="flex flex-col gap-4">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  <section class="py-20 border-t border-theme" style="background:var(--bg-surface-2)" aria-label="Contact and Map">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-stretch">
+
+        <!-- Left: Contact Form -->
+        <div
+          class="bg-surface border border-theme p-4 sm:p-8 rounded-lg shadow-sm flex flex-col justify-between reveal">
+          <div>
+            <p class="section-label mb-2">Get in Touch</p>
+            <h2 class="font-display font-bold text-3xl mb-4" style="color:var(--text-primary)">Contact Retail Support
+            </h2>
+            <p class="text-sm mb-6" style="color:var(--text-secondary)">Have questions about retail distribution,
+              boutique placement, or bulk custom orders? Drop us a line and our partner success team will get back to
+              you within 24 hours.</p>
+          </div>
+
+          <form id="findus-contact-form" class="flex flex-col gap-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex flex-col gap-1.5">
+                <label for="contact-name" class="text-xs font-semibold" style="color:var(--text-primary)">Your
+                  Name</label>
+                <input type="text" id="contact-name" class="auth-input" placeholder="Alex Mercer" required
+                  style="padding:0.65rem 0.9rem;" />
+              </div>
+              <div class="flex flex-col gap-1.5">
+                <label for="contact-email" class="text-xs font-semibold" style="color:var(--text-primary)">Email
+                  Address</label>
+                <input type="email" id="contact-email" class="auth-input" placeholder="alex@example.com" required
+                  style="padding:0.65rem 0.9rem;" />
+              </div>
+            </div>
+
             <div class="flex flex-col gap-1.5">
-              <label for="contact-name" class="text-xs font-semibold" style="color:var(--text-primary)">Your Name</label>
-              <input type="text" id="contact-name" class="auth-input" placeholder="Alex Mercer" required style="padding:0.65rem 0.9rem;" />
+              <label for="contact-subject" class="text-xs font-semibold"
+                style="color:var(--text-primary)">Subject</label>
+              <input type="text" id="contact-subject" class="auth-input" placeholder="Inquiry about wholesale..."
+                required style="padding:0.65rem 0.9rem;" />
             </div>
+
             <div class="flex flex-col gap-1.5">
-              <label for="contact-email" class="text-xs font-semibold" style="color:var(--text-primary)">Email Address</label>
-              <input type="email" id="contact-email" class="auth-input" placeholder="alex@example.com" required style="padding:0.65rem 0.9rem;" />
+              <label for="contact-message" class="text-xs font-semibold"
+                style="color:var(--text-primary)">Message</label>
+              <textarea id="contact-message" class="auth-input" rows="4" placeholder="How can we help you?" required
+                style="padding:0.65rem 0.9rem; resize: none;"></textarea>
             </div>
-          </div>
-          
-          <div class="flex flex-col gap-1.5">
-            <label for="contact-subject" class="text-xs font-semibold" style="color:var(--text-primary)">Subject</label>
-            <input type="text" id="contact-subject" class="auth-input" placeholder="Inquiry about wholesale..." required style="padding:0.65rem 0.9rem;" />
-          </div>
-          
-          <div class="flex flex-col gap-1.5">
-            <label for="contact-message" class="text-xs font-semibold" style="color:var(--text-primary)">Message</label>
-            <textarea id="contact-message" class="auth-input" rows="4" placeholder="How can we help you?" required style="padding:0.65rem 0.9rem; resize: none;"></textarea>
-          </div>
-          
-          <button type="submit" class="btn-primary mt-2 justify-center w-full" style="padding:0.75rem;">
-            Send Message
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="ml-1"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          </button>
-        </form>
-      </div>
-      
-      <!-- Right: Map Placeholder & Other Locations -->
-      <div class="flex flex-col gap-6 justify-between reveal d-150">
-        <!-- Map Container -->
-        <div class="bg-surface border border-theme rounded-lg overflow-hidden shadow-sm flex-1 relative min-h-[300px]">
-          <!-- Real Google Map iframe -->
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25280034454!2d-74.11976356780512!3d40.69766374829554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            class="absolute inset-0 w-full h-full"
-            id="google-map-iframe"
-            title="Google Map showing PopCraft locations">
-          </iframe>
+
+            <button type="submit" class="btn-primary mt-2 justify-center w-full" style="padding:0.75rem;">
+              Send Message
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                class="ml-1">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+              </svg>
+            </button>
+          </form>
         </div>
-        
-        <!-- Other Locations List -->
-        <div class="bg-surface border border-theme p-4 sm:p-6 rounded-lg shadow-sm">
-          <h3 class="font-display font-semibold text-lg mb-3" style="color:var(--text-primary);">Regional HQ &amp; Flagship Depots</h3>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <p class="text-[10px] font-bold uppercase tracking-wider" style="color:var(--text-secondary)">East Coast Hub</p>
-              <p class="text-sm font-bold mt-1" style="color:var(--text-primary);">Brooklyn Roasters</p>
-              <p class="text-xs flex items-start gap-1.5 mt-1" style="color:var(--text-secondary)">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--accent-gold);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>22 Front St, Brooklyn, NY</span>
-              </p>
-            </div>
-            <div>
-              <p class="text-[10px] font-bold uppercase tracking-wider" style="color:var(--text-secondary)">West Coast Hub</p>
-              <p class="text-sm font-bold mt-1" style="color:var(--text-primary);">Gourmet Corner SF</p>
-              <p class="text-xs flex items-start gap-1.5 mt-1" style="color:var(--text-secondary)">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5" style="color: var(--accent-gold);"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-                <span>804 Valencia St, San Francisco, CA</span>
-              </p>
+
+        <!-- Right: Map Placeholder & Other Locations -->
+        <div class="flex flex-col gap-6 justify-between reveal d-150">
+          <!-- Map Container -->
+          <div
+            class="bg-surface border border-theme rounded-lg overflow-hidden shadow-sm flex-1 relative min-h-[300px]">
+            <!-- Real Google Map iframe -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25280034454!2d-74.11976356780512!3d40.69766374829554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade" class="absolute inset-0 w-full h-full" id="google-map-iframe"
+              title="Google Map showing PopCraft locations">
+            </iframe>
+          </div>
+
+          <!-- Other Locations List -->
+          <div class="bg-surface border border-theme p-4 sm:p-6 rounded-lg shadow-sm">
+            <h3 class="font-display font-semibold text-lg mb-3" style="color:var(--text-primary);">Regional HQ &amp;
+              Flagship Depots</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-wider" style="color:var(--text-secondary)">East Coast
+                  Hub</p>
+                <p class="text-sm font-bold mt-1" style="color:var(--text-primary);">Brooklyn Roasters</p>
+                <p class="text-xs flex items-start gap-1.5 mt-1" style="color:var(--text-secondary)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5"
+                    style="color: var(--accent-gold);">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>22 Front St, Brooklyn, NY</span>
+                </p>
+              </div>
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-wider" style="color:var(--text-secondary)">West Coast
+                  Hub</p>
+                <p class="text-sm font-bold mt-1" style="color:var(--text-primary);">Gourmet Corner SF</p>
+                <p class="text-xs flex items-start gap-1.5 mt-1" style="color:var(--text-secondary)">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5"
+                    style="color: var(--accent-gold);">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                  <span>804 Valencia St, San Francisco, CA</span>
+                </p>
+              </div>
             </div>
           </div>
+
         </div>
-        
+
       </div>
-      
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ======================================================
+  <!-- ======================================================
   FOOTER
 ======================================================= -->
-<footer id="site-footer" role="contentinfo">
-  <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10 pt-16 pb-10">
+  <footer id="site-footer" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-5 lg:px-10 pt-16 pb-10">
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-14">
+      <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-14">
 
-      <div class="lg:col-span-2">
-        <a href="index.html" class="flex items-center gap-3 mb-5 group" aria-label="PopCraft Home">
-          <div class="footer-logo-badge">
-            <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-5 h-5" />
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 mb-5 group" aria-label="PopCraft Home">
+            <div class="footer-logo-badge">
+              <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-5 h-5" />
+            </div>
+            <div>
+              <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
+              <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">
+                Artisan Popcorn Co.</p>
+            </div>
+          </a>
+          <p style="font-size:0.85rem;color:#A8A29E;line-height:1.75;margin-bottom:1.5rem;max-w:320px">
+            Elevating the humble popcorn kernel into a gourmet snack adventure. Small-batch, handcrafted, and globally
+            inspired.
+          </p>
+          <div class="flex gap-3">
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
+              </svg>
+            </a>
           </div>
-          <div>
-            <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
-            <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">Artisan Popcorn Co.</p>
-          </div>
-        </a>
-        <p style="font-size:0.85rem;color:#A8A29E;line-height:1.75;margin-bottom:1.5rem;max-w:320px">
-          Elevating the humble popcorn kernel into a gourmet snack adventure. Small-batch, handcrafted, and globally inspired.
+        </div>
+
+        <div>
+          <h4
+            style="color:#fff;font-size:0.82rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.25rem">
+            Explore</h4>
+          <ul style="list-style:none;padding:0" class="flex flex-col gap-2.5">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="home2.html" class="footer-link">Home 2</a></li>
+            <li><a href="flavors.html" class="footer-link">Our Flavors</a></li>
+            <li><a href="subscription.html" class="footer-link">Subscription</a></li>
+            <li><a href="gift-tins.html" class="footer-link">Gift Tins</a></li>
+            <li><a href="find-us.html" class="footer-link active-footer">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4
+            style="color:#fff;font-size:0.82rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.25rem">
+            The Company</h4>
+          <ul style="list-style:none;padding:0" class="flex flex-col gap-2.5">
+            <li><a href="#" class="footer-link">Our Story</a></li>
+            <li><a href="#" class="footer-link">Ingredients</a></li>
+            <li><a href="#" class="footer-link">Wholesale</a></li>
+            <li><a href="#" class="footer-link">Press Kit</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h4 class="footer-heading">Stay in the Loop</h4>
+          <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">
+            New flavors, limited drops, and member-only discounts — straight to your inbox.
+          </p>
+          <form id="newsletter-form" novalidate>
+            <div class="newsletter-wrap">
+              <input type="email" class="newsletter-input" placeholder="your@email.com" aria-label="Email address"
+                required />
+              <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe</button>
+            </div>
+            <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam, ever. Unsubscribe any
+              time.</p>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">
+          © 2026 PopCraft Artisan Co. All rights reserved.
         </p>
-        <div class="flex gap-3">
-          <a href="#" class="social-icon" aria-label="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="Facebook">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="#" class="social-icon" aria-label="Twitter">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
-          </a>
+        <div class="flex flex-wrap items-center justify-center sm:justify-start gap-5">
+          <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
+          <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Service</a>
+          <a href="#" class="footer-link" style="font-size:0.72rem">Shipping & Returns</a>
         </div>
       </div>
 
-      <div>
-        <h4 style="color:#fff;font-size:0.82rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.25rem">Explore</h4>
-        <ul style="list-style:none;padding:0" class="flex flex-col gap-2.5">
-          <li><a href="index.html"        class="footer-link">Home</a></li>
-          <li><a href="home2.html"        class="footer-link">Home 2</a></li>
-          <li><a href="flavors.html"      class="footer-link">Our Flavors</a></li>
-          <li><a href="subscription.html" class="footer-link">Subscription</a></li>
-          <li><a href="gift-tins.html"    class="footer-link">Gift Tins</a></li>
-          <li><a href="find-us.html"      class="footer-link active-footer">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 style="color:#fff;font-size:0.82rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:1.25rem">The Company</h4>
-        <ul style="list-style:none;padding:0" class="flex flex-col gap-2.5">
-          <li><a href="#" class="footer-link">Our Story</a></li>
-          <li><a href="#" class="footer-link">Ingredients</a></li>
-          <li><a href="#" class="footer-link">Wholesale</a></li>
-          <li><a href="#" class="footer-link">Press Kit</a></li>
-          <li><a href="#" class="footer-link">Careers</a></li>
-        </ul>
-      </div>
-
-      <div class="lg:col-span-2">
-        <h4 class="footer-heading">Stay in the Loop</h4>
-        <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">
-          New flavors, limited drops, and member-only discounts — straight to your inbox.
-        </p>
-        <form id="newsletter-form" novalidate>
-          <div class="newsletter-wrap">
-            <input
-              type="email"
-              class="newsletter-input"
-              placeholder="your@email.com"
-              aria-label="Email address"
-              required
-            />
-            <button type="submit" class="newsletter-btn" aria-label="Subscribe to newsletter">Subscribe</button>
-          </div>
-          <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam, ever. Unsubscribe any time.</p>
-        </form>
-      </div>
-
     </div>
+  </footer>
 
-    <div class="footer-divider"></div>
-
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">
-        © 2026 PopCraft Artisan Co. All rights reserved.
-      </p>
-      <div class="flex flex-wrap items-center justify-center sm:justify-start gap-5">
-        <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
-        <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Service</a>
-        <a href="#" class="footer-link" style="font-size:0.72rem">Shipping & Returns</a>
-      </div>
-    </div>
-
-  </div>
-</footer>
-
-<script src="scripts.js"></script>
+  <script src="scripts.js"></script>
 </body>
+
 </html>

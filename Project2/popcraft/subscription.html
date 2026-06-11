@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="PopCraft Monthly Snack Subscription — Curated artisan popcorn delivered to your door every month. Choose your plan and enjoy exclusive member flavors." />
+  <meta name="description"
+    content="PopCraft Monthly Snack Subscription — Curated artisan popcorn delivered to your door every month. Choose your plan and enjoy exclusive member flavors." />
   <meta name="theme-color" content="#D97706" />
   <title>Monthly Subscription — PopCraft Artisan Popcorn Co.</title>
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><g fill='white' transform='translate(4, 4)'><path d='M6 13 L18 13 L16.2 20.5 C16.1 21.3, 15.4 22, 14.6 22 L9.4 22 C8.6 22, 7.9 21.3, 7.8 20.5 Z' /><circle cx='12' cy='11' r='3.2' /><circle cx='8.5' cy='9.5' r='2.8' /><circle cx='15.5' cy='9.5' r='2.8' /><circle cx='12' cy='6.8' r='3' /></g></svg>" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23D97706'/><g fill='white' transform='translate(4, 4)'><path d='M6 13 L18 13 L16.2 20.5 C16.1 21.3, 15.4 22, 14.6 22 L9.4 22 C8.6 22, 7.9 21.3, 7.8 20.5 Z' /><circle cx='12' cy='11' r='3.2' /><circle cx='8.5' cy='9.5' r='2.8' /><circle cx='15.5' cy='9.5' r='2.8' /><circle cx='12' cy='6.8' r='3' /></g></svg>" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -16,9 +19,9 @@
       theme: {
         extend: {
           fontFamily: {
-            display:   ['"Playfair Display"', 'serif'],
+            display: ['"Playfair Display"', 'serif'],
             cormorant: ['"Cormorant Garamond"', 'serif'],
-            body:      ['"DM Sans"', 'sans-serif'],
+            body: ['"DM Sans"', 'sans-serif'],
           },
         },
       },
@@ -40,14 +43,18 @@
       padding-bottom: 40px;
       background: var(--bg-primary);
     }
+
     .sub-hero-bg {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle at 70% 50%, rgba(217,119,6,0.10) 0%, transparent 55%),
-                        radial-gradient(circle at 20% 80%, rgba(180,83,9,0.07) 0%, transparent 45%);
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 70% 50%, rgba(217, 119, 6, 0.10) 0%, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(180, 83, 9, 0.07) 0%, transparent 45%);
     }
+
     .sub-hero-pattern {
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(217,119,6,0.06) 1px, transparent 1px);
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(217, 119, 6, 0.06) 1px, transparent 1px);
       background-size: 32px 32px;
       pointer-events: none;
     }
@@ -61,19 +68,22 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94),
-                  box-shadow 0.35s ease,
-                  border-color 0.25s ease;
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        box-shadow 0.35s ease,
+        border-color 0.25s ease;
     }
+
     .plan-card:hover {
       transform: translateY(-8px);
       box-shadow: var(--shadow-lg);
     }
+
     .plan-card.featured {
       border-color: var(--accent-gold);
       background: var(--bg-surface);
       box-shadow: 0 0 0 1px var(--accent-gold), var(--shadow-md);
     }
+
     .plan-badge {
       position: absolute;
       top: -14px;
@@ -90,6 +100,7 @@
       border-radius: 20px;
       white-space: nowrap;
     }
+
     .plan-price-num {
       font-family: 'Playfair Display', serif;
       font-size: clamp(2.8rem, 5vw, 3.6rem);
@@ -97,6 +108,7 @@
       color: var(--text-primary);
       line-height: 1;
     }
+
     .plan-perk {
       display: flex;
       align-items: flex-start;
@@ -105,12 +117,16 @@
       color: var(--text-secondary);
       line-height: 1.5;
     }
+
     .plan-perk-icon {
-      width: 18px; height: 18px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
-      background: rgba(217,119,6,0.12);
+      background: rgba(217, 119, 6, 0.12);
       color: var(--accent-gold);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
       margin-top: 1px;
     }
@@ -120,18 +136,23 @@
       text-align: center;
       position: relative;
     }
+
     .step-num {
-      width: 64px; height: 64px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-caramel) 100%);
       color: #fff;
       font-family: 'Playfair Display', serif;
       font-size: 1.5rem;
       font-weight: 700;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       margin: 0 auto 1.5rem;
-      box-shadow: 0 8px 24px rgba(217,119,6,0.3);
+      box-shadow: 0 8px 24px rgba(217, 119, 6, 0.3);
     }
+
     .step-connector {
       position: absolute;
       top: 32px;
@@ -150,15 +171,20 @@
       padding: 2rem 1.75rem;
       transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.25s ease;
     }
+
     .perk-tile:hover {
       transform: translateY(-4px);
       box-shadow: var(--shadow-md);
       border-color: var(--accent-gold);
     }
+
     .perk-icon-wrap {
-      width: 52px; height: 52px;
+      width: 52px;
+      height: 52px;
       border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 1.5rem;
       margin-bottom: 1.1rem;
       background: var(--bg-surface-2);
@@ -175,6 +201,7 @@
       flex-direction: column;
       height: 100%;
     }
+
     .stars {
       color: var(--accent-gold);
       font-size: 0.9rem;
@@ -185,6 +212,7 @@
     .faq-item {
       border-bottom: 1px solid var(--border-color);
     }
+
     .faq-question {
       width: 100%;
       text-align: left;
@@ -202,26 +230,36 @@
       cursor: pointer;
       transition: color 0.2s ease;
     }
-    .faq-question:hover { color: var(--accent-gold); }
+
+    .faq-question:hover {
+      color: var(--accent-gold);
+    }
+
     .faq-icon {
-      width: 24px; height: 24px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       border: 1.5px solid var(--border-color);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
       transition: transform 0.3s ease, background 0.2s, border-color 0.2s;
     }
+
     .faq-item.open .faq-icon {
       transform: rotate(45deg);
       background: var(--accent-gold);
       border-color: var(--accent-gold);
       color: #fff;
     }
+
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
     .faq-answer-inner {
       padding-bottom: 1.25rem;
       font-size: 0.88rem;
@@ -236,10 +274,12 @@
       position: relative;
       overflow: hidden;
     }
+
     .sub-cta::before {
       content: '';
-      position: absolute; inset: 0;
-      background-image: radial-gradient(circle, rgba(245,158,11,0.12) 1px, transparent 1px);
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(245, 158, 11, 0.12) 1px, transparent 1px);
       background-size: 30px 30px;
     }
 
@@ -249,14 +289,27 @@
       transform: translateY(28px);
       transition: opacity 0.65s ease, transform 0.65s ease;
     }
+
     .reveal.revealed {
       opacity: 1;
       transform: translateY(0);
     }
-    .d-100 { transition-delay: 0.10s; }
-    .d-200 { transition-delay: 0.20s; }
-    .d-300 { transition-delay: 0.30s; }
-    .d-400 { transition-delay: 0.40s; }
+
+    .d-100 {
+      transition-delay: 0.10s;
+    }
+
+    .d-200 {
+      transition-delay: 0.20s;
+    }
+
+    .d-300 {
+      transition-delay: 0.30s;
+    }
+
+    .d-400 {
+      transition-delay: 0.40s;
+    }
 
     /* ── Billing toggle ── */
     .billing-toggle {
@@ -268,6 +321,7 @@
       padding: 4px;
       gap: 2px;
     }
+
     .billing-opt {
       padding: 0.5rem 1.4rem;
       border-radius: 24px;
@@ -280,14 +334,16 @@
       background: none;
       border: none;
     }
+
     .billing-opt.active {
       background: var(--accent-gold);
       color: #fff;
-      box-shadow: 0 2px 10px rgba(217,119,6,0.28);
+      box-shadow: 0 2px 10px rgba(217, 119, 6, 0.28);
     }
+
     .save-tag {
       display: inline-block;
-      background: rgba(217,119,6,0.12);
+      background: rgba(217, 119, 6, 0.12);
       color: var(--accent-gold);
       font-size: 0.65rem;
       font-weight: 700;
@@ -295,7 +351,7 @@
       text-transform: uppercase;
       padding: 0.15rem 0.55rem;
       border-radius: 20px;
-      border: 1px solid rgba(217,119,6,0.2);
+      border: 1px solid rgba(217, 119, 6, 0.2);
       margin-left: 0.4rem;
     }
 
@@ -307,22 +363,26 @@
       backface-visibility: hidden;
       transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.65s ease, z-index 0.65s;
     }
+
     .card-gold {
       transform: translate(25px, 35px) rotate(3deg);
       z-index: 3;
     }
+
     .card-premium {
       transform: translate(0px, 0px) rotate(-2deg);
       z-index: 2;
     }
+
     .card-connoisseur {
       transform: translate(-25px, -35px) rotate(-8deg);
       z-index: 1;
     }
+
     .member-card .card-shine {
       position: absolute;
       inset: 0;
-      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.05) 45%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.05) 55%, transparent 60%);
+      background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.05) 45%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.05) 55%, transparent 60%);
       background-size: 200% 200%;
       background-position: 150% 150%;
       transition: background-position 0.8s ease;
@@ -330,19 +390,23 @@
       border-radius: inherit;
       z-index: 5;
     }
+
     .card-stack:hover .member-card .card-shine {
       background-position: -50% -50%;
     }
+
     .card-stack:hover .card-gold {
       transform: translate(60px, 95px) rotate(16deg) scale(1.04) !important;
       box-shadow: 0 30px 60px rgba(217, 119, 6, 0.45) !important;
       z-index: 4 !important;
     }
+
     .card-stack:hover .card-premium {
       transform: translate(-10px, -10px) rotate(-2deg) scale(1.02) !important;
       box-shadow: 0 20px 45px rgba(124, 45, 18, 0.35) !important;
       z-index: 3 !important;
     }
+
     .card-stack:hover .card-connoisseur {
       transform: translate(-75px, -90px) rotate(-16deg) scale(1.0) !important;
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45) !important;
@@ -382,12 +446,15 @@
         transform: scale(0.85);
         transform-origin: center;
       }
+
       .card-stack:hover .card-gold {
         transform: translate(35px, 60px) rotate(10deg) scale(1.02) !important;
       }
+
       .card-stack:hover .card-connoisseur {
         transform: translate(-45px, -55px) rotate(-10deg) scale(0.98) !important;
       }
+
       .card-stack-container {
         width: 300px;
         height: 340px;
@@ -400,6 +467,7 @@
       .card-stack {
         transform: scale(0.7) !important;
       }
+
       .card-stack-container {
         width: 260px;
         height: 300px;
@@ -407,940 +475,1172 @@
     }
   </style>
 </head>
+
 <body>
 
-<div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
-<div class="grain-overlay" aria-hidden="true"></div>
-<div id="cart-toast" role="alert" aria-live="polite">
-  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-  <span id="toast-text">Item added to cart!</span>
-</div>
+  <div id="scroll-progress" class="scroll-progress" aria-hidden="true"></div>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div id="cart-toast" role="alert" aria-live="polite">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12" />
+    </svg>
+    <span id="toast-text">Item added to cart!</span>
+  </div>
 
-<!-- ======================================================
+  <!-- ======================================================
   MOBILE MENU
 ======================================================= -->
-<nav id="mobile-menu" aria-label="Mobile navigation">
-  <!-- Mobile Menu Header -->
-  <div class="mob-menu-header">
-    <a href="index.html" class="mob-menu-brand" aria-label="PopCraft Home">
-      <div class="mob-menu-logo">
-        <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
-      </div>
-      <div class="mob-menu-brand-text">
-        <span class="mob-menu-title">Pop<span class="text-gold">Craft</span></span>
-        <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
-      </div>
-    </a>
-    <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
-  </div>
-
-  <!-- Mobile Menu Links -->
-  <div class="mob-menu-links">
-    <a href="index.html" class="mob-link-item">Home</a>
-    <a href="home2.html" class="mob-link-item">Home 2</a>
-    <a href="flavors.html" class="mob-link-item">Our Flavors</a>
-    <a href="subscription.html" class="mob-link-item active">Subscription</a>
-    <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
-    <a href="about.html" class="mob-link-item">About Us</a>
-    <a href="blog.html" class="mob-link-item">Blog</a>
-    <a href="find-us.html" class="mob-link-item">Contact Us</a>
-  </div>
-
-  <!-- Mobile Menu Actions (Excludes Dashboard) -->
-  <div class="mob-menu-actions">
-    <a href="login.html" class="mob-btn-outline">Login</a>
-  </div>
-
-  <!-- Mobile Menu Footer Controls -->
-  <div class="mob-menu-footer-controls">
-    <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
-    <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
-  </div>
-</nav>
-
-<!-- ======================================================
-  NAVIGATION BAR
-======================================================= -->
-<header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
-    <div class="flex items-center justify-between h-20">
-
-      <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
-        <div class="nav-logo-badge">
-          <!-- Popcorn icon -->
+  <nav id="mobile-menu" aria-label="Mobile navigation">
+    <!-- Mobile Menu Header -->
+    <div class="mob-menu-header">
+      <a href="index.html" class="mob-menu-brand" aria-label="PopCraft Home">
+        <div class="mob-menu-logo">
           <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
         </div>
-        <div>
-          <div class="flex items-baseline gap-0.5">
-            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
-            <span class="font-display text-xl font-bold tracking-tight" style="color:var(--accent-gold)">Craft</span>
-          </div>
-          <p class="block" style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">Artisan Popcorn Co.</p>
+        <div class="mob-menu-brand-text">
+          <span class="mob-menu-title">Pop<span class="text-gold">Craft</span></span>
+          <span class="mob-menu-subtitle">Artisan Popcorn Co.</span>
         </div>
       </a>
+      <button class="mob-menu-close" id="mob-close-btn" aria-label="Close menu">&times;</button>
+    </div>
 
-      <nav class="hidden xl:flex items-center gap-8" aria-label="Primary navigation">
-        <a href="index.html"        class="nav-link">Home</a>
-        <a href="home2.html"        class="nav-link">Home 2</a>
-        <a href="flavors.html"      class="nav-link">Our Flavors</a>
-        <a href="subscription.html" class="nav-link active">Subscription</a>
-        <a href="gift-tins.html"    class="nav-link">Gift Tins</a>
-        <a href="about.html"        class="nav-link">About Us</a>
-        <a href="blog.html"         class="nav-link">Blog</a>
-        <a href="find-us.html"      class="nav-link">Contact Us</a>
-      </nav>
+    <!-- Mobile Menu Links -->
+    <div class="mob-menu-links">
+      <a href="index.html" class="mob-link-item">Home</a>
+      <a href="home2.html" class="mob-link-item">Home 2</a>
+      <a href="flavors.html" class="mob-link-item">Our Flavors</a>
+      <a href="subscription.html" class="mob-link-item active">Subscription</a>
+      <a href="gift-tins.html" class="mob-link-item">Gift Tins</a>
+      <a href="about.html" class="mob-link-item">About Us</a>
+      <a href="blog.html" class="mob-link-item">Blog</a>
+      <a href="find-us.html" class="mob-link-item">Contact Us</a>
+    </div>
 
-      <div class="flex items-center gap-3 sm:gap-4">
-        <!-- Theme & Direction Toggles -->
-        <div class="hidden xl:flex items-center gap-1 sm:gap-1.5">
-          <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]" aria-label="Toggle dark mode">
-            🌙
+    <!-- Mobile Menu Actions (Excludes Dashboard) -->
+    <div class="mob-menu-actions">
+      <a href="login.html" class="mob-btn-outline">Login</a>
+    </div>
+
+    <!-- Mobile Menu Footer Controls -->
+    <div class="mob-menu-footer-controls">
+      <button id="theme-toggle-mob" class="mob-control-btn" aria-label="Toggle dark mode">🌙</button>
+      <button id="dir-toggle-mob" class="mob-control-btn" aria-label="Toggle layout direction">RTL</button>
+    </div>
+  </nav>
+
+  <!-- ======================================================
+  NAVIGATION BAR
+======================================================= -->
+  <header id="main-nav" class="fixed top-0 left-0 right-0 z-50" role="banner">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+      <div class="flex items-center justify-between h-20">
+
+        <a href="index.html" class="flex items-center gap-3 group" aria-label="PopCraft Home">
+          <div class="nav-logo-badge">
+            <!-- Popcorn icon -->
+            <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-[18px] h-[18px]" />
+          </div>
+          <div>
+            <div class="flex items-baseline gap-0.5">
+              <span class="font-display text-xl font-bold tracking-tight" style="color:var(--text-primary)">Pop</span>
+              <span class="font-display text-xl font-bold tracking-tight" style="color:var(--accent-gold)">Craft</span>
+            </div>
+            <p class="block"
+              style="font-size:0.52rem;letter-spacing:0.28em;text-transform:uppercase;color:var(--text-secondary)">
+              Artisan Popcorn Co.</p>
+          </div>
+        </a>
+
+        <nav class="hidden xl:flex items-center gap-8" aria-label="Primary navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="home2.html" class="nav-link">Home 2</a>
+          <a href="flavors.html" class="nav-link">Our Flavors</a>
+          <a href="subscription.html" class="nav-link active">Subscription</a>
+          <a href="gift-tins.html" class="nav-link">Gift Tins</a>
+          <a href="about.html" class="nav-link">About Us</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="find-us.html" class="nav-link">Contact Us</a>
+        </nav>
+
+        <div class="flex items-center gap-3 sm:gap-4">
+          <!-- Theme & Direction Toggles -->
+          <div class="hidden xl:flex items-center gap-1 sm:gap-1.5">
+            <button id="theme-toggle" class="p-1.5 text-lg select-none transition hover:text-[var(--accent-gold)]"
+              aria-label="Toggle dark mode">
+              🌙
+            </button>
+            <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
+            <button id="dir-toggle"
+              class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]"
+              style="color: var(--text-primary);" aria-label="Toggle layout direction">
+              LTR
+            </button>
+          </div>
+          <button class="relative p-1.5" aria-label="View cart">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+              style="color:var(--text-primary)">
+              <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
+            <span id="cart-count"
+              class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center"
+              style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
           </button>
-          <div style="width: 1px; height: 16px; background: var(--border-color); margin: 0 4px;"></div>
-          <button id="dir-toggle" class="p-1.5 text-xs font-black select-none uppercase tracking-wider transition hover:text-[var(--accent-gold)]" style="color: var(--text-primary);" aria-label="Toggle layout direction">
-            LTR
+          <a href="login.html" class="btn-primary hidden xl:inline-flex">
+            Login
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+          <button id="hamburger" class="hamburger xl:hidden" aria-label="Open mobile menu">
+            <span></span><span></span><span></span>
           </button>
         </div>
-        <button class="relative p-1.5" aria-label="View cart">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" style="color:var(--text-primary)"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-          <span id="cart-count" class="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full text-white flex items-center justify-center" style="background:var(--accent-gold);font-size:0.58rem;font-family:'DM Sans',sans-serif;font-weight:600">0</span>
-        </button>
-        <a href="login.html" class="btn-primary hidden xl:inline-flex">
-          Login
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <button id="hamburger" class="hamburger xl:hidden" aria-label="Open mobile menu">
-          <span></span><span></span><span></span>
-        </button>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
 
-<!-- ======================================================
+  <!-- ======================================================
   HERO
 ======================================================= -->
-<section class="sub-hero" aria-label="Subscription hero">
-  <div class="sub-hero-bg" aria-hidden="true"></div>
-  <div class="sub-hero-pattern" aria-hidden="true"></div>
+  <section class="sub-hero" aria-label="Subscription hero">
+    <div class="sub-hero-bg" aria-hidden="true"></div>
+    <div class="sub-hero-pattern" aria-hidden="true"></div>
 
-  <div class="max-w-7xl mx-auto px-5 lg:px-10 w-full py-16 lg:py-24">
-    <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 w-full py-16 lg:py-24">
+      <div class="grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-      <!-- Left: Copy -->
-      <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
-        <p class="section-label justify-center lg:justify-start reveal" style="margin-bottom:1.2rem">Monthly Snack Subscription</p>
-        <h1 class="font-display font-black reveal d-100"
+        <!-- Left: Copy -->
+        <div class="flex flex-col items-center lg:items-start text-center lg:text-left">
+          <p class="section-label justify-center lg:justify-start reveal" style="margin-bottom:1.2rem">Monthly Snack
+            Subscription</p>
+          <h1 class="font-display font-black reveal d-100"
             style="font-size:clamp(2.3rem,6.5vw,5.2rem);line-height:1.04;color:var(--text-primary);margin-bottom:1.5rem">
-          Curated Pop.<br>
-          <em style="color:var(--accent-gold)">Every Month.</em>
-        </h1>
-        <p class="reveal d-200 mx-auto lg:mx-0" style="font-size:1.05rem;color:var(--text-secondary);line-height:1.8;max-width:480px;margin-bottom:2rem">
-          Hand-selected seasonal flavors, exclusive member-only drops, and craft collaborations — 
-          packaged beautifully and delivered straight to your door.
-        </p>
-        <div class="flex flex-wrap justify-center lg:justify-start gap-4 reveal d-300">
-          <a href="#plans" class="btn-primary">
-            Choose Your Plan
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="#how-it-works" class="btn-outline">How It Works</a>
+            Curated Pop.<br>
+            <em style="color:var(--accent-gold)">Every Month.</em>
+          </h1>
+          <p class="reveal d-200 mx-auto lg:mx-0"
+            style="font-size:1.05rem;color:var(--text-secondary);line-height:1.8;max-width:480px;margin-bottom:2rem">
+            Hand-selected seasonal flavors, exclusive member-only drops, and craft collaborations —
+            packaged beautifully and delivered straight to your door.
+          </p>
+          <div class="flex flex-wrap justify-center lg:justify-start gap-4 reveal d-300">
+            <a href="#plans" class="btn-primary">
+              Choose Your Plan
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="#how-it-works" class="btn-outline">How It Works</a>
+          </div>
+          <!-- Trust badges -->
+          <div class="flex flex-wrap justify-center lg:justify-start gap-5 reveal d-400" style="margin-top:2.5rem">
+            <div class="flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                style="color:var(--accent-gold)">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">Cancel Anytime</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                style="color:var(--accent-gold)">
+                <rect x="1" y="3" width="15" height="13" rx="1" />
+                <path
+                  d="M16 8h4l3 5v3h-7V8zM5.5 18a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm11 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
+              </svg>
+              <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">Free Shipping Always</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                style="color:var(--accent-gold)">
+                <path
+                  d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+              </svg>
+              <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">4,800+ Happy Members</span>
+            </div>
+          </div>
         </div>
-        <!-- Trust badges -->
-        <div class="flex flex-wrap justify-center lg:justify-start gap-5 reveal d-400" style="margin-top:2.5rem">
-          <div class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-gold)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">Cancel Anytime</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-gold)"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8zM5.5 18a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm11 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z"/></svg>
-            <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">Free Shipping Always</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-gold)"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-            <span style="font-size:0.78rem;color:var(--text-secondary);font-weight:500">4,800+ Happy Members</span>
+
+        <!-- Right: Cards visual with Sparkle Canvas -->
+        <div class="relative flex items-center justify-center py-10 lg:py-0" aria-hidden="true"
+          style="perspective: 1200px;">
+          <!-- Canvas for dynamic particle sparkles -->
+          <canvas id="sparkle-canvas"></canvas>
+
+          <!-- Floating box mockup replaced with Luxury Membership Cards stack -->
+          <div class="relative mx-auto card-stack-container">
+            <!-- Glow -->
+            <div class="absolute"
+              style="width:420px;height:420px;background:radial-gradient(circle,rgba(217,119,6,0.2) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;">
+            </div>
+
+            <!-- Card stack container -->
+            <div class="card-stack relative w-full h-full flex items-center justify-center"
+              style="transform-style: preserve-3d;">
+
+              <!-- VIP Connoisseur Card (Back card) -->
+              <div class="member-card card-connoisseur absolute"
+                style="width:320px; height:190px; border-radius:12px; background:linear-gradient(135deg, #1C1917 0%, #292524 50%, #44403C 100%); border:1px solid rgba(255,255,255,0.12); padding: 1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <div class="card-shine"></div>
+                <div class="flex flex-col justify-between h-full relative overflow-hidden z-10">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <p class="font-display font-bold text-white text-lg tracking-wide">PopCraft</p>
+                      <p
+                        style="font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: #A8A29E; font-family: 'DM Sans', sans-serif;">
+                        VIP Connoisseur</p>
+                    </div>
+                    <!-- Chip -->
+                    <div
+                      style="width: 32px; height: 24px; border-radius: 4px; background: rgba(120, 113, 108, 0.3); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
+                      <div
+                        style="width: 16px; height: 12px; border-radius: 2px; background: rgba(217,119,6,0.25); border: 1px solid rgba(217,119,6,0.4);">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between items-end">
+                    <div>
+                      <p
+                        style="font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: #78716C; font-family: 'DM Sans', sans-serif;">
+                        Card Member</p>
+                      <p class="font-mono text-[11px] tracking-wider text-neutral-300">•••• •••• •••• 0901</p>
+                    </div>
+                    <span
+                      style="font-size: 9px; font-weight: 700; color: #D97706; border: 1px solid rgba(217,119,6,0.35); padding: 0.2rem 0.6rem; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">VIP</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Premium Member Card (Middle card) -->
+              <div class="member-card card-premium absolute"
+                style="width:320px; height:190px; border-radius:12px; background:linear-gradient(135deg, #451A03 0%, #7C2D12 60%, #9A3412 100%); border:1px solid rgba(255,255,255,0.15); padding: 1.25rem; box-shadow: 0 12px 35px rgba(124, 45, 18, 0.25);">
+                <div class="card-shine"></div>
+                <div class="flex flex-col justify-between h-full relative overflow-hidden z-10">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <p class="font-display font-bold text-white text-lg tracking-wide">PopCraft</p>
+                      <p
+                        style="font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: #FDBA74; font-family: 'DM Sans', sans-serif;">
+                        Premium Member</p>
+                    </div>
+                    <!-- Chip -->
+                    <div
+                      style="width: 32px; height: 24px; border-radius: 4px; background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;">
+                      <div
+                        style="width: 16px; height: 12px; border-radius: 2px; background: rgba(217,119,6,0.35); border: 1px solid rgba(217,119,6,0.55);">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between items-end">
+                    <div>
+                      <p
+                        style="font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: #C2410C; font-family: 'DM Sans', sans-serif;">
+                        Card Member</p>
+                      <p class="font-mono text-[11px] tracking-wider text-amber-100/90">•••• •••• •••• 0402</p>
+                    </div>
+                    <span
+                      style="font-size: 9px; font-weight: 700; color: #FDBA74; border: 1px solid rgba(251,185,116,0.35); padding: 0.2rem 0.6rem; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">PREMIUM</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Gold Elite Card (Front card) -->
+              <div class="member-card card-gold absolute"
+                style="width:320px; height:190px; border-radius:12px; background:linear-gradient(135deg, #78350F 0%, #D97706 50%, #FBBF24 100%); border:1px solid rgba(255,255,255,0.25); padding: 1.25rem; box-shadow: 0 15px 40px rgba(217, 119, 6, 0.35);">
+                <div class="card-shine"></div>
+                <div class="flex flex-col justify-between h-full relative overflow-hidden z-10">
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <p class="font-display font-bold text-stone-900 text-lg tracking-wide">PopCraft</p>
+                      <p
+                        style="font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: #451A03; font-family: 'DM Sans', sans-serif;">
+                        Gold Elite Member</p>
+                    </div>
+                    <!-- Chip -->
+                    <div
+                      style="width: 32px; height: 24px; border-radius: 4px; background: rgba(69, 26, 3, 0.15); border: 1px solid rgba(69, 26, 3, 0.25); display: flex; align-items: center; justify-content: center;">
+                      <div
+                        style="width: 16px; height: 12px; border-radius: 2px; background: rgba(69,26,3,0.3); border: 1px solid rgba(69,26,3,0.5);">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex justify-between items-end">
+                    <div>
+                      <p
+                        style="font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: #78350F; font-family: 'DM Sans', sans-serif;">
+                        Card Member</p>
+                      <p class="font-mono text-[11px] tracking-wider text-stone-900 font-semibold">•••• •••• •••• 0707
+                      </p>
+                    </div>
+                    <span
+                      style="font-size: 9px; font-weight: 700; color: #451A03; border: 1px solid rgba(69, 26, 3, 0.5); padding: 0.2rem 0.6rem; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">GOLD
+                      ELITE</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
+
       </div>
-
-      <!-- Right: Cards visual with Sparkle Canvas -->
-      <div class="relative flex items-center justify-center py-10 lg:py-0" aria-hidden="true" style="perspective: 1200px;">
-        <!-- Canvas for dynamic particle sparkles -->
-        <canvas id="sparkle-canvas"></canvas>
-        
-        <!-- Floating box mockup replaced with Luxury Membership Cards stack -->
-        <div class="relative mx-auto card-stack-container">
-          <!-- Glow -->
-          <div class="absolute" style="width:420px;height:420px;background:radial-gradient(circle,rgba(217,119,6,0.2) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;"></div>
-          
-          <!-- Card stack container -->
-          <div class="card-stack relative w-full h-full flex items-center justify-center" style="transform-style: preserve-3d;">
-            
-            <!-- VIP Connoisseur Card (Back card) -->
-            <div class="member-card card-connoisseur absolute" style="width:320px; height:190px; border-radius:12px; background:linear-gradient(135deg, #1C1917 0%, #292524 50%, #44403C 100%); border:1px solid rgba(255,255,255,0.12); padding: 1.25rem; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-              <div class="card-shine"></div>
-              <div class="flex flex-col justify-between h-full relative overflow-hidden z-10">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <p class="font-display font-bold text-white text-lg tracking-wide">PopCraft</p>
-                    <p style="font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: #A8A29E; font-family: 'DM Sans', sans-serif;">VIP Connoisseur</p>
-                  </div>
-                  <!-- Chip -->
-                  <div style="width: 32px; height: 24px; border-radius: 4px; background: rgba(120, 113, 108, 0.3); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center;">
-                    <div style="width: 16px; height: 12px; border-radius: 2px; background: rgba(217,119,6,0.25); border: 1px solid rgba(217,119,6,0.4);"></div>
-                  </div>
-                </div>
-                
-                <div class="flex justify-between items-end">
-                  <div>
-                    <p style="font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: #78716C; font-family: 'DM Sans', sans-serif;">Card Member</p>
-                    <p class="font-mono text-[11px] tracking-wider text-neutral-300">•••• •••• •••• 0901</p>
-                  </div>
-                  <span style="font-size: 9px; font-weight: 700; color: #D97706; border: 1px solid rgba(217,119,6,0.35); padding: 0.2rem 0.6rem; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">VIP</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Premium Member Card (Middle card) -->
-            <div class="member-card card-premium absolute" style="width:320px; height:190px; border-radius:12px; background:linear-gradient(135deg, #451A03 0%, #7C2D12 60%, #9A3412 100%); border:1px solid rgba(255,255,255,0.15); padding: 1.25rem; box-shadow: 0 12px 35px rgba(124, 45, 18, 0.25);">
-              <div class="card-shine"></div>
-              <div class="flex flex-col justify-between h-full relative overflow-hidden z-10">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <p class="font-display font-bold text-white text-lg tracking-wide">PopCraft</p>
-                    <p style="font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: #FDBA74; font-family: 'DM Sans', sans-serif;">Premium Member</p>
-                  </div>
-                  <!-- Chip -->
-                  <div style="width: 32px; height: 24px; border-radius: 4px; background: rgba(251, 146, 60, 0.15); border: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;">
-                    <div style="width: 16px; height: 12px; border-radius: 2px; background: rgba(217,119,6,0.35); border: 1px solid rgba(217,119,6,0.55);"></div>
-                  </div>
-                </div>
-                
-                <div class="flex justify-between items-end">
-                  <div>
-                    <p style="font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: #C2410C; font-family: 'DM Sans', sans-serif;">Card Member</p>
-                    <p class="font-mono text-[11px] tracking-wider text-amber-100/90">•••• •••• •••• 0402</p>
-                  </div>
-                  <span style="font-size: 9px; font-weight: 700; color: #FDBA74; border: 1px solid rgba(251,185,116,0.35); padding: 0.2rem 0.6rem; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">PREMIUM</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Gold Elite Card (Front card) -->
-            <div class="member-card card-gold absolute" style="width:320px; height:190px; border-radius:12px; background:linear-gradient(135deg, #78350F 0%, #D97706 50%, #FBBF24 100%); border:1px solid rgba(255,255,255,0.25); padding: 1.25rem; box-shadow: 0 15px 40px rgba(217, 119, 6, 0.35);">
-              <div class="card-shine"></div>
-              <div class="flex flex-col justify-between h-full relative overflow-hidden z-10">
-                <div class="flex justify-between items-start">
-                  <div>
-                    <p class="font-display font-bold text-stone-900 text-lg tracking-wide">PopCraft</p>
-                    <p style="font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: #451A03; font-family: 'DM Sans', sans-serif;">Gold Elite Member</p>
-                  </div>
-                  <!-- Chip -->
-                  <div style="width: 32px; height: 24px; border-radius: 4px; background: rgba(69, 26, 3, 0.15); border: 1px solid rgba(69, 26, 3, 0.25); display: flex; align-items: center; justify-content: center;">
-                    <div style="width: 16px; height: 12px; border-radius: 2px; background: rgba(69,26,3,0.3); border: 1px solid rgba(69,26,3,0.5);"></div>
-                  </div>
-                </div>
-                
-                <div class="flex justify-between items-end">
-                  <div>
-                    <p style="font-size: 7px; letter-spacing: 0.1em; text-transform: uppercase; color: #78350F; font-family: 'DM Sans', sans-serif;">Card Member</p>
-                    <p class="font-mono text-[11px] tracking-wider text-stone-900 font-semibold">•••• •••• •••• 0707</p>
-                  </div>
-                  <span style="font-size: 9px; font-weight: 700; color: #451A03; border: 1px solid rgba(69, 26, 3, 0.5); padding: 0.2rem 0.6rem; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase; font-family: 'DM Sans', sans-serif;">GOLD ELITE</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ======================================================
+  <!-- ======================================================
   HOW IT WORKS
 ======================================================= -->
-<section id="how-it-works" style="padding:6rem 0;background:var(--bg-surface-2)" aria-label="How subscription works">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+  <section id="how-it-works" style="padding:6rem 0;background:var(--bg-surface-2)" aria-label="How subscription works">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
 
-    <div class="text-center mb-14">
-      <p class="section-label reveal" style="justify-content:center">Simple Process</p>
-      <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);margin-top:0.5rem">
-        Three Steps to Snack Bliss
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
-
-      <!-- Step 1 -->
-      <div class="step-card reveal">
-        <div class="hidden md:block step-connector"></div>
-        <div class="step-num">1</div>
-        <h3 class="font-display font-semibold text-xl mb-3" style="color:var(--text-primary)">Pick Your Plan</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75">
-          Choose from our Taster, Classic, or Connoisseur subscription tiers based on how much popcorn joy you need in your life.
-        </p>
+      <div class="text-center mb-14">
+        <p class="section-label reveal" style="justify-content:center">Simple Process</p>
+        <h2 class="font-display font-bold reveal d-100"
+          style="font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);margin-top:0.5rem">
+          Three Steps to Snack Bliss
+        </h2>
       </div>
 
-      <!-- Step 2 -->
-      <div class="step-card reveal d-200">
-        <div class="hidden md:block step-connector"></div>
-        <div class="step-num">2</div>
-        <h3 class="font-display font-semibold text-xl mb-3" style="color:var(--text-primary)">We Curate & Pack</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75">
-          Our flavor team handpicks a seasonal lineup every month — including exclusive subscriber-only batches not sold anywhere else.
-        </p>
-      </div>
+      <div class="grid md:grid-cols-3 gap-8 lg:gap-12">
 
-      <!-- Step 3 -->
-      <div class="step-card reveal d-300">
-        <div class="step-num">3</div>
-        <h3 class="font-display font-semibold text-xl mb-3" style="color:var(--text-primary)">Delivered to You</h3>
-        <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75">
-          Your box ships on the 5th of every month, arrives beautifully packaged with tasting notes and pairing suggestions.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ======================================================
-  PLANS
-======================================================= -->
-<section id="plans" style="padding:6rem 0;background:var(--bg-primary)" aria-label="Subscription plans">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
-
-    <div class="text-center mb-6">
-      <p class="section-label reveal" style="justify-content:center">Choose Your Box</p>
-      <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);margin-top:0.5rem">
-        Find Your Perfect Plan
-      </h2>
-    </div>
-
-    <!-- Billing Toggle -->
-    <div class="flex justify-center mb-12 reveal d-200">
-      <div class="billing-toggle">
-        <button class="billing-opt active" id="bill-monthly" onclick="setBilling('monthly')">Monthly</button>
-        <button class="billing-opt" id="bill-annual" onclick="setBilling('annual')">
-          Annual <span class="save-tag">Save 20%</span>
-        </button>
-      </div>
-    </div>
-
-    <!-- Plan Cards Grid -->
-    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-
-      <!-- TASTER -->
-      <div class="plan-card reveal">
-        <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">Taster</p>
-        <h3 class="font-display font-bold text-2xl mb-1" style="color:var(--text-primary)">The Sampler</h3>
-        <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1.75rem;line-height:1.6">Perfect for curious first-timers exploring the world of artisan popcorn.</p>
-
-        <div class="flex items-end gap-1 mb-0.5">
-          <span class="plan-price-num" id="taster-price">$19</span>
-          <span style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem">/month</span>
-        </div>
-        <p style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.75rem" id="taster-billing">Billed monthly · cancel anytime</p>
-
-        <div style="border-top:1px solid var(--border-color);padding-top:1.5rem;margin-bottom:auto">
-          <div style="display:flex;flex-direction:column;gap:0.75rem">
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>3 bags per month (2 oz each)</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Seasonal flavor selection</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Digital tasting notes card</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Free shipping on every box</span>
-            </div>
-            <div class="plan-perk" style="opacity:0.38">
-              <div class="plan-perk-icon" style="background:var(--bg-surface-2)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-              <span>Exclusive member drops</span>
-            </div>
-            <div class="plan-perk" style="opacity:0.38">
-              <div class="plan-perk-icon" style="background:var(--bg-surface-2)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-              <span>Flavor profile customization</span>
-            </div>
-          </div>
-        </div>
-
-        <a href="#" class="btn-outline w-full text-center mt-8" style="justify-content:center">Start Taster Box</a>
-      </div>
-
-      <!-- CLASSIC (featured) -->
-      <div class="plan-card featured reveal d-200">
-        <div class="plan-badge">Most Popular</div>
-        <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:0.75rem">Classic</p>
-        <h3 class="font-display font-bold text-2xl mb-1" style="color:var(--text-primary)">The Classic Box</h3>
-        <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1.75rem;line-height:1.6">For the popcorn enthusiast who wants variety, exclusives, and real savings.</p>
-
-        <div class="flex items-end gap-1 mb-0.5">
-          <span class="plan-price-num" id="classic-price">$34</span>
-          <span style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem">/month</span>
-        </div>
-        <p style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.75rem" id="classic-billing">Billed monthly · cancel anytime</p>
-
-        <div style="border-top:1px solid var(--border-color);padding-top:1.5rem;margin-bottom:auto">
-          <div style="display:flex;flex-direction:column;gap:0.75rem">
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>6 bags per month (3 oz each)</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Seasonal + limited flavors</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Printed tasting notes &amp; pairing guide</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Free shipping on every box</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>1 exclusive member-only flavor</span>
-            </div>
-            <div class="plan-perk" style="opacity:0.38">
-              <div class="plan-perk-icon" style="background:var(--bg-surface-2)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></div>
-              <span>Flavor profile customization</span>
-            </div>
-          </div>
-        </div>
-
-        <a href="#" class="btn-primary w-full text-center mt-8" style="justify-content:center">Start Classic Box</a>
-      </div>
-
-      <!-- CONNOISSEUR -->
-      <div class="plan-card reveal d-300">
-        <p style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">Connoisseur</p>
-        <h3 class="font-display font-bold text-2xl mb-1" style="color:var(--text-primary)">The Connoisseur</h3>
-        <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1.75rem;line-height:1.6">The ultimate experience for those who take their popcorn seriously.</p>
-
-        <div class="flex items-end gap-1 mb-0.5">
-          <span class="plan-price-num" id="conn-price">$59</span>
-          <span style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem">/month</span>
-        </div>
-        <p style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.75rem" id="conn-billing">Billed monthly · cancel anytime</p>
-
-        <div style="border-top:1px solid var(--border-color);padding-top:1.5rem;margin-bottom:auto">
-          <div style="display:flex;flex-direction:column;gap:0.75rem">
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>10 bags per month (mix of sizes)</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Full seasonal + archive flavors</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Luxury printed tasting journal</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Free express shipping</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>3 exclusive member-only flavors</span>
-            </div>
-            <div class="plan-perk">
-              <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              <span>Full flavor profile customization</span>
-            </div>
-          </div>
-        </div>
-
-        <a href="#" class="btn-outline w-full text-center mt-8" style="justify-content:center">Start Connoisseur</a>
-      </div>
-
-    </div>
-
-    <p class="text-center reveal" style="font-size:0.78rem;color:var(--text-secondary);margin-top:2rem">
-      All plans include free returns within 30 days of your first box. No commitments, pause or cancel anytime.
-    </p>
-
-  </div>
-</section>
-
-
-<!-- ======================================================
-  MEMBER PERKS
-======================================================= -->
-<section id="perks" style="padding:6rem 0;background:var(--bg-surface-2)" aria-label="Member perks">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
-
-    <div class="text-center mb-14">
-      <p class="section-label reveal" style="justify-content:center">Member Benefits</p>
-      <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);margin-top:0.5rem">
-        Why Members Love Us
-      </h2>
-    </div>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-      <div class="perk-tile reveal">
-        <div class="perk-icon-wrap overflow-hidden">
-          <img src="Assets/fla6.jpg" alt="Exclusive Drops" class="w-full h-full object-cover" />
-        </div>
-        <h4 class="font-display font-semibold text-lg mb-2" style="color:var(--text-primary)">Exclusive Drops</h4>
-        <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7">Monthly flavors crafted specifically for subscribers — never sold on our website.</p>
-      </div>
-      <div class="perk-tile reveal d-100">
-        <div class="perk-icon-wrap overflow-hidden">
-          <img src="Assets/fla4.jpg" alt="Free Shipping" class="w-full h-full object-cover" />
-        </div>
-        <h4 class="font-display font-semibold text-lg mb-2" style="color:var(--text-primary)">Free Shipping</h4>
-        <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7">Every box ships free, every month — no minimums, no surprises at checkout.</p>
-      </div>
-      <div class="perk-tile reveal d-200">
-        <div class="perk-icon-wrap overflow-hidden">
-          <img src="Assets/fla10.jpg" alt="Skip or Pause" class="w-full h-full object-cover" />
-        </div>
-        <h4 class="font-display font-semibold text-lg mb-2" style="color:var(--text-primary)">Skip or Pause</h4>
-        <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7">Going on holiday? Simply skip a month or pause your subscription with one click.</p>
-      </div>
-      <div class="perk-tile reveal d-300">
-        <div class="perk-icon-wrap overflow-hidden">
-          <img src="Assets/fla7.jpg" alt="Member Discounts" class="w-full h-full object-cover" />
-        </div>
-        <h4 class="font-display font-semibold text-lg mb-2" style="color:var(--text-primary)">Member Discounts</h4>
-        <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7">15% off all store purchases, plus early access to seasonal and limited-edition releases.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ======================================================
-  TESTIMONIALS
-======================================================= -->
-<section style="padding:6rem 0;background:var(--bg-primary)" aria-label="Member testimonials">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
-
-    <div class="text-center mb-12">
-      <p class="section-label reveal" style="justify-content:center">Member Stories</p>
-      <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--text-primary);margin-top:0.5rem">
-        Snack Club Favorites
-      </h2>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="testimonial-card reveal">
-        <div class="stars">★★★★★</div>
-        <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
-          "Getting my PopCraft box is genuinely the highlight of the month. The exclusive flavors are unreal — truffle sea salt with honey drizzle? I would never have discovered that on my own."
-        </p>
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
-          <div class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/s1.jpg" alt="Meera S." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary)">Meera S.</p>
-            <p style="font-size:0.72rem;color:var(--text-secondary)">Classic Member · 14 months</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card reveal d-200">
-        <div class="stars">★★★★★</div>
-        <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
-          "Worth every penny. The Connoisseur box comes with a beautiful little tasting journal and the packaging quality is unlike anything I've seen from a subscription service."
-        </p>
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
-          <div class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/s2.jpg" alt="Daniel K." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary)">Daniel K.</p>
-            <p style="font-size:0.72rem;color:var(--text-secondary)">Connoisseur · 8 months</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial-card reveal d-300">
-        <div class="stars">★★★★★</div>
-        <p style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
-          "I started with the Taster box just to try it and upgraded to Classic after month one. The flavors are creative and fresh every time — never the same box twice."
-        </p>
-        <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
-          <div class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
-            <img src="Assets/s3.jpg" alt="Priya R." class="w-full h-full object-cover" />
-          </div>
-          <div>
-            <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary)">Priya R.</p>
-            <p style="font-size:0.72rem;color:var(--text-secondary)">Classic Member · 5 months</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ======================================================
-  FAQ
-======================================================= -->
-<section id="faq" style="padding:6rem 0;background:var(--bg-surface-2)" aria-label="Frequently asked questions">
-  <div class="max-w-3xl mx-auto px-5 lg:px-10">
-
-    <div class="text-center mb-12">
-      <p class="section-label reveal" style="justify-content:center">FAQ</p>
-      <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--text-primary);margin-top:0.5rem">
-        Common Questions
-      </h2>
-    </div>
-
-    <div id="faq-list" class="reveal">
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>When will my first box ship?</span>
-          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </button>
-        <div class="faq-answer"><p class="faq-answer-inner">If you subscribe before the 1st of the month, your first box ships on the 5th. Subscribe after the 1st, and your first box ships the following month's 5th. You'll receive a shipping confirmation with tracking as soon as your box is on its way.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Can I choose my flavors?</span>
-          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </button>
-        <div class="faq-answer"><p class="faq-answer-inner">Classic and Taster boxes are curated by our flavor team — that's part of the discovery experience! Connoisseur members can set flavor preferences (sweet, savory, spicy, etc.) in their member portal, and we'll customize accordingly while still including at least one surprise.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>How do I skip or pause a month?</span>
-          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </button>
-        <div class="faq-answer"><p class="faq-answer-inner">Simply log into your member portal and select "Skip Month" or "Pause Subscription" before the 28th of the current month. There's no fee or penalty — you can skip up to 3 months per year with no questions asked.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>What if I don't like something in my box?</span>
-          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </button>
-        <div class="faq-answer"><p class="faq-answer-inner">We want you to love every single bag. If something doesn't hit the mark, reach out within 14 days and we'll send you a replacement flavor or credit your account. Your feedback also helps us improve our curation!</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Do you ship internationally?</span>
-          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </button>
-        <div class="faq-answer"><p class="faq-answer-inner">Currently we ship to the US, Canada, UK, and Australia. International subscriptions ship on the 7th of each month. A small international shipping surcharge applies — we're working on bringing costs down as we grow our international warehousing.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          <span>Can I gift a subscription?</span>
-          <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
-        </button>
-        <div class="faq-answer"><p class="faq-answer-inner">Absolutely! Our gift subscriptions are available in 3, 6, and 12 month increments. The recipient gets a beautiful gift card in the mail and can activate their box on their schedule. Check out our <a href="gift-tins.html" style="color:var(--accent-gold)">Gift Tins page</a> for more gifting options.</p></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- ======================================================
-  CTA BANNER
-======================================================= -->
-<section style="padding:5rem 0;background:var(--bg-primary)" aria-label="Subscribe CTA">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10">
-    <div class="sub-cta p-10 lg:p-16 reveal">
-      <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
-        <div class="flex-1">
-          <p style="font-size:0.65rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem">Start Today</p>
-          <h2 class="font-display font-bold" style="font-size:clamp(1.8rem,4vw,3rem);color:#fff;line-height:1.1;margin-bottom:1rem">
-            Ready for Your<br><em style="color:#F59E0B">First Box?</em>
-          </h2>
-          <p style="font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:400px">
-            Join 4,800+ snack lovers and discover your next obsession. First-time subscribers get 10% off their first box with code <strong style="color:#F59E0B">FIRSTPOP</strong>.
+        <!-- Step 1 -->
+        <div class="step-card reveal">
+          <div class="hidden md:block step-connector"></div>
+          <div class="step-num">1</div>
+          <h3 class="font-display font-semibold text-xl mb-3" style="color:var(--text-primary)">Pick Your Plan</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75">
+            Choose from our Taster, Classic, or Connoisseur subscription tiers based on how much popcorn joy you need in
+            your life.
           </p>
         </div>
-        <div class="shrink-0 flex flex-col sm:flex-row gap-3">
-          <a href="#plans" class="btn-primary" style="background:#fff;color:#3B1208">
-            Choose a Plan
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="gift-tins.html" class="btn-outline" style="border-color:rgba(255,255,255,0.35);color:rgba(255,255,255,0.8)">
-            Give as a Gift
-          </a>
+
+        <!-- Step 2 -->
+        <div class="step-card reveal d-200">
+          <div class="hidden md:block step-connector"></div>
+          <div class="step-num">2</div>
+          <h3 class="font-display font-semibold text-xl mb-3" style="color:var(--text-primary)">We Curate & Pack</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75">
+            Our flavor team handpicks a seasonal lineup every month — including exclusive subscriber-only batches not
+            sold anywhere else.
+          </p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card reveal d-300">
+          <div class="step-num">3</div>
+          <h3 class="font-display font-semibold text-xl mb-3" style="color:var(--text-primary)">Delivered to You</h3>
+          <p style="font-size:0.88rem;color:var(--text-secondary);line-height:1.75">
+            Your box ships on the 5th of every month, arrives beautifully packaged with tasting notes and pairing
+            suggestions.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+  PLANS
+======================================================= -->
+  <section id="plans" style="padding:6rem 0;background:var(--bg-primary)" aria-label="Subscription plans">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+
+      <div class="text-center mb-6">
+        <p class="section-label reveal" style="justify-content:center">Choose Your Box</p>
+        <h2 class="font-display font-bold reveal d-100"
+          style="font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);margin-top:0.5rem">
+          Find Your Perfect Plan
+        </h2>
+      </div>
+
+      <!-- Billing Toggle -->
+      <div class="flex justify-center mb-12 reveal d-200">
+        <div class="billing-toggle">
+          <button class="billing-opt active" id="bill-monthly" onclick="setBilling('monthly')">Monthly</button>
+          <button class="billing-opt" id="bill-annual" onclick="setBilling('annual')">
+            Annual <span class="save-tag">Save 20%</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Plan Cards Grid -->
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+
+        <!-- TASTER -->
+        <div class="plan-card reveal">
+          <p
+            style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">
+            Taster</p>
+          <h3 class="font-display font-bold text-2xl mb-1" style="color:var(--text-primary)">The Sampler</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1.75rem;line-height:1.6">Perfect for
+            curious first-timers exploring the world of artisan popcorn.</p>
+
+          <div class="flex items-end gap-1 mb-0.5">
+            <span class="plan-price-num" id="taster-price">$19</span>
+            <span style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem">/month</span>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.75rem" id="taster-billing">Billed
+            monthly · cancel anytime</p>
+
+          <div style="border-top:1px solid var(--border-color);padding-top:1.5rem;margin-bottom:auto">
+            <div style="display:flex;flex-direction:column;gap:0.75rem">
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>3 bags per month (2 oz each)</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Seasonal flavor selection</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Digital tasting notes card</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Free shipping on every box</span>
+              </div>
+              <div class="plan-perk" style="opacity:0.38">
+                <div class="plan-perk-icon" style="background:var(--bg-surface-2)"><svg width="10" height="10"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg></div>
+                <span>Exclusive member drops</span>
+              </div>
+              <div class="plan-perk" style="opacity:0.38">
+                <div class="plan-perk-icon" style="background:var(--bg-surface-2)"><svg width="10" height="10"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg></div>
+                <span>Flavor profile customization</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="btn-outline w-full text-center mt-8" style="justify-content:center">Start Taster Box</a>
+        </div>
+
+        <!-- CLASSIC (featured) -->
+        <div class="plan-card featured reveal d-200">
+          <div class="plan-badge">Most Popular</div>
+          <p
+            style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent-gold);margin-bottom:0.75rem">
+            Classic</p>
+          <h3 class="font-display font-bold text-2xl mb-1" style="color:var(--text-primary)">The Classic Box</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1.75rem;line-height:1.6">For the popcorn
+            enthusiast who wants variety, exclusives, and real savings.</p>
+
+          <div class="flex items-end gap-1 mb-0.5">
+            <span class="plan-price-num" id="classic-price">$34</span>
+            <span style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem">/month</span>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.75rem" id="classic-billing">Billed
+            monthly · cancel anytime</p>
+
+          <div style="border-top:1px solid var(--border-color);padding-top:1.5rem;margin-bottom:auto">
+            <div style="display:flex;flex-direction:column;gap:0.75rem">
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>6 bags per month (3 oz each)</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Seasonal + limited flavors</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Printed tasting notes &amp; pairing guide</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Free shipping on every box</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>1 exclusive member-only flavor</span>
+              </div>
+              <div class="plan-perk" style="opacity:0.38">
+                <div class="plan-perk-icon" style="background:var(--bg-surface-2)"><svg width="10" height="10"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                  </svg></div>
+                <span>Flavor profile customization</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="btn-primary w-full text-center mt-8" style="justify-content:center">Start Classic Box</a>
+        </div>
+
+        <!-- CONNOISSEUR -->
+        <div class="plan-card reveal d-300">
+          <p
+            style="font-size:0.62rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-secondary);margin-bottom:0.75rem">
+            Connoisseur</p>
+          <h3 class="font-display font-bold text-2xl mb-1" style="color:var(--text-primary)">The Connoisseur</h3>
+          <p style="font-size:0.82rem;color:var(--text-secondary);margin-bottom:1.75rem;line-height:1.6">The ultimate
+            experience for those who take their popcorn seriously.</p>
+
+          <div class="flex items-end gap-1 mb-0.5">
+            <span class="plan-price-num" id="conn-price">$59</span>
+            <span style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.6rem">/month</span>
+          </div>
+          <p style="font-size:0.75rem;color:var(--text-secondary);margin-bottom:1.75rem" id="conn-billing">Billed
+            monthly · cancel anytime</p>
+
+          <div style="border-top:1px solid var(--border-color);padding-top:1.5rem;margin-bottom:auto">
+            <div style="display:flex;flex-direction:column;gap:0.75rem">
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>10 bags per month (mix of sizes)</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Full seasonal + archive flavors</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Luxury printed tasting journal</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Free express shipping</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>3 exclusive member-only flavors</span>
+              </div>
+              <div class="plan-perk">
+                <div class="plan-perk-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="3">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg></div>
+                <span>Full flavor profile customization</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="#" class="btn-outline w-full text-center mt-8" style="justify-content:center">Start Connoisseur</a>
+        </div>
+
+      </div>
+
+      <p class="text-center reveal" style="font-size:0.78rem;color:var(--text-secondary);margin-top:2rem">
+        All plans include free returns within 30 days of your first box. No commitments, pause or cancel anytime.
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+  MEMBER PERKS
+======================================================= -->
+  <section id="perks" style="padding:6rem 0;background:var(--bg-surface-2)" aria-label="Member perks">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+
+      <div class="text-center mb-14">
+        <p class="section-label reveal" style="justify-content:center">Member Benefits</p>
+        <h2 class="font-display font-bold reveal d-100"
+          style="font-size:clamp(2rem,4vw,3rem);color:var(--text-primary);margin-top:0.5rem">
+          Why Members Love Us
+        </h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="perk-tile reveal">
+          <div class="perk-icon-wrap overflow-hidden">
+            <img src="Assets/fla6.jpg" alt="Exclusive Drops" class="w-full h-full object-cover" />
+          </div>
+          <h4 class="font-display font-semibold text-lg mb-2" style="color:var(--text-primary)">Exclusive Drops</h4>
+          <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7">Monthly flavors crafted specifically
+            for subscribers — never sold on our website.</p>
+        </div>
+        <div class="perk-tile reveal d-100">
+          <div class="perk-icon-wrap overflow-hidden">
+            <img src="Assets/fla4.jpg" alt="Free Shipping" class="w-full h-full object-cover" />
+          </div>
+          <h4 class="font-display font-semibold text-lg mb-2" style="color:var(--text-primary)">Free Shipping</h4>
+          <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7">Every box ships free, every month —
+            no minimums, no surprises at checkout.</p>
+        </div>
+        <div class="perk-tile reveal d-200">
+          <div class="perk-icon-wrap overflow-hidden">
+            <img src="Assets/fla10.jpg" alt="Skip or Pause" class="w-full h-full object-cover" />
+          </div>
+          <h4 class="font-display font-semibold text-lg mb-2" style="color:var(--text-primary)">Skip or Pause</h4>
+          <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7">Going on holiday? Simply skip a month
+            or pause your subscription with one click.</p>
+        </div>
+        <div class="perk-tile reveal d-300">
+          <div class="perk-icon-wrap overflow-hidden">
+            <img src="Assets/fla7.jpg" alt="Member Discounts" class="w-full h-full object-cover" />
+          </div>
+          <h4 class="font-display font-semibold text-lg mb-2" style="color:var(--text-primary)">Member Discounts</h4>
+          <p style="font-size:0.83rem;color:var(--text-secondary);line-height:1.7">15% off all store purchases, plus
+            early access to seasonal and limited-edition releases.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+  TESTIMONIALS
+======================================================= -->
+  <section style="padding:6rem 0;background:var(--bg-primary)" aria-label="Member testimonials">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+
+      <div class="text-center mb-12">
+        <p class="section-label reveal" style="justify-content:center">Member Stories</p>
+        <h2 class="font-display font-bold reveal d-100"
+          style="font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--text-primary);margin-top:0.5rem">
+          Snack Club Favorites
+        </h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <p
+            style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
+            "Getting my PopCraft box is genuinely the highlight of the month. The exclusive flavors are unreal — truffle
+            sea salt with honey drizzle? I would never have discovered that on my own."
+          </p>
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
+            <div
+              class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/s1.jpg" alt="Meera S." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary)">Meera S.</p>
+              <p style="font-size:0.72rem;color:var(--text-secondary)">Classic Member · 14 months</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal d-200">
+          <div class="stars">★★★★★</div>
+          <p
+            style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
+            "Worth every penny. The Connoisseur box comes with a beautiful little tasting journal and the packaging
+            quality is unlike anything I've seen from a subscription service."
+          </p>
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
+            <div
+              class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/s2.jpg" alt="Daniel K." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary)">Daniel K.</p>
+              <p style="font-size:0.72rem;color:var(--text-secondary)">Connoisseur · 8 months</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal d-300">
+          <div class="stars">★★★★★</div>
+          <p
+            style="font-size:0.9rem;color:var(--text-secondary);line-height:1.8;margin:1rem 0 1.25rem;font-style:italic">
+            "I started with the Taster box just to try it and upgraded to Classic after month one. The flavors are
+            creative and fresh every time — never the same box twice."
+          </p>
+          <div style="display:flex;align-items:center;gap:0.75rem;margin-top:auto">
+            <div
+              class="w-[38px] h-[38px] rounded-full overflow-hidden shrink-0 border border-[var(--border-color)] shadow-sm">
+              <img src="Assets/s3.jpg" alt="Priya R." class="w-full h-full object-cover" />
+            </div>
+            <div>
+              <p style="font-size:0.85rem;font-weight:600;color:var(--text-primary)">Priya R.</p>
+              <p style="font-size:0.72rem;color:var(--text-secondary)">Classic Member · 5 months</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+  FAQ
+======================================================= -->
+  <section id="faq" style="padding:6rem 0;background:var(--bg-surface-2)" aria-label="Frequently asked questions">
+    <div class="max-w-3xl mx-auto px-5 lg:px-10">
+
+      <div class="text-center mb-12">
+        <p class="section-label reveal" style="justify-content:center">FAQ</p>
+        <h2 class="font-display font-bold reveal d-100"
+          style="font-size:clamp(1.8rem,3.5vw,2.5rem);color:var(--text-primary);margin-top:0.5rem">
+          Common Questions
+        </h2>
+      </div>
+
+      <div id="faq-list" class="reveal">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>When will my first box ship?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></div>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-answer-inner">If you subscribe before the 1st of the month, your first box ships on the 5th.
+              Subscribe after the 1st, and your first box ships the following month's 5th. You'll receive a shipping
+              confirmation with tracking as soon as your box is on its way.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I choose my flavors?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></div>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-answer-inner">Classic and Taster boxes are curated by our flavor team — that's part of the
+              discovery experience! Connoisseur members can set flavor preferences (sweet, savory, spicy, etc.) in their
+              member portal, and we'll customize accordingly while still including at least one surprise.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How do I skip or pause a month?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></div>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-answer-inner">Simply log into your member portal and select "Skip Month" or "Pause
+              Subscription" before the 28th of the current month. There's no fee or penalty — you can skip up to 3
+              months per year with no questions asked.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What if I don't like something in my box?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></div>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-answer-inner">We want you to love every single bag. If something doesn't hit the mark, reach
+              out within 14 days and we'll send you a replacement flavor or credit your account. Your feedback also
+              helps us improve our curation!</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Do you ship internationally?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></div>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-answer-inner">Currently we ship to the US, Canada, UK, and Australia. International
+              subscriptions ship on the 7th of each month. A small international shipping surcharge applies — we're
+              working on bringing costs down as we grow our international warehousing.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can I gift a subscription?</span>
+            <div class="faq-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg></div>
+          </button>
+          <div class="faq-answer">
+            <p class="faq-answer-inner">Absolutely! Our gift subscriptions are available in 3, 6, and 12 month
+              increments. The recipient gets a beautiful gift card in the mail and can activate their box on their
+              schedule. Check out our <a href="gift-tins.html" style="color:var(--accent-gold)">Gift Tins page</a> for
+              more gifting options.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================
+  CTA BANNER
+======================================================= -->
+  <section style="padding:5rem 0;background:var(--bg-primary)" aria-label="Subscribe CTA">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10">
+      <div class="sub-cta p-10 lg:p-16 reveal">
+        <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8 text-center lg:text-left">
+          <div class="flex-1">
+            <p
+              style="font-size:0.65rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:0.75rem">
+              Start Today</p>
+            <h2 class="font-display font-bold"
+              style="font-size:clamp(1.8rem,4vw,3rem);color:#fff;line-height:1.1;margin-bottom:1rem">
+              Ready for Your<br><em style="color:#F59E0B">First Box?</em>
+            </h2>
+            <p style="font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.7;max-width:400px">
+              Join 4,800+ snack lovers and discover your next obsession. First-time subscribers get 10% off their first
+              box with code <strong style="color:#F59E0B">FIRSTPOP</strong>.
+            </p>
+          </div>
+          <div class="shrink-0 flex flex-col sm:flex-row gap-3">
+            <a href="#plans" class="btn-primary" style="background:#fff;color:#3B1208">
+              Choose a Plan
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+            <a href="gift-tins.html" class="btn-outline"
+              style="border-color:rgba(255,255,255,0.35);color:rgba(255,255,255,0.8)">
+              Give as a Gift
+            </a>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ======================================================
+  <!-- ======================================================
   FOOTER
 ======================================================= -->
-<footer id="site-footer" role="contentinfo">
-  <div class="max-w-7xl mx-auto px-5 lg:px-10 pt-16 pb-10">
-    <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-14">
+  <footer id="site-footer" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-5 lg:px-10 pt-16 pb-10">
+      <div class="grid md:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-14">
 
-      <div class="lg:col-span-2">
-        <a href="index.html" class="flex items-center gap-3 mb-5 group" aria-label="PopCraft Home">
-          <div class="footer-logo-badge">
-            <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-5 h-5" />
+        <div class="lg:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 mb-5 group" aria-label="PopCraft Home">
+            <div class="footer-logo-badge">
+              <img src="Assets/logo.svg" alt="PopCraft Logo" class="w-5 h-5" />
+            </div>
+            <div>
+              <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
+              <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">
+                Artisan Popcorn Co.</p>
+            </div>
+          </a>
+          <p
+            style="font-size:0.85rem;line-height:1.75;color:rgba(245,245,244,0.5);max-width:280px;margin-bottom:1.5rem">
+            Handcrafted in small batches since 2019. We believe the best snacks are made with the best ingredients and a
+            little bit of love.
+          </p>
+          <div class="flex items-center gap-3">
+            <a href="#" class="social-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="1.75">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
+              </svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="currentColor">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg></a>
+            <a href="#" class="social-icon" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg></a>
           </div>
-          <div>
-            <div class="footer-logo-text">Pop<span style="color:var(--accent-gold)">Craft</span></div>
-            <p style="font-size:0.52rem;letter-spacing:0.25em;text-transform:uppercase;color:rgba(245,245,244,0.35)">Artisan Popcorn Co.</p>
-          </div>
-        </a>
-        <p style="font-size:0.85rem;line-height:1.75;color:rgba(245,245,244,0.5);max-width:280px;margin-bottom:1.5rem">
-          Handcrafted in small batches since 2019. We believe the best snacks are made with the best ingredients and a little bit of love.
-        </p>
-        <div class="flex items-center gap-3">
-          <a href="#" class="social-icon" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg></a>
-          <a href="#" class="social-icon" aria-label="Twitter"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="#" class="social-icon" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Shop</h4>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+            <li><a href="flavors.html" class="footer-link">All Flavors</a></li>
+            <li><a href="subscription.html" class="footer-link">Subscription</a></li>
+            <li><a href="gift-tins.html" class="footer-link">Gift Tins</a></li>
+            <li><a href="find-us.html" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Company</h4>
+          <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
+            <li><a href="index.html" class="footer-link">Home</a></li>
+            <li><a href="home2.html" class="footer-link">Home 2</a></li>
+            <li><a href="#" class="footer-link">Our Story</a></li>
+            <li><a href="#" class="footer-link">Sustainability</a></li>
+            <li><a href="#" class="footer-link">Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="lg:col-span-2">
+          <h4 class="footer-heading">Stay in the Loop</h4>
+          <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">New flavors,
+            limited drops, and member-only discounts.</p>
+          <form id="newsletter-form" novalidate>
+            <div class="newsletter-wrap">
+              <input type="email" class="newsletter-input" placeholder="your@email.com" aria-label="Email address"
+                required />
+              <button type="submit" class="newsletter-btn">Subscribe</button>
+            </div>
+            <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam. Unsubscribe any time.
+            </p>
+          </form>
+        </div>
+
+      </div>
+
+      <div class="footer-divider"></div>
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">© 2026 PopCraft Artisan Popcorn Co. All rights
+          reserved.</p>
+        <div class="flex flex-wrap items-center gap-5">
+          <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
+          <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Use</a>
+          <a href="#" class="footer-link" style="font-size:0.72rem">Accessibility</a>
         </div>
       </div>
-
-      <div>
-        <h4 class="footer-heading">Shop</h4>
-        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
-          <li><a href="flavors.html"      class="footer-link">All Flavors</a></li>
-          <li><a href="subscription.html" class="footer-link">Subscription</a></li>
-          <li><a href="gift-tins.html"    class="footer-link">Gift Tins</a></li>
-          <li><a href="find-us.html"      class="footer-link">Contact Us</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="footer-heading">Company</h4>
-        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.65rem">
-          <li><a href="index.html" class="footer-link">Home</a></li>
-          <li><a href="home2.html" class="footer-link">Home 2</a></li>
-          <li><a href="#" class="footer-link">Our Story</a></li>
-          <li><a href="#" class="footer-link">Sustainability</a></li>
-          <li><a href="#" class="footer-link">Careers</a></li>
-        </ul>
-      </div>
-
-      <div class="lg:col-span-2">
-        <h4 class="footer-heading">Stay in the Loop</h4>
-        <p style="font-size:0.8rem;color:rgba(245,245,244,0.45);line-height:1.65;margin-bottom:1rem">New flavors, limited drops, and member-only discounts.</p>
-        <form id="newsletter-form" novalidate>
-          <div class="newsletter-wrap">
-            <input type="email" class="newsletter-input" placeholder="your@email.com" aria-label="Email address" required />
-            <button type="submit" class="newsletter-btn">Subscribe</button>
-          </div>
-          <p style="font-size:0.65rem;color:rgba(245,245,244,0.25);margin-top:0.6rem">No spam. Unsubscribe any time.</p>
-        </form>
-      </div>
-
     </div>
+  </footer>
 
-    <div class="footer-divider"></div>
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p style="font-size:0.72rem;color:rgba(245,245,244,0.3)">© 2026 PopCraft Artisan Popcorn Co. All rights reserved.</p>
-      <div class="flex flex-wrap items-center gap-5">
-        <a href="#" class="footer-link" style="font-size:0.72rem">Privacy Policy</a>
-        <a href="#" class="footer-link" style="font-size:0.72rem">Terms of Use</a>
-        <a href="#" class="footer-link" style="font-size:0.72rem">Accessibility</a>
-      </div>
-    </div>
-  </div>
-</footer>
+  <script src="scripts.js"></script>
+  <script>
+    // Billing toggle logic
+    const prices = {
+      monthly: { taster: '$19', classic: '$34', conn: '$59' },
+      annual: { taster: '$15', classic: '$27', conn: '$47' }
+    };
+    const billing = {
+      monthly: 'Billed monthly · cancel anytime',
+      annual: 'Billed annually · save 20%'
+    };
 
-<script src="scripts.js"></script>
-<script>
-  // Billing toggle logic
-  const prices = {
-    monthly: { taster: '$19', classic: '$34', conn: '$59' },
-    annual:  { taster: '$15', classic: '$27', conn: '$47' }
-  };
-  const billing = {
-    monthly: 'Billed monthly · cancel anytime',
-    annual:  'Billed annually · save 20%'
-  };
+    function setBilling(mode) {
+      document.getElementById('bill-monthly').classList.toggle('active', mode === 'monthly');
+      document.getElementById('bill-annual').classList.toggle('active', mode === 'annual');
+      document.getElementById('taster-price').textContent = prices[mode].taster;
+      document.getElementById('classic-price').textContent = prices[mode].classic;
+      document.getElementById('conn-price').textContent = prices[mode].conn;
+      document.getElementById('taster-billing').textContent = billing[mode];
+      document.getElementById('classic-billing').textContent = billing[mode];
+      document.getElementById('conn-billing').textContent = billing[mode];
+    }
 
-  function setBilling(mode) {
-    document.getElementById('bill-monthly').classList.toggle('active', mode === 'monthly');
-    document.getElementById('bill-annual').classList.toggle('active', mode === 'annual');
-    document.getElementById('taster-price').textContent  = prices[mode].taster;
-    document.getElementById('classic-price').textContent = prices[mode].classic;
-    document.getElementById('conn-price').textContent    = prices[mode].conn;
-    document.getElementById('taster-billing').textContent  = billing[mode];
-    document.getElementById('classic-billing').textContent = billing[mode];
-    document.getElementById('conn-billing').textContent    = billing[mode];
-  }
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const isOpen = item.classList.contains('open');
 
-  // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item   = btn.closest('.faq-item');
-      const answer = item.querySelector('.faq-answer');
-      const isOpen = item.classList.contains('open');
+        // Close all
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-answer').style.maxHeight = '0';
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
 
-      // Close all
-      document.querySelectorAll('.faq-item.open').forEach(el => {
-        el.classList.remove('open');
-        el.querySelector('.faq-answer').style.maxHeight = '0';
-        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
       });
-
-      if (!isOpen) {
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        btn.setAttribute('aria-expanded', 'true');
-      }
     });
-  });
 
-  // Floating kernel animation keyframes
-  const styleTag = document.createElement('style');
-  styleTag.textContent = `
+    // Floating kernel animation keyframes
+    const styleTag = document.createElement('style');
+    styleTag.textContent = `
     @keyframes floatA { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-18px) rotate(8deg)} }
     @keyframes floatB { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-12px) rotate(-6deg)} }
   `;
-  document.head.appendChild(styleTag);
+    document.head.appendChild(styleTag);
 
-  // ── Luxury Membership Card Sparkles Canvas Effect ──
-  (function() {
-    const canvas = document.getElementById('sparkle-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    
-    let width = 0;
-    let height = 0;
-    const dpr = window.devicePixelRatio || 1;
-    
-    function resize() {
-      const rect = canvas.getBoundingClientRect();
-      width = rect.width;
-      height = rect.height;
-      canvas.width = width * dpr;
-      canvas.height = height * dpr;
-      ctx.scale(dpr, dpr);
-    }
-    
-    resize();
-    window.addEventListener('resize', resize);
-    
-    const particles = [];
-    const maxParticles = 50;
-    const colors = [
-      'rgba(251, 191, 36, ', // gold
-      'rgba(245, 158, 11, ', // amber
-      'rgba(217, 119, 6, ',  // dark amber
-      'rgba(254, 243, 199, ', // golden-white
-      'rgba(255, 255, 255, '  // pure white
-    ];
-    
-    class Particle {
-      constructor() {
-        this.reset();
-        // Scatter initial height so particles don't burst out at start
-        this.y = Math.random() * height;
+    // ── Luxury Membership Card Sparkles Canvas Effect ──
+    (function () {
+      const canvas = document.getElementById('sparkle-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = 0;
+      let height = 0;
+      const dpr = window.devicePixelRatio || 1;
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        width = rect.width;
+        height = rect.height;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.scale(dpr, dpr);
       }
-      
-      reset() {
-        this.x = width / 2 + (Math.random() - 0.5) * 240;
-        this.y = height - 60 - Math.random() * 80;
-        this.size = Math.random() * 2.5 + 0.8;
-        this.speedY = -(Math.random() * 0.9 + 0.2);
-        this.speedX = (Math.random() - 0.5) * 0.5;
-        this.opacity = Math.random() * 0.6 + 0.1;
-        this.fadeSpeed = Math.random() * 0.006 + 0.002;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.isStar = Math.random() > 0.45;
-        this.rotation = Math.random() * Math.PI;
-        this.rotationSpeed = (Math.random() - 0.5) * 0.03;
-        this.glow = Math.random() > 0.4;
-      }
-      
-      update() {
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.opacity -= this.fadeSpeed;
-        this.rotation += this.rotationSpeed;
-        
-        if (this.opacity <= 0 || this.y < -10 || this.x < -10 || this.x > width + 10) {
+
+      resize();
+      window.addEventListener('resize', resize);
+
+      const particles = [];
+      const maxParticles = 50;
+      const colors = [
+        'rgba(251, 191, 36, ', // gold
+        'rgba(245, 158, 11, ', // amber
+        'rgba(217, 119, 6, ',  // dark amber
+        'rgba(254, 243, 199, ', // golden-white
+        'rgba(255, 255, 255, '  // pure white
+      ];
+
+      class Particle {
+        constructor() {
           this.reset();
+          // Scatter initial height so particles don't burst out at start
+          this.y = Math.random() * height;
         }
-      }
-      
-      draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        
-        ctx.fillStyle = this.color + this.opacity + ')';
-        
-        if (this.glow) {
-          ctx.shadowBlur = this.size * 3;
-          ctx.shadowColor = 'rgba(245, 158, 11, 0.8)';
+
+        reset() {
+          this.x = width / 2 + (Math.random() - 0.5) * 240;
+          this.y = height - 60 - Math.random() * 80;
+          this.size = Math.random() * 2.5 + 0.8;
+          this.speedY = -(Math.random() * 0.9 + 0.2);
+          this.speedX = (Math.random() - 0.5) * 0.5;
+          this.opacity = Math.random() * 0.6 + 0.1;
+          this.fadeSpeed = Math.random() * 0.006 + 0.002;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.isStar = Math.random() > 0.45;
+          this.rotation = Math.random() * Math.PI;
+          this.rotationSpeed = (Math.random() - 0.5) * 0.03;
+          this.glow = Math.random() > 0.4;
         }
-        
-        if (this.isStar) {
-          ctx.beginPath();
-          const spikes = 4;
-          const outerRadius = this.size * 2.2;
-          const innerRadius = this.size * 0.6;
-          let rot = Math.PI / 2 * 3;
-          let x = 0;
-          let y = 0;
-          const step = Math.PI / spikes;
 
-          ctx.moveTo(0, -outerRadius);
-          for (let i = 0; i < spikes; i++) {
-            x = Math.cos(rot) * outerRadius;
-            y = Math.sin(rot) * outerRadius;
-            ctx.lineTo(x, y);
-            rot += step;
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          this.opacity -= this.fadeSpeed;
+          this.rotation += this.rotationSpeed;
 
-            x = Math.cos(rot) * innerRadius;
-            y = Math.sin(rot) * innerRadius;
-            ctx.lineTo(x, y);
-            rot += step;
+          if (this.opacity <= 0 || this.y < -10 || this.x < -10 || this.x > width + 10) {
+            this.reset();
           }
-          ctx.lineTo(0, -outerRadius);
-          ctx.closePath();
-          ctx.fill();
-        } else {
-          ctx.beginPath();
-          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
-          ctx.fill();
         }
-        ctx.restore();
+
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotation);
+
+          ctx.fillStyle = this.color + this.opacity + ')';
+
+          if (this.glow) {
+            ctx.shadowBlur = this.size * 3;
+            ctx.shadowColor = 'rgba(245, 158, 11, 0.8)';
+          }
+
+          if (this.isStar) {
+            ctx.beginPath();
+            const spikes = 4;
+            const outerRadius = this.size * 2.2;
+            const innerRadius = this.size * 0.6;
+            let rot = Math.PI / 2 * 3;
+            let x = 0;
+            let y = 0;
+            const step = Math.PI / spikes;
+
+            ctx.moveTo(0, -outerRadius);
+            for (let i = 0; i < spikes; i++) {
+              x = Math.cos(rot) * outerRadius;
+              y = Math.sin(rot) * outerRadius;
+              ctx.lineTo(x, y);
+              rot += step;
+
+              x = Math.cos(rot) * innerRadius;
+              y = Math.sin(rot) * innerRadius;
+              ctx.lineTo(x, y);
+              rot += step;
+            }
+            ctx.lineTo(0, -outerRadius);
+            ctx.closePath();
+            ctx.fill();
+          } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.restore();
+        }
       }
-    }
-    
-    for (let i = 0; i < maxParticles; i++) {
-      particles.push(new Particle());
-    }
-    
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-    
-    animate();
-  })();
-</script>
+
+      for (let i = 0; i < maxParticles; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
 </body>
+
 </html>
