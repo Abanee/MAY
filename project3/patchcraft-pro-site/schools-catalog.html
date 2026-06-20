@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schools Catalog — Custom Patches, Crests & Uniform Emblems | PatchCraft Pro</title>
+  <meta name="description" content="Practical school patch catalog: embroidered crests, house badges, merit emblems, and uniform insignia. Bulk pricing from 50 units. Perfect for K-12, colleges, and academies." />
+  <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
+
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('pcp-theme');
+        var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+        var savedDir = localStorage.getItem('pcp-dir');
+        if (savedDir === 'rtl' || savedDir === 'ltr') {
+          document.documentElement.setAttribute('dir', savedDir);
+        }
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* ── Schools Page Specific Styles ── */
+    .school-hero-badge {
+      background: linear-gradient(135deg, var(--indigo-tint-10), var(--amber-tint-08));
+      border: 1px solid var(--indigo-tint-20);
+      border-radius: 20px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .school-hero-badge::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--indigo-tint-20), transparent);
+    }
+    .grade-tab {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12.5px; font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 100px;
+      border: 1px solid var(--border-strong);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .grade-tab:hover { color: var(--text-secondary); border-color: var(--border-stronger); }
+    .grade-tab.active-tab {
+      background: var(--indigo-tint-10);
+      border-color: var(--indigo-tint-20);
+      color: var(--indigo-4);
+    }
+    .school-product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      display: flex; flex-direction: column;
+    }
+    .school-product-card:hover {
+      border-color: var(--indigo-tint-20);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px var(--shadow), 0 0 0 1px var(--indigo-tint-10);
+    }
+    .school-img-wrap { position: relative; overflow: hidden; background: #0d1220; height: 180px; flex-shrink: 0; }
+    .school-img-wrap svg { width: 100%; height: 100%; transition: transform 0.4s ease; }
+    .school-product-card:hover .school-img-wrap svg { transform: scale(1.06); }
+    .school-overlay {
+      position: absolute; inset: 0;
+      background: rgba(10, 15, 28, 0.7);
+      backdrop-filter: blur(4px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+      opacity: 0; transition: opacity 0.3s ease;
+    }
+    .school-product-card:hover .school-overlay { opacity: 1; }
+    .grade-badge {
+      position: absolute; top: 10px; inset-inline-start: 10px;
+      background: rgba(99, 102, 241, 0.18);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      color: var(--indigo-4);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9px; font-weight: 700;
+      padding: 4px 9px; border-radius: 20px; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .moq-badge-school {
+      position: absolute; top: 10px; inset-inline-end: 10px;
+      background: rgba(10, 15, 28, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      color: #FBBF24;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10px; font-weight: 700;
+      padding: 4px 9px; border-radius: 20px;
+    }
+    .add-to-quote-school {
+      width: 100%; padding: 10px 14px;
+      background: var(--indigo-tint-10);
+      border: 1px solid var(--indigo-tint-20);
+      border-radius: 10px;
+      color: var(--indigo-4);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 12px; font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 4px;
+    }
+    .add-to-quote-school:hover {
+      background: var(--indigo-tint-20);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: var(--text-primary);
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.15);
+    }
+    .school-stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px 20px;
+      text-align: center;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+    .school-stat-card:hover { border-color: var(--indigo-tint-20); transform: translateY(-2px); }
+    .info-panel {
+      background: linear-gradient(135deg, var(--indigo-tint-10) 0%, var(--amber-tint-08) 100%);
+      border: 1px solid var(--border-strong);
+      border-radius: 20px;
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .info-panel::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--bg-grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 70% 100% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+    }
+    .process-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      font-family: 'Inter', sans-serif;
+      font-size: 12px; font-weight: 500;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+    .process-chip:hover { border-color: var(--indigo-tint-20); color: var(--indigo-4); }
+    .hidden-by-grade { display: none; }
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(14px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .card-appear { animation: fade-in-up 0.32s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  </style>
+</head>
+
+<body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased overflow-x-hidden">
+
+  <!-- ══════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="home.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight">
+        PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+        <span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-inter font-medium text-[var(--text-muted)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors duration-200">
+            Catalogs <i data-lucide="chevron-down" class="w-3.5 h-3.5 mt-0.5"></i>
+          </button>
+          <div class="absolute top-full left-0 mt-2 w-52 bg-[var(--surface)] border border-[var(--border-strong)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
+            <a href="schools-catalog.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--indigo-4)] text-xs font-semibold bg-[var(--indigo-tint-10)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>Schools</a>
+            <a href="corporate-patches.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--amber-4)] hover:bg-[var(--amber-tint-08)] mt-1"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i>Corporate</a>
+            <a href="uniform-branding.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--emerald)] hover:bg-[rgba(52,211,153,0.08)] mt-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i>Uniform Branding</a>
+            <a href="home2.html#catalog" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--text-primary)] hover:bg-[var(--surface-soft-hover)] mt-1"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>All Products</a>
+          </div>
+        </div>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
+      </div>
+
+      <!-- Desktop CTA + Toggles -->
+      <div class="hidden md:flex items-center gap-3">
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme" title="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button" aria-label="Toggle LTR / RTL">
+          <i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i>
+          <span id="dir-toggle-label" class="dir-toggle-label">LTR</span>
+        </button>
+        <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
+        <a href="login.html" class="text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-200 font-inter">Sign In</a>
+        <a href="contact.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">
+          Get a Quote
+        </a>
+      </div>
+
+      <!-- Mobile Controls -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+      <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors">Home</a>
+        <a href="schools-catalog.html" class="text-[var(--indigo-4)]">Schools</a>
+        <a href="corporate-patches.html" class="hover:text-[var(--text-primary)] transition-colors">Corporate</a>
+        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors">Uniform Branding</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
+        <div class="flex gap-3 pt-2">
+          <a href="login.html" class="flex-1 py-2.5 border border-[var(--border-strong)] text-center text-sm font-jakarta font-bold rounded-xl text-[var(--text-primary)]">Sign In</a>
+          <a href="contact.html" class="flex-1 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════
+       HERO — School Catalog
+  ══════════════════════════════════════════════ -->
+  <section id="hero" class="min-h-screen pt-20 relative flex items-center overflow-hidden">
+
+    <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
+    <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--indigo-5)]/8 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--amber-5)]/6 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
+      <div class="grid lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+
+        <!-- Left: Copy -->
+        <div class="hero-copy">
+
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--indigo-4)] animate-pulse"></span>
+            <span class="text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase">Schools & Academies</span>
+          </div>
+
+          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+            Dress Every<br />
+            <span class="text-gradient-gold">Student.</span><br />
+            With Pride.
+          </h1>
+
+          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
+            From kindergarten through graduate school — embroidered crests, house badges, merit patches, and prefect insignia. One supplier. Perfect consistency year after year.
+          </p>
+
+          <div class="flex items-center gap-6 md:gap-10 mb-10">
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">200+</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Schools Served</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">MOQ 50</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Per Design</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--amber-4)]">12-Day</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Standard Lead Time</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#catalog" class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              Browse School Patches
+            </a>
+            <a href="contact.html" class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              Request Sample Kit
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: School badge visual -->
+        <div class="hero-right flex flex-col items-center gap-4">
+          <div class="school-hero-badge w-full max-w-[440px]">
+
+            <div class="flex items-center justify-between mb-5">
+              <div>
+                <h3 class="font-jakarta font-bold text-[15px] text-[var(--text-primary)]">School Program Preview</h3>
+                <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Standard badge types for institutions</p>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-[11px] text-[var(--indigo-4)] font-inter font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-[var(--indigo-4)] animate-pulse"></span>
+                Preview
+              </span>
+            </div>
+
+            <!-- Badge display -->
+            <div class="rounded-2xl overflow-hidden border border-[var(--border)] mb-5" style="background:#0d1220; height: 200px; display:flex; align-items:center; justify-content:center; position:relative;">
+              <!-- Grid overlay -->
+              <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:18px 18px;"></div>
+              <!-- Shield Badge SVG -->
+              <svg viewBox="0 0 280 200" class="w-[280px] h-[200px] relative z-10" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="sch-indigo" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#818CF8" /><stop offset="100%" stop-color="#4F46E5" />
+                  </linearGradient>
+                  <linearGradient id="sch-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FBBF24" /><stop offset="100%" stop-color="#D97706" />
+                  </linearGradient>
+                </defs>
+
+                <!-- Main School Crest Shield -->
+                <path d="M100 20 L160 20 L180 40 L180 120 C180 155 140 175 140 175 C140 175 100 155 100 120 L100 40 Z"
+                      fill="#0d1630" stroke="url(#sch-indigo)" stroke-width="2" />
+                <path d="M108 32 L152 32 L168 48 L168 116 C168 142 140 158 140 158 C140 158 112 142 112 116 L112 48 Z"
+                      fill="none" stroke="rgba(129,140,248,0.2)" stroke-width="0.8" />
+
+                <!-- Book icon inside -->
+                <rect x="126" y="55" width="28" height="22" rx="2" fill="none" stroke="url(#sch-gold)" stroke-width="1.5"/>
+                <line x1="140" y1="55" x2="140" y2="77" stroke="url(#sch-gold)" stroke-width="1.2"/>
+                <line x1="128" y1="62" x2="138" y2="62" stroke="rgba(251,191,36,0.5)" stroke-width="0.8"/>
+                <line x1="128" y1="66" x2="138" y2="66" stroke="rgba(251,191,36,0.5)" stroke-width="0.8"/>
+                <line x1="128" y1="70" x2="138" y2="70" stroke="rgba(251,191,36,0.5)" stroke-width="0.8"/>
+                <line x1="142" y1="62" x2="152" y2="62" stroke="rgba(251,191,36,0.5)" stroke-width="0.8"/>
+                <line x1="142" y1="66" x2="152" y2="66" stroke="rgba(251,191,36,0.5)" stroke-width="0.8"/>
+                <line x1="142" y1="70" x2="152" y2="70" stroke="rgba(251,191,36,0.5)" stroke-width="0.8"/>
+
+                <!-- Star above -->
+                <text x="140" y="52" text-anchor="middle" font-size="10" fill="url(#sch-gold)">★</text>
+
+                <!-- School name text -->
+                <text x="140" y="95" text-anchor="middle" font-size="8" fill="url(#sch-gold)" font-family="Georgia,serif" font-weight="700" letter-spacing="1">EXCELLENCE</text>
+                <path d="M115 100 L165 100" stroke="url(#sch-gold)" stroke-width="0.6" opacity="0.4"/>
+                <text x="140" y="112" text-anchor="middle" font-size="6" fill="rgba(129,140,248,0.8)" font-family="sans-serif" letter-spacing="1.5">EST · 1965</text>
+
+                <!-- House Badges row -->
+                <rect x="20" y="70" width="62" height="58" rx="8" fill="#0f1420" stroke="rgba(251,191,36,0.3)" stroke-width="1"/>
+                <text x="51" y="95" text-anchor="middle" font-size="20" fill="#FBBF24" opacity="0.9">🏅</text>
+                <text x="51" y="114" text-anchor="middle" font-size="6" fill="rgba(251,191,36,0.6)" font-family="sans-serif" letter-spacing="1">MERIT</text>
+
+                <rect x="198" y="70" width="62" height="58" rx="8" fill="#0f1420" stroke="rgba(129,140,248,0.3)" stroke-width="1"/>
+                <text x="229" y="95" text-anchor="middle" font-size="20" fill="#818CF8" opacity="0.9">⭐</text>
+                <text x="229" y="114" text-anchor="middle" font-size="6" fill="rgba(129,140,248,0.6)" font-family="sans-serif" letter-spacing="1">PREFECT</text>
+
+                <!-- Year tag -->
+                <text x="140" y="188" text-anchor="middle" font-size="7" fill="rgba(129,140,248,0.5)" font-family="sans-serif" letter-spacing="2">PATCHCRAFT PRO · SCHOOLS</text>
+              </svg>
+            </div>
+
+            <!-- Quick spec row -->
+            <div class="grid grid-cols-3 gap-2.5">
+              <div class="spec-cell"><div class="spec-label">Stitch Count</div><div class="spec-value">8,000+</div></div>
+              <div class="spec-cell"><div class="spec-label">Colors</div><div class="spec-value">Up to 15</div></div>
+              <div class="spec-cell"><div class="spec-label">Backing</div><div class="spec-value">Sew-on</div></div>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
+            <i data-lucide="repeat" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i>
+            <span class="text-xs text-[var(--indigo-4)] font-inter">Annual reorders with exact color matching</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       STATS STRIP
+  ══════════════════════════════════════════════ -->
+  <section class="border-y border-[var(--border)] py-10">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="school-stat-card">
+          <div class="font-jakarta font-extrabold text-3xl text-[var(--indigo-4)] mb-1" data-count-to="200" data-count-suffix="+">200+</div>
+          <div class="text-xs text-[var(--text-faint)] font-inter">Schools Served Globally</div>
+        </div>
+        <div class="school-stat-card">
+          <div class="font-jakarta font-extrabold text-3xl text-[var(--amber-4)] mb-1" data-count-to="50000" data-count-suffix="+">50,000+</div>
+          <div class="text-xs text-[var(--text-faint)] font-inter">Badges Delivered Annually</div>
+        </div>
+        <div class="school-stat-card">
+          <div class="font-jakarta font-extrabold text-3xl text-[var(--emerald)] mb-1" data-count-to="12">12</div>
+          <div class="text-xs text-[var(--text-faint)] font-inter">Day Avg. Lead Time</div>
+        </div>
+        <div class="school-stat-card">
+          <div class="font-jakarta font-extrabold text-3xl text-[var(--text-primary)] mb-1">ISO</div>
+          <div class="text-xs text-[var(--text-faint)] font-inter">9001 Certified Production</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SCHOOL PRODUCT CATALOG
+  ══════════════════════════════════════════════ -->
+  <section id="catalog" class="py-20 relative">
+    <div class="absolute top-0 start-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[var(--border-strong)] to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+      <!-- Section header -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div>
+          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+            <span class="w-8 h-px bg-[var(--indigo-4)]"></span>SCHOOL PRODUCT CATALOG
+          </div>
+          <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">Patches for Every Grade</h2>
+          <p class="text-[var(--text-muted)] font-inter text-sm mt-2 max-w-xl">
+            Filter by school type. All patches are custom-embroidered with your exact colors, crests, and text.
+          </p>
+        </div>
+        <p class="text-sm text-[var(--text-faint)] font-inter shrink-0">
+          <span id="school-visible-count" class="text-[var(--text-primary)] font-medium">8</span> products
+        </p>
+      </div>
+
+      <!-- Grade filter tabs -->
+      <div class="flex flex-wrap gap-2.5 mb-10">
+        <button class="grade-tab active-tab" data-grade="all"><i data-lucide="layout-grid" class="w-3.5 h-3.5 inline-block me-1.5"></i>All Types</button>
+        <button class="grade-tab" data-grade="primary"><i data-lucide="star" class="w-3.5 h-3.5 inline-block me-1.5"></i>Primary / K-8</button>
+        <button class="grade-tab" data-grade="secondary"><i data-lucide="graduation-cap" class="w-3.5 h-3.5 inline-block me-1.5"></i>Secondary / High School</button>
+        <button class="grade-tab" data-grade="college"><i data-lucide="book-open" class="w-3.5 h-3.5 inline-block me-1.5"></i>College / University</button>
+        <button class="grade-tab" data-grade="merit"><i data-lucide="award" class="w-3.5 h-3.5 inline-block me-1.5"></i>Merit & Awards</button>
+      </div>
+
+      <!-- Product Grid -->
+      <div id="school-product-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+        <!-- Card 1: School Crest Shield -->
+        <div class="school-product-card" data-grade="primary secondary">
+          <div class="school-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sc1-bg" cx="50%" cy="40%"><stop offset="0%" stop-color="#1a1f40"/><stop offset="100%" stop-color="#0d1128"/></radialGradient>
+              </defs>
+              <rect width="220" height="180" fill="url(#sc1-bg)"/>
+              <path d="M110 18 L166 42 L166 110 C166 144 110 168 110 168 C110 168 54 144 54 110 L54 42 Z" fill="#0d1430" stroke="#818CF8" stroke-width="2.2"/>
+              <path d="M110 30 L152 50 L152 106 C152 130 110 150 110 150 C110 150 68 130 68 106 L68 50 Z" fill="none" stroke="rgba(129,140,248,0.15)" stroke-width="1"/>
+              <rect x="97" y="55" width="26" height="20" rx="2" fill="none" stroke="#FBBF24" stroke-width="1.5"/>
+              <line x1="110" y1="55" x2="110" y2="75" stroke="#FBBF24" stroke-width="1.2"/>
+              <text x="110" y="52" text-anchor="middle" font-size="8" fill="#FBBF24">★</text>
+              <text x="110" y="92" text-anchor="middle" font-size="9" fill="#818CF8" font-family="Georgia,serif" font-weight="700" letter-spacing="0.5">SCHOOL</text>
+              <path d="M86 97 L134 97" stroke="#818CF8" stroke-width="0.6" opacity="0.4"/>
+              <text x="110" y="108" text-anchor="middle" font-size="5.5" fill="rgba(129,140,248,0.7)" font-family="sans-serif" letter-spacing="1.5">CREST EMBLEM</text>
+              <text x="110" y="150" text-anchor="middle" font-size="6" fill="rgba(251,191,36,0.5)" font-family="sans-serif" letter-spacing="1">PATCHCRAFT PRO</text>
+            </svg>
+            <div class="school-overlay">
+              <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+              <span class="text-xs text-white/70 font-inter">View Details</span>
+            </div>
+            <div class="grade-badge">K-12</div>
+            <div class="moq-badge-school">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--indigo-4)">Primary + Secondary</div>
+            <h3 class="product-title mb-3">Classic School Crest Shield</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–99</span><span>$3.80/ea</span></div>
+              <div class="tier-row"><span>100–499</span><span>$2.40/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.30/ea ★</span></div>
+            </div>
+            <button class="add-to-quote-school quick-quote-btn" data-product="Classic School Crest Shield">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: House Badge -->
+        <div class="school-product-card" data-grade="secondary">
+          <div class="school-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sc2-bg" cx="50%" cy="45%"><stop offset="0%" stop-color="#1a3a1f"/><stop offset="100%" stop-color="#0d1f12"/></radialGradient>
+              </defs>
+              <rect width="220" height="180" fill="url(#sc2-bg)"/>
+              <polygon points="110,20 185,65 185,115 110,160 35,115 35,65" fill="#0d2018" stroke="#34D399" stroke-width="2.2"/>
+              <polygon points="110,34 171,73 171,109 110,146 49,109 49,73" fill="none" stroke="rgba(52,211,153,0.15)" stroke-width="1"/>
+              <text x="110" y="80" text-anchor="middle" font-size="32" fill="#34D399" font-family="Georgia,serif" font-weight="900" opacity="0.9">H</text>
+              <text x="110" y="102" text-anchor="middle" font-size="7" fill="rgba(52,211,153,0.7)" font-family="sans-serif" letter-spacing="2">HOUSE · GREEN</text>
+              <path d="M80 108 L140 108" stroke="#34D399" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="120" text-anchor="middle" font-size="6" fill="rgba(251,191,36,0.6)" font-family="sans-serif" letter-spacing="1.5">LEADERSHIP</text>
+            </svg>
+            <div class="school-overlay">
+              <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+              <span class="text-xs text-white/70 font-inter">View Details</span>
+            </div>
+            <div class="grade-badge">Secondary</div>
+            <div class="moq-badge-school">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--emerald)">Secondary School</div>
+            <h3 class="product-title mb-3">House Color Hexagon Badge</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–99</span><span>$3.20/ea</span></div>
+              <div class="tier-row"><span>100–499</span><span>$2.10/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.20/ea ★</span></div>
+            </div>
+            <button class="add-to-quote-school quick-quote-btn" data-product="House Color Hexagon Badge">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: Merit Award -->
+        <div class="school-product-card" data-grade="merit primary secondary college">
+          <div class="school-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sc3-bg" cx="50%" cy="45%"><stop offset="0%" stop-color="#2a1f08"/><stop offset="100%" stop-color="#150f04"/></radialGradient>
+              </defs>
+              <rect width="220" height="180" fill="url(#sc3-bg)"/>
+              <circle cx="110" cy="88" r="60" fill="#1a1205" stroke="#FBBF24" stroke-width="2.2"/>
+              <circle cx="110" cy="88" r="52" fill="none" stroke="#FBBF24" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.4"/>
+              <text x="110" y="70" text-anchor="middle" font-size="28" fill="#FBBF24" opacity="0.95">★</text>
+              <text x="110" y="94" text-anchor="middle" font-size="11" fill="#FBBF24" font-family="Georgia,serif" font-weight="700">MERIT</text>
+              <path d="M84 100 L136 100" stroke="#FBBF24" stroke-width="0.6" opacity="0.3"/>
+              <text x="110" y="112" text-anchor="middle" font-size="6" fill="rgba(251,191,36,0.7)" font-family="sans-serif" letter-spacing="2">AWARD</text>
+              <!-- Laurels -->
+              <path d="M62 80 Q50 70 54 58 Q62 66 62 80" fill="#D97706" opacity="0.7"/>
+              <path d="M62 88 Q48 82 52 68 Q60 76 62 88" fill="#D97706" opacity="0.6"/>
+              <path d="M158 80 Q170 70 166 58 Q158 66 158 80" fill="#D97706" opacity="0.7"/>
+              <path d="M158 88 Q172 82 168 68 Q160 76 158 88" fill="#D97706" opacity="0.6"/>
+            </svg>
+            <div class="school-overlay">
+              <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+              <span class="text-xs text-white/70 font-inter">View Details</span>
+            </div>
+            <div class="grade-badge">All Grades</div>
+            <div class="moq-badge-school">MOQ 25</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">Merit & Awards</div>
+            <h3 class="product-title mb-3">Academic Merit Award Patch</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>25–99</span><span>$4.50/ea</span></div>
+              <div class="tier-row"><span>100–499</span><span>$2.80/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.60/ea ★</span></div>
+            </div>
+            <button class="add-to-quote-school quick-quote-btn" data-product="Academic Merit Award Patch">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4: Prefect Badge -->
+        <div class="school-product-card" data-grade="secondary">
+          <div class="school-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sc4-bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#0d0d1a"/></linearGradient>
+                <linearGradient id="sc4-gold" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#92400e"/><stop offset="50%" stop-color="#FBBF24"/><stop offset="100%" stop-color="#92400e"/></linearGradient>
+              </defs>
+              <rect width="220" height="180" fill="url(#sc4-bg)"/>
+              <path d="M110 16 L176 87 L110 158 L44 87 Z" fill="#15150a" stroke="url(#sc4-gold)" stroke-width="2.2"/>
+              <path d="M110 34 L158 87 L110 140 L62 87 Z" fill="none" stroke="url(#sc4-gold)" stroke-width="0.7" opacity="0.3"/>
+              <text x="110" y="100" text-anchor="middle" font-size="28" fill="url(#sc4-gold)" font-family="Georgia,serif" font-weight="900">P</text>
+              <text x="110" y="118" text-anchor="middle" font-size="7" fill="url(#sc4-gold)" font-family="sans-serif" letter-spacing="2.5" opacity="0.8">PREFECT</text>
+            </svg>
+            <div class="school-overlay">
+              <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+              <span class="text-xs text-white/70 font-inter">View Details</span>
+            </div>
+            <div class="grade-badge">Secondary</div>
+            <div class="moq-badge-school">MOQ 10</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">Secondary School</div>
+            <h3 class="product-title mb-3">Head Prefect Diamond Insignia</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>10–49</span><span>$8.00/ea</span></div>
+              <div class="tier-row"><span>50–199</span><span>$5.20/ea</span></div>
+              <div class="tier-row best"><span>200+ units</span><span class="text-[var(--amber-4)]">$3.50/ea ★</span></div>
+            </div>
+            <button class="add-to-quote-school quick-quote-btn" data-product="Head Prefect Diamond Insignia">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 5: University Crest -->
+        <div class="school-product-card" data-grade="college">
+          <div class="school-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sc5-bg" cx="50%" cy="45%"><stop offset="0%" stop-color="#1e1e2e"/><stop offset="100%" stop-color="#0d0d1f"/></radialGradient>
+              </defs>
+              <rect width="220" height="180" fill="url(#sc5-bg)"/>
+              <!-- Oval crest frame -->
+              <ellipse cx="110" cy="90" rx="72" ry="66" fill="#11112a" stroke="#818CF8" stroke-width="2"/>
+              <ellipse cx="110" cy="90" rx="64" ry="58" fill="none" stroke="rgba(129,140,248,0.15)" stroke-width="0.8"/>
+              <!-- Laurel wreath shape -->
+              <path d="M52 90 Q44 78 48 64 Q56 72 52 90" fill="#4F46E5" opacity="0.7"/>
+              <path d="M52 98 Q40 88 44 72 Q53 80 52 98" fill="#4F46E5" opacity="0.5"/>
+              <path d="M168 90 Q176 78 172 64 Q164 72 168 90" fill="#4F46E5" opacity="0.7"/>
+              <path d="M168 98 Q180 88 176 72 Q167 80 168 98" fill="#4F46E5" opacity="0.5"/>
+              <!-- Torch -->
+              <rect x="107" y="52" width="6" height="28" rx="3" fill="#818CF8" opacity="0.85"/>
+              <ellipse cx="110" cy="46" rx="7" ry="10" fill="#FBBF24" opacity="0.9"/>
+              <ellipse cx="110" cy="48" rx="4" ry="6" fill="white" opacity="0.4"/>
+              <!-- University text -->
+              <text x="110" y="98" text-anchor="middle" font-size="9" fill="#818CF8" font-family="Georgia,serif" font-weight="700" letter-spacing="0.5">UNIVERSITY</text>
+              <path d="M82 104 L138 104" stroke="#818CF8" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="115" text-anchor="middle" font-size="6" fill="rgba(251,191,36,0.7)" font-family="sans-serif" letter-spacing="2">KNOWLEDGE · TRUTH</text>
+            </svg>
+            <div class="school-overlay">
+              <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+              <span class="text-xs text-white/70 font-inter">View Details</span>
+            </div>
+            <div class="grade-badge">University</div>
+            <div class="moq-badge-school">MOQ 100</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--indigo-4)">College / University</div>
+            <h3 class="product-title mb-3">University Oval Crest Patch</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>100–249</span><span>$5.60/ea</span></div>
+              <div class="tier-row"><span>250–999</span><span>$3.40/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$2.10/ea ★</span></div>
+            </div>
+            <button class="add-to-quote-school quick-quote-btn" data-product="University Oval Crest Patch">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 6: Nursery Fun Patch -->
+        <div class="school-product-card" data-grade="primary">
+          <div class="school-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sc6-bg" cx="50%" cy="45%"><stop offset="0%" stop-color="#2d1b4e"/><stop offset="100%" stop-color="#180e2e"/></radialGradient>
+              </defs>
+              <rect width="220" height="180" fill="url(#sc6-bg)"/>
+              <!-- Star shape -->
+              <polygon points="110,22 121,58 156,58 128,78 138,114 110,92 82,114 92,78 64,58 99,58" fill="#1a0f36" stroke="#C084FC" stroke-width="2"/>
+              <text x="110" y="85" text-anchor="middle" font-size="26" fill="#C084FC" opacity="0.95">★</text>
+              <text x="110" y="106" text-anchor="middle" font-size="6.5" fill="rgba(192,132,252,0.8)" font-family="sans-serif" letter-spacing="1.5">STAR STUDENT</text>
+              <!-- Mini stars -->
+              <text x="72" y="135" font-size="10" fill="#C084FC" opacity="0.5">⋆</text>
+              <text x="148" y="135" font-size="10" fill="#C084FC" opacity="0.5">⋆</text>
+              <text x="110" y="148" text-anchor="middle" font-size="8" fill="rgba(251,191,36,0.5)">· · ·</text>
+            </svg>
+            <div class="school-overlay">
+              <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+              <span class="text-xs text-white/70 font-inter">View Details</span>
+            </div>
+            <div class="grade-badge">Primary</div>
+            <div class="moq-badge-school">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--purple)">Primary / K-8</div>
+            <h3 class="product-title mb-3">Star Student Reward Patch</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–99</span><span>$2.80/ea</span></div>
+              <div class="tier-row"><span>100–499</span><span>$1.80/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.00/ea ★</span></div>
+            </div>
+            <button class="add-to-quote-school quick-quote-btn" data-product="Star Student Reward Patch">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 7: Sports Excellence Patch -->
+        <div class="school-product-card" data-grade="merit secondary">
+          <div class="school-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="sc7-bg" cx="50%" cy="45%"><stop offset="0%" stop-color="#1e3a1f"/><stop offset="100%" stop-color="#0d1f0e"/></radialGradient>
+              </defs>
+              <rect width="220" height="180" fill="url(#sc7-bg)"/>
+              <circle cx="110" cy="88" r="58" fill="#0d2010" stroke="#34D399" stroke-width="2"/>
+              <circle cx="110" cy="88" r="50" fill="none" stroke="rgba(52,211,153,0.2)" stroke-width="0.8"/>
+              <text x="110" y="78" text-anchor="middle" font-size="28" fill="#34D399" opacity="0.9">🏆</text>
+              <text x="110" y="98" text-anchor="middle" font-size="9" fill="#34D399" font-family="Georgia,serif" font-weight="700">SPORTS</text>
+              <path d="M84 104 L136 104" stroke="#34D399" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="116" text-anchor="middle" font-size="6" fill="rgba(52,211,153,0.7)" font-family="sans-serif" letter-spacing="2">EXCELLENCE</text>
+            </svg>
+            <div class="school-overlay">
+              <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+              <span class="text-xs text-white/70 font-inter">View Details</span>
+            </div>
+            <div class="grade-badge">Merit</div>
+            <div class="moq-badge-school">MOQ 25</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--emerald)">Merit & Awards</div>
+            <h3 class="product-title mb-3">Sports Excellence Trophy Patch</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>25–99</span><span>$4.20/ea</span></div>
+              <div class="tier-row"><span>100–499</span><span>$2.60/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.50/ea ★</span></div>
+            </div>
+            <button class="add-to-quote-school quick-quote-btn" data-product="Sports Excellence Trophy Patch">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 8: Graduation Patch -->
+        <div class="school-product-card" data-grade="college secondary">
+          <div class="school-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sc8-bg" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1a1a0a"/><stop offset="100%" stop-color="#2a2610"/></linearGradient>
+                <linearGradient id="sc8-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#92400e"/><stop offset="40%" stop-color="#F6E05E"/><stop offset="100%" stop-color="#92400e"/></linearGradient>
+              </defs>
+              <rect width="220" height="180" fill="url(#sc8-bg)"/>
+              <!-- Graduation cap shape -->
+              <ellipse cx="110" cy="90" rx="62" ry="62" fill="#15150a" stroke="url(#sc8-g)" stroke-width="2"/>
+              <!-- Mortarboard -->
+              <polygon points="110,50 158,70 110,90 62,70" fill="url(#sc8-g)" opacity="0.9"/>
+              <rect x="108" y="68" width="4" height="22" rx="2" fill="url(#sc8-g)" opacity="0.8"/>
+              <circle cx="110" cy="92" rx="5" ry="5" fill="url(#sc8-g)" opacity="0.8"/>
+              <path d="M150 72 L150 92 Q158 96 150 100" stroke="url(#sc8-g)" stroke-width="1.5" fill="none" opacity="0.8"/>
+              <text x="110" y="116" text-anchor="middle" font-size="9" fill="url(#sc8-g)" font-family="Georgia,serif" font-weight="700">CLASS OF</text>
+              <text x="110" y="130" text-anchor="middle" font-size="14" fill="url(#sc8-g)" font-family="Georgia,serif" font-weight="900">2025</text>
+            </svg>
+            <div class="school-overlay">
+              <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+              <span class="text-xs text-white/70 font-inter">View Details</span>
+            </div>
+            <div class="grade-badge">College</div>
+            <div class="moq-badge-school">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">College / Secondary</div>
+            <h3 class="product-title mb-3">Graduation Class Year Patch</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–199</span><span>$4.80/ea</span></div>
+              <div class="tier-row"><span>200–999</span><span>$2.90/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.80/ea ★</span></div>
+            </div>
+            <button class="add-to-quote-school quick-quote-btn" data-product="Graduation Class Year Patch">
+              <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote
+            </button>
+          </div>
+        </div>
+
+      </div><!-- /#school-product-grid -->
+
+      <!-- Empty state -->
+      <div id="school-no-results" class="hidden py-20 text-center">
+        <i data-lucide="search-x" class="w-10 h-10 text-[var(--text-faint-3)] mx-auto mb-4"></i>
+        <p class="text-[var(--text-faint)] font-inter text-sm">No products match this category.</p>
+        <button id="school-reset-filters" class="mt-4 text-sm text-[var(--indigo-4)] hover:opacity-80 font-inter transition-opacity">Show all products</button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       HOW IT WORKS FOR SCHOOLS
+  ══════════════════════════════════════════════ -->
+  <section class="py-20 border-t border-[var(--border)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--indigo-4)] opacity-60"></span>
+          SCHOOL ORDERING PROCESS
+          <span class="w-8 h-px bg-[var(--indigo-4)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Simple Process for Schools</h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto">
+          Designed for procurement officers, school offices, and uniform coordinators.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="kit-option-card">
+          <div class="kit-option-icon"><i data-lucide="file-text" class="w-5 h-5 text-[var(--indigo-4)]"></i></div>
+          <div class="kit-option-title">Submit Your Artwork</div>
+          <div class="kit-option-desc">Send your school crest or logo in any format — AI, PDF, PNG. We digitize it for free on orders over 100 units.</div>
+        </div>
+        <div class="kit-option-card">
+          <div class="kit-option-icon"><i data-lucide="palette" class="w-5 h-5 text-[var(--amber-4)]"></i></div>
+          <div class="kit-option-title">Approve the Sample</div>
+          <div class="kit-option-desc">We send a physical sample within 5 business days. Approve or request revisions — production starts only when you're happy.</div>
+        </div>
+        <div class="kit-option-card">
+          <div class="kit-option-icon"><i data-lucide="factory" class="w-5 h-5 text-[var(--emerald)]"></i></div>
+          <div class="kit-option-title">Bulk Production</div>
+          <div class="kit-option-desc">ISO-certified production facility. Every batch is QA-checked against your approved sample before dispatch.</div>
+        </div>
+        <div class="kit-option-card">
+          <div class="kit-option-icon"><i data-lucide="package" class="w-5 h-5 text-[var(--purple)]"></i></div>
+          <div class="kit-option-title">Delivered to School</div>
+          <div class="kit-option-desc">Packaged by quantity, labeled by batch. Easy for your office to distribute across year groups and houses.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       CTA BANNER
+  ══════════════════════════════════════════════ -->
+  <section class="py-20">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="info-panel relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-10 relative z-10">
+          <div class="flex-1 text-center lg:text-start">
+            <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-4">
+              <span class="w-6 h-px bg-[var(--indigo-4)] opacity-60"></span>
+              SCHOOL PROGRAM OFFER
+            </div>
+            <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)] mb-4">
+              Free Digitization on Orders Over 100 Units
+            </h2>
+            <p class="text-[var(--text-muted)] font-inter text-base leading-relaxed max-w-lg">
+              Submit your school badge artwork and we'll create a free embroidery digitization file — a $120 value — included with every order of 100+ units. Annual reorders get priority production scheduling.
+            </p>
+            <div class="flex flex-wrap gap-3 mt-6 justify-center lg:justify-start">
+              <span class="process-chip"><i data-lucide="check" class="w-3.5 h-3.5 text-[var(--emerald)]"></i>Free digitization 100+ units</span>
+              <span class="process-chip"><i data-lucide="check" class="w-3.5 h-3.5 text-[var(--emerald)]"></i>Physical sample approval</span>
+              <span class="process-chip"><i data-lucide="check" class="w-3.5 h-3.5 text-[var(--emerald)]"></i>Annual reorder priority</span>
+              <span class="process-chip"><i data-lucide="check" class="w-3.5 h-3.5 text-[var(--emerald)]"></i>PO / invoice billing</span>
+            </div>
+          </div>
+          <div class="shrink-0">
+            <a href="contact.html" class="stitch-btn flex items-center gap-2.5 px-9 py-4 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              Request School Quote
+            </a>
+            <p class="text-xs text-[var(--text-faint-2)] font-inter text-center mt-3">Quotes returned within 2 hours</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="border-t border-[var(--footer-border)] py-12">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-start">
+          <a href="home.html" class="font-jakarta font-extrabold text-lg tracking-tight mb-1 text-[var(--text-primary)] inline-block">
+            PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+            <span class="text-[var(--text-faint-2)] text-xs font-inter font-normal ms-1">PRO</span>
+          </a>
+          <p class="text-xs text-[var(--text-faint-2)] font-inter">Premium B2B Uniform Solutions · Est. 2008</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-inter text-[var(--text-faint-2)]">
+          <a href="home.html" class="hover:text-[var(--text-body)] transition-colors">Home</a>
+          <a href="schools-catalog.html" class="text-[var(--indigo-4)]">Schools</a>
+          <a href="corporate-patches.html" class="hover:text-[var(--text-body)] transition-colors">Corporate</a>
+          <a href="uniform-branding.html" class="hover:text-[var(--text-body)] transition-colors">Uniform Branding</a>
+          <a href="sports-teams.html" class="hover:text-[var(--text-body)] transition-colors">Sports Teams</a>
+          <a href="home2.html#pricing" class="hover:text-[var(--text-body)] transition-colors">Pricing</a>
+          <a href="contact.html" class="hover:text-[var(--text-body)] transition-colors">Contact</a>
+        </div>
+        <p class="text-xs text-[var(--text-faint-3)] font-inter">© 2026 PatchCraft Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+    <span id="toast-message" class="text-sm font-inter text-white">Added to quote!</span>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    // Grade filter logic
+    document.addEventListener('DOMContentLoaded', function () {
+      var tabs = document.querySelectorAll('.grade-tab');
+      var cards = document.querySelectorAll('#school-product-grid .school-product-card');
+      var countEl = document.getElementById('school-visible-count');
+      var noResults = document.getElementById('school-no-results');
+      var resetBtn = document.getElementById('school-reset-filters');
+
+      function applyGrade(grade) {
+        var visible = 0;
+        cards.forEach(function(card) {
+          var grades = (card.getAttribute('data-grade') || '').split(' ');
+          var match = grade === 'all' || grades.indexOf(grade) !== -1;
+          card.classList.toggle('hidden-by-grade', !match);
+          if (match) { visible++; card.classList.add('card-appear'); }
+        });
+        if (countEl) countEl.textContent = String(visible);
+        if (noResults) noResults.classList.toggle('hidden', visible !== 0);
+      }
+
+      tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+          tabs.forEach(function(t) { t.classList.remove('active-tab'); });
+          tab.classList.add('active-tab');
+          applyGrade(tab.getAttribute('data-grade'));
+        });
+      });
+
+      if (resetBtn) resetBtn.addEventListener('click', function() {
+        tabs.forEach(function(t) { t.classList.remove('active-tab'); });
+        tabs[0].classList.add('active-tab');
+        applyGrade('all');
+      });
+
+      applyGrade('all');
+    });
+  </script>
+</body>
+</html>

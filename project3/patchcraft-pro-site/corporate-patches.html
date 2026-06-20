@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Corporate Patches — Custom Bulk Embroidery for Companies | PatchCraft Pro</title>
+  <meta name="description" content="Order custom corporate patches in bulk — blazer crests, lapel insignia, department badges, and branded uniform patches. MOQ 100 units. Trusted by 500+ corporates." />
+  <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('pcp-theme');
+        document.documentElement.setAttribute('data-theme', t || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+        var d = localStorage.getItem('pcp-dir');
+        if (d === 'rtl' || d === 'ltr') document.documentElement.setAttribute('dir', d);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>tailwind.config = { theme: { extend: { fontFamily: { jakarta: ['"Plus Jakarta Sans"', 'sans-serif'], inter: ['Inter', 'sans-serif'] } } } };</script>
+  <style>
+    .corp-hero-card {
+      background: linear-gradient(135deg, var(--amber-tint-08), var(--surface));
+      border: 1px solid var(--border-strong);
+      border-radius: 20px; padding: 28px; position: relative; overflow: hidden;
+    }
+    .corp-hero-card::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg,transparent,var(--amber-tint-30),transparent); }
+    .dept-tab { font-family:'Plus Jakarta Sans',sans-serif; font-size:12.5px; font-weight:600; padding:9px 20px; border-radius:100px; border:1px solid var(--border-strong); background:transparent; color:var(--text-muted); cursor:pointer; transition:all .2s ease; white-space:nowrap; }
+    .dept-tab:hover { color:var(--text-secondary); border-color:var(--border-stronger); }
+    .dept-tab.active-dept { background:var(--amber-tint-10); border-color:var(--amber-tint-20); color:var(--amber-4); }
+    .corp-card { background:var(--surface); border:1px solid var(--border); border-radius:18px; overflow:hidden; transition:all .35s cubic-bezier(.25,.46,.45,.94); display:flex; flex-direction:column; }
+    .corp-card:hover { border-color:var(--amber-tint-20); transform:translateY(-5px); box-shadow:0 20px 50px var(--shadow),0 0 0 1px var(--amber-tint-08); }
+    .corp-img-wrap { position:relative; overflow:hidden; background:#0d1220; height:180px; flex-shrink:0; }
+    .corp-img-wrap svg { width:100%; height:100%; transition:transform .4s ease; }
+    .corp-card:hover .corp-img-wrap svg { transform:scale(1.06); }
+    .corp-overlay { position:absolute; inset:0; background:rgba(10,15,28,.7); backdrop-filter:blur(4px); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px; opacity:0; transition:opacity .3s ease; }
+    .corp-card:hover .corp-overlay { opacity:1; }
+    .dept-badge { position:absolute; top:10px; inset-inline-start:10px; background:rgba(245,158,11,.15); backdrop-filter:blur(6px); border:1px solid rgba(245,158,11,.3); color:#FBBF24; font-family:'Plus Jakarta Sans',sans-serif; font-size:9px; font-weight:700; padding:4px 9px; border-radius:20px; letter-spacing:.08em; text-transform:uppercase; }
+    .moq-corp { position:absolute; top:10px; inset-inline-end:10px; background:rgba(10,15,28,.85); backdrop-filter:blur(6px); border:1px solid rgba(245,158,11,.3); color:#FBBF24; font-family:'Plus Jakarta Sans',sans-serif; font-size:10px; font-weight:700; padding:4px 9px; border-radius:20px; }
+    .add-corp { width:100%; padding:10px 14px; background:var(--amber-tint-10); border:1px solid var(--amber-tint-20); border-radius:10px; color:var(--amber-4); font-family:'Plus Jakarta Sans',sans-serif; font-size:12px; font-weight:700; cursor:pointer; transition:all .25s ease; display:flex; align-items:center; justify-content:center; gap:6px; margin-top:4px; }
+    .add-corp:hover { background:var(--amber-tint-15); border-color:var(--amber-tint-30); color:var(--text-primary); box-shadow:0 4px 16px var(--amber-tint-10); }
+    .benefit-card { background:var(--surface); border:1px solid var(--border); border-radius:18px; padding:26px 22px; transition:border-color .3s ease,transform .3s ease; }
+    .benefit-card:hover { border-color:var(--amber-tint-30); transform:translateY(-4px); }
+    .corp-cta { background:linear-gradient(135deg,var(--amber-tint-10) 0%,var(--indigo-tint-10) 100%); border:1px solid var(--border-strong); border-radius:24px; padding:52px 40px; position:relative; overflow:hidden; }
+    .corp-cta::before { content:''; position:absolute; inset:0; background-image:linear-gradient(var(--bg-grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--bg-grid-line) 1px,transparent 1px); background-size:40px 40px; mask-image:radial-gradient(ellipse 70% 100% at 50% 50%,black 30%,transparent 100%); pointer-events:none; }
+    .hidden-by-dept { display:none; }
+    .client-logo-strip { display:flex; align-items:center; gap:8px; padding:10px 18px; background:var(--surface-soft); border:1px solid var(--border); border-radius:12px; }
+    .order-step { display:flex; gap:16px; align-items:flex-start; padding-bottom:24px; position:relative; }
+    .order-step:last-child { padding-bottom:0; }
+    .order-step::before { content:''; position:absolute; inset-inline-start:19px; top:42px; bottom:-4px; width:1.5px; background:var(--border-strong); }
+    .order-step:last-child::before { display:none; }
+    .step-num { flex-shrink:0; width:38px; height:38px; border-radius:50%; background:var(--amber-tint-10); border:1.5px solid var(--amber-tint-20); display:flex; align-items:center; justify-content:center; font-family:'Plus Jakarta Sans',sans-serif; font-size:14px; font-weight:800; color:var(--amber-4); position:relative; z-index:1; }
+    .step-title { font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; font-size:14px; color:var(--text-primary); margin-bottom:4px; }
+    .step-desc { font-family:'Inter',sans-serif; font-size:12.5px; color:var(--text-faint); line-height:1.6; }
+  </style>
+</head>
+<body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight">
+        PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+        <span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-inter font-medium text-[var(--text-muted)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors duration-200">Catalogs <i data-lucide="chevron-down" class="w-3.5 h-3.5 mt-0.5"></i></button>
+          <div class="absolute top-full left-0 mt-2 w-52 bg-[var(--surface)] border border-[var(--border-strong)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
+            <a href="schools-catalog.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--indigo-4)] hover:bg-[var(--indigo-tint-10)] mt-1"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>Schools</a>
+            <a href="corporate-patches.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--amber-4)] text-xs font-semibold bg-[var(--amber-tint-08)]"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i>Corporate</a>
+            <a href="uniform-branding.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--emerald)] hover:bg-[rgba(52,211,153,0.08)] mt-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i>Uniform Branding</a>
+            <a href="home2.html#catalog" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--text-primary)] hover:bg-[var(--surface-soft-hover)] mt-1"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>All Products</a>
+          </div>
+        </div>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button">
+          <i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i>
+          <span id="dir-toggle-label" class="dir-toggle-label">LTR</span>
+        </button>
+        <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
+        <a href="login.html" class="text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors font-inter">Sign In</a>
+        <a href="contact.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Get a Quote</a>
+      </div>
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+      <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors">Home</a>
+        <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors">Schools</a>
+        <a href="corporate-patches.html" class="text-[var(--amber-4)]">Corporate</a>
+        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors">Uniform Branding</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
+        <div class="flex gap-3 pt-2">
+          <a href="login.html" class="flex-1 py-2.5 border border-[var(--border-strong)] text-center text-sm font-jakarta font-bold rounded-xl text-[var(--text-primary)]">Sign In</a>
+          <a href="contact.html" class="flex-1 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="min-h-screen pt-20 relative flex items-center overflow-hidden">
+    <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
+    <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--amber-5)]/8 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--indigo-5)]/6 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
+      <div class="grid lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+        <div class="hero-copy">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
+            <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">Corporate & Enterprise</span>
+          </div>
+          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+            Brand Every<br />
+            <span class="text-gradient-gold">Employee.</span><br />
+            Flawlessly.
+          </h1>
+          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
+            From blazer crests to department insignia — custom embroidered patches that carry your brand's prestige on every uniform, jacket, and workwear item. Bulk pricing from 100 units.
+          </p>
+          <div class="flex items-center gap-6 md:gap-10 mb-10">
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">500+</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Corporate Clients</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">MOQ 100</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Minimum Units</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--amber-4)]">PO Ready</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Invoice Billing</div>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a href="#catalog" class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="briefcase" class="w-4 h-4"></i> View Corporate Catalog
+            </a>
+            <a href="contact.html" class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
+              <i data-lucide="phone" class="w-4 h-4"></i> Talk to Sales
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Corporate card preview -->
+        <div class="hero-right flex flex-col items-center gap-4">
+          <div class="corp-hero-card w-full max-w-[440px]">
+            <div class="flex items-center justify-between mb-5">
+              <div>
+                <h3 class="font-jakarta font-bold text-[15px] text-[var(--text-primary)]">Corporate Order Preview</h3>
+                <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Sample blazer crest specification</p>
+              </div>
+              <span class="inline-flex items-center gap-1.5 text-[11px] text-emerald-400 font-inter font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Live Quote
+              </span>
+            </div>
+            <!-- Corporate badge preview -->
+            <div class="rounded-2xl overflow-hidden border border-[var(--border)] mb-5" style="background:#0d1220;height:200px;display:flex;align-items:center;justify-content:center;position:relative;">
+              <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px);background-size:18px 18px;"></div>
+              <svg viewBox="0 0 280 200" class="w-[280px] h-[200px] relative z-10" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="corp-hero-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#92400e"/><stop offset="45%" stop-color="#FBBF24"/><stop offset="100%" stop-color="#92400e"/>
+                  </linearGradient>
+                </defs>
+                <!-- Main shield -->
+                <path d="M140 18 L200 46 L200 118 L140 156 L80 118 L80 46 Z" fill="#100e1f" stroke="url(#corp-hero-gold)" stroke-width="2.2"/>
+                <path d="M140 30 L188 52 L188 112 L140 140 L92 112 L92 52 Z" fill="none" stroke="url(#corp-hero-gold)" stroke-width="0.7" opacity="0.4"/>
+                <!-- Laurels -->
+                <path d="M86 90 Q74 78 78 62 Q86 70 86 90" fill="#D97706" opacity="0.7"/>
+                <path d="M86 98 Q72 88 76 72 Q84 80 86 98" fill="#D97706" opacity="0.55"/>
+                <path d="M194 90 Q206 78 202 62 Q194 70 194 90" fill="#D97706" opacity="0.7"/>
+                <path d="M194 98 Q208 88 204 72 Q196 80 194 98" fill="#D97706" opacity="0.55"/>
+                <!-- Company letter -->
+                <text x="140" y="95" text-anchor="middle" font-size="34" fill="url(#corp-hero-gold)" font-family="Georgia,serif" font-weight="900">C</text>
+                <path d="M116 104 L164 104" stroke="url(#corp-hero-gold)" stroke-width="0.6" opacity="0.3"/>
+                <text x="140" y="118" text-anchor="middle" font-size="7" fill="url(#corp-hero-gold)" font-family="sans-serif" letter-spacing="2.5" opacity="0.8">CORPORATE</text>
+                <!-- Side dept badges -->
+                <rect x="20" y="75" width="50" height="46" rx="6" fill="#0f1420" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+                <text x="45" y="98" text-anchor="middle" font-size="14" fill="#FBBF24" opacity="0.8">IT</text>
+                <text x="45" y="112" text-anchor="middle" font-size="6" fill="rgba(251,191,36,0.5)" font-family="sans-serif" letter-spacing="0.5">DEPT</text>
+                <rect x="210" y="75" width="50" height="46" rx="6" fill="#0f1420" stroke="rgba(245,158,11,0.25)" stroke-width="1"/>
+                <text x="235" y="98" text-anchor="middle" font-size="14" fill="#FBBF24" opacity="0.8">HR</text>
+                <text x="235" y="112" text-anchor="middle" font-size="6" fill="rgba(251,191,36,0.5)" font-family="sans-serif" letter-spacing="0.5">DEPT</text>
+              </svg>
+            </div>
+            <div class="grid grid-cols-3 gap-2.5">
+              <div class="spec-cell"><div class="spec-label">Thread</div><div class="spec-value">40-wt Rayon</div></div>
+              <div class="spec-cell"><div class="spec-label">Density</div><div class="spec-value">High Fill</div></div>
+              <div class="spec-cell"><div class="spec-label">Backing</div><div class="spec-value">Sew-on</div></div>
+            </div>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+            <span class="text-xs text-[var(--amber-4)] font-inter">PO billing · Net-30 terms available</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLIENT TRUST STRIP -->
+  <section class="border-y border-[var(--border)] py-8">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <p class="text-center text-xs text-[var(--text-faint-2)] font-inter uppercase tracking-widest mb-6">Trusted by leading companies across industries</p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <div class="client-logo-strip"><i data-lucide="building-2" class="w-4 h-4 text-[var(--amber-4)]"></i><span class="text-sm font-jakarta font-semibold text-[var(--text-muted)]">Nexus Corp</span></div>
+        <div class="client-logo-strip"><i data-lucide="globe" class="w-4 h-4 text-[var(--indigo-4)]"></i><span class="text-sm font-jakarta font-semibold text-[var(--text-muted)]">AeroPrime</span></div>
+        <div class="client-logo-strip"><i data-lucide="cpu" class="w-4 h-4 text-[var(--emerald)]"></i><span class="text-sm font-jakarta font-semibold text-[var(--text-muted)]">TechSphere</span></div>
+        <div class="client-logo-strip"><i data-lucide="briefcase" class="w-4 h-4 text-[var(--purple)]"></i><span class="text-sm font-jakarta font-semibold text-[var(--text-muted)]">Vertex Group</span></div>
+        <div class="client-logo-strip"><i data-lucide="landmark" class="w-4 h-4 text-[var(--amber-4)]"></i><span class="text-sm font-jakarta font-semibold text-[var(--text-muted)]">Pinnacle Bank</span></div>
+        <div class="client-logo-strip"><i data-lucide="shield" class="w-4 h-4 text-[var(--indigo-4)]"></i><span class="text-sm font-jakarta font-semibold text-[var(--text-muted)]">SecureForce</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT CATALOG -->
+  <section id="catalog" class="py-20 relative">
+    <div class="absolute top-0 start-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[var(--border-strong)] to-transparent"></div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div>
+          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-3">
+            <span class="w-8 h-px bg-[var(--amber-5)]"></span>CORPORATE CATALOG
+          </div>
+          <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">Patches for Every Department</h2>
+          <p class="text-[var(--text-muted)] font-inter text-sm mt-2 max-w-xl">All products come with free digitization on 250+ unit orders and PO invoice billing.</p>
+        </div>
+        <p class="text-sm text-[var(--text-faint)] font-inter shrink-0"><span id="corp-count" class="text-[var(--text-primary)] font-medium">8</span> products</p>
+      </div>
+
+      <!-- Department filter tabs -->
+      <div class="flex flex-wrap gap-2.5 mb-10">
+        <button class="dept-tab active-dept" data-dept="all">All Types</button>
+        <button class="dept-tab" data-dept="executive">Executive</button>
+        <button class="dept-tab" data-dept="department">Department</button>
+        <button class="dept-tab" data-dept="security">Security / Field</button>
+        <button class="dept-tab" data-dept="hospitality">Hospitality</button>
+      </div>
+
+      <div id="corp-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+        <!-- Card 1 -->
+        <div class="corp-card" data-dept="executive">
+          <div class="corp-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="cg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#92400e"/><stop offset="45%" stop-color="#FBBF24"/><stop offset="100%" stop-color="#92400e"/></linearGradient><radialGradient id="cb1" cx="50%" cy="40%"><stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#0d0d1a"/></radialGradient></defs>
+              <rect width="220" height="180" fill="url(#cb1)"/>
+              <path d="M110 14 L158 38 L158 100 L110 152 L62 100 L62 38 Z" fill="#100e1f" stroke="url(#cg1)" stroke-width="2.2"/>
+              <path d="M110 26 L146 46 L146 94 L110 136 L74 94 L74 46 Z" fill="none" stroke="url(#cg1)" stroke-width="0.7" opacity="0.4"/>
+              <path d="M68 82 Q60 72 64 58 Q70 66 68 82" fill="#D97706" opacity="0.7"/>
+              <path d="M68 90 Q57 83 61 68 Q68 76 68 90" fill="#D97706" opacity="0.55"/>
+              <path d="M152 82 Q160 72 156 58 Q150 66 152 82" fill="#D97706" opacity="0.7"/>
+              <path d="M152 90 Q163 83 159 68 Q152 76 152 90" fill="#D97706" opacity="0.55"/>
+              <text x="110" y="92" text-anchor="middle" font-size="26" fill="url(#cg1)" font-family="Georgia,serif" font-weight="900">CEO</text>
+              <text x="110" y="112" text-anchor="middle" font-size="6.5" fill="url(#cg1)" font-family="sans-serif" letter-spacing="2" opacity="0.8">EXECUTIVE</text>
+            </svg>
+            <div class="corp-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="dept-badge">Executive</div><div class="moq-corp">MOQ 10</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">Executive Suite</div>
+            <h3 class="product-title mb-3">Executive Title Shield Crest</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>10–49</span><span>$12.00/ea</span></div>
+              <div class="tier-row"><span>50–249</span><span>$7.50/ea</span></div>
+              <div class="tier-row best"><span>250+ units</span><span class="text-[var(--amber-4)]">$4.80/ea ★</span></div>
+            </div>
+            <button class="add-corp quick-quote-btn" data-product="Executive Title Shield Crest"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="corp-card" data-dept="department">
+          <div class="corp-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="cb2-g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1c1c2e"/><stop offset="100%" stop-color="#14142a"/></linearGradient></defs>
+              <rect width="220" height="180" fill="url(#cb2-g)"/>
+              <rect x="40" y="26" width="140" height="128" rx="8" fill="#111" stroke="#6366F1" stroke-width="2"/>
+              <rect x="46" y="32" width="128" height="116" rx="5" fill="none" stroke="#6366F1" stroke-width="0.7" opacity="0.35"/>
+              <circle cx="50" cy="36" r="3.5" fill="#6366F1" opacity="0.5"/><circle cx="170" cy="36" r="3.5" fill="#6366F1" opacity="0.5"/>
+              <circle cx="50" cy="144" r="3.5" fill="#6366F1" opacity="0.5"/><circle cx="170" cy="144" r="3.5" fill="#6366F1" opacity="0.5"/>
+              <text x="110" y="88" text-anchor="middle" font-size="22" fill="#818CF8" font-family="Georgia,serif" font-weight="800">DEPT</text>
+              <text x="110" y="106" text-anchor="middle" font-size="8" fill="#6366F1" font-family="monospace" letter-spacing="3">OPERATIONS</text>
+              <path d="M68 116 L152 116" stroke="#6366F1" stroke-width="0.6" opacity="0.3"/>
+              <text x="110" y="130" text-anchor="middle" font-size="7" fill="#818CF8" opacity="0.6" font-family="sans-serif" letter-spacing="2">UNIT · 04</text>
+            </svg>
+            <div class="corp-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="dept-badge">Department</div><div class="moq-corp">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--indigo-4)">Department Badges</div>
+            <h3 class="product-title mb-3">Department Rectangle Insignia</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–199</span><span>$4.20/ea</span></div>
+              <div class="tier-row"><span>200–999</span><span>$2.60/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.60/ea ★</span></div>
+            </div>
+            <button class="add-corp quick-quote-btn" data-product="Department Rectangle Insignia"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="corp-card" data-dept="security">
+          <div class="corp-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="cb3" cx="50%" cy="40%"><stop offset="0%" stop-color="#1a2e20"/><stop offset="100%" stop-color="#0d1f14"/></radialGradient></defs>
+              <rect width="220" height="180" fill="url(#cb3)"/>
+              <path d="M110 16 L164 42 L164 100 C164 134 110 158 110 158 C110 158 56 134 56 100 L56 42 Z" fill="#0d2018" stroke="#34D399" stroke-width="2.2"/>
+              <path d="M110 28 L150 50 L150 96 C150 122 110 142 110 142 C110 142 70 122 70 96 L70 50 Z" fill="none" stroke="rgba(52,211,153,0.15)" stroke-width="1"/>
+              <text x="110" y="88" text-anchor="middle" font-size="14" fill="#34D399" font-family="Georgia,serif" font-weight="700">SECURITY</text>
+              <path d="M82 95 L138 95" stroke="#34D399" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="108" text-anchor="middle" font-size="7" fill="rgba(52,211,153,0.7)" font-family="sans-serif" letter-spacing="2">OFFICER</text>
+              <rect x="107" y="52" width="6" height="22" rx="3" fill="#34D399" opacity="0.85"/>
+              <ellipse cx="110" cy="46" rx="7" ry="10" fill="#FBBF24" opacity="0.9"/>
+            </svg>
+            <div class="corp-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="dept-badge">Security</div><div class="moq-corp">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--emerald)">Security / Field</div>
+            <h3 class="product-title mb-3">Security Officer Shield Badge</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–199</span><span>$5.50/ea</span></div>
+              <div class="tier-row"><span>200–999</span><span>$3.40/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$2.10/ea ★</span></div>
+            </div>
+            <button class="add-corp quick-quote-btn" data-product="Security Officer Shield Badge"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="corp-card" data-dept="hospitality">
+          <div class="corp-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="cb4" cx="50%" cy="50%"><stop offset="0%" stop-color="#2d1b4e"/><stop offset="100%" stop-color="#160d27"/></radialGradient></defs>
+              <rect width="220" height="180" fill="url(#cb4)"/>
+              <circle cx="110" cy="88" r="62" fill="#1a0f36" stroke="#C084FC" stroke-width="2.2"/>
+              <circle cx="110" cy="88" r="54" fill="none" stroke="#C084FC" stroke-width="0.8" stroke-dasharray="4 4" opacity="0.4"/>
+              <text x="110" y="80" text-anchor="middle" font-size="24" fill="#C084FC" opacity="0.9">★</text>
+              <text x="110" y="100" text-anchor="middle" font-size="9" fill="#C084FC" font-family="Georgia,serif" font-weight="700">CONCIERGE</text>
+              <path d="M80 108 L140 108" stroke="#C084FC" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="120" text-anchor="middle" font-size="6.5" fill="rgba(192,132,252,0.7)" font-family="sans-serif" letter-spacing="2">PLATINUM</text>
+            </svg>
+            <div class="corp-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="dept-badge">Hospitality</div><div class="moq-corp">MOQ 100</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--purple)">Hospitality</div>
+            <h3 class="product-title mb-3">Concierge Grade Circle Crest</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>100–249</span><span>$6.20/ea</span></div>
+              <div class="tier-row"><span>250–999</span><span>$3.80/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$2.40/ea ★</span></div>
+            </div>
+            <button class="add-corp quick-quote-btn" data-product="Concierge Grade Circle Crest"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="corp-card" data-dept="executive department">
+          <div class="corp-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="cg5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#92400e"/><stop offset="40%" stop-color="#F6E05E"/><stop offset="100%" stop-color="#92400e"/></linearGradient><linearGradient id="cb5" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1a1a0a"/><stop offset="100%" stop-color="#2a2610"/></linearGradient></defs>
+              <rect width="220" height="180" fill="url(#cb5)"/>
+              <path d="M110 14 L176 87 L110 160 L44 87 Z" fill="#15150a" stroke="url(#cg5)" stroke-width="2.5"/>
+              <path d="M110 32 L158 87 L110 142 L62 87 Z" fill="none" stroke="url(#cg5)" stroke-width="0.7" opacity="0.3"/>
+              <text x="110" y="100" text-anchor="middle" font-size="28" fill="url(#cg5)" font-family="Georgia,serif" font-weight="900">VP</text>
+              <text x="110" y="120" text-anchor="middle" font-size="6.5" fill="url(#cg5)" font-family="sans-serif" letter-spacing="2.5" opacity="0.8">VICE PRESIDENT</text>
+            </svg>
+            <div class="corp-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="dept-badge">Executive</div><div class="moq-corp">MOQ 10</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">Executive</div>
+            <h3 class="product-title mb-3">VP Diamond Lapel Insignia</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>10–49</span><span>$14.00/ea</span></div>
+              <div class="tier-row"><span>50–249</span><span>$8.50/ea</span></div>
+              <div class="tier-row best"><span>250+ units</span><span class="text-[var(--amber-4)]">$5.50/ea ★</span></div>
+            </div>
+            <button class="add-corp quick-quote-btn" data-product="VP Diamond Lapel Insignia"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="corp-card" data-dept="department security hospitality">
+          <div class="corp-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="cb6" cx="50%" cy="45%"><stop offset="0%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#0f1f3d"/></radialGradient></defs>
+              <rect width="220" height="180" fill="#0d1929"/>
+              <rect x="0" y="0" width="220" height="180" fill="url(#cb6)" opacity="0.9"/>
+              <path d="M110 18 L172 46 L172 116 L110 152 L48 116 L48 46 Z" fill="#122544" stroke="#FBBF24" stroke-width="2.5"/>
+              <path d="M110 30 L158 52 L158 110 L110 138 L62 110 L62 52 Z" fill="none" stroke="rgba(251,191,36,0.2)" stroke-width="1"/>
+              <text x="110" y="92" text-anchor="middle" font-size="18" fill="#FBBF24" font-family="Georgia,serif" font-weight="700">STAFF</text>
+              <path d="M82 100 L138 100" stroke="#FBBF24" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="114" text-anchor="middle" font-size="6.5" fill="rgba(251,191,36,0.7)" font-family="sans-serif" letter-spacing="2">AUTHORIZED</text>
+            </svg>
+            <div class="corp-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="dept-badge">Staff</div><div class="moq-corp">MOQ 100</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--indigo-4)">Department / Staff</div>
+            <h3 class="product-title mb-3">Authorized Staff Varsity Crest</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>100–499</span><span>$3.60/ea</span></div>
+              <div class="tier-row"><span>500–999</span><span>$2.20/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.40/ea ★</span></div>
+            </div>
+            <button class="add-corp quick-quote-btn" data-product="Authorized Staff Varsity Crest"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="corp-card" data-dept="hospitality executive">
+          <div class="corp-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="cg7" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1a3a1a"/><stop offset="100%" stop-color="#0d200d"/></linearGradient></defs>
+              <rect width="220" height="180" fill="url(#cg7)"/>
+              <ellipse cx="110" cy="90" rx="68" ry="62" fill="#0d1f0d" stroke="#34D399" stroke-width="2"/>
+              <ellipse cx="110" cy="90" rx="58" ry="52" fill="none" stroke="rgba(52,211,153,0.15)" stroke-width="0.8"/>
+              <text x="110" y="78" text-anchor="middle" font-size="22" fill="#34D399" font-family="Georgia,serif" font-weight="800">MANAGER</text>
+              <path d="M80 86 L140 86" stroke="#34D399" stroke-width="0.6" opacity="0.3"/>
+              <text x="110" y="100" text-anchor="middle" font-size="8" fill="rgba(52,211,153,0.7)" font-family="sans-serif" letter-spacing="1.5">FLOOR LEVEL 1</text>
+              <text x="110" y="116" text-anchor="middle" font-size="14" fill="#FBBF24" opacity="0.7">★ ★ ★</text>
+            </svg>
+            <div class="corp-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="dept-badge">Manager</div><div class="moq-corp">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--emerald)">Management</div>
+            <h3 class="product-title mb-3">Manager Grade Oval Emblem</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–199</span><span>$6.80/ea</span></div>
+              <div class="tier-row"><span>200–999</span><span>$4.20/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$2.60/ea ★</span></div>
+            </div>
+            <button class="add-corp quick-quote-btn" data-product="Manager Grade Oval Emblem"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="corp-card" data-dept="department">
+          <div class="corp-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="cb8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1c1c1c"/><stop offset="100%" stop-color="#141414"/></linearGradient></defs>
+              <rect width="220" height="180" fill="url(#cb8)"/>
+              <rect x="38" y="24" width="144" height="132" rx="10" fill="#0f0f0f" stroke="#FBBF24" stroke-width="2"/>
+              <rect x="46" y="32" width="128" height="116" rx="6" fill="none" stroke="rgba(251,191,36,0.15)" stroke-width="0.8"/>
+              <text x="110" y="76" text-anchor="middle" font-size="11" fill="#FBBF24" font-family="Georgia,serif" font-weight="700">BRANDED</text>
+              <text x="110" y="95" text-anchor="middle" font-size="22" fill="#FBBF24" font-family="Georgia,serif" font-weight="900">CORP</text>
+              <path d="M68 106 L152 106" stroke="#FBBF24" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="122" text-anchor="middle" font-size="7" fill="rgba(251,191,36,0.6)" font-family="sans-serif" letter-spacing="2">WORKWEAR</text>
+            </svg>
+            <div class="corp-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="dept-badge">Workwear</div><div class="moq-corp">MOQ 100</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">Workwear</div>
+            <h3 class="product-title mb-3">Branded Corporate Workwear Patch</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>100–499</span><span>$2.80/ea</span></div>
+              <div class="tier-row"><span>500–999</span><span>$1.80/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.10/ea ★</span></div>
+            </div>
+            <button class="add-corp quick-quote-btn" data-product="Branded Corporate Workwear Patch"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+      </div>
+      <div id="corp-no-results" class="hidden py-20 text-center">
+        <i data-lucide="search-x" class="w-10 h-10 text-[var(--text-faint-3)] mx-auto mb-4"></i>
+        <p class="text-[var(--text-faint)] font-inter text-sm">No products for this filter.</p>
+        <button id="corp-reset" class="mt-4 text-sm text-[var(--amber-4)] hover:opacity-80 font-inter">Show all</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW TO ORDER + BENEFITS SPLIT -->
+  <section class="py-20 border-t border-[var(--border)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-start">
+
+        <!-- Order steps -->
+        <div>
+          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-4">
+            <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>CORPORATE ORDERING
+          </div>
+          <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)] mb-10">How Corporate Orders Work</h2>
+          <div>
+            <div class="order-step"><div class="step-num">1</div><div><div class="step-title">Submit RFQ</div><div class="step-desc">Fill our quote form with quantity, patch type, and any existing artwork. Receive a formal quote within 2 business hours.</div></div></div>
+            <div class="order-step"><div class="step-num">2</div><div><div class="step-title">Artwork & Digitization</div><div class="step-desc">We convert your logo or crest into embroidery-ready files at no extra cost on orders over 250 units. Revisions included.</div></div></div>
+            <div class="order-step"><div class="step-num">3</div><div><div class="step-title">Sample Approval</div><div class="step-desc">Receive a physical sample for sign-off before bulk production starts. Colour-matched to Pantone specification.</div></div></div>
+            <div class="order-step"><div class="step-num">4</div><div><div class="step-title">Bulk Production & QA</div><div class="step-desc">Full production with inline QA checks. Every unit inspected against the approved sample before packing.</div></div></div>
+            <div class="order-step"><div class="step-num">5</div><div><div class="step-title">Delivery & Invoice</div><div class="step-desc">Shipped with PO documentation. Net-30 payment terms available for approved enterprise accounts.</div></div></div>
+          </div>
+        </div>
+
+        <!-- Benefits grid -->
+        <div>
+          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-4">
+            <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>WHY CHOOSE US
+          </div>
+          <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)] mb-10">Enterprise-Grade Advantages</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="benefit-card"><div class="feature-icon-wrap mb-3"><i data-lucide="shield-check" class="w-5 h-5 text-[var(--amber-4)]"></i></div><div class="feature-title">ISO 9001 Certified</div><div class="feature-desc">Every batch produced in our certified facility with documented quality control records.</div></div>
+            <div class="benefit-card"><div class="feature-icon-wrap mb-3"><i data-lucide="clock" class="w-5 h-5 text-[var(--indigo-4)]"></i></div><div class="feature-title">Rush Production Available</div><div class="feature-desc">5-day rush turnaround for urgent orders. Premium surcharge applies for orders under 7 days.</div></div>
+            <div class="benefit-card"><div class="feature-icon-wrap mb-3"><i data-lucide="file-text" class="w-5 h-5 text-[var(--emerald)]"></i></div><div class="feature-title">PO & Net-30 Terms</div><div class="feature-desc">Full purchase order workflow with invoicing and Net-30 payment terms for approved accounts.</div></div>
+            <div class="benefit-card"><div class="feature-icon-wrap mb-3"><i data-lucide="repeat" class="w-5 h-5 text-[var(--purple)]"></i></div><div class="feature-title">Exact-Match Reorders</div><div class="feature-desc">Color profiles archived. Reorder at any time and receive an exact color and thread match.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="corp-cta relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-10 relative z-10">
+          <div class="flex-1 text-center lg:text-start">
+            <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)] mb-4">Ready to Outfit Your Workforce?</h2>
+            <p class="text-[var(--text-muted)] font-inter text-base leading-relaxed max-w-lg">Get a formal quote tailored to your department size, patch type, and delivery timeline. Enterprise accounts receive dedicated account management.</p>
+          </div>
+          <div class="shrink-0 flex flex-col items-center gap-3">
+            <a href="contact.html" class="stitch-btn flex items-center gap-2.5 px-9 py-4 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="send" class="w-4 h-4"></i> Request Corporate Quote
+            </a>
+            <p class="text-xs text-[var(--text-faint-2)] font-inter">Quotes returned in under 2 hours · PO billing available</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[var(--footer-border)] py-12">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-start">
+          <a href="home.html" class="font-jakarta font-extrabold text-lg tracking-tight mb-1 text-[var(--text-primary)] inline-block">PATCH<span class="text-[var(--amber-5)]">CRAFT</span><span class="text-[var(--text-faint-2)] text-xs font-inter font-normal ms-1">PRO</span></a>
+          <p class="text-xs text-[var(--text-faint-2)] font-inter">Premium B2B Uniform Solutions · Est. 2008</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-inter text-[var(--text-faint-2)]">
+          <a href="home.html" class="hover:text-[var(--text-body)] transition-colors">Home</a>
+          <a href="schools-catalog.html" class="hover:text-[var(--text-body)] transition-colors">Schools</a>
+          <a href="corporate-patches.html" class="text-[var(--amber-4)]">Corporate</a>
+          <a href="uniform-branding.html" class="hover:text-[var(--text-body)] transition-colors">Uniform Branding</a>
+          <a href="sports-teams.html" class="hover:text-[var(--text-body)] transition-colors">Sports Teams</a>
+          <a href="home2.html#pricing" class="hover:text-[var(--text-body)] transition-colors">Pricing</a>
+          <a href="contact.html" class="hover:text-[var(--text-body)] transition-colors">Contact</a>
+        </div>
+        <p class="text-xs text-[var(--text-faint-3)] font-inter">© 2026 PatchCraft Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+    <span id="toast-message" class="text-sm font-inter text-white">Added to quote!</span>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var tabs = document.querySelectorAll('.dept-tab');
+      var cards = document.querySelectorAll('#corp-grid .corp-card');
+      var countEl = document.getElementById('corp-count');
+      var noRes = document.getElementById('corp-no-results');
+      var resetBtn = document.getElementById('corp-reset');
+      function apply(dept) {
+        var v = 0;
+        cards.forEach(function(c) {
+          var d = (c.getAttribute('data-dept') || '').split(' ');
+          var m = dept === 'all' || d.indexOf(dept) !== -1;
+          c.style.display = m ? '' : 'none';
+          if (m) v++;
+        });
+        if (countEl) countEl.textContent = v;
+        if (noRes) noRes.classList.toggle('hidden', v !== 0);
+      }
+      tabs.forEach(function(t) {
+        t.addEventListener('click', function() {
+          tabs.forEach(function(x) { x.classList.remove('active-dept'); });
+          t.classList.add('active-dept');
+          apply(t.getAttribute('data-dept'));
+        });
+      });
+      if (resetBtn) resetBtn.addEventListener('click', function() { tabs[0].click(); });
+      apply('all');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — PatchCraft Pro</title>
+  <meta name="description" content="Create your free PatchCraft Pro account to manage orders, request bulk quotes, and track production for your school, corporate, or sports uniform program." />
+  <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
+  <script>(function(){try{var t=localStorage.getItem('pcp-theme');document.documentElement.setAttribute('data-theme',t||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));var d=localStorage.getItem('pcp-dir');if(d==='rtl'||d==='ltr')document.documentElement.setAttribute('dir',d);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>tailwind.config={theme:{extend:{fontFamily:{jakarta:['"Plus Jakarta Sans"','sans-serif'],inter:['Inter','sans-serif']}}}};</script>
+  <style>
+    .auth-layout{min-height:100vh;display:grid;grid-template-columns:1fr;align-items:stretch;}
+    @media(min-width:1024px){.auth-layout{grid-template-columns:1fr 1fr;}}
+    .auth-left{background:linear-gradient(145deg,#0d1220 0%,#111827 60%,#0A0F1C 100%);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:40px;min-height:380px;}
+    html[data-theme="light"] .auth-left{background:linear-gradient(145deg,#1E293B 0%,#0F172A 100%);}
+    .auth-left::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;}
+    .auth-glow-a{position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:var(--indigo-5);opacity:.07;border-radius:50%;filter:blur(100px);}
+    .auth-glow-b{position:absolute;bottom:-40px;left:-40px;width:300px;height:300px;background:var(--amber-5);opacity:.06;border-radius:50%;filter:blur(90px);}
+    .auth-glow-c{position:absolute;top:40%;left:20%;width:200px;height:200px;background:var(--emerald);opacity:.04;border-radius:50%;filter:blur(80px);}
+    .auth-right{background:var(--bg);display:flex;align-items:center;justify-content:center;padding:40px 24px;}
+    .auth-card{width:100%;max-width:460px;}
+    .auth-form-input{width:100%;background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;padding:13px 16px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text-primary);outline:none;transition:border-color .25s ease,box-shadow .25s ease,background-color .4s ease;}
+    .auth-form-input::placeholder{color:var(--text-faint-2);}
+    .auth-form-input:focus{border-color:var(--amber-tint-30);box-shadow:0 0 0 3px var(--amber-tint-08);}
+    .auth-form-input.input-error{border-color:rgba(239,68,68,.5);box-shadow:0 0 0 3px rgba(239,68,68,.08);}
+    .auth-input-wrap{position:relative;}
+    .auth-input-icon{position:absolute;inset-inline-start:14px;top:50%;transform:translateY(-50%);color:var(--text-faint);pointer-events:none;}
+    .auth-input-wrap .auth-form-input{padding-inline-start:42px;}
+    .auth-eye-btn{position:absolute;inset-inline-end:14px;top:50%;transform:translateY(-50%);background:transparent;border:none;cursor:pointer;color:var(--text-faint);padding:2px;transition:color .2s ease;}
+    .auth-eye-btn:hover{color:var(--text-muted);}
+    .auth-label{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+    .auth-btn{width:100%;padding:14px;background:var(--amber-5);color:var(--on-accent);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;border:none;border-radius:14px;cursor:pointer;transition:all .25s ease;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .auth-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px var(--amber-tint-20);}
+    .auth-btn:active{transform:translateY(0);}
+    .auth-divider{display:flex;align-items:center;gap:12px;margin:20px 0;}
+    .auth-divider span{font-family:'Inter',sans-serif;font-size:12px;color:var(--text-faint-2);flex-shrink:0;}
+    .auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+    .social-btn{width:100%;padding:12px;background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--text-body);cursor:pointer;transition:all .2s ease;}
+    .social-btn:hover{border-color:var(--border-stronger);background:var(--surface-soft-hover);}
+    .strength-bar{height:4px;border-radius:100px;background:var(--border-strong);overflow:hidden;margin-top:6px;}
+    .strength-fill{height:100%;border-radius:100px;width:0%;transition:width .3s ease,background-color .3s ease;}
+    .strength-label{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-faint-2);margin-top:4px;}
+    .plan-pill{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:2px solid var(--border);cursor:pointer;transition:all .2s ease;}
+    .plan-pill:hover{border-color:var(--border-stronger);}
+    .plan-pill.selected{border-color:var(--amber-tint-30);background:var(--amber-tint-08);}
+    .plan-pill input[type="radio"]{display:none;}
+    .plan-dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--control-border);flex-shrink:0;position:relative;transition:all .2s ease;}
+    .plan-pill.selected .plan-dot{border-color:var(--amber-5);background:var(--amber-5);}
+    .plan-pill.selected .plan-dot::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:5px;height:5px;border-radius:50%;background:var(--on-accent);}
+    .step-indicator{display:flex;align-items:center;gap:0;}
+    .step-dot{width:8px;height:8px;border-radius:50%;background:var(--border-strong);transition:background .3s ease;}
+    .step-dot.active{background:var(--amber-5);}
+    .step-dot.done{background:var(--emerald);}
+    .step-connector{flex:1;height:1px;background:var(--border);max-width:28px;margin:0 4px;}
+    @keyframes auth-slide-up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .auth-card{animation:auth-slide-up .6s cubic-bezier(.16,1,.3,1) both;}
+    .auth-feature-strip{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);}
+    .auth-feature-strip:last-child{border-bottom:none;}
+    .step-form{transition:opacity .3s ease;}
+  </style>
+</head>
+<body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased">
+
+  <div class="auth-layout">
+
+    <!-- LEFT PANEL -->
+    <div class="auth-left">
+      <div class="auth-glow-a"></div>
+      <div class="auth-glow-b"></div>
+      <div class="auth-glow-c"></div>
+
+      <!-- Top: Logo + theme toggle -->
+      <div class="flex items-center justify-between relative z-10">
+        <a href="home.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight text-white">
+          PATCH<span class="text-[var(--amber-4)]">CRAFT</span>
+          <span class="text-[10px] font-inter font-medium text-white/40 tracking-widest mt-0.5">PRO</span>
+        </a>
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+      </div>
+
+      <!-- Middle -->
+      <div class="relative z-10 py-8">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)]"></span>
+          <span class="text-[11px] font-jakarta font-semibold text-white/60 tracking-widest uppercase">Free Account · No Credit Card</span>
+        </div>
+        <h2 class="font-jakarta font-black text-3xl xl:text-4xl text-white leading-snug mb-4">
+          Start Your<br />Uniform Program<br /><span class="text-[var(--amber-4)]">Today.</span>
+        </h2>
+        <p class="text-white/50 font-inter text-sm leading-relaxed max-w-xs">
+          Join 500+ schools, corporates, and sports organisations already using PatchCraft Pro for their bulk uniform needs.
+        </p>
+
+        <!-- Benefits -->
+        <div class="mt-8 space-y-0">
+          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Free account — no credit card required</span></div>
+          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Quote in under 2 hours after signup</span></div>
+          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Order tracking + reorder dashboard</span></div>
+          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Invoice & PO document management</span></div>
+          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Pantone colour archive — exact reorders</span></div>
+        </div>
+      </div>
+
+      <!-- Bottom: stat strip -->
+      <div class="relative z-10 grid grid-cols-3 gap-4 border-t border-white/10 pt-5">
+        <div class="text-center">
+          <div class="font-jakarta font-black text-2xl text-white">500+</div>
+          <div class="text-[10px] text-white/35 font-inter mt-0.5">Organisations</div>
+        </div>
+        <div class="text-center">
+          <div class="font-jakarta font-black text-2xl text-[var(--amber-4)]">2hr</div>
+          <div class="text-[10px] text-white/35 font-inter mt-0.5">Quote turnaround</div>
+        </div>
+        <div class="text-center">
+          <div class="font-jakarta font-black text-2xl text-white">ISO</div>
+          <div class="text-[10px] text-white/35 font-inter mt-0.5">9001 Certified</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL — signup form -->
+    <div class="auth-right">
+      <div class="auth-card">
+
+        <!-- Header -->
+        <div class="mb-6">
+          <div class="flex items-center justify-between mb-1">
+            <h1 class="font-jakarta font-black text-3xl text-[var(--text-primary)]">Create account</h1>
+            <!-- Step indicator -->
+            <div class="step-indicator" id="step-indicator">
+              <div class="step-dot active" id="sdot-1"></div>
+              <div class="step-connector"></div>
+              <div class="step-dot" id="sdot-2"></div>
+              <div class="step-connector"></div>
+              <div class="step-dot" id="sdot-3"></div>
+            </div>
+          </div>
+          <p class="text-[var(--text-faint)] font-inter text-sm">Already have an account? <a href="login.html" class="text-[var(--amber-4)] font-semibold hover:opacity-80 transition-opacity">Sign in</a></p>
+        </div>
+
+        <!-- Social signup -->
+        <button class="social-btn mb-3" type="button">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.47 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          Sign up with Google
+        </button>
+
+        <div class="auth-divider"><span>or continue with email</span></div>
+
+        <!-- STEP 1: Account Details -->
+        <div id="step-1" class="step-form">
+          <div class="text-xs font-jakarta font-semibold text-[var(--text-faint-2)] uppercase tracking-widest mb-5">Step 1 of 3 — Account Details</div>
+          <div class="grid grid-cols-2 gap-4 mb-4">
+            <div>
+              <label class="auth-label" for="su-fname">First Name</label>
+              <div class="auth-input-wrap">
+                <i data-lucide="user" class="auth-input-icon w-4 h-4"></i>
+                <input type="text" id="su-fname" class="auth-form-input" placeholder="Jane" />
+              </div>
+            </div>
+            <div>
+              <label class="auth-label" for="su-lname">Last Name</label>
+              <input type="text" id="su-lname" class="auth-form-input" placeholder="Smith" />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="auth-label" for="su-email">Work Email</label>
+            <div class="auth-input-wrap">
+              <i data-lucide="mail" class="auth-input-icon w-4 h-4"></i>
+              <input type="email" id="su-email" class="auth-form-input" placeholder="jane@company.com" autocomplete="email" />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="auth-label" for="su-password">Password</label>
+            <div class="auth-input-wrap">
+              <i data-lucide="lock" class="auth-input-icon w-4 h-4"></i>
+              <input type="password" id="su-password" class="auth-form-input" placeholder="Create a strong password" autocomplete="new-password" />
+              <button type="button" class="auth-eye-btn" id="toggle-pw-su" aria-label="Toggle password">
+                <i data-lucide="eye" class="w-4 h-4"></i>
+              </button>
+            </div>
+            <div class="strength-bar"><div class="strength-fill" id="strength-fill"></div></div>
+            <div class="strength-label" id="strength-label">Enter a password</div>
+          </div>
+          <button type="button" class="auth-btn stitch-btn mt-2" onclick="goStep(2)">
+            Continue <i data-lucide="arrow-right" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- STEP 2: Organisation -->
+        <div id="step-2" class="step-form hidden">
+          <div class="text-xs font-jakarta font-semibold text-[var(--text-faint-2)] uppercase tracking-widest mb-5">Step 2 of 3 — Your Organisation</div>
+          <div class="mb-4">
+            <label class="auth-label" for="su-org">Organisation / School Name</label>
+            <div class="auth-input-wrap">
+              <i data-lucide="building-2" class="auth-input-icon w-4 h-4"></i>
+              <input type="text" id="su-org" class="auth-form-input" placeholder="Westbrook Academy" />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="auth-label" for="su-role">Your Role</label>
+            <div class="auth-input-wrap">
+              <i data-lucide="user-cog" class="auth-input-icon w-4 h-4"></i>
+              <select id="su-role" class="auth-form-input" style="appearance:none;background-image:url('data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2716%27 height=%2716%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%2364748B%27 stroke-width=%272%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 14px center;padding-inline-start:42px;">
+                <option value="" disabled selected>Select your role</option>
+                <option>Procurement Officer</option>
+                <option>School Administrator</option>
+                <option>HR / Operations Manager</option>
+                <option>Uniform Coordinator</option>
+                <option>Sports Coach / Manager</option>
+                <option>Business Owner</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="auth-label" for="su-phone">Phone Number</label>
+            <div class="auth-input-wrap">
+              <i data-lucide="phone" class="auth-input-icon w-4 h-4"></i>
+              <input type="tel" id="su-phone" class="auth-form-input" placeholder="+1 555 000 0000" />
+            </div>
+          </div>
+          <div class="flex gap-3 mt-2">
+            <button type="button" class="flex-none px-5 py-3 border border-[var(--border-strong)] rounded-xl font-jakarta font-bold text-sm text-[var(--text-primary)] hover:border-[var(--border-stronger)] transition-all" onclick="goStep(1)">
+              <i data-lucide="arrow-left" class="w-4 h-4 inline-block me-1"></i> Back
+            </button>
+            <button type="button" class="auth-btn stitch-btn flex-1" onclick="goStep(3)">
+              Continue <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Plan & Submit -->
+        <div id="step-3" class="step-form hidden">
+          <div class="text-xs font-jakarta font-semibold text-[var(--text-faint-2)] uppercase tracking-widest mb-5">Step 3 of 3 — Account Type</div>
+          <p class="text-sm text-[var(--text-faint)] font-inter mb-4">What best describes your ordering needs?</p>
+
+          <div class="space-y-3 mb-6">
+            <label class="plan-pill selected" id="pill-schools" for="plan-schools">
+              <input type="radio" name="plan" id="plan-schools" value="schools" checked />
+              <div class="plan-dot"></div>
+              <div>
+                <div class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Schools & Education</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Crests, house badges, merit patches</div>
+              </div>
+              <i data-lucide="graduation-cap" class="w-4 h-4 text-[var(--indigo-4)] ms-auto"></i>
+            </label>
+            <label class="plan-pill" id="pill-corporate" for="plan-corporate">
+              <input type="radio" name="plan" id="plan-corporate" value="corporate" />
+              <div class="plan-dot"></div>
+              <div>
+                <div class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Corporate & Enterprise</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Blazer crests, department badges, workwear</div>
+              </div>
+              <i data-lucide="briefcase" class="w-4 h-4 text-[var(--amber-4)] ms-auto"></i>
+            </label>
+            <label class="plan-pill" id="pill-sports" for="plan-sports">
+              <input type="radio" name="plan" id="plan-sports" value="sports" />
+              <div class="plan-dot"></div>
+              <div>
+                <div class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Sports Teams & Leagues</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Roster kits, jersey crests, captain patches</div>
+              </div>
+              <i data-lucide="shield" class="w-4 h-4 text-[var(--emerald)] ms-auto"></i>
+            </label>
+            <label class="plan-pill" id="pill-other" for="plan-other">
+              <input type="radio" name="plan" id="plan-other" value="other" />
+              <div class="plan-dot"></div>
+              <div>
+                <div class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Uniform Branding Program</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Full end-to-end uniform solutions</div>
+              </div>
+              <i data-lucide="layers" class="w-4 h-4 text-[var(--purple)] ms-auto"></i>
+            </label>
+          </div>
+
+          <div class="flex items-start gap-3 mb-5">
+            <input type="checkbox" class="filter-checkbox mt-0.5" id="su-terms" />
+            <label for="su-terms" class="text-xs font-inter text-[var(--text-faint)] leading-relaxed cursor-pointer">
+              I agree to PatchCraft Pro's <a href="#" class="text-[var(--amber-4)]">Terms of Service</a> and <a href="#" class="text-[var(--amber-4)]">Privacy Policy</a>. I consent to receiving order updates and quotes by email.
+            </label>
+          </div>
+
+          <!-- Success state (hidden initially) -->
+          <div id="signup-success" class="hidden mb-5 p-5 rounded-2xl bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.25)]">
+            <div class="flex items-center gap-3 mb-3">
+              <i data-lucide="check-circle-2" class="w-6 h-6 text-[var(--emerald)] flex-shrink-0"></i>
+              <div class="font-jakarta font-bold text-base text-[var(--text-primary)]">Account Created!</div>
+            </div>
+            <p class="text-sm text-[var(--text-faint)] font-inter">Check your email to verify your address. A specialist will reach out within 2 hours to get your first quote started.</p>
+            <a href="home.html" class="inline-flex items-center gap-2 mt-4 text-sm font-jakarta font-bold text-[var(--emerald)] hover:opacity-80 transition-opacity">
+              <i data-lucide="home" class="w-4 h-4"></i> Back to home
+            </a>
+          </div>
+
+          <div class="flex gap-3">
+            <button type="button" class="flex-none px-5 py-3 border border-[var(--border-strong)] rounded-xl font-jakarta font-bold text-sm text-[var(--text-primary)] hover:border-[var(--border-stronger)] transition-all" onclick="goStep(2)">
+              <i data-lucide="arrow-left" class="w-4 h-4 inline-block me-1"></i> Back
+            </button>
+            <button type="button" class="auth-btn stitch-btn flex-1" id="signup-submit" onclick="submitSignup()">
+              <i data-lucide="user-plus" class="w-5 h-5"></i> Create Free Account
+            </button>
+          </div>
+        </div>
+
+        <!-- Back link -->
+        <div class="mt-6 pt-5 border-t border-[var(--border)] text-center">
+          <a href="home.html" class="inline-flex items-center gap-1.5 text-sm font-inter text-[var(--text-faint)] hover:text-[var(--text-body)] transition-colors">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Back to PatchCraft Pro
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    var currentStep = 1;
+
+    function goStep(n) {
+      ['step-1','step-2','step-3'].forEach(function(id,i){
+        var el = document.getElementById(id);
+        if(el) el.classList.toggle('hidden', i !== n-1);
+      });
+      ['sdot-1','sdot-2','sdot-3'].forEach(function(id,i){
+        var dot = document.getElementById(id);
+        if(!dot) return;
+        dot.classList.remove('active','done');
+        if(i < n-1) dot.classList.add('done');
+        else if(i === n-1) dot.classList.add('active');
+      });
+      currentStep = n;
+    }
+
+    function submitSignup() {
+      var terms = document.getElementById('su-terms');
+      if(!terms || !terms.checked){ alert('Please agree to the Terms of Service to continue.'); return; }
+      var btn = document.getElementById('signup-submit');
+      btn.disabled = true;
+      btn.innerHTML = '<i data-lucide="loader-circle" class="w-5 h-5 animate-spin"></i> Creating account…';
+      if(window.lucide) lucide.createIcons();
+      setTimeout(function(){
+        document.getElementById('signup-success').classList.remove('hidden');
+        btn.style.display = 'none';
+        document.querySelector('[onclick="goStep(2)"]').style.display = 'none';
+        if(window.lucide) lucide.createIcons();
+      }, 1800);
+    }
+
+    // Plan pill selection
+    document.addEventListener('DOMContentLoaded', function(){
+      var pills = document.querySelectorAll('.plan-pill');
+      pills.forEach(function(pill){
+        pill.addEventListener('click', function(){
+          pills.forEach(function(p){ p.classList.remove('selected'); });
+          pill.classList.add('selected');
+          var radio = pill.querySelector('input[type="radio"]');
+          if(radio) radio.checked = true;
+        });
+      });
+
+      // Password strength
+      var pwField = document.getElementById('su-password');
+      var fill = document.getElementById('strength-fill');
+      var label = document.getElementById('strength-label');
+      if(pwField) {
+        pwField.addEventListener('input', function(){
+          var v = pwField.value;
+          var score = 0;
+          if(v.length >= 8) score++;
+          if(/[A-Z]/.test(v)) score++;
+          if(/[0-9]/.test(v)) score++;
+          if(/[^A-Za-z0-9]/.test(v)) score++;
+          var pct = (score/4)*100;
+          var colors = ['#EF4444','#F59E0B','#3B82F6','#10B981'];
+          var labels = ['Too weak','Fair','Good','Strong'];
+          fill.style.width = pct + '%';
+          fill.style.backgroundColor = colors[score-1] || '#334155';
+          label.textContent = v.length === 0 ? 'Enter a password' : (labels[score-1] || 'Too weak');
+        });
+      }
+
+      // Password toggle
+      var pwToggle = document.getElementById('toggle-pw-su');
+      if(pwToggle && pwField){
+        pwToggle.addEventListener('click', function(){
+          var show = pwField.type === 'password';
+          pwField.type = show ? 'text' : 'password';
+          pwToggle.querySelector('i').setAttribute('data-lucide', show ? 'eye-off' : 'eye');
+          if(window.lucide) lucide.createIcons();
+        });
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PatchCraft Pro — B2B Embroidered Patches &amp; Uniform Supplier</title>
+  <meta name="description" content="Custom embroidered patches, woven badges, and PVC insignia for schools, sports teams, and corporates. Bulk pricing from 50 to 5,000+ units." />
+  <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
+
+  <!-- Avoid a flash of the wrong theme/direction before script.js loads -->
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('pcp-theme');
+        var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+
+        var savedDir = localStorage.getItem('pcp-dir');
+        if (savedDir === 'rtl' || savedDir === 'ltr') {
+          document.documentElement.setAttribute('dir', savedDir);
+        }
+      } catch (e) { /* storage unavailable — defaults already set in markup */ }
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind Extended Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased overflow-x-hidden">
+
+  <!-- ══════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="home.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight">
+        PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+        <span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-inter font-medium text-[var(--text-muted)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 text-[var(--text-primary)] transition-colors duration-200">Catalogs <i data-lucide="chevron-down" class="w-3.5 h-3.5 mt-0.5"></i></button>
+          <div class="absolute top-full left-0 mt-2 w-52 bg-[var(--surface)] border border-[var(--border-strong)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
+            <a href="schools-catalog.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--indigo-4)] hover:bg-[var(--indigo-tint-10)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>Schools</a>
+            <a href="corporate-patches.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--amber-4)] hover:bg-[var(--amber-tint-08)] mt-1"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i>Corporate</a>
+            <a href="uniform-branding.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--emerald)] hover:bg-[rgba(52,211,153,0.08)] mt-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i>Uniform Branding</a>
+            <a href="home2.html#catalog" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--amber-4)] text-xs font-semibold bg-[var(--amber-tint-08)] mt-1"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>All Products</a>
+          </div>
+        </div>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
+      </div>
+
+      <!-- Desktop CTA + Toggles -->
+      <div class="hidden md:flex items-center gap-3">
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button" aria-label="Toggle layout direction, left to right or right to left" title="Toggle LTR / RTL layout">
+          <i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i>
+          <span id="dir-toggle-label" class="dir-toggle-label">LTR</span>
+        </button>
+        <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
+        <a href="login.html" class="text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-200 font-inter">Sign In</a>
+        <a href="contact.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Get a Quote</a>
+      </div>
+
+      <!-- Mobile Controls -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+      <div class="flex flex-col gap-4 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors">Home</a>
+        <a href="home2.html#catalog" class="hover:text-[var(--text-primary)] transition-colors">Catalog</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors">Pricing</a>
+        <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
+
+        <button id="dir-toggle-mobile" class="icon-toggle-btn !w-full !rounded-xl justify-center gap-2 py-2.5" type="button" aria-label="Toggle layout direction">
+          <i data-lucide="arrow-left-right" class="dir-toggle-icon w-4 h-4"></i>
+          <span class="text-xs font-inter">Switch to <span id="dir-toggle-label-mobile" class="font-bold">RTL</span> layout</span>
+        </button>
+
+        <button class="mt-1 w-full py-3 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-xl">Get a Quote</button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════
+       HERO SECTION
+  ══════════════════════════════════════════════ -->
+  <section id="hero" class="min-h-screen pt-20 relative flex items-center overflow-hidden">
+
+    <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
+
+    <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--amber-5)]/8 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--indigo-5)]/8 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
+      <div class="grid lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+
+        <!-- ── Left: Copy & CTAs ── -->
+        <div class="hero-copy">
+
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
+            <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">B2B Uniform Solutions</span>
+          </div>
+
+          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+            Precision<br />
+            <span class="text-gradient-gold">Crafted.</span><br />
+            Bulk Priced.
+          </h1>
+
+          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
+            Custom embroidered patches, woven badges, and PVC insignia for schools, sports teams, and corporates. From 50 to 50,000 units — quality never compromises.
+          </p>
+
+          <div class="flex items-center gap-6 md:gap-10 mb-10">
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">500+</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Clients Served</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">MOQ 50</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Minimum Units</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--amber-4)]">10-Day</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Avg. Production</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="#catalog" class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              Explore Catalog
+            </a>
+            <button class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
+              <i data-lucide="upload" class="w-4 h-4"></i>
+              Upload Design
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Right: Interactive Patch Previewer ── -->
+        <div class="hero-right flex flex-col items-center gap-4">
+          <div class="previewer-card w-full max-w-[440px]">
+
+            <div class="flex items-center justify-between mb-6">
+              <div>
+                <h3 class="font-jakarta font-bold text-[15px] text-[var(--text-primary)]">Quick Spec Previewer</h3>
+                <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Simulate patch types live</p>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-emerald-400 font-inter">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Live Preview
+              </div>
+            </div>
+
+            <div class="flex gap-2 mb-7">
+              <button class="patch-type-btn active-type" data-type="embroidered">Embroidered</button>
+              <button class="patch-type-btn" data-type="woven">Woven</button>
+              <button class="patch-type-btn" data-type="pvc">PVC</button>
+            </div>
+
+            <div class="patch-stage">
+              <div id="patch-preview" class="patch-embroidered">
+                <div class="patch-inner">
+                  <svg viewBox="0 0 140 100" class="w-28 h-20 relative z-10">
+                    <defs>
+                      <linearGradient id="logoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FBBF24" />
+                        <stop offset="100%" stop-color="#D97706" />
+                      </linearGradient>
+                    </defs>
+                    <path d="M25 50 Q18 40 22 28 Q28 36 25 50" fill="rgba(251,191,36,0.6)" />
+                    <path d="M25 55 Q15 48 18 34 Q26 42 25 55" fill="rgba(251,191,36,0.5)" />
+                    <path d="M25 60 Q14 56 16 42 Q24 48 25 60" fill="rgba(251,191,36,0.4)" />
+                    <path d="M115 50 Q122 40 118 28 Q112 36 115 50" fill="rgba(251,191,36,0.6)" />
+                    <path d="M115 55 Q125 48 122 34 Q114 42 115 55" fill="rgba(251,191,36,0.5)" />
+                    <path d="M115 60 Q126 56 124 42 Q116 48 115 60" fill="rgba(251,191,36,0.4)" />
+                    <circle cx="70" cy="45" r="26" fill="rgba(15,25,50,0.7)" stroke="url(#logoGold)" stroke-width="1.5" />
+                    <circle cx="70" cy="45" r="21" fill="none" stroke="rgba(251,191,36,0.25)" stroke-width="0.8" />
+                    <text x="70" y="51" text-anchor="middle" font-size="18" fill="url(#logoGold)" font-family="Georgia, serif" font-weight="700">PC</text>
+                    <text x="70" y="82" text-anchor="middle" font-size="7" fill="rgba(251,191,36,0.75)" font-family="sans-serif" font-weight="600" letter-spacing="2">PATCHCRAFT PRO</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2.5 mt-6">
+              <div class="spec-cell">
+                <div class="spec-label">Material</div>
+                <div id="spec-material" class="spec-value">Wool/Poly</div>
+              </div>
+              <div class="spec-cell">
+                <div class="spec-label">Colors</div>
+                <div id="spec-colors" class="spec-value">Up to 12</div>
+              </div>
+              <div class="spec-cell">
+                <div class="spec-label">Backing</div>
+                <div id="spec-backing" class="spec-value">Iron-on</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i>
+            <span class="text-xs text-[var(--indigo-4)] font-inter">ISO 9001 Certified Production</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       CATALOG SECTION
+  ══════════════════════════════════════════════ -->
+  <section id="catalog" class="py-20 relative">
+
+    <div class="absolute top-0 start-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[var(--border-strong)] to-transparent"></div>
+
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+            <span class="w-8 h-px bg-[var(--indigo-4)]"></span>PRODUCT CATALOG
+          </div>
+          <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">Built for Bulk Orders</h2>
+        </div>
+        <p class="text-sm text-[var(--text-faint)] font-inter">
+          <span id="visible-count" class="text-[var(--text-primary)] font-medium">6</span> products available
+        </p>
+      </div>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+
+        <!-- ── Sticky Sidebar Filters ── -->
+        <aside class="lg:w-56 xl:w-60 flex-shrink-0">
+          <div class="sidebar-glass lg:sticky lg:top-24 rounded-2xl p-5 space-y-6">
+
+            <div>
+              <div class="sidebar-section-label">Category</div>
+              <div class="space-y-2 mt-3" id="category-filters">
+                <label class="filter-row">
+                  <input type="radio" name="category" value="all" class="filter-radio" checked />
+                  <span class="filter-text">All Products</span>
+                  <span class="filter-count">6</span>
+                </label>
+                <label class="filter-row">
+                  <input type="radio" name="category" value="schools" class="filter-radio" />
+                  <span class="filter-text">Schools</span>
+                  <span class="filter-count">2</span>
+                </label>
+                <label class="filter-row">
+                  <input type="radio" name="category" value="sports" class="filter-radio" />
+                  <span class="filter-text">Sports</span>
+                  <span class="filter-count">2</span>
+                </label>
+                <label class="filter-row">
+                  <input type="radio" name="category" value="corporate" class="filter-radio" />
+                  <span class="filter-text">Corporate</span>
+                  <span class="filter-count">2</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <div>
+              <div class="sidebar-section-label">Attachment Style</div>
+              <div class="space-y-2 mt-3" id="style-filters">
+                <label class="filter-row">
+                  <input type="checkbox" class="filter-checkbox" value="iron-on" />
+                  <span class="filter-text">Iron-on</span>
+                </label>
+                <label class="filter-row">
+                  <input type="checkbox" class="filter-checkbox" value="velcro" />
+                  <span class="filter-text">Velcro</span>
+                </label>
+                <label class="filter-row">
+                  <input type="checkbox" class="filter-checkbox" value="sew-on" />
+                  <span class="filter-text">Sew-on</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="sidebar-divider"></div>
+
+            <button id="clear-filters" class="w-full text-xs font-inter text-[var(--text-faint-2)] hover:text-[var(--amber-4)] transition-colors duration-200 py-1">
+              ✕ Clear all filters
+            </button>
+          </div>
+        </aside>
+
+        <!-- ── Product Grid ── -->
+        <div class="flex-1">
+          <div id="product-grid" class="grid sm:grid-cols-2 xl:grid-cols-3 gap-5">
+
+            <!-- ─── Card 1: Varsity Chenille ─── -->
+            <div class="product-card" data-category="schools" data-style="iron-on">
+              <div class="product-card-inner">
+                <div class="product-img-wrap">
+                  <svg viewBox="0 0 220 170" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <radialGradient id="bg1" cx="50%" cy="45%">
+                        <stop offset="0%" stop-color="#1e3a5f" /><stop offset="100%" stop-color="#0f1f3d" />
+                      </radialGradient>
+                    </defs>
+                    <rect width="220" height="170" fill="#0d1929" />
+                    <rect x="0" y="0" width="220" height="170" fill="url(#bg1)" opacity="0.9" />
+                    <path d="M110 18 L172 46 L172 116 L110 152 L48 116 L48 46 Z" fill="#122544" stroke="#FBBF24" stroke-width="2.5" />
+                    <path d="M110 30 L158 52 L158 110 L110 138 L62 110 L62 52 Z" fill="none" stroke="rgba(251,191,36,0.2)" stroke-width="1" />
+                    <text x="78" y="56" font-size="12" fill="#FBBF24" opacity="0.7" font-family="sans-serif">★</text>
+                    <text x="133" y="56" font-size="12" fill="#FBBF24" opacity="0.7" font-family="sans-serif">★</text>
+                    <text x="110" y="120" text-anchor="middle" font-size="64" fill="#FBBF24" font-family="Georgia, serif" font-weight="900" opacity="0.95">V</text>
+                  </svg>
+                  <div class="product-overlay">
+                    <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+                    <span class="text-xs text-white/70 font-inter">View Details</span>
+                  </div>
+                  <div class="moq-badge">MOQ 50</div>
+                </div>
+                <div class="p-4">
+                  <div class="flex items-start justify-between gap-2 mb-3">
+                    <div>
+                      <div class="product-category-tag" style="color:var(--indigo-4)">Schools</div>
+                      <h3 class="product-title">Classic Varsity Chenille Patch</h3>
+                    </div>
+                    <span class="style-tag">Iron-on</span>
+                  </div>
+                  <div class="pricing-tiers">
+                    <div class="tier-row"><span>50–99</span><span>$4.50/ea</span></div>
+                    <div class="tier-row"><span>100–499</span><span>$2.80/ea</span></div>
+                    <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.60/ea ★</span></div>
+                  </div>
+                  <button class="quick-quote-btn stitch-btn w-full" data-product="Classic Varsity Chenille Patch">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ─── Card 2: Corporate Blazer Crest ─── -->
+            <div class="product-card" data-category="corporate" data-style="sew-on">
+              <div class="product-card-inner">
+                <div class="product-img-wrap">
+                  <svg viewBox="0 0 220 170" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#92400e" /><stop offset="45%" stop-color="#FBBF24" /><stop offset="100%" stop-color="#92400e" />
+                      </linearGradient>
+                      <radialGradient id="bg2" cx="50%" cy="40%">
+                        <stop offset="0%" stop-color="#1a1a2e" /><stop offset="100%" stop-color="#0d0d1a" />
+                      </radialGradient>
+                    </defs>
+                    <rect width="220" height="170" fill="url(#bg2)" />
+                    <path d="M110 14 L158 38 L158 100 L110 152 L62 100 L62 38 Z" fill="#100e1f" stroke="url(#goldGrad2)" stroke-width="2.2" />
+                    <path d="M110 26 L146 46 L146 94 L110 136 L74 94 L74 46 Z" fill="none" stroke="url(#goldGrad2)" stroke-width="0.7" opacity="0.4" />
+                    <path d="M68 82 Q60 72 64 58 Q70 66 68 82" fill="#D97706" opacity="0.7" />
+                    <path d="M68 90 Q57 83 61 68 Q68 76 68 90" fill="#D97706" opacity="0.6" />
+                    <path d="M152 82 Q160 72 156 58 Q150 66 152 82" fill="#D97706" opacity="0.7" />
+                    <path d="M152 90 Q163 83 159 68 Q152 76 152 90" fill="#D97706" opacity="0.6" />
+                    <text x="110" y="80" text-anchor="middle" font-size="20" fill="url(#goldGrad2)" font-family="Georgia, serif" font-weight="700">EST.</text>
+                    <text x="110" y="100" text-anchor="middle" font-size="15" fill="url(#goldGrad2)" font-family="Georgia, serif" font-weight="700">2008</text>
+                    <path d="M86 108 L134 108" stroke="url(#goldGrad2)" stroke-width="0.8" opacity="0.5" />
+                    <text x="110" y="122" text-anchor="middle" font-size="7" fill="url(#goldGrad2)" font-family="sans-serif" letter-spacing="2">EXCELLENCE</text>
+                  </svg>
+                  <div class="product-overlay">
+                    <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+                    <span class="text-xs text-white/70 font-inter">View Details</span>
+                  </div>
+                  <div class="moq-badge">MOQ 100</div>
+                </div>
+                <div class="p-4">
+                  <div class="flex items-start justify-between gap-2 mb-3">
+                    <div>
+                      <div class="product-category-tag" style="color:var(--amber-4)">Corporate</div>
+                      <h3 class="product-title">Corporate Blazer Crest</h3>
+                    </div>
+                    <span class="style-tag">Sew-on</span>
+                  </div>
+                  <div class="pricing-tiers">
+                    <div class="tier-row"><span>100–249</span><span>$5.20/ea</span></div>
+                    <div class="tier-row"><span>250–999</span><span>$3.10/ea</span></div>
+                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.90/ea ★</span></div>
+                  </div>
+                  <button class="quick-quote-btn stitch-btn w-full" data-product="Corporate Blazer Crest">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ─── Card 3: Tactical Velcro Badge ─── -->
+            <div class="product-card" data-category="sports" data-style="velcro">
+              <div class="product-card-inner">
+                <div class="product-img-wrap">
+                  <svg viewBox="0 0 220 170" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1c1c2e" /><stop offset="100%" stop-color="#14142a" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="220" height="170" fill="url(#bg3)" />
+                    <rect x="42" y="28" width="136" height="114" rx="5" fill="#111" stroke="#6366F1" stroke-width="2" />
+                    <rect x="48" y="34" width="124" height="102" rx="3" fill="none" stroke="#6366F1" stroke-width="0.7" opacity="0.4" />
+                    <circle cx="52" cy="38" r="3" fill="#6366F1" opacity="0.5" />
+                    <circle cx="168" cy="38" r="3" fill="#6366F1" opacity="0.5" />
+                    <circle cx="52" cy="132" r="3" fill="#6366F1" opacity="0.5" />
+                    <circle cx="168" cy="132" r="3" fill="#6366F1" opacity="0.5" />
+                    <path d="M76 90 L110 62 L144 90 L138 96 L110 70 L82 96 Z" fill="#6366F1" opacity="0.9" />
+                    <path d="M76 104 L110 76 L144 104 L138 110 L110 84 L82 110 Z" fill="#6366F1" opacity="0.45" />
+                    <text x="110" y="126" text-anchor="middle" font-size="13" fill="#818CF8" font-family="monospace" font-weight="700" letter-spacing="4">TACTICAL</text>
+                    <text x="110" y="140" text-anchor="middle" font-size="7.5" fill="#6366F1" font-family="monospace" letter-spacing="2" opacity="0.65">UNIT · 01</text>
+                  </svg>
+                  <div class="product-overlay">
+                    <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+                    <span class="text-xs text-white/70 font-inter">View Details</span>
+                  </div>
+                  <div class="moq-badge">MOQ 75</div>
+                </div>
+                <div class="p-4">
+                  <div class="flex items-start justify-between gap-2 mb-3">
+                    <div>
+                      <div class="product-category-tag" style="color:var(--indigo-4)">Sports</div>
+                      <h3 class="product-title">Rugged Tactical Velcro Badge</h3>
+                    </div>
+                    <span class="style-tag">Velcro</span>
+                  </div>
+                  <div class="pricing-tiers">
+                    <div class="tier-row"><span>75–199</span><span>$3.80/ea</span></div>
+                    <div class="tier-row"><span>200–749</span><span>$2.40/ea</span></div>
+                    <div class="tier-row best"><span>750+ units</span><span class="text-[var(--amber-4)]">$1.50/ea ★</span></div>
+                  </div>
+                  <button class="quick-quote-btn stitch-btn w-full" data-product="Rugged Tactical Velcro Badge">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ─── Card 4: School Shield Emblem ─── -->
+            <div class="product-card" data-category="schools" data-style="sew-on">
+              <div class="product-card-inner">
+                <div class="product-img-wrap">
+                  <svg viewBox="0 0 220 170" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="bg4" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="#1e3a3a" /><stop offset="100%" stop-color="#0d1f1f" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="220" height="170" fill="url(#bg4)" />
+                    <path d="M110 16 L166 42 L166 100 C166 134 110 158 110 158 C110 158 54 134 54 100 L54 42 Z" fill="#0d2020" stroke="#34D399" stroke-width="2.2" />
+                    <path d="M110 28 L152 50 L152 96 C152 122 110 142 110 142 C110 142 68 122 68 96 L68 50 Z" fill="none" stroke="rgba(52,211,153,0.2)" stroke-width="1" />
+                    <rect x="107" y="52" width="6" height="34" rx="3" fill="#34D399" opacity="0.85" />
+                    <ellipse cx="110" cy="44" rx="7" ry="11" fill="#FBBF24" opacity="0.9" />
+                    <ellipse cx="110" cy="46" rx="4" ry="7" fill="white" opacity="0.5" />
+                    <rect x="80" y="98" width="60" height="4" rx="2" fill="#34D399" opacity="0.55" />
+                    <rect x="80" y="106" width="60" height="4" rx="2" fill="#34D399" opacity="0.45" />
+                    <rect x="80" y="114" width="60" height="4" rx="2" fill="#34D399" opacity="0.35" />
+                    <text x="110" y="140" text-anchor="middle" font-size="7.5" fill="#34D399" font-family="sans-serif" letter-spacing="2.5" opacity="0.8">KNOWLEDGE</text>
+                  </svg>
+                  <div class="product-overlay">
+                    <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+                    <span class="text-xs text-white/70 font-inter">View Details</span>
+                  </div>
+                  <div class="moq-badge">MOQ 50</div>
+                </div>
+                <div class="p-4">
+                  <div class="flex items-start justify-between gap-2 mb-3">
+                    <div>
+                      <div class="product-category-tag" style="color:var(--emerald)">Schools</div>
+                      <h3 class="product-title">School House Shield Emblem</h3>
+                    </div>
+                    <span class="style-tag">Sew-on</span>
+                  </div>
+                  <div class="pricing-tiers">
+                    <div class="tier-row"><span>50–99</span><span>$4.20/ea</span></div>
+                    <div class="tier-row"><span>100–499</span><span>$2.60/ea</span></div>
+                    <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.40/ea ★</span></div>
+                  </div>
+                  <button class="quick-quote-btn stitch-btn w-full" data-product="School House Shield Emblem">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ─── Card 5: Sports Cap Badge ─── -->
+            <div class="product-card" data-category="sports" data-style="iron-on">
+              <div class="product-card-inner">
+                <div class="product-img-wrap">
+                  <svg viewBox="0 0 220 170" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <radialGradient id="bg5" cx="50%" cy="50%">
+                        <stop offset="0%" stop-color="#2d1b4e" /><stop offset="100%" stop-color="#160d27" />
+                      </radialGradient>
+                    </defs>
+                    <rect width="220" height="170" fill="url(#bg5)" />
+                    <circle cx="110" cy="85" r="62" fill="#1a0f36" stroke="#A855F7" stroke-width="2.5" />
+                    <circle cx="110" cy="85" r="54" fill="none" stroke="#A855F7" stroke-width="1" stroke-dasharray="5 5" opacity="0.5" />
+                    <path d="M118 36 L96 82 L112 82 L98 134 L126 74 L110 74 Z" fill="#A855F7" opacity="0.92" />
+                    <text x="110" y="32" text-anchor="middle" font-size="9" fill="#C084FC" font-family="sans-serif" letter-spacing="6" font-weight="700">SPORT</text>
+                    <text x="110" y="149" text-anchor="middle" font-size="9" fill="#C084FC" font-family="sans-serif" letter-spacing="5" font-weight="700">DIVISION</text>
+                    <text x="60" y="90" font-size="9" fill="#A855F7" opacity="0.6" font-family="sans-serif">★</text>
+                    <text x="154" y="90" font-size="9" fill="#A855F7" opacity="0.6" font-family="sans-serif">★</text>
+                  </svg>
+                  <div class="product-overlay">
+                    <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+                    <span class="text-xs text-white/70 font-inter">View Details</span>
+                  </div>
+                  <div class="moq-badge">MOQ 50</div>
+                </div>
+                <div class="p-4">
+                  <div class="flex items-start justify-between gap-2 mb-3">
+                    <div>
+                      <div class="product-category-tag" style="color:var(--purple)">Sports</div>
+                      <h3 class="product-title">Sports Team Cap Badge</h3>
+                    </div>
+                    <span class="style-tag">Iron-on</span>
+                  </div>
+                  <div class="pricing-tiers">
+                    <div class="tier-row"><span>50–199</span><span>$3.50/ea</span></div>
+                    <div class="tier-row"><span>200–999</span><span>$2.10/ea</span></div>
+                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.20/ea ★</span></div>
+                  </div>
+                  <button class="quick-quote-btn stitch-btn w-full" data-product="Sports Team Cap Badge">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- ─── Card 6: Executive Lapel Insignia ─── -->
+            <div class="product-card" data-category="corporate" data-style="sew-on">
+              <div class="product-card-inner">
+                <div class="product-img-wrap">
+                  <svg viewBox="0 0 220 170" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                      <linearGradient id="goldGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#92400e" /><stop offset="40%" stop-color="#F6E05E" /><stop offset="100%" stop-color="#92400e" />
+                      </linearGradient>
+                      <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1a1a0a" /><stop offset="100%" stop-color="#2a2610" />
+                      </linearGradient>
+                    </defs>
+                    <rect width="220" height="170" fill="url(#bg6)" />
+                    <path d="M110 14 L176 85 L110 156 L44 85 Z" fill="#15150a" stroke="url(#goldGrad6)" stroke-width="2.5" />
+                    <path d="M110 32 L158 85 L110 138 L62 85 Z" fill="none" stroke="url(#goldGrad6)" stroke-width="0.7" opacity="0.35" />
+                    <path d="M68 85 Q59 74 64 60 Q70 68 68 85" fill="#B7791F" opacity="0.75" />
+                    <path d="M68 90 Q56 81 60 66 Q67 74 68 90" fill="#B7791F" opacity="0.6" />
+                    <path d="M152 85 Q161 74 156 60 Q150 68 152 85" fill="#B7791F" opacity="0.75" />
+                    <path d="M152 90 Q164 81 160 66 Q153 74 152 90" fill="#B7791F" opacity="0.6" />
+                    <path d="M86 70 L134 70" stroke="url(#goldGrad6)" stroke-width="0.6" opacity="0.35" />
+                    <path d="M86 100 L134 100" stroke="url(#goldGrad6)" stroke-width="0.6" opacity="0.35" />
+                    <text x="110" y="92" text-anchor="middle" font-size="34" fill="url(#goldGrad6)" font-family="Georgia, serif" font-weight="900">E</text>
+                    <text x="110" y="118" text-anchor="middle" font-size="7" fill="url(#goldGrad6)" font-family="sans-serif" letter-spacing="2.5" opacity="0.7">EXECUTIVE</text>
+                  </svg>
+                  <div class="product-overlay">
+                    <i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i>
+                    <span class="text-xs text-white/70 font-inter">View Details</span>
+                  </div>
+                  <div class="moq-badge">MOQ 100</div>
+                </div>
+                <div class="p-4">
+                  <div class="flex items-start justify-between gap-2 mb-3">
+                    <div>
+                      <div class="product-category-tag" style="color:var(--amber-4)">Corporate</div>
+                      <h3 class="product-title">Executive Dept. Lapel Insignia</h3>
+                    </div>
+                    <span class="style-tag">Sew-on</span>
+                  </div>
+                  <div class="pricing-tiers">
+                    <div class="tier-row"><span>100–249</span><span>$6.50/ea</span></div>
+                    <div class="tier-row"><span>250–999</span><span>$4.20/ea</span></div>
+                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$2.80/ea ★</span></div>
+                  </div>
+                  <button class="quick-quote-btn stitch-btn w-full" data-product="Executive Dept. Lapel Insignia">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /#product-grid -->
+
+          <!-- Empty State -->
+          <div id="no-results" class="hidden py-20 text-center">
+            <i data-lucide="search-x" class="w-10 h-10 text-[var(--text-faint-3)] mx-auto mb-4"></i>
+            <p class="text-[var(--text-faint)] font-inter text-sm">No products match the selected filters.</p>
+            <button id="reset-filters" class="mt-4 text-sm text-[var(--amber-4)] hover:opacity-80 font-inter transition-opacity">Reset filters</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       BULK PRICING CALCULATOR
+  ══════════════════════════════════════════════ -->
+  <section id="pricing" class="py-24 relative overflow-hidden">
+
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--indigo-tint-10)] to-transparent pointer-events-none"></div>
+    <div class="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[var(--indigo-5)]/5 rounded-full blur-[130px] pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto px-5 md:px-8 relative z-10">
+
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-4">
+          <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
+          BULK PRICING ESTIMATOR
+          <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Volume Drives Value</h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto leading-relaxed">
+          Drag the slider to instantly see how ordering more saves you more — per unit and in total production time.
+        </p>
+      </div>
+
+      <div class="calc-card p-7 md:p-12">
+
+        <div class="mb-10">
+          <div class="flex justify-between items-center mb-5">
+            <span class="text-sm font-inter text-[var(--text-muted)]">Order Quantity</span>
+            <div class="flex items-center gap-2">
+              <input type="number" id="qty-input" min="50" max="5000" value="250"
+                     class="qty-number-input w-24 text-center text-sm font-jakarta font-bold text-[var(--amber-4)]" />
+              <span class="text-sm text-[var(--text-faint)] font-inter">units</span>
+            </div>
+          </div>
+
+          <div class="slider-wrap">
+            <input type="range" id="qty-slider" min="50" max="5000" value="250" step="10" class="custom-slider w-full" />
+            <div class="flex justify-between mt-3 px-0.5">
+              <span class="text-xs text-[var(--text-faint-3)] font-inter">50</span>
+              <span class="text-xs text-[var(--text-faint-3)] font-inter">1,000</span>
+              <span class="text-xs text-[var(--text-faint-3)] font-inter">2,500</span>
+              <span class="text-xs text-[var(--text-faint-3)] font-inter">5,000+</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+
+          <div class="calc-result-card">
+            <div class="result-icon-wrap">
+              <i data-lucide="tag" class="w-4 h-4 text-[var(--amber-5)]"></i>
+            </div>
+            <div class="result-label">Price Per Unit</div>
+            <div class="result-big text-[var(--text-primary)]">
+              $<span id="price-value">2.40</span>
+            </div>
+            <div id="price-tier-label" class="result-sub">250–499 units tier</div>
+          </div>
+
+          <div class="calc-result-card featured-card">
+            <div class="result-icon-wrap featured-icon-wrap">
+              <i data-lucide="calculator" class="w-4 h-4 text-[var(--on-accent)]"></i>
+            </div>
+            <div class="result-label text-[var(--text-secondary)]">Total Estimated Cost</div>
+            <div class="result-big text-[var(--amber-4)]">
+              $<span id="total-value">600</span>
+            </div>
+            <div id="savings-label" class="result-sub">Save 47% vs base price</div>
+          </div>
+
+          <div class="calc-result-card">
+            <div class="result-icon-wrap">
+              <i data-lucide="clock" class="w-4 h-4 text-[var(--indigo-4)]"></i>
+            </div>
+            <div class="result-label">Est. Production</div>
+            <div class="result-big text-[var(--indigo-4)]">
+              <span id="prod-time">10</span> days
+            </div>
+            <div class="result-sub">Rush options available</div>
+          </div>
+        </div>
+
+        <div class="tier-table-wrap">
+          <div class="text-[11px] font-jakarta font-semibold text-[var(--text-faint-2)] uppercase tracking-widest mb-4">
+            Pricing Tiers — Standard Embroidered Patch
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm font-inter">
+              <thead>
+                <tr class="text-[11px] text-[var(--text-faint-3)] uppercase tracking-wider border-b border-[var(--border)]">
+                  <th class="text-start pb-3 font-semibold">Quantity</th>
+                  <th class="text-center pb-3 font-semibold">Unit Price</th>
+                  <th class="text-center pb-3 font-semibold">Lead Time</th>
+                  <th class="text-end pb-3 font-semibold">Savings</th>
+                </tr>
+              </thead>
+              <tbody id="tier-table-body">
+                <tr class="tier-table-row" data-min="50" data-max="99">
+                  <td class="py-3 text-[var(--text-body)]">50 – 99 units</td>
+                  <td class="py-3 text-center text-[var(--text-body)]">$4.50</td>
+                  <td class="py-3 text-center text-[var(--text-faint)]">14 days</td>
+                  <td class="py-3 text-end text-[var(--text-faint-2)]">Base</td>
+                </tr>
+                <tr class="tier-table-row" data-min="100" data-max="249">
+                  <td class="py-3 text-[var(--text-body)]">100 – 249 units</td>
+                  <td class="py-3 text-center text-[var(--text-body)]">$3.20</td>
+                  <td class="py-3 text-center text-[var(--text-faint)]">12 days</td>
+                  <td class="py-3 text-end text-emerald-500">Save 29%</td>
+                </tr>
+                <tr class="tier-table-row" data-min="250" data-max="499">
+                  <td class="py-3 text-[var(--text-body)]">250 – 499 units</td>
+                  <td class="py-3 text-center text-[var(--text-body)]">$2.40</td>
+                  <td class="py-3 text-center text-[var(--text-faint)]">10 days</td>
+                  <td class="py-3 text-end text-emerald-500">Save 47%</td>
+                </tr>
+                <tr class="tier-table-row" data-min="500" data-max="999">
+                  <td class="py-3 text-[var(--text-body)]">500 – 999 units</td>
+                  <td class="py-3 text-center text-[var(--text-body)]">$1.80</td>
+                  <td class="py-3 text-center text-[var(--text-faint)]">8 days</td>
+                  <td class="py-3 text-end text-emerald-500">Save 60%</td>
+                </tr>
+                <tr class="tier-table-row" data-min="1000" data-max="2499">
+                  <td class="py-3 text-[var(--text-body)]">1,000 – 2,499 units</td>
+                  <td class="py-3 text-center text-[var(--text-body)]">$1.20</td>
+                  <td class="py-3 text-center text-[var(--text-faint)]">6 days</td>
+                  <td class="py-3 text-end text-emerald-500">Save 73%</td>
+                </tr>
+                <tr class="tier-table-row" data-min="2500" data-max="5000">
+                  <td class="py-3 text-[var(--amber-4)] font-medium">2,500+ units</td>
+                  <td class="py-3 text-center text-[var(--amber-4)] font-bold">$0.85</td>
+                  <td class="py-3 text-center text-[var(--text-faint)]">5 days</td>
+                  <td class="py-3 text-end text-[var(--amber-4)] font-semibold">Save 81% ★</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-5 mt-8 pt-7 border-t border-[var(--border)]">
+          <p class="text-sm text-[var(--text-muted)] font-inter">
+            Ready to commit? Get a formal quote with exact specs in under 2 hours.
+          </p>
+          <button class="stitch-btn flex items-center gap-2 px-8 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm whitespace-nowrap">
+            <i data-lucide="send" class="w-4 h-4"></i>
+            Request Formal Quote
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="border-t border-[var(--footer-border)] py-12">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+        <div class="text-center md:text-start">
+          <a href="home.html" class="font-jakarta font-extrabold text-lg tracking-tight mb-1 text-[var(--text-primary)] inline-block">
+            PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+            <span class="text-[var(--text-faint-2)] text-xs font-inter font-normal ms-1">PRO</span>
+          </a>
+          <p class="text-xs text-[var(--text-faint-2)] font-inter">Premium B2B Uniform Solutions · Est. 2008</p>
+        </div>
+
+        <div class="flex items-center gap-6 text-xs font-inter text-[var(--text-faint-2)]">
+          <a href="home.html" class="hover:text-[var(--text-body)] transition-colors">Home</a>
+          <a href="sports-teams.html" class="hover:text-[var(--text-body)] transition-colors">Sports Teams</a>
+          <a href="home2.html#pricing" class="hover:text-[var(--text-body)] transition-colors">Pricing</a>
+          <a href="#" class="hover:text-[var(--text-body)] transition-colors">Support</a>
+        </div>
+
+        <p class="text-xs text-[var(--text-faint-3)] font-inter">© 2026 PatchCraft Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══ TOAST NOTIFICATION ══ -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+    <span id="toast-message" class="text-sm font-inter text-white">Added to quote successfully!</span>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

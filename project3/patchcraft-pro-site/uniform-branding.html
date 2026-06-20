@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Uniform Branding in Bulk — Embroidered Insignia for Entire Teams | PatchCraft Pro</title>
+  <meta name="description" content="End-to-end uniform branding: embroidered patches, woven labels, PVC badges, and heat-press transfers — ordered as a complete matched program for your whole workforce." />
+  <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
+  <script>(function(){try{var t=localStorage.getItem('pcp-theme');document.documentElement.setAttribute('data-theme',t||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));var d=localStorage.getItem('pcp-dir');if(d==='rtl'||d==='ltr')document.documentElement.setAttribute('dir',d);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>tailwind.config={theme:{extend:{fontFamily:{jakarta:['"Plus Jakarta Sans"','sans-serif'],inter:['Inter','sans-serif']}}}};</script>
+  <style>
+    .ub-hero-card{background:linear-gradient(135deg,rgba(52,211,153,.08),var(--surface));border:1px solid var(--border-strong);border-radius:20px;padding:28px;position:relative;overflow:hidden;}
+    .ub-hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(52,211,153,.3),transparent);}
+    .program-tab{font-family:'Plus Jakarta Sans',sans-serif;font-size:12.5px;font-weight:600;padding:9px 20px;border-radius:100px;border:1px solid var(--border-strong);background:transparent;color:var(--text-muted);cursor:pointer;transition:all .2s ease;white-space:nowrap;}
+    .program-tab:hover{color:var(--text-secondary);border-color:var(--border-stronger);}
+    .program-tab.active-prog{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.25);color:var(--emerald);}
+    .ub-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:all .35s cubic-bezier(.25,.46,.45,.94);display:flex;flex-direction:column;}
+    .ub-card:hover{border-color:rgba(52,211,153,.25);transform:translateY(-5px);box-shadow:0 20px 50px var(--shadow),0 0 0 1px rgba(52,211,153,.08);}
+    .ub-img-wrap{position:relative;overflow:hidden;background:#0d1220;height:180px;flex-shrink:0;}
+    .ub-img-wrap svg{width:100%;height:100%;transition:transform .4s ease;}
+    .ub-card:hover .ub-img-wrap svg{transform:scale(1.06);}
+    .ub-overlay{position:absolute;inset:0;background:rgba(10,15,28,.7);backdrop-filter:blur(4px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;opacity:0;transition:opacity .3s ease;}
+    .ub-card:hover .ub-overlay{opacity:1;}
+    .prog-badge{position:absolute;top:10px;inset-inline-start:10px;background:rgba(52,211,153,.15);backdrop-filter:blur(6px);border:1px solid rgba(52,211,153,.3);color:var(--emerald);font-family:'Plus Jakarta Sans',sans-serif;font-size:9px;font-weight:700;padding:4px 9px;border-radius:20px;letter-spacing:.08em;text-transform:uppercase;}
+    .moq-ub{position:absolute;top:10px;inset-inline-end:10px;background:rgba(10,15,28,.85);backdrop-filter:blur(6px);border:1px solid rgba(245,158,11,.3);color:#FBBF24;font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;font-weight:700;padding:4px 9px;border-radius:20px;}
+    .add-ub{width:100%;padding:10px 14px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);border-radius:10px;color:var(--emerald);font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;cursor:pointer;transition:all .25s ease;display:flex;align-items:center;justify-content:center;gap:6px;margin-top:4px;}
+    .add-ub:hover{background:rgba(52,211,153,.18);border-color:rgba(52,211,153,.4);color:var(--text-primary);}
+    .package-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative;overflow:hidden;transition:border-color .3s ease,transform .3s ease;}
+    .package-card:hover{transform:translateY(-4px);}
+    .package-card.featured-pkg{border-color:rgba(52,211,153,.3);background:linear-gradient(135deg,rgba(52,211,153,.08),var(--surface));}
+    .package-card.featured-pkg::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(52,211,153,.4),transparent);}
+    .pkg-tag{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;font-weight:700;margin-bottom:14px;}
+    .pkg-include{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border-soft);font-family:'Inter',sans-serif;font-size:12.5px;color:var(--text-body);}
+    .pkg-include:last-child{border-bottom:none;}
+    .stat-band{display:flex;align-items:center;gap:6px;padding:10px 16px;background:var(--surface-soft);border:1px solid var(--border);border-radius:12px;}
+    .hidden-by-prog{display:none;}
+    .comparison-table th{font-family:'Inter',sans-serif;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--text-faint-2);padding:12px 16px;text-align:center;}
+    .comparison-table td{padding:12px 16px;font-family:'Inter',sans-serif;font-size:13px;color:var(--text-body);border-top:1px solid var(--border-soft);text-align:center;}
+    .comparison-table td:first-child{text-align:start;color:var(--text-muted);font-weight:500;}
+    .comparison-table tr:hover td{background:var(--surface-soft);}
+    .check-green{color:var(--emerald);}
+    .check-faint{color:var(--text-faint-3);}
+  </style>
+</head>
+<body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight">PATCH<span class="text-[var(--amber-5)]">CRAFT</span><span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span></a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-inter font-medium text-[var(--text-muted)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors duration-200">Catalogs <i data-lucide="chevron-down" class="w-3.5 h-3.5 mt-0.5"></i></button>
+          <div class="absolute top-full left-0 mt-2 w-52 bg-[var(--surface)] border border-[var(--border-strong)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
+            <a href="schools-catalog.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--indigo-4)] hover:bg-[var(--indigo-tint-10)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>Schools</a>
+            <a href="corporate-patches.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--amber-4)] hover:bg-[var(--amber-tint-08)] mt-1"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i>Corporate</a>
+            <a href="uniform-branding.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--emerald)] text-xs font-semibold bg-[rgba(52,211,153,0.08)] mt-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i>Uniform Branding</a>
+            <a href="home2.html#catalog" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--text-primary)] hover:bg-[var(--surface-soft-hover)] mt-1"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>All Products</a>
+          </div>
+        </div>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme"><span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span><span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span></button>
+        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button"><i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i><span id="dir-toggle-label" class="dir-toggle-label">LTR</span></button>
+        <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
+        <a href="login.html" class="text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors font-inter">Sign In</a>
+        <a href="contact.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Get a Quote</a>
+      </div>
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme"><span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span><span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span></button>
+        <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+      <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors">Home</a>
+        <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors">Schools</a>
+        <a href="corporate-patches.html" class="hover:text-[var(--text-primary)] transition-colors">Corporate</a>
+        <a href="uniform-branding.html" class="text-[var(--emerald)]">Uniform Branding</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
+        <div class="flex gap-3 pt-2">
+          <a href="login.html" class="flex-1 py-2.5 border border-[var(--border-strong)] text-center text-sm font-jakarta font-bold rounded-xl text-[var(--text-primary)]">Sign In</a>
+          <a href="contact.html" class="flex-1 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="min-h-screen pt-20 relative flex items-center overflow-hidden">
+    <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
+    <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--emerald)]/6 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--amber-5)]/6 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
+      <div class="grid lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+        <div class="hero-copy">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.2)] rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--emerald)] animate-pulse"></span>
+            <span class="text-[11px] font-jakarta font-semibold text-[var(--emerald)] tracking-widest uppercase">Uniform Branding Programs</span>
+          </div>
+          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+            One Brand.<br /><span class="text-gradient-gold">Every Uniform.</span><br />Zero Variance.
+          </h1>
+          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
+            Complete end-to-end uniform branding programs — embroidered patches, woven labels, PVC badges, and heat-press transfers — produced as a single matched set for your entire workforce.
+          </p>
+          <div class="flex items-center gap-6 md:gap-10 mb-10">
+            <div><div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">5,000+</div><div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Units / Program Avg.</div></div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div><div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">3 Types</div><div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Emblem Technologies</div></div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div><div class="font-jakarta font-extrabold text-2xl text-[var(--amber-4)]">Pantone</div><div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Colour Matched</div></div>
+          </div>
+          <div class="flex flex-wrap gap-4">
+            <a href="#programs" class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="layers" class="w-4 h-4"></i> View Programs
+            </a>
+            <a href="contact.html" class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
+              <i data-lucide="download" class="w-4 h-4"></i> Download Spec Sheet
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Program visual -->
+        <div class="hero-right flex flex-col items-center gap-4">
+          <div class="ub-hero-card w-full max-w-[440px]">
+            <div class="flex items-center justify-between mb-5">
+              <div><h3 class="font-jakarta font-bold text-[15px] text-[var(--text-primary)]">Complete Program Preview</h3><p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">What a full uniform branding set includes</p></div>
+              <span class="inline-flex items-center gap-1.5 text-[11px] text-[var(--emerald)] font-inter font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-[var(--emerald)] animate-pulse"></span>Full Program</span>
+            </div>
+            <!-- Visual showing 3 patch types in a row -->
+            <div class="rounded-2xl overflow-hidden border border-[var(--border)] mb-5" style="background:#0d1220;height:200px;display:flex;align-items:center;justify-content:center;gap:24px;position:relative;">
+              <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:18px 18px;"></div>
+              <!-- Embroidered -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1;">
+                <svg viewBox="0 0 72 56" width="72" height="56" xmlns="http://www.w3.org/2000/svg">
+                  <defs><linearGradient id="ubg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FBBF24"/><stop offset="100%" stop-color="#D97706"/></linearGradient></defs>
+                  <path d="M36 4 L60 14 L60 42 L36 52 L12 42 L12 14 Z" fill="#0d1430" stroke="url(#ubg1)" stroke-width="2"/>
+                  <text x="36" y="34" text-anchor="middle" font-size="16" fill="url(#ubg1)" font-family="Georgia,serif" font-weight="900">E</text>
+                </svg>
+                <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:9px;font-weight:600;color:rgba(251,191,36,0.7);letter-spacing:1px;">EMBROID.</span>
+              </div>
+              <!-- Woven -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1;">
+                <svg viewBox="0 0 72 48" width="72" height="48" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="72" height="48" rx="5" fill="#0d1029" stroke="#6366F1" stroke-width="2"/>
+                  <text x="36" y="30" text-anchor="middle" font-size="16" fill="#818CF8" font-family="Georgia,serif" font-weight="900">W</text>
+                </svg>
+                <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:9px;font-weight:600;color:rgba(129,140,248,0.7);letter-spacing:1px;">WOVEN</span>
+              </div>
+              <!-- PVC -->
+              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;z-index:1;">
+                <svg viewBox="0 0 48 60" width="48" height="60" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="24,4 48,16 48,44 24,56 0,44 0,16" fill="#0d2018" stroke="#34D399" stroke-width="2"/>
+                  <text x="24" y="36" text-anchor="middle" font-size="16" fill="#34D399" font-family="Georgia,serif" font-weight="900">P</text>
+                </svg>
+                <span style="font-family:'Plus Jakarta Sans',sans-serif;font-size:9px;font-weight:600;color:rgba(52,211,153,0.7);letter-spacing:1px;">PVC</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-2.5">
+              <div class="spec-cell"><div class="spec-label">Min. Program</div><div class="spec-value">500 units</div></div>
+              <div class="spec-cell"><div class="spec-label">Pantone</div><div class="spec-value">Matched</div></div>
+              <div class="spec-cell"><div class="spec-label">Lead Time</div><div class="spec-value">14 days</div></div>
+            </div>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.2)] rounded-full">
+            <i data-lucide="check-circle" class="w-3.5 h-3.5 text-[var(--emerald)]"></i>
+            <span class="text-xs text-[var(--emerald)] font-inter">All 3 technologies — one matched program</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM PACKAGES -->
+  <section id="programs" class="py-20 border-t border-[var(--border)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--emerald)] tracking-widest uppercase mb-4">
+          <span class="w-8 h-px bg-[var(--emerald)] opacity-60"></span>BRANDING PROGRAMS<span class="w-8 h-px bg-[var(--emerald)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Choose Your Branding Package</h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto">From a single badge type to a fully managed multi-product uniform program — priced transparently by scale.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <!-- Starter -->
+        <div class="package-card">
+          <div class="pkg-tag" style="background:var(--surface-soft);border:1px solid var(--border);color:var(--text-muted);">
+            <i data-lucide="layers" class="w-3.5 h-3.5"></i> Starter
+          </div>
+          <div class="font-jakarta font-black text-3xl text-[var(--text-primary)] mb-1">$1.80<span class="text-base font-inter font-normal text-[var(--text-faint)]">/patch</span></div>
+          <div class="text-xs text-[var(--text-faint)] font-inter mb-6">500 – 999 units · Single product type</div>
+          <div class="space-y-1 mb-8">
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>1 patch / badge type</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Free digitization</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>1 physical sample</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Standard 14-day lead</div>
+            <div class="pkg-include"><i data-lucide="x" class="w-4 h-4 check-faint flex-shrink-0"></i>Multi-product matching</div>
+            <div class="pkg-include"><i data-lucide="x" class="w-4 h-4 check-faint flex-shrink-0"></i>Dedicated account manager</div>
+          </div>
+          <a href="contact.html" class="stitch-btn-ghost block w-full py-3 text-center border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-bold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all">Get Started</a>
+        </div>
+
+        <!-- Professional (featured) -->
+        <div class="package-card featured-pkg">
+          <div class="pkg-tag" style="background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:var(--emerald);">
+            <i data-lucide="star" class="w-3.5 h-3.5"></i> Professional — Most Popular
+          </div>
+          <div class="font-jakarta font-black text-3xl text-[var(--emerald)] mb-1">$1.20<span class="text-base font-inter font-normal text-[var(--text-faint)]">/patch</span></div>
+          <div class="text-xs text-[var(--text-faint)] font-inter mb-6">1,000 – 4,999 units · Up to 3 product types</div>
+          <div class="space-y-1 mb-8">
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Up to 3 patch/badge types</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Free digitization (all types)</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>2 physical samples</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Pantone colour match</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>10-day lead time</div>
+            <div class="pkg-include"><i data-lucide="x" class="w-4 h-4 check-faint flex-shrink-0"></i>Dedicated account manager</div>
+          </div>
+          <a href="contact.html" class="stitch-btn block w-full py-3 text-center bg-[var(--emerald)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm" style="color:#0A0F1C;">Get This Package</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="package-card">
+          <div class="pkg-tag" style="background:var(--amber-tint-10);border:1px solid var(--amber-tint-20);color:var(--amber-4);">
+            <i data-lucide="building-2" class="w-3.5 h-3.5"></i> Enterprise
+          </div>
+          <div class="font-jakarta font-black text-3xl text-[var(--amber-4)] mb-1">$0.85<span class="text-base font-inter font-normal text-[var(--text-faint)]">/patch</span></div>
+          <div class="text-xs text-[var(--text-faint)] font-inter mb-6">5,000+ units · Complete managed program</div>
+          <div class="space-y-1 mb-8">
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Unlimited product types</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Free digitization + revisions</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Full sample set approval</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Pantone + thread number logged</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>7-day rush available</div>
+            <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Dedicated account manager</div>
+          </div>
+          <a href="contact.html" class="stitch-btn block w-full py-3 text-center bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">Contact Enterprise Sales</a>
+        </div>
+      </div>
+
+      <!-- Technology comparison table -->
+      <div class="bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl overflow-hidden">
+        <div class="p-6 border-b border-[var(--border)]">
+          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--emerald)] tracking-widest uppercase mb-2"><span class="w-6 h-px bg-[var(--emerald)] opacity-60"></span>TECH COMPARISON</div>
+          <h3 class="font-jakarta font-bold text-xl text-[var(--text-primary)]">Embroidered vs Woven vs PVC</h3>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full comparison-table">
+            <thead>
+              <tr class="border-b border-[var(--border)]">
+                <th class="text-start">Feature</th>
+                <th>Embroidered</th>
+                <th>Woven</th>
+                <th>PVC</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Best for</td><td>Crests, school badges</td><td>Fine detail logos</td><td>Outdoor / tactical</td></tr>
+              <tr><td>Min colors</td><td>1</td><td>1</td><td>1</td></tr>
+              <tr><td>Max colors</td><td>12</td><td>8</td><td>6</td></tr>
+              <tr><td>Washability</td><td class="text-[var(--emerald)] font-medium">Excellent</td><td class="text-[var(--emerald)] font-medium">Excellent</td><td class="text-[var(--emerald)] font-medium">Waterproof</td></tr>
+              <tr><td>Fine text legibility</td><td class="text-[var(--text-faint)]">Good</td><td class="text-[var(--emerald)] font-medium">Excellent</td><td class="text-[var(--text-faint)]">Good</td></tr>
+              <tr><td>3D / relief effect</td><td><span class="check-faint">✕</span></td><td><span class="check-faint">✕</span></td><td><span class="check-green">✓</span></td></tr>
+              <tr><td>MOQ</td><td>50</td><td>100</td><td>50</td></tr>
+              <tr><td>Lead time</td><td>10–14 days</td><td>12–16 days</td><td>10–14 days</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATALOG ITEMS -->
+  <section class="py-20 border-t border-[var(--border)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+        <div>
+          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--emerald)] tracking-widest uppercase mb-3"><span class="w-8 h-px bg-[var(--emerald)]"></span>UNIFORM PRODUCTS</div>
+          <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">Products in this Program</h2>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button class="program-tab active-prog" data-prog="all">All</button>
+          <button class="program-tab" data-prog="embroidered">Embroidered</button>
+          <button class="program-tab" data-prog="woven">Woven</button>
+          <button class="program-tab" data-prog="pvc">PVC</button>
+          <button class="program-tab" data-prog="label">Labels</button>
+        </div>
+      </div>
+
+      <div id="ub-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+
+        <!-- 1 -->
+        <div class="ub-card" data-prog="embroidered">
+          <div class="ub-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="ubg1b" cx="50%" cy="40%"><stop offset="0%" stop-color="#1e3a5f"/><stop offset="100%" stop-color="#0f1f3d"/></radialGradient></defs>
+              <rect width="220" height="180" fill="#0d1929"/><rect x="0" y="0" width="220" height="180" fill="url(#ubg1b)" opacity="0.9"/>
+              <path d="M110 18 L172 46 L172 116 L110 152 L48 116 L48 46 Z" fill="#122544" stroke="#FBBF24" stroke-width="2.5"/>
+              <text x="78" y="56" font-size="12" fill="#FBBF24" opacity="0.7">★</text><text x="133" y="56" font-size="12" fill="#FBBF24" opacity="0.7">★</text>
+              <text x="110" y="120" text-anchor="middle" font-size="64" fill="#FBBF24" font-family="Georgia,serif" font-weight="900" opacity="0.95">V</text>
+            </svg>
+            <div class="ub-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="prog-badge">Embroidered</div><div class="moq-ub">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">Embroidered</div>
+            <h3 class="product-title mb-3">Varsity Uniform Crest</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–499</span><span>$3.20/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.60/ea ★</span></div>
+            </div>
+            <button class="add-ub quick-quote-btn" data-product="Varsity Uniform Crest"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="ub-card" data-prog="woven">
+          <div class="ub-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="ubg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1c1c2e"/><stop offset="100%" stop-color="#14142a"/></linearGradient></defs>
+              <rect width="220" height="180" fill="url(#ubg2)"/>
+              <rect x="38" y="22" width="144" height="136" rx="8" fill="#111" stroke="#6366F1" stroke-width="2"/>
+              <rect x="44" y="28" width="132" height="124" rx="5" fill="none" stroke="#6366F1" stroke-width="0.7" opacity="0.3"/>
+              <text x="110" y="95" text-anchor="middle" font-size="28" fill="#818CF8" font-family="Georgia,serif" font-weight="800">WL</text>
+              <text x="110" y="116" text-anchor="middle" font-size="7.5" fill="#6366F1" font-family="monospace" letter-spacing="2" opacity="0.7">WOVEN LABEL</text>
+            </svg>
+            <div class="ub-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="prog-badge">Woven</div><div class="moq-ub">MOQ 100</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--indigo-4)">Woven</div>
+            <h3 class="product-title mb-3">Precision Woven Brand Label</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>100–499</span><span>$2.40/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.10/ea ★</span></div>
+            </div>
+            <button class="add-ub quick-quote-btn" data-product="Precision Woven Brand Label"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="ub-card" data-prog="pvc">
+          <div class="ub-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="ubg3" cx="50%" cy="45%"><stop offset="0%" stop-color="#1e3428"/><stop offset="100%" stop-color="#091510"/></radialGradient></defs>
+              <rect width="220" height="180" fill="url(#ubg3)"/>
+              <polygon points="110,18 180,50 180,130 110,162 40,130 40,50" fill="#0d2018" stroke="#34D399" stroke-width="2.2"/>
+              <polygon points="110,32 166,58 166,122 110,148 54,122 54,58" fill="none" stroke="rgba(52,211,153,0.15)" stroke-width="0.8"/>
+              <text x="110" y="100" text-anchor="middle" font-size="22" fill="#34D399" font-family="Georgia,serif" font-weight="800">PVC</text>
+              <text x="110" y="118" text-anchor="middle" font-size="6.5" fill="rgba(52,211,153,0.7)" font-family="sans-serif" letter-spacing="2">TACTICAL BADGE</text>
+            </svg>
+            <div class="ub-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="prog-badge">PVC</div><div class="moq-ub">MOQ 50</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--emerald)">PVC</div>
+            <h3 class="product-title mb-3">Tactical PVC Hex Badge</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>50–499</span><span>$4.80/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$2.80/ea ★</span></div>
+            </div>
+            <button class="add-ub quick-quote-btn" data-product="Tactical PVC Hex Badge"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="ub-card" data-prog="label">
+          <div class="ub-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="ubg4" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#2a1f08"/><stop offset="100%" stop-color="#150f04"/></linearGradient></defs>
+              <rect width="220" height="180" fill="url(#ubg4)"/>
+              <rect x="34" y="28" width="152" height="124" rx="10" fill="#1a1205" stroke="#FBBF24" stroke-width="2"/>
+              <rect x="42" y="36" width="136" height="108" rx="6" fill="none" stroke="rgba(251,191,36,0.15)" stroke-width="0.8"/>
+              <text x="110" y="82" text-anchor="middle" font-size="11" fill="#FBBF24" font-family="Georgia,serif" font-weight="700">BRAND</text>
+              <text x="110" y="100" text-anchor="middle" font-size="18" fill="#FBBF24" font-family="Georgia,serif" font-weight="900">LABEL</text>
+              <path d="M64 110 L156 110" stroke="#FBBF24" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="124" text-anchor="middle" font-size="6.5" fill="rgba(251,191,36,0.6)" font-family="sans-serif" letter-spacing="2">CARE + COMPOSITION</text>
+            </svg>
+            <div class="ub-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="prog-badge">Label</div><div class="moq-ub">MOQ 200</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">Labels</div>
+            <h3 class="product-title mb-3">Branded Care & Composition Label</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>200–999</span><span>$0.90/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$0.45/ea ★</span></div>
+            </div>
+            <button class="add-ub quick-quote-btn" data-product="Branded Care Label"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="ub-card" data-prog="embroidered">
+          <div class="ub-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="ubg5" cx="50%" cy="40%"><stop offset="0%" stop-color="#1a1a2e"/><stop offset="100%" stop-color="#0d0d1a"/></radialGradient><linearGradient id="ubg5g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#92400e"/><stop offset="45%" stop-color="#FBBF24"/><stop offset="100%" stop-color="#92400e"/></linearGradient></defs>
+              <rect width="220" height="180" fill="url(#ubg5)"/>
+              <ellipse cx="110" cy="90" rx="68" ry="64" fill="#100e1f" stroke="url(#ubg5g)" stroke-width="2.2"/>
+              <ellipse cx="110" cy="90" rx="58" ry="54" fill="none" stroke="url(#ubg5g)" stroke-width="0.7" opacity="0.3"/>
+              <text x="110" y="96" text-anchor="middle" font-size="18" fill="url(#ubg5g)" font-family="Georgia,serif" font-weight="800">BLAZER</text>
+              <text x="110" y="114" text-anchor="middle" font-size="7" fill="url(#ubg5g)" font-family="sans-serif" letter-spacing="2" opacity="0.8">CREST SERIES</text>
+            </svg>
+            <div class="ub-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="prog-badge">Embroidered</div><div class="moq-ub">MOQ 100</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--amber-4)">Embroidered</div>
+            <h3 class="product-title mb-3">Blazer Oval Crest — Sew-on</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>100–499</span><span>$4.50/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$2.20/ea ★</span></div>
+            </div>
+            <button class="add-ub quick-quote-btn" data-product="Blazer Oval Crest Sew-on"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="ub-card" data-prog="woven label">
+          <div class="ub-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="ubg6" cx="50%" cy="45%"><stop offset="0%" stop-color="#1e3a1f"/><stop offset="100%" stop-color="#0d1f0e"/></radialGradient></defs>
+              <rect width="220" height="180" fill="url(#ubg6)"/>
+              <rect x="36" y="26" width="148" height="128" rx="8" fill="#0d2010" stroke="#34D399" stroke-width="2"/>
+              <text x="110" y="85" text-anchor="middle" font-size="11" fill="#34D399" font-family="Georgia,serif" font-weight="700">SIZE</text>
+              <text x="110" y="106" text-anchor="middle" font-size="22" fill="#34D399" font-family="Georgia,serif" font-weight="900">XL</text>
+              <path d="M68 115 L152 115" stroke="#34D399" stroke-width="0.5" opacity="0.3"/>
+              <text x="110" y="129" text-anchor="middle" font-size="6.5" fill="rgba(52,211,153,0.7)" font-family="sans-serif" letter-spacing="1.5">UNIFORM LABEL</text>
+            </svg>
+            <div class="ub-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="prog-badge">Label</div><div class="moq-ub">MOQ 200</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--emerald)">Woven / Label</div>
+            <h3 class="product-title mb-3">Size & Brand Woven Inner Label</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>200–999</span><span>$0.70/ea</span></div>
+              <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$0.35/ea ★</span></div>
+            </div>
+            <button class="add-ub quick-quote-btn" data-product="Size & Brand Woven Inner Label"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="ub-card" data-prog="pvc embroidered">
+          <div class="ub-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><radialGradient id="ubg7" cx="50%" cy="50%"><stop offset="0%" stop-color="#2d1b4e"/><stop offset="100%" stop-color="#160d27"/></radialGradient></defs>
+              <rect width="220" height="180" fill="url(#ubg7)"/>
+              <rect x="42" y="28" width="136" height="124" rx="5" fill="#111" stroke="#A855F7" stroke-width="2"/>
+              <rect x="48" y="34" width="124" height="112" rx="3" fill="none" stroke="#A855F7" stroke-width="0.7" opacity="0.4"/>
+              <path d="M78 90 L110 62 L142 90 L136 96 L110 70 L84 96 Z" fill="#A855F7" opacity="0.92"/>
+              <path d="M78 104 L110 76 L142 104 L136 110 L110 84 L84 110 Z" fill="#A855F7" opacity="0.4"/>
+              <text x="110" y="130" text-anchor="middle" font-size="7" fill="#C084FC" font-family="monospace" letter-spacing="3">VELCRO BADGE</text>
+            </svg>
+            <div class="ub-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="prog-badge">PVC</div><div class="moq-ub">MOQ 75</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--purple)">PVC / Velcro</div>
+            <h3 class="product-title mb-3">Velcro-Back Field Tactical Badge</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>75–499</span><span>$5.20/ea</span></div>
+              <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$3.00/ea ★</span></div>
+            </div>
+            <button class="add-ub quick-quote-btn" data-product="Velcro-Back Field Tactical Badge"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="ub-card" data-prog="embroidered woven pvc label">
+          <div class="ub-img-wrap">
+            <svg viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="ubg8" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#0a0f1c"/><stop offset="100%" stop-color="#111827"/></linearGradient></defs>
+              <rect width="220" height="180" fill="url(#ubg8)"/>
+              <!-- 4 mini patches arranged in grid -->
+              <rect x="30" y="28" width="68" height="56" rx="6" fill="#1a0f36" stroke="#C084FC" stroke-width="1.5"/><text x="64" y="62" text-anchor="middle" font-size="14" fill="#C084FC">E</text>
+              <rect x="122" y="28" width="68" height="56" rx="6" fill="#0d1029" stroke="#6366F1" stroke-width="1.5"/><text x="156" y="62" text-anchor="middle" font-size="14" fill="#818CF8">W</text>
+              <rect x="30" y="96" width="68" height="56" rx="6" fill="#0d2018" stroke="#34D399" stroke-width="1.5"/><text x="64" y="130" text-anchor="middle" font-size="14" fill="#34D399">P</text>
+              <rect x="122" y="96" width="68" height="56" rx="6" fill="#1a1205" stroke="#FBBF24" stroke-width="1.5"/><text x="156" y="130" text-anchor="middle" font-size="14" fill="#FBBF24">L</text>
+              <text x="110" y="170" text-anchor="middle" font-size="6" fill="rgba(255,255,255,0.2)" font-family="sans-serif" letter-spacing="2">FULL PROGRAM</text>
+            </svg>
+            <div class="ub-overlay"><i data-lucide="zoom-in" class="w-5 h-5 text-white mb-1"></i><span class="text-xs text-white/70">View Details</span></div>
+            <div class="prog-badge">All Types</div><div class="moq-ub">MOQ 500</div>
+          </div>
+          <div class="p-4 flex flex-col flex-1">
+            <div class="product-category-tag mb-1" style="color:var(--emerald)">Complete Program</div>
+            <h3 class="product-title mb-3">Complete Uniform Branding Set</h3>
+            <div class="pricing-tiers mb-3">
+              <div class="tier-row"><span>500–1999</span><span>From $1.20/ea</span></div>
+              <div class="tier-row best"><span>2000+ units</span><span class="text-[var(--amber-4)]">From $0.85/ea ★</span></div>
+            </div>
+            <button class="add-ub quick-quote-btn" data-product="Complete Uniform Branding Set"><i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Quote</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="cta-banner relative z-10">
+        <div class="flex flex-col lg:flex-row items-center gap-10 relative z-10">
+          <div class="flex-1 text-center lg:text-start">
+            <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)] mb-4">Design Your Uniform Program Today</h2>
+            <p class="text-[var(--text-muted)] font-inter text-base leading-relaxed max-w-lg">Tell us your industry, approximate headcount, and which patch types you need — we'll build a complete program quote within 24 hours.</p>
+          </div>
+          <div class="shrink-0 flex flex-col items-center gap-3">
+            <a href="contact.html" class="stitch-btn flex items-center gap-2.5 px-9 py-4 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="send" class="w-4 h-4"></i> Start Your Program
+            </a>
+            <p class="text-xs text-[var(--text-faint-2)] font-inter">Full quote with Pantone specs in 24 hrs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[var(--footer-border)] py-12">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-start"><a href="home.html" class="font-jakarta font-extrabold text-lg tracking-tight mb-1 text-[var(--text-primary)] inline-block">PATCH<span class="text-[var(--amber-5)]">CRAFT</span><span class="text-[var(--text-faint-2)] text-xs font-inter font-normal ms-1">PRO</span></a><p class="text-xs text-[var(--text-faint-2)] font-inter">Premium B2B Uniform Solutions · Est. 2008</p></div>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-inter text-[var(--text-faint-2)]">
+          <a href="home.html" class="hover:text-[var(--text-body)] transition-colors">Home</a>
+          <a href="schools-catalog.html" class="hover:text-[var(--text-body)] transition-colors">Schools</a>
+          <a href="corporate-patches.html" class="hover:text-[var(--text-body)] transition-colors">Corporate</a>
+          <a href="uniform-branding.html" class="text-[var(--emerald)]">Uniform Branding</a>
+          <a href="sports-teams.html" class="hover:text-[var(--text-body)] transition-colors">Sports Teams</a>
+          <a href="home2.html#pricing" class="hover:text-[var(--text-body)] transition-colors">Pricing</a>
+          <a href="contact.html" class="hover:text-[var(--text-body)] transition-colors">Contact</a>
+        </div>
+        <p class="text-xs text-[var(--text-faint-3)] font-inter">© 2026 PatchCraft Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+    <span id="toast-message" class="text-sm font-inter text-white">Added to quote!</span>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var tabs = document.querySelectorAll('.program-tab');
+      var cards = document.querySelectorAll('#ub-grid .ub-card');
+      function apply(prog) {
+        cards.forEach(function(c) {
+          var p = (c.getAttribute('data-prog') || '').split(' ');
+          c.style.display = (prog === 'all' || p.indexOf(prog) !== -1) ? '' : 'none';
+        });
+      }
+      tabs.forEach(function(t) {
+        t.addEventListener('click', function() {
+          tabs.forEach(function(x) { x.classList.remove('active-prog'); });
+          t.classList.add('active-prog');
+          apply(t.getAttribute('data-prog'));
+        });
+      });
+      apply('all');
+    });
+  </script>
+</body>
+</html>

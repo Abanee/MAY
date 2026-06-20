@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PatchCraft Pro — Custom Embroidered Patch &amp; Uniform Supplier (B2B)</title>
+  <meta name="description" content="B2B supplier of custom embroidered patches, woven badges, PVC insignia and full uniform programs for schools, sports teams, corporates, and public safety. In-house digitizing, ISO 9001 production, MOQ from 50 units." />
+  <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
+
+  <!-- Avoid a flash of the wrong theme/direction before script.js loads -->
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('pcp-theme');
+        var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+
+        var savedDir = localStorage.getItem('pcp-dir');
+        if (savedDir === 'rtl' || savedDir === 'ltr') {
+          document.documentElement.setAttribute('dir', savedDir);
+        }
+      } catch (e) { /* storage unavailable — defaults already set in markup */ }
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind Extended Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased overflow-x-hidden">
+
+  <!-- ══════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="home.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight">
+        PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+        <span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-inter font-medium text-[var(--text-muted)]">
+        <a href="home.html" class="text-[var(--text-primary)] transition-colors duration-200">Home</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors duration-200">Catalogs <i data-lucide="chevron-down" class="w-3.5 h-3.5 mt-0.5"></i></button>
+          <div class="absolute top-full left-0 mt-2 w-52 bg-[var(--surface)] border border-[var(--border-strong)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
+            <a href="schools-catalog.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--indigo-4)] hover:bg-[var(--indigo-tint-10)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>Schools</a>
+            <a href="corporate-patches.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--amber-4)] hover:bg-[var(--amber-tint-08)] mt-1"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i>Corporate</a>
+            <a href="uniform-branding.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--emerald)] hover:bg-[rgba(52,211,153,0.08)] mt-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i>Uniform Branding</a>
+            <a href="home2.html#catalog" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--text-primary)] hover:bg-[var(--surface-soft-hover)] mt-1"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>All Products</a>
+          </div>
+        </div>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
+      </div>
+
+      <!-- Desktop CTA + Toggles -->
+      <div class="hidden md:flex items-center gap-3">
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button" aria-label="Toggle layout direction, left to right or right to left" title="Toggle LTR / RTL layout">
+          <i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i>
+          <span id="dir-toggle-label" class="dir-toggle-label">LTR</span>
+        </button>
+        <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
+        <a href="login.html" class="text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors duration-200 font-inter">Sign In</a>
+        <a href="contact.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Get a Quote</a>
+      </div>
+
+      <!-- Mobile Controls -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+      <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
+        <a href="home.html" class="text-[var(--amber-4)]">Home</a>
+        <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors">Schools</a>
+        <a href="corporate-patches.html" class="hover:text-[var(--text-primary)] transition-colors">Corporate</a>
+        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors">Uniform Branding</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
+        <div class="flex gap-3 pt-2">
+          <a href="login.html" class="flex-1 py-2.5 border border-[var(--border-strong)] text-center text-sm font-jakarta font-bold rounded-xl text-[var(--text-primary)]">Sign In</a>
+          <a href="contact.html" class="flex-1 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Get a Quote</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ══════════════════════════════════════════════
+       HERO — "Supplier-first" pitch with live Order Journey panel
+  ══════════════════════════════════════════════ -->
+  <section id="hero" class="min-h-screen pt-20 relative flex items-center overflow-hidden">
+
+    <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
+    <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--amber-5)]/8 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--indigo-5)]/8 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
+      <div class="grid lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+
+        <!-- ── Left: Copy & CTAs ── -->
+        <div class="hero-copy">
+
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
+            <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">Wholesale Patch &amp; Uniform Supplier</span>
+          </div>
+
+          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+            Your Insignia.<br />
+            <span class="text-gradient-gold">Our Floor.</span><br />
+            One Supplier.
+          </h1>
+
+          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
+            We design, digitize, and manufacture embroidered patches, woven badges, and full uniform trim programs for procurement teams who need consistency at scale — not just a single batch.
+          </p>
+
+          <div class="flex items-center gap-6 md:gap-10 mb-10">
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]"><span data-count-to="500" data-count-suffix="+">0</span></div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">B2B Accounts Served</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]"><span data-count-to="18" data-count-suffix="yrs">0</span></div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">In Production</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--amber-4)]"><span data-count-to="99" data-count-suffix="%">0</span></div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">On-Time Fulfillment</div>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap gap-4">
+            <a href="home2.html#pricing" class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              Get a Custom Quote
+            </a>
+            <a href="home2.html#catalog" class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
+              <i data-lucide="layout-grid" class="w-4 h-4"></i>
+              Browse Catalog
+            </a>
+          </div>
+        </div>
+
+        <!-- ── Right: Live "Order Journey" panel (unique signature element) ── -->
+        <div class="hero-right flex flex-col items-center gap-4">
+          <div class="journey-card w-full max-w-[440px]">
+
+            <div class="flex items-center justify-between mb-7">
+              <div>
+                <h3 class="font-jakarta font-bold text-[15px] text-[var(--text-primary)]">Order Journey</h3>
+                <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">What happens after you say "yes"</p>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-emerald-400 font-inter">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                In Production
+              </div>
+            </div>
+
+            <div>
+              <div class="journey-step">
+                <div class="journey-dot">1</div>
+                <div>
+                  <div class="journey-title">Artwork Submitted</div>
+                  <div class="journey-sub">Upload your logo or specs — any format works.</div>
+                </div>
+              </div>
+              <div class="journey-step">
+                <div class="journey-dot">2</div>
+                <div>
+                  <div class="journey-title">Free Digital Proof</div>
+                  <div class="journey-sub">In-house digitizing team builds a stitch-ready file.</div>
+                </div>
+              </div>
+              <div class="journey-step">
+                <div class="journey-dot">3</div>
+                <div>
+                  <div class="journey-title">Physical Sample Approved</div>
+                  <div class="journey-sub">A real sample ships before any bulk run starts.</div>
+                </div>
+              </div>
+              <div class="journey-step">
+                <div class="journey-dot">4</div>
+                <div>
+                  <div class="journey-title">Bulk Production</div>
+                  <div class="journey-sub">ISO 9001 floor runs your order, 50 to 50,000 units.</div>
+                </div>
+              </div>
+              <div class="journey-step">
+                <div class="journey-dot">5</div>
+                <div>
+                  <div class="journey-title">QA &amp; Shipped</div>
+                  <div class="journey-sub">Every batch is inspected, packed, and tracked.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i>
+            <span class="text-xs text-[var(--indigo-4)] font-inter">ISO 9001 Certified Production</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       TRUST STRIP — Who we supply
+  ══════════════════════════════════════════════ -->
+  <section class="py-12 border-y border-[var(--border)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <p class="text-center text-xs font-inter font-medium text-[var(--text-faint)] uppercase tracking-widest mb-6">
+        Supplying procurement teams across
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-3">
+        <span class="trust-chip"><i data-lucide="graduation-cap" class="w-4 h-4"></i>Schools &amp; Universities</span>
+        <span class="trust-chip"><i data-lucide="trophy" class="w-4 h-4"></i>Sports Leagues &amp; Clubs</span>
+        <span class="trust-chip"><i data-lucide="shield" class="w-4 h-4"></i>Military &amp; Public Safety</span>
+        <span class="trust-chip"><i data-lucide="building-2" class="w-4 h-4"></i>Corporate &amp; Hospitality</span>
+        <span class="trust-chip"><i data-lucide="flag" class="w-4 h-4"></i>Motorsport &amp; Racing Teams</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       WHY SOURCE FROM US
+  ══════════════════════════════════════════════ -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+      <div class="text-center mb-14 max-w-2xl mx-auto">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--indigo-4)]"></span>WHY PATCHCRAFT PRO<span class="w-8 h-px bg-[var(--indigo-4)]"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Built for Procurement, Not Just Patches</h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed">
+          A single accountable supplier for design, sampling, bulk manufacturing, and reorders — so your uniform program never depends on one good vendor relationship.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="feature-card">
+          <div class="feature-icon-wrap"><i data-lucide="palette" class="w-5 h-5 text-[var(--amber-4)]"></i></div>
+          <div class="feature-title">In-House Digitizing Studio</div>
+          <div class="feature-desc">Every design is converted to a stitch-ready file by our own artists — no outsourced rework, no surprise revisions.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap"><i data-lucide="badge-check" class="w-5 h-5 text-[var(--amber-4)]"></i></div>
+          <div class="feature-title">ISO 9001 Certified Floor</div>
+          <div class="feature-desc">Documented quality control on every production run, with batch-level inspection before goods ship.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap"><i data-lucide="user-check" class="w-5 h-5 text-[var(--amber-4)]"></i></div>
+          <div class="feature-title">Dedicated Account Manager</div>
+          <div class="feature-desc">One point of contact for specs, reorders, and seasonal scaling — not a rotating support queue.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon-wrap"><i data-lucide="zap" class="w-5 h-5 text-[var(--amber-4)]"></i></div>
+          <div class="feature-title">5-Day Rush Production</div>
+          <div class="feature-desc">Standard runs ship in 10 days; rush lanes are available when your season or rollout can't wait.</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS — From Upload to Doorstep
+  ══════════════════════════════════════════════ -->
+  <section class="py-24 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--amber-tint-08)] to-transparent pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-5 md:px-8 relative z-10">
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-4">
+          <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>OUR PROCESS<span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">From Upload to Doorstep</h2>
+      </div>
+
+      <div class="process-row">
+        <div class="process-rail"></div>
+
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <div class="process-step-title">Submit Artwork</div>
+          <div class="process-step-desc">Send your logo, mascot, or spec sheet — sketches are fine too.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <div class="process-step-title">Free Digital Proof</div>
+          <div class="process-step-desc">Thread colors and stitch density mapped within 24 hours.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <div class="process-step-title">Sample Approval</div>
+          <div class="process-step-desc">A physical sample ships to you before bulk production starts.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <div class="process-step-title">Bulk Production</div>
+          <div class="process-step-desc">Your run goes to the floor — 50 to 50,000 units, tracked.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">05</div>
+          <div class="process-step-title">QA &amp; Ship</div>
+          <div class="process-step-desc">Batch inspection, then packed and shipped worldwide.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       OUTFIT EVERY DEPARTMENT — Industry cards
+  ══════════════════════════════════════════════ -->
+  <section class="py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+            <span class="w-8 h-px bg-[var(--indigo-4)]"></span>WHO WE OUTFIT
+          </div>
+          <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">Every Department, One Vendor File</h2>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <a href="schools-catalog.html" class="industry-card">
+          <div class="industry-icon-wrap"><i data-lucide="graduation-cap" class="w-5 h-5 text-[var(--indigo-4)]"></i></div>
+          <div class="industry-title">Schools &amp; Universities</div>
+          <div class="industry-desc">Varsity letters, blazer crests, club badges, and class-year patches for student stores and athletic departments.</div>
+          <span class="industry-link">Browse catalog <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+
+        <a href="sports-teams.html" class="industry-card">
+          <div class="industry-icon-wrap"><i data-lucide="trophy" class="w-5 h-5 text-[var(--purple)]"></i></div>
+          <div class="industry-title">Sports Teams &amp; Leagues</div>
+          <div class="industry-desc">Roster numbering, captain patches, and bulk crests for youth leagues up to pro club programs.</div>
+          <span class="industry-link">Outfit your team <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+
+        <a href="corporate-patches.html" class="industry-card">
+          <div class="industry-icon-wrap"><i data-lucide="building-2" class="w-5 h-5 text-[var(--amber-4)]"></i></div>
+          <div class="industry-title">Corporate &amp; Hospitality</div>
+          <div class="industry-desc">Lapel insignia, name badges, and brand-consistent trim for multi-location staff uniforms.</div>
+          <span class="industry-link">Browse catalog <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+
+        <a href="home2.html#catalog" class="industry-card">
+          <div class="industry-icon-wrap"><i data-lucide="shield" class="w-5 h-5 text-[var(--emerald)]"></i></div>
+          <div class="industry-title">Military &amp; Public Safety</div>
+          <div class="industry-desc">Rank insignia, unit patches, and durable PVC badges built to spec and to last.</div>
+          <span class="industry-link">Browse catalog <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+
+        <a href="home2.html#catalog" class="industry-card">
+          <div class="industry-icon-wrap"><i data-lucide="flag" class="w-5 h-5 text-[var(--indigo-4)]"></i></div>
+          <div class="industry-title">Motorsport &amp; Racing</div>
+          <div class="industry-desc">Sponsor patches and pit-crew insignia produced fast enough to keep pace with a race calendar.</div>
+          <span class="industry-link">Browse catalog <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></span>
+        </a>
+
+        <div class="industry-card !cursor-default">
+          <div class="industry-icon-wrap"><i data-lucide="calculator" class="w-5 h-5 text-[var(--amber-4)]"></i></div>
+          <div class="industry-title">Not Sure What You Need?</div>
+          <div class="industry-desc">Run any order size through our bulk pricing estimator to see per-unit cost and lead time instantly.</div>
+          <a href="home2.html#pricing" class="industry-link">Open pricing tool <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       TESTIMONIALS
+  ══════════════════════════════════════════════ -->
+  <section class="py-24 border-y border-[var(--border)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+      <div class="text-center mb-14 max-w-2xl mx-auto">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--indigo-4)]"></span>FROM OUR ACCOUNTS<span class="w-8 h-px bg-[var(--indigo-4)]"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">Reordered, Not Just Ordered</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">We switched our entire district's varsity patch program to PatchCraft Pro three years ago. Every reorder has matched the original spec exactly — no color drift, no surprises.</p>
+          <div class="flex items-center gap-3">
+            <div class="testimonial-avatar" style="background: var(--indigo-5);">RM</div>
+            <div>
+              <div class="testimonial-name">Rachel Moss</div>
+              <div class="testimonial-role">Athletic Director, Westbrook School District</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">As a uniform distributor we resell to a dozen departments. Having one supplier who handles rank insignia and PVC badges to spec saves us a full procurement cycle each year.</p>
+          <div class="flex items-center gap-3">
+            <div class="testimonial-avatar" style="background: var(--amber-5); color: var(--on-accent);">DK</div>
+            <div>
+              <div class="testimonial-name">Daniel Kruger</div>
+              <div class="testimonial-role">Procurement Lead, Ironline Uniform Supply</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">We needed sponsor patches turned around between race weekends. Their rush lane has never missed a deadline, and the stitch quality holds up to a full season on track.</p>
+          <div class="flex items-center gap-3">
+            <div class="testimonial-avatar" style="background: var(--purple);">AT</div>
+            <div>
+              <div class="testimonial-name">Andre Torres</div>
+              <div class="testimonial-role">Team Manager, Apex Circuit Racing</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       CTA BANNER
+  ══════════════════════════════════════════════ -->
+  <section class="py-24">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="cta-banner">
+        <div class="relative z-10 text-center max-w-xl mx-auto">
+          <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)] mb-4">Get Bulk Pricing in Under 2 Hours</h2>
+          <p class="text-[var(--text-muted)] font-inter text-base leading-relaxed mb-8">
+            Send your specs and we'll come back with tiered pricing, lead time, and a digital proof — no obligation, no minimum to ask.
+          </p>
+          <div class="flex flex-wrap items-center justify-center gap-4">
+            <a href="home2.html#pricing" class="stitch-btn flex items-center gap-2 px-8 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              Request Formal Quote
+            </a>
+            <a href="sports-teams.html" class="stitch-btn-ghost flex items-center gap-2 px-8 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm">
+              <i data-lucide="trophy" class="w-4 h-4"></i>
+              Outfit a Sports Team
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="border-t border-[var(--footer-border)] py-12">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+
+        <div class="text-center md:text-start">
+          <a href="home.html" class="font-jakarta font-extrabold text-lg tracking-tight mb-1 text-[var(--text-primary)] inline-block">
+            PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+            <span class="text-[var(--text-faint-2)] text-xs font-inter font-normal ms-1">PRO</span>
+          </a>
+          <p class="text-xs text-[var(--text-faint-2)] font-inter">Premium B2B Uniform Solutions · Est. 2008</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 text-xs font-inter text-[var(--text-faint-2)]">
+          <a href="schools-catalog.html" class="hover:text-[var(--text-body)] transition-colors">Schools</a>
+          <a href="corporate-patches.html" class="hover:text-[var(--text-body)] transition-colors">Corporate</a>
+          <a href="uniform-branding.html" class="hover:text-[var(--text-body)] transition-colors">Uniform Branding</a>
+          <a href="sports-teams.html" class="hover:text-[var(--text-body)] transition-colors">Sports Teams</a>
+          <a href="home2.html#pricing" class="hover:text-[var(--text-body)] transition-colors">Pricing</a>
+          <a href="contact.html" class="hover:text-[var(--text-body)] transition-colors">Contact</a>
+        </div>
+
+        <p class="text-xs text-[var(--text-faint-3)] font-inter">© 2026 PatchCraft Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ══ TOAST NOTIFICATION ══ -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+    <span id="toast-message" class="text-sm font-inter text-white">Added to quote successfully!</span>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

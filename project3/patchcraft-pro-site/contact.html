@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Get a Quote in 2 Hours | PatchCraft Pro</title>
+  <meta name="description" content="Contact PatchCraft Pro for custom embroidered patches, bulk orders, and uniform branding programs. Get a formal quote within 2 business hours." />
+  <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
+  <script>(function(){try{var t=localStorage.getItem('pcp-theme');document.documentElement.setAttribute('data-theme',t||(window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'));var d=localStorage.getItem('pcp-dir');if(d==='rtl'||d==='ltr')document.documentElement.setAttribute('dir',d);}catch(e){}})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>tailwind.config={theme:{extend:{fontFamily:{jakarta:['"Plus Jakarta Sans"','sans-serif'],inter:['Inter','sans-serif']}}}};</script>
+  <style>
+    .contact-form-card{background:var(--surface);border:1px solid var(--border-strong);border-radius:24px;padding:40px;position:relative;overflow:hidden;transition:background-color .4s ease,border-color .4s ease;}
+    .contact-form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--amber-tint-30),transparent);}
+    .form-group{margin-bottom:20px;}
+    .form-label{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:12px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;}
+    .form-input{width:100%;background:var(--surface-soft);border:1px solid var(--border-strong);border-radius:12px;padding:13px 16px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text-primary);outline:none;transition:border-color .25s ease,box-shadow .25s ease,background-color .4s ease;}
+    .form-input::placeholder{color:var(--text-faint-2);}
+    .form-input:focus{border-color:var(--amber-tint-30);box-shadow:0 0 0 3px var(--amber-tint-08);}
+    .form-select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+    .form-textarea{resize:vertical;min-height:120px;}
+    .submit-btn{width:100%;padding:15px;background:var(--amber-5);color:var(--on-accent);font-family:'Plus Jakarta Sans',sans-serif;font-size:15px;font-weight:800;border:none;border-radius:14px;cursor:pointer;transition:all .25s ease;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .submit-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px var(--amber-tint-20);}
+    .submit-btn:active{transform:translateY(0);}
+    .info-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;transition:border-color .3s ease,transform .3s ease;}
+    .info-card:hover{border-color:var(--amber-tint-20);transform:translateY(-3px);}
+    .info-icon{width:44px;height:44px;border-radius:12px;background:var(--amber-tint-10);border:1px solid var(--amber-tint-20);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0;}
+    .faq-item{border-bottom:1px solid var(--border-soft);}
+    .faq-item:last-child{border-bottom:none;}
+    .faq-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:18px 0;background:transparent;border:none;cursor:pointer;text-align:start;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;font-weight:700;color:var(--text-primary);}
+    .faq-btn .faq-icon{transition:transform .3s ease;color:var(--text-faint);}
+    .faq-item.open .faq-btn .faq-icon{transform:rotate(45deg);color:var(--amber-4);}
+    .faq-answer{font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text-faint);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;}
+    .faq-item.open .faq-answer{max-height:200px;padding-bottom:18px;}
+    .response-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--emerald);}
+    @keyframes form-success{0%{transform:scale(0.95);opacity:0;}100%{transform:scale(1);opacity:1;}}
+    .success-state{animation:form-success .4s cubic-bezier(.16,1,.3,1) both;}
+    .char-counter{font-family:'Inter',sans-serif;font-size:11px;color:var(--text-faint-2);text-align:end;margin-top:4px;}
+  </style>
+</head>
+<body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased overflow-x-hidden">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+      <a href="home.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight">PATCH<span class="text-[var(--amber-5)]">CRAFT</span><span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span></a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-inter font-medium text-[var(--text-muted)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
+        <div class="relative group">
+          <button class="flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors duration-200">Catalogs <i data-lucide="chevron-down" class="w-3.5 h-3.5 mt-0.5"></i></button>
+          <div class="absolute top-full left-0 mt-2 w-52 bg-[var(--surface)] border border-[var(--border-strong)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
+            <a href="schools-catalog.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--indigo-4)] hover:bg-[var(--indigo-tint-10)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>Schools</a>
+            <a href="corporate-patches.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--amber-4)] hover:bg-[var(--amber-tint-08)] mt-1"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i>Corporate</a>
+            <a href="uniform-branding.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--emerald)] hover:bg-[rgba(52,211,153,0.08)] mt-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i>Uniform Branding</a>
+            <a href="home2.html#catalog" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--text-primary)] hover:bg-[var(--surface-soft-hover)] mt-1"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>All Products</a>
+          </div>
+        </div>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
+        <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
+        <a href="contact.html" class="text-[var(--text-primary)] transition-colors duration-200">Contact</a>
+      </div>
+      <div class="hidden md:flex items-center gap-3">
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme"><span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span><span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span></button>
+        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button"><i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i><span id="dir-toggle-label" class="dir-toggle-label">LTR</span></button>
+        <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
+        <a href="login.html" class="text-sm text-[var(--text-muted)] hover:text-[var(--text-primary)] transition-colors font-inter">Sign In</a>
+        <a href="signup.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Sign Up</a>
+      </div>
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme"><span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span><span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span></button>
+        <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu" class="w-5 h-5"></i></button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+      <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
+        <a href="home.html" class="hover:text-[var(--text-primary)]">Home</a>
+        <a href="schools-catalog.html" class="hover:text-[var(--text-primary)]">Schools</a>
+        <a href="corporate-patches.html" class="hover:text-[var(--text-primary)]">Corporate</a>
+        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)]">Uniform Branding</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)]">Sports Teams</a>
+        <a href="contact.html" class="text-[var(--amber-4)]">Contact</a>
+        <div class="flex gap-3 pt-2">
+          <a href="login.html" class="flex-1 py-2.5 border border-[var(--border-strong)] text-center text-sm font-jakarta font-bold rounded-xl text-[var(--text-primary)]">Sign In</a>
+          <a href="signup.html" class="flex-1 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="pt-32 pb-16 relative overflow-hidden">
+    <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
+    <div class="absolute top-0 start-1/4 w-[500px] h-[300px] bg-[var(--amber-5)]/6 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute top-0 end-1/4 w-[400px] h-[300px] bg-[var(--indigo-5)]/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10 text-center">
+      <div class="response-badge mb-6 mx-auto">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--emerald)] animate-pulse"></span>
+        Average response time: under 2 hours
+      </div>
+      <h1 class="font-jakarta font-black text-5xl md:text-6xl text-[var(--text-primary)] mb-5">
+        Let's Build Your<br /><span class="text-gradient-gold">Patch Program.</span>
+      </h1>
+      <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto leading-relaxed">
+        Whether you need 50 patches or 50,000 — fill in the quote form and a specialist will get back to you with pricing, samples, and lead time within 2 business hours.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <section class="pb-24 relative">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="grid lg:grid-cols-3 gap-10 items-start">
+
+        <!-- LEFT: Contact Info Cards -->
+        <div class="space-y-5">
+          <div class="info-card">
+            <div class="info-icon"><i data-lucide="mail" class="w-5 h-5 text-[var(--amber-4)]"></i></div>
+            <div class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-1">Email Us</div>
+            <a href="mailto:quotes@patchcraftpro.com" class="text-sm text-[var(--amber-4)] font-inter hover:opacity-80 transition-opacity">quotes@patchcraftpro.com</a>
+            <p class="text-xs text-[var(--text-faint)] font-inter mt-1">Replies within 2 business hours</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><i data-lucide="phone" class="w-5 h-5 text-[var(--indigo-4)]"></i></div>
+            <div class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-1">Call Sales</div>
+            <a href="tel:+18005550199" class="text-sm text-[var(--indigo-4)] font-inter hover:opacity-80 transition-opacity">+1 800 555 0199</a>
+            <p class="text-xs text-[var(--text-faint)] font-inter mt-1">Mon–Fri · 8AM – 6PM EST</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><i data-lucide="map-pin" class="w-5 h-5 text-[var(--emerald)]"></i></div>
+            <div class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-1">Production Facility</div>
+            <p class="text-sm text-[var(--text-faint)] font-inter">142 Stitch Works Ave,<br />Embroidery District, CA 90210</p>
+            <p class="text-xs text-[var(--text-faint-2)] font-inter mt-1">Visits by appointment only</p>
+          </div>
+          <div class="info-card">
+            <div class="info-icon"><i data-lucide="clock" class="w-5 h-5 text-[var(--purple)]"></i></div>
+            <div class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Business Hours</div>
+            <div class="space-y-1.5">
+              <div class="flex justify-between text-xs font-inter"><span class="text-[var(--text-faint)]">Monday – Friday</span><span class="text-[var(--text-body)] font-medium">8AM – 6PM EST</span></div>
+              <div class="flex justify-between text-xs font-inter"><span class="text-[var(--text-faint)]">Saturday</span><span class="text-[var(--text-body)] font-medium">9AM – 2PM EST</span></div>
+              <div class="flex justify-between text-xs font-inter"><span class="text-[var(--text-faint)]">Sunday</span><span class="text-[var(--text-faint-2)]">Closed</span></div>
+            </div>
+          </div>
+
+          <!-- Social / follow -->
+          <div class="bg-[var(--surface-soft)] border border-[var(--border)] rounded-18px p-5 rounded-xl">
+            <div class="text-xs font-jakarta font-semibold text-[var(--text-faint-2)] uppercase tracking-widest mb-3">Follow Our Work</div>
+            <div class="flex gap-3">
+              <a href="#" class="w-9 h-9 rounded-10px flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--amber-4)] hover:border-[var(--amber-tint-30)] transition-all rounded-xl"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+              <a href="#" class="w-9 h-9 rounded-10px flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--indigo-4)] hover:border-[var(--indigo-tint-20)] transition-all rounded-xl"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
+              <a href="#" class="w-9 h-9 rounded-10px flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-stronger)] transition-all rounded-xl"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Quote Form (spans 2 columns) -->
+        <div class="lg:col-span-2">
+          <div class="contact-form-card">
+            <div class="mb-8">
+              <h2 class="font-jakarta font-black text-2xl text-[var(--text-primary)] mb-2">Request a Quote</h2>
+              <p class="text-sm text-[var(--text-faint)] font-inter">Fill in your project details and we'll return a formal quote within 2 hours.</p>
+            </div>
+
+            <form id="contact-form" novalidate>
+              <div class="grid sm:grid-cols-2 gap-5 mb-0">
+                <div class="form-group">
+                  <label class="form-label" for="contact-name">Full Name *</label>
+                  <input type="text" id="contact-name" class="form-input" placeholder="Jane Smith" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-org">Organisation / School *</label>
+                  <input type="text" id="contact-org" class="form-input" placeholder="Westbrook Academy" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-email">Business Email *</label>
+                  <input type="email" id="contact-email" class="form-input" placeholder="jane@westbrookacademy.edu" required />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-phone">Phone Number</label>
+                  <input type="tel" id="contact-phone" class="form-input" placeholder="+1 555 000 0000" />
+                </div>
+              </div>
+
+              <div class="grid sm:grid-cols-2 gap-5 mb-0">
+                <div class="form-group">
+                  <label class="form-label" for="contact-type">Patch Type *</label>
+                  <select id="contact-type" class="form-input form-select" required>
+                    <option value="" disabled selected>Select a type</option>
+                    <option>Embroidered Patch</option>
+                    <option>Woven Badge</option>
+                    <option>PVC / Rubber Patch</option>
+                    <option>Heat-Press Transfer</option>
+                    <option>Woven Label</option>
+                    <option>Complete Uniform Program</option>
+                    <option>Not sure — advise me</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-industry">Industry *</label>
+                  <select id="contact-industry" class="form-input form-select" required>
+                    <option value="" disabled selected>Select your sector</option>
+                    <option>Schools / Education</option>
+                    <option>Corporate / Enterprise</option>
+                    <option>Sports Teams / Leagues</option>
+                    <option>Hospitality / Retail</option>
+                    <option>Security / Defence</option>
+                    <option>Healthcare</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-qty">Estimated Quantity *</label>
+                  <select id="contact-qty" class="form-input form-select" required>
+                    <option value="" disabled selected>Select range</option>
+                    <option>50 – 99 units</option>
+                    <option>100 – 249 units</option>
+                    <option>250 – 499 units</option>
+                    <option>500 – 999 units</option>
+                    <option>1,000 – 4,999 units</option>
+                    <option>5,000+ units</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="contact-deadline">Deadline / Timeline</label>
+                  <input type="text" id="contact-deadline" class="form-input" placeholder="e.g. Before Sept 1st, 2026" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="contact-message">Project Details *</label>
+                <textarea id="contact-message" class="form-input form-textarea" placeholder="Describe your patch design, colours, size, any existing artwork, special requirements…" maxlength="600" required></textarea>
+                <div class="char-counter"><span id="char-count">0</span> / 600</div>
+              </div>
+
+              <div class="flex items-start gap-3 mb-6">
+                <input type="checkbox" id="contact-terms" class="filter-checkbox mt-0.5" required />
+                <label for="contact-terms" class="text-sm font-inter text-[var(--text-faint)] cursor-pointer leading-relaxed">
+                  I agree to the <a href="#" class="text-[var(--amber-4)] hover:opacity-80">Terms of Service</a> and <a href="#" class="text-[var(--amber-4)] hover:opacity-80">Privacy Policy</a>. PatchCraft Pro will use this information to respond to your quote request.
+                </label>
+              </div>
+
+              <!-- Hidden success state -->
+              <div id="form-success" class="hidden mb-6 p-5 rounded-2xl bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.25)] success-state">
+                <div class="flex items-center gap-3">
+                  <i data-lucide="check-circle-2" class="w-6 h-6 text-[var(--emerald)] flex-shrink-0"></i>
+                  <div>
+                    <div class="font-jakarta font-bold text-base text-[var(--text-primary)]">Quote Request Received!</div>
+                    <div class="text-sm text-[var(--text-faint)] font-inter mt-0.5">A specialist will contact you within 2 business hours.</div>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="stitch-btn submit-btn" id="submit-btn">
+                <i data-lucide="send" class="w-5 h-5"></i>
+                Send Quote Request
+              </button>
+              <p class="text-xs text-[var(--text-faint-2)] font-inter text-center mt-4">🔒 Your details are never shared or sold. Quote in 2 hours guaranteed.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="py-20 border-t border-[var(--border)]">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-3"><span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>FREQUENTLY ASKED<span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span></div>
+        <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)]">Common Questions</h2>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl px-8 divide-y divide-[var(--border-soft)]" id="faq-list">
+        <div class="faq-item">
+          <button class="faq-btn"><span>What is the minimum order quantity?</span><i data-lucide="plus" class="faq-icon w-5 h-5"></i></button>
+          <div class="faq-answer">Our standard MOQ is 50 units for most embroidered patches. Woven labels start at 100 units. For complete uniform programs (multi-product), MOQ is 500 units across the program. Lower MOQs may apply for reorders.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn"><span>Can I upload my own artwork or logo?</span><i data-lucide="plus" class="faq-icon w-5 h-5"></i></button>
+          <div class="faq-answer">Absolutely. We accept any file format — AI, EPS, PDF, PNG, JPG. For orders over 100 units, we include free digitization (converting your artwork into embroidery machine format) at no extra charge.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn"><span>How long does production take?</span><i data-lucide="plus" class="faq-icon w-5 h-5"></i></button>
+          <div class="faq-answer">Standard production is 10–14 business days after sample approval. Rush 5-day turnaround is available for an additional fee. Large enterprise programs (5,000+ units) typically take 18–21 days.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn"><span>Do you offer samples before full production?</span><i data-lucide="plus" class="faq-icon w-5 h-5"></i></button>
+          <div class="faq-answer">Yes — a physical production sample is included in all orders. We ship the sample for your approval before bulk production begins. Revision rounds are included in your quote.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn"><span>What payment terms do you offer?</span><i data-lucide="plus" class="faq-icon w-5 h-5"></i></button>
+          <div class="faq-answer">Standard orders require 50% upfront and 50% on delivery. Approved enterprise accounts are eligible for Net-30 payment terms. Purchase order (PO) billing is supported for schools and institutions.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn"><span>Do you match Pantone colours exactly?</span><i data-lucide="plus" class="faq-icon w-5 h-5"></i></button>
+          <div class="faq-answer">Yes. All orders are matched to Pantone thread numbers and archived in your account file. Reorders will always match your original production exactly — season after season.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-[var(--footer-border)] py-12">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-start"><a href="home.html" class="font-jakarta font-extrabold text-lg tracking-tight mb-1 text-[var(--text-primary)] inline-block">PATCH<span class="text-[var(--amber-5)]">CRAFT</span><span class="text-[var(--text-faint-2)] text-xs font-inter font-normal ms-1">PRO</span></a><p class="text-xs text-[var(--text-faint-2)] font-inter">Premium B2B Uniform Solutions · Est. 2008</p></div>
+        <div class="flex flex-wrap items-center gap-4 text-xs font-inter text-[var(--text-faint-2)]">
+          <a href="home.html" class="hover:text-[var(--text-body)] transition-colors">Home</a>
+          <a href="schools-catalog.html" class="hover:text-[var(--text-body)] transition-colors">Schools</a>
+          <a href="corporate-patches.html" class="hover:text-[var(--text-body)] transition-colors">Corporate</a>
+          <a href="uniform-branding.html" class="hover:text-[var(--text-body)] transition-colors">Uniform Branding</a>
+          <a href="sports-teams.html" class="hover:text-[var(--text-body)] transition-colors">Sports Teams</a>
+          <a href="home2.html#pricing" class="hover:text-[var(--text-body)] transition-colors">Pricing</a>
+          <a href="contact.html" class="text-[var(--amber-4)]">Contact</a>
+        </div>
+        <p class="text-xs text-[var(--text-faint-3)] font-inter">© 2026 PatchCraft Pro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+    <span id="toast-message" class="text-sm font-inter text-white">Quote sent!</span>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // FAQ accordion
+      document.querySelectorAll('.faq-item').forEach(function (item) {
+        item.querySelector('.faq-btn').addEventListener('click', function () {
+          var wasOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item').forEach(function (x) { x.classList.remove('open'); });
+          if (!wasOpen) item.classList.add('open');
+          if (window.lucide) lucide.createIcons();
+        });
+      });
+
+      // Char counter
+      var msg = document.getElementById('contact-message');
+      var cnt = document.getElementById('char-count');
+      if (msg && cnt) {
+        msg.addEventListener('input', function () { cnt.textContent = msg.value.length; });
+      }
+
+      // Form submit
+      var form = document.getElementById('contact-form');
+      var success = document.getElementById('form-success');
+      var btn = document.getElementById('submit-btn');
+      if (form) {
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (!form.checkValidity()) { form.reportValidity(); return; }
+          btn.disabled = true;
+          btn.innerHTML = '<i data-lucide="loader-circle" class="w-5 h-5 animate-spin"></i> Sending…';
+          if (window.lucide) lucide.createIcons();
+          setTimeout(function () {
+            success.classList.remove('hidden');
+            btn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i> Sent Successfully';
+            btn.style.background = 'var(--emerald)';
+            if (window.lucide) lucide.createIcons();
+          }, 1600);
+        });
+      }
+    });
+  </script>
+</body>
+</html>
