@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
 <head>
+  <link rel="icon" type="image/png" href="logo.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Account — PatchCraft Pro</title>
@@ -15,15 +16,11 @@
   <link rel="stylesheet" href="style.css" />
   <script>tailwind.config={theme:{extend:{fontFamily:{jakarta:['"Plus Jakarta Sans"','sans-serif'],inter:['Inter','sans-serif']}}}};</script>
   <style>
-    .auth-layout{min-height:100vh;display:grid;grid-template-columns:1fr;align-items:stretch;}
-    @media(min-width:1024px){.auth-layout{grid-template-columns:1fr 1fr;}}
-    .auth-left{background:linear-gradient(145deg,#0d1220 0%,#111827 60%,#0A0F1C 100%);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:40px;min-height:380px;}
-    html[data-theme="light"] .auth-left{background:linear-gradient(145deg,#1E293B 0%,#0F172A 100%);}
-    .auth-left::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:48px 48px;}
-    .auth-glow-a{position:absolute;top:-80px;right:-80px;width:400px;height:400px;background:var(--indigo-5);opacity:.07;border-radius:50%;filter:blur(100px);}
-    .auth-glow-b{position:absolute;bottom:-40px;left:-40px;width:300px;height:300px;background:var(--amber-5);opacity:.06;border-radius:50%;filter:blur(90px);}
-    .auth-glow-c{position:absolute;top:40%;left:20%;width:200px;height:200px;background:var(--emerald);opacity:.04;border-radius:50%;filter:blur(80px);}
-    .auth-right{background:var(--bg);display:flex;align-items:center;justify-content:center;padding:40px 24px;}
+    .auth-layout{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg);padding:40px 24px;position:relative;overflow:hidden;}
+    .auth-glow-a{position:absolute;top:-10%;right:-10%;width:400px;height:400px;background:var(--indigo-5);opacity:.03;border-radius:50%;filter:blur(100px);pointer-events:none;}
+    .auth-glow-b{position:absolute;bottom:-10%;left:-10%;width:300px;height:300px;background:var(--amber-5);opacity:.03;border-radius:50%;filter:blur(90px);pointer-events:none;}
+    .auth-glow-c{position:absolute;top:40%;left:20%;width:200px;height:200px;background:var(--emerald);opacity:.02;border-radius:50%;filter:blur(80px);pointer-events:none;}
+    .auth-right{display:flex;align-items:center;justify-content:center;width:100%;z-index:2;}
     .auth-card{width:100%;max-width:460px;}
     .auth-form-input{width:100%;background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;padding:13px 16px;font-family:'Inter',sans-serif;font-size:14px;color:var(--text-primary);outline:none;transition:border-color .25s ease,box-shadow .25s ease,background-color .4s ease;}
     .auth-form-input::placeholder{color:var(--text-faint-2);}
@@ -68,71 +65,34 @@
 <body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased">
 
   <div class="auth-layout">
+    <!-- Glow backgrounds -->
+    <div class="auth-glow-a"></div>
+    <div class="auth-glow-b"></div>
+    <div class="auth-glow-c"></div>
 
-    <!-- LEFT PANEL -->
-    <div class="auth-left">
-      <div class="auth-glow-a"></div>
-      <div class="auth-glow-b"></div>
-      <div class="auth-glow-c"></div>
-
-      <!-- Top: Logo + theme toggle -->
-      <div class="flex items-center justify-between relative z-10">
-        <a href="index.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight text-white">
-          PATCH<span class="text-[var(--amber-4)]">CRAFT</span>
-          <span class="text-[10px] font-inter font-medium text-white/40 tracking-widest mt-0.5">PRO</span>
-        </a>
-        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
-          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
-          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
-        </button>
-      </div>
-
-      <!-- Middle -->
-      <div class="relative z-10 py-8">
-        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)]"></span>
-          <span class="text-[11px] font-jakarta font-semibold text-white/60 tracking-widest uppercase">Free Account · No Credit Card</span>
-        </div>
-        <h2 class="font-jakarta font-black text-3xl xl:text-4xl text-white leading-snug mb-4">
-          Start Your<br />Uniform Program<br /><span class="text-[var(--amber-4)]">Today.</span>
-        </h2>
-        <p class="text-white/50 font-inter text-sm leading-relaxed max-w-xs">
-          Join 500+ schools, corporates, and sports organisations already using PatchCraft Pro for their bulk uniform needs.
-        </p>
-
-        <!-- Benefits -->
-        <div class="mt-8 space-y-0">
-          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Free account — no credit card required</span></div>
-          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Quote in under 2 hours after signup</span></div>
-          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Order tracking + reorder dashboard</span></div>
-          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Invoice & PO document management</span></div>
-          <div class="auth-feature-strip"><i data-lucide="check-circle" class="w-4 h-4 text-[var(--emerald)] flex-shrink-0"></i><span class="text-sm text-white/60 font-inter">Pantone colour archive — exact reorders</span></div>
-        </div>
-      </div>
-
-      <!-- Bottom: stat strip -->
-      <div class="relative z-10 grid grid-cols-3 gap-4 border-t border-white/10 pt-5">
-        <div class="text-center">
-          <div class="font-jakarta font-black text-2xl text-white">500+</div>
-          <div class="text-[10px] text-white/35 font-inter mt-0.5">Organisations</div>
-        </div>
-        <div class="text-center">
-          <div class="font-jakarta font-black text-2xl text-[var(--amber-4)]">2hr</div>
-          <div class="text-[10px] text-white/35 font-inter mt-0.5">Quote turnaround</div>
-        </div>
-        <div class="text-center">
-          <div class="font-jakarta font-black text-2xl text-white">ISO</div>
-          <div class="text-[10px] text-white/35 font-inter mt-0.5">9001 Certified</div>
-        </div>
-      </div>
+    <!-- Top-Right Theme Toggle -->
+    <div class="absolute top-6 right-6 z-50">
+      <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
+        <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+        <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+      </button>
     </div>
 
-    <!-- RIGHT PANEL — signup form -->
+    <!-- CENTERED PANEL — signup form -->
     <div class="auth-right">
       <div class="auth-card">
 
         <!-- Header -->
         <div class="mb-6">
+          <div class="flex justify-center mb-6">
+            <a href="index.html" class="flex items-center gap-2.5 font-jakarta font-extrabold text-2xl tracking-tight">
+              <img src="logo.png" alt="PatchCraft Pro Logo" class="h-8 w-auto object-contain" />
+              <span class="flex items-center gap-1.5 text-[var(--text-primary)]">
+                <span>PATCH<span class="text-[var(--amber-5)]">CRAFT</span></span>
+                <span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span>
+              </span>
+            </a>
+          </div>
           <div class="flex items-center justify-between mb-1">
             <h1 class="font-jakarta font-black text-3xl text-[var(--text-primary)]">Create account</h1>
             <!-- Step indicator -->
@@ -325,175 +285,7 @@
       </div>
     </div>
 
-  <!-- ══════════════════════════════════════════════
-       PROFESSIONAL FOOTER
-  ══════════════════════════════════════════════ -->
-  <footer class="border-t border-[var(--footer-border)] bg-[var(--bg)] pt-16 pb-8 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-5 md:px-8">
-      
-      <!-- Top Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        
-        <!-- Column 1: Brand Info -->
-        <div class="flex flex-col gap-4">
-          <div>
-            <a href="index.html" class="font-jakarta font-extrabold text-xl tracking-tight text-[var(--text-primary)]">
-              PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
-              <span class="text-[var(--text-faint-2)] text-xs font-inter font-normal ms-1">PRO</span>
-            </a>
-            <p class="text-xs text-[var(--text-faint-2)] font-inter mt-1">Est. 2008 · Premium B2B Uniform Solutions</p>
-          </div>
-          <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">
-            Leading manufacturer of high-precision custom patches, badges, and embroidery branding for institutions, businesses, and athletic clubs worldwide.
-          </p>
-          <!-- Badges / Certifications -->
-          <div class="flex items-center gap-3 mt-1">
-            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[var(--surface-soft)] border border-[var(--border)] text-[9px] font-semibold tracking-wider text-[var(--text-faint-2)] uppercase">
-              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--emerald)]"></i> ISO 9001
-            </span>
-            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[var(--surface-soft)] border border-[var(--border)] text-[9px] font-semibold tracking-wider text-[var(--text-faint-2)] uppercase">
-              <i data-lucide="award" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i> OEKO-TEX 100
-            </span>
-          </div>
-        </div>
 
-        <!-- Column 2: Catalogs -->
-        <div>
-          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Custom Catalogs</h4>
-          <ul class="space-y-3 text-sm font-inter">
-            <li>
-              <a href="schools-catalog.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="graduation-cap" class="w-4 h-4"></i> Schools & Academies
-              </a>
-            </li>
-            <li>
-              <a href="corporate-patches.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="briefcase" class="w-4 h-4"></i> Corporate & Enterprise
-              </a>
-            </li>
-            <li>
-              <a href="uniform-branding.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="layers" class="w-4 h-4"></i> Uniform Branding
-              </a>
-            </li>
-            <li>
-              <a href="sports-teams.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="trophy" class="w-4 h-4"></i> Sports Teams & Clubs
-              </a>
-            </li>
-            <li>
-              <a href="home2.html#catalog" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="layout-grid" class="w-4 h-4"></i> Browse All Products
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Column 3: Company & Tools -->
-        <div>
-          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Resources & Tools</h4>
-          <ul class="space-y-3 text-sm font-inter">
-            <li>
-              <a href="pricing.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="tag" class="w-4 h-4"></i> Pricing Calculator
-              </a>
-            </li>
-            <li>
-              <a href="contact.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="mail-question" class="w-4 h-4"></i> Request a Custom Quote
-              </a>
-            </li>
-            <li>
-              <a href="contact.html?ref=sample_kit" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="package-open" class="w-4 h-4"></i> Order a Sample Kit
-              </a>
-            </li>
-            <li>
-              <a href="signup.html" class="flex items-center gap-2 text-[var(--amber-5)] font-semibold transition-colors duration-200">
-                <i data-lucide="user-plus" class="w-4 h-4 text-[var(--amber-5)]"></i> Partner Registration
-              </a>
-            </li>
-            <li>
-              <a href="login.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
-                <i data-lucide="log-in" class="w-4 h-4"></i> B2B Customer Portal
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Column 4: Newsletter -->
-        <div>
-          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Stay Updated</h4>
-          <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed mb-4">
-            Subscribe to receive priority production updates, catalog additions, and seasonal bulk discounts.
-          </p>
-          <form class="space-y-2" onsubmit="event.preventDefault(); document.getElementById('toast-message').textContent = 'Successfully subscribed!'; document.getElementById('toast').classList.add('show'); setTimeout(function(){ document.getElementById('toast').classList.remove('show'); }, 3000); this.reset();">
-            <div class="relative flex items-center">
-              <input type="email" placeholder="work@organization.com" required
-                     class="w-full bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border-strong)] rounded-xl py-2.5 px-4 pr-10 text-xs focus:outline-none focus:border-[var(--amber-5)] transition-colors font-inter" />
-              <button type="submit" aria-label="Subscribe" class="absolute right-1.5 p-1.5 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] text-[var(--amber-5)] hover:bg-[var(--amber-5)] hover:text-[var(--on-accent)] transition-all">
-                <i data-lucide="send" class="w-3.5 h-3.5"></i>
-              </button>
-            </div>
-            <p class="text-[10px] text-[var(--text-faint-2)] font-inter">No spam. Unsubscribe anytime.</p>
-          </form>
-        </div>
-
-      </div>
-
-      <!-- Socials & Certifications Middle Bar -->
-      <div class="border-t border-[var(--border)] pt-8 pb-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        
-        <!-- Left: Contact Details Info -->
-        <div class="flex flex-wrap justify-center sm:justify-start items-center gap-6 text-xs text-[var(--text-faint-2)] font-inter">
-          <span class="flex items-center gap-1.5">
-            <i data-lucide="mail" class="w-4 h-4 text-[var(--text-faint)]"></i>
-            sales@patchcraftpro.com
-          </span>
-          <span class="flex items-center gap-1.5">
-            <i data-lucide="phone" class="w-4 h-4 text-[var(--text-faint)]"></i>
-            +1 (800) 555-7282
-          </span>
-          <span class="flex items-center gap-1.5">
-            <i data-lucide="map-pin" class="w-4 h-4 text-[var(--text-faint)]"></i>
-            100 Stitching Way, Suite A
-          </span>
-        </div>
-
-        <!-- Right: Social Links -->
-        <div class="flex items-center gap-3">
-          <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-          <a href="#" aria-label="LinkedIn" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-          </a>
-          <a href="#" aria-label="Twitter" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
-          </a>
-          <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Divider -->
-      <div class="border-t border-[var(--border-soft)] my-6"></div>
-
-      <!-- Bottom Bar -->
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-inter text-[var(--text-faint-2)]">
-        <p>© 2026 PatchCraft Pro. All rights reserved.</p>
-        <div class="flex flex-wrap items-center gap-6">
-          <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Terms of Service</a>
-          <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Cookie Policy</a>
-          <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Sitemap</a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
 
   <!-- Toast Container -->
   <div id="toast" class="toast" role="status" aria-live="polite">
