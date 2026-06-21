@@ -65,7 +65,7 @@
 
   <!-- NAVBAR -->
   <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-5 lg:px-4 xl:px-8 py-4 flex items-center justify-between flex-nowrap">
       <a href="index.html" class="flex items-center gap-2.5 font-jakarta font-extrabold text-xl tracking-tight">
         <img src="logo.png" alt="PatchCraft Pro Logo" class="h-8 w-auto object-contain" />
         <span class="flex items-center gap-1.5">
@@ -73,7 +73,7 @@
           <span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span>
         </span>
       </a>
-      <div class="hidden md:flex items-center gap-5 text-sm font-inter font-medium text-[var(--text-muted)]">
+      <div class="hidden lg:flex flex-row flex-nowrap items-center lg:gap-2.5 xl:gap-5 lg:text-[13px] xl:text-sm whitespace-nowrap font-inter font-medium text-[var(--text-muted)]">
         <a href="index.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
         <a href="home2.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home 2</a>
         <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Schools</a>
@@ -83,7 +83,7 @@
         <a href="pricing.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
         <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
       </div>
-      <div class="hidden md:flex items-center gap-3">
+      <div class="hidden lg:flex flex-row flex-nowrap items-center lg:gap-2 xl:gap-3">
         <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
           <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
           <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
@@ -95,17 +95,13 @@
         <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
         <a href="login.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Login</a>
       </div>
-      <div class="flex items-center gap-2 md:hidden">
-        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
-          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
-          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
-        </button>
+      <div class="flex items-center gap-2 lg:hidden">
         <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+    <div id="mobile-menu" class="hidden lg:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
       <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
         <a href="index.html" class="hover:text-[var(--text-primary)] transition-colors">Home</a>
         <a href="home2.html" class="hover:text-[var(--text-primary)] transition-colors">Home 2</a>
@@ -115,8 +111,16 @@
         <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors">Sports Teams</a>
         <a href="pricing.html" class="hover:text-[var(--text-primary)] transition-colors">Pricing</a>
         <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
-        <div class="flex gap-3 pt-2">
+        <div class="flex items-center gap-3 pt-2">
           <a href="login.html" class="flex-1 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Login</a>
+          <button id="theme-toggle-mobile" class="icon-toggle-btn !w-11 !h-10 relative flex items-center justify-center" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+            <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+            <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+          </button>
+          <button id="dir-toggle-mobile" class="icon-toggle-btn !w-auto px-3 gap-1.5 !h-10 flex items-center justify-center" type="button" aria-label="Toggle layout direction" title="Toggle LTR / RTL layout">
+            <i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i>
+            <span id="dir-toggle-label-mobile" class="dir-toggle-label">LTR</span>
+          </button>
         </div>
       </div>
     </div>

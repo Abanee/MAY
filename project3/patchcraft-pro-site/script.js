@@ -733,7 +733,7 @@
     }
 
     // 2. FAQ Accordion Logic
-    var faqButtons = document.querySelectorAll('.faq-btn');
+    var faqButtons = document.querySelectorAll('#pricing-faq-list .faq-btn');
     faqButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var content = btn.nextElementSibling;

@@ -38,6 +38,7 @@
     .faq-item.open .faq-btn .faq-icon{transform:rotate(45deg);color:var(--amber-4);}
     .faq-answer{font-family:'Inter',sans-serif;font-size:13.5px;color:var(--text-faint);line-height:1.7;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;}
     .faq-item.open .faq-answer{max-height:200px;padding-bottom:18px;}
+    html[data-theme="dark"] .map-container iframe { filter: invert(90%) hue-rotate(180deg) grayscale(10%) contrast(90%); }
     .response-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:100px;background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.2);font-family:'Inter',sans-serif;font-size:11px;font-weight:600;color:var(--emerald);}
     @keyframes form-success{0%{transform:scale(0.95);opacity:0;}100%{transform:scale(1);opacity:1;}}
     .success-state{animation:form-success .4s cubic-bezier(.16,1,.3,1) both;}
@@ -48,7 +49,7 @@
 
   <!-- NAVBAR -->
   <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+    <div class="max-w-7xl mx-auto px-5 lg:px-4 xl:px-8 py-4 flex items-center justify-between flex-nowrap">
       <a href="index.html" class="flex items-center gap-2.5 font-jakarta font-extrabold text-xl tracking-tight">
         <img src="logo.png" alt="PatchCraft Pro Logo" class="h-8 w-auto object-contain" />
         <span class="flex items-center gap-1.5">
@@ -56,7 +57,7 @@
           <span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span>
         </span>
       </a>
-      <div class="hidden md:flex items-center gap-5 text-sm font-inter font-medium text-[var(--text-muted)]">
+      <div class="hidden lg:flex flex-row flex-nowrap items-center lg:gap-2.5 xl:gap-5 lg:text-[13px] xl:text-sm whitespace-nowrap font-inter font-medium text-[var(--text-muted)]">
         <a href="index.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
         <a href="home2.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home 2</a>
         <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Schools</a>
@@ -66,18 +67,17 @@
         <a href="pricing.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
         <a href="contact.html" class="text-[var(--text-primary)] transition-colors duration-200">Contact</a>
       </div>
-      <div class="hidden md:flex items-center gap-3">
+      <div class="hidden lg:flex flex-row flex-nowrap items-center lg:gap-2 xl:gap-3">
         <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme"><span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span><span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span></button>
         <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button"><i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i><span id="dir-toggle-label" class="dir-toggle-label">LTR</span></button>
         <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
         <a href="login.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Login</a>
       </div>
-      <div class="flex items-center gap-2 md:hidden">
-        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme"><span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span><span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span></button>
+      <div class="flex items-center gap-2 lg:hidden">
         <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false"><i data-lucide="menu" class="w-5 h-5"></i></button>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+    <div id="mobile-menu" class="hidden lg:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
       <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
         <a href="index.html" class="hover:text-[var(--text-primary)]">Home</a>
         <a href="home2.html" class="hover:text-[var(--text-primary)]">Home 2</a>
@@ -87,8 +87,16 @@
         <a href="sports-teams.html" class="hover:text-[var(--text-primary)]">Sports Teams</a>
         <a href="pricing.html" class="hover:text-[var(--text-primary)]">Pricing</a>
         <a href="contact.html" class="text-[var(--amber-4)]">Contact</a>
-        <div class="flex gap-3 pt-2">
+        <div class="flex items-center gap-3 pt-2">
           <a href="login.html" class="flex-1 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Login</a>
+          <button id="theme-toggle-mobile" class="icon-toggle-btn !w-11 !h-10 relative flex items-center justify-center" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+            <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+            <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+          </button>
+          <button id="dir-toggle-mobile" class="icon-toggle-btn !w-auto px-3 gap-1.5 !h-10 flex items-center justify-center" type="button" aria-label="Toggle layout direction" title="Toggle LTR / RTL layout">
+            <i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i>
+            <span id="dir-toggle-label-mobile" class="dir-toggle-label">LTR</span>
+          </button>
         </div>
       </div>
     </div>
@@ -149,12 +157,18 @@
           </div>
 
           <!-- Social / follow -->
-          <div class="bg-[var(--surface-soft)] border border-[var(--border)] rounded-18px p-5 rounded-xl">
+          <div class="bg-[var(--surface-soft)] border border-[var(--border)] rounded-xl p-5">
             <div class="text-xs font-jakarta font-semibold text-[var(--text-faint-2)] uppercase tracking-widest mb-3">Follow Our Work</div>
             <div class="flex gap-3">
-              <a href="#" class="w-9 h-9 rounded-10px flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--amber-4)] hover:border-[var(--amber-tint-30)] transition-all rounded-xl"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-              <a href="#" class="w-9 h-9 rounded-10px flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--indigo-4)] hover:border-[var(--indigo-tint-20)] transition-all rounded-xl"><i data-lucide="linkedin" class="w-4 h-4"></i></a>
-              <a href="#" class="w-9 h-9 rounded-10px flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-stronger)] transition-all rounded-xl"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+              <a href="#" aria-label="Instagram" class="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--amber-4)] hover:border-[var(--amber-tint-30)] transition-all">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="#" aria-label="LinkedIn" class="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--indigo-4)] hover:border-[var(--indigo-tint-20)] transition-all">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              </a>
+              <a href="#" aria-label="Twitter" class="w-9 h-9 rounded-xl flex items-center justify-center bg-[var(--surface)] border border-[var(--border-strong)] text-[var(--text-muted)] hover:text-[var(--text-primary)] hover:border-[var(--border-stronger)] transition-all">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+              </a>
             </div>
           </div>
         </div>
@@ -262,6 +276,17 @@
               </button>
               <p class="text-xs text-[var(--text-faint-2)] font-inter text-center mt-4">🔒 Your details are never shared or sold. Quote in 2 hours guaranteed.</p>
             </form>
+          </div>
+
+          <!-- Real Time Map -->
+          <div class="mt-8 map-container bg-[var(--surface)] border border-[var(--border-strong)] rounded-[24px] p-4 h-[350px] relative overflow-hidden transition-all duration-300">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26451.916843422477!2d-118.42371901358985!3d34.05389656810842!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bb868b49dbb5%3A0x1a87e5025d57d76f!2sCentury%20City%2C%20Los%20Angeles%2C%20CA!5e0!3m2!1sen!2sus!4v1718964100000!5m2!1sen!2sus" 
+              class="w-full h-full rounded-[18px] border-0" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
           </div>
         </div>
       </div>
