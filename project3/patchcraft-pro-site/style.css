@@ -19,7 +19,7 @@ html[data-theme="dark"] {
   --surface-soft:       rgba(255, 255, 255, 0.03);
   --surface-soft-hover: rgba(255, 255, 255, 0.05);
   --glass:         rgba(17, 24, 39, 0.75);
-  --navbar-bg:     rgba(10, 15, 28, 0.88);
+  --navbar-bg:     #0A0F1C;
 
   --text-primary:  #FFFFFF;
   --text-secondary:#E2E8F0;
@@ -72,7 +72,7 @@ html[data-theme="light"] {
   --surface-soft:       rgba(15, 23, 42, 0.025);
   --surface-soft-hover: rgba(15, 23, 42, 0.05);
   --glass:         rgba(255, 255, 255, 0.72);
-  --navbar-bg:     rgba(250, 248, 244, 0.85);
+  --navbar-bg:     #FAF8F4;
 
   --text-primary:  #0F172A;
   --text-secondary:#1E293B;
@@ -152,16 +152,11 @@ h1, h2, h3, h4, .font-jakarta {
    NAVBAR
    ────────────────────────────────────────── */
 #navbar {
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background 0.4s ease, border-color 0.4s ease;
-}
-
-#navbar.scrolled {
   background: var(--navbar-bg);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom-color: var(--border);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 
@@ -1258,14 +1253,7 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
   --border-stronger: rgba(255, 255, 255, 0.2);
 }
 
-body:has(#hero-video) #navbar:not(.scrolled) {
-  --text-primary: #FFFFFF;
-  --text-muted: rgba(255, 255, 255, 0.7);
-  --text-faint: rgba(255, 255, 255, 0.55);
-  --text-faint-2: rgba(255, 255, 255, 0.45);
-  --border-strong: rgba(255, 255, 255, 0.25);
-  --border: rgba(255, 255, 255, 0.15);
-}
+
 
 /* ── Interactive Journey Stepper Upgrades ── */
 .journey-step {
