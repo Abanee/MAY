@@ -420,30 +420,58 @@
 
   /* ══════════════════════════════════════════
      HOME PAGE — ORDER JOURNEY STEPPER
-     Auto-cycles through the production steps so
-     the hero panel feels alive without user input.
+     Auto-cycles through the production steps and
+     supports manual click details switching.
      ══════════════════════════════════════════ */
   function initJourneyStepper() {
     var steps = document.querySelectorAll('.journey-step');
+    var panes = document.querySelectorAll('.journey-detail-pane');
     if (!steps.length) return;
 
     var i = 0;
+    var autoCycleInterval = null;
+
     function setActive(index) {
       steps.forEach(function (step, idx) {
         step.classList.remove('is-active');
         step.classList.toggle('is-done', idx < index);
       });
       steps[index].classList.add('is-active');
+
+      panes.forEach(function (pane, idx) {
+        if (idx === index) {
+          pane.classList.remove('hidden');
+          // simple fade-in effect via browser opacity
+          pane.style.opacity = '0';
+          pane.style.transform = 'translateY(8px)';
+          pane.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+          requestAnimationFrame(function() {
+            pane.style.opacity = '1';
+            pane.style.transform = 'translateY(0)';
+          });
+        } else {
+          pane.classList.add('hidden');
+        }
+      });
     }
+
+    // Attach click events for manual interaction
+    steps.forEach(function (step, index) {
+      step.addEventListener('click', function () {
+        clearInterval(autoCycleInterval);
+        setActive(index);
+        i = index;
+      });
+    });
 
     setActive(0);
 
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    setInterval(function () {
+    autoCycleInterval = setInterval(function () {
       i = (i + 1) % steps.length;
       setActive(i);
-    }, 2600);
+    }, 4500);
   }
 
 

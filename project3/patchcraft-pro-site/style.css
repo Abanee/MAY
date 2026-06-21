@@ -1197,3 +1197,83 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
   .journey-card, .roster-id-card { padding: 20px; }
   .cta-banner { padding: 36px 24px; }
 }
+
+
+/* ──────────────────────────────────────────
+   Hero & Navbar Video BG Contrast Overrides
+   ────────────────────────────────────────── */
+#hero {
+  --text-primary: #FFFFFF;
+  --text-secondary: #E2E8F0;
+  --text-body: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-faint: #64748B;
+  --text-faint-2: #475569;
+  --text-faint-3: #334155;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-soft: rgba(255, 255, 255, 0.045);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --border-stronger: rgba(255, 255, 255, 0.2);
+}
+
+body:has(#hero-video) #navbar:not(.scrolled) {
+  --text-primary: #FFFFFF;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --text-faint: rgba(255, 255, 255, 0.55);
+  --text-faint-2: rgba(255, 255, 255, 0.45);
+  --border-strong: rgba(255, 255, 255, 0.25);
+  --border: rgba(255, 255, 255, 0.15);
+}
+
+/* ── Interactive Journey Stepper Upgrades ── */
+.journey-step {
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+}
+.journey-step:hover {
+  transform: translateX(6px);
+}
+html[dir="rtl"] .journey-step:hover {
+  transform: translateX(-6px);
+}
+.journey-step:hover .journey-title {
+  color: var(--amber-4);
+}
+
+/* ── Interactive Journey Detail Pane ── */
+.journey-detail-card {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: 24px;
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.journey-detail-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--amber-tint-30), transparent);
+}
+
+.journey-detail-pane {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.journey-spec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 7px;
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+}

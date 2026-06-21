@@ -67,17 +67,12 @@
       </a>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-6 text-sm font-inter font-medium text-[var(--text-muted)]">
+      <div class="hidden md:flex items-center gap-5 text-sm font-inter font-medium text-[var(--text-muted)]">
         <a href="home.html" class="text-[var(--text-primary)] transition-colors duration-200">Home</a>
-        <div class="relative group">
-          <button class="flex items-center gap-1 hover:text-[var(--text-primary)] transition-colors duration-200">Catalogs <i data-lucide="chevron-down" class="w-3.5 h-3.5 mt-0.5"></i></button>
-          <div class="absolute top-full left-0 mt-2 w-52 bg-[var(--surface)] border border-[var(--border-strong)] rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 p-2 z-50">
-            <a href="schools-catalog.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--indigo-4)] hover:bg-[var(--indigo-tint-10)]"><i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>Schools</a>
-            <a href="corporate-patches.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--amber-4)] hover:bg-[var(--amber-tint-08)] mt-1"><i data-lucide="briefcase" class="w-3.5 h-3.5"></i>Corporate</a>
-            <a href="uniform-branding.html" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--emerald)] hover:bg-[rgba(52,211,153,0.08)] mt-1"><i data-lucide="layers" class="w-3.5 h-3.5"></i>Uniform Branding</a>
-            <a href="home2.html#catalog" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-[var(--text-muted)] text-xs font-medium hover:text-[var(--text-primary)] hover:bg-[var(--surface-soft-hover)] mt-1"><i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>All Products</a>
-          </div>
-        </div>
+        <a href="home2.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home 2</a>
+        <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Schools</a>
+        <a href="corporate-patches.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Corporate</a>
+        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Uniform Branding</a>
         <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
         <a href="home2.html#pricing" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
         <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
@@ -114,6 +109,7 @@
     <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
       <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
         <a href="home.html" class="text-[var(--amber-4)]">Home</a>
+        <a href="home2.html" class="hover:text-[var(--text-primary)] transition-colors">Home 2</a>
         <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors">Schools</a>
         <a href="corporate-patches.html" class="hover:text-[var(--text-primary)] transition-colors">Corporate</a>
         <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors">Uniform Branding</a>
@@ -130,121 +126,64 @@
 
 
   <!-- ══════════════════════════════════════════════
-       HERO — "Supplier-first" pitch with live Order Journey panel
+       HERO — "Supplier-first" pitch with video background
   ══════════════════════════════════════════════ -->
   <section id="hero" class="min-h-screen pt-20 relative flex items-center overflow-hidden">
 
-    <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
-    <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--amber-5)]/8 rounded-full blur-[130px] pointer-events-none"></div>
-    <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--indigo-5)]/8 rounded-full blur-[120px] pointer-events-none"></div>
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline id="hero-video" class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="hero.mp4" type="video/mp4" />
+    </video>
+    <!-- Dark gradient overlay for text readability -->
+    <div class="absolute inset-0 bg-slate-950/70 z-0"></div>
 
     <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
-      <div class="grid lg:grid-cols-2 gap-14 xl:gap-20 items-center">
+      <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
 
-        <!-- ── Left: Copy & CTAs ── -->
-        <div class="hero-copy">
+        <!-- ── Centered Hero Copy & CTAs ── -->
+        <div class="hero-copy flex flex-col items-center">
 
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-8 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
             <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
             <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">Wholesale Patch &amp; Uniform Supplier</span>
           </div>
 
-          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
-            Your Insignia.<br />
+          <h1 class="font-jakarta font-black leading-[1.08] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+            Your Insignia.<br class="sm:hidden" />
             <span class="text-gradient-gold">Our Floor.</span><br />
             One Supplier.
           </h1>
 
-          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
-            We design, digitize, and manufacture embroidered patches, woven badges, and full uniform trim programs for procurement teams who need consistency at scale — not just a single batch.
+          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-2xl text-center">
+             We design, digitize, and manufacture embroidered patches, woven badges, and full uniform trim programs for procurement teams who need consistency at scale — not just a single batch.
           </p>
 
-          <div class="flex items-center gap-6 md:gap-10 mb-10">
-            <div>
+          <div class="flex flex-wrap justify-center items-center gap-6 md:gap-10 mb-10">
+            <div class="text-center">
               <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]"><span data-count-to="500" data-count-suffix="+">0</span></div>
-              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">B2B Accounts Served</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-1">B2B Accounts Served</div>
             </div>
-            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
-            <div>
+            <div class="hidden sm:block w-px h-10 bg-[var(--border-strong)]"></div>
+            <div class="text-center">
               <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]"><span data-count-to="18" data-count-suffix="yrs">0</span></div>
-              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">In Production</div>
+               <div class="text-xs text-[var(--text-faint)] font-inter mt-1">In Production</div>
             </div>
-            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
-            <div>
+            <div class="hidden sm:block w-px h-10 bg-[var(--border-strong)]"></div>
+            <div class="text-center">
               <div class="font-jakarta font-extrabold text-2xl text-[var(--amber-4)]"><span data-count-to="99" data-count-suffix="%">0</span></div>
-              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">On-Time Fulfillment</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-1">On-Time Fulfillment</div>
             </div>
           </div>
 
-          <div class="flex flex-wrap gap-4">
-            <a href="home2.html#pricing" class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="home2.html#pricing" class="stitch-btn flex items-center gap-2 px-8 py-4 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
               <i data-lucide="send" class="w-4 h-4"></i>
               Get a Custom Quote
             </a>
-            <a href="home2.html#catalog" class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
+            <a href="home2.html#catalog" class="stitch-btn-ghost flex items-center gap-2 px-8 py-4 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
               <i data-lucide="layout-grid" class="w-4 h-4"></i>
               Browse Catalog
             </a>
-          </div>
-        </div>
-
-        <!-- ── Right: Live "Order Journey" panel (unique signature element) ── -->
-        <div class="hero-right flex flex-col items-center gap-4">
-          <div class="journey-card w-full max-w-[440px]">
-
-            <div class="flex items-center justify-between mb-7">
-              <div>
-                <h3 class="font-jakarta font-bold text-[15px] text-[var(--text-primary)]">Order Journey</h3>
-                <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">What happens after you say "yes"</p>
-              </div>
-              <div class="flex items-center gap-2 text-xs text-emerald-400 font-inter">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                In Production
-              </div>
-            </div>
-
-            <div>
-              <div class="journey-step">
-                <div class="journey-dot">1</div>
-                <div>
-                  <div class="journey-title">Artwork Submitted</div>
-                  <div class="journey-sub">Upload your logo or specs — any format works.</div>
-                </div>
-              </div>
-              <div class="journey-step">
-                <div class="journey-dot">2</div>
-                <div>
-                  <div class="journey-title">Free Digital Proof</div>
-                  <div class="journey-sub">In-house digitizing team builds a stitch-ready file.</div>
-                </div>
-              </div>
-              <div class="journey-step">
-                <div class="journey-dot">3</div>
-                <div>
-                  <div class="journey-title">Physical Sample Approved</div>
-                  <div class="journey-sub">A real sample ships before any bulk run starts.</div>
-                </div>
-              </div>
-              <div class="journey-step">
-                <div class="journey-dot">4</div>
-                <div>
-                  <div class="journey-title">Bulk Production</div>
-                  <div class="journey-sub">ISO 9001 floor runs your order, 50 to 50,000 units.</div>
-                </div>
-              </div>
-              <div class="journey-step">
-                <div class="journey-dot">5</div>
-                <div>
-                  <div class="journey-title">QA &amp; Shipped</div>
-                  <div class="journey-sub">Every batch is inspected, packed, and tracked.</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
-            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i>
-            <span class="text-xs text-[var(--indigo-4)] font-inter">ISO 9001 Certified Production</span>
           </div>
         </div>
 
@@ -316,48 +255,325 @@
 
 
   <!-- ══════════════════════════════════════════════
-       PROCESS — From Upload to Doorstep
+       ORDER JOURNEY — Detailed Interactive Process
   ══════════════════════════════════════════════ -->
-  <section class="py-24 relative overflow-hidden">
+  <section class="py-24 relative overflow-hidden" id="order-journey-section">
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--amber-tint-08)] to-transparent pointer-events-none"></div>
 
-    <div class="max-w-6xl mx-auto px-5 md:px-8 relative z-10">
-      <div class="text-center mb-16">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16 max-w-2xl mx-auto">
         <div class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-4">
-          <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>OUR PROCESS<span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
+          <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>ORDER JOURNEY<span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
         </div>
-        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">From Upload to Doorstep</h2>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Your Order Journey, Step-by-Step</h2>
+        <p class="text-[var(--text-muted)] font-inter text-base leading-relaxed">
+          From submitting your initial sketches to holding the physical sample and tracking bulk delivery, here is how we ensure seamless B2B procurement.
+        </p>
       </div>
 
-      <div class="process-row">
-        <div class="process-rail"></div>
+      <!-- Interactive Journey Grid -->
+      <div class="grid lg:grid-cols-12 gap-8 items-stretch">
+        
+        <!-- Left: Journey Steps Stepper -->
+        <div class="lg:col-span-5 flex flex-col justify-center">
+          <div class="journey-card w-full">
+            <div class="flex items-center justify-between mb-8">
+              <div>
+                <h3 class="font-jakarta font-bold text-[15px] text-[var(--text-primary)]">Production Stages</h3>
+                <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Click any stage to view details</p>
+              </div>
+              <div class="flex items-center gap-2 text-xs text-emerald-400 font-inter bg-emerald-500/10 px-2.5 py-1 rounded-full">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                Live Tracking Active
+              </div>
+            </div>
 
-        <div class="process-step">
-          <div class="process-num">01</div>
-          <div class="process-step-title">Submit Artwork</div>
-          <div class="process-step-desc">Send your logo, mascot, or spec sheet — sketches are fine too.</div>
+            <div>
+              <div class="journey-step cursor-pointer" data-step="0">
+                <div class="journey-dot">1</div>
+                <div>
+                  <div class="journey-title">Artwork Submitted</div>
+                  <div class="journey-sub">Upload your logo or specs — any format works.</div>
+                </div>
+              </div>
+              <div class="journey-step cursor-pointer" data-step="1">
+                <div class="journey-dot">2</div>
+                <div>
+                  <div class="journey-title">Free Digital Proof</div>
+                  <div class="journey-sub">In-house digitizing team builds a stitch-ready file.</div>
+                </div>
+              </div>
+              <div class="journey-step cursor-pointer" data-step="2">
+                <div class="journey-dot">3</div>
+                <div>
+                  <div class="journey-title">Physical Sample Approved</div>
+                  <div class="journey-sub">A real sample ships before any bulk run starts.</div>
+                </div>
+              </div>
+              <div class="journey-step cursor-pointer" data-step="3">
+                <div class="journey-dot">4</div>
+                <div>
+                  <div class="journey-title">Bulk Production</div>
+                  <div class="journey-sub">ISO 9001 floor runs your order, 50 to 50,000 units.</div>
+                </div>
+              </div>
+              <div class="journey-step cursor-pointer" data-step="4">
+                <div class="journey-dot">5</div>
+                <div>
+                  <div class="journey-title">QA &amp; Shipped</div>
+                  <div class="journey-sub">Every batch is inspected, packed, and tracked.</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8 pt-6 border-t border-[var(--border)] flex items-center justify-between">
+              <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i>
+                <span class="text-[10px] text-[var(--indigo-4)] font-inter font-semibold uppercase tracking-wider">ISO 9001 Floor</span>
+              </span>
+              <span class="text-xs text-[var(--text-faint)] font-inter">Step-cycle: 4.5s</span>
+            </div>
+          </div>
         </div>
-        <div class="process-step">
-          <div class="process-num">02</div>
-          <div class="process-step-title">Free Digital Proof</div>
-          <div class="process-step-desc">Thread colors and stitch density mapped within 24 hours.</div>
+
+        <!-- Right: Dynamic Details Card -->
+        <div class="lg:col-span-7">
+          <div class="journey-detail-card h-full">
+            
+            <!-- Step 1 Details -->
+            <div class="journey-detail-pane flex flex-col gap-6" id="detail-pane-0">
+              <div class="flex flex-col gap-2">
+                <span class="text-xs font-jakarta font-bold text-[var(--amber-4)] uppercase tracking-widest">Stage 01 — Setup</span>
+                <h3 class="font-jakarta font-black text-2xl md:text-3xl text-[var(--text-primary)]">Upload Artwork &amp; Design Brief</h3>
+              </div>
+              
+              <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">
+                Whether you have a finalized vector file or a quick pencil drawing on a napkin, our process starts wherever you are. Simply upload your files in our B2B portal.
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-4 my-2">
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="file-type-2" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Any Format Accepted</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Vector (AI, SVG, EPS) or Raster (PNG, JPG, PDF).</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="smile" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Free Vectorization</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">In-house digitizers trace and cleanup low-res files for free.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Mockup Box -->
+              <div class="border border-dashed border-[var(--border-strong)] rounded-xl p-5 bg-[var(--surface-soft)] flex items-center justify-center flex-col text-center gap-3">
+                <i data-lucide="upload-cloud" class="w-8 h-8 text-[var(--text-faint)] animate-pulse"></i>
+                <div class="text-xs font-inter text-[var(--text-muted)] font-medium">Drag and drop files here to get started</div>
+                <div class="text-[10px] text-[var(--text-faint)] font-inter">Max file size: 50MB (AI, PDF, SVG, EPS, PNG, JPG)</div>
+              </div>
+            </div>
+
+            <!-- Step 2 Details -->
+            <div class="journey-detail-pane flex flex-col gap-6 hidden" id="detail-pane-1">
+              <div class="flex flex-col gap-2">
+                <span class="text-xs font-jakarta font-bold text-[var(--amber-4)] uppercase tracking-widest">Stage 02 — Mapping</span>
+                <h3 class="font-jakarta font-black text-2xl md:text-3xl text-[var(--text-primary)]">High-Resolution Digital Proof</h3>
+              </div>
+              
+              <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">
+                Our in-house digitizers manually map every stitch, selecting thread weights, densities, and stitch directions to preserve fine text and crisp borders.
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-4 my-2">
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="palette" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Pantone Color Matching</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Exact color mapping using premium Madeira brand threads.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="eye" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">3D Thread Simulation</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Review a photorealistic digital render of stitch depth and texture.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Mockup Box -->
+              <div class="border border-[var(--border-strong)] rounded-xl p-5 bg-[var(--surface-soft)] flex items-stretch gap-4">
+                <div class="w-20 bg-indigo-950/20 border border-[var(--border)] rounded flex items-center justify-center font-bold text-lg text-[var(--indigo-4)] tracking-wide">3D</div>
+                <div class="flex-1 flex flex-col justify-center">
+                  <div class="text-xs font-jakarta font-bold text-[var(--text-primary)]">Digital Stitch Mapping Complete</div>
+                  <div class="text-[10px] text-[var(--text-faint)] font-inter mt-1">9,420 Stitches · Merrowed Border · 8 Colors mapped</div>
+                  <div class="w-full bg-[var(--border-strong)] h-1.5 rounded-full mt-2 overflow-hidden">
+                    <div class="bg-[var(--amber-5)] h-full w-[100%] rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3 Details -->
+            <div class="journey-detail-pane flex flex-col gap-6 hidden" id="detail-pane-2">
+              <div class="flex flex-col gap-2">
+                <span class="text-xs font-jakarta font-bold text-[var(--amber-4)] uppercase tracking-widest">Stage 03 — Verification</span>
+                <h3 class="font-jakarta font-black text-2xl md:text-3xl text-[var(--text-primary)]">Physical Sample Sew-Out</h3>
+              </div>
+              
+              <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">
+                We never go straight to bulk. We run a single physical sample on our production floor, take high-resolution photos for approval, and can even ship the sample directly to your office.
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-4 my-2">
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="truck" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Express FedEx Shipping</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Get the physical sample in your hands within 3 to 5 business days.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="check-square" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Unlimited Revisions</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Request color adjustments or stitch edits before approving the run.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Mockup Box -->
+              <div class="border border-[var(--border-strong)] rounded-xl p-4 bg-[var(--surface-soft)] flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center">
+                    <i data-lucide="package" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-jakarta font-bold text-[var(--text-primary)]">Sample Approval Status</div>
+                    <div class="text-[10px] text-[var(--text-faint)] font-inter">Ready to ship / approved by digitizing studio</div>
+                  </div>
+                </div>
+                <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-400 px-2.5 py-1 rounded-full border border-emerald-500/20">Approved</span>
+              </div>
+            </div>
+
+            <!-- Step 4 Details -->
+            <div class="journey-detail-pane flex flex-col gap-6 hidden" id="detail-pane-3">
+              <div class="flex flex-col gap-2">
+                <span class="text-xs font-jakarta font-bold text-[var(--amber-4)] uppercase tracking-widest">Stage 04 — Manufacturing</span>
+                <h3 class="font-jakarta font-black text-2xl md:text-3xl text-[var(--text-primary)]">ISO 9001 Certified Bulk Production</h3>
+              </div>
+              
+              <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">
+                Once approved, the sample parameters are locked and transmitted directly to our Tajima multi-head machines, ensuring that piece #50 matches piece #50,000 exactly.
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-4 my-2">
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="cpu" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Tajima Multi-Heads</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">German-engineered industrial looms running at 1,200 RPM.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Double-Thread Density</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">High stitch density prevents fraying and keeps colors vibrant.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Mockup Box -->
+              <div class="border border-[var(--border-strong)] rounded-xl p-4 bg-[var(--surface-soft)] flex flex-col gap-2">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="font-jakarta font-bold text-[var(--text-primary)]">Floor Production Progress</span>
+                  <span class="font-inter text-[var(--amber-4)] font-semibold">68% Complete</span>
+                </div>
+                <div class="w-full bg-[var(--border-strong)] h-2 rounded-full overflow-hidden">
+                  <div class="bg-[var(--amber-5)] h-full w-[68%] rounded-full"></div>
+                </div>
+                <div class="flex justify-between text-[9px] text-[var(--text-faint)] font-inter">
+                  <span>Batch #A74-2900</span>
+                  <span>Est. Completion: 4 hours</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 5 Details -->
+            <div class="journey-detail-pane flex flex-col gap-6 hidden" id="detail-pane-4">
+              <div class="flex flex-col gap-2">
+                <span class="text-xs font-jakarta font-bold text-[var(--amber-4)] uppercase tracking-widest">Stage 05 — Fulfillment</span>
+                <h3 class="font-jakarta font-black text-2xl md:text-3xl text-[var(--text-primary)]">Dual-Inspected QA &amp; Worldwide Shipping</h3>
+              </div>
+              
+              <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">
+                Every patch is manually trimmed and inspected under high-intensity task lighting. Approved batches are vacuum-packed and sealed in protective barrier foils before priority dispatch.
+              </p>
+
+              <div class="grid sm:grid-cols-2 gap-4 my-2">
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">100% Manual Check</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">No random batch samples — every single patch is manually certified.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="p-2 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--amber-4)] mt-0.5">
+                    <i data-lucide="globe" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)]">Worldwide Priority</h4>
+                    <p class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Tracked door-to-door delivery with DHL, UPS, or FedEx.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Interactive Mockup Box -->
+              <div class="border border-[var(--border-strong)] rounded-xl p-4 bg-[var(--surface-soft)] flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded bg-indigo-500/10 text-[var(--indigo-4)] flex items-center justify-center">
+                    <i data-lucide="plane" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-jakarta font-bold text-[var(--text-primary)]">Fulfillment Dispatch Queue</div>
+                    <div class="text-[10px] text-[var(--text-faint)] font-inter">Waybill generated: DHL Express 2-day delivery</div>
+                  </div>
+                </div>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('toast-message').textContent = 'Tracking link copied!'; document.getElementById('toast').classList.add('show'); setTimeout(function(){ document.getElementById('toast').classList.remove('show'); }, 2000);" class="text-[10px] font-bold text-[var(--amber-4)] border border-[var(--amber-tint-30)] px-3 py-1.5 rounded-lg hover:bg-[var(--amber-tint-10)] transition-colors font-jakarta">Track Shipment</a>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="process-step">
-          <div class="process-num">03</div>
-          <div class="process-step-title">Sample Approval</div>
-          <div class="process-step-desc">A physical sample ships to you before bulk production starts.</div>
-        </div>
-        <div class="process-step">
-          <div class="process-num">04</div>
-          <div class="process-step-title">Bulk Production</div>
-          <div class="process-step-desc">Your run goes to the floor — 50 to 50,000 units, tracked.</div>
-        </div>
-        <div class="process-step">
-          <div class="process-num">05</div>
-          <div class="process-step-title">QA &amp; Ship</div>
-          <div class="process-step-desc">Batch inspection, then packed and shipped worldwide.</div>
-        </div>
+
       </div>
+
     </div>
   </section>
 
