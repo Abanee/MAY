@@ -1151,6 +1151,8 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
   border-radius: 16px;
   padding: 20px;
   transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
 }
 .player-card:hover {
   border-color: var(--amber-tint-30);
@@ -1158,6 +1160,42 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
   box-shadow: 0 16px 40px var(--shadow);
 }
 .player-card.hidden-by-sport { display: none; }
+
+.player-img-wrap {
+  position: relative;
+  overflow: hidden;
+  background: #0d1220;
+  height: 180px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+.player-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.player-card:hover .player-img-wrap img {
+  transform: scale(1.06);
+}
+.player-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 15, 28, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+.player-card:hover .player-img-overlay {
+  opacity: 1;
+}
 
 .player-name { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 14.5px; color: var(--text-primary); }
 .player-position { font-family: 'Inter', sans-serif; font-size: 11.5px; color: var(--text-faint); margin-top: 1px; }
@@ -1170,6 +1208,8 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
   border: 1px solid var(--amber-tint-20);
   font-family: 'Inter', sans-serif; font-size: 10.5px; font-weight: 600;
   color: var(--amber-4);
+  align-self: flex-start;
+  margin-top: auto;
 }
 
 
