@@ -1202,7 +1202,7 @@ html { scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track); scrollbar
 /* ──────────────────────────────────────────
    Hero & Navbar Video BG Contrast Overrides
    ────────────────────────────────────────── */
-#hero {
+#hero:has(#hero-video) {
   --text-primary: #FFFFFF;
   --text-secondary: #E2E8F0;
   --text-body: #CBD5E1;
@@ -1276,4 +1276,20 @@ html[dir="rtl"] .journey-step:hover {
   background: var(--surface-soft);
   border: 1px solid var(--border);
   color: var(--text-muted);
+}
+
+/* Footer social icons visibility fix */
+footer a[aria-label="Instagram"] svg,
+footer a[aria-label="LinkedIn"] svg,
+footer a[aria-label="Twitter"] svg,
+footer a[aria-label="Facebook"] svg {
+  stroke: var(--text-muted) !important;
+  color: var(--text-muted) !important;
+}
+footer a[aria-label="Instagram"]:hover svg,
+footer a[aria-label="LinkedIn"]:hover svg,
+footer a[aria-label="Twitter"]:hover svg,
+footer a[aria-label="Facebook"]:hover svg {
+  stroke: var(--amber-5) !important;
+  color: var(--amber-5) !important;
 }
