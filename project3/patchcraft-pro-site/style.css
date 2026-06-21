@@ -577,8 +577,10 @@ html[dir="rtl"] .filter-checkbox:checked::after { transform: rotate(135deg); }
 }
 
 .product-img-wrap { position: relative; overflow: hidden; background: #0d1220; height: 172px; flex-shrink: 0; }
-.product-img-wrap svg { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
-.product-card:hover .product-img-wrap svg { transform: scale(1.06); }
+.product-img-wrap svg,
+.product-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.product-card:hover .product-img-wrap svg,
+.product-card:hover .product-img-wrap img { transform: scale(1.06); }
 
 .product-overlay {
   position: absolute; inset: 0;

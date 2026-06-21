@@ -199,6 +199,13 @@
     var elMaterial = document.getElementById('spec-material');
     var elColors = document.getElementById('spec-colors');
     var elBacking = document.getElementById('spec-backing');
+    var previewImg = document.getElementById('patch-preview-img');
+
+    var typeImgMap = {
+      embroidered: 'Asset/home2hero1.jpg',
+      woven: 'Asset/home2hero2.jpg',
+      pvc: 'Asset/home2hero3.jpg'
+    };
 
     typeButtons.forEach(function (btn) {
       btn.addEventListener('click', function () {
@@ -207,7 +214,10 @@
         typeButtons.forEach(function (b) { b.classList.remove('active-type'); });
         btn.classList.add('active-type');
 
-        preview.className = 'patch-' + type;
+        if (previewImg && typeImgMap[type]) {
+          previewImg.src = typeImgMap[type];
+          previewImg.alt = type.charAt(0).toUpperCase() + type.slice(1);
+        }
 
         var spec = specs[type];
         if (spec) {
