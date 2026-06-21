@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B2B Volume Pricing — PatchCraft Pro</title>
+  <meta name="description" content="Calculate custom embroidered patch pricing. Choose patch sizes and quantity to get instant unit cost estimates. View B2B pricing tier plans, setup details, and custom backings." />
+  <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
+
+  <!-- Avoid a flash of the wrong theme/direction before script.js loads -->
+  <script>
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('pcp-theme');
+        var theme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+
+        var savedDir = localStorage.getItem('pcp-dir');
+        if (savedDir === 'rtl' || savedDir === 'ltr') {
+          document.documentElement.setAttribute('dir', savedDir);
+        }
+      } catch (e) { /* storage unavailable — defaults already set in markup */ }
+    })();
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind Extended Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            jakarta: ['"Plus Jakarta Sans"', 'sans-serif'],
+            inter: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+</head>
+
+<body class="bg-[var(--bg)] text-[var(--text-primary)] font-inter antialiased overflow-x-hidden">
+
+  <!-- ══════════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════════ -->
+  <nav id="navbar" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="index.html" class="flex items-center gap-2 font-jakarta font-extrabold text-xl tracking-tight">
+        PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+        <span class="text-[10px] font-inter font-medium text-[var(--text-faint)] tracking-widest mt-0.5">PRO</span>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-5 text-sm font-inter font-medium text-[var(--text-muted)]">
+        <a href="index.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
+        <a href="home2.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home 2</a>
+        <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Schools</a>
+        <a href="corporate-patches.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Corporate</a>
+        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Uniform Branding</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
+        <a href="pricing.html" class="text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
+      </div>
+
+      <!-- Desktop CTA + Toggles -->
+      <div class="hidden md:flex items-center gap-3">
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button" aria-label="Toggle layout direction, left to right or right to left" title="Toggle LTR / RTL layout">
+          <i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i>
+          <span id="dir-toggle-label" class="dir-toggle-label">LTR</span>
+        </button>
+        <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
+        <a href="login.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Login</a>
+      </div>
+
+      <!-- Mobile Controls -->
+      <div class="flex items-center gap-2 md:hidden">
+        <button id="theme-toggle-mobile" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+          <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
+          <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
+        </button>
+        <button id="mobile-menu-btn" class="icon-toggle-btn" type="button" aria-label="Open menu" aria-expanded="false">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden px-5 pb-5 border-t border-[var(--border)] mt-1">
+      <div class="flex flex-col gap-3 pt-4 text-sm font-inter font-medium text-[var(--text-body)]">
+        <a href="index.html" class="hover:text-[var(--text-primary)] transition-colors">Home</a>
+        <a href="home2.html" class="hover:text-[var(--text-primary)] transition-colors">Home 2</a>
+        <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors">Schools</a>
+        <a href="corporate-patches.html" class="hover:text-[var(--text-primary)] transition-colors">Corporate</a>
+        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors">Uniform Branding</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors">Sports Teams</a>
+        <a href="pricing.html" class="text-[var(--amber-4)]">Pricing</a>
+        <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
+        <div class="flex gap-3 pt-2">
+          <a href="login.html" class="flex-1 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════════════
+       HERO — B2B Volume Pricing & Calculator
+  ══════════════════════════════════════════════ -->
+  <section id="hero" class="min-h-screen pt-20 relative flex items-center overflow-hidden">
+    <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
+    <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--indigo-5)]/8 rounded-full blur-[130px] pointer-events-none"></div>
+    <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--amber-5)]/6 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
+      <div class="grid lg:grid-cols-12 gap-14 xl:gap-20 items-center">
+
+        <!-- Left: Copy & B2B Stats -->
+        <div class="lg:col-span-5 hero-copy">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+            <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
+            <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">B2B Volume Rates</span>
+          </div>
+
+          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+            Volume<br />
+            Drives<br />
+            <span class="text-gradient-gold">Value.</span>
+          </h1>
+
+          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
+            Scale your uniform programs or custom patch orders to unlock massive savings. Use our dynamic calculator to estimate per-unit B2B rates instantly.
+          </p>
+
+          <!-- B2B Stats -->
+          <div class="flex items-center gap-6 md:gap-10 mb-10">
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">MOQ 50</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Minimum Units</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">&lt; 2 Hrs</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Quote Turnaround</div>
+            </div>
+            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
+            <div>
+              <div class="font-jakarta font-extrabold text-2xl text-[var(--amber-4)]">Save 81%</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Max Bulk Savings</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Dynamic Interactive Calculator -->
+        <div class="lg:col-span-7">
+          <div class="calc-card p-6 md:p-10 bg-[var(--surface)] border border-[var(--border-strong)] rounded-3xl shadow-xl">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+              
+              <!-- Left side of calculator card: Controls -->
+              <div class="md:col-span-7 flex flex-col gap-5 justify-between">
+                <div>
+                  <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-1">Interactive Cost Estimator</h3>
+                  <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed">
+                    Select dimension size and quantity to estimate B2B rates in real time.
+                  </p>
+                </div>
+
+                <!-- Size Selection -->
+                <div>
+                  <label class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block mb-2">Patch Size (Dimension)</label>
+                  <div class="grid grid-cols-3 gap-2">
+                    <button type="button" id="btn-size-2" class="size-select-btn active-size py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="0.8">
+                      <span>2" Size</span>
+                      <span class="text-[9px] font-inter font-normal opacity-60">Small</span>
+                    </button>
+                    <button type="button" id="btn-size-3" class="size-select-btn py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="1.0">
+                      <span>3" Size</span>
+                      <span class="text-[9px] font-inter font-normal opacity-60">Standard</span>
+                    </button>
+                    <button type="button" id="btn-size-4" class="size-select-btn py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="1.3">
+                      <span>4" Size</span>
+                      <span class="text-[9px] font-inter font-normal opacity-60">Large</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Quantity Slider -->
+                <div>
+                  <div class="flex justify-between items-center mb-2">
+                    <label class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block">Quantity</label>
+                    <div class="flex items-center gap-1.5">
+                      <input type="number" id="qty-input-pricing" min="50" max="5000" value="250"
+                             class="qty-number-input w-20 text-center text-xs font-jakarta font-bold text-[var(--amber-4)] bg-[var(--surface-soft)] border border-[var(--border)] rounded-lg py-1 focus:outline-none focus:border-[var(--amber-5)]" />
+                      <span class="text-[10px] text-[var(--text-faint)] font-inter">units</span>
+                    </div>
+                  </div>
+                  
+                  <div class="slider-wrap">
+                    <input type="range" id="qty-slider-pricing" min="50" max="5000" value="250" step="10" class="custom-slider w-full" />
+                    <div class="flex justify-between mt-1 px-1">
+                      <span class="text-[9px] text-[var(--text-faint-3)] font-inter">50</span>
+                      <span class="text-[9px] text-[var(--text-faint-3)] font-inter">1,000</span>
+                      <span class="text-[9px] text-[var(--text-faint-3)] font-inter">2,500</span>
+                      <span class="text-[9px] text-[var(--text-faint-3)] font-inter">5,000+</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right side of calculator card: Results -->
+              <div class="md:col-span-5 flex flex-col justify-between p-4 bg-[var(--surface-soft)] border border-[var(--border)] rounded-xl gap-4">
+                <div class="space-y-4">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] flex items-center justify-center text-[var(--amber-4)] flex-shrink-0">
+                      <i data-lucide="tag" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div>
+                      <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Cost per Unit</div>
+                      <div class="text-lg font-jakarta font-black text-[var(--text-primary)]">
+                        $<span id="price-per-unit">1.92</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                      <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div>
+                      <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Total Cost</div>
+                      <div class="text-xl font-jakarta font-black text-[var(--amber-4)]">
+                        $<span id="total-cost-pricing">480</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-[var(--indigo-5)]/10 flex items-center justify-center text-[var(--indigo-4)] flex-shrink-0">
+                      <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                    </div>
+                    <div>
+                      <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Lead Time</div>
+                      <div class="text-sm font-jakarta font-bold text-[var(--indigo-4)]">
+                        <span id="turnaround-time">10</span> Days
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Tier Badge -->
+                <div class="text-center pt-2.5 border-t border-[var(--border)]">
+                  <div id="tier-badge" class="text-[9px] font-jakarta font-black uppercase text-[var(--amber-4)] bg-[var(--amber-tint-10)] px-2 py-1 rounded border border-[var(--amber-tint-20)] tracking-wider">
+                    Team Pro (Save 47%)
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       THREE B2B TIER PLANS (PLAN CARDS)
+  ══════════════════════════════════════════════ -->
+  <section class="py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      
+      <div class="text-center mb-16 max-w-2xl mx-auto">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--indigo-4)]"></span>B2B PRICING PLANS<span class="w-8 h-px bg-[var(--indigo-4)]"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)]">Custom Patch Tier Packages</h2>
+      </div>
+
+      <!-- Plan Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        
+        <!-- Tier 1: Starter Batch -->
+        <div class="pricing-plan-card flex flex-col justify-between p-8 bg-[var(--surface)] border border-[var(--border-strong)] rounded-3xl relative">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-jakarta font-extrabold uppercase tracking-widest text-[var(--text-faint)]">Small Batch</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-inter font-bold bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--text-muted)]">MOQ 50</span>
+            </div>
+            <h3 class="font-jakarta font-black text-2xl text-[var(--text-primary)] mb-2">Starter / Club</h3>
+            <p class="text-xs text-[var(--text-muted)] font-inter mb-6 leading-relaxed">
+              Ideal for local athletic clubs, startup apparel projects, and departmental test rollouts.
+            </p>
+            
+            <div class="mb-6 flex items-baseline gap-1">
+              <span class="text-2xl font-jakarta font-extrabold text-[var(--text-primary)]">As low as</span>
+              <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$3.20</span>
+              <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+            </div>
+
+            <!-- Perks list -->
+            <ul class="space-y-3.5 mb-8 border-t border-[var(--border)] pt-6">
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Up to 7 Madeira thread colors included</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Digital simulation proof (3D render)</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Plain backing or Iron-on backing</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Merrowed border trim</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>12 - 14 Days standard delivery</span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="contact.html?tier=starter" class="stitch-btn-ghost w-full py-3 text-center border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-xs hover:border-[var(--border-stronger)] transition-all">
+            Get Starter Quote
+          </a>
+        </div>
+
+        <!-- Tier 2: Featured Plan / Team Pro -->
+        <div class="pricing-plan-card flex flex-col justify-between p-8 bg-[var(--surface)] border-2 border-[var(--amber-5)] rounded-3xl relative shadow-2xl">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-black text-[9px] uppercase tracking-wider">
+            Most Popular Plan
+          </div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-jakarta font-extrabold uppercase tracking-widest text-[var(--amber-4)]">Mid Volume</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-inter font-bold bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] text-[var(--amber-4)]">MOQ 250</span>
+            </div>
+            <h3 class="font-jakarta font-black text-2xl text-[var(--text-primary)] mb-2">Team / B2B Pro</h3>
+            <p class="text-xs text-[var(--text-muted)] font-inter mb-6 leading-relaxed">
+              Designed for school uniform coordinators, multi-location companies, and mid-sized agencies.
+            </p>
+            
+            <div class="mb-6 flex items-baseline gap-1">
+              <span class="text-2xl font-jakarta font-extrabold text-[var(--text-primary)]">As low as</span>
+              <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$1.80</span>
+              <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+            </div>
+
+            <!-- Perks list -->
+            <ul class="space-y-3.5 mb-8 border-t border-[var(--border)] pt-6">
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Up to 9 Madeira thread colors included</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span class="font-semibold text-[var(--text-primary)]">Physical sew-out photo sample (Free)</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Velcro, Adhesive, or Iron-on backing</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Merrowed or Laser-cut heat edges</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>8 - 10 Days expedited delivery</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span class="text-emerald-500 font-semibold">Free worldwide priority shipping</span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="contact.html?tier=pro" class="stitch-btn w-full py-3 text-center bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-xs">
+            Get Pro Quote
+          </a>
+        </div>
+
+        <!-- Tier 3: Enterprise Plan -->
+        <div class="pricing-plan-card flex flex-col justify-between p-8 bg-[var(--surface)] border border-[var(--border-strong)] rounded-3xl relative">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-xs font-jakarta font-extrabold uppercase tracking-widest text-[var(--text-faint)]">Enterprise Run</span>
+              <span class="px-2 py-0.5 rounded text-[10px] font-inter font-bold bg-[var(--surface-soft)] border border-[var(--border)] text-[var(--text-muted)]">MOQ 1000</span>
+            </div>
+            <h3 class="font-jakarta font-black text-2xl text-[var(--text-primary)] mb-2">Corporate / Volume</h3>
+            <p class="text-xs text-[var(--text-muted)] font-inter mb-6 leading-relaxed">
+              Optimized for national uniform suppliers, police departments, and brand-wide merchandise lines.
+            </p>
+            
+            <div class="mb-6 flex items-baseline gap-1">
+              <span class="text-2xl font-jakarta font-extrabold text-[var(--text-primary)]">As low as</span>
+              <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$0.85</span>
+              <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+            </div>
+
+            <!-- Perks list -->
+            <ul class="space-y-3.5 mb-8 border-t border-[var(--border)] pt-6">
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span class="font-semibold text-[var(--text-primary)]">Unlimited thread colors &amp; blends</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span class="font-semibold text-[var(--text-primary)]">Physical pre-production sample shipped</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Specialized custom backings / magnetic fasteners</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span class="text-emerald-500 font-semibold">Priority 5-8 days production lane</span>
+              </li>
+              <li class="flex items-start gap-2.5 text-xs text-[var(--text-body)]">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5"></i>
+                <span>Dedicated account specialist &amp; contract terms</span>
+              </li>
+            </ul>
+          </div>
+
+          <a href="contact.html?tier=enterprise" class="stitch-btn-ghost w-full py-3 text-center border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-xs hover:border-[var(--border-stronger)] transition-all">
+            Get Enterprise Quote
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       UNIQUE PRICING FACTORS GRID
+  ══════════════════════════════════════════════ -->
+  <section class="py-20 relative bg-[var(--surface-soft)]/20 border-y border-[var(--border)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      
+      <div class="text-center mb-16 max-w-2xl mx-auto">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>COST FACTORS<span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)]">What Determines Your Custom Patch Cost?</h2>
+      </div>
+
+      <!-- Cost Factor Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Factor 1: Stitch Density -->
+        <div class="p-6 bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-xl bg-[var(--indigo-5)]/10 text-[var(--indigo-4)] flex items-center justify-center">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Stitch Coverage</h4>
+            <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">
+              Price factors in embroidery percentage. Starter quotes cover up to 75% coverage. 100% full-stitch fills take longer on looms.
+            </p>
+          </div>
+        </div>
+
+        <!-- Factor 2: Backing Style -->
+        <div class="p-6 bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-xl bg-[var(--amber-tint-10)] text-[var(--amber-4)] flex items-center justify-center">
+            <i data-lucide="anchor" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Backing Options</h4>
+            <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">
+              Standard sew-on is baseline. Specialty backings like Velcro loops/hooks or heavy industrial iron-on adhesives add +$0.15 to +$0.30 per unit.
+            </p>
+          </div>
+        </div>
+
+        <!-- Factor 3: Border Styles -->
+        <div class="p-6 bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+            <i data-lucide="scissors" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Borders &amp; Shapes</h4>
+            <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">
+              Classic circles and shields use merrowed stitches (standard cost). Intricate shapes require laser hot-cut borders (+$0.10 per unit).
+            </p>
+          </div>
+        </div>
+
+        <!-- Factor 4: Specialty Threads -->
+        <div class="p-6 bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl flex flex-col gap-4">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Specialty Materials</h4>
+            <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">
+              Metallic threads, glow-in-the-dark yarn, reflective backdrops, or double-thick PVC molds have fixed tooling setups.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       B2B FAQS SECTION (ACCORDIONS)
+  ══════════════════════════════════════════════ -->
+  <section class="py-20 relative">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--indigo-4)]"></span>QUESTIONS &amp; ANSWERS<span class="w-8 h-px bg-[var(--indigo-4)]"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-3xl text-[var(--text-primary)]">Pricing &amp; Account FAQs</h2>
+      </div>
+
+      <!-- Accordion Wraps -->
+      <div class="space-y-4">
+        
+        <!-- Accordion 1 -->
+        <div class="border border-[var(--border-strong)] rounded-2xl overflow-hidden bg-[var(--surface)]">
+          <button type="button" class="faq-btn w-full px-6 py-4 flex items-center justify-between text-start font-jakarta font-bold text-sm text-[var(--text-primary)] hover:bg-[var(--surface-soft)] transition-colors">
+            <span>Do you have setup fees or digital mockups digitizing charges?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[var(--text-faint)] transform transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 pt-1 text-xs text-[var(--text-muted)] font-inter leading-relaxed">
+            No! Unlike traditional patch manufacturers, we do not charge for artwork vectorization or stitch files creation. All digitization, setups, and proofing simulation renders are 100% free when placing orders with us.
+          </div>
+        </div>
+
+        <!-- Accordion 2 -->
+        <div class="border border-[var(--border-strong)] rounded-2xl overflow-hidden bg-[var(--surface)]">
+          <button type="button" class="faq-btn w-full px-6 py-4 flex items-center justify-between text-start font-jakarta font-bold text-sm text-[var(--text-primary)] hover:bg-[var(--surface-soft)] transition-colors">
+            <span>What is your sample policy before placing bulk orders?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[var(--text-faint)] transform transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 pt-1 text-xs text-[var(--text-muted)] font-inter leading-relaxed">
+            For all clients, we provide high-res digital proof simulations within 2 hours. If you request a physical sew-out sample, we run it directly on our Tajima heads and email clear close-up photos for approval before moving forward. For Enterprise contracts (+1,000 units), we ship the physical stitch sample directly to your office.
+          </div>
+        </div>
+
+        <!-- Accordion 3 -->
+        <div class="border border-[var(--border-strong)] rounded-2xl overflow-hidden bg-[var(--surface)]">
+          <button type="button" class="faq-btn w-full px-6 py-4 flex items-center justify-between text-start font-jakarta font-bold text-sm text-[var(--text-primary)] hover:bg-[var(--surface-soft)] transition-colors">
+            <span>What is your minimum order size (MOQ)?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[var(--text-faint)] transform transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 pt-1 text-xs text-[var(--text-muted)] font-inter leading-relaxed">
+            Our minimum order size is 50 units for standard embroidered patches. For custom PVC badges, the MOQ is 100 units due to the custom metal mold tooling process required for casting the insignia shapes.
+          </div>
+        </div>
+
+        <!-- Accordion 4 -->
+        <div class="border border-[var(--border-strong)] rounded-2xl overflow-hidden bg-[var(--surface)]">
+          <button type="button" class="faq-btn w-full px-6 py-4 flex items-center justify-between text-start font-jakarta font-bold text-sm text-[var(--text-primary)] hover:bg-[var(--surface-soft)] transition-colors">
+            <span>Can I split colors or design parameters within one volume tier?</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-[var(--text-faint)] transform transition-transform duration-200"></i>
+          </button>
+          <div class="faq-content hidden px-6 pb-5 pt-1 text-xs text-[var(--text-muted)] font-inter leading-relaxed">
+            Volume pricing tiers apply to a single, identical design run. If you need color variants (e.g. 100 tactical-black badges and 100 desert-sand badges), we treat them as separate digitizing/setup runs, but we can offer multi-order B2B discounts. Reach out directly to your account manager to learn more.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CTA SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="py-16">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="cta-banner p-10 bg-gradient-to-r from-[var(--indigo-5)]/20 to-[var(--amber-5)]/10 border border-[var(--border-strong)] rounded-3xl relative overflow-hidden text-center">
+        <div class="relative z-10 max-w-xl mx-auto">
+          <h2 class="font-jakarta font-black text-3xl text-[var(--text-primary)] mb-4">Request a Formal Spec Quote</h2>
+          <p class="text-[var(--text-muted)] font-inter text-sm leading-relaxed mb-8">
+            Upload your logo and specifications. We'll return an accurate, tiered PDF price breakdown and digital simulated sew-out sample options in less than 2 hours.
+          </p>
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="contact.html" class="stitch-btn flex items-center gap-2 px-8 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-xs">
+              <i data-lucide="send" class="w-4 h-4"></i> Upload Artwork File
+            </a>
+            <a href="contact.html?ref=sample_kit" class="stitch-btn-ghost flex items-center gap-2 px-8 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-xs">
+              <i data-lucide="package-open" class="w-4 h-4"></i> Get a Free Sample Kit
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════ -->
+  <footer class="border-t border-[var(--footer-border)] bg-[var(--bg)] pt-16 pb-8 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      
+      <!-- Top Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="flex flex-col gap-4">
+          <div>
+            <a href="index.html" class="font-jakarta font-extrabold text-xl tracking-tight text-[var(--text-primary)]">
+              PATCH<span class="text-[var(--amber-5)]">CRAFT</span>
+              <span class="text-[var(--text-faint-2)] text-xs font-inter font-normal ms-1">PRO</span>
+            </a>
+            <p class="text-xs text-[var(--text-faint-2)] font-inter mt-1">Est. 2008 · Premium B2B Uniform Solutions</p>
+          </div>
+          <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">
+            Leading manufacturer of high-precision custom patches, badges, and embroidery branding for institutions, businesses, and athletic clubs worldwide.
+          </p>
+          <!-- Badges / Certifications -->
+          <div class="flex items-center gap-3 mt-1">
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[var(--surface-soft)] border border-[var(--border)] text-[9px] font-semibold tracking-wider text-[var(--text-faint-2)] uppercase">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--emerald)]"></i> ISO 9001
+            </span>
+            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[var(--surface-soft)] border border-[var(--border)] text-[9px] font-semibold tracking-wider text-[var(--text-faint-2)] uppercase">
+              <i data-lucide="award" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i> OEKO-TEX 100
+            </span>
+          </div>
+        </div>
+
+        <!-- Column 2: Catalogs -->
+        <div>
+          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Custom Catalogs</h4>
+          <ul class="space-y-3 text-sm font-inter">
+            <li>
+              <a href="schools-catalog.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="graduation-cap" class="w-4 h-4"></i> Schools & Academies
+              </a>
+            </li>
+            <li>
+              <a href="corporate-patches.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="briefcase" class="w-4 h-4"></i> Corporate & Enterprise
+              </a>
+            </li>
+            <li>
+              <a href="uniform-branding.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="layers" class="w-4 h-4"></i> Uniform Branding
+              </a>
+            </li>
+            <li>
+              <a href="sports-teams.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="trophy" class="w-4 h-4"></i> Sports Teams & Clubs
+              </a>
+            </li>
+            <li>
+              <a href="home2.html#catalog" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="layout-grid" class="w-4 h-4"></i> Browse All Products
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Company & Tools -->
+        <div>
+          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Resources & Tools</h4>
+          <ul class="space-y-3 text-sm font-inter">
+            <li>
+              <a href="pricing.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="tag" class="w-4 h-4"></i> Pricing Calculator
+              </a>
+            </li>
+            <li>
+              <a href="contact.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="mail-question" class="w-4 h-4"></i> Request a Custom Quote
+              </a>
+            </li>
+            <li>
+              <a href="contact.html?ref=sample_kit" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="package-open" class="w-4 h-4"></i> Order a Sample Kit
+              </a>
+            </li>
+            <li>
+              <a href="signup.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="user-plus" class="w-4 h-4"></i> Partner Registration
+              </a>
+            </li>
+            <li>
+              <a href="login.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+                <i data-lucide="log-in" class="w-4 h-4"></i> B2B Customer Portal
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Newsletter -->
+        <div>
+          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Stay Updated</h4>
+          <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed mb-4">
+            Subscribe to receive priority production updates, catalog additions, and seasonal bulk discounts.
+          </p>
+          <form class="space-y-2" onsubmit="event.preventDefault(); document.getElementById('toast-message').textContent = 'Successfully subscribed!'; document.getElementById('toast').classList.add('show'); setTimeout(function(){ document.getElementById('toast').classList.remove('show'); }, 3000); this.reset();">
+            <div class="relative flex items-center">
+              <input type="email" placeholder="work@organization.com" required
+                     class="w-full bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border-strong)] rounded-xl py-2.5 px-4 pr-10 text-xs focus:outline-none focus:border-[var(--amber-5)] transition-colors font-inter" />
+              <button type="submit" aria-label="Subscribe" class="absolute right-1.5 p-1.5 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] text-[var(--amber-5)] hover:bg-[var(--amber-5)] hover:text-[var(--on-accent)] transition-all">
+                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+            <p class="text-[10px] text-[var(--text-faint-2)] font-inter">No spam. Unsubscribe anytime.</p>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Socials & Certifications Middle Bar -->
+      <div class="border-t border-[var(--border)] pt-8 pb-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        
+        <!-- Left: Contact Details Info -->
+        <div class="flex flex-wrap justify-center sm:justify-start items-center gap-6 text-xs text-[var(--text-faint-2)] font-inter">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="mail" class="w-4 h-4 text-[var(--text-faint)]"></i>
+            sales@patchcraftpro.com
+          </span>
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="phone" class="w-4 h-4 text-[var(--text-faint)]"></i>
+            +1 (800) 555-7282
+          </span>
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-4 h-4 text-[var(--text-faint)]"></i>
+            100 Stitching Way, Suite A
+          </span>
+        </div>
+
+        <!-- Right: Social Links -->
+        <div class="flex items-center gap-3">
+          <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="#" aria-label="Twitter" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+          </a>
+          <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Divider -->
+      <div class="border-t border-[var(--border-soft)] my-6"></div>
+
+      <!-- Bottom Bar -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-inter text-[var(--text-faint-2)]">
+        <p>© 2026 PatchCraft Pro. All rights reserved.</p>
+        <div class="flex flex-wrap items-center gap-6">
+          <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Terms of Service</a>
+          <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Cookie Policy</a>
+          <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Sitemap</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ══ TOAST NOTIFICATION ══ -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
+    <span id="toast-message" class="text-sm font-inter text-white">Subscribed successfully!</span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

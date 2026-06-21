@@ -37,6 +37,7 @@
     initSportFilters();
     initRosterEstimator();
     initCounterReveal();
+    initPricingPage();
 
     // Re-enable transitions one frame after first paint so the
     // initial theme application doesn't animate from a flash state.
@@ -619,6 +620,126 @@
     }, { threshold: 0.5 });
 
     counters.forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ══════════════════════════════════════════
+     PRICING PAGE - CALCULATOR & FAQ ACCORDION
+     ══════════════════════════════════════════ */
+  function initPricingPage() {
+    // 1. Calculator Logic
+    var slider = document.getElementById('qty-slider-pricing');
+    var numberInput = document.getElementById('qty-input-pricing');
+    if (slider && numberInput) {
+      var pricePerUnitEl = document.getElementById('price-per-unit');
+      var totalCostEl = document.getElementById('total-cost-pricing');
+      var turnaroundTimeEl = document.getElementById('turnaround-time');
+      var tierBadgeEl = document.getElementById('tier-badge');
+      var sizeButtons = document.querySelectorAll('.size-select-btn');
+      
+      var sizeMultiplier = 0.8; // Default to 2" size (which has multiplier 0.8)
+
+      var tiers = [
+        { min: 50,   max: 99,   price: 4.50, days: 14, label: 'Starter (Base Rate)' },
+        { min: 100,  max: 249,  price: 3.20, days: 12, label: 'Starter (Save 29%)' },
+        { min: 250,  max: 499,  price: 2.40, days: 10, label: 'Team Pro (Save 47%)' },
+        { min: 500,  max: 999,  price: 1.80, days: 8,  label: 'Team Pro (Save 60%)' },
+        { min: 1000, max: 2499, price: 1.20, days: 6,  label: 'Enterprise (Save 73%)' },
+        { min: 2500, max: 5000, price: 0.85, days: 5,  label: 'Enterprise (Save 81% ★)' }
+      ];
+
+      var basePrice = tiers[0].price;
+
+      function getTier(qty) {
+        for (var i = tiers.length - 1; i >= 0; i--) {
+          if (qty >= tiers[i].min) return tiers[i];
+        }
+        return tiers[0];
+      }
+
+      function updateSliderFill(qty) {
+        var min = parseInt(slider.min, 10);
+        var max = parseInt(slider.max, 10);
+        var pct = ((qty - min) / (max - min)) * 100;
+        slider.style.setProperty('--fill', pct + '%');
+      }
+
+      function render(qty) {
+        qty = Math.max(50, Math.min(5000, qty));
+        var tier = getTier(qty);
+        var calculatedPrice = tier.price * sizeMultiplier;
+        var total = Math.round(qty * calculatedPrice);
+
+        if (pricePerUnitEl) {
+          pricePerUnitEl.textContent = calculatedPrice.toFixed(2);
+        }
+        if (totalCostEl) {
+          totalCostEl.textContent = total.toLocaleString('en-US');
+        }
+        if (turnaroundTimeEl) {
+          turnaroundTimeEl.textContent = String(tier.days);
+        }
+        if (tierBadgeEl) {
+          tierBadgeEl.textContent = tier.label;
+        }
+
+        updateSliderFill(qty);
+      }
+
+      function setQty(qty, source) {
+        qty = Math.max(50, Math.min(5000, Math.round(qty / 10) * 10));
+        if (source !== 'slider') slider.value = String(qty);
+        if (source !== 'input') numberInput.value = String(qty);
+        render(qty);
+      }
+
+      slider.addEventListener('input', function () {
+        setQty(parseInt(slider.value, 10), 'slider');
+      });
+
+      numberInput.addEventListener('input', function () {
+        var val = parseInt(numberInput.value, 10);
+        if (isNaN(val)) return;
+        setQty(val, 'input');
+      });
+
+      numberInput.addEventListener('blur', function () {
+        var val = parseInt(numberInput.value, 10);
+        if (isNaN(val)) val = 50;
+        setQty(val, 'input');
+      });
+
+      // Size buttons selector logic
+      sizeButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          sizeButtons.forEach(function (b) { b.classList.remove('active-size'); });
+          btn.classList.add('active-size');
+          sizeMultiplier = parseFloat(btn.getAttribute('data-size-multiplier')) || 1.0;
+          setQty(parseInt(slider.value, 10), 'init');
+        });
+      });
+
+      // Initial state
+      setQty(250, 'init');
+    }
+
+    // 2. FAQ Accordion Logic
+    var faqButtons = document.querySelectorAll('.faq-btn');
+    faqButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var content = btn.nextElementSibling;
+        var icon = btn.querySelector('i[data-lucide="chevron-down"]');
+        if (!content) return;
+        
+        var isHidden = content.classList.contains('hidden');
+        if (isHidden) {
+          content.classList.remove('hidden');
+          if (icon) icon.classList.add('rotate-180');
+        } else {
+          content.classList.add('hidden');
+          if (icon) icon.classList.remove('rotate-180');
+        }
+      });
+    });
   }
 
 })();

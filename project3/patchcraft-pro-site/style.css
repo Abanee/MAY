@@ -1293,3 +1293,85 @@ footer a[aria-label="Facebook"]:hover svg {
   stroke: var(--amber-5) !important;
   color: var(--amber-5) !important;
 }
+
+
+/* ──────────────────────────────────────────
+   PRICING PAGE CUSTOM STYLING
+   ────────────────────────────────────────── */
+
+/* Size select buttons */
+.size-select-btn {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text-muted);
+}
+.size-select-btn:hover {
+  border-color: var(--amber-tint-30);
+  color: var(--text-primary);
+}
+.size-select-btn.active-size {
+  background: var(--amber-tint-10);
+  border-color: var(--amber-5);
+  color: var(--amber-4);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.08);
+}
+
+/* Pricing plan card styling & hover scaling */
+.pricing-plan-card {
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s ease, box-shadow 0.35s ease;
+}
+.pricing-plan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px var(--shadow);
+}
+
+/* Custom slider design */
+.custom-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--border-strong);
+  outline: none;
+}
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--amber-5);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.custom-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: var(--amber-4);
+}
+.custom-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: var(--amber-5);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+.custom-slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+  background: var(--amber-4);
+}
+
+/* FAQ Accordion Styling */
+.faq-btn {
+  transition: background-color 0.2s ease;
+}
+.faq-btn svg.rotate-180 {
+  transform: rotate(180deg);
+}
+.faq-content {
+  transition: all 0.3s ease;
+}
+
