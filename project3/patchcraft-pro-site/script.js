@@ -581,7 +581,7 @@
 
 
   /* ══════════════════════════════════════════
-     ANIMATED STAT COUNTERS (home.html hero strip)
+     ANIMATED STAT COUNTERS (index.html hero strip)
      ══════════════════════════════════════════ */
   function initCounterReveal() {
     var counters = document.querySelectorAll('[data-count-to]');
