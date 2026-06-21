@@ -125,158 +125,137 @@
   <!-- ══════════════════════════════════════════════
        HERO — B2B Volume Pricing & Calculator
   ══════════════════════════════════════════════ -->
-  <section id="hero" class="min-h-screen pt-20 relative flex items-center overflow-hidden">
+  <section id="hero" class="min-h-[60vh] pt-28 pb-20 relative flex items-center overflow-hidden">
     <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
     <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--indigo-5)]/8 rounded-full blur-[130px] pointer-events-none"></div>
     <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--amber-5)]/6 rounded-full blur-[120px] pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
-      <div class="grid lg:grid-cols-12 gap-14 xl:gap-20 items-center">
-
-        <!-- Left: Copy & B2B Stats -->
-        <div class="lg:col-span-5 hero-copy">
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
-            <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
-            <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">B2B Volume Rates</span>
-          </div>
-
-          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
-            Volume<br />
-            Drives<br />
-            <span class="text-gradient-gold">Value.</span>
-          </h1>
-
-          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
-            Scale your uniform programs or custom patch orders to unlock massive savings. Use our dynamic calculator to estimate per-unit B2B rates instantly.
-          </p>
-
-          <!-- B2B Stats -->
-          <div class="flex items-center gap-6 md:gap-10 mb-10">
-            <div>
-              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">MOQ 50</div>
-              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Minimum Units</div>
-            </div>
-            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
-            <div>
-              <div class="font-jakarta font-extrabold text-2xl text-[var(--text-primary)]">&lt; 2 Hrs</div>
-              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Quote Turnaround</div>
-            </div>
-            <div class="w-px h-10 bg-[var(--border-strong)]"></div>
-            <div>
-              <div class="font-jakarta font-extrabold text-2xl text-[var(--amber-4)]">Save 81%</div>
-              <div class="text-xs text-[var(--text-faint)] font-inter mt-0.5">Max Bulk Savings</div>
-            </div>
-          </div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 w-full relative z-10 text-center">
+      <div class="max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+          <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
+          <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">B2B Volume Rates</span>
         </div>
 
-        <!-- Right: Dynamic Interactive Calculator -->
-        <div class="lg:col-span-7">
-          <div class="calc-card p-6 md:p-10 bg-[var(--surface)] border border-[var(--border-strong)] rounded-3xl shadow-xl">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+        <h1 class="font-jakarta font-black leading-[1.1] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+          Volume Drives <span class="text-gradient-gold">Value.</span>
+        </h1>
+
+        <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[600px] mx-auto">
+          Scale your uniform programs or custom patch orders to unlock massive savings. Use our dynamic calculator to estimate per-unit B2B rates instantly.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       INTERACTIVE COST ESTIMATOR SECTION
+  ══════════════════════════════════════════════ -->
+  <section class="py-16 border-b border-[var(--border)] relative z-10 bg-[var(--bg)]">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      <div class="calc-card p-6 md:p-10 bg-[var(--surface)] border border-[var(--border-strong)] rounded-3xl shadow-xl">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+          
+          <!-- Left side of calculator card: Controls -->
+          <div class="md:col-span-7 flex flex-col gap-5 justify-between">
+            <div>
+              <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-1">Interactive Cost Estimator</h3>
+              <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed">
+                Select dimension size and quantity to estimate B2B rates in real time.
+              </p>
+            </div>
+
+            <!-- Size Selection -->
+            <div>
+              <label class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block mb-2">Patch Size (Dimension)</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" id="btn-size-2" class="size-select-btn active-size py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="0.8">
+                  <span>2" Size</span>
+                  <span class="text-[9px] font-inter font-normal opacity-60">Small</span>
+                </button>
+                <button type="button" id="btn-size-3" class="size-select-btn py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="1.0">
+                  <span>3" Size</span>
+                  <span class="text-[9px] font-inter font-normal opacity-60">Standard</span>
+                </button>
+                <button type="button" id="btn-size-4" class="size-select-btn py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="1.3">
+                  <span>4" Size</span>
+                  <span class="text-[9px] font-inter font-normal opacity-60">Large</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Quantity Slider -->
+            <div>
+              <div class="flex justify-between items-center mb-2">
+                <label class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block">Quantity</label>
+                <div class="flex items-center gap-1.5">
+                  <input type="number" id="qty-input-pricing" min="50" max="5000" value="250"
+                         class="qty-number-input w-20 text-center text-xs font-jakarta font-bold text-[var(--amber-4)] bg-[var(--surface-soft)] border border-[var(--border)] rounded-lg py-1 focus:outline-none focus:border-[var(--amber-5)]" />
+                  <span class="text-[10px] text-[var(--text-faint)] font-inter">units</span>
+                </div>
+              </div>
               
-              <!-- Left side of calculator card: Controls -->
-              <div class="md:col-span-7 flex flex-col gap-5 justify-between">
-                <div>
-                  <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-1">Interactive Cost Estimator</h3>
-                  <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed">
-                    Select dimension size and quantity to estimate B2B rates in real time.
-                  </p>
-                </div>
-
-                <!-- Size Selection -->
-                <div>
-                  <label class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block mb-2">Patch Size (Dimension)</label>
-                  <div class="grid grid-cols-3 gap-2">
-                    <button type="button" id="btn-size-2" class="size-select-btn active-size py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="0.8">
-                      <span>2" Size</span>
-                      <span class="text-[9px] font-inter font-normal opacity-60">Small</span>
-                    </button>
-                    <button type="button" id="btn-size-3" class="size-select-btn py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="1.0">
-                      <span>3" Size</span>
-                      <span class="text-[9px] font-inter font-normal opacity-60">Standard</span>
-                    </button>
-                    <button type="button" id="btn-size-4" class="size-select-btn py-2.5 border rounded-xl font-jakarta font-bold text-xs transition-all flex flex-col items-center justify-center gap-0.5" data-size-multiplier="1.3">
-                      <span>4" Size</span>
-                      <span class="text-[9px] font-inter font-normal opacity-60">Large</span>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Quantity Slider -->
-                <div>
-                  <div class="flex justify-between items-center mb-2">
-                    <label class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block">Quantity</label>
-                    <div class="flex items-center gap-1.5">
-                      <input type="number" id="qty-input-pricing" min="50" max="5000" value="250"
-                             class="qty-number-input w-20 text-center text-xs font-jakarta font-bold text-[var(--amber-4)] bg-[var(--surface-soft)] border border-[var(--border)] rounded-lg py-1 focus:outline-none focus:border-[var(--amber-5)]" />
-                      <span class="text-[10px] text-[var(--text-faint)] font-inter">units</span>
-                    </div>
-                  </div>
-                  
-                  <div class="slider-wrap">
-                    <input type="range" id="qty-slider-pricing" min="50" max="5000" value="250" step="10" class="custom-slider w-full" />
-                    <div class="flex justify-between mt-1 px-1">
-                      <span class="text-[9px] text-[var(--text-faint-3)] font-inter">50</span>
-                      <span class="text-[9px] text-[var(--text-faint-3)] font-inter">1,000</span>
-                      <span class="text-[9px] text-[var(--text-faint-3)] font-inter">2,500</span>
-                      <span class="text-[9px] text-[var(--text-faint-3)] font-inter">5,000+</span>
-                    </div>
-                  </div>
+              <div class="slider-wrap">
+                <input type="range" id="qty-slider-pricing" min="50" max="5000" value="250" step="10" class="custom-slider w-full" />
+                <div class="flex justify-between mt-1 px-1">
+                  <span class="text-[9px] text-[var(--text-faint-3)] font-inter">50</span>
+                  <span class="text-[9px] text-[var(--text-faint-3)] font-inter">1,000</span>
+                  <span class="text-[9px] text-[var(--text-faint-3)] font-inter">2,500</span>
+                  <span class="text-[9px] text-[var(--text-faint-3)] font-inter">5,000+</span>
                 </div>
               </div>
-
-              <!-- Right side of calculator card: Results -->
-              <div class="md:col-span-5 flex flex-col justify-between p-4 bg-[var(--surface-soft)] border border-[var(--border)] rounded-xl gap-4">
-                <div class="space-y-4">
-                  <div class="flex items-center gap-2.5">
-                    <div class="w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] flex items-center justify-center text-[var(--amber-4)] flex-shrink-0">
-                      <i data-lucide="tag" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div>
-                      <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Cost per Unit</div>
-                      <div class="text-lg font-jakarta font-black text-[var(--text-primary)]">
-                        $<span id="price-per-unit">1.92</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="flex items-center gap-2.5">
-                    <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 flex-shrink-0">
-                      <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div>
-                      <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Total Cost</div>
-                      <div class="text-xl font-jakarta font-black text-[var(--amber-4)]">
-                        $<span id="total-cost-pricing">480</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="flex items-center gap-2.5">
-                    <div class="w-7 h-7 rounded-lg bg-[var(--indigo-5)]/10 flex items-center justify-center text-[var(--indigo-4)] flex-shrink-0">
-                      <i data-lucide="clock" class="w-3.5 h-3.5"></i>
-                    </div>
-                    <div>
-                      <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Lead Time</div>
-                      <div class="text-sm font-jakarta font-bold text-[var(--indigo-4)]">
-                        <span id="turnaround-time">10</span> Days
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Tier Badge -->
-                <div class="text-center pt-2.5 border-t border-[var(--border)]">
-                  <div id="tier-badge" class="text-[9px] font-jakarta font-black uppercase text-[var(--amber-4)] bg-[var(--amber-tint-10)] px-2 py-1 rounded border border-[var(--amber-tint-20)] tracking-wider">
-                    Team Pro (Save 47%)
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
-        </div>
 
+          <!-- Right side of calculator card: Results -->
+          <div class="md:col-span-5 flex flex-col justify-between p-4 bg-[var(--surface-soft)] border border-[var(--border)] rounded-xl gap-4">
+            <div class="space-y-4">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] flex items-center justify-center text-[var(--amber-4)] flex-shrink-0">
+                  <i data-lucide="tag" class="w-3.5 h-3.5"></i>
+                </div>
+                <div>
+                  <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Cost per Unit</div>
+                  <div class="text-lg font-jakarta font-black text-[var(--text-primary)]">
+                    $<span id="price-per-unit">1.92</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 flex-shrink-0">
+                  <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+                </div>
+                <div>
+                  <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Total Cost</div>
+                  <div class="text-xl font-jakarta font-black text-[var(--amber-4)]">
+                    $<span id="total-cost-pricing">480</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-[var(--indigo-5)]/10 flex items-center justify-center text-[var(--indigo-4)] flex-shrink-0">
+                  <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                </div>
+                <div>
+                  <div class="text-[9px] text-[var(--text-faint-2)] uppercase tracking-wider font-jakarta font-bold">Lead Time</div>
+                  <div class="text-sm font-jakarta font-bold text-[var(--indigo-4)]">
+                    <span id="turnaround-time">10</span> Days
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tier Badge -->
+            <div class="text-center pt-2.5 border-t border-[var(--border)]">
+              <div id="tier-badge" class="text-[9px] font-jakarta font-black uppercase text-[var(--amber-4)] bg-[var(--amber-tint-10)] px-2 py-1 rounded border border-[var(--amber-tint-20)] tracking-wider">
+                Team Pro (Save 47%)
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -587,6 +566,224 @@
       </div>
     </div>
   </section>
+
+  <!-- ══════════════════════════════════════════════
+       WHAT'S INCLUDED IN EVERY ORDER
+  ══════════════════════════════════════════════ -->
+  <section class="py-20 border-t border-[var(--border)] bg-[var(--surface-soft)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--amber-4)] opacity-60"></span>ALWAYS INCLUDED<span class="w-8 h-px bg-[var(--amber-4)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">No Hidden Fees. Ever.</h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto">Every order — regardless of size — comes with these services at zero extra charge.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex gap-4 items-start hover:border-[var(--amber-tint-20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0">
+            <i data-lucide="pen-tool" class="w-5 h-5 text-[var(--amber-4)]"></i>
+          </div>
+          <div>
+            <div class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Free Artwork Digitization</div>
+            <div class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">We convert your logo, crest, or artwork into production-ready stitch files at no charge.</div>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex gap-4 items-start hover:border-[var(--indigo-tint-20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center flex-shrink-0">
+            <i data-lucide="image" class="w-5 h-5 text-[var(--indigo-4)]"></i>
+          </div>
+          <div>
+            <div class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Digital Proof Simulation</div>
+            <div class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">High-res digital sew-out mockup delivered within 2 hours of order confirmation.</div>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex gap-4 items-start hover:border-[rgba(52,211,153,.3)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.2)] flex items-center justify-center flex-shrink-0">
+            <i data-lucide="refresh-cw" class="w-5 h-5 text-[var(--emerald)]"></i>
+          </div>
+          <div>
+            <div class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Unlimited Proof Revisions</div>
+            <div class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Request as many changes as needed to the proof — no revision fees, no limits.</div>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex gap-4 items-start hover:border-[rgba(192,132,252,.3)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-[rgba(192,132,252,.1)] border border-[rgba(192,132,252,.2)] flex items-center justify-center flex-shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5 text-[var(--purple)]"></i>
+          </div>
+          <div>
+            <div class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Full QA Inspection</div>
+            <div class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Every unit inspected against the approved sample before packing. Defects replaced at no cost.</div>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex gap-4 items-start hover:border-[var(--amber-tint-20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0">
+            <i data-lucide="archive" class="w-5 h-5 text-[var(--amber-4)]"></i>
+          </div>
+          <div>
+            <div class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Stitch File Archiving</div>
+            <div class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Design files, Pantone references, and thread numbers stored permanently for instant reorders.</div>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 flex gap-4 items-start hover:border-[var(--indigo-tint-20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center flex-shrink-0">
+            <i data-lucide="package" class="w-5 h-5 text-[var(--indigo-4)]"></i>
+          </div>
+          <div>
+            <div class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-1">Sorted & Labeled Packaging</div>
+            <div class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Batches sorted by department, player, or year group per your spec. Ready to distribute on arrival.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Zero fees callout bar -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 p-5 rounded-2xl bg-gradient-to-r from-[var(--amber-tint-08)] to-[var(--indigo-tint-10)] border border-[var(--border-strong)]">
+        <i data-lucide="badge-check" class="w-6 h-6 text-[var(--emerald)] flex-shrink-0"></i>
+        <p class="font-inter text-sm text-[var(--text-muted)] text-center sm:text-start">
+          <span class="font-bold text-[var(--text-primary)]">$0 setup fee · $0 plate charge · $0 digitization fee · $0 revision fee.</span> You only pay for the patches you order — nothing else.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       PAYMENT & ACCOUNT OPTIONS
+  ══════════════════════════════════════════════ -->
+  <section class="py-20 border-t border-[var(--border)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--amber-4)] opacity-60"></span>PAYMENT OPTIONS<span class="w-8 h-px bg-[var(--amber-4)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Flexible Billing for Every Account Type</h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto">Schools, corporates, and governments each have different payment workflows — we support them all.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[var(--amber-tint-20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="credit-card" class="w-6 h-6 text-[var(--amber-4)]"></i>
+          </div>
+          <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Card / Online</h3>
+          <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Visa, Mastercard, Amex, and all major debit cards. Secure checkout, instant order confirmation.</p>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]">
+            <span class="text-[10px] font-jakarta font-bold text-[var(--amber-4)] uppercase tracking-wider">All Orders</span>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[var(--indigo-tint-20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="file-text" class="w-6 h-6 text-[var(--indigo-4)]"></i>
+          </div>
+          <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Purchase Order</h3>
+          <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Full PO workflow with formal invoicing. Compatible with school, government, and institutional procurement systems.</p>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]">
+            <span class="text-[10px] font-jakarta font-bold text-[var(--indigo-4)] uppercase tracking-wider">500+ Units</span>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[rgba(52,211,153,.3)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.2)] flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="clock" class="w-6 h-6 text-[var(--emerald)]"></i>
+          </div>
+          <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Net-30 Terms</h3>
+          <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Approved enterprise accounts can ship now and pay within 30 days. Subject to credit approval on first order.</p>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]">
+            <span class="text-[10px] font-jakarta font-bold text-[var(--emerald)] uppercase tracking-wider">Enterprise Accounts</span>
+          </div>
+        </div>
+
+        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[rgba(192,132,252,.3)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl bg-[rgba(192,132,252,.1)] border border-[rgba(192,132,252,.2)] flex items-center justify-center mx-auto mb-4">
+            <i data-lucide="bank" class="w-6 h-6 text-[var(--purple)]"></i>
+          </div>
+          <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Bank Transfer / SWIFT</h3>
+          <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">International wire transfers accepted for global clients. SWIFT codes and multi-currency invoicing available.</p>
+          <div class="mt-4 pt-3 border-t border-[var(--border)]">
+            <span class="text-[10px] font-jakarta font-bold text-[var(--purple)] uppercase tracking-wider">International Orders</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       VOLUME SAVINGS COMPARISON
+  ══════════════════════════════════════════════ -->
+  <section class="py-20 border-t border-[var(--border)] bg-[var(--surface-soft)]">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="text-center mb-14">
+        <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase mb-3">
+          <span class="w-8 h-px bg-[var(--amber-4)] opacity-60"></span>SAVINGS BREAKDOWN<span class="w-8 h-px bg-[var(--amber-4)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">How Much You Save at Volume</h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto">The more you order, the lower your per-unit cost. Here's how the numbers stack up for a standard 3" embroidered patch.</p>
+      </div>
+
+      <div class="bg-[var(--surface)] border border-[var(--border-strong)] rounded-2xl overflow-hidden">
+        <!-- Table header -->
+        <div class="grid grid-cols-4 bg-[var(--surface-soft)] border-b border-[var(--border)] px-6 py-4">
+          <div class="font-jakarta font-bold text-xs text-[var(--text-faint-2)] uppercase tracking-wider">Order Qty</div>
+          <div class="font-jakarta font-bold text-xs text-[var(--text-faint-2)] uppercase tracking-wider text-center">Unit Price</div>
+          <div class="font-jakarta font-bold text-xs text-[var(--text-faint-2)] uppercase tracking-wider text-center">Total Cost</div>
+          <div class="font-jakarta font-bold text-xs text-[var(--text-faint-2)] uppercase tracking-wider text-center">You Save vs. MOQ</div>
+        </div>
+
+        <!-- Rows -->
+        <div class="grid grid-cols-4 border-b border-[var(--border)] px-6 py-4 hover:bg-[var(--surface-soft)] transition-colors">
+          <div class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">50 units</div>
+          <div class="text-center font-jakarta font-bold text-sm text-[var(--text-muted)]">$4.80</div>
+          <div class="text-center font-inter text-sm text-[var(--text-muted)]">$240</div>
+          <div class="text-center"><span class="text-[11px] font-jakarta font-bold text-[var(--text-faint)] px-2 py-0.5 rounded-full bg-[var(--surface-soft)] border border-[var(--border)]">Baseline</span></div>
+        </div>
+        <div class="grid grid-cols-4 border-b border-[var(--border)] px-6 py-4 hover:bg-[var(--surface-soft)] transition-colors">
+          <div class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">100 units</div>
+          <div class="text-center font-jakarta font-bold text-sm text-[var(--amber-4)]">$3.20</div>
+          <div class="text-center font-inter text-sm text-[var(--text-muted)]">$320</div>
+          <div class="text-center"><span class="text-[11px] font-jakarta font-bold text-[var(--emerald)] px-2 py-0.5 rounded-full bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.2)]">Save 33%</span></div>
+        </div>
+        <div class="grid grid-cols-4 border-b border-[var(--border)] px-6 py-4 hover:bg-[var(--surface-soft)] transition-colors">
+          <div class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">250 units</div>
+          <div class="text-center font-jakarta font-bold text-sm text-[var(--amber-4)]">$2.10</div>
+          <div class="text-center font-inter text-sm text-[var(--text-muted)]">$525</div>
+          <div class="text-center"><span class="text-[11px] font-jakarta font-bold text-[var(--emerald)] px-2 py-0.5 rounded-full bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.2)]">Save 56%</span></div>
+        </div>
+        <div class="grid grid-cols-4 border-b border-[var(--border)] px-6 py-4 hover:bg-[var(--surface-soft)] transition-colors">
+          <div class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">500 units</div>
+          <div class="text-center font-jakarta font-bold text-sm text-[var(--amber-4)]">$1.60</div>
+          <div class="text-center font-inter text-sm text-[var(--text-muted)]">$800</div>
+          <div class="text-center"><span class="text-[11px] font-jakarta font-bold text-[var(--emerald)] px-2 py-0.5 rounded-full bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.2)]">Save 67%</span></div>
+        </div>
+        <div class="grid grid-cols-4 border-b border-[var(--border)] px-6 py-4 hover:bg-[var(--surface-soft)] transition-colors bg-gradient-to-r from-[var(--amber-tint-08)] to-transparent">
+          <div class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">1,000 units</div>
+          <div class="text-center font-jakarta font-black text-sm text-[var(--amber-5)]">$1.10</div>
+          <div class="text-center font-inter text-sm text-[var(--text-muted)]">$1,100</div>
+          <div class="text-center"><span class="text-[11px] font-jakarta font-bold text-[var(--amber-4)] px-2 py-0.5 rounded-full bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)]">Save 77%</span></div>
+        </div>
+        <div class="grid grid-cols-4 px-6 py-4 hover:bg-[var(--surface-soft)] transition-colors bg-gradient-to-r from-[var(--amber-tint-10)] to-transparent">
+          <div class="font-jakarta font-black text-sm text-[var(--amber-5)]">5,000+ units</div>
+          <div class="text-center font-jakarta font-black text-sm text-[var(--amber-5)]">$0.70</div>
+          <div class="text-center font-inter text-sm text-[var(--text-muted)]">$3,500+</div>
+          <div class="text-center"><span class="text-[11px] font-jakarta font-black text-[var(--on-accent)] px-2 py-0.5 rounded-full bg-[var(--amber-5)]">Save 85% ★</span></div>
+        </div>
+      </div>
+
+      <p class="text-xs text-[var(--text-faint-2)] font-inter text-center mt-4">* Prices shown for standard 3" embroidered patch with iron-on backing. Actual rates may vary by design complexity. Use the calculator above for an exact estimate.</p>
+    </div>
+  </section>
+
 
   <!-- ══════════════════════════════════════════════
        CTA SECTION
