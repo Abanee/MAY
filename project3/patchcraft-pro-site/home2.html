@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr" data-theme="dark" class="scroll-smooth no-transitions">
+
 <head>
   <link rel="icon" type="image/png" href="logo.png" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PatchCraft Pro — B2B Embroidered Patches &amp; Uniform Supplier</title>
-  <meta name="description" content="Custom embroidered patches, woven badges, and PVC insignia for schools, sports teams, and corporates. Bulk pricing from 50 to 5,000+ units." />
+  <meta name="description"
+    content="Custom embroidered patches, woven badges, and PVC insignia for schools, sports teams, and corporates. Bulk pricing from 50 to 5,000+ units." />
   <meta name="theme-color" content="#0A0F1C" id="meta-theme-color" />
 
   <!-- Avoid a flash of the wrong theme/direction before script.js loads -->
@@ -27,7 +29,9 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -71,28 +75,36 @@
       </a>
 
       <!-- Desktop Nav -->
-      <div class="hidden lg:flex flex-row flex-nowrap items-center lg:gap-2.5 xl:gap-5 lg:text-[13px] xl:text-sm whitespace-nowrap font-inter font-medium text-[var(--text-muted)]">
+      <div
+        class="hidden lg:flex flex-row flex-nowrap items-center lg:gap-2.5 xl:gap-5 lg:text-[13px] xl:text-sm whitespace-nowrap font-inter font-medium text-[var(--text-muted)]">
         <a href="index.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Home</a>
         <a href="home2.html" class="text-[var(--text-primary)] transition-colors duration-200 active-link">Home 2</a>
-        <a href="schools-catalog.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Schools</a>
-        <a href="corporate-patches.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Corporate</a>
-        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Uniform Branding</a>
-        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports Teams</a>
+        <a href="schools-catalog.html"
+          class="hover:text-[var(--text-primary)] transition-colors duration-200">Schools</a>
+        <a href="corporate-patches.html"
+          class="hover:text-[var(--text-primary)] transition-colors duration-200">Corporate</a>
+        <a href="uniform-branding.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Uniform
+          Branding</a>
+        <a href="sports-teams.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Sports
+          Teams</a>
         <a href="pricing.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Pricing</a>
         <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors duration-200">Contact</a>
       </div>
 
       <!-- Desktop CTA + Toggles -->
       <div class="hidden lg:flex flex-row flex-nowrap items-center lg:gap-2 xl:gap-3">
-        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+        <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false"
+          aria-label="Toggle dark or light theme" title="Toggle theme">
           <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
           <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
         </button>
-        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5" type="button" aria-label="Toggle layout direction, left to right or right to left" title="Toggle LTR / RTL layout">
+        <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5" type="button"
+          aria-label="Toggle layout direction, left to right or right to left" title="Toggle LTR / RTL layout">
           <span id="dir-toggle-label" class="dir-toggle-label">LTR</span>
         </button>
         <span class="w-px h-6 bg-[var(--border-strong)] mx-1"></span>
-        <a href="login.html" class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Login</a>
+        <a href="login.html"
+          class="stitch-btn px-5 py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-sm font-jakarta font-bold rounded-lg">Login</a>
       </div>
 
       <!-- Mobile Controls -->
@@ -116,16 +128,19 @@
         <a href="contact.html" class="hover:text-[var(--text-primary)] transition-colors">Contact</a>
 
         <div class="flex items-center justify-center gap-3 pt-2">
-          <button id="theme-toggle-mobile" class="icon-toggle-btn !w-11 !h-10 relative flex items-center justify-center" type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
+          <button id="theme-toggle-mobile" class="icon-toggle-btn !w-11 !h-10 relative flex items-center justify-center"
+            type="button" aria-pressed="false" aria-label="Toggle dark or light theme" title="Toggle theme">
             <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
             <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
           </button>
-          <button id="dir-toggle-mobile" class="icon-toggle-btn !w-auto px-3 !h-10 flex items-center justify-center" type="button" aria-label="Toggle layout direction" title="Toggle LTR / RTL layout">
+          <button id="dir-toggle-mobile" class="icon-toggle-btn !w-auto px-3 !h-10 flex items-center justify-center"
+            type="button" aria-label="Toggle layout direction" title="Toggle LTR / RTL layout">
             <span id="dir-toggle-label-mobile" class="dir-toggle-label">LTR</span>
           </button>
         </div>
         <div class="pt-1">
-          <a href="login.html" class="block w-full py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Login</a>
+          <a href="login.html"
+            class="block w-full py-2.5 bg-[var(--amber-5)] text-[var(--on-accent)] text-center text-sm font-jakarta font-bold rounded-xl">Login</a>
         </div>
       </div>
     </div>
@@ -139,8 +154,12 @@
 
     <div class="hero-grid-bg absolute inset-0 pointer-events-none"></div>
 
-    <div class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--amber-5)]/8 rounded-full blur-[130px] pointer-events-none"></div>
-    <div class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--indigo-5)]/8 rounded-full blur-[120px] pointer-events-none"></div>
+    <div
+      class="absolute top-1/4 start-0 w-[500px] h-[400px] bg-[var(--amber-5)]/8 rounded-full blur-[130px] pointer-events-none">
+    </div>
+    <div
+      class="absolute bottom-1/3 end-0 w-[400px] h-[350px] bg-[var(--indigo-5)]/8 rounded-full blur-[120px] pointer-events-none">
+    </div>
 
     <div class="max-w-7xl mx-auto px-5 md:px-8 py-16 w-full relative z-10">
       <div class="grid lg:grid-cols-2 gap-14 xl:gap-20 items-center">
@@ -148,19 +167,23 @@
         <!-- ── Left: Copy & CTAs ── -->
         <div class="hero-copy">
 
-          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+          <div
+            class="inline-flex items-center gap-2.5 px-3.5 py-1.5 mb-7 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
             <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
-            <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">B2B Uniform Solutions</span>
+            <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">B2B
+              Uniform Solutions</span>
           </div>
 
-          <h1 class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
+          <h1
+            class="font-jakarta font-black leading-[1.04] mb-6 text-5xl md:text-6xl xl:text-7xl text-[var(--text-primary)]">
             Precision<br />
             <span class="text-gradient-gold">Crafted.</span><br />
             Bulk Priced.
           </h1>
 
           <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-9 max-w-[480px]">
-            Custom embroidered patches, woven badges, and PVC insignia for schools, sports teams, and corporates. From 50 to 50,000 units — quality never compromises.
+            Custom embroidered patches, woven badges, and PVC insignia for schools, sports teams, and corporates. From
+            50 to 50,000 units — quality never compromises.
           </p>
 
           <div class="flex items-center gap-6 md:gap-10 mb-10">
@@ -181,11 +204,13 @@
           </div>
 
           <div class="flex flex-wrap gap-4">
-            <a href="#catalog" class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
+            <a href="#catalog"
+              class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">
               <i data-lucide="layout-grid" class="w-4 h-4"></i>
               Explore Catalog
             </a>
-            <button class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
+            <button
+              class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300">
               <i data-lucide="upload" class="w-4 h-4"></i>
               Upload Design
             </button>
@@ -215,7 +240,9 @@
 
             <div class="patch-stage">
               <div id="patch-preview" class="w-full h-full flex items-center justify-center p-4">
-                <img id="patch-preview-img" src="Asset/home2hero1.jpg" alt="Embroidered" class="max-h-[150px] object-contain transition-all duration-300" style="animation: patch-float 4.5s ease-in-out infinite;" />
+                <img id="patch-preview-img" src="Asset/home2hero1.jpg" alt="Embroidered"
+                  class="max-h-[150px] object-contain transition-all duration-300"
+                  style="animation: patch-float 4.5s ease-in-out infinite;" />
               </div>
             </div>
 
@@ -235,7 +262,8 @@
             </div>
           </div>
 
-          <div class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
+          <div
+            class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
             <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i>
             <span class="text-xs text-[var(--indigo-4)] font-inter">ISO 9001 Certified Production</span>
           </div>
@@ -251,13 +279,16 @@
   ══════════════════════════════════════════════ -->
   <section id="catalog" class="py-20 relative">
 
-    <div class="absolute top-0 start-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[var(--border-strong)] to-transparent"></div>
+    <div
+      class="absolute top-0 start-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[var(--border-strong)] to-transparent">
+    </div>
 
     <div class="max-w-7xl mx-auto px-5 md:px-8">
 
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div>
-          <div class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
+          <div
+            class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-3">
             <span class="w-8 h-px bg-[var(--indigo-4)]"></span>PRODUCT CATALOG
           </div>
           <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)]">Built for Bulk Orders</h2>
@@ -321,7 +352,8 @@
 
             <div class="sidebar-divider"></div>
 
-            <button id="clear-filters" class="w-full text-xs font-inter text-[var(--text-faint-2)] hover:text-[var(--amber-4)] transition-colors duration-200 py-1">
+            <button id="clear-filters"
+              class="w-full text-xs font-inter text-[var(--text-faint-2)] hover:text-[var(--amber-4)] transition-colors duration-200 py-1">
               ✕ Clear all filters
             </button>
           </div>
@@ -353,7 +385,8 @@
                   <div class="pricing-tiers">
                     <div class="tier-row"><span>50–99</span><span>$4.50/ea</span></div>
                     <div class="tier-row"><span>100–499</span><span>$2.80/ea</span></div>
-                    <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.60/ea ★</span></div>
+                    <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.60/ea
+                        ★</span></div>
                   </div>
                   <button class="quick-quote-btn stitch-btn w-full" data-product="Classic Varsity Chenille Patch">
                     <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
@@ -384,7 +417,8 @@
                   <div class="pricing-tiers">
                     <div class="tier-row"><span>100–249</span><span>$5.20/ea</span></div>
                     <div class="tier-row"><span>250–999</span><span>$3.10/ea</span></div>
-                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.90/ea ★</span></div>
+                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.90/ea
+                        ★</span></div>
                   </div>
                   <button class="quick-quote-btn stitch-btn w-full" data-product="Corporate Blazer Crest">
                     <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
@@ -415,7 +449,8 @@
                   <div class="pricing-tiers">
                     <div class="tier-row"><span>75–199</span><span>$3.80/ea</span></div>
                     <div class="tier-row"><span>200–749</span><span>$2.40/ea</span></div>
-                    <div class="tier-row best"><span>750+ units</span><span class="text-[var(--amber-4)]">$1.50/ea ★</span></div>
+                    <div class="tier-row best"><span>750+ units</span><span class="text-[var(--amber-4)]">$1.50/ea
+                        ★</span></div>
                   </div>
                   <button class="quick-quote-btn stitch-btn w-full" data-product="Rugged Tactical Velcro Badge">
                     <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
@@ -446,7 +481,8 @@
                   <div class="pricing-tiers">
                     <div class="tier-row"><span>50–99</span><span>$4.20/ea</span></div>
                     <div class="tier-row"><span>100–499</span><span>$2.60/ea</span></div>
-                    <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.40/ea ★</span></div>
+                    <div class="tier-row best"><span>500+ units</span><span class="text-[var(--amber-4)]">$1.40/ea
+                        ★</span></div>
                   </div>
                   <button class="quick-quote-btn stitch-btn w-full" data-product="School House Shield Emblem">
                     <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
@@ -477,7 +513,8 @@
                   <div class="pricing-tiers">
                     <div class="tier-row"><span>50–199</span><span>$3.50/ea</span></div>
                     <div class="tier-row"><span>200–999</span><span>$2.10/ea</span></div>
-                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.20/ea ★</span></div>
+                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$1.20/ea
+                        ★</span></div>
                   </div>
                   <button class="quick-quote-btn stitch-btn w-full" data-product="Sports Team Cap Badge">
                     <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
@@ -508,7 +545,8 @@
                   <div class="pricing-tiers">
                     <div class="tier-row"><span>100–249</span><span>$6.50/ea</span></div>
                     <div class="tier-row"><span>250–999</span><span>$4.20/ea</span></div>
-                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$2.80/ea ★</span></div>
+                    <div class="tier-row best"><span>1000+ units</span><span class="text-[var(--amber-4)]">$2.80/ea
+                        ★</span></div>
                   </div>
                   <button class="quick-quote-btn stitch-btn w-full" data-product="Executive Dept. Lapel Insignia">
                     <i data-lucide="plus" class="w-3.5 h-3.5"></i> Quick Add to Quote
@@ -523,7 +561,9 @@
           <div id="no-results" class="hidden py-20 text-center">
             <i data-lucide="search-x" class="w-10 h-10 text-[var(--text-faint-3)] mx-auto mb-4"></i>
             <p class="text-[var(--text-faint)] font-inter text-sm">No products match the selected filters.</p>
-            <button id="reset-filters" class="mt-4 text-sm text-[var(--amber-4)] hover:opacity-80 font-inter transition-opacity">Reset filters</button>
+            <button id="reset-filters"
+              class="mt-4 text-sm text-[var(--amber-4)] hover:opacity-80 font-inter transition-opacity">Reset
+              filters</button>
           </div>
         </div>
 
@@ -537,18 +577,24 @@
   ══════════════════════════════════════════════ -->
   <section id="pricing" class="py-24 relative overflow-hidden">
 
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--indigo-tint-10)] to-transparent pointer-events-none"></div>
-    <div class="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[var(--indigo-5)]/5 rounded-full blur-[130px] pointer-events-none"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--indigo-tint-10)] to-transparent pointer-events-none">
+    </div>
+    <div
+      class="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[var(--indigo-5)]/5 rounded-full blur-[130px] pointer-events-none">
+    </div>
 
     <div class="max-w-5xl mx-auto px-5 md:px-8 relative z-10">
 
       <div class="text-center mb-14">
-        <div class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-4">
+        <div
+          class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-4">
           <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
           BULK PRICING ESTIMATOR
           <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
         </div>
-        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Volume Drives Value</h2>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Volume Drives Value
+        </h2>
         <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto leading-relaxed">
           Drag the slider to instantly see how ordering more saves you more — per unit and in total production time.
         </p>
@@ -561,13 +607,14 @@
             <span class="text-sm font-inter text-[var(--text-muted)]">Order Quantity</span>
             <div class="flex items-center gap-2">
               <input type="number" id="qty-input" min="50" max="5000" value="250"
-                     class="qty-number-input w-24 text-center text-sm font-jakarta font-bold text-[var(--amber-4)]" />
+                class="qty-number-input w-24 text-center text-sm font-jakarta font-bold text-[var(--amber-4)]" />
               <span class="text-sm text-[var(--text-faint)] font-inter">units</span>
             </div>
           </div>
 
           <div class="slider-wrap">
-            <input type="range" id="qty-slider" min="50" max="5000" value="250" step="10" class="custom-slider w-full" />
+            <input type="range" id="qty-slider" min="50" max="5000" value="250" step="10"
+              class="custom-slider w-full" />
             <div class="flex justify-between mt-3 px-0.5">
               <span class="text-xs text-[var(--text-faint-3)] font-inter">50</span>
               <span class="text-xs text-[var(--text-faint-3)] font-inter">1,000</span>
@@ -620,7 +667,8 @@
           <div class="overflow-x-auto">
             <table class="w-full text-sm font-inter">
               <thead>
-                <tr class="text-[11px] text-[var(--text-faint-3)] uppercase tracking-wider border-b border-[var(--border)]">
+                <tr
+                  class="text-[11px] text-[var(--text-faint-3)] uppercase tracking-wider border-b border-[var(--border)]">
                   <th class="text-start pb-3 font-semibold">Quantity</th>
                   <th class="text-center pb-3 font-semibold">Unit Price</th>
                   <th class="text-center pb-3 font-semibold">Lead Time</th>
@@ -669,16 +717,999 @@
           </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-center justify-between gap-5 mt-8 pt-7 border-t border-[var(--border)]">
+        <div
+          class="flex flex-col sm:flex-row items-center justify-between gap-5 mt-8 pt-7 border-t border-[var(--border)]">
           <p class="text-sm text-[var(--text-muted)] font-inter">
             Ready to commit? Get a formal quote with exact specs in under 2 hours.
           </p>
-          <button class="stitch-btn flex items-center gap-2 px-8 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm whitespace-nowrap">
+          <button
+            class="stitch-btn flex items-center gap-2 px-8 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm whitespace-nowrap">
             <i data-lucide="send" class="w-4 h-4"></i>
             Request Formal Quote
           </button>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: HOW IT WORKS — 5-STEP PRODUCTION PIPELINE
+  ══════════════════════════════════════════════ -->
+  <section id="process" class="py-24 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--indigo-tint-10)] to-transparent pointer-events-none">
+    </div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+
+      <div class="text-center mb-16">
+        <div
+          class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-4">
+          <span class="w-8 h-px bg-[var(--indigo-4)] opacity-60"></span>
+          HOW IT WORKS
+          <span class="w-8 h-px bg-[var(--indigo-4)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">From Brief to
+          Badge<br><span class="text-gradient-gold">in 5 Simple Steps</span></h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-xl mx-auto leading-relaxed">No guesswork, no delays
+          — our streamlined production pipeline keeps you in control at every stitch.</p>
+      </div>
+
+      <div class="relative">
+        <div
+          class="hidden lg:block absolute top-[52px] left-[calc(10%+40px)] right-[calc(10%+40px)] h-px bg-gradient-to-r from-transparent via-[var(--border-strong)] to-transparent pointer-events-none">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+
+          <div
+            class="group text-center p-6 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1">
+            <div class="relative mx-auto w-14 h-14 mb-5">
+              <div
+                class="w-14 h-14 rounded-full bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center group-hover:bg-[var(--amber-tint-15)] transition-colors duration-300">
+                <i data-lucide="upload-cloud" class="w-6 h-6 text-[var(--amber-4)]"></i>
+              </div>
+              <span
+                class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-black text-[10px] flex items-center justify-center">1</span>
+            </div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-2">Upload Artwork</h4>
+            <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed">Submit your logo, vector, or even a
+              napkin sketch — our digitizers handle the rest.</p>
+          </div>
+
+          <div
+            class="group text-center p-6 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1">
+            <div class="relative mx-auto w-14 h-14 mb-5">
+              <div
+                class="w-14 h-14 rounded-full bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center group-hover:bg-[var(--indigo-tint-20)] transition-colors duration-300">
+                <i data-lucide="sliders-horizontal" class="w-6 h-6 text-[var(--indigo-4)]"></i>
+              </div>
+              <span
+                class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--indigo-5)] text-white font-jakarta font-black text-[10px] flex items-center justify-center">2</span>
+            </div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-2">Spec &amp; Approve</h4>
+            <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed">Choose material, size, thread
+              palette, and backing. Approve a digital proof in 24 hrs.</p>
+          </div>
+
+          <div
+            class="group text-center p-6 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1">
+            <div class="relative mx-auto w-14 h-14 mb-5">
+              <div
+                class="w-14 h-14 rounded-full bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center group-hover:bg-[var(--amber-tint-15)] transition-colors duration-300">
+                <i data-lucide="cpu" class="w-6 h-6 text-[var(--amber-4)]"></i>
+              </div>
+              <span
+                class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-black text-[10px] flex items-center justify-center">3</span>
+            </div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-2">Production Run</h4>
+            <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed">12-head industrial embroidery
+              machines run your order with ISO-certified thread.</p>
+          </div>
+
+          <div
+            class="group text-center p-6 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1">
+            <div class="relative mx-auto w-14 h-14 mb-5">
+              <div
+                class="w-14 h-14 rounded-full bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center group-hover:bg-[var(--indigo-tint-20)] transition-colors duration-300">
+                <i data-lucide="scan-eye" class="w-6 h-6 text-[var(--indigo-4)]"></i>
+              </div>
+              <span
+                class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--indigo-5)] text-white font-jakarta font-black text-[10px] flex items-center justify-center">4</span>
+            </div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-2">QC Inspection</h4>
+            <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed">Every batch undergoes 3-point quality
+              checks — colour density, edge finish, and stitch count.</p>
+          </div>
+
+          <div
+            class="group text-center p-6 rounded-2xl border border-[var(--border-strong)] bg-[var(--surface)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1">
+            <div class="relative mx-auto w-14 h-14 mb-5">
+              <div
+                class="w-14 h-14 rounded-full bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center group-hover:bg-[var(--amber-tint-15)] transition-colors duration-300">
+                <i data-lucide="package-check" class="w-6 h-6 text-[var(--amber-4)]"></i>
+              </div>
+              <span
+                class="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-black text-[10px] flex items-center justify-center">5</span>
+            </div>
+            <h4 class="font-jakarta font-bold text-sm text-[var(--text-primary)] mb-2">Ship &amp; Track</h4>
+            <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed">Global express shipping with
+              real-time tracking. DHL, FedEx, and sea freight available.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="mt-10 flex justify-center">
+        <div
+          class="inline-flex items-center gap-3 px-5 py-3 rounded-full bg-[var(--surface)] border border-[var(--border-strong)]">
+          <i data-lucide="zap" class="w-4 h-4 text-[var(--amber-4)]"></i>
+          <span class="text-sm font-inter text-[var(--text-muted)]">Need it faster? <span
+              class="text-[var(--amber-4)] font-semibold">Rush production</span> cuts lead time to 5 business days — ask
+            us how.</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: LIVE FACTORY PULSE
+  ══════════════════════════════════════════════ -->
+  <section id="live-stats" class="py-20 relative overflow-hidden">
+    <div
+      class="absolute top-1/2 start-1/4 -translate-y-1/2 w-[500px] h-[300px] bg-[var(--amber-5)]/5 rounded-full blur-[120px] pointer-events-none">
+    </div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+        <div>
+          <div
+            class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase mb-4">
+            <span class="w-8 h-px bg-[var(--amber-4)] opacity-60"></span>
+            LIVE FACTORY PULSE
+          </div>
+          <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-5">Running at
+            Full<br><span class="text-gradient-gold">Stitch Capacity</span></h2>
+          <p class="text-[var(--text-muted)] font-inter text-lg leading-relaxed mb-8">Our factory floor never sleeps.
+            These numbers update every 24 hours to reflect real production activity across all shifts.</p>
+          <div class="space-y-4">
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-[var(--surface)] border border-[var(--border-strong)]">
+              <div
+                class="w-10 h-10 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="activity" class="w-4 h-4 text-[var(--amber-4)]"></i>
+              </div>
+              <div class="flex-1">
+                <div class="text-xs text-[var(--text-faint)] font-inter mb-1">Active machines today</div>
+                <div class="h-1.5 bg-[var(--border-strong)] rounded-full overflow-hidden">
+                  <div class="h-full rounded-full bg-gradient-to-r from-[var(--amber-5)] to-[var(--amber-4)]"
+                    style="width:88%"></div>
+                </div>
+              </div>
+              <span class="text-sm font-jakarta font-bold text-[var(--amber-4)]">88%</span>
+            </div>
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-[var(--surface)] border border-[var(--border-strong)]">
+              <div
+                class="w-10 h-10 rounded-lg bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="truck" class="w-4 h-4 text-[var(--indigo-4)]"></i>
+              </div>
+              <div class="flex-1">
+                <div class="text-xs text-[var(--text-faint)] font-inter mb-1">Orders shipped on-time (last 90 days)
+                </div>
+                <div class="h-1.5 bg-[var(--border-strong)] rounded-full overflow-hidden">
+                  <div class="h-full rounded-full bg-gradient-to-r from-[var(--indigo-5)] to-[var(--indigo-4)]"
+                    style="width:97%"></div>
+                </div>
+              </div>
+              <span class="text-sm font-jakarta font-bold text-[var(--indigo-4)]">97%</span>
+            </div>
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-[var(--surface)] border border-[var(--border-strong)]">
+              <div
+                class="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+              </div>
+              <div class="flex-1">
+                <div class="text-xs text-[var(--text-faint)] font-inter mb-1">First-pass QC approval rate</div>
+                <div class="h-1.5 bg-[var(--border-strong)] rounded-full overflow-hidden">
+                  <div class="h-full rounded-full bg-gradient-to-r from-emerald-500 to-emerald-400" style="width:99%">
+                  </div>
+                </div>
+              </div>
+              <span class="text-sm font-jakarta font-bold text-emerald-400">99%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div
+            class="col-span-2 p-6 rounded-2xl bg-gradient-to-br from-[var(--amber-tint-10)] to-[var(--amber-tint-08)] border border-[var(--amber-tint-20)] text-center">
+            <div class="font-jakarta font-black text-5xl text-[var(--amber-4)] mb-1">2.4M+</div>
+            <div class="text-sm text-[var(--text-muted)] font-inter">Patches produced this year</div>
+          </div>
+          <div class="p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] text-center">
+            <i data-lucide="globe-2" class="w-5 h-5 text-[var(--indigo-4)] mx-auto mb-2"></i>
+            <div class="font-jakarta font-black text-3xl text-[var(--text-primary)] mb-1">38</div>
+            <div class="text-xs text-[var(--text-faint)] font-inter">Countries served</div>
+          </div>
+          <div class="p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] text-center">
+            <i data-lucide="star" class="w-5 h-5 text-[var(--amber-4)] mx-auto mb-2"></i>
+            <div class="font-jakarta font-black text-3xl text-[var(--text-primary)] mb-1">4.9</div>
+            <div class="text-xs text-[var(--text-faint)] font-inter">Avg. client rating</div>
+          </div>
+          <div class="p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] text-center">
+            <i data-lucide="repeat" class="w-5 h-5 text-emerald-400 mx-auto mb-2"></i>
+            <div class="font-jakarta font-black text-3xl text-[var(--text-primary)] mb-1">84%</div>
+            <div class="text-xs text-[var(--text-faint)] font-inter">Repeat order rate</div>
+          </div>
+          <div class="p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] text-center">
+            <i data-lucide="zap" class="w-5 h-5 text-[var(--amber-4)] mx-auto mb-2"></i>
+            <div class="font-jakarta font-black text-3xl text-[var(--text-primary)] mb-1">&lt;2h</div>
+            <div class="text-xs text-[var(--text-faint)] font-inter">Quote response time</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: THREAD &amp; MATERIAL SELECTOR
+  ══════════════════════════════════════════════ -->
+  <section id="materials" class="py-24 relative">
+    <div
+      class="absolute top-0 start-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[var(--border-strong)] to-transparent">
+    </div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="text-center mb-14">
+        <div
+          class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-4">
+          <span class="w-8 h-px bg-[var(--indigo-4)] opacity-60"></span>MATERIALS &amp; THREAD<span
+            class="w-8 h-px bg-[var(--indigo-4)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Choose Your Finish</h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-lg mx-auto">Every material serves a purpose. Pick
+          the foundation that matches your brand, durability requirement, and budget.</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <div
+          class="group relative p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-[var(--amber-tint-08)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          </div>
+          <div
+            class="w-12 h-12 rounded-xl bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center mb-4">
+            <i data-lucide="circle-dot" class="w-5 h-5 text-[var(--amber-4)]"></i>
+          </div>
+          <div class="flex gap-1.5 mb-4">
+            <span class="w-4 h-4 rounded-full bg-[#8B4513] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#1B3A5C] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#2D5A27] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#7C3AED] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#C0392B] border border-white/10"></span>
+          </div>
+          <h4 class="font-jakarta font-bold text-[var(--text-primary)] mb-2">Wool Blend</h4>
+          <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed mb-3">Classic varsity look with rich
+            texture. Best for school and club patches where heritage matters.</p>
+          <div class="flex items-center justify-between text-[10px] font-inter"><span
+              class="text-emerald-400 font-semibold">✓ Washfast colours</span><span
+              class="text-[var(--text-faint-2)]">MOQ 50</span></div>
+        </div>
+
+        <div
+          class="group relative p-6 rounded-2xl bg-[var(--surface)] border border-[var(--amber-tint-20)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden">
+          <div
+            class="absolute top-3 end-3 px-2 py-0.5 rounded-full bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold text-[9px] tracking-wider">
+            POPULAR</div>
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-[var(--amber-tint-08)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          </div>
+          <div
+            class="w-12 h-12 rounded-xl bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center mb-4">
+            <i data-lucide="sparkles" class="w-5 h-5 text-[var(--amber-4)]"></i>
+          </div>
+          <div class="flex gap-1.5 mb-4">
+            <span class="w-4 h-4 rounded-full bg-[#FBBF24] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#EC4899] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#3B82F6] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#10B981] border border-white/10"></span>
+            <span class="text-[10px] text-[var(--text-faint)] self-center font-inter">+245</span>
+          </div>
+          <h4 class="font-jakarta font-bold text-[var(--text-primary)] mb-2">100% Polyester</h4>
+          <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed mb-3">Vivid colour reproduction with
+            superior shape retention. Ideal for sports kits and corporate uniforms.</p>
+          <div class="flex items-center justify-between text-[10px] font-inter"><span
+              class="text-emerald-400 font-semibold">✓ 250+ thread colours</span><span
+              class="text-[var(--text-faint-2)]">MOQ 50</span></div>
+        </div>
+
+        <div
+          class="group relative p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--indigo-tint-20)] transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-[var(--indigo-tint-10)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          </div>
+          <div
+            class="w-12 h-12 rounded-xl bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center mb-4">
+            <i data-lucide="shield" class="w-5 h-5 text-[var(--indigo-4)]"></i>
+          </div>
+          <div class="flex gap-1.5 mb-4">
+            <span class="w-4 h-4 rounded-full bg-[#1E293B] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#0EA5E9] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#F97316] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#EF4444] border border-white/10"></span>
+          </div>
+          <h4 class="font-jakarta font-bold text-[var(--text-primary)] mb-2">PVC Rubber</h4>
+          <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed mb-3">Waterproof, UV-resistant 3D
+            moulded badges. Perfect for military, outdoor gear, and tactical apparel.</p>
+          <div class="flex items-center justify-between text-[10px] font-inter"><span
+              class="text-[var(--indigo-4)] font-semibold">✓ IP67 waterproof</span><span
+              class="text-[var(--text-faint-2)]">MOQ 75</span></div>
+        </div>
+
+        <div
+          class="group relative p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden">
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-[var(--amber-tint-08)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          </div>
+          <div
+            class="w-12 h-12 rounded-xl bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center mb-4">
+            <i data-lucide="layers-2" class="w-5 h-5 text-[var(--amber-4)]"></i>
+          </div>
+          <div class="flex gap-1.5 mb-4">
+            <span class="w-4 h-4 rounded-full bg-[#F8FAFC] border border-black/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#6B7280] border border-white/10"></span>
+            <span class="w-4 h-4 rounded-full bg-[#1C1917] border border-white/10"></span>
+          </div>
+          <h4 class="font-jakarta font-bold text-[var(--text-primary)] mb-2">Woven Label</h4>
+          <p class="text-xs text-[var(--text-faint)] font-inter leading-relaxed mb-3">Ultra-fine weave captures
+            micro-text and intricate logos. The premium choice for fashion and luxury brands.</p>
+          <div class="flex items-center justify-between text-[10px] font-inter"><span
+              class="text-emerald-400 font-semibold">✓ 0.5mm detail level</span><span
+              class="text-[var(--text-faint-2)]">MOQ 100</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: CLIENT TESTIMONIALS
+  ══════════════════════════════════════════════ -->
+  <section id="testimonials" class="py-24 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--indigo-tint-10)] to-transparent pointer-events-none">
+    </div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+      <div class="text-center mb-14">
+        <div
+          class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--amber-5)] tracking-widest uppercase mb-4">
+          <span class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>CLIENT TESTIMONIALS<span
+            class="w-8 h-px bg-[var(--amber-5)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Trusted by <span
+            class="text-gradient-gold">500+ Organisations</span></h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-lg mx-auto">Real feedback from procurement managers,
+          team coaches, and brand directors across the globe.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div
+          class="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4">
+          <div class="flex gap-1 text-[var(--amber-4)]"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star"
+              class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+          <p class="text-sm text-[var(--text-body)] font-inter leading-relaxed flex-1">"We ordered 1,200 embroidered
+            chest badges for our entire nursing staff. Colour accuracy was spot-on and every single badge passed our
+            uniform compliance check first try."</p>
+          <div class="flex items-center gap-3 pt-2 border-t border-[var(--border-soft)]">
+            <div
+              class="w-9 h-9 rounded-full bg-gradient-to-br from-[var(--indigo-5)] to-[var(--indigo-4)] flex items-center justify-center text-white font-jakarta font-bold text-sm">
+              SN</div>
+            <div>
+              <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)]">Sarah N.</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">Procurement Lead · NHS Trust UK</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 rounded-2xl bg-gradient-to-br from-[var(--amber-tint-10)] to-[var(--amber-tint-08)] border border-[var(--amber-tint-20)] hover:border-[var(--amber-tint-30)] transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4">
+          <div class="flex gap-1 text-[var(--amber-4)]"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star"
+              class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+          <p class="text-sm text-[var(--text-body)] font-inter leading-relaxed flex-1">"PatchCraft Pro turned around 800
+            PVC velcro badges in 7 days for an emergency kit rebranding. Quality was exceptional and the team kept us
+            updated at every step. Absolute lifesavers."</p>
+          <div class="flex items-center gap-3 pt-2 border-t border-[var(--amber-tint-20)]">
+            <div
+              class="w-9 h-9 rounded-full bg-gradient-to-br from-[var(--amber-5)] to-[var(--amber-6)] flex items-center justify-center text-[var(--on-accent)] font-jakarta font-bold text-sm">
+              MR</div>
+            <div>
+              <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)]">Marcus R.</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">Operations Director · Delta Force Gear</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4">
+          <div class="flex gap-1 text-[var(--amber-4)]"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star"
+              class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+          <p class="text-sm text-[var(--text-body)] font-inter leading-relaxed flex-1">"We've been sourcing woven labels
+            for our academy blazers for three seasons. Pricing at 500+ units is unmatched and the micro-detail on our
+            crest is better than any local supplier."</p>
+          <div class="flex items-center gap-3 pt-2 border-t border-[var(--border-soft)]">
+            <div
+              class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-500 to-emerald-400 flex items-center justify-center text-white font-jakarta font-bold text-sm">
+              AP</div>
+            <div>
+              <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)]">Amelia P.</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">Head of Uniform · Ashford Academy</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4">
+          <div class="flex gap-1 text-[var(--amber-4)]"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star"
+              class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+          <p class="text-sm text-[var(--text-body)] font-inter leading-relaxed flex-1">"The velcro tactical badges for
+            our youth football kit looked absolutely professional. Parents were blown away. Will be ordering the full
+            senior team range next season."</p>
+          <div class="flex items-center gap-3 pt-2 border-t border-[var(--border-soft)]">
+            <div
+              class="w-9 h-9 rounded-full bg-gradient-to-br from-[var(--purple)] to-[var(--indigo-4)] flex items-center justify-center text-white font-jakarta font-bold text-sm">
+              JK</div>
+            <div>
+              <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)]">James K.</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">Club Manager · Riverside FC</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4">
+          <div class="flex gap-1 text-[var(--amber-4)]"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star"
+              class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+          <p class="text-sm text-[var(--text-body)] font-inter leading-relaxed flex-1">"Ran a trial order of 200
+            embroidered polo patches for our hotel concierge team. Delivery was 2 days ahead of schedule. We've since
+            scaled to 3,000 units and the savings are remarkable."</p>
+          <div class="flex items-center gap-3 pt-2 border-t border-[var(--border-soft)]">
+            <div
+              class="w-9 h-9 rounded-full bg-gradient-to-br from-sky-500 to-sky-400 flex items-center justify-center text-white font-jakarta font-bold text-sm">
+              LT</div>
+            <div>
+              <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)]">Laura T.</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">F&amp;B Director · The Grand Meridian</div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300 hover:-translate-y-1 flex flex-col gap-4">
+          <div class="flex gap-1 text-[var(--amber-4)]"><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star"
+              class="w-3.5 h-3.5 fill-current"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i><i
+              data-lucide="star" class="w-3.5 h-3.5 fill-current"></i></div>
+          <p class="text-sm text-[var(--text-body)] font-inter leading-relaxed flex-1">"Their B2B portal makes repeat
+            ordering incredibly smooth. I can reorder last season's emblem in under three clicks. The account manager is
+            also incredibly responsive."</p>
+          <div class="flex items-center gap-3 pt-2 border-t border-[var(--border-soft)]">
+            <div
+              class="w-9 h-9 rounded-full bg-gradient-to-br from-rose-500 to-rose-400 flex items-center justify-center text-white font-jakarta font-bold text-sm">
+              DW</div>
+            <div>
+              <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)]">David W.</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">Brand Manager · Vertex Sportswear</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: INDUSTRY VERTICALS
+  ══════════════════════════════════════════════ -->
+  <section id="industries" class="py-24 relative">
+    <div
+      class="absolute top-0 start-1/2 -translate-x-1/2 w-px h-20 bg-gradient-to-b from-transparent via-[var(--border-strong)] to-transparent">
+    </div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="grid lg:grid-cols-2 gap-14 items-center">
+        <div>
+          <div
+            class="inline-flex items-center gap-2 text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase mb-4">
+            <span class="w-8 h-px bg-[var(--amber-4)] opacity-60"></span>WHO WE SERVE
+          </div>
+          <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-6">Built for
+            Every<br><span class="text-gradient-gold">Industry</span></h2>
+          <p class="text-[var(--text-muted)] font-inter text-base leading-relaxed mb-8">From elite sports franchises to
+            global hotel chains — our patches represent brands that demand precision.</p>
+          <div class="space-y-3">
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] cursor-pointer">
+              <div
+                class="w-10 h-10 rounded-lg bg-[var(--amber-tint-15)] flex items-center justify-center flex-shrink-0"><i
+                  data-lucide="graduation-cap" class="w-4 h-4 text-[var(--amber-4)]"></i></div>
+              <div class="flex-1">
+                <div class="text-sm font-jakarta font-bold text-[var(--text-primary)]">Education</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Schools, colleges &amp; academies worldwide
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-[var(--amber-4)]"></i>
+            </div>
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-[var(--surface)] border border-[var(--border-strong)] cursor-pointer hover:border-[var(--amber-tint-20)] hover:bg-[var(--amber-tint-08)] transition-all duration-200">
+              <div class="w-10 h-10 rounded-lg bg-[var(--surface-soft)] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="trophy" class="w-4 h-4 text-[var(--text-muted)]"></i>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm font-jakarta font-bold text-[var(--text-primary)]">Sports &amp; Athletics</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Pro leagues, clubs &amp; recreational teams
+                </div>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-[var(--text-faint-2)]"></i>
+            </div>
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-[var(--surface)] border border-[var(--border-strong)] cursor-pointer hover:border-[var(--amber-tint-20)] hover:bg-[var(--amber-tint-08)] transition-all duration-200">
+              <div class="w-10 h-10 rounded-lg bg-[var(--surface-soft)] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="briefcase" class="w-4 h-4 text-[var(--text-muted)]"></i>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm font-jakarta font-bold text-[var(--text-primary)]">Corporate &amp; Hospitality</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Hotels, airlines &amp; enterprise uniform
+                  programmes</div>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-[var(--text-faint-2)]"></i>
+            </div>
+            <div
+              class="flex items-center gap-4 p-4 rounded-xl bg-[var(--surface)] border border-[var(--border-strong)] cursor-pointer hover:border-[var(--amber-tint-20)] hover:bg-[var(--amber-tint-08)] transition-all duration-200">
+              <div class="w-10 h-10 rounded-lg bg-[var(--surface-soft)] flex items-center justify-center flex-shrink-0">
+                <i data-lucide="shield-check" class="w-4 h-4 text-[var(--text-muted)]"></i>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm font-jakarta font-bold text-[var(--text-primary)]">Security &amp; Tactical</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Private security, law enforcement &amp;
+                  military</div>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-[var(--text-faint-2)]"></i>
+            </div>
+          </div>
+        </div>
+        <div class="rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] overflow-hidden">
+          <div class="p-6 border-b border-[var(--border-strong)] bg-[var(--amber-tint-08)]">
+            <div class="flex items-center gap-3 mb-2"><i data-lucide="graduation-cap"
+                class="w-5 h-5 text-[var(--amber-4)]"></i>
+              <h4 class="font-jakarta font-bold text-[var(--text-primary)]">Education Sector</h4>
+            </div>
+            <p class="text-xs text-[var(--text-faint)] font-inter">Serving 180+ schools across 14 countries with
+              embroidered crests and woven house badges.</p>
+          </div>
+          <div class="grid grid-cols-2 divide-x divide-y divide-[var(--border-soft)]">
+            <div class="p-5 text-center">
+              <div class="font-jakarta font-black text-2xl text-[var(--amber-4)] mb-1">180+</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">Schools partnered</div>
+            </div>
+            <div class="p-5 text-center">
+              <div class="font-jakarta font-black text-2xl text-[var(--text-primary)] mb-1">650K</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">Badges delivered</div>
+            </div>
+            <div class="p-5 text-center">
+              <div class="font-jakarta font-black text-2xl text-[var(--text-primary)] mb-1">12</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">Avg. colours per crest</div>
+            </div>
+            <div class="p-5 text-center">
+              <div class="font-jakarta font-black text-2xl text-emerald-400 mb-1">100%</div>
+              <div class="text-xs text-[var(--text-faint)] font-inter">OEKO-TEX certified thread</div>
+            </div>
+          </div>
+          <div class="p-5 border-t border-[var(--border-soft)]">
+            <a href="schools-catalog.html"
+              class="stitch-btn w-full flex items-center justify-center gap-2 py-3 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm"><i
+                data-lucide="arrow-right" class="w-4 h-4"></i> View Schools Catalog</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: FREE SAMPLE KIT
+  ══════════════════════════════════════════════ -->
+  <section id="sample-kit" class="py-20 relative overflow-hidden">
+    <div
+      class="absolute top-1/2 end-0 -translate-y-1/2 w-[400px] h-[400px] bg-[var(--indigo-5)]/6 rounded-full blur-[120px] pointer-events-none">
+    </div>
+    <div class="max-w-7xl mx-auto px-5 md:px-8 relative z-10">
+      <div
+        class="rounded-3xl bg-[var(--surface)] border border-[var(--border-strong)] p-8 md:p-14 relative overflow-hidden">
+        <div
+          class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--amber-6)] via-[var(--amber-4)] to-[var(--indigo-4)]">
+        </div>
+        <div
+          class="absolute bottom-0 end-0 w-64 h-64 bg-[var(--amber-5)]/5 rounded-full blur-[80px] pointer-events-none">
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] rounded-full">
+              <i data-lucide="gift" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i>
+              <span class="text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase">Free
+                Sample Kit</span>
+            </div>
+            <h2 class="font-jakarta font-black text-3xl md:text-4xl text-[var(--text-primary)] mb-4">Feel the
+              Quality<br>Before You Commit</h2>
+            <p class="text-[var(--text-muted)] font-inter text-base leading-relaxed mb-8">We'll ship you a curated
+              sample kit — embroidered, woven, and PVC — absolutely free. No commitment, no credit card required. Just
+              proof that we're serious about quality.</p>
+            <div class="grid sm:grid-cols-2 gap-4 mb-8">
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i data-lucide="package" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)] mb-0.5">3 Patch Types</div>
+                  <div class="text-xs text-[var(--text-faint)] font-inter">Embroidered, woven &amp; PVC samples included
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i data-lucide="globe" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)] mb-0.5">Ships Worldwide
+                  </div>
+                  <div class="text-xs text-[var(--text-faint)] font-inter">Free DHL express delivery in 3–5 business
+                    days</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)] mb-0.5">Zero Obligation
+                  </div>
+                  <div class="text-xs text-[var(--text-faint)] font-inter">No purchase commitment whatsoever</div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <div
+                  class="w-8 h-8 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <i data-lucide="clock-3" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+                </div>
+                <div>
+                  <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)] mb-0.5">Quick Response</div>
+                  <div class="text-xs text-[var(--text-faint)] font-inter">Sample confirmed within 2 business hours
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <a href="contact.html?ref=sample_kit"
+                class="stitch-btn flex items-center gap-2 px-7 py-3.5 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm"><i
+                  data-lucide="gift" class="w-4 h-4"></i> Request Free Sample Kit</a>
+              <a href="pricing.html"
+                class="stitch-btn-ghost flex items-center gap-2 px-7 py-3.5 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300"><i
+                  data-lucide="calculator" class="w-4 h-4"></i> See Pricing</a>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <div class="text-xs font-jakarta font-semibold text-[var(--text-faint-2)] uppercase tracking-widest mb-5">
+              What happens after you request</div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-7 h-7 rounded-full bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 mt-0.5 text-[10px] font-jakarta font-black text-[var(--amber-4)]">
+                1</div>
+              <div class="flex-1 pb-5 border-b border-[var(--border-soft)]">
+                <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)] mb-0.5">Submit the form</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Just your name, company, and shipping address —
+                  nothing else needed.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-7 h-7 rounded-full bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center flex-shrink-0 mt-0.5 text-[10px] font-jakarta font-black text-[var(--indigo-4)]">
+                2</div>
+              <div class="flex-1 pb-5 border-b border-[var(--border-soft)]">
+                <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)] mb-0.5">We confirm via email
+                </div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">An account manager reaches out within 2 hours
+                  to confirm your sample selection.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-7 h-7 rounded-full bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 mt-0.5 text-[10px] font-jakarta font-black text-[var(--amber-4)]">
+                3</div>
+              <div class="flex-1 pb-5 border-b border-[var(--border-soft)]">
+                <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)] mb-0.5">Kit ships in 24 hours
+                </div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">DHL tracking number sent to your inbox.
+                  Delivered in 3–5 business days anywhere worldwide.</div>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div
+                class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center flex-shrink-0 mt-0.5 text-[10px] font-jakarta font-black text-emerald-400">
+                4</div>
+              <div class="flex-1">
+                <div class="text-sm font-jakarta font-semibold text-[var(--text-primary)] mb-0.5">You decide — no
+                  pressure</div>
+                <div class="text-xs text-[var(--text-faint)] font-inter">Loved the quality? Start your bulk quote. Not
+                  ready? Keep the samples — no strings attached.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: FAQ ACCORDION
+  ══════════════════════════════════════════════ -->
+  <section id="faq" class="py-24 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--indigo-tint-10)] to-transparent pointer-events-none">
+    </div>
+    <div class="max-w-4xl mx-auto px-5 md:px-8 relative z-10">
+      <div class="text-center mb-14">
+        <div
+          class="inline-flex items-center gap-3 text-[11px] font-jakarta font-semibold text-[var(--indigo-4)] tracking-widest uppercase mb-4">
+          <span class="w-8 h-px bg-[var(--indigo-4)] opacity-60"></span>FAQ<span
+            class="w-8 h-px bg-[var(--indigo-4)] opacity-60"></span>
+        </div>
+        <h2 class="font-jakarta font-black text-4xl md:text-5xl text-[var(--text-primary)] mb-4">Frequently
+          Asked<br><span class="text-gradient-gold">Questions</span></h2>
+        <p class="text-[var(--text-muted)] font-inter text-lg max-w-lg mx-auto">Everything procurement managers and
+          brand coordinators ask before placing their first order.</p>
+      </div>
+      <div class="space-y-3">
+
+        <div
+          class="rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] overflow-hidden transition-all duration-300">
+          <button class="w-full flex items-center justify-between p-5 text-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">What is the minimum order
+              quantity (MOQ)?</span>
+            <div
+              class="faq-icon w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 transition-transform duration-300">
+              <i data-lucide="plus" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+            </div>
+          </button>
+          <div class="faq-body hidden px-5 pb-5">
+            <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">Our standard MOQ is <strong
+                class="text-[var(--text-primary)]">50 units</strong> for embroidered and woven patches, and <strong
+                class="text-[var(--text-primary)]">75 units</strong> for PVC rubber badges. Woven labels have an MOQ of
+              100 units. For corporate accounts placing recurring orders, we can discuss lower MOQs on a case-by-case
+              basis.</p>
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] overflow-hidden transition-all duration-300">
+          <button class="w-full flex items-center justify-between p-5 text-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">What file formats do you accept
+              for artwork?</span>
+            <div
+              class="faq-icon w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 transition-transform duration-300">
+              <i data-lucide="plus" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+            </div>
+          </button>
+          <div class="faq-body hidden px-5 pb-5">
+            <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">We accept <strong
+                class="text-[var(--text-primary)]">AI, EPS, PDF, SVG, PSD, and PNG</strong> files. Vector formats at 300
+              DPI are preferred. If you only have a low-res file, our in-house digitisers will recreate it at no extra
+              charge for orders over 250 units.</p>
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] overflow-hidden transition-all duration-300">
+          <button class="w-full flex items-center justify-between p-5 text-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">How long does production and
+              delivery take?</span>
+            <div
+              class="faq-icon w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 transition-transform duration-300">
+              <i data-lucide="plus" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+            </div>
+          </button>
+          <div class="faq-body hidden px-5 pb-5">
+            <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">Standard lead time is <strong
+                class="text-[var(--text-primary)]">10–14 business days</strong> from proof approval. Rush production
+              (5–7 days) is available for an additional 25% fee. Add 3–5 business days for international express
+              shipping.</p>
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] overflow-hidden transition-all duration-300">
+          <button class="w-full flex items-center justify-between p-5 text-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">Do you offer Pantone colour
+              matching?</span>
+            <div
+              class="faq-icon w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 transition-transform duration-300">
+              <i data-lucide="plus" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+            </div>
+          </button>
+          <div class="faq-body hidden px-5 pb-5">
+            <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">Yes. We stock over <strong
+                class="text-[var(--text-primary)]">250+ Pantone-matched embroidery threads</strong>. A digital proof
+              with colour callouts is provided before production begins.</p>
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] overflow-hidden transition-all duration-300">
+          <button class="w-full flex items-center justify-between p-5 text-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">Can I reorder the same design
+              without uploading files again?</span>
+            <div
+              class="faq-icon w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 transition-transform duration-300">
+              <i data-lucide="plus" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+            </div>
+          </button>
+          <div class="faq-body hidden px-5 pb-5">
+            <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">All approved designs are stored in
+              your <strong class="text-[var(--text-primary)]">B2B Customer Portal</strong> for up to 5 years. Reorders
+              can be placed in under 3 clicks — production starts same business day for portal members.</p>
+          </div>
+        </div>
+
+        <div
+          class="rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] overflow-hidden transition-all duration-300">
+          <button class="w-full flex items-center justify-between p-5 text-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-jakarta font-semibold text-sm text-[var(--text-primary)]">What is your defect and returns
+              policy?</span>
+            <div
+              class="faq-icon w-7 h-7 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center flex-shrink-0 transition-transform duration-300">
+              <i data-lucide="plus" class="w-3.5 h-3.5 text-[var(--amber-4)]"></i>
+            </div>
+          </button>
+          <div class="faq-body hidden px-5 pb-5">
+            <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">We guarantee <strong
+                class="text-[var(--text-primary)]">zero defects or a full re-run at no cost</strong>. If more than 1% of
+              delivered units fail our quality threshold, we'll reproduce the entire affected batch and expedite
+              shipping.</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="mt-10 text-center">
+        <p class="text-sm text-[var(--text-faint)] font-inter">Have a question not covered here?</p>
+        <a href="contact.html"
+          class="inline-flex items-center gap-2 mt-3 text-sm font-jakarta font-semibold text-[var(--amber-4)] hover:text-[var(--amber-5)] transition-colors duration-200"><i
+            data-lucide="message-circle" class="w-4 h-4"></i> Chat with our team</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: TRUST BADGES
+  ══════════════════════════════════════════════ -->
+  <section id="trust" class="py-16 border-t border-[var(--border-soft)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="text-center mb-10">
+        <p class="text-xs font-jakarta font-semibold text-[var(--text-faint-2)] uppercase tracking-widest">Recognised by
+          industry bodies and trusted by leading brands</p>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div
+          class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300">
+          <i data-lucide="shield-check" class="w-7 h-7 text-[var(--amber-4)]"></i>
+          <div class="text-center">
+            <div class="font-jakarta font-bold text-xs text-[var(--text-primary)]">ISO 9001</div>
+            <div class="text-[10px] text-[var(--text-faint)] font-inter mt-0.5">Quality Management</div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300">
+          <i data-lucide="leaf" class="w-7 h-7 text-emerald-400"></i>
+          <div class="text-center">
+            <div class="font-jakarta font-bold text-xs text-[var(--text-primary)]">OEKO-TEX 100</div>
+            <div class="text-[10px] text-[var(--text-faint)] font-inter mt-0.5">Safe Textiles</div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300">
+          <i data-lucide="truck" class="w-7 h-7 text-[var(--indigo-4)]"></i>
+          <div class="text-center">
+            <div class="font-jakarta font-bold text-xs text-[var(--text-primary)]">DHL Partner</div>
+            <div class="text-[10px] text-[var(--text-faint)] font-inter mt-0.5">Express Shipping</div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300">
+          <i data-lucide="lock" class="w-7 h-7 text-[var(--amber-4)]"></i>
+          <div class="text-center">
+            <div class="font-jakarta font-bold text-xs text-[var(--text-primary)]">SSL Secured</div>
+            <div class="text-[10px] text-[var(--text-faint)] font-inter mt-0.5">256-bit Encryption</div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300">
+          <i data-lucide="credit-card" class="w-7 h-7 text-[var(--indigo-4)]"></i>
+          <div class="text-center">
+            <div class="font-jakarta font-bold text-xs text-[var(--text-primary)]">Net 30 Terms</div>
+            <div class="text-[10px] text-[var(--text-faint)] font-inter mt-0.5">Flexible B2B Payment</div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col items-center gap-3 p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border-strong)] hover:border-[var(--amber-tint-20)] transition-all duration-300">
+          <i data-lucide="headphones" class="w-7 h-7 text-emerald-400"></i>
+          <div class="text-center">
+            <div class="font-jakarta font-bold text-xs text-[var(--text-primary)]">24/5 Support</div>
+            <div class="text-[10px] text-[var(--text-faint)] font-inter mt-0.5">Dedicated Account Mgr</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════
+       SECTION: FINAL CTA BANNER
+  ══════════════════════════════════════════════ -->
+  <section id="final-cta" class="py-24 relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-[var(--amber-tint-08)] via-transparent to-[var(--indigo-tint-10)] pointer-events-none">
+    </div>
+    <div
+      class="absolute top-1/2 start-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[var(--amber-5)]/5 rounded-full blur-[130px] pointer-events-none">
+    </div>
+    <div class="max-w-4xl mx-auto px-5 md:px-8 text-center relative z-10">
+      <div
+        class="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] rounded-full">
+        <span class="w-1.5 h-1.5 rounded-full bg-[var(--amber-4)] animate-pulse"></span>
+        <span class="text-[11px] font-jakarta font-semibold text-[var(--amber-4)] tracking-widest uppercase">Ready to
+          Start?</span>
+      </div>
+      <h2 class="font-jakarta font-black text-5xl md:text-6xl text-[var(--text-primary)] leading-[1.06] mb-6">Your
+        Identity.<br><span class="text-gradient-gold">Stitched to Last.</span></h2>
+      <p class="text-[var(--text-muted)] font-inter text-xl leading-relaxed mb-10 max-w-2xl mx-auto">Join 500+
+        institutions, sports clubs, and corporations who trust PatchCraft Pro to represent their brand on every garment,
+        every day.</p>
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-10">
+        <a href="contact.html"
+          class="stitch-btn flex items-center gap-2 px-8 py-4 bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm"><i
+            data-lucide="send" class="w-4 h-4"></i> Get a Free Quote</a>
+        <a href="contact.html?ref=sample_kit"
+          class="stitch-btn-ghost flex items-center gap-2 px-8 py-4 border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-semibold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all duration-300"><i
+            data-lucide="gift" class="w-4 h-4"></i> Request Sample Kit</a>
+      </div>
+      <div class="flex flex-wrap items-center justify-center gap-8 text-xs font-inter text-[var(--text-faint-2)]">
+        <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> No
+          upfront fees</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> Quote
+          in under 2 hours</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> ISO
+          9001 certified production</span>
+        <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> MOQ
+          from 50 units</span>
       </div>
     </div>
   </section>
@@ -692,14 +1723,15 @@
   ══════════════════════════════════════════════ -->
   <footer class="border-t border-[var(--footer-border)] bg-[var(--bg)] pt-16 pb-8 transition-colors duration-300">
     <div class="max-w-7xl mx-auto px-5 md:px-8">
-      
+
       <!-- Top Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-        
+
         <!-- Column 1: Brand Info -->
         <div class="flex flex-col gap-4">
           <div>
-            <a href="index.html" class="flex items-center gap-2.5 font-jakarta font-extrabold text-xl tracking-tight text-[var(--text-primary)]">
+            <a href="index.html"
+              class="flex items-center gap-2.5 font-jakarta font-extrabold text-xl tracking-tight text-[var(--text-primary)]">
               <img src="logo.png" alt="PatchCraft Pro Logo" class="h-8 w-auto object-contain" />
               <span class="flex items-center gap-1.5">
                 <span>PATCH<span class="text-[var(--amber-5)]">CRAFT</span></span>
@@ -709,14 +1741,17 @@
             <p class="text-xs text-[var(--text-faint-2)] font-inter mt-1">Est. 2008 · Premium B2B Uniform Solutions</p>
           </div>
           <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed">
-            Leading manufacturer of high-precision custom patches, badges, and embroidery branding for institutions, businesses, and athletic clubs worldwide.
+            Leading manufacturer of high-precision custom patches, badges, and embroidery branding for institutions,
+            businesses, and athletic clubs worldwide.
           </p>
           <!-- Badges / Certifications -->
           <div class="flex items-center gap-3 mt-1">
-            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[var(--surface-soft)] border border-[var(--border)] text-[9px] font-semibold tracking-wider text-[var(--text-faint-2)] uppercase">
+            <span
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[var(--surface-soft)] border border-[var(--border)] text-[9px] font-semibold tracking-wider text-[var(--text-faint-2)] uppercase">
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[var(--emerald)]"></i> ISO 9001
             </span>
-            <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[var(--surface-soft)] border border-[var(--border)] text-[9px] font-semibold tracking-wider text-[var(--text-faint-2)] uppercase">
+            <span
+              class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-[var(--surface-soft)] border border-[var(--border)] text-[9px] font-semibold tracking-wider text-[var(--text-faint-2)] uppercase">
               <i data-lucide="award" class="w-3.5 h-3.5 text-[var(--indigo-4)]"></i> OEKO-TEX 100
             </span>
           </div>
@@ -724,30 +1759,36 @@
 
         <!-- Column 2: Catalogs -->
         <div>
-          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Custom Catalogs</h4>
+          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Custom
+            Catalogs</h4>
           <ul class="space-y-3 text-sm font-inter">
             <li>
-              <a href="schools-catalog.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+              <a href="schools-catalog.html"
+                class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
                 <i data-lucide="graduation-cap" class="w-4 h-4"></i> Schools & Academies
               </a>
             </li>
             <li>
-              <a href="corporate-patches.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+              <a href="corporate-patches.html"
+                class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
                 <i data-lucide="briefcase" class="w-4 h-4"></i> Corporate & Enterprise
               </a>
             </li>
             <li>
-              <a href="uniform-branding.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+              <a href="uniform-branding.html"
+                class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
                 <i data-lucide="layers" class="w-4 h-4"></i> Uniform Branding
               </a>
             </li>
             <li>
-              <a href="sports-teams.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+              <a href="sports-teams.html"
+                class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
                 <i data-lucide="trophy" class="w-4 h-4"></i> Sports Teams & Clubs
               </a>
             </li>
             <li>
-              <a href="home2.html#catalog" class="flex items-center gap-2 text-[var(--amber-5)] font-semibold transition-colors duration-200">
+              <a href="home2.html#catalog"
+                class="flex items-center gap-2 text-[var(--amber-5)] font-semibold transition-colors duration-200">
                 <i data-lucide="layout-grid" class="w-4 h-4 text-[var(--amber-5)]"></i> Browse All Products
               </a>
             </li>
@@ -756,30 +1797,36 @@
 
         <!-- Column 3: Company & Tools -->
         <div>
-          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Resources & Tools</h4>
+          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Resources
+            & Tools</h4>
           <ul class="space-y-3 text-sm font-inter">
             <li>
-              <a href="pricing.html" class="flex items-center gap-2 text-[var(--amber-5)] font-semibold transition-colors duration-200">
+              <a href="pricing.html"
+                class="flex items-center gap-2 text-[var(--amber-5)] font-semibold transition-colors duration-200">
                 <i data-lucide="tag" class="w-4 h-4 text-[var(--amber-5)]"></i> Pricing Calculator
               </a>
             </li>
             <li>
-              <a href="contact.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+              <a href="contact.html"
+                class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
                 <i data-lucide="mail-question" class="w-4 h-4"></i> Request a Custom Quote
               </a>
             </li>
             <li>
-              <a href="contact.html?ref=sample_kit" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+              <a href="contact.html?ref=sample_kit"
+                class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
                 <i data-lucide="package-open" class="w-4 h-4"></i> Order a Sample Kit
               </a>
             </li>
             <li>
-              <a href="signup.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+              <a href="signup.html"
+                class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
                 <i data-lucide="user-plus" class="w-4 h-4"></i> Partner Registration
               </a>
             </li>
             <li>
-              <a href="login.html" class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
+              <a href="login.html"
+                class="flex items-center gap-2 text-[var(--text-muted)] hover:text-[var(--amber-5)] transition-colors duration-200">
                 <i data-lucide="log-in" class="w-4 h-4"></i> B2B Customer Portal
               </a>
             </li>
@@ -788,15 +1835,18 @@
 
         <!-- Column 4: Newsletter -->
         <div>
-          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Stay Updated</h4>
+          <h4 class="font-jakarta font-bold text-xs text-[var(--text-primary)] uppercase tracking-wider mb-5">Stay
+            Updated</h4>
           <p class="text-sm text-[var(--text-muted)] font-inter leading-relaxed mb-4">
             Subscribe to receive priority production updates, catalog additions, and seasonal bulk discounts.
           </p>
-          <form class="space-y-2" onsubmit="event.preventDefault(); document.getElementById('toast-message').textContent = 'Successfully subscribed!'; document.getElementById('toast').classList.add('show'); setTimeout(function(){ document.getElementById('toast').classList.remove('show'); }, 3000); this.reset();">
+          <form class="space-y-2"
+            onsubmit="event.preventDefault(); document.getElementById('toast-message').textContent = 'Successfully subscribed!'; document.getElementById('toast').classList.add('show'); setTimeout(function(){ document.getElementById('toast').classList.remove('show'); }, 3000); this.reset();">
             <div class="relative flex items-center">
               <input type="email" placeholder="work@organization.com" required
-                     class="w-full bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border-strong)] rounded-xl py-2.5 px-4 pr-10 text-xs focus:outline-none focus:border-[var(--amber-5)] transition-colors font-inter" />
-              <button type="submit" aria-label="Subscribe" class="absolute right-1.5 p-1.5 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] text-[var(--amber-5)] hover:bg-[var(--amber-5)] hover:text-[var(--on-accent)] transition-all">
+                class="w-full bg-[var(--surface)] text-[var(--text-primary)] border border-[var(--border-strong)] rounded-xl py-2.5 px-4 pr-10 text-xs focus:outline-none focus:border-[var(--amber-5)] transition-colors font-inter" />
+              <button type="submit" aria-label="Subscribe"
+                class="absolute right-1.5 p-1.5 rounded-lg bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] text-[var(--amber-5)] hover:bg-[var(--amber-5)] hover:text-[var(--on-accent)] transition-all">
                 <i data-lucide="send" class="w-3.5 h-3.5"></i>
               </button>
             </div>
@@ -807,10 +1857,12 @@
       </div>
 
       <!-- Socials & Certifications Middle Bar -->
-      <div class="border-t border-[var(--border)] pt-8 pb-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-        
+      <div
+        class="border-t border-[var(--border)] pt-8 pb-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+
         <!-- Left: Contact Details Info -->
-        <div class="flex flex-wrap justify-center sm:justify-start items-center gap-6 text-xs text-[var(--text-faint-2)] font-inter">
+        <div
+          class="flex flex-wrap justify-center sm:justify-start items-center gap-6 text-xs text-[var(--text-faint-2)] font-inter">
           <span class="flex items-center gap-1.5">
             <i data-lucide="mail" class="w-4 h-4 text-[var(--text-faint)]"></i>
             sales@patchcraftpro.com
@@ -827,17 +1879,39 @@
 
         <!-- Right: Social Links -->
         <div class="flex items-center gap-3">
-          <a href="#" aria-label="Instagram" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <a href="#" aria-label="Instagram"
+            class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
           </a>
-          <a href="#" aria-label="LinkedIn" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          <a href="#" aria-label="LinkedIn"
+            class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
           </a>
-          <a href="#" aria-label="Twitter" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+          <a href="#" aria-label="Twitter"
+            class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+              </path>
+            </svg>
           </a>
-          <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          <a href="#" aria-label="Facebook"
+            class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
           </a>
         </div>
 
@@ -847,7 +1921,8 @@
       <div class="border-t border-[var(--border-soft)] my-6"></div>
 
       <!-- Bottom Bar -->
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-inter text-[var(--text-faint-2)]">
+      <div
+        class="flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-inter text-[var(--text-faint-2)]">
         <p>© 2026 PatchCraft Pro. All rights reserved.</p>
         <div class="flex flex-wrap items-center gap-6">
           <a href="#" class="hover:text-[var(--text-primary)] transition-colors">Privacy Policy</a>
@@ -859,16 +1934,3 @@
 
     </div>
   </footer>
-
-
-  <!-- ══ TOAST NOTIFICATION ══ -->
-  <div id="toast" class="toast" role="status" aria-live="polite">
-    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 flex-shrink-0"></i>
-    <span id="toast-message" class="text-sm font-inter text-white">Added to quote successfully!</span>
-  </div>
-
-
-  <!-- Scripts -->
-  <script src="script.js"></script>
-</body>
-</html>
