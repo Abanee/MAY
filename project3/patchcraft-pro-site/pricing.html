@@ -282,7 +282,7 @@
       </div>
 
       <!-- Plan Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-md mx-auto lg:max-w-none items-stretch">
         
         <!-- Tier 1: Starter Batch -->
         <div class="pricing-plan-card flex flex-col justify-between p-8 bg-[var(--surface)] border border-[var(--border-strong)] rounded-3xl relative">
@@ -296,10 +296,12 @@
               Ideal for local athletic clubs, startup apparel projects, and departmental test rollouts.
             </p>
             
-            <div class="mb-6 flex items-baseline gap-1">
-              <span class="text-2xl font-jakarta font-extrabold text-[var(--text-primary)]">As low as</span>
-              <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$3.20</span>
-              <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+            <div class="mb-6 flex flex-col gap-1">
+              <span class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block">As low as</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$3.20</span>
+                <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+              </div>
             </div>
 
             <!-- Perks list -->
@@ -347,10 +349,12 @@
               Designed for school uniform coordinators, multi-location companies, and mid-sized agencies.
             </p>
             
-            <div class="mb-6 flex items-baseline gap-1">
-              <span class="text-2xl font-jakarta font-extrabold text-[var(--text-primary)]">As low as</span>
-              <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$1.80</span>
-              <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+            <div class="mb-6 flex flex-col gap-1">
+              <span class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block">As low as</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$1.80</span>
+                <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+              </div>
             </div>
 
             <!-- Perks list -->
@@ -399,10 +403,12 @@
               Optimized for national uniform suppliers, police departments, and brand-wide merchandise lines.
             </p>
             
-            <div class="mb-6 flex items-baseline gap-1">
-              <span class="text-2xl font-jakarta font-extrabold text-[var(--text-primary)]">As low as</span>
-              <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$0.85</span>
-              <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+            <div class="mb-6 flex flex-col gap-1">
+              <span class="text-[10px] font-jakarta font-bold text-[var(--text-faint-2)] uppercase tracking-wider block">As low as</span>
+              <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-jakarta font-black text-[var(--amber-4)]">$0.85</span>
+                <span class="text-xs text-[var(--text-faint-2)] font-inter">/ unit</span>
+              </div>
             </div>
 
             <!-- Perks list -->
@@ -678,9 +684,9 @@
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
 
-        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[var(--amber-tint-20)] hover:-translate-y-1 transition-all duration-300">
-          <div class="w-14 h-14 rounded-2xl bg-[var(--amber-tint-10)] border border-[var(--amber-tint-20)] flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="credit-card" class="w-6 h-6 text-[var(--amber-4)]"></i>
+        <div class="billing-option-card bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[var(--amber-tint-20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl overflow-hidden mx-auto mb-4 border border-[var(--border-strong)]">
+            <img src="Asset/billing-card.png" alt="Card / Online" class="billing-option-img" />
           </div>
           <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Card / Online</h3>
           <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Visa, Mastercard, Amex, and all major debit cards. Secure checkout, instant order confirmation.</p>
@@ -689,9 +695,9 @@
           </div>
         </div>
 
-        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[var(--indigo-tint-20)] hover:-translate-y-1 transition-all duration-300">
-          <div class="w-14 h-14 rounded-2xl bg-[var(--indigo-tint-10)] border border-[var(--indigo-tint-20)] flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="file-text" class="w-6 h-6 text-[var(--indigo-4)]"></i>
+        <div class="billing-option-card bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[var(--indigo-tint-20)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl overflow-hidden mx-auto mb-4 border border-[var(--border-strong)]">
+            <img src="Asset/billing-po.png" alt="Purchase Order" class="billing-option-img" />
           </div>
           <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Purchase Order</h3>
           <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Full PO workflow with formal invoicing. Compatible with school, government, and institutional procurement systems.</p>
@@ -700,9 +706,9 @@
           </div>
         </div>
 
-        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[rgba(52,211,153,.3)] hover:-translate-y-1 transition-all duration-300">
-          <div class="w-14 h-14 rounded-2xl bg-[rgba(52,211,153,.1)] border border-[rgba(52,211,153,.2)] flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="clock" class="w-6 h-6 text-[var(--emerald)]"></i>
+        <div class="billing-option-card bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[rgba(52,211,153,.3)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl overflow-hidden mx-auto mb-4 border border-[var(--border-strong)]">
+            <img src="Asset/billing-terms.png" alt="Net-30 Terms" class="billing-option-img" />
           </div>
           <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Net-30 Terms</h3>
           <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">Approved enterprise accounts can ship now and pay within 30 days. Subject to credit approval on first order.</p>
@@ -711,9 +717,9 @@
           </div>
         </div>
 
-        <div class="bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[rgba(192,132,252,.3)] hover:-translate-y-1 transition-all duration-300">
-          <div class="w-14 h-14 rounded-2xl bg-[rgba(192,132,252,.1)] border border-[rgba(192,132,252,.2)] flex items-center justify-center mx-auto mb-4">
-            <i data-lucide="bank" class="w-6 h-6 text-[var(--purple)]"></i>
+        <div class="billing-option-card bg-[var(--surface)] border border-[var(--border)] rounded-2xl p-6 text-center hover:border-[rgba(192,132,252,.3)] hover:-translate-y-1 transition-all duration-300">
+          <div class="w-14 h-14 rounded-2xl overflow-hidden mx-auto mb-4 border border-[var(--border-strong)]">
+            <img src="Asset/billing-swift.png" alt="Bank Transfer / SWIFT" class="billing-option-img" />
           </div>
           <h3 class="font-jakarta font-bold text-base text-[var(--text-primary)] mb-2">Bank Transfer / SWIFT</h3>
           <p class="text-xs text-[var(--text-muted)] font-inter leading-relaxed">International wire transfers accepted for global clients. SWIFT codes and multi-currency invoicing available.</p>

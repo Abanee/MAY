@@ -1451,3 +1451,41 @@ footer a[aria-label="Facebook"]:hover svg {
   }
 }
 
+/* Sports designed cards alignment */
+.sport-designed-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.sport-designed-card p {
+  flex-grow: 1;
+}
+
+/* Billing options cards alignment */
+.billing-option-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.billing-option-card p {
+  flex-grow: 1;
+}
+
+/* Billing option image sizing */
+.billing-option-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Durability guide cards alignment */
+.durability-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.durability-card p {
+  flex-grow: 1;
+}
+
