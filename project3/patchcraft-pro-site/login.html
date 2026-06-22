@@ -54,8 +54,12 @@
     <div class="auth-glow-a"></div>
     <div class="auth-glow-b"></div>
 
-    <!-- Top-Right Theme Toggle -->
-    <div class="absolute top-6 right-6 z-50">
+    <!-- Top-Right Theme & Layout Controls -->
+    <div class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 flex items-center gap-2">
+      <button id="dir-toggle" class="icon-toggle-btn !w-auto px-2.5 gap-1.5" type="button" aria-label="Toggle layout direction, left to right or right to left" title="Toggle LTR / RTL layout">
+        <i data-lucide="arrow-left-right" class="dir-toggle-icon w-[15px] h-[15px]"></i>
+        <span id="dir-toggle-label" class="dir-toggle-label">LTR</span>
+      </button>
       <button id="theme-toggle" class="icon-toggle-btn" type="button" aria-pressed="false" aria-label="Toggle theme">
         <span class="theme-icon theme-icon-sun"><i data-lucide="sun" class="w-[18px] h-[18px]"></i></span>
         <span class="theme-icon theme-icon-moon"><i data-lucide="moon" class="w-[18px] h-[18px]"></i></span>
@@ -67,7 +71,7 @@
       <div class="auth-card">
 
         <!-- Header with Logo + Text -->
-        <div class="mb-8 flex flex-col items-center">
+        <div class="mb-8 mt-12 sm:mt-0 flex flex-col items-center">
           <a href="index.html" class="flex items-center gap-2.5 font-jakarta font-extrabold text-2xl tracking-tight mb-6">
             <img src="logo.png" alt="PatchCraft Pro Logo" class="h-8 w-auto object-contain" />
             <span class="flex items-center gap-1.5 text-[var(--text-primary)]">
