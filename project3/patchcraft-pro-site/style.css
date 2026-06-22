@@ -1489,3 +1489,18 @@ footer a[aria-label="Facebook"]:hover svg {
   flex-grow: 1;
 }
 
+/* Case studies title height alignment */
+.case-study-title {
+  min-height: 54px;
+}
+
+/* Benefit cards layout alignment */
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.benefit-card .feature-title {
+  min-height: 24px;
+}
+
