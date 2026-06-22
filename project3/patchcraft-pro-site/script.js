@@ -497,11 +497,19 @@
 
     function applySport(sport) {
       var visible = 0;
+      var lastVisibleCard = null;
       cards.forEach(function (card) {
         var match = sport === 'all' || card.getAttribute('data-sport') === sport;
         card.classList.toggle('hidden-by-sport', !match);
-        if (match) visible++;
+        card.classList.remove('last-visible-card');
+        if (match) {
+          visible++;
+          lastVisibleCard = card;
+        }
       });
+      if (lastVisibleCard && (visible % 2 !== 0)) {
+        lastVisibleCard.classList.add('last-visible-card');
+      }
       if (countEl) countEl.textContent = String(visible);
     }
 
