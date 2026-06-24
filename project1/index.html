@@ -831,18 +831,19 @@
       content: 'Most Popular';
       position: absolute;
       top: -11px;
-      right: 32px;
+      left: 50%;
+      transform: translateX(-50%);
       background: var(--accent-gold);
       color: #FFFFFF;
       font-family: 'Cinzel', serif;
       font-size: 0.6rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       padding: 5px 16px;
       z-index: 10;
       height: auto;
-      left: auto;
+      white-space: nowrap;
     }
 
     [data-theme="light"] .warranty-tier.featured::before {

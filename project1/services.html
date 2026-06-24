@@ -231,16 +231,19 @@
     .pkg-card.featured::before {
       content: 'Most Popular';
       position: absolute;
-      top: -10px; right: 24px;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
       background: var(--accent-gold);
       color: #0B0C10;
       font-family: 'Cinzel', serif;
       font-size: 0.58rem;
       font-weight: 700;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       padding: 4px 14px;
       z-index: 10;
+      white-space: nowrap;
     }
 
     [data-theme="light"] .pkg-card.featured::before {
@@ -399,6 +402,42 @@
       cursor: pointer;
     }
     [data-theme="light"] .faq-item { border-bottom-color: rgba(0,0,0,0.09); }
+
+    .faq-item.faq-more {
+      display: none;
+    }
+    .faq-grid.show-all .faq-item.faq-more {
+      display: block;
+      animation: faqFadeIn 0.4s ease forwards;
+    }
+    @keyframes faqFadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .faq-view-more-btn {
+      background: none;
+      border: none;
+      color: var(--accent-gold);
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border-bottom: 2px solid transparent;
+      margin-top: 24px;
+    }
+    .faq-view-more-btn:hover {
+      color: var(--accent-gold-light);
+      border-bottom-color: var(--accent-gold-light);
+      transform: translateY(-2px);
+    }
 
     .faq-question {
       display: flex; align-items: center; justify-content: space-between; gap: 16px;
@@ -1309,18 +1348,18 @@
           <div class="faq-question">Can ceramic coating prevent rock chips? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
           <div class="faq-answer">No. Ceramic coating will not stop rock chips or deep impact damage — that is the role of Paint Protection Film (PPF). Ceramic adds hardness, chemical resistance, and UV protection, while PPF provides physical impact absorption. For complete protection, AURA recommends a ceramic coating applied over PPF — this is the ultimate combination for long-term paint preservation.</div>
         </div>
-        <div class="faq-item" style="margin-top:24px;">
+        <div class="faq-item faq-more" style="margin-top:24px;">
           <div class="faq-question">How long does PPF installation take? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
-          <div class="faq-answer">A front impact package (hood, bumper, mirrors, headlights) typically takes 1–2 days. A full body wrap on a standard luxury vehicle takes 3–5 days. More complex body shapes — such as exotics with dramatic curves, sills, or splitters — may require additional time. All timelines are confirmed in your written quote.</div>
+          <div class="faq-answer">A front impact package (hood, bumper, mirrors, fenders) typically takes 1–2 days. A full body wrap on a standard luxury vehicle takes 3–5 days. Complex shapes may require more time. All timelines are confirmed in your quote.</div>
         </div>
-        <!-- <div class="faq-item" style="margin-top:24px;">
+        <div class="faq-item faq-more" style="margin-top:24px;">
           <div class="faq-question">Do you work at my home or office? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
           <div class="faq-answer">Yes. AURA is a 100% mobile service. We bring our professional setup — including power, water, lighting, and controlled environment enclosures where needed — to your home, office, private garage, or estate. No need to drop your vehicle at a detailing shop. We service a 60-mile radius and can arrange further for exceptional vehicles.</div>
         </div>
-        <div class="faq-item" style="margin-top:24px;">
+        <div class="faq-item faq-more" style="margin-top:24px;">
           <div class="faq-question">Is window tinting legal? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
           <div class="faq-answer">Laws vary by state and country. In most US states, rear side windows and rear windows can be tinted to 35% VLT or darker without issue. Front side windows are typically restricted to 35-50% VLT. We are fully familiar with local regulations and will only install legal shades to your specified front windows — darker shades are available for rear windows where legally permitted.</div>
-        </div> -->
+        </div>
       </div>
 
       <div>
@@ -1332,19 +1371,26 @@
           <div class="faq-question">Can you apply coating to a new vehicle? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
           <div class="faq-answer">Absolutely — and this is the ideal time. New vehicles still benefit from a decontamination wash and light paint prep since factory paint is not defect-free. Applying ceramic or PPF to a new vehicle from day one means the paint is protected before any damage can occur, maximising the vehicle's long-term condition and resale value.</div>
         </div>
-        <div class="faq-item" style="margin-top:24px;">
+        <div class="faq-item faq-more" style="margin-top:24px;">
           <div class="faq-question">Does paint correction damage my paint? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
           <div class="faq-answer">When performed by trained professionals, paint correction is completely safe. AURA uses paint depth gauges on every panel to ensure sufficient clear coat thickness before polishing. We never remove more than is necessary, and all work is performed with professional-grade machine polishers — not aggressive rotaries in untrained hands. The result is safer and more precise than any automated car wash.</div>
         </div>
-        <!-- <div class="faq-item" style="margin-top:24px;">
+        <div class="faq-item faq-more" style="margin-top:24px;">
           <div class="faq-question">How much does a full detail cost? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
           <div class="faq-answer">A comprehensive package combining paint correction, full body PPF, ceramic coating, and window tint typically ranges from $8,500 to $18,000 depending on vehicle size, body complexity, and chosen products. Standard sedans start at the lower end; exotic sports cars and large SUVs are priced higher. AURA provides transparent, itemised quotes — contact us for a precise estimate for your specific vehicle.</div>
         </div>
-        <div class="faq-item" style="margin-top:24px;">
+        <div class="faq-item faq-more" style="margin-top:24px;">
           <div class="faq-question">What is your service area? <div class="faq-toggle"><i class="fas fa-plus"></i></div></div>
           <div class="faq-answer">AURA's primary service area is within a 60-mile radius of our base. For exceptional vehicles, rare exotics, or private collection commissions, we will travel further — nationally or internationally if required. Please contact us to discuss travel arrangements for out-of-area vehicles.</div>
-        </div> -->
+        </div>
       </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 48px;" class="reveal" data-delay="0.1">
+      <button id="faq-view-more-btn" class="faq-view-more-btn">
+        <span>View More FAQs</span>
+        <i class="fas fa-chevron-down" style="font-size: 0.75rem; transition: transform 0.3s ease;"></i>
+      </button>
     </div>
   </section>
 
@@ -1418,6 +1464,27 @@
         if (!isOpen) item.classList.add('open');
       });
     });
+
+    /* ─── FAQ View More / Less ────────────────────────── */
+    const faqViewMoreBtn = document.getElementById('faq-view-more-btn');
+    const faqGrid = document.querySelector('.faq-grid');
+    if (faqViewMoreBtn && faqGrid) {
+      faqViewMoreBtn.addEventListener('click', () => {
+        const isShowingAll = faqGrid.classList.contains('show-all');
+        const icon = faqViewMoreBtn.querySelector('i');
+        if (isShowingAll) {
+          faqGrid.classList.remove('show-all');
+          faqViewMoreBtn.querySelector('span').textContent = 'View More FAQs';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+          // Smooth scroll back to FAQ section top
+          document.querySelector('.faq-section').scrollIntoView({ behavior: 'smooth' });
+        } else {
+          faqGrid.classList.add('show-all');
+          faqViewMoreBtn.querySelector('span').textContent = 'View Less FAQs';
+          if (icon) icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    }
 
     /* ─── GSAP reveals ───────────────────────────────── */
     if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
