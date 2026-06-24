@@ -4,13 +4,17 @@
   --bg-base: #0B0C10;
   --bg-surface: rgba(22, 24, 29, 0.65);
   --bg-surface-solid: #16181D;
-  --accent-gold-rgb: 229, 9, 20; /* Dynamic Crimson Red RGB value */
-  --accent-gold: #E50914; /* Crimson Red */
-  --accent-gold-light: #FF3344;
+  --accent-gold-rgb: 46, 126, 255;
+  /* Dynamic Light Blue RGB value */
+  --accent-gold: #2E7EFF;
+  /* Light Blue */
+  --accent-gold-light: #2E7EFF;
   --accent-gold-dim: rgba(var(--accent-gold-rgb), 0.15);
   --accent-gunmetal: #1A1D24;
-  --text-primary: #FFFFFF; /* Enhanced crisp text */
-  --text-secondary: #D1D5DB; /* Lighter grey for superior visibility */
+  --text-primary: #FFFFFF;
+  /* Enhanced crisp text */
+  --text-secondary: #D1D5DB;
+  /* Lighter grey for superior visibility */
   --border-gold: rgba(var(--accent-gold-rgb), 0.28);
   --border-white: rgba(255, 255, 255, 0.08);
   --glow-gold: 0 0 40px rgba(var(--accent-gold-rgb), 0.25);
@@ -29,7 +33,8 @@
   --bg-base: #F5F7FF;
   --bg-surface: rgba(255, 255, 255, 0.97);
   --bg-surface-solid: #FFFFFF;
-  --accent-gold-rgb: 26, 108, 240; /* Dynamic Slate Blue RGB value */
+  --accent-gold-rgb: 26, 108, 240;
+  /* Dynamic Slate Blue RGB value */
   --accent-gold: #1A6CF0;
   --accent-gold-light: #2E7EFF;
   --accent-gold-dim: rgba(var(--accent-gold-rgb), 0.10);
