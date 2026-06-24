@@ -1,22 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
 
-/* ═══════════════════════════════════════════════════════
-   DARK MODE (default)
-═══════════════════════════════════════════════════════ */
 :root {
   --bg-base: #0B0C10;
   --bg-surface: rgba(22, 24, 29, 0.65);
   --bg-surface-solid: #16181D;
-  --accent-gold: #D4AF37;
-  --accent-gold-light: #E8C84A;
-  --accent-gold-dim: rgba(212, 175, 55, 0.15);
+  --accent-gold-rgb: 229, 9, 20; /* Dynamic Crimson Red RGB value */
+  --accent-gold: #E50914; /* Crimson Red */
+  --accent-gold-light: #FF3344;
+  --accent-gold-dim: rgba(var(--accent-gold-rgb), 0.15);
   --accent-gunmetal: #1A1D24;
-  --text-primary: #F8F9FA;
-  --text-secondary: #B0B3B8;
-  --border-gold: rgba(212, 175, 55, 0.25);
+  --text-primary: #FFFFFF; /* Enhanced crisp text */
+  --text-secondary: #D1D5DB; /* Lighter grey for superior visibility */
+  --border-gold: rgba(var(--accent-gold-rgb), 0.28);
   --border-white: rgba(255, 255, 255, 0.08);
-  --glow-gold: 0 0 40px rgba(212, 175, 55, 0.3);
-  --glow-gold-strong: 0 0 60px rgba(212, 175, 55, 0.5);
+  --glow-gold: 0 0 40px rgba(var(--accent-gold-rgb), 0.25);
+  --glow-gold-strong: 0 0 60px rgba(var(--accent-gold-rgb), 0.45);
   --footer-bg: #08090C;
   --nav-scrolled-bg: rgba(11, 12, 16, 0.92);
   --mobile-menu-bg: rgba(11, 12, 16, 0.97);
@@ -26,21 +24,22 @@
 
 /* ═══════════════════════════════════════════════════════
    LIGHT MODE — Professional Slate + White
-═══════════════════════════════════════════════════════ */
+ ═══════════════════════════════════════════════════════ */
 [data-theme="light"] {
   --bg-base: #F5F7FF;
   --bg-surface: rgba(255, 255, 255, 0.97);
   --bg-surface-solid: #FFFFFF;
+  --accent-gold-rgb: 26, 108, 240; /* Dynamic Slate Blue RGB value */
   --accent-gold: #1A6CF0;
   --accent-gold-light: #2E7EFF;
-  --accent-gold-dim: rgba(26, 108, 240, 0.10);
+  --accent-gold-dim: rgba(var(--accent-gold-rgb), 0.10);
   --accent-gunmetal: #E8EEFF;
   --text-primary: #0B1120;
   --text-secondary: #3B5280;
-  --border-gold: rgba(26, 108, 240, 0.28);
+  --border-gold: rgba(var(--accent-gold-rgb), 0.28);
   --border-white: rgba(11, 17, 32, 0.09);
-  --glow-gold: 0 0 30px rgba(26, 108, 240, 0.20);
-  --glow-gold-strong: 0 0 55px rgba(26, 108, 240, 0.38);
+  --glow-gold: 0 0 30px rgba(var(--accent-gold-rgb), 0.20);
+  --glow-gold-strong: 0 0 55px rgba(var(--accent-gold-rgb), 0.38);
   --footer-bg: #E0E6F8;
   --nav-scrolled-bg: rgba(245, 247, 255, 0.97);
   --mobile-menu-bg: rgba(245, 247, 255, 0.99);
