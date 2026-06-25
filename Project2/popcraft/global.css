@@ -391,7 +391,7 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   gap: 0.5rem;
   background: var(--accent-gold);
-  color: #fff;
+  color: #ffffff !important;
   font-family: 'DM Sans', sans-serif;
   font-weight: 500;
   font-size: 0.78rem;
