@@ -2512,5 +2512,20 @@ a.group:hover .footer-logo-badge {
   pointer-events: none;
 }
 
+/* ── Custom Ribbon Shimmer ── */
+@keyframes ribbonShimmer {
+  0% { left: -150%; }
+  30%, 100% { left: 150%; }
+}
+.ribbon-shimmer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-30deg);
+  animation: ribbonShimmer 3.5s infinite ease-in-out;
+}
+
 
 
