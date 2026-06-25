@@ -270,8 +270,23 @@ document.addEventListener('DOMContentLoaded', () => {
     isAnnual = !isAnnual;
     billingToggle.classList.toggle('active', isAnnual);
 
-    monthlyPrices.forEach(el => el.classList.toggle('hidden', isAnnual));
-    annualPrices.forEach(el => el.classList.toggle('hidden', !isAnnual));
+    monthlyPrices.forEach(el => {
+      el.classList.toggle('hidden', isAnnual);
+      if (!isAnnual) {
+        el.classList.remove('animate-price');
+        void el.offsetWidth; // force reflow
+        el.classList.add('animate-price');
+      }
+    });
+    annualPrices.forEach(el => {
+      el.classList.toggle('hidden', !isAnnual);
+      if (isAnnual) {
+        el.classList.remove('animate-price');
+        void el.offsetWidth; // force reflow
+        el.classList.add('animate-price');
+      }
+    });
+
     annualSavings.forEach(el => {
       el.style.opacity = isAnnual ? '1' : '0';
       el.style.transform = isAnnual ? 'translateY(0)' : 'translateY(4px)';
@@ -287,6 +302,115 @@ document.addEventListener('DOMContentLoaded', () => {
     el.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
     el.style.opacity    = '0';
     el.style.transform  = 'translateY(4px)';
+  });
+
+  /* ----------------------------------------------------------
+     9b. INTERACTIVE SAVINGS & CONFETTI UTILITIES
+     ---------------------------------------------------------- */
+  
+  // Confetti Particle System
+  function createConfetti(x, y) {
+    const colors = ['#D97706', '#F59E0B', '#B45309', '#FBBF24', '#3B1208', '#292524'];
+    const container = document.createElement('div');
+    container.style.position = 'fixed';
+    container.style.left = '0';
+    container.style.top = '0';
+    container.style.width = '100vw';
+    container.style.height = '100vh';
+    container.style.pointerEvents = 'none';
+    container.style.zIndex = '999999';
+    document.body.appendChild(container);
+
+    for (let i = 0; i < 40; i++) {
+      const particle = document.createElement('div');
+      particle.style.position = 'absolute';
+      particle.style.left = `${x}px`;
+      particle.style.top = `${y}px`;
+      particle.style.width = `${Math.random() * 8 + 4}px`;
+      particle.style.height = `${Math.random() * 8 + 4}px`;
+      particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+      
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = Math.random() * 8 + 4;
+      let dx = Math.cos(angle) * velocity;
+      let dy = Math.sin(angle) * velocity - 3; // Initial upward launch
+      
+      container.appendChild(particle);
+
+      let px = x;
+      let py = y;
+      let opacity = 1;
+
+      const animate = () => {
+        dy += 0.2; // Gravity
+        px += dx;
+        py += dy;
+        opacity -= 0.02;
+
+        particle.style.left = `${px}px`;
+        particle.style.top = `${py}px`;
+        particle.style.opacity = opacity;
+
+        if (opacity > 0) {
+          requestAnimationFrame(animate);
+        } else {
+          particle.remove();
+        }
+      };
+      requestAnimationFrame(animate);
+    }
+
+    setTimeout(() => container.remove(), 2000);
+  }
+
+  // Countdown Timer for Discount card
+  const timerEl = document.getElementById('countdown-clock');
+  if (timerEl) {
+    let timeLeft = 4 * 3600 + 32 * 60 + 15; // 4h 32m 15s in seconds
+    const interval = setInterval(() => {
+      timeLeft--;
+      if (timeLeft <= 0) {
+        clearInterval(interval);
+        timerEl.textContent = "00:00:00";
+        return;
+      }
+      const hours = Math.floor(timeLeft / 3600);
+      const minutes = Math.floor((timeLeft % 3600) / 60);
+      const seconds = timeLeft % 60;
+      
+      const hStr = hours.toString().padStart(2, '0');
+      const mStr = minutes.toString().padStart(2, '0');
+      const sStr = seconds.toString().padStart(2, '0');
+      
+      timerEl.textContent = `${hStr}:${mStr}:${sStr}`;
+    }, 1000);
+  }
+
+  // Coupon Box copy code
+  const couponTarget = document.getElementById('coupon-click-target');
+  couponTarget?.addEventListener('click', (e) => {
+    const code = 'VIPPOP20';
+    navigator.clipboard.writeText(code).then(() => {
+      showToast(`Coupon code "${code}" copied to clipboard!`);
+      createConfetti(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+  });
+
+  // Referral Link copy code
+  const copyRefBtn = document.getElementById('copy-ref-btn');
+  const refInput = document.getElementById('referral-link');
+  copyRefBtn?.addEventListener('click', (e) => {
+    if (refInput) {
+      navigator.clipboard.writeText(refInput.value).then(() => {
+        showToast("Referral link copied to clipboard! Share it with a friend.");
+        createConfetti(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
+      }).catch(err => {
+        console.error('Could not copy referral link: ', err);
+      });
+    }
   });
 
 

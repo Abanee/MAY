@@ -279,6 +279,94 @@
 
 
 <!-- ======================================================
+  SECTION: POPCRAFT CATEGORIES
+======================================================= -->
+<section id="categories" class="py-20 lg:py-24" style="background:var(--bg-primary)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="section-label justify-center reveal">Shop By Snacking Vibe</p>
+      <h2 class="font-display font-bold reveal d-100" style="font-size:clamp(2rem,4.5vw,3.2rem);color:var(--text-primary)">
+        Explore Our <em style="color:var(--accent-gold)">Popcorn Universe</em>
+      </h2>
+      <p class="mt-4 reveal d-150" style="font-size:0.9rem;color:var(--text-secondary);line-height:1.7">
+        From sweet glaze-drizzled treasures to bold cheese-dusted sensations, explore our handcrafted micro-batches.
+      </p>
+    </div>
+
+    <!-- Category Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      
+      <!-- Category 1: Sweet -->
+      <div class="home1-category-card reveal d-100 flex flex-col h-full">
+        <div class="img-wrap">
+          <img src="Assets/category_sweet.png" alt="Sweet & Indulgent Popcorn" loading="lazy" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <h3 class="font-display text-xl font-bold mb-2 text-primary">Sweet &amp; Indulgent</h3>
+          <p class="text-muted text-xs leading-relaxed mb-6 flex-1" style="color:var(--text-secondary)">
+            Caramel glazes, decadent chocolates, and dessert-inspired creations.
+          </p>
+          <a href="flavors.html?filter=sweet" class="btn-outline justify-center w-full" style="font-size:0.75rem; padding:0.5rem 1rem">
+            Explore Sweet
+          </a>
+        </div>
+      </div>
+
+      <!-- Category 2: Savory -->
+      <div class="home1-category-card reveal d-150 flex flex-col h-full">
+        <div class="img-wrap">
+          <img src="Assets/category_savory.png" alt="Savory & Bold Popcorn" loading="lazy" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <h3 class="font-display text-xl font-bold mb-2 text-primary">Savory &amp; Bold</h3>
+          <p class="text-muted text-xs leading-relaxed mb-6 flex-1" style="color:var(--text-secondary)">
+            Gourmet black truffles, aged Parmigiano, and hand-tossed bold spices.
+          </p>
+          <a href="flavors.html?filter=savory" class="btn-outline justify-center w-full" style="font-size:0.75rem; padding:0.5rem 1rem">
+            Explore Savory
+          </a>
+        </div>
+      </div>
+
+      <!-- Category 3: Vegan -->
+      <div class="home1-category-card reveal d-200 flex flex-col h-full">
+        <div class="img-wrap">
+          <img src="Assets/category_vegan.png" alt="Vegan & Pure Popcorn" loading="lazy" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <h3 class="font-display text-xl font-bold mb-2 text-primary">Vegan &amp; Clean</h3>
+          <p class="text-muted text-xs leading-relaxed mb-6 flex-1" style="color:var(--text-secondary)">
+            Popped in organic coconut oil with fine mineral salts and herbs.
+          </p>
+          <a href="flavors.html?filter=vegan" class="btn-outline justify-center w-full" style="font-size:0.75rem; padding:0.5rem 1rem">
+            Explore Vegan
+          </a>
+        </div>
+      </div>
+
+      <!-- Category 4: Gifts -->
+      <div class="home1-category-card reveal d-250 flex flex-col h-full">
+        <div class="img-wrap">
+          <img src="Assets/category_gifts.png" alt="Luxury Gift Tins" loading="lazy" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <h3 class="font-display text-xl font-bold mb-2 text-primary">Luxury Gift Tins</h3>
+          <p class="text-muted text-xs leading-relaxed mb-6 flex-1" style="color:var(--text-secondary)">
+            Copper-foiled tins and event flight packages designed to impress.
+          </p>
+          <a href="gift-tins.html" class="btn-primary justify-center w-full" style="font-size:0.75rem; padding:0.5rem 1rem">
+            Shop Gift Tins
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================================================
   SECTION 2 — THE ARTISAN PROCESS
 ======================================================= -->
 <section id="process" class="py-24 lg:py-32" style="background:var(--bg-primary)">
@@ -373,6 +461,92 @@
     </div>
   </div>
 </div>
+
+
+<!-- ======================================================
+  SECTION: LIMITED TIME OFFERS (DISCOUNTS & BUNDLES)
+======================================================= -->
+<section id="special-offers" class="py-20 lg:py-24" style="background:var(--bg-surface-2); border-bottom:1px solid var(--border-color)">
+  <div class="max-w-7xl mx-auto px-5 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Interactive Coupon Banner -->
+      <div class="lg:col-span-6 flex flex-col justify-center reveal">
+        <span class="section-label justify-start mb-4">★ Special Offer ★</span>
+        <h2 class="font-display font-bold text-3xl lg:text-4xl mb-6" style="color:var(--text-primary); line-height:1.2">
+          Unlock Gourmet Savings: <br><em style="color:var(--accent-gold); font-style:italic">Get 20% Off Today</em>
+        </h2>
+        <p class="mb-8" style="font-size:0.95rem; color:var(--text-secondary); line-height:1.7">
+          Claim your exclusive code for a premium 20% discount on any first-time checkout. Just tap to copy, then explore our premium collections!
+        </p>
+
+        <!-- Dynamic Coupon Code Box -->
+        <div id="coupon-click-target" class="coupon-box animate-discount-pulse mb-8" title="Click to copy coupon code">
+          <div class="flex items-center gap-3">
+            <span style="font-size:1.8rem;" class="select-none">🎁</span>
+            <div>
+              <p style="font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-secondary)">TAP TO COPY CODE</p>
+              <div class="coupon-code">VIPPOP20</div>
+            </div>
+          </div>
+          <span class="text-xs font-bold text-gold" style="color:var(--accent-gold)">Copy Code</span>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="flex items-center gap-3.5" style="color:var(--text-primary)">
+          <div class="w-2.5 h-2.5 rounded-full bg-red-600 animate-ping"></div>
+          <span style="font-size:0.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em">
+            Code expires in: <span id="countdown-clock" class="font-mono text-gold" style="color:var(--accent-gold); font-weight:700">00:00:00</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Column: Promo Packs (Custom Cards) -->
+      <div class="lg:col-span-6 grid sm:grid-cols-2 gap-6 reveal d-150">
+        
+        <!-- Promo Pack 1 -->
+        <div class="surface-card p-8 border-theme shadow-md rounded-lg flex flex-col justify-between" style="background:var(--bg-surface); border:1px solid var(--border-color)">
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="flavor-tag tag-gold" style="font-size:0.58rem">Starter Deal</span>
+              <span style="text-decoration:line-through; font-size:0.85rem; color:var(--text-secondary)">$36</span>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Tasting Duo</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.5rem">
+              Choose any 2 bags of handcrafted flavors. Ideal for solo tasting flight.
+            </p>
+          </div>
+          <div>
+            <div class="font-display text-3xl font-black text-[var(--accent-gold)] mb-4" style="color:var(--accent-gold)">$29</div>
+            <button class="btn-primary w-full justify-center add-to-cart" data-flavor="Tasting Duo Promo" style="font-size:0.75rem">Add Duo to Cart</button>
+          </div>
+        </div>
+
+        <!-- Promo Pack 2 -->
+        <div class="surface-card p-8 border-theme shadow-md rounded-lg flex flex-col justify-between relative overflow-hidden" style="background:var(--bg-surface); border:2px solid var(--accent-gold)">
+          <div class="absolute -right-12 -top-12 bg-amber-500 text-white font-bold text-[0.55rem] tracking-widest uppercase w-32 h-32 flex items-end justify-center rotate-45 pb-2 animate-float-slow" style="background:var(--accent-gold)">
+            Best Buy
+          </div>
+          <div>
+            <div class="flex justify-between items-start mb-4">
+              <span class="flavor-tag" style="background:rgba(217,119,6,0.1); color:var(--accent-gold); font-size:0.58rem">Family Deal</span>
+              <span style="text-decoration:line-through; font-size:0.85rem; color:var(--text-secondary)">$72</span>
+            </div>
+            <h3 class="font-display text-xl font-bold mb-2" style="color:var(--text-primary)">Snack Feast</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); line-height:1.6; margin-bottom:1.5rem">
+              Get any 5 premium bags + free priority shipping &amp; pairing guide cards.
+            </p>
+          </div>
+          <div>
+            <div class="font-display text-3xl font-black text-[var(--accent-gold)] mb-4" style="color:var(--accent-gold)">$55</div>
+            <button class="btn-primary w-full justify-center add-to-cart" data-flavor="Snack Feast Promo" style="font-size:0.75rem">Add Feast to Cart</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <!-- ======================================================
