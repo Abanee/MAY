@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — ArtisanGrid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                document.documentElement.classList.add('light-theme');
+            }
+        })();
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                container: { center: true },
+                extend: {
+                    colors: {
+                        carbon:   'var(--carbon)',
+                        surface:  'var(--surface)',
+                        surface2: 'var(--surface-2)',
+                        offwhite: 'var(--offwhite)',
+                        sec:      'var(--text-secondary)',
+                        mut:      'var(--text-muted)',
+                        volt:     'var(--volt)',
+                        c1:       'var(--color-1)',
+                        c2:       'var(--color-2)',
+                        c3:       'var(--color-3)',
+                        c4:       'var(--color-4)',
+                        c5:       'var(--color-5)',
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
+
+    <!-- Film Grain Overlay -->
+    <div class="grain-overlay" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <filter id="grain">
+                <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/>
+                <feColorMatrix type="saturate" values="0"/>
+            </filter>
+            <rect width="100%" height="100%" filter="url(#grain)" opacity="1"/>
+        </svg>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         UTILITY BAR
+    ═══════════════════════════════════════ -->
+    <div class="utility-bar">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-2 font-mono text-xs">
+                <span class="pulse-dot"></span>
+                <span id="artisan-count">148 Verified Artisans Active in Sector 4</span>
+            </div>
+            <div class="hidden md:flex items-center gap-6 font-mono text-xs text-sec">
+                <span>Mon–Sat  06:00–22:00</span>
+                <span class="text-volt font-semibold">Emergency 24/7</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         NAVIGATION — Home + Dashboard (active)
+    ═══════════════════════════════════════ -->
+    <nav class="main-nav">
+        <div class="container mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none" style="text-decoration:none">
+                <span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span>
+            </a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="dashboard.html" class="nav-link nav-link--active">Dashboard</a>
+                </div>
+
+                <!-- Theme Toggle -->
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/>
+                    </svg>
+                    <svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+                    </svg>
+                </button>
+
+                <a href="#book" class="nav-cta hidden md:inline-block">+ Book a Job</a>
+
+                <button class="md:hidden hamburger" id="menu-toggle" aria-label="Open menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="#book" class="nav-cta text-center mt-2 py-2">+ Book a Job</a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         DASHBOARD HEADER — Welcome + Stats
+    ═══════════════════════════════════════ -->
+    <section class="dash-header">
+        <div class="hero-glow-1" aria-hidden="true"></div>
+        <div class="container mx-auto px-6" style="position:relative;z-index:10">
+
+            <!-- Welcome Row -->
+            <div class="dash-welcome-row">
+                <div>
+                    <div class="eyebrow font-mono text-xs tracking-widest mb-3">— CUSTOMER PORTAL</div>
+                    <h1 class="dash-greeting font-mono">
+                        Good morning,<br>
+                        <span class="text-volt">James R.</span>
+                    </h1>
+                    <p class="text-sec text-sm mt-3 font-mono">
+                        Friday, June 27, 2026 &nbsp;·&nbsp; 4 jobs on record &nbsp;·&nbsp;
+                        <span class="text-c1">1 active now</span>
+                    </p>
+                </div>
+                <a href="#book" class="dash-book-cta font-mono">
+                    + Book New Job
+                </a>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="dash-stats-grid">
+                <div class="dash-stat-card">
+                    <span class="dash-stat-icon">📋</span>
+                    <span class="dash-stat-num font-mono text-offwhite" id="stat-total">4</span>
+                    <span class="dash-stat-label font-mono">Total Jobs</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-icon">⚡</span>
+                    <span class="dash-stat-num font-mono text-volt" id="stat-active">1</span>
+                    <span class="dash-stat-label font-mono">Active Now</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-icon">✅</span>
+                    <span class="dash-stat-num font-mono" style="color:var(--color-4)" id="stat-complete">2</span>
+                    <span class="dash-stat-label font-mono">Completed</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-icon">★</span>
+                    <span class="dash-stat-num font-mono" style="color:var(--color-3)" id="stat-rating">4.9</span>
+                    <span class="dash-stat-label font-mono">Avg. Rating Given</span>
+                </div>
+                <div class="dash-stat-card">
+                    <span class="dash-stat-icon">💸</span>
+                    <span class="dash-stat-num font-mono" style="color:var(--color-2)">$0</span>
+                    <span class="dash-stat-label font-mono">Platform Fee</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION: BOOK A HANDYMAN
+    ═══════════════════════════════════════ -->
+    <section class="section-alt" id="book">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— NEW BOOKING</span>
+                <h2 class="section-title font-mono">
+                    Book a<br>
+                    <span class="text-c1">Handyman.</span>
+                </h2>
+                <p class="section-sub">Describe your issue and get matched in minutes.</p>
+            </div>
+
+            <div class="booking-widget">
+                <!-- Category pills -->
+                <div class="category-pills mb-6" id="book-pills">
+                    <button class="pill active" data-category="electrical">⚡ Electrical</button>
+                    <button class="pill" data-category="plumbing">🔧 Plumbing</button>
+                    <button class="pill" data-category="carpentry">🪚 Carpentry</button>
+                    <button class="pill" data-category="hvac">❄️ HVAC</button>
+                    <button class="pill" data-category="general">🛠️ General</button>
+                    <button class="pill" data-category="painting">🖌️ Painting</button>
+                </div>
+
+                <!-- Booking form row -->
+                <div class="booking-form-row">
+                    <div class="cta-bar" style="flex:1;min-width:0">
+                        <input
+                            type="text"
+                            class="cta-input"
+                            placeholder="Describe your issue in detail…"
+                            id="book-input"
+                            autocomplete="off"
+                        />
+                    </div>
+                    <input type="datetime-local" class="book-datetime font-mono" id="book-datetime" title="Schedule for later (leave blank for ASAP)"/>
+                    <button class="cta-btn font-mono" id="book-btn">Request Dispatch →</button>
+                </div>
+
+                <!-- Estimate bar -->
+                <div class="booking-estimate" id="booking-estimate">
+                    <div class="booking-estimate-inner">
+                        <span class="font-mono text-xs text-mut tracking-wider">EST. COST</span>
+                        <span class="font-mono text-offwhite text-sm" id="book-price-range">$60 — $150</span>
+                        <span class="booking-est-sep">·</span>
+                        <span class="font-mono text-xs" style="color:var(--color-4)" id="book-avail">⚡ Electricians available in ~6 min</span>
+                    </div>
+                    <div class="booking-est-note font-mono text-xs text-mut">
+                        No upfront payment · Pay only after job is confirmed complete
+                    </div>
+                </div>
+
+                <!-- Success toast (hidden by default) -->
+                <div class="booking-success hidden" id="booking-success">
+                    <div class="booking-success-inner">
+                        <span class="font-mono text-sm" style="color:var(--color-4)">✓ Request Dispatched!</span>
+                        <p class="font-mono text-xs text-sec mt-1">An artisan has been matched. You'll receive confirmation shortly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION: ACTIVE & UPCOMING JOBS
+    ═══════════════════════════════════════ -->
+    <section class="section-dark" id="active-jobs">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— LIVE STATUS</span>
+                <h2 class="section-title font-mono">
+                    Active &<br>
+                    <span class="text-volt">Upcoming.</span>
+                </h2>
+                <p class="section-sub">Real-time tracking for all your booked jobs.</p>
+            </div>
+
+            <div class="jobs-grid">
+
+                <!-- ── Active Job: En Route ───────────── -->
+                <div class="job-card job-card--active">
+                    <div class="job-card-header">
+                        <div class="job-status-badge badge--enroute font-mono">
+                            <span class="pulse-dot" style="width:5px;height:5px"></span>
+                            EN ROUTE
+                        </div>
+                        <span class="job-id font-mono">#JOB-2847</span>
+                    </div>
+
+                    <div class="job-card-title font-mono">Electrical Panel Inspection</div>
+                    <div class="job-card-meta font-mono">Booked today at 09:14 AM</div>
+
+                    <div class="artisan-track" style="margin-top:20px">
+                        <div class="artisan-avatar font-mono" style="background:var(--color-4)">SB</div>
+                        <div class="artisan-info">
+                            <div class="artisan-name font-mono">Sophie B.</div>
+                            <div class="artisan-title">Licensed Electrician · ★ 4.9</div>
+                        </div>
+                        <div class="artisan-eta">
+                            <div class="eta-value font-mono text-volt" id="job-eta-1">8 min</div>
+                            <div class="eta-label">ETA</div>
+                        </div>
+                    </div>
+
+                    <div class="radar-bar" style="margin-top:14px">
+                        <div class="radar-fill" style="background:var(--color-4);width:72%"></div>
+                    </div>
+                    <div class="flex justify-between font-mono text-xs mt-2" style="color:var(--text-muted)">
+                        <span>0.7 miles away</span>
+                        <span>Est. $60–$150</span>
+                    </div>
+
+                    <div class="job-card-actions">
+                        <button class="job-action-btn font-mono" onclick="alert('Live tracking map would open here.')">📍 Track Live</button>
+                        <button class="job-action-btn job-action-btn--sec font-mono" onclick="alert('Chat with Sophie B.')">💬 Message</button>
+                    </div>
+                </div>
+
+                <!-- ── Active Job: In Progress ────────── -->
+                <div class="job-card job-card--inprogress">
+                    <div class="job-card-header">
+                        <div class="job-status-badge badge--inprogress font-mono">
+                            <span class="pulse-dot" style="width:5px;height:5px;background:var(--color-1)"></span>
+                            IN PROGRESS
+                        </div>
+                        <span class="job-id font-mono">#JOB-2831</span>
+                    </div>
+
+                    <div class="job-card-title font-mono">Plumbing Leak — Kitchen Sink</div>
+                    <div class="job-card-meta font-mono">Started at 08:42 AM · ~35 min remaining</div>
+
+                    <div class="artisan-track" style="margin-top:20px">
+                        <div class="artisan-avatar font-mono" style="background:var(--color-1)">MV</div>
+                        <div class="artisan-info">
+                            <div class="artisan-name font-mono">Marcus V.</div>
+                            <div class="artisan-title">Master Plumber · ★ 4.9</div>
+                        </div>
+                        <div class="artisan-eta">
+                            <div class="eta-value font-mono" style="color:var(--color-1)">~35 min</div>
+                            <div class="eta-label">REMAINING</div>
+                        </div>
+                    </div>
+
+                    <!-- Job progress bar -->
+                    <div class="job-progress-wrap" style="margin-top:14px">
+                        <div class="flex justify-between font-mono text-xs mb-1" style="color:var(--text-muted)">
+                            <span>Progress</span><span>58%</span>
+                        </div>
+                        <div class="job-progress-bar">
+                            <div class="job-progress-fill" id="job-progress-1" style="width:58%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between font-mono text-xs mt-2" style="color:var(--text-muted)">
+                        <span>Started 25 min ago</span>
+                        <span>Est. $45–$120</span>
+                    </div>
+
+                    <div class="job-card-actions">
+                        <button class="job-action-btn font-mono" onclick="alert('Job details: Replacing P-trap and supply line.')">📋 Job Details</button>
+                        <button class="job-action-btn job-action-btn--danger font-mono" onclick="alert('Support team notified.')">⚠️ Report Issue</button>
+                    </div>
+                </div>
+
+                <!-- ── Upcoming Job 1 ─────────────────── -->
+                <div class="job-card job-card--upcoming">
+                    <div class="job-card-header">
+                        <div class="job-status-badge badge--upcoming font-mono">○ SCHEDULED</div>
+                        <span class="job-id font-mono">#JOB-2855</span>
+                    </div>
+
+                    <div class="job-card-title font-mono">HVAC Annual Service</div>
+                    <div class="job-card-meta font-mono">Scheduled for tomorrow · 2:00 PM</div>
+
+                    <div class="artisan-track" style="margin-top:20px">
+                        <div class="artisan-avatar font-mono" style="background:var(--color-5)">TR</div>
+                        <div class="artisan-info">
+                            <div class="artisan-name font-mono">Tom R.</div>
+                            <div class="artisan-title">HVAC Technician · ★ 4.7</div>
+                        </div>
+                        <div class="artisan-eta">
+                            <div class="eta-value font-mono" style="color:var(--offwhite);font-size:0.85rem;line-height:1.3">Sat, Jun 28</div>
+                            <div class="eta-label">2:00 PM</div>
+                        </div>
+                    </div>
+
+                    <div class="job-meta-pill font-mono" style="margin-top:14px">
+                        <span style="color:var(--text-muted)">Est. Cost</span>
+                        <span style="color:var(--offwhite)">$80 — $250</span>
+                        <span class="tag" style="margin-left:auto">CONFIRMED</span>
+                    </div>
+
+                    <div class="job-card-actions">
+                        <button class="job-action-btn font-mono" onclick="alert('Reschedule dialog would open.')">📅 Reschedule</button>
+                        <button class="job-action-btn job-action-btn--danger font-mono" onclick="if(confirm('Cancel this job?')) alert('Job cancelled.')">✕ Cancel</button>
+                    </div>
+                </div>
+
+                <!-- ── Upcoming Job 2 ─────────────────── -->
+                <div class="job-card job-card--upcoming">
+                    <div class="job-card-header">
+                        <div class="job-status-badge badge--upcoming font-mono">○ SCHEDULED</div>
+                        <span class="job-id font-mono">#JOB-2861</span>
+                    </div>
+
+                    <div class="job-card-title font-mono">Kitchen Cabinet Installation</div>
+                    <div class="job-card-meta font-mono">Scheduled for Fri Jun 28 · 10:00 AM</div>
+
+                    <div class="artisan-track" style="margin-top:20px">
+                        <div class="artisan-avatar font-mono" style="background:var(--color-2)">EK</div>
+                        <div class="artisan-info">
+                            <div class="artisan-name font-mono">Elena K.</div>
+                            <div class="artisan-title">Senior Carpenter · ★ 4.8</div>
+                        </div>
+                        <div class="artisan-eta">
+                            <div class="eta-value font-mono" style="color:var(--offwhite);font-size:0.85rem;line-height:1.3">Fri, Jun 28</div>
+                            <div class="eta-label">10:00 AM</div>
+                        </div>
+                    </div>
+
+                    <div class="job-meta-pill font-mono" style="margin-top:14px">
+                        <span style="color:var(--text-muted)">Est. Cost</span>
+                        <span style="color:var(--offwhite)">$55 — $200</span>
+                        <span class="tag" style="margin-left:auto">CONFIRMED</span>
+                    </div>
+
+                    <div class="job-card-actions">
+                        <button class="job-action-btn font-mono" onclick="alert('Reschedule dialog would open.')">📅 Reschedule</button>
+                        <button class="job-action-btn job-action-btn--danger font-mono" onclick="if(confirm('Cancel this job?')) alert('Job cancelled.')">✕ Cancel</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SECTION: RATE & REVIEW
+    ═══════════════════════════════════════ -->
+    <section class="section-alt" id="history">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— JOB HISTORY</span>
+                <h2 class="section-title font-mono">
+                    Rate &<br>
+                    <span class="text-c4">Review.</span>
+                </h2>
+                <p class="section-sub">Your completed jobs. Honest feedback builds a better network.</p>
+            </div>
+
+            <!-- Tab Bar -->
+            <div class="history-tabs font-mono" id="history-tabs">
+                <button class="history-tab active" data-filter="all">All Completed (3)</button>
+                <button class="history-tab" data-filter="pending">Awaiting Review (2)</button>
+                <button class="history-tab" data-filter="reviewed">Reviewed (1)</button>
+            </div>
+
+            <!-- Review Cards Grid -->
+            <div class="review-grid" id="review-grid">
+
+                <!-- ── Pending Review 1 ──────────────── -->
+                <div class="review-card" data-status="pending" id="review-card-2815">
+                    <div class="review-card-top">
+                        <div>
+                            <div class="review-card-title font-mono">General Home Repairs</div>
+                            <div class="review-card-date font-mono">Completed yesterday · <span class="badge-pending">AWAITING REVIEW</span></div>
+                        </div>
+                        <div class="job-id font-mono">#JOB-2815</div>
+                    </div>
+
+                    <div class="artisan-track" style="margin-top:16px">
+                        <div class="artisan-avatar artisan-avatar--sm font-mono" style="background:var(--color-3)">RO</div>
+                        <div class="artisan-info">
+                            <div class="artisan-name font-mono" style="font-size:0.875rem">Ray O.</div>
+                            <div class="artisan-title">General Repairs · $120 paid</div>
+                        </div>
+                        <div class="review-paid-badge font-mono">$120</div>
+                    </div>
+
+                    <!-- Star Rating Widget -->
+                    <div class="star-rating-widget" id="widget-2815">
+                        <div class="star-rating-label font-mono">RATE YOUR EXPERIENCE</div>
+                        <div class="stars" id="stars-2815">
+                            <span class="star" data-val="1">★</span>
+                            <span class="star" data-val="2">★</span>
+                            <span class="star" data-val="3">★</span>
+                            <span class="star" data-val="4">★</span>
+                            <span class="star" data-val="5">★</span>
+                        </div>
+                        <div class="star-hint font-mono" id="hint-2815">Tap a star to rate</div>
+                        <textarea
+                            class="review-textarea font-mono"
+                            id="text-2815"
+                            placeholder="Share your experience with Ray O. (optional) — your review shapes who rises in the network…"
+                            rows="3"
+                        ></textarea>
+                        <div class="review-actions">
+                            <button class="review-submit-btn font-mono" id="submit-2815" data-job="2815" disabled>
+                                Submit Review →
+                            </button>
+                            <button class="review-skip-btn font-mono" onclick="skipReview('2815')">Skip for now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Pending Review 2 ──────────────── -->
+                <div class="review-card" data-status="pending" id="review-card-2801">
+                    <div class="review-card-top">
+                        <div>
+                            <div class="review-card-title font-mono">Outlet Installation (×3)</div>
+                            <div class="review-card-date font-mono">Completed 3 days ago · <span class="badge-pending">AWAITING REVIEW</span></div>
+                        </div>
+                        <div class="job-id font-mono">#JOB-2801</div>
+                    </div>
+
+                    <div class="artisan-track" style="margin-top:16px">
+                        <div class="artisan-avatar artisan-avatar--sm font-mono" style="background:var(--color-4)">SB</div>
+                        <div class="artisan-info">
+                            <div class="artisan-name font-mono" style="font-size:0.875rem">Sophie B.</div>
+                            <div class="artisan-title">Licensed Electrician · $95 paid</div>
+                        </div>
+                        <div class="review-paid-badge font-mono">$95</div>
+                    </div>
+
+                    <div class="star-rating-widget" id="widget-2801">
+                        <div class="star-rating-label font-mono">RATE YOUR EXPERIENCE</div>
+                        <div class="stars" id="stars-2801">
+                            <span class="star" data-val="1">★</span>
+                            <span class="star" data-val="2">★</span>
+                            <span class="star" data-val="3">★</span>
+                            <span class="star" data-val="4">★</span>
+                            <span class="star" data-val="5">★</span>
+                        </div>
+                        <div class="star-hint font-mono" id="hint-2801">Tap a star to rate</div>
+                        <textarea
+                            class="review-textarea font-mono"
+                            id="text-2801"
+                            placeholder="Share your experience with Sophie B. (optional)…"
+                            rows="3"
+                        ></textarea>
+                        <div class="review-actions">
+                            <button class="review-submit-btn font-mono" id="submit-2801" data-job="2801" disabled>
+                                Submit Review →
+                            </button>
+                            <button class="review-skip-btn font-mono" onclick="skipReview('2801')">Skip for now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Already Reviewed ──────────────── -->
+                <div class="review-card review-card--reviewed" data-status="reviewed" id="review-card-2788">
+                    <div class="review-card-top">
+                        <div>
+                            <div class="review-card-title font-mono">Emergency Pipe Repair</div>
+                            <div class="review-card-date font-mono">Completed June 19 · <span class="badge-reviewed">REVIEWED ✓</span></div>
+                        </div>
+                        <div class="job-id font-mono">#JOB-2788</div>
+                    </div>
+
+                    <div class="artisan-track" style="margin-top:16px">
+                        <div class="artisan-avatar artisan-avatar--sm font-mono" style="background:var(--color-1)">MV</div>
+                        <div class="artisan-info">
+                            <div class="artisan-name font-mono" style="font-size:0.875rem">Marcus V.</div>
+                            <div class="artisan-title">Master Plumber · $145 paid</div>
+                        </div>
+                        <div class="review-paid-badge font-mono">$145</div>
+                    </div>
+
+                    <!-- Submitted Review Display -->
+                    <div class="submitted-review">
+                        <div class="submitted-stars font-mono">★★★★★</div>
+                        <div class="star-hint font-mono" style="color:var(--volt)">5 out of 5 stars</div>
+                        <p class="submitted-text font-mono">
+                            "Marcus arrived in under 12 minutes and fixed the burst pipe within an hour.
+                            Incredibly professional — explained every step. Will definitely book again."
+                        </p>
+                        <div class="font-mono text-xs" style="color:var(--text-muted);margin-top:12px">
+                            Submitted · June 19, 2026
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         FOOTER
+    ═══════════════════════════════════════ -->
+    <footer class="site-footer" id="footer">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="font-mono font-bold text-xl mb-3">
+                        <span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span>
+                    </div>
+                    <p class="text-sec text-xs leading-relaxed max-w-xs">
+                        The only platform built entirely around the craft — not the commission.
+                    </p>
+                    <div class="footer-badge font-mono mt-4">
+                        <span class="pulse-dot"></span>
+                        <span id="footer-count">148 artisans online</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <div class="footer-col-title font-mono">Platform</div>
+                        <a href="index.html#how-it-works">How It Works</a>
+                        <a href="#">Pricing</a>
+                        <a href="#">For Artisans</a>
+                        <a href="#">Categories</a>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-col-title font-mono">Account</div>
+                        <a href="#">My Profile</a>
+                        <a href="#">Payment Methods</a>
+                        <a href="#">Support</a>
+                        <a href="#">Log Out</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="font-mono text-xs text-mut">© 2026 ArtisanGrid. All rights reserved.</span>
+                <span class="font-mono text-xs text-mut hidden md:inline">Built for real work. Not for stock photos.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
