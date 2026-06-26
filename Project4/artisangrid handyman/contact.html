@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtisanGrid — Contact Us & Support</title>
+    <meta name="description" content="Get in touch with ArtisanGrid. Contact our support team, report an issue, join as an artisan, or find our office location. We respond within hours.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+    <link rel="stylesheet" href="contact.css">
+    <script>(function(){const s=localStorage.getItem('theme');if(s==='light'||(!s&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-theme');}const d=localStorage.getItem('dir');if(d==='rtl'){document.documentElement.setAttribute('dir','rtl');}})();</script>
+    <script>tailwind.config={theme:{container:{center:true},extend:{colors:{carbon:'var(--carbon)',surface:'var(--surface)',surface2:'var(--surface-2)',offwhite:'var(--offwhite)',sec:'var(--text-secondary)',mut:'var(--text-muted)',volt:'var(--volt)',c1:'var(--color-1)',c2:'var(--color-2)',c3:'var(--color-3)',c4:'var(--color-4)',c5:'var(--color-5)'},fontFamily:{mono:['JetBrains Mono','monospace'],sans:['Inter','sans-serif']}}}}</script>
+</head>
+<body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
+    <div class="grain-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)" opacity="1"/></svg></div>
+
+    <div class="utility-bar"><div class="container mx-auto px-6 flex items-center justify-between"><div class="flex items-center gap-2 font-mono text-xs"><span class="pulse-dot"></span><span id="artisan-count">148 Verified Artisans Active in Sector 4</span></div><div class="hidden md:flex items-center gap-6 font-mono text-xs text-sec"><span>Mon-Sat 06:00-22:00</span><span class="text-volt font-semibold">Emergency 24/7</span></div></div></div>
+
+    <nav class="main-nav">
+        <div class="container mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="home2.html" class="nav-link">Home 2</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="artisans.html" class="nav-link">Artisans</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link" style="color:var(--volt)">Contact</a>
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+                <button id="rtl-toggle" class="theme-toggle-btn" aria-label="Toggle Layout Direction">
+                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
+                </button>
+                <a href="dashboard.html" class="nav-cta hidden md:inline-block">Dashboard &rarr;</a>
+                <button class="md:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div class="mobile-menu hidden" id="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="artisans.html">Artisans</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard &rarr;</a></div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-glow"></div>
+        <div class="contact-hero-glow-2" aria-hidden="true"></div>
+        <div class="container mx-auto px-6">
+            <div class="page-hero-inner">
+                <span class="section-eyebrow font-mono">- GET IN TOUCH</span>
+                <h1 class="page-hero-title font-mono">Talk to<br><span style="background:linear-gradient(135deg,var(--color-1) 0%,var(--volt) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Real People.</span><br>Get Real Help.</h1>
+                <p class="page-hero-sub">No chatbots. No ticket queues that last 3 days. Our support team responds within 2 hours on business days and within 30 minutes for emergencies.</p>
+                <div class="contact-hero-badges">
+                    <div class="contact-badge">
+                        <span style="color:var(--color-4)">&#9679;</span>
+                        <span class="font-mono text-xs">Support online now</span>
+                    </div>
+                    <div class="contact-badge">
+                        <span style="color:var(--volt)">&#9889;</span>
+                        <span class="font-mono text-xs">Avg. reply: 1h 47m</span>
+                    </div>
+                    <div class="contact-badge">
+                        <span style="color:var(--color-3)">&#9733;</span>
+                        <span class="font-mono text-xs">4.9 support rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CHANNELS -->
+    <section class="section-alt">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">- HOW TO REACH US</span>
+                <h2 class="section-title font-mono">Every Channel,<br><span style="color:var(--color-1)">Fully Staffed.</span></h2>
+                <p class="section-sub">Pick the method that works best for you. All channels go to real team members, never a bot.</p>
+            </div>
+            <div class="contact-channels-grid">
+                <div class="contact-channel-card" style="--ch-color:var(--color-1)">
+                    <div class="ccc-icon" style="background:rgba(6,182,212,0.1);color:var(--color-1)">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div class="ccc-body">
+                        <h3 class="ccc-title font-mono">Email Support</h3>
+                        <p class="ccc-desc">For non-urgent queries, billing questions, and detailed reports. We respond within 2 business hours.</p>
+                        <a href="mailto:support@artisangrid.com" class="ccc-link font-mono">support@artisangrid.com &rarr;</a>
+                    </div>
+                    <div class="ccc-meta font-mono">Mon-Sat &nbsp; 06:00-22:00</div>
+                </div>
+                <div class="contact-channel-card" style="--ch-color:var(--volt)">
+                    <div class="ccc-icon" style="background:rgba(212,255,0,0.08);color:var(--volt)">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="ccc-body">
+                        <h3 class="ccc-title font-mono">Emergency Hotline</h3>
+                        <p class="ccc-desc">Burst pipe at 2 AM? Active electrical fault? Call the emergency line, we dispatch within 15 minutes.</p>
+                        <a href="tel:+18005550199" class="ccc-link font-mono" style="color:var(--volt)">+1 (800) 555-0199 &rarr;</a>
+                    </div>
+                    <div class="ccc-meta font-mono">24 / 7 &nbsp; Emergency Only</div>
+                </div>
+                <div class="contact-channel-card" style="--ch-color:var(--color-2)">
+                    <div class="ccc-icon" style="background:rgba(217,70,239,0.1);color:var(--color-2)">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div class="ccc-body">
+                        <h3 class="ccc-title font-mono">Live Chat</h3>
+                        <p class="ccc-desc">Connect in real-time with a support agent directly inside your dashboard. Fastest response for account issues.</p>
+                        <a href="dashboard.html" class="ccc-link font-mono" style="color:var(--color-2)">Open Dashboard Chat &rarr;</a>
+                    </div>
+                    <div class="ccc-meta font-mono">Mon-Sat &nbsp; 08:00-20:00</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM + INFO SPLIT -->
+    <section class="section-dark" id="form">
+        <div class="container mx-auto px-6">
+            <div class="contact-split">
+
+                <!-- LEFT: FORM -->
+                <div class="contact-form-wrap">
+                    <span class="section-eyebrow font-mono">- SEND A MESSAGE</span>
+                    <h2 class="section-title font-mono" style="margin-bottom:32px">We Read<br><span style="color:var(--color-4)">Every Message.</span></h2>
+
+                    <form id="contact-form" class="contact-form" novalidate>
+                        <div class="cf-row">
+                            <div class="cf-field">
+                                <label class="cf-label font-mono" for="cf-name">Full Name</label>
+                                <input class="cf-input" id="cf-name" type="text" placeholder="James Robertson" autocomplete="name" required>
+                                <span class="cf-error font-mono" id="cf-name-err"></span>
+                            </div>
+                            <div class="cf-field">
+                                <label class="cf-label font-mono" for="cf-email">Email Address</label>
+                                <input class="cf-input" id="cf-email" type="email" placeholder="james@email.com" autocomplete="email" required>
+                                <span class="cf-error font-mono" id="cf-email-err"></span>
+                            </div>
+                        </div>
+
+                        <div class="cf-row">
+                            <div class="cf-field">
+                                <label class="cf-label font-mono" for="cf-phone">Phone (optional)</label>
+                                <input class="cf-input" id="cf-phone" type="tel" placeholder="+1 555 000 0000" autocomplete="tel">
+                            </div>
+                            <div class="cf-field">
+                                <label class="cf-label font-mono" for="cf-topic">Topic</label>
+                                <select class="cf-input cf-select" id="cf-topic" required>
+                                    <option value="" disabled selected>Select a topic...</option>
+                                    <option value="booking">Booking &amp; Job Help</option>
+                                    <option value="artisan">Join as an Artisan</option>
+                                    <option value="billing">Billing &amp; Payments</option>
+                                    <option value="safety">Safety &amp; Trust Report</option>
+                                    <option value="technical">Technical Support</option>
+                                    <option value="press">Press &amp; Partnerships</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="cf-error font-mono" id="cf-topic-err"></span>
+                            </div>
+                        </div>
+
+                        <div class="cf-field">
+                            <label class="cf-label font-mono" for="cf-subject">Subject</label>
+                            <input class="cf-input" id="cf-subject" type="text" placeholder="Brief summary of your message..." required>
+                            <span class="cf-error font-mono" id="cf-subject-err"></span>
+                        </div>
+
+                        <div class="cf-field">
+                            <label class="cf-label font-mono" for="cf-message">Message</label>
+                            <textarea class="cf-input cf-textarea" id="cf-message" placeholder="Describe your query in as much detail as you like. The more context, the faster we can help." rows="6" required></textarea>
+                            <span class="cf-error font-mono" id="cf-msg-err"></span>
+                        </div>
+
+                        <div class="cf-checkbox">
+                            <input type="checkbox" id="cf-privacy" class="cf-check" required>
+                            <label for="cf-privacy" class="font-mono text-xs" style="color:var(--text-secondary)">I agree to the <a href="#" style="color:var(--color-1);text-decoration:underline">Privacy Policy</a>. ArtisanGrid will not share your data with third parties.</label>
+                        </div>
+                        <span class="cf-error font-mono" id="cf-privacy-err"></span>
+
+                        <button type="submit" class="cf-submit cta-btn font-mono" id="cf-submit-btn">Send Message &rarr;</button>
+
+                        <div class="cf-success hidden" id="cf-success">
+                            <div class="cfs-icon">&#10003;</div>
+                            <div class="cfs-title font-mono">Message Sent!</div>
+                            <p class="cfs-desc">We have received your message and will respond to <span id="cfs-email-echo"></span> within 2 business hours.</p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- RIGHT: CONTACT INFO -->
+                <div class="contact-info-wrap">
+                    <span class="section-eyebrow font-mono">- FIND US</span>
+                    <h2 class="section-title font-mono" style="margin-bottom:32px">Offices &amp;<br><span style="color:var(--color-3)">Operating Hours.</span></h2>
+
+                    <div class="contact-office-card">
+                        <div class="coc-header font-mono">
+                            <span class="coc-badge" style="background:rgba(212,255,0,0.12);color:var(--volt)">HQ</span>
+                            <span class="coc-title">Sector 4 Headquarters</span>
+                        </div>
+                        <div class="coc-body">
+                            <div class="coc-detail">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                                <span>114 Craftsman Way, Sector 4, Grid City, GC 10200</span>
+                            </div>
+                            <div class="coc-detail">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                                <span>Mon - Sat &nbsp; 06:00 - 22:00</span>
+                            </div>
+                            <div class="coc-detail">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                <span>support@artisangrid.com</span>
+                            </div>
+                            <div class="coc-detail">
+                                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.27-.88a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                <span>+1 (800) 555-0199</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div class="contact-map-wrap">
+                        <div class="contact-map-inner">
+                            <div class="contact-map-grid" aria-hidden="true"></div>
+                            <div class="contact-map-pin">
+                                <div class="cmp-dot"></div>
+                                <div class="cmp-pulse"></div>
+                                <div class="cmp-label font-mono">ArtisanGrid HQ</div>
+                            </div>
+                            <div class="contact-map-streets" aria-hidden="true">
+                                <div class="cms-h" style="top:40%;left:0;width:100%"></div>
+                                <div class="cms-h" style="top:65%;left:0;width:100%"></div>
+                                <div class="cms-v" style="left:30%;top:0;height:100%"></div>
+                                <div class="cms-v" style="left:60%;top:0;height:100%"></div>
+                                <div class="cms-label font-mono" style="top:36%;left:2%">Craftsman Way</div>
+                                <div class="cms-label font-mono" style="top:61%;left:2%">Sector Blvd</div>
+                            </div>
+                        </div>
+                        <p class="font-mono text-xs mt-3" style="color:var(--text-muted)">Grid City, Sector 4 &mdash; 12 min from Central Station</p>
+                    </div>
+
+                    <!-- Team Availability -->
+                    <div class="contact-team-card">
+                        <div class="ctc-header font-mono">- TEAM STATUS</div>
+                        <div class="ctc-list">
+                            <div class="ctc-member">
+                                <div class="ctm-avatar" style="background:var(--color-1)">SR</div>
+                                <div class="ctm-info">
+                                    <div class="ctm-name font-mono">Sarah R.</div>
+                                    <div class="ctm-role font-mono">Customer Support Lead</div>
+                                </div>
+                                <div class="ctm-status available font-mono">&#9679; Online</div>
+                            </div>
+                            <div class="ctc-member">
+                                <div class="ctm-avatar" style="background:var(--color-5)">DK</div>
+                                <div class="ctm-info">
+                                    <div class="ctm-name font-mono">Dev K.</div>
+                                    <div class="ctm-role font-mono">Technical Support</div>
+                                </div>
+                                <div class="ctm-status available font-mono">&#9679; Online</div>
+                            </div>
+                            <div class="ctc-member">
+                                <div class="ctm-avatar" style="background:var(--color-3)">MO</div>
+                                <div class="ctm-info">
+                                    <div class="ctm-name font-mono">Mia O.</div>
+                                    <div class="ctm-role font-mono">Artisan Relations</div>
+                                </div>
+                                <div class="ctm-status away font-mono">&#9675; Away</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RESPONSE SLAs -->
+    <section class="section-alt">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">- RESPONSE SLAs</span>
+                <h2 class="section-title font-mono">We Hold Ourselves<br><span style="color:var(--color-2)">Accountable.</span></h2>
+                <p class="section-sub">These are the actual response times we hit across the last 90 days, verified by our support audit dashboard.</p>
+            </div>
+
+            <div class="response-sla-grid">
+                <div class="sla-card">
+                    <div class="sla-icon" style="color:var(--color-4)">&#128680;</div>
+                    <div class="sla-label font-mono">Emergency</div>
+                    <div class="sla-time font-mono" style="color:var(--color-4)">&le; 15 min</div>
+                    <div class="sla-bar-wrap"><div class="sla-bar" style="width:98%;background:var(--color-4)"></div></div>
+                    <div class="sla-note font-mono">98% of emergencies handled within SLA</div>
+                </div>
+                <div class="sla-card">
+                    <div class="sla-icon" style="color:var(--volt)">&#9889;</div>
+                    <div class="sla-label font-mono">Live Chat</div>
+                    <div class="sla-time font-mono" style="color:var(--volt)">&le; 3 min</div>
+                    <div class="sla-bar-wrap"><div class="sla-bar" style="width:94%;background:var(--volt)"></div></div>
+                    <div class="sla-note font-mono">94% of chats answered under 3 mins</div>
+                </div>
+                <div class="sla-card">
+                    <div class="sla-icon" style="color:var(--color-1)">&#128231;</div>
+                    <div class="sla-label font-mono">Email</div>
+                    <div class="sla-time font-mono" style="color:var(--color-1)">&le; 2 hrs</div>
+                    <div class="sla-bar-wrap"><div class="sla-bar" style="width:91%;background:var(--color-1)"></div></div>
+                    <div class="sla-note font-mono">91% of emails resolved same session</div>
+                </div>
+                <div class="sla-card">
+                    <div class="sla-icon" style="color:var(--color-2)">&#128221;</div>
+                    <div class="sla-label font-mono">Contact Form</div>
+                    <div class="sla-time font-mono" style="color:var(--color-2)">&le; 4 hrs</div>
+                    <div class="sla-bar-wrap"><div class="sla-bar" style="width:89%;background:var(--color-2)"></div></div>
+                    <div class="sla-note font-mono">89% of forms acknowledged within 4h</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-dark" id="faq">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">- QUICK ANSWERS</span>
+                <h2 class="section-title font-mono">Common Questions<br><span style="color:var(--color-3)">Answered Fast.</span></h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="cfaq-1-btn" aria-expanded="false" aria-controls="cfaq-1-ans">How do I report a problem with an artisan? <span class="faq-chevron">&#9662;</span></button>
+                    <div class="faq-answer" id="cfaq-1-ans" role="region" aria-labelledby="cfaq-1-btn">Log in to your dashboard, open the relevant job, and click "Report Issue". Alternatively, email safety@artisangrid.com. Safety reports are treated as priority and we respond within 1 hour.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="cfaq-2-btn" aria-expanded="false" aria-controls="cfaq-2-ans">I am an artisan and I need help with my account. <span class="faq-chevron">&#9662;</span></button>
+                    <div class="faq-answer" id="cfaq-2-ans" role="region" aria-labelledby="cfaq-2-btn">Email artisan@artisangrid.com with your registered name and issue. For urgent account lockouts, call the main line and choose option 2. We resolve artisan account issues within 24 hours.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="cfaq-3-btn" aria-expanded="false" aria-controls="cfaq-3-ans">How do I dispute a charge or request a refund? <span class="faq-chevron">&#9662;</span></button>
+                    <div class="faq-answer" id="cfaq-3-ans" role="region" aria-labelledby="cfaq-3-btn">Navigate to your dashboard, then Job History, then the relevant job, then Dispute Charge. Our billing team reviews disputes within 48 hours. Full refunds are issued for verified disputes within 5 business days.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="cfaq-4-btn" aria-expanded="false" aria-controls="cfaq-4-ans">Can I contact you for press or partnership inquiries? <span class="faq-chevron">&#9662;</span></button>
+                    <div class="faq-answer" id="cfaq-4-ans" role="region" aria-labelledby="cfaq-4-btn">Yes, email press@artisangrid.com. We respond to media and partnership inquiries within 2 business days. Attach any press kit or proposal brief for faster routing.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="cfaq-5-btn" aria-expanded="false" aria-controls="cfaq-5-ans">What if I need to cancel a job last-minute? <span class="faq-chevron">&#9662;</span></button>
+                    <div class="faq-answer" id="cfaq-5-ans" role="region" aria-labelledby="cfaq-5-btn">You can cancel up to 4 hours before the scheduled time with no penalty. Cancellations within 4 hours may incur a small call-out fee. Cancel via dashboard or contact us immediately for emergencies.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-banner">
+        <div class="cta-banner-glow" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 cta-banner-inner">
+            <div class="cta-banner-text">
+                <div class="eyebrow font-mono text-xs tracking-widest mb-4" style="color:var(--color-4)">- STILL NOT SURE?</div>
+                <h2 class="cta-banner-title font-mono">Just Send Us<br><span class="text-volt">a Message.</span></h2>
+                <p class="text-sm mt-4 max-w-md" style="color:var(--text-secondary)">You do not need a formal reason. If something is on your mind about a booking, an artisan, or the platform itself, we want to hear it.</p>
+            </div>
+            <div class="cta-banner-form">
+                <div class="join-checklist font-mono text-xs" style="color:var(--text-secondary)">
+                    <div class="join-check-item"><span style="color:var(--color-4)">&#10003;</span> No bots - real people reply</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">&#10003;</span> 2-hour response guarantee</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">&#10003;</span> Emergency line 24/7</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">&#10003;</span> 4.9-star support rating</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">&#10003;</span> Safety reports prioritized</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">&#10003;</span> All emails personally read</div>
+                </div>
+                <a href="#form" class="cta-btn font-mono" style="display:inline-block;text-decoration:none;margin-top:24px">Send a Message &rarr;</a>
+                <p class="font-mono text-xs mt-3" style="color:var(--text-muted)">Or call +1 (800) 555-0199 for emergencies</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="font-mono font-bold text-xl mb-3"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft, not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span id="footer-count">148 artisans online</span></div></div>
+                <div class="footer-links">
+                    <div class="footer-col"><div class="footer-col-title font-mono">Platform</div><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="artisans.html">Artisans</a></div>
+                    <div class="footer-col"><div class="footer-col-title font-mono">Company</div><a href="about.html">About</a><a href="about.html#trust">Trust &amp; Safety</a><a href="#">Blog</a><a href="contact.html">Contact</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span class="font-mono text-xs text-mut">&copy; 2026 ArtisanGrid. All rights reserved.</span><span class="font-mono text-xs text-mut hidden md:inline">Real help. Real people. Always.</span></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

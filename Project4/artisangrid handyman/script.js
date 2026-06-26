@@ -350,3 +350,28 @@ if (themeToggleBtn) {
     });
 }
 
+/* ──────────────────────────────────────────────────────────────
+   13. RTL / LTR DIRECTION TOGGLER
+   ────────────────────────────────────────────────────────────── */
+const rtlToggleBtn = document.getElementById('rtl-toggle');
+if (rtlToggleBtn) {
+    const label = rtlToggleBtn.querySelector('.rtl-label');
+    const updateLabel = () => {
+        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+        if (label) label.textContent = isRtl ? 'LTR' : 'RTL';
+    };
+    updateLabel();
+
+    rtlToggleBtn.addEventListener('click', function () {
+        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+        if (isRtl) {
+            document.documentElement.removeAttribute('dir');
+            localStorage.setItem('dir', 'ltr');
+        } else {
+            document.documentElement.setAttribute('dir', 'rtl');
+            localStorage.setItem('dir', 'rtl');
+        }
+        updateLabel();
+    });
+}
+

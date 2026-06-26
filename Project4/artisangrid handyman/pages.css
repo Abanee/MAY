@@ -7,6 +7,26 @@
    PHOTO HERO (Home 2)
 ══════════════════════════════════════════════════════════════ */
 .photo-hero {
+    /* Force dark theme variables because photo hero has a dark background image */
+    --carbon: #0A0A0E;
+    --surface: #111116;
+    --surface-2: #161622;
+    --offwhite: #F3F4F6;
+    --text-secondary: #a1a1aa;
+    --text-muted: #52525b;
+    --volt: #D4FF00;
+    --border: rgba(255, 255, 255, 0.06);
+    --border-mid: rgba(255, 255, 255, 0.12);
+    --border-hover: rgba(255, 255, 255, 0.18);
+    --color-1: #06B6D4;
+    --color-2: #D946EF;
+    --color-3: #F59E0B;
+    --color-4: #10B981;
+    --color-5: #8B5CF6;
+    --cta-bg: var(--volt);
+    --cta-text: #0A0A0E;
+    --cta-hover: #c2eb00;
+
     position: relative;
     min-height: calc(100vh - 74px);
     display: flex;
@@ -553,6 +573,15 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom, rgba(10,10,14,0.5), rgba(10,10,14,0.8));
+    transition: background 0.3s ease;
+}
+.light-theme .services-banner-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(248, 250, 252, 0.75) 0%,
+        rgba(248, 250, 252, 0.25) 50%,
+        rgba(255, 255, 255, 0.75) 100%
+    );
 }
 
 .svc-cat-header {
@@ -567,7 +596,8 @@
     width: 60px; height: 60px;
     border-radius: 14px;
     display: flex; align-items: center; justify-content: center;
-    background: rgba(var(--color-1-rgb), 0.12);
+    background: color-mix(in srgb, var(--svc-color, var(--color-1)) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--svc-color, var(--color-1)) 22%, transparent);
     flex-shrink: 0;
 }
 .svc-cat-title {
@@ -861,9 +891,9 @@
     font-size: 0.68rem;
     padding: 4px 10px;
     border-radius: 6px;
-    background: rgba(var(--color-1-rgb), 0.12);
-    color: var(--color-1);
-    border: 1px solid rgba(var(--color-1-rgb), 0.25);
+    background: color-mix(in srgb, var(--badge-color, var(--color-1)) 12%, transparent);
+    color: var(--badge-color, var(--color-1));
+    border: 1px solid color-mix(in srgb, var(--badge-color, var(--color-1)) 25%, transparent);
     letter-spacing: 0.04em;
 }
 

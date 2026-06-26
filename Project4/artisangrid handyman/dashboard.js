@@ -449,4 +449,92 @@ document.addEventListener('DOMContentLoaded', () => {
     initStarWidget('2815');
     initStarWidget('2801');
     refreshTabCounts();
+
+    // Restore active tab
+    const savedTab = localStorage.getItem('active_dash_tab') || 'overview';
+    window.switchDashboardTab(savedTab);
 });
+
+/* ──────────────────────────────────────────────────────────────
+   13. RTL / LTR DIRECTION TOGGLER
+   ────────────────────────────────────────────────────────────── */
+const rtlToggleBtn = document.getElementById('rtl-toggle');
+if (rtlToggleBtn) {
+    const label = rtlToggleBtn.querySelector('.rtl-label');
+    const updateLabel = () => {
+        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+        if (label) label.textContent = isRtl ? 'LTR' : 'RTL';
+    };
+    updateLabel();
+
+    rtlToggleBtn.addEventListener('click', function () {
+        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+        if (isRtl) {
+            document.documentElement.removeAttribute('dir');
+            localStorage.setItem('dir', 'ltr');
+        } else {
+            document.documentElement.setAttribute('dir', 'rtl');
+            localStorage.setItem('dir', 'rtl');
+        }
+        updateLabel();
+    });
+}
+
+/* ──────────────────────────────────────────────────────────────
+   14. DASHBOARD TAB SWITCHING SYSTEM
+   ────────────────────────────────────────────────────────────── */
+const sidebarTabs = document.querySelectorAll('.dash-nav-item');
+const tabContents = document.querySelectorAll('.dash-tab-content');
+
+sidebarTabs.forEach(btn => {
+    btn.addEventListener('click', function () {
+        const targetTab = this.dataset.tab;
+        
+        sidebarTabs.forEach(t => t.classList.remove('active'));
+        this.classList.add('active');
+        
+        tabContents.forEach(content => {
+            if (content.id === `tab-${targetTab}`) {
+                content.classList.remove('hidden');
+            } else {
+                content.classList.add('hidden');
+            }
+        });
+        
+        localStorage.setItem('active_dash_tab', targetTab);
+    });
+});
+
+window.switchDashboardTab = function (tabName) {
+    const btn = document.querySelector(`.dash-nav-item[data-tab="${tabName}"]`);
+    if (btn) btn.click();
+};
+
+/* ── Profile settings save feedback ───────────────────────── */
+const saveProfileBtn = document.getElementById('save-profile-btn');
+const profileName = document.getElementById('profile-name');
+const cardHolderName = document.getElementById('card-holder-name');
+
+if (saveProfileBtn) {
+    saveProfileBtn.addEventListener('click', () => {
+        saveProfileBtn.textContent = 'Saving… ✓';
+        saveProfileBtn.disabled = true;
+        saveProfileBtn.style.opacity = '0.7';
+        
+        if (profileName && cardHolderName) {
+            cardHolderName.textContent = profileName.value.trim();
+            const greetingName = document.querySelector('.dash-greeting span');
+            if (greetingName) greetingName.textContent = profileName.value.trim();
+            const sidebarName = document.querySelector('.dsp-name');
+            if (sidebarName) sidebarName.textContent = profileName.value.trim();
+        }
+        
+        setTimeout(() => {
+            saveProfileBtn.textContent = 'Save Changes';
+            saveProfileBtn.disabled = false;
+            saveProfileBtn.style.opacity = '1';
+            alert('Profile settings saved successfully!');
+        }, 1000);
+    });
+}
+

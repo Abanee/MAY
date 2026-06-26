@@ -15,6 +15,10 @@
             if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
                 document.documentElement.classList.add('light-theme');
             }
+            const savedDir = localStorage.getItem('dir');
+            if (savedDir === 'rtl') {
+                document.documentElement.setAttribute('dir', 'rtl');
+            }
         })();
     </script>
     <script>
@@ -90,6 +94,7 @@
                     <a href="artisans.html" class="nav-link">Artisans</a>
                     <a href="pricing.html" class="nav-link">Pricing</a>
                     <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
                 </div>
 
                 <!-- Theme Toggle Button -->
@@ -100,6 +105,11 @@
                     <svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
                     </svg>
+                </button>
+
+                <!-- Direction Toggle Button -->
+                <button id="rtl-toggle" class="theme-toggle-btn" aria-label="Toggle Layout Direction">
+                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
 
                 <a href="dashboard.html" class="nav-cta hidden md:inline-block">Dashboard →</a>
@@ -116,6 +126,7 @@
             <a href="artisans.html">Artisans</a>
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
             <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a>
         </div>
     </nav>

@@ -32,14 +32,7 @@
     
     --cta-bg:     var(--volt);
     --cta-text:   #0A0A0E;
-    --cta-hover:  #c2eb00;
-
-    /* Map old variable names to the new semantic system so we don't break existing CSS */
-    --color-2: var(--c2);
-    --color-3: var(--c3);
-    --color-4: var(--c4);
-    --color-5: var(--c5);
-}
+    --cta-hover:  #c2eb00;}
 
 .light-theme {
     /* Light Theme */
@@ -906,4 +899,30 @@ body,
     .headline-word,
     .headline-accent  { transition: none; }
     .bento-card       { transition: none; }
+
+/* ── RTL (Right-to-Left) Support ────────────────────────────── */
+[dir="rtl"] {
+    text-align: right;
+}
+[dir="rtl"] body {
+    direction: rtl;
+}
+[dir="rtl"] .ml-auto { margin-left: 0 !important; margin-right: auto !important; }
+[dir="rtl"] .mr-auto { margin-right: 0 !important; margin-left: auto !important; }
+[dir="rtl"] .text-left { text-align: right !important; }
+[dir="rtl"] .text-right { text-align: left !important; }
+
+[dir="rtl"] .nav-link::after {
+    left: auto;
+    right: 0;
+}
+[dir="rtl"] .adc-rating, 
+[dir="rtl"] .eta-value {
+    text-align: left;
+}
+[dir="rtl"] .phc-step,
+[dir="rtl"] .phc-title,
+[dir="rtl"] .phc-desc {
+    text-align: right;
+}
 }
