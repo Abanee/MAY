@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtisanGrid — About Us & Trust & Safety</title>
+    <meta name="description" content="Learn about ArtisanGrid — a multi-service platform aggregating local handymen across trades. Our mission, trust & safety standards, and how to join the network.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+    <script>(function(){const s=localStorage.getItem('theme');if(s==='light'||(!s&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-theme');}})();</script>
+    <script>tailwind.config={theme:{container:{center:true},extend:{colors:{carbon:'var(--carbon)',surface:'var(--surface)',surface2:'var(--surface-2)',offwhite:'var(--offwhite)',sec:'var(--text-secondary)',mut:'var(--text-muted)',volt:'var(--volt)',c1:'var(--color-1)',c2:'var(--color-2)',c3:'var(--color-3)',c4:'var(--color-4)',c5:'var(--color-5)'},fontFamily:{mono:['JetBrains Mono','monospace'],sans:['Inter','sans-serif']}}}}</script>
+</head>
+<body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
+    <div class="grain-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)" opacity="1"/></svg></div>
+
+    <div class="utility-bar"><div class="container mx-auto px-6 flex items-center justify-between"><div class="flex items-center gap-2 font-mono text-xs"><span class="pulse-dot"></span><span id="artisan-count">148 Verified Artisans Active in Sector 4</span></div><div class="hidden md:flex items-center gap-6 font-mono text-xs text-sec"><span>Mon–Sat 06:00–22:00</span><span class="text-volt font-semibold">Emergency 24/7</span></div></div></div>
+
+    <nav class="main-nav">
+        <div class="container mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="home2.html" class="nav-link">Home 2</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="artisans.html" class="nav-link">Artisans</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="about.html" class="nav-link" style="color:var(--volt)">About</a>
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+                <a href="dashboard.html" class="nav-cta hidden md:inline-block">Dashboard →</a>
+                <button class="md:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div class="mobile-menu hidden" id="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="artisans.html">Artisans</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a></div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-glow"></div>
+        <div class="container mx-auto px-6">
+            <div class="page-hero-inner">
+                <span class="section-eyebrow font-mono">— OUR STORY</span>
+                <h1 class="page-hero-title font-mono">Built for<br><span style="background:linear-gradient(135deg,var(--color-2) 0%,var(--volt) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Real Craft.</span><br>Not Algorithms.</h1>
+                <p class="page-hero-sub">ArtisanGrid was founded because the trades deserved a platform that works for them — not a middleman taking 25% of every job.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSION -->
+    <section class="section-alt">
+        <div class="container mx-auto px-6">
+            <div class="about-split">
+                <div class="about-split-text">
+                    <span class="section-eyebrow font-mono">— MISSION</span>
+                    <h2 class="section-title font-mono" style="margin-bottom:24px">The Aggregator<br><span style="color:var(--color-1)">That Serves Craft.</span></h2>
+                    <p class="about-body">ArtisanGrid is a <strong style="color:var(--offwhite)">multi-service platform aggregating local handymen across trades</strong> — distinct from a single-trade contractor's own website. We connect homeowners with the full spectrum of skilled tradespeople in their area: plumbers, electricians, carpenters, HVAC technicians, painters, and general repairers.</p>
+                    <p class="about-body">Unlike booking platforms that take 15–30% commission, we generate revenue through optional artisan memberships — not cuts of your earnings. The artisan keeps every dollar the customer pays them.</p>
+                    <p class="about-body">Our technology does the matchmaking. The artisan does the work. The customer gets transparency. Nobody gets exploited.</p>
+                </div>
+                <div class="about-split-stats">
+                    <div class="about-stat-card">
+                        <div class="asc-num font-mono" style="color:var(--volt)">148</div>
+                        <div class="asc-label font-mono">Verified Artisans</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="asc-num font-mono" style="color:var(--color-1)">18</div>
+                        <div class="asc-label font-mono">Trade Categories</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="asc-num font-mono" style="color:var(--color-4)">4,820</div>
+                        <div class="asc-label font-mono">Jobs Completed</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="asc-num font-mono" style="color:var(--color-2)">★ 4.84</div>
+                        <div class="asc-label font-mono">Avg. Rating</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="asc-num font-mono" style="color:var(--color-3)">$0</div>
+                        <div class="asc-label font-mono">Customer Fee</div>
+                    </div>
+                    <div class="about-stat-card">
+                        <div class="asc-num font-mono" style="color:var(--color-5)">8 min</div>
+                        <div class="asc-label font-mono">Avg. Match Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST & SAFETY -->
+    <section class="section-dark" id="trust">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— TRUST & SAFETY</span>
+                <h2 class="section-title font-mono">How We Keep<br><span style="color:var(--color-4)">Everyone Safe.</span></h2>
+                <p class="section-sub">Every artisan on ArtisanGrid is put through a rigorous vetting process before they can take a single booking.</p>
+            </div>
+            <div class="trust-cards-grid">
+                <div class="trust-card">
+                    <div class="trust-card-icon" style="color:var(--color-1)">🔍</div>
+                    <h3 class="trust-card-title font-mono">Background Checks</h3>
+                    <p class="trust-card-desc">Every artisan undergoes a full criminal record check, identity verification, and address confirmation before joining the network.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon" style="color:var(--volt)">📜</div>
+                    <h3 class="trust-card-title font-mono">License Verification</h3>
+                    <p class="trust-card-desc">Trade licenses are verified directly with issuing authorities. Electricians, plumbers, and HVAC techs must hold current certifications relevant to their sector.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon" style="color:var(--color-4)">🛡️</div>
+                    <h3 class="trust-card-title font-mono">Insurance Coverage</h3>
+                    <p class="trust-card-desc">All artisans must carry a minimum £1M / $1M public liability insurance. Proof is validated annually and displayed on every profile.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon" style="color:var(--color-2)">⭐</div>
+                    <h3 class="trust-card-title font-mono">Neighbor Reviews</h3>
+                    <p class="trust-card-desc">Only verified customers who completed a job can leave a review. No fake 5-stars. Artisans below 4.0 are flagged for review by our quality team.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon" style="color:var(--color-3)">💳</div>
+                    <h3 class="trust-card-title font-mono">Secure Payments</h3>
+                    <p class="trust-card-desc">Payments are held in escrow until you confirm job completion. Dispute resolution within 48 hours. Full refunds processed for unresolved issues.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-card-icon" style="color:var(--color-5)">📞</div>
+                    <h3 class="trust-card-title font-mono">24/7 Support</h3>
+                    <p class="trust-card-desc">Our safety team is available around the clock. In an emergency, call our direct line — we'll escalate immediately and coordinate the nearest available specialist.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section class="section-alt">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— HISTORY</span>
+                <h2 class="section-title font-mono">How We<br><span style="color:var(--color-3)">Got Here.</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year font-mono">2021</div>
+                    <div class="timeline-dot" style="background:var(--color-1)"></div>
+                    <div class="timeline-content">
+                        <h3 class="font-mono" style="color:var(--offwhite);margin-bottom:8px">Founded in Sector 4</h3>
+                        <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.75">After a burst pipe and three unreliable contractors, co-founders Mia and Dev built ArtisanGrid over a weekend. First 12 artisans were friends and neighbors.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year font-mono">2022</div>
+                    <div class="timeline-dot" style="background:var(--color-4)"></div>
+                    <div class="timeline-content">
+                        <h3 class="font-mono" style="color:var(--offwhite);margin-bottom:8px">First 1,000 Jobs</h3>
+                        <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.75">Network expanded to 45 artisans across 4 trades. First emergency 24/7 coverage launched. Zero commission policy written into the founding charter.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year font-mono">2023</div>
+                    <div class="timeline-dot" style="background:var(--volt)"></div>
+                    <div class="timeline-content">
+                        <h3 class="font-mono" style="color:var(--offwhite);margin-bottom:8px">Dashboard Launch</h3>
+                        <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.75">Real-time artisan tracking dashboard launched. Live ETA, job status, and neighbor reviews all in one place. 80 artisans, 8 trade categories.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year font-mono">2024</div>
+                    <div class="timeline-dot" style="background:var(--color-2)"></div>
+                    <div class="timeline-content">
+                        <h3 class="font-mono" style="color:var(--offwhite);margin-bottom:8px">Multi-Sector Expansion</h3>
+                        <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.75">Expanded to 14 sectors. Background check program formalized with third-party verification partners. Pro membership tier launched.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year font-mono">2026</div>
+                    <div class="timeline-dot" style="background:var(--color-4)"></div>
+                    <div class="timeline-content">
+                        <h3 class="font-mono" style="color:var(--offwhite);margin-bottom:8px">Today: 148 Artisans, 18 Trades</h3>
+                        <p style="color:var(--text-secondary);font-size:.875rem;line-height:1.75">4,820 jobs completed. Average platform rating of 4.84 stars. Still zero commission. Still founded on the belief that craft deserves respect.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JOIN SECTION -->
+    <section class="cta-banner" id="join">
+        <div class="cta-banner-glow" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 cta-banner-inner">
+            <div class="cta-banner-text">
+                <div class="eyebrow font-mono text-xs tracking-widest mb-4" style="color:var(--color-1)">— JOIN THE NETWORK</div>
+                <h2 class="cta-banner-title font-mono">Are you a<br><span class="text-volt">Skilled Artisan?</span></h2>
+                <p class="text-sm mt-4 max-w-md" style="color:var(--text-secondary)">Keep 100% of your earnings. We take zero commission. Apply in under 5 minutes and start receiving job requests this week.</p>
+            </div>
+            <div class="cta-banner-form">
+                <div class="join-checklist font-mono text-xs" style="color:var(--text-secondary)">
+                    <div class="join-check-item"><span style="color:var(--color-4)">✓</span> 0% commission on all work</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">✓</span> Free profile on the directory</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">✓</span> Real-time job notifications</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">✓</span> Trusted by 14 local sectors</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">✓</span> Background check support</div>
+                    <div class="join-check-item"><span style="color:var(--color-4)">✓</span> Dashboard & analytics tools</div>
+                </div>
+                <a href="mailto:join@artisangrid.com" class="cta-btn font-mono" style="display:inline-block;text-decoration:none;margin-top:24px">Apply to Join →</a>
+                <p class="font-mono text-xs mt-3" style="color:var(--text-muted)">Applications reviewed within 48 hours</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="font-mono font-bold text-xl mb-3"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span>148 artisans online</span></div></div>
+                <div class="footer-links">
+                    <div class="footer-col"><div class="footer-col-title font-mono">Platform</div><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="artisans.html">Artisans</a></div>
+                    <div class="footer-col"><div class="footer-col-title font-mono">Company</div><a href="about.html">About</a><a href="about.html#trust">Trust & Safety</a><a href="#">Blog</a><a href="#">Contact</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span class="font-mono text-xs text-mut">© 2026 ArtisanGrid. All rights reserved.</span><span class="font-mono text-xs text-mut hidden md:inline">Built for real work. Not for stock photos.</span></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+</body>
+</html>

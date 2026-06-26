@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtisanGrid — Trusted Local Handymen, Any Trade</title>
+    <meta name="description" content="Book background-checked, licensed handymen across every trade — plumbing, electrical, carpentry, HVAC and more. ArtisanGrid: zero platform fees, instant dispatch.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                document.documentElement.classList.add('light-theme');
+            }
+        })();
+    </script>
+    <script>
+        tailwind.config = {
+            theme: {
+                container: { center: true },
+                extend: {
+                    colors: {
+                        carbon:   'var(--carbon)',
+                        surface:  'var(--surface)',
+                        surface2: 'var(--surface-2)',
+                        offwhite: 'var(--offwhite)',
+                        sec:      'var(--text-secondary)',
+                        mut:      'var(--text-muted)',
+                        volt:     'var(--volt)',
+                        c1: 'var(--color-1)', c2: 'var(--color-2)',
+                        c3: 'var(--color-3)', c4: 'var(--color-4)', c5: 'var(--color-5)',
+                    },
+                    fontFamily: { mono: ['JetBrains Mono', 'monospace'], sans: ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
+
+    <!-- Film Grain Overlay -->
+    <div class="grain-overlay" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+            <rect width="100%" height="100%" filter="url(#grain)" opacity="1"/>
+        </svg>
+    </div>
+
+    <!-- UTILITY BAR -->
+    <div class="utility-bar">
+        <div class="container mx-auto px-6 flex items-center justify-between">
+            <div class="flex items-center gap-2 font-mono text-xs">
+                <span class="pulse-dot"></span>
+                <span id="artisan-count">148 Verified Artisans Active in Sector 4</span>
+            </div>
+            <div class="hidden md:flex items-center gap-6 font-mono text-xs text-sec">
+                <span>Mon–Sat  06:00–22:00</span>
+                <span class="text-volt font-semibold">Emergency 24/7</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="main-nav">
+        <div class="container mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none">
+                <span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span>
+            </a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="home2.html" class="nav-link" style="color:var(--volt)">Home 2</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="artisans.html" class="nav-link">Artisans</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="about.html" class="nav-link">About</a>
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
+                    <svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                </button>
+                <a href="dashboard.html" class="nav-cta hidden md:inline-block">Dashboard →</a>
+                <button class="md:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="artisans.html">Artisans</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         FULL-BLEED PHOTO HERO
+    ═══════════════════════════════════════ -->
+    <section class="photo-hero" id="hero">
+        <div class="photo-hero-bg"></div>
+        <div class="photo-hero-overlay"></div>
+        <div class="container mx-auto px-6 photo-hero-content">
+            <div class="photo-hero-inner">
+                <div class="eyebrow font-mono text-xs tracking-widest mb-6" style="color:var(--color-1)">
+                    — MULTI-TRADE AGGREGATOR PLATFORM
+                </div>
+                <h1 class="photo-hero-headline">
+                    <span class="block font-light" style="opacity:.7">Every Trade.</span>
+                    <span class="block font-black photo-hero-accent">One Platform.</span>
+                    <span class="block font-extrabold" style="opacity:.9">Zero Compromise.</span>
+                </h1>
+                <p class="photo-hero-sub">
+                    ArtisanGrid unites 150+ licensed craftspeople across every home trade — from emergency plumbing to precision joinery — on a single, transparent marketplace with no hidden fees.
+                </p>
+                <div class="photo-hero-cta-group">
+                    <a href="services.html" class="photo-btn-primary">Browse All Services →</a>
+                    <a href="artisans.html" class="photo-btn-secondary">Meet the Artisans</a>
+                </div>
+                <div class="photo-stats-strip">
+                    <div class="photo-stat">
+                        <span class="photo-stat-val font-mono">148</span>
+                        <span class="photo-stat-label">Active Artisans</span>
+                    </div>
+                    <div class="photo-stat-divider"></div>
+                    <div class="photo-stat">
+                        <span class="photo-stat-val font-mono" style="color:var(--color-4)">★ 4.8</span>
+                        <span class="photo-stat-label">Avg. Rating</span>
+                    </div>
+                    <div class="photo-stat-divider"></div>
+                    <div class="photo-stat">
+                        <span class="photo-stat-val font-mono" style="color:var(--color-1)">8 min</span>
+                        <span class="photo-stat-label">Avg. Response</span>
+                    </div>
+                    <div class="photo-stat-divider"></div>
+                    <div class="photo-stat">
+                        <span class="photo-stat-val font-mono text-volt">$0</span>
+                        <span class="photo-stat-label">Platform Fee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-hint" aria-hidden="true">
+            <span class="font-mono text-xs" style="color:var(--text-muted)">scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- TICKER -->
+    <div class="social-ticker" aria-label="Live activity feed">
+        <div class="ticker-track">
+            <span class="ticker-item">⚡ Sarah M. booked an electrician — 3 min ago</span><span class="ticker-sep">·</span>
+            <span class="ticker-item">🔧 James R. rated Marcus V. ★★★★★ — just now</span><span class="ticker-sep">·</span>
+            <span class="ticker-item">🪚 New artisan: Elena K. — Senior Carpenter joined</span><span class="ticker-sep">·</span>
+            <span class="ticker-item">❄️ HVAC emergency resolved in 18 mins — Sector 7</span><span class="ticker-sep">·</span>
+            <span class="ticker-item">🔧 Pipe burst fixed in Sector 2 — 11 min ago</span><span class="ticker-sep">·</span>
+            <span class="ticker-item">⚡ Panel upgrade booked — Tom R. dispatched</span><span class="ticker-sep">·</span>
+            <span class="ticker-item">⚡ Sarah M. booked an electrician — 3 min ago</span><span class="ticker-sep">·</span>
+            <span class="ticker-item">🔧 James R. rated Marcus V. ★★★★★ — just now</span><span class="ticker-sep">·</span>
+        </div>
+    </div>
+
+    <!-- SERVICES PREVIEW -->
+    <section class="section-alt" id="services-preview">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— WHAT WE COVER</span>
+                <h2 class="section-title font-mono">Every Trade<br><span style="color:var(--color-1)">Under One Roof.</span></h2>
+                <p class="section-sub">From a dripping tap to a full rewire — our network covers it all.</p>
+            </div>
+            <div class="services-preview-grid">
+                <a href="services.html#electrical" class="service-preview-card">
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-1)">⚡</div>
+                    <div class="svc-info"><div class="svc-name font-mono">Electrical</div><div class="svc-desc">Rewiring, panel upgrades, outlets, lighting</div><div class="svc-meta font-mono">from <span style="color:var(--color-1)">$60</span></div></div>
+                    <div class="svc-arrow font-mono">→</div>
+                </a>
+                <a href="services.html#plumbing" class="service-preview-card">
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-5)">🔧</div>
+                    <div class="svc-info"><div class="svc-name font-mono">Plumbing</div><div class="svc-desc">Leaks, drains, fixtures, water heaters</div><div class="svc-meta font-mono">from <span style="color:var(--color-5)">$45</span></div></div>
+                    <div class="svc-arrow font-mono">→</div>
+                </a>
+                <a href="services.html#carpentry" class="service-preview-card">
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-3)">🪚</div>
+                    <div class="svc-info"><div class="svc-name font-mono">Carpentry</div><div class="svc-desc">Framing, decks, cabinets, doors, flooring</div><div class="svc-meta font-mono">from <span style="color:var(--color-3)">$55</span></div></div>
+                    <div class="svc-arrow font-mono">→</div>
+                </a>
+                <a href="services.html#hvac" class="service-preview-card">
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-2)">❄️</div>
+                    <div class="svc-info"><div class="svc-name font-mono">HVAC</div><div class="svc-desc">AC, heating, ventilation, thermostats</div><div class="svc-meta font-mono">from <span style="color:var(--color-2)">$80</span></div></div>
+                    <div class="svc-arrow font-mono">→</div>
+                </a>
+                <a href="services.html#painting" class="service-preview-card">
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-4)">🖌️</div>
+                    <div class="svc-info"><div class="svc-name font-mono">Painting</div><div class="svc-desc">Interior, exterior, prep, finishing</div><div class="svc-meta font-mono">from <span style="color:var(--color-4)">$40</span></div></div>
+                    <div class="svc-arrow font-mono">→</div>
+                </a>
+                <a href="services.html#general" class="service-preview-card">
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-1)">🛠️</div>
+                    <div class="svc-info"><div class="svc-name font-mono">General Repairs</div><div class="svc-desc">Anything else — we have a specialist</div><div class="svc-meta font-mono">from <span style="color:var(--color-1)">$35</span></div></div>
+                    <div class="svc-arrow font-mono">→</div>
+                </a>
+            </div>
+            <div class="text-center mt-12">
+                <a href="services.html" class="view-all-link font-mono">View all 18 service categories →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section-dark" id="testimonials">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— REAL REVIEWS</span>
+                <h2 class="section-title font-mono">What Your<br><span style="color:var(--color-4)">Neighbors Say.</span></h2>
+                <p class="section-sub">Unfiltered. From real homeowners in your area.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="tc-stars font-mono text-volt">★★★★★</div>
+                    <p class="tc-text">"Marcus fixed our burst pipe at 11pm. Had the water back on within 40 minutes. The live ETA tracking on the dashboard was brilliant — I knew exactly when he'd arrive."</p>
+                    <div class="tc-author">
+                        <div class="tc-avatar font-mono" style="background:var(--color-4)">JD</div>
+                        <div class="tc-meta"><div class="tc-name font-mono">Jamie D.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 4 · Plumbing</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="tc-stars font-mono text-volt">★★★★★</div>
+                    <p class="tc-text">"Sophie rewired the entire ground floor. Professional, tidy, and the price was exactly what was quoted — no hidden extras. I've already recommended ArtisanGrid to six friends."</p>
+                    <div class="tc-author">
+                        <div class="tc-avatar font-mono" style="background:var(--color-1)">RL</div>
+                        <div class="tc-meta"><div class="tc-name font-mono">Rachel L.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 7 · Electrical</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="tc-stars font-mono text-volt">★★★★☆</div>
+                    <p class="tc-text">"Built us a custom deck in 3 days. Elena brought her own specialist tools and the finish was exceptional. Only docking one star because availability was limited — booked out two days ahead."</p>
+                    <div class="tc-author">
+                        <div class="tc-avatar font-mono" style="background:var(--color-3)">MP</div>
+                        <div class="tc-meta"><div class="tc-name font-mono">Mark P.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 2 · Carpentry</div></div>
+                    </div>
+                </div>
+                <div class="testimonial-card tc-featured">
+                    <div class="tc-feature-badge font-mono">MOST HELPFUL</div>
+                    <div class="tc-stars font-mono text-volt">★★★★★</div>
+                    <p class="tc-text">"I was sceptical of yet another app, but ArtisanGrid is genuinely different. No upsells, no bait-and-switch pricing. Tom serviced our entire HVAC system and the quote was bang on. The zero-fee model actually makes it cheaper than calling individual contractors."</p>
+                    <div class="tc-author">
+                        <div class="tc-avatar font-mono" style="background:var(--color-2)">AW</div>
+                        <div class="tc-meta"><div class="tc-name font-mono">Amara W.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 1 · HVAC</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPARISON TABLE -->
+    <section class="section-alt" id="why-artisangrid">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— THE DIFFERENCE</span>
+                <h2 class="section-title font-mono">Not a Contractor.<br><span class="text-volt">A Network.</span></h2>
+                <p class="section-sub">We aggregate the best local specialists across all trades — not one trade's own branded site.</p>
+            </div>
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div class="comp-col comp-label font-mono">Feature</div>
+                    <div class="comp-col comp-them font-mono">Single-Trade Contractor</div>
+                    <div class="comp-col comp-us font-mono">ArtisanGrid</div>
+                </div>
+                <div class="comparison-row"><div class="comp-col comp-label">Multiple Trades</div><div class="comp-col comp-them"><span class="comp-no">✕</span> One trade only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> 18 categories</div></div>
+                <div class="comparison-row"><div class="comp-col comp-label">Platform Fee</div><div class="comp-col comp-them"><span class="comp-no">✕</span> 15–30% markup</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Zero. Always.</div></div>
+                <div class="comparison-row"><div class="comp-col comp-label">Live ETA Tracking</div><div class="comp-col comp-them"><span class="comp-no">✕</span> Phone call only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Real-time dashboard</div></div>
+                <div class="comparison-row"><div class="comp-col comp-label">Verified Reviews</div><div class="comp-col comp-them"><span class="comp-no">✕</span> Self-curated</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Neighbor-verified</div></div>
+                <div class="comparison-row"><div class="comp-col comp-label">Background Checks</div><div class="comp-col comp-them"><span class="comp-no">~</span> Varies</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> All artisans</div></div>
+                <div class="comparison-row"><div class="comp-col comp-label">Emergency 24/7</div><div class="comp-col comp-them"><span class="comp-no">~</span> Select only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Network-wide</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARTISAN STRIP -->
+    <section class="section-dark">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— TOP RATED</span>
+                <h2 class="section-title font-mono">Meet a Few<br><span style="color:var(--color-2)">of the Best.</span></h2>
+            </div>
+            <div class="artisan-strip">
+                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-1)">MV</div><div class="asc-name font-mono">Marcus V.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Master Plumber</div><div class="asc-rating font-mono text-volt">★ 4.9</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">24/7</span></div></div>
+                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-2)">EK</div><div class="asc-name font-mono">Elena K.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Senior Carpenter</div><div class="asc-rating font-mono text-volt">★ 4.8</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">Insured</span></div></div>
+                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-5)">TR</div><div class="asc-name font-mono">Tom R.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">HVAC Technician</div><div class="asc-rating font-mono text-volt">★ 4.7</div><div class="asc-badges"><span class="tag">Certified</span><span class="tag">Emergency</span></div></div>
+                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-4)">SB</div><div class="asc-name font-mono">Sophie B.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Electrician</div><div class="asc-rating font-mono text-volt">★ 4.9</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">Certified</span></div></div>
+                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-3)">RO</div><div class="asc-name font-mono">Ray O.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">General Repairs</div><div class="asc-rating font-mono text-volt">★ 4.6</div><div class="asc-badges"><span class="tag">Insured</span><span class="tag">Emergency</span></div></div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="artisans.html" class="view-all-link font-mono">Browse all 148 artisans →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="cta-banner">
+        <div class="cta-banner-glow" aria-hidden="true"></div>
+        <div class="container mx-auto px-6 cta-banner-inner">
+            <div class="cta-banner-text">
+                <div class="eyebrow font-mono text-xs tracking-widest mb-4" style="color:var(--color-1)">— GET STARTED</div>
+                <h2 class="cta-banner-title font-mono">What needs<br>fixing <span class="text-volt">today?</span></h2>
+                <p class="text-sm mt-4 max-w-md" style="color:var(--text-secondary)">Describe the job below and we'll match you with the right specialist in under a minute.</p>
+            </div>
+            <div class="cta-banner-form">
+                <div class="cta-bar" style="max-width:100%">
+                    <input type="text" class="cta-input" placeholder="e.g. Boiler making noise…" id="h2-search" autocomplete="off"/>
+                    <button class="cta-btn" id="h2-cta-btn">Request Dispatch →</button>
+                </div>
+                <div class="cta-trust-row font-mono text-xs mt-4" style="color:var(--text-muted)">
+                    <span>🔒 No account needed</span><span>·</span><span>⚡ Average match: 47 seconds</span><span>·</span><span>$0 booking fee</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="font-mono font-bold text-xl mb-3"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></div>
+                    <p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p>
+                    <div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span id="footer-count">148 artisans online</span></div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <div class="footer-col-title font-mono">Platform</div>
+                        <a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="artisans.html">Artisans</a>
+                    </div>
+                    <div class="footer-col">
+                        <div class="footer-col-title font-mono">Company</div>
+                        <a href="about.html">About</a><a href="about.html#trust">Trust & Safety</a><a href="#">Blog</a><a href="#">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span class="font-mono text-xs text-mut">© 2026 ArtisanGrid. All rights reserved.</span>
+                <span class="font-mono text-xs text-mut hidden md:inline">Multi-trade. Zero fees. Real craftspeople.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+</body>
+</html>

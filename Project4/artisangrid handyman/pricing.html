@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtisanGrid — Transparent Pricing, Zero Platform Fees</title>
+    <meta name="description" content="ArtisanGrid charges zero platform fees. Browse honest, upfront pricing across all 18 trade categories. Pay only when the job is done.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+    <script>(function(){const s=localStorage.getItem('theme');if(s==='light'||(!s&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-theme');}})();</script>
+    <script>tailwind.config={theme:{container:{center:true},extend:{colors:{carbon:'var(--carbon)',surface:'var(--surface)',surface2:'var(--surface-2)',offwhite:'var(--offwhite)',sec:'var(--text-secondary)',mut:'var(--text-muted)',volt:'var(--volt)',c1:'var(--color-1)',c2:'var(--color-2)',c3:'var(--color-3)',c4:'var(--color-4)',c5:'var(--color-5)'},fontFamily:{mono:['JetBrains Mono','monospace'],sans:['Inter','sans-serif']}}}}</script>
+</head>
+<body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
+    <div class="grain-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)" opacity="1"/></svg></div>
+
+    <div class="utility-bar"><div class="container mx-auto px-6 flex items-center justify-between"><div class="flex items-center gap-2 font-mono text-xs"><span class="pulse-dot"></span><span id="artisan-count">148 Verified Artisans Active in Sector 4</span></div><div class="hidden md:flex items-center gap-6 font-mono text-xs text-sec"><span>Mon–Sat 06:00–22:00</span><span class="text-volt font-semibold">Emergency 24/7</span></div></div></div>
+
+    <nav class="main-nav">
+        <div class="container mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="home2.html" class="nav-link">Home 2</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="artisans.html" class="nav-link">Artisans</a>
+                    <a href="pricing.html" class="nav-link" style="color:var(--volt)">Pricing</a>
+                    <a href="about.html" class="nav-link">About</a>
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+                <a href="dashboard.html" class="nav-cta hidden md:inline-block">Dashboard →</a>
+                <button class="md:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div class="mobile-menu hidden" id="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="artisans.html">Artisans</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a></div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-glow"></div>
+        <div class="container mx-auto px-6">
+            <div class="page-hero-inner">
+                <span class="section-eyebrow font-mono">— TRANSPARENT PRICING</span>
+                <h1 class="page-hero-title font-mono">The Price You<br><span style="color:var(--volt)">See is the Price</span><br>You Pay.</h1>
+                <p class="page-hero-sub">No hidden charges, no bait-and-switch quotes, no platform markup. ArtisanGrid takes <strong style="color:var(--volt)">zero commission</strong> — ever.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW PRICING WORKS -->
+    <section class="section-alt">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— HOW IT WORKS</span>
+                <h2 class="section-title font-mono">Simple.<br><span style="color:var(--color-1)">Honest. Fair.</span></h2>
+            </div>
+            <div class="pricing-how-grid">
+                <div class="pricing-how-card">
+                    <div class="phc-step font-mono">01</div>
+                    <div class="phc-icon">💬</div>
+                    <h3 class="phc-title font-mono">Describe the Job</h3>
+                    <p class="phc-desc">Tell us what needs fixing. Our system generates an instant estimated price range based on real local data.</p>
+                </div>
+                <div class="pricing-how-card">
+                    <div class="phc-step font-mono">02</div>
+                    <div class="phc-icon">📋</div>
+                    <h3 class="phc-title font-mono">Get a Fixed Quote</h3>
+                    <p class="phc-desc">Your artisan provides a firm upfront quote before starting. No hourly surprises. If the scope changes, you approve every addition.</p>
+                </div>
+                <div class="pricing-how-card">
+                    <div class="phc-step font-mono">03</div>
+                    <div class="phc-icon">✅</div>
+                    <h3 class="phc-title font-mono">Pay After Completion</h3>
+                    <p class="phc-desc">Money only changes hands once you confirm the job is done and you're satisfied. Funds are held securely until you approve.</p>
+                </div>
+                <div class="pricing-how-card pricing-how-card--highlight">
+                    <div class="phc-step font-mono">$0</div>
+                    <div class="phc-icon">🎯</div>
+                    <h3 class="phc-title font-mono">Zero Platform Fee</h3>
+                    <p class="phc-desc">We charge the customer nothing. Artisans pay nothing. Our model is built on a voluntary membership for pro artisans who want premium visibility — not commissions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICE TABLE -->
+    <section class="section-dark">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— PRICE REFERENCE</span>
+                <h2 class="section-title font-mono">Typical<br><span style="color:var(--color-3)">Price Ranges.</span></h2>
+                <p class="section-sub">Market-rate estimates for common jobs. Your final quote may vary based on scope, materials, and location.</p>
+            </div>
+            <div class="price-table">
+                <div class="price-table-header">
+                    <div class="pt-col pt-trade font-mono">Trade</div>
+                    <div class="pt-col pt-job font-mono">Job Type</div>
+                    <div class="pt-col pt-low font-mono">Low</div>
+                    <div class="pt-col pt-high font-mono">High</div>
+                    <div class="pt-col pt-time font-mono">Typical Duration</div>
+                </div>
+                <div class="price-row" data-color="var(--color-1)">
+                    <div class="pt-col pt-trade"><span class="pt-trade-badge" style="--badge-color:var(--color-1)">⚡ Electrical</span></div>
+                    <div class="pt-col pt-job">Outlet Installation</div>
+                    <div class="pt-col pt-low font-mono" style="color:var(--color-4)">$60</div>
+                    <div class="pt-col pt-high font-mono">$95</div>
+                    <div class="pt-col pt-time" style="color:var(--text-muted)">1–2 hrs</div>
+                </div>
+                <div class="price-row" data-color="var(--color-1)">
+                    <div class="pt-col pt-trade"><span class="pt-trade-badge" style="--badge-color:var(--color-1)">⚡ Electrical</span></div>
+                    <div class="pt-col pt-job">Panel Upgrade</div>
+                    <div class="pt-col pt-low font-mono" style="color:var(--color-4)">$800</div>
+                    <div class="pt-col pt-high font-mono">$2,400</div>
+                    <div class="pt-col pt-time" style="color:var(--text-muted)">4–8 hrs</div>
+                </div>
+                <div class="price-row" data-color="var(--color-5)">
+                    <div class="pt-col pt-trade"><span class="pt-trade-badge" style="--badge-color:var(--color-5)">🔧 Plumbing</span></div>
+                    <div class="pt-col pt-job">Leak Repair</div>
+                    <div class="pt-col pt-low font-mono" style="color:var(--color-4)">$45</div>
+                    <div class="pt-col pt-high font-mono">$120</div>
+                    <div class="pt-col pt-time" style="color:var(--text-muted)">1–3 hrs</div>
+                </div>
+                <div class="price-row" data-color="var(--color-5)">
+                    <div class="pt-col pt-trade"><span class="pt-trade-badge" style="--badge-color:var(--color-5)">🔧 Plumbing</span></div>
+                    <div class="pt-col pt-job">Emergency Call-Out</div>
+                    <div class="pt-col pt-low font-mono" style="color:var(--color-4)">$150</div>
+                    <div class="pt-col pt-high font-mono">$350</div>
+                    <div class="pt-col pt-time" style="color:var(--text-muted)">2–5 hrs</div>
+                </div>
+                <div class="price-row" data-color="var(--color-3)">
+                    <div class="pt-col pt-trade"><span class="pt-trade-badge" style="--badge-color:var(--color-3)">🪚 Carpentry</span></div>
+                    <div class="pt-col pt-job">Cabinet Build</div>
+                    <div class="pt-col pt-low font-mono" style="color:var(--color-4)">$400</div>
+                    <div class="pt-col pt-high font-mono">$1,800</div>
+                    <div class="pt-col pt-time" style="color:var(--text-muted)">1–3 days</div>
+                </div>
+                <div class="price-row" data-color="var(--color-3)">
+                    <div class="pt-col pt-trade"><span class="pt-trade-badge" style="--badge-color:var(--color-3)">🪚 Carpentry</span></div>
+                    <div class="pt-col pt-job">Deck Build</div>
+                    <div class="pt-col pt-low font-mono" style="color:var(--color-4)">$1,200</div>
+                    <div class="pt-col pt-high font-mono">$6,000</div>
+                    <div class="pt-col pt-time" style="color:var(--text-muted)">2–5 days</div>
+                </div>
+                <div class="price-row" data-color="var(--color-2)">
+                    <div class="pt-col pt-trade"><span class="pt-trade-badge" style="--badge-color:var(--color-2)">❄️ HVAC</span></div>
+                    <div class="pt-col pt-job">AC Service</div>
+                    <div class="pt-col pt-low font-mono" style="color:var(--color-4)">$80</div>
+                    <div class="pt-col pt-high font-mono">$200</div>
+                    <div class="pt-col pt-time" style="color:var(--text-muted)">2–4 hrs</div>
+                </div>
+                <div class="price-row" data-color="var(--color-4)">
+                    <div class="pt-col pt-trade"><span class="pt-trade-badge" style="--badge-color:var(--color-4)">🖌️ Painting</span></div>
+                    <div class="pt-col pt-job">Interior Room</div>
+                    <div class="pt-col pt-low font-mono" style="color:var(--color-4)">$200</div>
+                    <div class="pt-col pt-high font-mono">$600</div>
+                    <div class="pt-col pt-time" style="color:var(--text-muted)">1–2 days</div>
+                </div>
+            </div>
+            <p class="text-xs mt-6 text-center" style="color:var(--text-muted);font-family:'JetBrains Mono',monospace">All prices are market-rate estimates. Final quotes from artisans may differ based on materials, complexity and location. No booking fee applies.</p>
+        </div>
+    </section>
+
+    <!-- PLANS — For Artisans -->
+    <section class="section-alt" id="artisan-plans">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— FOR ARTISANS</span>
+                <h2 class="section-title font-mono">Grow Your<br><span style="color:var(--color-1)">Business Free.</span></h2>
+                <p class="section-sub">Join free. Scale with optional Pro membership. We never touch your earnings.</p>
+            </div>
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-badge font-mono">FREE</div>
+                    <div class="plan-price font-mono">$0<span style="font-size:.8rem;color:var(--text-muted)">/month</span></div>
+                    <div class="plan-name font-mono">Standard Listing</div>
+                    <ul class="plan-features">
+                        <li>✓ Profile on the directory</li>
+                        <li>✓ Receive job requests</li>
+                        <li>✓ 0% commission on all jobs</li>
+                        <li>✓ Dashboard access</li>
+                        <li>✓ Customer reviews</li>
+                        <li style="color:var(--text-muted)">– Priority placement</li>
+                        <li style="color:var(--text-muted)">– Featured badge</li>
+                        <li style="color:var(--text-muted)">– Analytics</li>
+                    </ul>
+                    <a href="about.html#join" class="plan-cta-outline font-mono">Get Started Free →</a>
+                </div>
+                <div class="plan-card plan-card--featured">
+                    <div class="plan-badge font-mono" style="background:var(--volt);color:#0A0A0E">PRO</div>
+                    <div class="plan-price font-mono" style="color:var(--volt)">$19<span style="font-size:.8rem;color:var(--text-muted)">/month</span></div>
+                    <div class="plan-name font-mono">Pro Artisan</div>
+                    <ul class="plan-features">
+                        <li>✓ Everything in Free</li>
+                        <li>✓ Priority placement in search</li>
+                        <li>✓ "Verified Pro" badge</li>
+                        <li>✓ Full analytics dashboard</li>
+                        <li>✓ Lead notifications (instant)</li>
+                        <li>✓ Portfolio showcase</li>
+                        <li>✓ Monthly performance report</li>
+                        <li>✓ Dedicated support line</li>
+                    </ul>
+                    <a href="about.html#join" class="plan-cta font-mono">Start Pro Trial →</a>
+                    <div class="plan-note font-mono">14-day free trial • Cancel anytime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-dark">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— FAQ</span>
+                <h2 class="section-title font-mono">Common<br><span style="color:var(--color-4)">Questions.</span></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-1-btn" aria-expanded="false" aria-controls="faq-1-ans">How is ArtisanGrid free for customers? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-1-ans" role="region" aria-labelledby="faq-1-btn">We fund operations through optional Pro memberships for artisans who want premium visibility — not by charging customers or taking cuts from the job. It's a fundamentally different model to traditional platforms.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-2-btn" aria-expanded="false" aria-controls="faq-2-ans">When do I pay? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-2-ans" role="region" aria-labelledby="faq-2-btn">You pay only after the job is confirmed complete to your satisfaction. Funds are held securely during the job and released to the artisan once you approve. You can dispute within 48 hours of completion.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-3-btn" aria-expanded="false" aria-controls="faq-3-ans">What if the final price differs from the estimate? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-3-ans" role="region" aria-labelledby="faq-3-btn">Any scope change requires your explicit approval before work continues. Artisans are contractually required to quote any additions upfront. If they proceed without approval, our dispute process protects you.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-4-btn" aria-expanded="false" aria-controls="faq-4-ans">Do artisans pay commission? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-4-ans" role="region" aria-labelledby="faq-4-btn">No. Never. Artisans on ArtisanGrid keep 100% of what customers pay them. The optional Pro plan ($19/mo) is for marketing perks only — not a commission on work done.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-5-btn" aria-expanded="false" aria-controls="faq-5-ans">What payment methods are accepted? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-5-ans" role="region" aria-labelledby="faq-5-btn">Card (Visa/Mastercard/Amex), bank transfer, Apple Pay, Google Pay, and PayPal. Cash jobs can be flagged as cash-in-hand with manual confirmation.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="font-mono font-bold text-xl mb-3"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span>148 artisans online</span></div></div>
+                <div class="footer-links">
+                    <div class="footer-col"><div class="footer-col-title font-mono">Platform</div><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="artisans.html">Artisans</a></div>
+                    <div class="footer-col"><div class="footer-col-title font-mono">Company</div><a href="about.html">About</a><a href="about.html#trust">Trust & Safety</a><a href="#">Blog</a><a href="#">Contact</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span class="font-mono text-xs text-mut">© 2026 ArtisanGrid. All rights reserved.</span><span class="font-mono text-xs text-mut hidden md:inline">Honest pricing. Always.</span></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtisanGrid — Services & Trade Categories</title>
+    <meta name="description" content="Browse 18 home service categories on ArtisanGrid — electrical, plumbing, carpentry, HVAC, painting and more. Licensed, background-checked professionals.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+    <script>(function(){const s=localStorage.getItem('theme');if(s==='light'||(!s&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-theme');}})();</script>
+    <script>tailwind.config={theme:{container:{center:true},extend:{colors:{carbon:'var(--carbon)',surface:'var(--surface)',surface2:'var(--surface-2)',offwhite:'var(--offwhite)',sec:'var(--text-secondary)',mut:'var(--text-muted)',volt:'var(--volt)',c1:'var(--color-1)',c2:'var(--color-2)',c3:'var(--color-3)',c4:'var(--color-4)',c5:'var(--color-5)'},fontFamily:{mono:['JetBrains Mono','monospace'],sans:['Inter','sans-serif']}}}}</script>
+</head>
+<body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
+    <div class="grain-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)" opacity="1"/></svg></div>
+
+    <div class="utility-bar"><div class="container mx-auto px-6 flex items-center justify-between"><div class="flex items-center gap-2 font-mono text-xs"><span class="pulse-dot"></span><span id="artisan-count">148 Verified Artisans Active in Sector 4</span></div><div class="hidden md:flex items-center gap-6 font-mono text-xs text-sec"><span>Mon–Sat 06:00–22:00</span><span class="text-volt font-semibold">Emergency 24/7</span></div></div></div>
+
+    <nav class="main-nav">
+        <div class="container mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="home2.html" class="nav-link">Home 2</a>
+                    <a href="services.html" class="nav-link" style="color:var(--volt)">Services</a>
+                    <a href="artisans.html" class="nav-link">Artisans</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="about.html" class="nav-link">About</a>
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+                <a href="dashboard.html" class="nav-cta hidden md:inline-block">Dashboard →</a>
+                <button class="md:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div class="mobile-menu hidden" id="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="artisans.html">Artisans</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a></div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-glow"></div>
+        <div class="container mx-auto px-6">
+            <div class="page-hero-inner">
+                <span class="section-eyebrow font-mono">— 18 TRADE CATEGORIES</span>
+                <h1 class="page-hero-title font-mono">All the <span style="background:linear-gradient(135deg,var(--volt) 0%,var(--color-1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Trades.</span><br>One Place.</h1>
+                <p class="page-hero-sub">Every service is provided by a licensed, insured, background-checked professional — dispatched in minutes, not days.</p>
+                <div class="page-hero-search">
+                    <input type="text" class="cta-input" placeholder="Search a service, e.g. 'ceiling fan install'…" id="svc-search" autocomplete="off"/>
+                    <button class="cta-btn" id="svc-search-btn">Search →</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES BANNER IMAGE -->
+    <div class="services-banner-img" style="background-image:url('services-banner.jpg')">
+        <div class="services-banner-overlay"></div>
+    </div>
+
+    <!-- ALL SERVICES -->
+    <section class="section-alt">
+        <div class="container mx-auto px-6">
+            <div id="electrical" class="service-category-block">
+                <div class="svc-cat-header">
+                    <div class="svc-cat-icon" style="--svc-color:var(--color-1)">⚡</div>
+                    <div>
+                        <h2 class="svc-cat-title font-mono" style="color:var(--color-1)">Electrical</h2>
+                        <p class="svc-cat-sub">Licensed electricians for every residential need</p>
+                    </div>
+                    <div class="svc-cat-price font-mono">from <strong style="color:var(--color-1)">$60</strong></div>
+                </div>
+                <div class="svc-jobs-grid">
+                    <div class="svc-job-card"><span class="svc-job-icon">🔌</span><span class="svc-job-name font-mono">Outlet Installation</span><span class="svc-job-price">$60–$95</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">💡</span><span class="svc-job-name font-mono">Lighting & Fixtures</span><span class="svc-job-price">$75–$160</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🔧</span><span class="svc-job-name font-mono">Panel Upgrade</span><span class="svc-job-price">$800–$2,400</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">⚡</span><span class="svc-job-name font-mono">Full Rewire</span><span class="svc-job-price">$1,500–$5,000</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🏠</span><span class="svc-job-name font-mono">Circuit Breaker</span><span class="svc-job-price">$120–$250</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🌿</span><span class="svc-job-name font-mono">EV Charger Install</span><span class="svc-job-price">$400–$900</span></div>
+                </div>
+                <a href="index.html" class="svc-book-btn font-mono">Book Electrical →</a>
+            </div>
+
+            <div id="plumbing" class="service-category-block">
+                <div class="svc-cat-header">
+                    <div class="svc-cat-icon" style="--svc-color:var(--color-5)">🔧</div>
+                    <div>
+                        <h2 class="svc-cat-title font-mono" style="color:var(--color-5)">Plumbing</h2>
+                        <p class="svc-cat-sub">From leaky taps to emergency burst pipes</p>
+                    </div>
+                    <div class="svc-cat-price font-mono">from <strong style="color:var(--color-5)">$45</strong></div>
+                </div>
+                <div class="svc-jobs-grid">
+                    <div class="svc-job-card"><span class="svc-job-icon">💧</span><span class="svc-job-name font-mono">Leak Repair</span><span class="svc-job-price">$45–$120</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🚰</span><span class="svc-job-name font-mono">Tap & Fixture</span><span class="svc-job-price">$55–$130</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🚿</span><span class="svc-job-name font-mono">Drain Cleaning</span><span class="svc-job-price">$80–$200</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🔥</span><span class="svc-job-name font-mono">Water Heater</span><span class="svc-job-price">$300–$900</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🏠</span><span class="svc-job-name font-mono">Pipe Replacement</span><span class="svc-job-price">$200–$800</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🚨</span><span class="svc-job-name font-mono">Emergency Call-Out</span><span class="svc-job-price">$150–$350</span></div>
+                </div>
+                <a href="index.html" class="svc-book-btn font-mono">Book Plumbing →</a>
+            </div>
+
+            <div id="carpentry" class="service-category-block">
+                <div class="svc-cat-header">
+                    <div class="svc-cat-icon" style="--svc-color:var(--color-3)">🪚</div>
+                    <div>
+                        <h2 class="svc-cat-title font-mono" style="color:var(--color-3)">Carpentry</h2>
+                        <p class="svc-cat-sub">Precision woodwork and structural joinery</p>
+                    </div>
+                    <div class="svc-cat-price font-mono">from <strong style="color:var(--color-3)">$55</strong></div>
+                </div>
+                <div class="svc-jobs-grid">
+                    <div class="svc-job-card"><span class="svc-job-icon">🚪</span><span class="svc-job-name font-mono">Door Installation</span><span class="svc-job-price">$80–$200</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🪟</span><span class="svc-job-name font-mono">Window Framing</span><span class="svc-job-price">$120–$350</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🛋️</span><span class="svc-job-name font-mono">Cabinet Build</span><span class="svc-job-price">$400–$1,800</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🌲</span><span class="svc-job-name font-mono">Deck & Pergola</span><span class="svc-job-price">$1,200–$6,000</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🏡</span><span class="svc-job-name font-mono">Flooring</span><span class="svc-job-price">$3–$12/sqft</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🪵</span><span class="svc-job-name font-mono">Trim & Moulding</span><span class="svc-job-price">$55–$180</span></div>
+                </div>
+                <a href="index.html" class="svc-book-btn font-mono">Book Carpentry →</a>
+            </div>
+
+            <div id="hvac" class="service-category-block">
+                <div class="svc-cat-header">
+                    <div class="svc-cat-icon" style="--svc-color:var(--color-2)">❄️</div>
+                    <div>
+                        <h2 class="svc-cat-title font-mono" style="color:var(--color-2)">HVAC</h2>
+                        <p class="svc-cat-sub">Heating, ventilation, air conditioning</p>
+                    </div>
+                    <div class="svc-cat-price font-mono">from <strong style="color:var(--color-2)">$80</strong></div>
+                </div>
+                <div class="svc-jobs-grid">
+                    <div class="svc-job-card"><span class="svc-job-icon">❄️</span><span class="svc-job-name font-mono">AC Service</span><span class="svc-job-price">$80–$200</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🔥</span><span class="svc-job-name font-mono">Boiler Repair</span><span class="svc-job-price">$150–$500</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🌬️</span><span class="svc-job-name font-mono">Duct Cleaning</span><span class="svc-job-price">$300–$700</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🌡️</span><span class="svc-job-name font-mono">Thermostat Install</span><span class="svc-job-price">$80–$220</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🏭</span><span class="svc-job-name font-mono">New Unit Install</span><span class="svc-job-price">$1,500–$5,000</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🚨</span><span class="svc-job-name font-mono">Emergency HVAC</span><span class="svc-job-price">$200–$450</span></div>
+                </div>
+                <a href="index.html" class="svc-book-btn font-mono">Book HVAC →</a>
+            </div>
+
+            <div id="painting" class="service-category-block">
+                <div class="svc-cat-header">
+                    <div class="svc-cat-icon" style="--svc-color:var(--color-4)">🖌️</div>
+                    <div>
+                        <h2 class="svc-cat-title font-mono" style="color:var(--color-4)">Painting</h2>
+                        <p class="svc-cat-sub">Professional interior and exterior painting</p>
+                    </div>
+                    <div class="svc-cat-price font-mono">from <strong style="color:var(--color-4)">$40</strong></div>
+                </div>
+                <div class="svc-jobs-grid">
+                    <div class="svc-job-card"><span class="svc-job-icon">🏠</span><span class="svc-job-name font-mono">Interior Rooms</span><span class="svc-job-price">$200–$600</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🏡</span><span class="svc-job-name font-mono">Exterior Facade</span><span class="svc-job-price">$800–$3,000</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🪟</span><span class="svc-job-name font-mono">Trim & Skirting</span><span class="svc-job-price">$40–$120</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🎨</span><span class="svc-job-name font-mono">Feature Wall</span><span class="svc-job-price">$120–$350</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🔧</span><span class="svc-job-name font-mono">Surface Prep</span><span class="svc-job-price">$60–$200</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🚪</span><span class="svc-job-name font-mono">Doors & Frames</span><span class="svc-job-price">$50–$150</span></div>
+                </div>
+                <a href="index.html" class="svc-book-btn font-mono">Book Painting →</a>
+            </div>
+
+            <div id="general" class="service-category-block">
+                <div class="svc-cat-header">
+                    <div class="svc-cat-icon" style="--svc-color:var(--color-1)">🛠️</div>
+                    <div>
+                        <h2 class="svc-cat-title font-mono" style="color:var(--color-1)">General Repairs</h2>
+                        <p class="svc-cat-sub">Everything else — if it's broken, we fix it</p>
+                    </div>
+                    <div class="svc-cat-price font-mono">from <strong style="color:var(--color-1)">$35</strong></div>
+                </div>
+                <div class="svc-jobs-grid">
+                    <div class="svc-job-card"><span class="svc-job-icon">🔩</span><span class="svc-job-name font-mono">Furniture Assembly</span><span class="svc-job-price">$35–$90</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🪛</span><span class="svc-job-name font-mono">Drywall Patching</span><span class="svc-job-price">$50–$180</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🖼️</span><span class="svc-job-name font-mono">Hanging & Mounting</span><span class="svc-job-price">$35–$100</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🔐</span><span class="svc-job-name font-mono">Lock & Security</span><span class="svc-job-price">$60–$220</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🧱</span><span class="svc-job-name font-mono">Tiling</span><span class="svc-job-price">$5–$18/sqft</span></div>
+                    <div class="svc-job-card"><span class="svc-job-icon">🏗️</span><span class="svc-job-name font-mono">Home Inspection</span><span class="svc-job-price">$150–$400</span></div>
+                </div>
+                <a href="index.html" class="svc-book-btn font-mono">Book General Repair →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST STRIP -->
+    <section class="section-dark">
+        <div class="container mx-auto px-6">
+            <div class="trust-strip">
+                <div class="trust-item"><div class="trust-icon">✅</div><div class="trust-label font-mono">All Artisans Licensed</div></div>
+                <div class="trust-sep"></div>
+                <div class="trust-item"><div class="trust-icon">🛡️</div><div class="trust-label font-mono">Insured Coverage</div></div>
+                <div class="trust-sep"></div>
+                <div class="trust-item"><div class="trust-icon">🔍</div><div class="trust-label font-mono">Background Checked</div></div>
+                <div class="trust-sep"></div>
+                <div class="trust-item"><div class="trust-icon">$0</div><div class="trust-label font-mono">Zero Platform Fee</div></div>
+                <div class="trust-sep"></div>
+                <div class="trust-item"><div class="trust-icon">⚡</div><div class="trust-label font-mono">24/7 Emergency</div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="font-mono font-bold text-xl mb-3"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span>148 artisans online</span></div></div>
+                <div class="footer-links">
+                    <div class="footer-col"><div class="footer-col-title font-mono">Platform</div><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="artisans.html">Artisans</a></div>
+                    <div class="footer-col"><div class="footer-col-title font-mono">Company</div><a href="about.html">About</a><a href="about.html#trust">Trust & Safety</a><a href="#">Blog</a><a href="#">Contact</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span class="font-mono text-xs text-mut">© 2026 ArtisanGrid. All rights reserved.</span><span class="font-mono text-xs text-mut hidden md:inline">18 trades. Zero fees.</span></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+</body>
+</html>

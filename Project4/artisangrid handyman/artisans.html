@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtisanGrid — Browse Artisans & Specialists</title>
+    <meta name="description" content="Browse 148 verified local artisans on ArtisanGrid. Filter by trade, rating, availability and sector. Zero platform markup.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
+    <script>(function(){const s=localStorage.getItem('theme');if(s==='light'||(!s&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-theme');}})();</script>
+    <script>tailwind.config={theme:{container:{center:true},extend:{colors:{carbon:'var(--carbon)',surface:'var(--surface)',surface2:'var(--surface-2)',offwhite:'var(--offwhite)',sec:'var(--text-secondary)',mut:'var(--text-muted)',volt:'var(--volt)',c1:'var(--color-1)',c2:'var(--color-2)',c3:'var(--color-3)',c4:'var(--color-4)',c5:'var(--color-5)'},fontFamily:{mono:['JetBrains Mono','monospace'],sans:['Inter','sans-serif']}}}}</script>
+</head>
+<body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
+    <div class="grain-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)" opacity="1"/></svg></div>
+
+    <div class="utility-bar"><div class="container mx-auto px-6 flex items-center justify-between"><div class="flex items-center gap-2 font-mono text-xs"><span class="pulse-dot"></span><span id="artisan-count">148 Verified Artisans Active in Sector 4</span></div><div class="hidden md:flex items-center gap-6 font-mono text-xs text-sec"><span>Mon–Sat 06:00–22:00</span><span class="text-volt font-semibold">Emergency 24/7</span></div></div></div>
+
+    <nav class="main-nav">
+        <div class="container mx-auto px-6 flex items-center justify-between h-16">
+            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></a>
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="home2.html" class="nav-link">Home 2</a>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <a href="artisans.html" class="nav-link" style="color:var(--volt)">Artisans</a>
+                    <a href="pricing.html" class="nav-link">Pricing</a>
+                    <a href="about.html" class="nav-link">About</a>
+                </div>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+                <a href="dashboard.html" class="nav-cta hidden md:inline-block">Dashboard →</a>
+                <button class="md:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div class="mobile-menu hidden" id="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="artisans.html">Artisans</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a></div>
+    </nav>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="page-hero-glow"></div>
+        <div class="container mx-auto px-6">
+            <div class="page-hero-inner">
+                <span class="section-eyebrow font-mono">— 148 VERIFIED SPECIALISTS</span>
+                <h1 class="page-hero-title font-mono">The People<br><span style="background:linear-gradient(135deg,var(--color-4) 0%,var(--color-1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Behind the Work.</span></h1>
+                <p class="page-hero-sub">Background-checked, licensed, and rated by your neighbors. Browse by trade, availability, or rating.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTERS -->
+    <section class="section-alt">
+        <div class="container mx-auto px-6">
+            <div class="artisans-filter-bar">
+                <div class="filter-group">
+                    <label class="filter-label font-mono">Trade</label>
+                    <div class="filter-pills" id="trade-filters">
+                        <button class="pill active" data-filter="all">All Trades</button>
+                        <button class="pill" data-filter="plumbing">🔧 Plumbing</button>
+                        <button class="pill" data-filter="electrical">⚡ Electrical</button>
+                        <button class="pill" data-filter="carpentry">🪚 Carpentry</button>
+                        <button class="pill" data-filter="hvac">❄️ HVAC</button>
+                        <button class="pill" data-filter="painting">🖌️ Painting</button>
+                        <button class="pill" data-filter="general">🛠️ General</button>
+                    </div>
+                </div>
+                <div class="filter-group filter-group--right">
+                    <label class="filter-label font-mono">Sort</label>
+                    <select class="filter-select font-mono" id="artisan-sort">
+                        <option value="rating">Highest Rated</option>
+                        <option value="eta">Fastest Response</option>
+                        <option value="experience">Most Experienced</option>
+                        <option value="jobs">Most Jobs Done</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- ARTISAN DIRECTORY GRID -->
+            <div class="artisan-directory-grid" id="artisan-directory">
+
+                <!-- Plumbing -->
+                <div class="artisan-dir-card" data-trade="plumbing">
+                    <div class="adc-top">
+                        <div class="adc-avatar font-mono" style="background:var(--color-1)">MV</div>
+                        <div class="adc-info">
+                            <div class="adc-name font-mono">Marcus V.</div>
+                            <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Master Plumber · 12 yrs exp.</div>
+                            <div class="adc-sector font-mono text-xs" style="color:var(--text-muted)">📍 Sector 4 · 1.4mi away</div>
+                        </div>
+                        <div class="adc-rating font-mono text-volt">★ 4.9</div>
+                    </div>
+                    <div class="adc-tags"><span class="tag">Licensed</span><span class="tag">Insured</span><span class="tag">Emergency 24/7</span></div>
+                    <div class="adc-stats">
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--color-1)">340</span><span style="font-size:.7rem;color:var(--text-muted)">Jobs Done</span></div>
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--volt)">12 min</span><span style="font-size:.7rem;color:var(--text-muted)">Avg. Response</span></div>
+                    </div>
+                    <a href="index.html" class="adc-book-btn font-mono">Book Marcus →</a>
+                </div>
+
+                <div class="artisan-dir-card" data-trade="electrical">
+                    <div class="adc-top">
+                        <div class="adc-avatar font-mono" style="background:var(--color-4)">SB</div>
+                        <div class="adc-info">
+                            <div class="adc-name font-mono">Sophie B.</div>
+                            <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Licensed Electrician · 6 yrs exp.</div>
+                            <div class="adc-sector font-mono text-xs" style="color:var(--text-muted)">📍 Sector 7 · 0.7mi away</div>
+                        </div>
+                        <div class="adc-rating font-mono text-volt">★ 4.9</div>
+                    </div>
+                    <div class="adc-tags"><span class="tag">Licensed</span><span class="tag">Certified</span></div>
+                    <div class="adc-stats">
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--color-4)">215</span><span style="font-size:.7rem;color:var(--text-muted)">Jobs Done</span></div>
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--volt)">6 min</span><span style="font-size:.7rem;color:var(--text-muted)">Avg. Response</span></div>
+                    </div>
+                    <a href="index.html" class="adc-book-btn font-mono">Book Sophie →</a>
+                </div>
+
+                <div class="artisan-dir-card" data-trade="carpentry">
+                    <div class="adc-top">
+                        <div class="adc-avatar font-mono" style="background:var(--color-2)">EK</div>
+                        <div class="adc-info">
+                            <div class="adc-name font-mono">Elena K.</div>
+                            <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Senior Carpenter · 8 yrs exp.</div>
+                            <div class="adc-sector font-mono text-xs" style="color:var(--text-muted)">📍 Sector 3 · 0.9mi away</div>
+                        </div>
+                        <div class="adc-rating font-mono text-volt">★ 4.8</div>
+                    </div>
+                    <div class="adc-tags"><span class="tag">Licensed</span><span class="tag">Insured</span></div>
+                    <div class="adc-stats">
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--color-2)">187</span><span style="font-size:.7rem;color:var(--text-muted)">Jobs Done</span></div>
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--volt)">8 min</span><span style="font-size:.7rem;color:var(--text-muted)">Avg. Response</span></div>
+                    </div>
+                    <a href="index.html" class="adc-book-btn font-mono">Book Elena →</a>
+                </div>
+
+                <div class="artisan-dir-card" data-trade="hvac">
+                    <div class="adc-top">
+                        <div class="adc-avatar font-mono" style="background:var(--color-5)">TR</div>
+                        <div class="adc-info">
+                            <div class="adc-name font-mono">Tom R.</div>
+                            <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">HVAC Technician · 10 yrs exp.</div>
+                            <div class="adc-sector font-mono text-xs" style="color:var(--text-muted)">📍 Sector 2 · 2.1mi away</div>
+                        </div>
+                        <div class="adc-rating font-mono text-volt">★ 4.7</div>
+                    </div>
+                    <div class="adc-tags"><span class="tag">Licensed</span><span class="tag">24/7</span></div>
+                    <div class="adc-stats">
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--color-5)">298</span><span style="font-size:.7rem;color:var(--text-muted)">Jobs Done</span></div>
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--volt)">18 min</span><span style="font-size:.7rem;color:var(--text-muted)">Avg. Response</span></div>
+                    </div>
+                    <a href="index.html" class="adc-book-btn font-mono">Book Tom →</a>
+                </div>
+
+                <div class="artisan-dir-card" data-trade="general">
+                    <div class="adc-top">
+                        <div class="adc-avatar font-mono" style="background:var(--color-3)">RO</div>
+                        <div class="adc-info">
+                            <div class="adc-name font-mono">Ray O.</div>
+                            <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">General Repairs · 15 yrs exp.</div>
+                            <div class="adc-sector font-mono text-xs" style="color:var(--text-muted)">📍 Sector 6 · 1.8mi away</div>
+                        </div>
+                        <div class="adc-rating font-mono text-volt">★ 4.6</div>
+                    </div>
+                    <div class="adc-tags"><span class="tag">Licensed</span><span class="tag">Insured</span><span class="tag">Emergency</span></div>
+                    <div class="adc-stats">
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--color-3)">412</span><span style="font-size:.7rem;color:var(--text-muted)">Jobs Done</span></div>
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--volt)">14 min</span><span style="font-size:.7rem;color:var(--text-muted)">Avg. Response</span></div>
+                    </div>
+                    <a href="index.html" class="adc-book-btn font-mono">Book Ray →</a>
+                </div>
+
+                <div class="artisan-dir-card" data-trade="painting">
+                    <div class="adc-top">
+                        <div class="adc-avatar font-mono" style="background:var(--color-4)">LN</div>
+                        <div class="adc-info">
+                            <div class="adc-name font-mono">Lena N.</div>
+                            <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Painter & Decorator · 9 yrs exp.</div>
+                            <div class="adc-sector font-mono text-xs" style="color:var(--text-muted)">📍 Sector 5 · 1.1mi away</div>
+                        </div>
+                        <div class="adc-rating font-mono text-volt">★ 4.8</div>
+                    </div>
+                    <div class="adc-tags"><span class="tag">Licensed</span><span class="tag">Insured</span></div>
+                    <div class="adc-stats">
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--color-4)">153</span><span style="font-size:.7rem;color:var(--text-muted)">Jobs Done</span></div>
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--volt)">10 min</span><span style="font-size:.7rem;color:var(--text-muted)">Avg. Response</span></div>
+                    </div>
+                    <a href="index.html" class="adc-book-btn font-mono">Book Lena →</a>
+                </div>
+
+                <div class="artisan-dir-card" data-trade="electrical">
+                    <div class="adc-top">
+                        <div class="adc-avatar font-mono" style="background:var(--color-1)">JA</div>
+                        <div class="adc-info">
+                            <div class="adc-name font-mono">Jake A.</div>
+                            <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Electrician · 4 yrs exp.</div>
+                            <div class="adc-sector font-mono text-xs" style="color:var(--text-muted)">📍 Sector 4 · 0.5mi away</div>
+                        </div>
+                        <div class="adc-rating font-mono text-volt">★ 4.7</div>
+                    </div>
+                    <div class="adc-tags"><span class="tag">Licensed</span></div>
+                    <div class="adc-stats">
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--color-1)">89</span><span style="font-size:.7rem;color:var(--text-muted)">Jobs Done</span></div>
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--volt)">4 min</span><span style="font-size:.7rem;color:var(--text-muted)">Avg. Response</span></div>
+                    </div>
+                    <a href="index.html" class="adc-book-btn font-mono">Book Jake →</a>
+                </div>
+
+                <div class="artisan-dir-card" data-trade="plumbing">
+                    <div class="adc-top">
+                        <div class="adc-avatar font-mono" style="background:var(--color-5)">DH</div>
+                        <div class="adc-info">
+                            <div class="adc-name font-mono">Dana H.</div>
+                            <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Plumber · 7 yrs exp.</div>
+                            <div class="adc-sector font-mono text-xs" style="color:var(--text-muted)">📍 Sector 9 · 3.2mi away</div>
+                        </div>
+                        <div class="adc-rating font-mono text-volt">★ 4.7</div>
+                    </div>
+                    <div class="adc-tags"><span class="tag">Licensed</span><span class="tag">Insured</span></div>
+                    <div class="adc-stats">
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--color-5)">201</span><span style="font-size:.7rem;color:var(--text-muted)">Jobs Done</span></div>
+                        <div class="adc-stat"><span class="font-mono" style="color:var(--volt)">22 min</span><span style="font-size:.7rem;color:var(--text-muted)">Avg. Response</span></div>
+                    </div>
+                    <a href="index.html" class="adc-book-btn font-mono">Book Dana →</a>
+                </div>
+
+                <!-- CTA card -->
+                <div class="artisan-dir-card artisan-card--cta">
+                    <div class="artisan-cta-inner">
+                        <div style="color:var(--text-muted);font-family:'JetBrains Mono',monospace;font-size:.65rem;letter-spacing:.1em;margin-bottom:12px">JOIN THE NETWORK</div>
+                        <div class="font-mono font-bold text-lg mb-2" style="color:var(--offwhite)">Are you an artisan?</div>
+                        <p class="text-sm mb-4 leading-relaxed" style="color:var(--text-secondary)">Keep 100% of your earnings. We take zero commission. Apply in under 5 minutes.</p>
+                        <a href="about.html#join" class="artisan-join-btn font-mono">Apply Now →</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container mx-auto px-6">
+            <div class="footer-grid">
+                <div class="footer-brand"><div class="font-mono font-bold text-xl mb-3"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span>148 artisans online</span></div></div>
+                <div class="footer-links">
+                    <div class="footer-col"><div class="footer-col-title font-mono">Platform</div><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="artisans.html">Artisans</a></div>
+                    <div class="footer-col"><div class="footer-col-title font-mono">Company</div><a href="about.html">About</a><a href="about.html#trust">Trust & Safety</a><a href="#">Blog</a><a href="#">Contact</a></div>
+                </div>
+            </div>
+            <div class="footer-bottom"><span class="font-mono text-xs text-mut">© 2026 ArtisanGrid. All rights reserved.</span></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pages.js"></script>
+</body>
+</html>
