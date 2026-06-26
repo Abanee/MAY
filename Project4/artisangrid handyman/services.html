@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="pages.css">
     <script>(function(){const s=localStorage.getItem('theme');if(s==='light'||(!s&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-theme');}const d=localStorage.getItem('dir');if(d==='rtl'){document.documentElement.setAttribute('dir','rtl');}})();</script>
     <script>tailwind.config={theme:{container:{center:true},extend:{colors:{carbon:'var(--carbon)',surface:'var(--surface)',surface2:'var(--surface-2)',offwhite:'var(--offwhite)',sec:'var(--text-secondary)',mut:'var(--text-muted)',volt:'var(--volt)',c1:'var(--color-1)',c2:'var(--color-2)',c3:'var(--color-3)',c4:'var(--color-4)',c5:'var(--color-5)'},fontFamily:{mono:['JetBrains Mono','monospace'],sans:['Inter','sans-serif']}}}}</script>
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
     <div class="grain-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)" opacity="1"/></svg></div>
@@ -21,7 +22,10 @@
 
     <nav class="main-nav">
         <div class="container mx-auto px-6 flex items-center justify-between h-16">
-            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></a>
+            <a href="index.html" class="flex items-center gap-2.5 font-mono font-bold text-xl tracking-tight select-none">
+                <img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto">
+                <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
+            </a>
             <div class="flex items-center gap-4 md:gap-8">
                 <div class="hidden md:flex items-center gap-8">
                     <a href="index.html" class="nav-link">Home</a>
@@ -48,22 +52,71 @@
     <section class="page-hero">
         <div class="page-hero-glow"></div>
         <div class="container mx-auto px-6">
-            <div class="page-hero-inner">
-                <span class="section-eyebrow font-mono">— 18 TRADE CATEGORIES</span>
-                <h1 class="page-hero-title font-mono">All the <span style="background:linear-gradient(135deg,var(--volt) 0%,var(--color-1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Trades.</span><br>One Place.</h1>
-                <p class="page-hero-sub">Every service is provided by a licensed, insured, background-checked professional — dispatched in minutes, not days.</p>
-                <div class="page-hero-search">
-                    <input type="text" class="cta-input" placeholder="Search a service, e.g. 'ceiling fan install'…" id="svc-search" autocomplete="off"/>
-                    <button class="cta-btn" id="svc-search-btn">Search →</button>
+            <div class="services-hero-grid">
+                <!-- Left Content -->
+                <div class="page-hero-inner">
+                    <span class="section-eyebrow font-mono">— 18 TRADE CATEGORIES</span>
+                    <h1 class="page-hero-title font-mono">All the <span style="background:linear-gradient(135deg,var(--volt) 0%,var(--color-1) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Trades.</span><br>One Place.</h1>
+                    <p class="page-hero-sub">Every service is provided by a licensed, insured, background-checked professional — dispatched in minutes, not days.</p>
+                    <div class="page-hero-ctas">
+                        <a href="#electrical" class="hero-cta-btn font-mono">Explore Trades ↓</a>
+                        <a href="contact.html" class="hero-cta-btn-outline font-mono">Book Service →</a>
+                    </div>
+                </div>
+                <!-- Right Content: Interactive Trade Grid -->
+                <div class="services-hero-nav">
+                    <a href="#electrical" class="svc-hero-card" style="--card-accent: var(--color-1)">
+                        <div class="svc-hero-card-icon">⚡</div>
+                        <div class="svc-hero-card-body">
+                            <span class="svc-hero-card-title font-mono">Electrical</span>
+                            <span class="svc-hero-card-price font-mono">From $60</span>
+                        </div>
+                        <div class="svc-hero-card-arrow font-mono">→</div>
+                    </a>
+                    <a href="#plumbing" class="svc-hero-card" style="--card-accent: var(--color-5)">
+                        <div class="svc-hero-card-icon">🔧</div>
+                        <div class="svc-hero-card-body">
+                            <span class="svc-hero-card-title font-mono">Plumbing</span>
+                            <span class="svc-hero-card-price font-mono">From $45</span>
+                        </div>
+                        <div class="svc-hero-card-arrow font-mono">→</div>
+                    </a>
+                    <a href="#carpentry" class="svc-hero-card" style="--card-accent: var(--color-3)">
+                        <div class="svc-hero-card-icon">🪚</div>
+                        <div class="svc-hero-card-body">
+                            <span class="svc-hero-card-title font-mono">Carpentry</span>
+                            <span class="svc-hero-card-price font-mono">From $55</span>
+                        </div>
+                        <div class="svc-hero-card-arrow font-mono">→</div>
+                    </a>
+                    <a href="#hvac" class="svc-hero-card" style="--card-accent: var(--color-2)">
+                        <div class="svc-hero-card-icon">❄️</div>
+                        <div class="svc-hero-card-body">
+                            <span class="svc-hero-card-title font-mono">HVAC</span>
+                            <span class="svc-hero-card-price font-mono">From $80</span>
+                        </div>
+                        <div class="svc-hero-card-arrow font-mono">→</div>
+                    </a>
+                    <a href="#painting" class="svc-hero-card" style="--card-accent: var(--color-4)">
+                        <div class="svc-hero-card-icon">🖌️</div>
+                        <div class="svc-hero-card-body">
+                            <span class="svc-hero-card-title font-mono">Painting</span>
+                            <span class="svc-hero-card-price font-mono">From $40</span>
+                        </div>
+                        <div class="svc-hero-card-arrow font-mono">→</div>
+                    </a>
+                    <a href="#general" class="svc-hero-card" style="--card-accent: var(--color-1)">
+                        <div class="svc-hero-card-icon">🛠️</div>
+                        <div class="svc-hero-card-body">
+                            <span class="svc-hero-card-title font-mono">Repairs</span>
+                            <span class="svc-hero-card-price font-mono">From $35</span>
+                        </div>
+                        <div class="svc-hero-card-arrow font-mono">→</div>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- SERVICES BANNER IMAGE -->
-    <div class="services-banner-img" style="background-image:url('services-banner.jpg')">
-        <div class="services-banner-overlay"></div>
-    </div>
 
     <!-- ALL SERVICES -->
     <section class="section-alt">
@@ -78,16 +131,76 @@
                     <div class="svc-cat-price font-mono">from <strong style="color:var(--color-1)">$60</strong></div>
                 </div>
                 <div class="svc-jobs-grid">
-                    <div class="svc-job-card"><span class="svc-job-icon">🔌</span><span class="svc-job-name font-mono">Outlet Installation</span><span class="svc-job-price">$60–$95</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">💡</span><span class="svc-job-name font-mono">Lighting & Fixtures</span><span class="svc-job-price">$75–$160</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🔧</span><span class="svc-job-name font-mono">Panel Upgrade</span><span class="svc-job-price">$800–$2,400</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">⚡</span><span class="svc-job-name font-mono">Full Rewire</span><span class="svc-job-price">$1,500–$5,000</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🏠</span><span class="svc-job-name font-mono">Circuit Breaker</span><span class="svc-job-price">$120–$250</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🌿</span><span class="svc-job-name font-mono">EV Charger Install</span><span class="svc-job-price">$400–$900</span></div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/electric1.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Outlet Installation</h3>
+                            <p class="svc-job-card-desc">Install or replace standard outlets, smart USB receptacles, or high-safety GFCI outlets.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$60–$95</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/electric2.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Lighting & Fixtures</h3>
+                            <p class="svc-job-card-desc">Mounting and wiring ceiling fans, chandeliers, pendant lights, or track lighting.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$75–$160</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/electric3.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Panel Upgrade</h3>
+                            <p class="svc-job-card-desc">Replace outdated fuse boxes or panels with modern, high-capacity breaker systems.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$800–$2,400</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/electric4.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Full Rewire</h3>
+                            <p class="svc-job-card-desc">Complete residential rewiring to satisfy building codes and ensure safety.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$1,500–$5,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/electric5.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Circuit Breaker</h3>
+                            <p class="svc-job-card-desc">Troubleshoot and replace faulty breakers or add new dedicated lines.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$120–$250</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/electric6.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">EV Charger Install</h3>
+                            <p class="svc-job-card-desc">Install Level 2 fast-charging stations for electric vehicles in your garage.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$400–$900</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a href="index.html" class="svc-book-btn font-mono">Book Electrical →</a>
             </div>
-
+ 
             <div id="plumbing" class="service-category-block">
                 <div class="svc-cat-header">
                     <div class="svc-cat-icon" style="--svc-color:var(--color-5)">🔧</div>
@@ -98,16 +211,76 @@
                     <div class="svc-cat-price font-mono">from <strong style="color:var(--color-5)">$45</strong></div>
                 </div>
                 <div class="svc-jobs-grid">
-                    <div class="svc-job-card"><span class="svc-job-icon">💧</span><span class="svc-job-name font-mono">Leak Repair</span><span class="svc-job-price">$45–$120</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🚰</span><span class="svc-job-name font-mono">Tap & Fixture</span><span class="svc-job-price">$55–$130</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🚿</span><span class="svc-job-name font-mono">Drain Cleaning</span><span class="svc-job-price">$80–$200</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🔥</span><span class="svc-job-name font-mono">Water Heater</span><span class="svc-job-price">$300–$900</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🏠</span><span class="svc-job-name font-mono">Pipe Replacement</span><span class="svc-job-price">$200–$800</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🚨</span><span class="svc-job-name font-mono">Emergency Call-Out</span><span class="svc-job-price">$150–$350</span></div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump1.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Leak Repair</h3>
+                            <p class="svc-job-card-desc">Locate and seal pipe leaks, dripping lines, or under-sink water issues.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$45–$120</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump2.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Tap & Fixture</h3>
+                            <p class="svc-job-card-desc">Replace basin taps, mixer faucets, showerheads, or bathroom accessories.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$55–$130</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump3.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Drain Cleaning</h3>
+                            <p class="svc-job-card-desc">Clear stubborn blockages in sinks, showers, toilets, or sewer mainlines.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$80–$200</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump4.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Water Heater</h3>
+                            <p class="svc-job-card-desc">Repair, flush, or install new storage tank or tankless water heaters.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$300–$900</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump5.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Pipe Replacement</h3>
+                            <p class="svc-job-card-desc">Replace old copper, galvanized, or lead pipes with high-durability PEX.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$200–$800</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump6.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Emergency Call-Out</h3>
+                            <p class="svc-job-card-desc">24/7 priority dispatch for burst pipes, flooding, or severe plumbing failure.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$150–$350</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a href="index.html" class="svc-book-btn font-mono">Book Plumbing →</a>
             </div>
-
+ 
             <div id="carpentry" class="service-category-block">
                 <div class="svc-cat-header">
                     <div class="svc-cat-icon" style="--svc-color:var(--color-3)">🪚</div>
@@ -118,16 +291,76 @@
                     <div class="svc-cat-price font-mono">from <strong style="color:var(--color-3)">$55</strong></div>
                 </div>
                 <div class="svc-jobs-grid">
-                    <div class="svc-job-card"><span class="svc-job-icon">🚪</span><span class="svc-job-name font-mono">Door Installation</span><span class="svc-job-price">$80–$200</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🪟</span><span class="svc-job-name font-mono">Window Framing</span><span class="svc-job-price">$120–$350</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🛋️</span><span class="svc-job-name font-mono">Cabinet Build</span><span class="svc-job-price">$400–$1,800</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🌲</span><span class="svc-job-name font-mono">Deck & Pergola</span><span class="svc-job-price">$1,200–$6,000</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🏡</span><span class="svc-job-name font-mono">Flooring</span><span class="svc-job-price">$3–$12/sqft</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🪵</span><span class="svc-job-name font-mono">Trim & Moulding</span><span class="svc-job-price">$55–$180</span></div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump1.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Door Installation</h3>
+                            <p class="svc-job-card-desc">Hang internal doors, external security entryways, or sliding barn doors.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$80–$200</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump2.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Window Framing</h3>
+                            <p class="svc-job-card-desc">Repair decayed wooden frames or frame new energy-efficient windows.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$120–$350</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump3.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Cabinet Build</h3>
+                            <p class="svc-job-card-desc">Custom joinery, kitchen cabinets, shelving units, or built-in closets.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$400–$1,800</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump4.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Deck & Pergola</h3>
+                            <p class="svc-job-card-desc">Design and build outdoor timber decks, composite platforms, or shade structures.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$1,200–$6,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump5.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Flooring</h3>
+                            <p class="svc-job-card-desc">Installation of solid hardwood, engineered timber, laminate, or vinyl plank flooring.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$3–$12/sqft</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/plump6.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Trim & Moulding</h3>
+                            <p class="svc-job-card-desc">Precision fitting of baseboards, crown moulding, wainscoting, or door casings.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$55–$180</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a href="index.html" class="svc-book-btn font-mono">Book Carpentry →</a>
             </div>
-
+ 
             <div id="hvac" class="service-category-block">
                 <div class="svc-cat-header">
                     <div class="svc-cat-icon" style="--svc-color:var(--color-2)">❄️</div>
@@ -138,17 +371,77 @@
                     <div class="svc-cat-price font-mono">from <strong style="color:var(--color-2)">$80</strong></div>
                 </div>
                 <div class="svc-jobs-grid">
-                    <div class="svc-job-card"><span class="svc-job-icon">❄️</span><span class="svc-job-name font-mono">AC Service</span><span class="svc-job-price">$80–$200</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🔥</span><span class="svc-job-name font-mono">Boiler Repair</span><span class="svc-job-price">$150–$500</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🌬️</span><span class="svc-job-name font-mono">Duct Cleaning</span><span class="svc-job-price">$300–$700</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🌡️</span><span class="svc-job-name font-mono">Thermostat Install</span><span class="svc-job-price">$80–$220</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🏭</span><span class="svc-job-name font-mono">New Unit Install</span><span class="svc-job-price">$1,500–$5,000</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🚨</span><span class="svc-job-name font-mono">Emergency HVAC</span><span class="svc-job-price">$200–$450</span></div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/hav1.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">AC Service</h3>
+                            <p class="svc-job-card-desc">Seasonal diagnostic, filter replacements, coil cleaning, and refrigerant top-up.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$80–$200</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/hav2.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Boiler Repair</h3>
+                            <p class="svc-job-card-desc">Fix pilot light failures, thermostat connections, or leaks in boilers.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$150–$500</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/hav3.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Duct Cleaning</h3>
+                            <p class="svc-job-card-desc">Remove dust, allergen build-ups, and debris from air ducts.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$300–$700</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/hav4.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Thermostat Install</h3>
+                            <p class="svc-job-card-desc">Setup programmable or smart thermostats (Nest, Ecobee) for energy efficiency.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$80–$220</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/hav5.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">New Unit Install</h3>
+                            <p class="svc-job-card-desc">Design and install energy-efficient central heating and cooling systems.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$1,500–$5,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/hav6.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Emergency HVAC</h3>
+                            <p class="svc-job-card-desc">Urgent dispatch for heating failure in winter or AC failure in extreme heat.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$200–$450</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a href="index.html" class="svc-book-btn font-mono">Book HVAC →</a>
             </div>
-
-            <div id="painting" class="service-category-block">
+ 
+            <!-- <div id="painting" class="service-category-block">
                 <div class="svc-cat-header">
                     <div class="svc-cat-icon" style="--svc-color:var(--color-4)">🖌️</div>
                     <div>
@@ -158,16 +451,76 @@
                     <div class="svc-cat-price font-mono">from <strong style="color:var(--color-4)">$40</strong></div>
                 </div>
                 <div class="svc-jobs-grid">
-                    <div class="svc-job-card"><span class="svc-job-icon">🏠</span><span class="svc-job-name font-mono">Interior Rooms</span><span class="svc-job-price">$200–$600</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🏡</span><span class="svc-job-name font-mono">Exterior Facade</span><span class="svc-job-price">$800–$3,000</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🪟</span><span class="svc-job-name font-mono">Trim & Skirting</span><span class="svc-job-price">$40–$120</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🎨</span><span class="svc-job-name font-mono">Feature Wall</span><span class="svc-job-price">$120–$350</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🔧</span><span class="svc-job-name font-mono">Surface Prep</span><span class="svc-job-price">$60–$200</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🚪</span><span class="svc-job-name font-mono">Doors & Frames</span><span class="svc-job-price">$50–$150</span></div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/painting1.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Interior Rooms</h3>
+                            <p class="svc-job-card-desc">Premium wall painting with precise taping, priming, and clean finishes.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$200–$600</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/painting2.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Exterior Facade</h3>
+                            <p class="svc-job-card-desc">Weatherproof protective coating for external walls, bricks, or siding.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$800–$3,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/painting3.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Trim & Skirting</h3>
+                            <p class="svc-job-card-desc">Detail painting for baseboards, window sills, and crown moulding.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$40–$120</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/painting4.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Feature Wall</h3>
+                            <p class="svc-job-card-desc">Create beautiful accent walls using contrasting colors or special textures.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$120–$350</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/painting5.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Surface Prep</h3>
+                            <p class="svc-job-card-desc">Scraping, sanding, caulking, and priming to ensure a flawless paint coat.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$60–$200</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/painting6.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Doors & Frames</h3>
+                            <p class="svc-job-card-desc">Spray or roll high-durability enamel paint on internal and external doors.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$50–$150</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <a href="index.html" class="svc-book-btn font-mono">Book Painting →</a>
-            </div>
-
+                <a href="index.html" class="svc-book-btn font-mono">Book Painting →</a> -->
+            <!-- </div> -->
+ 
             <div id="general" class="service-category-block">
                 <div class="svc-cat-header">
                     <div class="svc-cat-icon" style="--svc-color:var(--color-1)">🛠️</div>
@@ -178,12 +531,72 @@
                     <div class="svc-cat-price font-mono">from <strong style="color:var(--color-1)">$35</strong></div>
                 </div>
                 <div class="svc-jobs-grid">
-                    <div class="svc-job-card"><span class="svc-job-icon">🔩</span><span class="svc-job-name font-mono">Furniture Assembly</span><span class="svc-job-price">$35–$90</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🪛</span><span class="svc-job-name font-mono">Drywall Patching</span><span class="svc-job-price">$50–$180</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🖼️</span><span class="svc-job-name font-mono">Hanging & Mounting</span><span class="svc-job-price">$35–$100</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🔐</span><span class="svc-job-name font-mono">Lock & Security</span><span class="svc-job-price">$60–$220</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🧱</span><span class="svc-job-name font-mono">Tiling</span><span class="svc-job-price">$5–$18/sqft</span></div>
-                    <div class="svc-job-card"><span class="svc-job-icon">🏗️</span><span class="svc-job-name font-mono">Home Inspection</span><span class="svc-job-price">$150–$400</span></div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/general1.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Furniture Assembly</h3>
+                            <p class="svc-job-card-desc">Flat-pack assembly for IKEA desks, beds, wardrobes, and cabinets.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$35–$90</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/general2.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Drywall Patching</h3>
+                            <p class="svc-job-card-desc">Repair holes, dents, cracks, or water-damaged drywall sheets.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$50–$180</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/general3.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Hanging & Mounting</h3>
+                            <p class="svc-job-card-desc">Securely mount TVs, heavy mirrors, artwork, shelving, or blinds.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$35–$100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/general4.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Lock & Security</h3>
+                            <p class="svc-job-card-desc">Replace door locks, install deadbolts, smart locks, or security cameras.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$60–$220</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/general5.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Tiling</h3>
+                            <p class="svc-job-card-desc">Lay ceramic, porcelain, or glass tiles in kitchens, bathrooms, or backsplashes.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$5–$18/sqft</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="svc-job-card">
+                        <div class="svc-job-card-img" style="background-image: url('Assets/general6.jpg')"></div>
+                        <div class="svc-job-card-content">
+                            <h3 class="svc-job-card-title font-mono">Home Inspection</h3>
+                            <p class="svc-job-card-desc">Comprehensive checklist inspection of trade systems prior to buying or selling.</p>
+                            <div class="svc-job-card-footer">
+                                <span class="svc-job-card-price-label">Est. Cost</span>
+                                <span class="svc-job-card-price">$150–$400</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <a href="index.html" class="svc-book-btn font-mono">Book General Repair →</a>
             </div>
@@ -210,7 +623,7 @@
     <footer class="site-footer">
         <div class="container mx-auto px-6">
             <div class="footer-grid">
-                <div class="footer-brand"><div class="font-mono font-bold text-xl mb-3"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span>148 artisans online</span></div></div>
+                <div class="footer-brand"><div class="flex items-center gap-2.5 font-mono font-bold text-xl mb-3"><img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto"><span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span>148 artisans online</span></div></div>
                 <div class="footer-links">
                     <div class="footer-col"><div class="footer-col-title font-mono">Platform</div><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="artisans.html">Artisans</a></div>
                     <div class="footer-col"><div class="footer-col-title font-mono">Company</div><a href="about.html">About</a><a href="about.html#trust">Trust & Safety</a><a href="#">Blog</a><a href="#">Contact</a></div>

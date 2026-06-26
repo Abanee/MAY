@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="pages.css">
     <script>(function(){const s=localStorage.getItem('theme');if(s==='light'||(!s&&window.matchMedia('(prefers-color-scheme: light)').matches)){document.documentElement.classList.add('light-theme');}const d=localStorage.getItem('dir');if(d==='rtl'){document.documentElement.setAttribute('dir','rtl');}})();</script>
     <script>tailwind.config={theme:{container:{center:true},extend:{colors:{carbon:'var(--carbon)',surface:'var(--surface)',surface2:'var(--surface-2)',offwhite:'var(--offwhite)',sec:'var(--text-secondary)',mut:'var(--text-muted)',volt:'var(--volt)',c1:'var(--color-1)',c2:'var(--color-2)',c3:'var(--color-3)',c4:'var(--color-4)',c5:'var(--color-5)'},fontFamily:{mono:['JetBrains Mono','monospace'],sans:['Inter','sans-serif']}}}}</script>
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
     <div class="grain-overlay" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#grain)" opacity="1"/></svg></div>
@@ -21,7 +22,10 @@
 
     <nav class="main-nav">
         <div class="container mx-auto px-6 flex items-center justify-between h-16">
-            <a href="index.html" class="font-mono font-bold text-xl tracking-tight select-none"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></a>
+            <a href="index.html" class="flex items-center gap-2.5 font-mono font-bold text-xl tracking-tight select-none">
+                <img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto">
+                <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
+            </a>
             <div class="flex items-center gap-4 md:gap-8">
                 <div class="hidden md:flex items-center gap-8">
                     <a href="index.html" class="nav-link">Home</a>
@@ -91,9 +95,67 @@
             </div>
         </div>
     </section>
+    <!-- PRICE ESTIMATOR WIDGET -->
+    <section class="section-dark border-t border-[var(--border)]" id="price-estimator-section">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— INSTANT ESTIMATOR</span>
+                <h2 class="section-title font-mono">Calculate<br><span style="color:var(--volt)">Your Savings.</span></h2>
+                <p class="section-sub">Select a trade and job type to see standard rates and your direct member discounts.</p>
+            </div>
+            <div class="estimator-widget bg-[var(--surface)] border border-[var(--border-mid)] rounded-2xl p-6 md:p-8 max-w-4xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Selector Fields -->
+                    <div class="flex flex-col gap-6">
+                        <div class="flex flex-col gap-2">
+                            <label for="est-trade" class="font-mono text-xs text-[var(--text-muted)] tracking-wider">SELECT TRADE</label>
+                            <select id="est-trade" class="estimator-select">
+                                <option value="electrical">⚡ Electrical</option>
+                                <option value="plumbing">🔧 Plumbing</option>
+                                <option value="carpentry">🪚 Carpentry</option>
+                                <option value="hvac">❄️ HVAC</option>
+                                <option value="painting">🖌️ Painting</option>
+                                <option value="general">🛠️ General Repairs</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <label for="est-service" class="font-mono text-xs text-[var(--text-muted)] tracking-wider">SELECT SERVICE TYPE</label>
+                            <select id="est-service" class="estimator-select">
+                                <!-- Options will be populated dynamically via JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Price Displays -->
+                    <div class="estimator-results-card border border-[var(--border-mid)] rounded-xl p-6 bg-[var(--surface-2)] flex flex-col gap-6 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-[var(--volt)] text-[#0A0A0E] font-mono text-[10px] font-extrabold uppercase px-3 py-1 rounded-bl-lg tracking-wider">GridMember Pricing</div>
+                        <div class="flex justify-between items-center border-b border-dashed border-[var(--border)] pb-4">
+                            <div>
+                                <span class="font-mono text-xs text-[var(--text-muted)] block mb-1">STANDARD RATE</span>
+                                <span class="text-xl font-bold font-mono text-[var(--offwhite)]" id="est-std-price">$60 – $95</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-mono text-xs text-[var(--text-muted)] block mb-1">TYPICAL TIME</span>
+                                <span class="text-sm font-semibold text-[var(--text-secondary)]" id="est-duration">1–2 hrs</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-mono text-xs text-[var(--text-muted)] block mb-1">MEMBER RATE (-10%)</span>
+                                <span class="text-2xl font-black font-mono text-[var(--volt)]" id="est-mem-price">$54 – $85</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-mono text-[10px] text-[var(--color-4)] bg-[rgba(16,185,129,0.1)] border border-[rgba(16,185,129,0.2)] rounded px-2.5 py-1 font-semibold uppercase tracking-wider block" id="est-savings">Save up to $10</span>
+                            </div>
+                        </div>
+                        <a href="contact.html" class="estimator-book-btn font-mono text-center">Book This Service →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- PRICE TABLE -->
-    <section class="section-dark">
+    <section class="section-alt">
         <div class="container mx-auto px-6">
             <div class="section-header">
                 <span class="section-eyebrow font-mono">— PRICE REFERENCE</span>
@@ -169,15 +231,59 @@
         </div>
     </section>
 
-    <!-- PLANS — For Artisans -->
+    <!-- PLANS — Segment Switcher -->
     <section class="section-alt" id="artisan-plans">
         <div class="container mx-auto px-6">
-            <div class="section-header">
-                <span class="section-eyebrow font-mono">— FOR ARTISANS</span>
-                <h2 class="section-title font-mono">Grow Your<br><span style="color:var(--color-1)">Business Free.</span></h2>
-                <p class="section-sub">Join free. Scale with optional Pro membership. We never touch your earnings.</p>
+            <div class="section-header text-center max-w-2xl mx-auto mb-12">
+                <span class="section-eyebrow font-mono">— SELECT A PLAN</span>
+                <h2 class="section-title font-mono text-center">Flexible Plans.<br>For <span style="color:var(--color-1)">Everyone.</span></h2>
+                <p class="section-sub text-center mx-auto">Choose standard free tiers, or unlock premium features and benefits with a voluntary subscription.</p>
+                
+                <!-- Toggle Control Button Grid -->
+                <div class="plan-toggle-container font-mono mt-8">
+                    <button class="plan-toggle-btn active" id="toggle-homeowners">For Homeowners</button>
+                    <button class="plan-toggle-btn" id="toggle-artisans">For Artisans</button>
+                </div>
             </div>
-            <div class="plans-grid">
+            
+            <!-- HOMEOWNER PLANS GRID -->
+            <div class="plans-grid mx-auto" id="group-homeowners">
+                <div class="plan-card">
+                    <div class="plan-badge font-mono">NORMAL</div>
+                    <div class="plan-price font-mono">$0<span style="font-size:.8rem;color:var(--text-muted)">/month</span></div>
+                    <div class="plan-name font-mono">Standard Homeowner</div>
+                    <ul class="plan-features">
+                        <li>✓ Profile browsing & verification</li>
+                        <li>✓ Standard messaging & call-out</li>
+                        <li>✓ Escrow payment protection</li>
+                        <li>✓ Upfront pricing quotes</li>
+                        <li>✓ Post-job ratings & reviews</li>
+                        <li style="color:var(--text-muted)">– 10% Member rate discounts</li>
+                        <li style="color:var(--text-muted)">– 24/7 Priority Emergency dispatch</li>
+                        <li style="color:var(--text-muted)">– Free annual trade system safety check</li>
+                    </ul>
+                    <a href="contact.html" class="plan-cta-outline font-mono">Book Service Free →</a>
+                </div>
+                <div class="plan-card plan-card--featured">
+                    <div class="plan-badge font-mono" style="background:var(--volt);color:#0A0A0E">GRIDMEMBER</div>
+                    <div class="plan-price font-mono" style="color:var(--volt)">$9.99<span style="font-size:.8rem;color:var(--text-muted)">/month</span></div>
+                    <div class="plan-name font-mono">Premium Protection</div>
+                    <ul class="plan-features">
+                        <li>✓ Everything in Standard</li>
+                        <li class="text-[var(--volt)] font-semibold">✓ 10% Discount on all service quotes</li>
+                        <li>✓ Priority 24/7 emergency dispatch (under 15 mins)</li>
+                        <li>✓ Free annual trade safety check (inspections)</li>
+                        <li>✓ $10,000 Artisan-Trust damage guarantee</li>
+                        <li>✓ Zero booking administration fees</li>
+                        <li>✓ Dedicated service account advisor</li>
+                    </ul>
+                    <a href="contact.html" class="plan-cta font-mono">Start Member Trial →</a>
+                    <div class="plan-note font-mono">14-day free trial • Cancel anytime</div>
+                </div>
+            </div>
+
+            <!-- ARTISAN PLANS GRID (HIDDEN BY DEFAULT) -->
+            <div class="plans-grid mx-auto hidden" id="group-artisans">
                 <div class="plan-card">
                     <div class="plan-badge font-mono">FREE</div>
                     <div class="plan-price font-mono">$0<span style="font-size:.8rem;color:var(--text-muted)">/month</span></div>
@@ -210,6 +316,82 @@
                     </ul>
                     <a href="about.html#join" class="plan-cta font-mono">Start Pro Trial →</a>
                     <div class="plan-note font-mono">14-day free trial • Cancel anytime</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOTIONS & OFFERS -->
+    <section class="section-dark border-t border-[var(--border)]" id="promotions-section">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— ACTIVE OFFERS</span>
+                <h2 class="section-title font-mono">Special Offers<br>& Promo Codes</h2>
+                <p class="section-sub">Click on a coupon code card to instantly copy it and apply savings to your next service booking.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                <!-- Offer Card 1 -->
+                <div class="promo-coupon-card border-2 border-dashed border-[var(--border-mid)] bg-[var(--surface)] p-6 rounded-xl relative overflow-hidden flex flex-col justify-between h-56 transition-all hover:border-[var(--volt)]">
+                    <div class="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -bottom-3 -left-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -bottom-3 -right-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-mono text-xs text-[var(--color-1)] font-bold tracking-wider">INTRO OFFER</span>
+                            <span class="text-xs text-[var(--text-muted)] font-mono">Est: $10 Off</span>
+                        </div>
+                        <h3 class="font-mono text-lg font-extrabold text-[var(--offwhite)] mb-1">First Booking Special</h3>
+                        <p class="text-xs text-[var(--text-secondary)] leading-relaxed">Save $10 on any service. Valid for new home user accounts only.</p>
+                    </div>
+                    
+                    <button class="promo-copy-btn font-mono" data-code="FIRST10">
+                        <span class="copy-text">Code: FIRST10</span>
+                        <span class="copy-icon">📋</span>
+                    </button>
+                </div>
+                <!-- Offer Card 2 -->
+                <div class="promo-coupon-card border-2 border-dashed border-[var(--border-mid)] bg-[var(--surface)] p-6 rounded-xl relative overflow-hidden flex flex-col justify-between h-56 transition-all hover:border-[var(--volt)]">
+                    <div class="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -bottom-3 -left-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -bottom-3 -right-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-mono text-xs text-[var(--color-3)] font-bold tracking-wider">ANNUAL DEAL</span>
+                            <span class="text-xs text-[var(--text-muted)] font-mono">Save 17%</span>
+                        </div>
+                        <h3 class="font-mono text-lg font-extrabold text-[var(--offwhite)] mb-1">Annual Member Pass</h3>
+                        <p class="text-xs text-[var(--text-secondary)] leading-relaxed">Get 12 months of GridMember perks for the price of 10. Just $99/yr.</p>
+                    </div>
+                    
+                    <button class="promo-copy-btn font-mono" data-code="MEMBER24">
+                        <span class="copy-text">Code: MEMBER24</span>
+                        <span class="copy-icon">📋</span>
+                    </button>
+                </div>
+                <!-- Offer Card 3 -->
+                <div class="promo-coupon-card border-2 border-dashed border-[var(--border-mid)] bg-[var(--surface)] p-6 rounded-xl relative overflow-hidden flex flex-col justify-between h-56 transition-all hover:border-[var(--volt)]">
+                    <div class="absolute -top-3 -left-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -top-3 -right-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -bottom-3 -left-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    <div class="absolute -bottom-3 -right-3 w-6 h-6 rounded-full bg-[var(--carbon)]"></div>
+                    
+                    <div>
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-mono text-xs text-[var(--color-2)] font-bold tracking-wider">SEASONAL</span>
+                            <span class="text-xs text-[var(--text-muted)] font-mono">15% Off</span>
+                        </div>
+                        <h3 class="font-mono text-lg font-extrabold text-[var(--offwhite)] mb-1">AC & HVAC Checkup</h3>
+                        <p class="text-xs text-[var(--text-secondary)] leading-relaxed">Get 15% off HVAC seasonal tune-ups, filter diagnostics or system checks.</p>
+                    </div>
+                    
+                    <button class="promo-copy-btn font-mono" data-code="SUMMERAC">
+                        <span class="copy-text">Code: SUMMERAC</span>
+                        <span class="copy-icon">📋</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -250,7 +432,7 @@
     <footer class="site-footer">
         <div class="container mx-auto px-6">
             <div class="footer-grid">
-                <div class="footer-brand"><div class="font-mono font-bold text-xl mb-3"><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span>148 artisans online</span></div></div>
+                <div class="footer-brand"><div class="flex items-center gap-2.5 font-mono font-bold text-xl mb-3"><img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto"><span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span></div><p class="text-sec text-xs leading-relaxed max-w-xs">The only platform built entirely around the craft — not the commission.</p><div class="footer-badge font-mono mt-4"><span class="pulse-dot"></span><span>148 artisans online</span></div></div>
                 <div class="footer-links">
                     <div class="footer-col"><div class="footer-col-title font-mono">Platform</div><a href="index.html">Home</a><a href="services.html">Services</a><a href="pricing.html">Pricing</a><a href="artisans.html">Artisans</a></div>
                     <div class="footer-col"><div class="footer-col-title font-mono">Company</div><a href="about.html">About</a><a href="about.html#trust">Trust & Safety</a><a href="#">Blog</a><a href="#">Contact</a></div>
@@ -259,6 +441,9 @@
             <div class="footer-bottom"><span class="font-mono text-xs text-mut">© 2026 ArtisanGrid. All rights reserved.</span><span class="font-mono text-xs text-mut hidden md:inline">Honest pricing. Always.</span></div>
         </div>
     </footer>
+
+    <!-- Floating Toast Alert Container -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
 
     <script src="script.js"></script>
     <script src="pages.js"></script>

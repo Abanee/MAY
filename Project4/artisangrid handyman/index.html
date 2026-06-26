@@ -48,6 +48,11 @@
             }
         }
     </script>
+    <link rel="icon" type="image/png" href="logo.png">
+    <style>
+        summary::-webkit-details-marker { display: none; }
+        summary { list-style: none; }
+    </style>
 </head>
 <body class="bg-carbon text-offwhite font-sans overflow-x-hidden">
 
@@ -83,9 +88,10 @@
     ═══════════════════════════════════════ -->
     <nav class="main-nav">
         <div class="container mx-auto px-6 flex items-center justify-between h-16">
-            <div class="font-mono font-bold text-xl tracking-tight select-none">
-                <span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span>
-            </div>
+            <a href="index.html" class="flex items-center gap-2.5 font-mono font-bold text-xl tracking-tight select-none">
+                <img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto">
+                <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
+            </a>
             <div class="flex items-center gap-4 md:gap-8">
                 <div class="hidden md:flex items-center gap-8">
                     <a href="index.html" class="nav-link" style="color:var(--volt)">Home</a>
@@ -295,6 +301,72 @@
     </section>
 
     <!-- ═══════════════════════════════════════
+         SECTION 2.5: TRANSPARENCY COMPARISON
+    ═══════════════════════════════════════ -->
+    <section class="section-dark border-t border-[var(--border)]" id="comparison">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— TRANSPARENCY</span>
+                <h2 class="section-title font-mono">
+                    Zero Markups.<br>
+                    <span class="text-volt">No Middleman Cut.</span>
+                </h2>
+                <p class="section-sub">We compare our open network directly against traditional contractor platforms.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">
+                <!-- Card 1: Traditional Aggregators -->
+                <div class="p-8 border border-[var(--border)] bg-surface rounded-none relative overflow-hidden transition-all duration-300 hover:border-[var(--border-hover)]">
+                    <div class="absolute top-0 right-0 bg-red-500/10 text-red-500 px-4 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider border-b border-l border-[var(--border)]">Typical Aggregator</div>
+                    <h3 class="font-mono font-bold text-xl mb-6 text-red-500 mt-4">Traditional Middleman</h3>
+                    <ul class="space-y-4 text-sm text-sec">
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 font-bold">✕</span>
+                            <div><strong>15% to 30% Markups</strong> added automatically to all invoices.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 font-bold">✕</span>
+                            <div><strong>Algorithm Assignment</strong> prioritizes paid ads over local ratings.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 font-bold">✕</span>
+                            <div><strong>Hidden Booking Fees</strong> added at check-out for "service operations".</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-red-500 font-bold">✕</span>
+                            <div><strong>Delayed Payouts</strong> holding the artisan's earnings for up to 14 days.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: ArtisanGrid -->
+                <div class="p-8 border-2 border-[var(--volt)] bg-surface rounded-none relative overflow-hidden transition-all duration-300 shadow-[4px_4px_0px_0px_var(--volt)]">
+                    <div class="absolute top-0 right-0 bg-[var(--volt)] text-[#0A0A0E] px-4 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider">ArtisanGrid Model</div>
+                    <h3 class="font-mono font-bold text-xl mb-6 text-volt mt-4">100% Commission-Free</h3>
+                    <ul class="space-y-4 text-sm text-sec">
+                        <li class="flex items-start gap-3">
+                            <span class="text-volt font-bold">✓</span>
+                            <div><strong>$0 Platform Fees</strong>. Pay exactly what the artisan quotes.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-volt font-bold">✓</span>
+                            <div><strong>Choose Your Specialist</strong> based on direct, un-manipulated review history.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-volt font-bold">✓</span>
+                            <div><strong>No Middlemen</strong>. Speak directly with the technician before dispatch.</div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-volt font-bold">✓</span>
+                            <div><strong>Direct Payment</strong>. Artisans keep 100% of their earnings instantly.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
          SECTION 3: FEATURED ARTISANS
     ═══════════════════════════════════════ -->
     <section class="section-dark" id="artisans">
@@ -376,14 +448,77 @@
     </section>
 
     <!-- ═══════════════════════════════════════
+         SECTION 4: FAQ SECTION
+    ═══════════════════════════════════════ -->
+    <section class="section-alt border-t border-[var(--border)]" id="faq">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow font-mono">— QUESTIONS</span>
+                <h2 class="section-title font-mono">
+                    Frequently Asked<br>
+                    <span class="text-c1">Questions.</span>
+                </h2>
+                <p class="section-sub">Clear answers on how the network operates.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto mt-12 border-t border-[var(--border)]">
+                <!-- Item 1 -->
+                <details class="group border-b border-[var(--border)] py-4 cursor-pointer outline-none">
+                    <summary class="flex justify-between items-center font-mono font-bold text-base text-offwhite py-2 select-none list-none group-open:text-[var(--volt)] transition-colors duration-200">
+                        <span>How does the emergency 24/7 dispatch work?</span>
+                        <span class="text-xs transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="mt-3 text-sm text-sec leading-relaxed pl-1 pb-2">
+                        Our dispatch system monitors active verified artisans in your sector. If you flag a request as an emergency, our radar matches the nearest active expert. They receive an urgent notification on their dashboard and accept the dispatch within minutes.
+                    </div>
+                </details>
+
+                <!-- Item 2 -->
+                <details class="group border-b border-[var(--border)] py-4 cursor-pointer outline-none">
+                    <summary class="flex justify-between items-center font-mono font-bold text-base text-offwhite py-2 select-none list-none group-open:text-[var(--volt)] transition-colors duration-200">
+                        <span>Are the price estimates guaranteed?</span>
+                        <span class="text-xs transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="mt-3 text-sm text-sec leading-relaxed pl-1 pb-2">
+                        Estimates are generated from aggregate historical data in your sector. The actual quote is agreed directly with the artisan before work begins—no hidden platform adjustments.
+                    </div>
+                </details>
+
+                <!-- Item 3 -->
+                <details class="group border-b border-[var(--border)] py-4 cursor-pointer outline-none">
+                    <summary class="flex justify-between items-center font-mono font-bold text-base text-offwhite py-2 select-none list-none group-open:text-[var(--volt)] transition-colors duration-200">
+                        <span>How are artisans vetted on the network?</span>
+                        <span class="text-xs transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="mt-3 text-sm text-sec leading-relaxed pl-1 pb-2">
+                        Every member undergoes a background check, sector license verification, and reference validation. Ratings come exclusively from homeowners with verified job history on the platform.
+                    </div>
+                </details>
+
+                <!-- Item 4 -->
+                <details class="group border-b border-[var(--border)] py-4 cursor-pointer outline-none">
+                    <summary class="flex justify-between items-center font-mono font-bold text-base text-offwhite py-2 select-none list-none group-open:text-[var(--volt)] transition-colors duration-200">
+                        <span>How does the platform fund itself if commission is 0%?</span>
+                        <span class="text-xs transition-transform duration-300 group-open:rotate-180">▼</span>
+                    </summary>
+                    <div class="mt-3 text-sm text-sec leading-relaxed pl-1 pb-2">
+                        Artisans can optionally subscribe to a Pro membership ($19/mo) for premium dashboard metrics, route optimization, and enhanced list visibility. Listing is always free, and commission is always 0%.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
          FOOTER
     ═══════════════════════════════════════ -->
     <footer class="site-footer" id="footer">
         <div class="container mx-auto px-6">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="font-mono font-bold text-xl mb-3">
-                        <span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span>
+                    <div class="flex items-center gap-2.5 font-mono font-bold text-xl mb-3">
+                        <img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto">
+                        <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
                     </div>
                     <p class="text-sec text-xs leading-relaxed max-w-xs">
                         The only platform built entirely around the craft — not the commission.

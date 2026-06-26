@@ -76,12 +76,12 @@
     font-weight: 800;
     line-height: 0.9;
     letter-spacing: -0.03em;
-    color: var(--offwhite);
+    color: #F3F4F6;
     margin-bottom: 24px;
 }
 
 .photo-hero-accent {
-    background: linear-gradient(135deg, var(--volt) 0%, var(--color-1) 100%);
+    background: linear-gradient(135deg, #0D9488 0%, #06B6D4 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -103,8 +103,8 @@
 }
 
 .photo-btn-primary {
-    background: var(--cta-bg);
-    color: var(--cta-text);
+    background: linear-gradient(135deg, #0D9488 0%, #06B6D4 100%);
+    color: #0A0A0E;
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
     font-weight: 700;
@@ -115,7 +115,7 @@
     transition: all 0.2s ease;
     display: inline-block;
 }
-.photo-btn-primary:hover { background: var(--cta-hover); transform: translateY(-2px); }
+.photo-btn-primary:hover { background: #c2eb00; transform: translateY(-2px); }
 
 .photo-btn-secondary {
     background: rgba(255,255,255,0.08);
@@ -166,7 +166,7 @@
     font-size: 1.4rem;
     font-weight: 700;
     line-height: 1;
-    color: var(--offwhite);
+    color: #F3F4F6;
     display: block;
 }
 
@@ -272,6 +272,180 @@
 .page-hero-search:focus-within {
     border-color: var(--color-1);
     box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+/* ── Services Page Hero Specific Styles ─────────────────────── */
+.services-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+.page-hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.hero-cta-btn {
+    display: inline-block;
+    background: var(--cta-bg);
+    color: var(--cta-text);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 2px solid var(--cta-bg);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+}
+.hero-cta-btn:hover {
+    background: var(--cta-hover);
+    border-color: var(--cta-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+}
+.hero-cta-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+
+.hero-cta-btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--offwhite);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 12px 28px;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 2px solid var(--border-mid);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hero-cta-btn-outline:hover {
+    border-color: var(--offwhite);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+}
+.hero-cta-btn-outline:active {
+    transform: translateY(0);
+}
+
+.services-hero-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.svc-hero-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.svc-hero-card-icon {
+    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in srgb, var(--card-accent, var(--color-1)) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--card-accent, var(--color-1)) 22%, transparent);
+    color: var(--card-accent);
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+}
+
+.svc-hero-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex: 1;
+    min-width: 0;
+}
+
+.svc-hero-card-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--offwhite);
+    transition: color 0.25s ease;
+}
+
+.svc-hero-card-price {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+.svc-hero-card-arrow {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    transition: all 0.25s ease;
+}
+
+/* Hover effects for hero cards */
+.svc-hero-card:hover {
+    border-color: var(--card-accent);
+    transform: translateY(-3px);
+    background: var(--surface-2);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--card-accent) 8%, transparent);
+}
+.svc-hero-card:hover .svc-hero-card-icon {
+    background: var(--card-accent);
+    color: #fff;
+    transform: scale(1.05);
+}
+.svc-hero-card:hover .svc-hero-card-arrow {
+    color: var(--card-accent);
+    transform: translateX(3px);
+}
+
+/* RTL layout overrides for the hero card arrow */
+[dir="rtl"] .svc-hero-card-arrow {
+    transform: rotate(180deg);
+}
+[dir="rtl"] .svc-hero-card:hover .svc-hero-card-arrow {
+    transform: rotate(180deg) translateX(3px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .services-hero-grid {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .page-hero-inner {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-hero-nav {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -620,32 +794,81 @@
 .svc-jobs-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 24px;
+    gap: 20px;
+    margin-bottom: 32px;
 }
 
 .svc-job-card {
     background: var(--surface-2);
     border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 16px;
+    border-radius: 14px;
+    overflow: hidden;
     display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: border-color 0.2s, transform 0.2s;
+    flex-direction: column;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    height: 100%;
 }
 .svc-job-card:hover {
     border-color: var(--border-hover);
-    transform: translateX(3px);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.svc-job-icon { font-size: 1.2rem; flex-shrink: 0; }
-.svc-job-name { flex: 1; font-size: 0.8rem; font-weight: 600; color: var(--offwhite); }
-.svc-job-price {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.7rem;
+.svc-job-card-img {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+    transition: transform 0.4s ease;
+}
+.svc-job-card:hover .svc-job-card-img {
+    transform: scale(1.03);
+}
+
+.svc-job-card-content {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 8px;
+}
+
+.svc-job-card-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--offwhite);
+    letter-spacing: -0.01em;
+}
+
+.svc-job-card-desc {
+    font-size: 0.76rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    flex: 1;
+}
+
+.svc-job-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+    margin-top: auto;
+}
+
+.svc-job-card-price-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
     color: var(--text-muted);
-    flex-shrink: 0;
+    text-transform: uppercase;
+}
+
+.svc-job-card-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--volt);
 }
 
 .svc-book-btn {
@@ -1233,4 +1456,170 @@
     .about-split-stats { grid-template-columns: repeat(2, 1fr); }
     .comp-them { display: none; }
     .comparison-header, .comparison-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PRICING PAGE EXTRA STYLE ADDITIONS
+   ══════════════════════════════════════════════════════════════ */
+
+/* Segment switcher toggle styling */
+.plan-toggle-container {
+    display: inline-flex;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 6px;
+    border-radius: 12px;
+}
+.plan-toggle-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-secondary);
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.plan-toggle-btn:hover {
+    color: var(--offwhite);
+}
+.plan-toggle-btn.active {
+    background: var(--surface);
+    color: var(--volt);
+    border: 1px solid var(--border-mid);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Estimator select elements */
+.estimator-select {
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border-mid);
+    color: var(--offwhite);
+    font-size: 0.9rem;
+    padding: 12px 16px;
+    border-radius: 10px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.estimator-select:focus {
+    border-color: var(--color-1);
+    box-shadow: 0 0 0 3px rgba(6,182,212,0.15);
+}
+
+/* Estimator results card visual enhancements */
+.estimator-results-card {
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.estimator-results-card:hover {
+    border-color: var(--border-hover);
+}
+
+/* Estimator book now CTA */
+.estimator-book-btn {
+    display: block;
+    background: var(--cta-bg);
+    color: var(--cta-text);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+}
+.estimator-book-btn:hover {
+    background: var(--cta-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 rgba(0,0,0,0.15);
+}
+.estimator-book-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+
+/* Deals coupon cards */
+.promo-coupon-card {
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.promo-coupon-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* Promo copy button with responsive active scale state */
+.promo-copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: var(--surface-2);
+    border: 1px solid var(--border-mid);
+    color: var(--offwhite);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.promo-copy-btn:hover {
+    background: var(--surface);
+    border-color: var(--border-hover);
+}
+.promo-copy-btn.copied {
+    background: rgba(212, 255, 0, 0.08);
+    border-color: var(--volt);
+    color: var(--volt);
+}
+.promo-copy-btn:active {
+    transform: scale(0.98);
+}
+
+/* Toast alert notification styling */
+.custom-toast {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface-2);
+    border: 1.5px solid var(--border-hover);
+    border-left: 4px solid var(--volt);
+    border-radius: 10px;
+    padding: 14px 20px;
+    color: var(--offwhite);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(12px) scale(0.95);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: auto;
+    max-width: 320px;
+}
+.custom-toast.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.custom-toast-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+.custom-toast-msg {
+    flex: 1;
+}
+
+/* RTL layout fixes */
+[dir="rtl"] .custom-toast {
+    border-left: 1.5px solid var(--border-hover);
+    border-right: 4px solid var(--volt);
+}
+[dir="rtl"] .estimator-results-card .absolute {
+    left: 0;
+    right: auto;
+    border-radius: 0 0 10px 0;
 }
