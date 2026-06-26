@@ -261,7 +261,7 @@ body,
 }
 .mobile-menu a:hover { color: var(--offwhite); }
 
-@media (max-width: 768px) {
+@media (max-width: 1279px) {
     .mobile-menu:not(.hidden) {
         display: flex;
         background: var(--surface);
@@ -857,21 +857,34 @@ body,
 /* ══════════════════════════════════════════════════════════════
    RESPONSIVE BREAKPOINTS
 ══════════════════════════════════════════════════════════════ */
-@media (max-width: 1024px) {
+@media (max-width: 1279px) {
     .hero-grid {
         grid-template-columns: 1fr;
         gap: 56px;
+        text-align: center;
     }
     .hero-headline {
         font-size: clamp(2.8rem, 8vw, 4.5rem);
     }
     .hero-right {
         max-width: 520px;
+        margin: 0 auto;
     }
+    .hero-sub {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .category-pills {
+        justify-content: center;
+    }
+    .cta-bar {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .hamburger { display: flex; }
 }
 
 @media (max-width: 768px) {
-    .hamburger { display: flex; }
     .hero-section { padding: 56px 0 64px; min-height: auto; }
     .process-grid { grid-template-columns: 1fr; gap: 1px; }
     .artisan-grid { grid-template-columns: 1fr; }
@@ -925,4 +938,69 @@ body,
 [dir="rtl"] .phc-desc {
     text-align: right;
 }
+}
+}
+
+/* ── Footer Newsletter & Social Icons ──────────────────────── */
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+.social-icon:hover {
+    color: var(--volt);
+    border-color: var(--volt);
+    transform: translateY(-2px);
+    box-shadow: 2px 2px 0px 0px var(--volt);
+}
+.footer-newsletter {
+    display: flex;
+    flex-direction: column;
+}
+.newsletter-form {
+    display: flex;
+    gap: 6px;
+}
+.newsletter-input {
+    flex-grow: 1;
+    background: var(--carbon);
+    border: 1px solid var(--border);
+    color: var(--offwhite);
+    padding: 10px 12px;
+    font-size: 0.75rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+.newsletter-input:focus {
+    border-color: var(--border-hover);
+}
+.newsletter-submit {
+    background: var(--offwhite);
+    color: var(--carbon);
+    border: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.newsletter-submit:hover {
+    background: var(--volt);
+    color: #0A0A0E;
+    box-shadow: 2px 2px 0px 0px rgba(var(--color-1-rgb), 0.3);
+}
+.light-theme .newsletter-submit {
+    background: var(--offwhite);
+    color: var(--surface);
+}
+.light-theme .newsletter-submit:hover {
+    background: var(--volt);
+    color: #FFFFFF;
 }
