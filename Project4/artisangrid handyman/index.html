@@ -104,7 +104,7 @@
                 </div>
 
                 <!-- Theme Toggle Button -->
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <button id="theme-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Theme">
                     <svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/>
                     </svg>
@@ -114,11 +114,13 @@
                 </button>
 
                 <!-- Direction Toggle Button -->
-                <button id="rtl-toggle" class="theme-toggle-btn" aria-label="Toggle Layout Direction">
+                <button id="rtl-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Layout Direction">
                     <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
 
-                <a href="dashboard.html" class="nav-cta hidden xl:inline-block">Dashboard →</a>
+                <a href="dashboard.html" class="nav-cta-outline hidden xl:inline-block">Dashboard</a>
+                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
+                <a href="signup.html" class="nav-cta hidden xl:inline-block">Sign Up</a>
 
                 <button class="xl:hidden hamburger" id="menu-toggle" aria-label="Open menu">
                     <span></span><span></span><span></span>
@@ -133,7 +135,18 @@
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
-            <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a>
+            <div class="flex items-center gap-4 mt-4 mb-2">
+                <button id="theme-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Theme">
+                    <svg class="sun-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
+                    <svg class="moon-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    <span>Theme</span>
+                </button>
+                <button id="rtl-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Layout Direction">
+                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
+                </button>
+            </div>
+            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
+            <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard</a>
         </div>
     </nav>
 
@@ -178,7 +191,7 @@
                             <span class="pulse-dot"></span>
                         </div>
                         <div class="artisan-track">
-                            <div class="artisan-avatar font-mono" id="artisan-avatar">MV</div>
+                            <img src="Assets/avatar_mv.png" class="artisan-avatar" id="artisan-avatar" alt="Live Artisan">
                             <div class="artisan-info">
                                 <div class="artisan-name font-mono" id="artisan-name">Marcus V.</div>
                                 <div class="artisan-title text-sec text-xs" id="artisan-title">Master Plumber</div>
@@ -381,7 +394,7 @@
             </div>
             <div class="artisan-grid">
                 <div class="artisan-card">
-                    <div class="artisan-card-avatar font-mono" style="background:var(--color-1)">MV</div>
+                    <img src="Assets/avatar_mv.png" class="artisan-card-avatar" alt="Marcus V.">
                     <div class="artisan-card-info">
                         <div class="artisan-card-name font-mono">Marcus V.</div>
                         <div class="artisan-card-role">Master Plumber · 12 yrs exp.</div>
@@ -392,7 +405,7 @@
                     <div class="artisan-card-rating font-mono text-volt">★ 4.9</div>
                 </div>
                 <div class="artisan-card">
-                    <div class="artisan-card-avatar font-mono" style="background:var(--color-2)">EK</div>
+                    <img src="Assets/avatar_ek.png" class="artisan-card-avatar" alt="Elena K.">
                     <div class="artisan-card-info">
                         <div class="artisan-card-name font-mono">Elena K.</div>
                         <div class="artisan-card-role">Senior Carpenter · 8 yrs exp.</div>
@@ -403,7 +416,7 @@
                     <div class="artisan-card-rating font-mono text-volt">★ 4.8</div>
                 </div>
                 <div class="artisan-card">
-                    <div class="artisan-card-avatar font-mono" style="background:var(--color-5)">TR</div>
+                    <img src="Assets/avatar_tr.png" class="artisan-card-avatar" alt="Tom R.">
                     <div class="artisan-card-info">
                         <div class="artisan-card-name font-mono">Tom R.</div>
                         <div class="artisan-card-role">HVAC Technician · 10 yrs exp.</div>
@@ -414,7 +427,7 @@
                     <div class="artisan-card-rating font-mono text-volt">★ 4.7</div>
                 </div>
                 <div class="artisan-card">
-                    <div class="artisan-card-avatar font-mono" style="background:var(--color-4)">SB</div>
+                    <img src="Assets/avatar_sb.png" class="artisan-card-avatar" alt="Sophie B.">
                     <div class="artisan-card-info">
                         <div class="artisan-card-name font-mono">Sophie B.</div>
                         <div class="artisan-card-role">Licensed Electrician · 6 yrs exp.</div>
@@ -425,7 +438,7 @@
                     <div class="artisan-card-rating font-mono text-volt">★ 4.9</div>
                 </div>
                 <div class="artisan-card">
-                    <div class="artisan-card-avatar font-mono" style="background:var(--color-3)">RO</div>
+                    <img src="Assets/avatar_ro.png" class="artisan-card-avatar" alt="Ray O.">
                     <div class="artisan-card-info">
                         <div class="artisan-card-name font-mono">Ray O.</div>
                         <div class="artisan-card-role">General Repairs · 15 yrs exp.</div>

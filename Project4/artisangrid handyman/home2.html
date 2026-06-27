@@ -87,26 +87,40 @@
                     <a href="about.html" class="nav-link">About</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <button id="theme-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Theme">
                     <svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
                     <svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                 </button>
                 <!-- Direction Toggle Button -->
-                <button id="rtl-toggle" class="theme-toggle-btn" aria-label="Toggle Layout Direction">
+                <button id="rtl-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Layout Direction">
                     <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
-                <a href="dashboard.html" class="nav-cta hidden xl:inline-block">Dashboard →</a>
+                <a href="dashboard.html" class="nav-cta-outline hidden xl:inline-block">Dashboard</a>
+                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
+                <a href="signup.html" class="nav-cta hidden xl:inline-block">Sign Up</a>
                 <button class="xl:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu hidden" id="mobile-menu">
             <a href="index.html">Home</a>
+            <a href="home2.html">Home 2</a>
             <a href="services.html">Services</a>
             <a href="artisans.html">Artisans</a>
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
-            <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a>
+            <div class="flex items-center gap-4 mt-4 mb-2">
+                <button id="theme-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Theme">
+                    <svg class="sun-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
+                    <svg class="moon-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    <span>Theme</span>
+                </button>
+                <button id="rtl-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Layout Direction">
+                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
+                </button>
+            </div>
+            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
+            <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard</a>
         </div>
     </nav>
 
@@ -235,7 +249,7 @@
                     <div class="tc-stars font-mono text-volt">★★★★★</div>
                     <p class="tc-text">"Marcus fixed our burst pipe at 11pm. Had the water back on within 40 minutes. The live ETA tracking on the dashboard was brilliant — I knew exactly when he'd arrive."</p>
                     <div class="tc-author">
-                        <div class="tc-avatar font-mono" style="background:var(--color-4)">JD</div>
+                        <img src="Assets/avatar_jd.png" class="tc-avatar" alt="Jamie D.">
                         <div class="tc-meta"><div class="tc-name font-mono">Jamie D.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 4 · Plumbing</div></div>
                     </div>
                 </div>
@@ -243,7 +257,7 @@
                     <div class="tc-stars font-mono text-volt">★★★★★</div>
                     <p class="tc-text">"Sophie rewired the entire ground floor. Professional, tidy, and the price was exactly what was quoted — no hidden extras. I've already recommended ArtisanGrid to six friends."</p>
                     <div class="tc-author">
-                        <div class="tc-avatar font-mono" style="background:var(--color-1)">RL</div>
+                        <img src="Assets/avatar_rl.png" class="tc-avatar" alt="Rachel L.">
                         <div class="tc-meta"><div class="tc-name font-mono">Rachel L.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 7 · Electrical</div></div>
                     </div>
                 </div>
@@ -251,7 +265,7 @@
                     <div class="tc-stars font-mono text-volt">★★★★☆</div>
                     <p class="tc-text">"Built us a custom deck in 3 days. Elena brought her own specialist tools and the finish was exceptional. Only docking one star because availability was limited — booked out two days ahead."</p>
                     <div class="tc-author">
-                        <div class="tc-avatar font-mono" style="background:var(--color-3)">MP</div>
+                        <img src="Assets/avatar_mp.png" class="tc-avatar" alt="Mark P.">
                         <div class="tc-meta"><div class="tc-name font-mono">Mark P.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 2 · Carpentry</div></div>
                     </div>
                 </div>
@@ -260,7 +274,7 @@
                     <div class="tc-stars font-mono text-volt">★★★★★</div>
                     <p class="tc-text">"I was sceptical of yet another app, but ArtisanGrid is genuinely different. No upsells, no bait-and-switch pricing. Tom serviced our entire HVAC system and the quote was bang on. The zero-fee model actually makes it cheaper than calling individual contractors."</p>
                     <div class="tc-author">
-                        <div class="tc-avatar font-mono" style="background:var(--color-2)">AW</div>
+                        <img src="Assets/avatar_aw.png" class="tc-avatar" alt="Amara W.">
                         <div class="tc-meta"><div class="tc-name font-mono">Amara W.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 1 · HVAC</div></div>
                     </div>
                 </div>
@@ -297,14 +311,14 @@
         <div class="container mx-auto px-6">
             <div class="section-header">
                 <span class="section-eyebrow font-mono">— TOP RATED</span>
-                <h2 class="section-title font-mono">Meet a Few<br><span style="color:var(--color-2)">of the Best.</span></h2>
+                <h2 class="section-title font-mono">Meet a Few<br><span style="color:var(--volt)">of the Best.</span></h2>
             </div>
             <div class="artisan-strip">
-                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-1)">MV</div><div class="asc-name font-mono">Marcus V.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Master Plumber</div><div class="asc-rating font-mono text-volt">★ 4.9</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">24/7</span></div></div>
-                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-2)">EK</div><div class="asc-name font-mono">Elena K.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Senior Carpenter</div><div class="asc-rating font-mono text-volt">★ 4.8</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">Insured</span></div></div>
-                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-5)">TR</div><div class="asc-name font-mono">Tom R.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">HVAC Technician</div><div class="asc-rating font-mono text-volt">★ 4.7</div><div class="asc-badges"><span class="tag">Certified</span><span class="tag">Emergency</span></div></div>
-                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-4)">SB</div><div class="asc-name font-mono">Sophie B.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Electrician</div><div class="asc-rating font-mono text-volt">★ 4.9</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">Certified</span></div></div>
-                <div class="artisan-strip-card"><div class="asc-avatar font-mono" style="background:var(--color-3)">RO</div><div class="asc-name font-mono">Ray O.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">General Repairs</div><div class="asc-rating font-mono text-volt">★ 4.6</div><div class="asc-badges"><span class="tag">Insured</span><span class="tag">Emergency</span></div></div>
+                <div class="artisan-strip-card"><img src="Assets/avatar_mv.png" class="asc-avatar" alt="Marcus V."><div class="asc-name font-mono">Marcus V.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Master Plumber</div><div class="asc-rating font-mono text-volt">★ 4.9</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">24/7</span></div></div>
+                <div class="artisan-strip-card"><img src="Assets/avatar_ek.png" class="asc-avatar" alt="Elena K."><div class="asc-name font-mono">Elena K.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Senior Carpenter</div><div class="asc-rating font-mono text-volt">★ 4.8</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">Insured</span></div></div>
+                <div class="artisan-strip-card"><img src="Assets/avatar_tr.png" class="asc-avatar" alt="Tom R."><div class="asc-name font-mono">Tom R.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">HVAC Technician</div><div class="asc-rating font-mono text-volt">★ 4.7</div><div class="asc-badges"><span class="tag">Certified</span><span class="tag">Emergency</span></div></div>
+                <div class="artisan-strip-card"><img src="Assets/avatar_sb.png" class="asc-avatar" alt="Sophie B."><div class="asc-name font-mono">Sophie B.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">Electrician</div><div class="asc-rating font-mono text-volt">★ 4.9</div><div class="asc-badges"><span class="tag">Licensed</span><span class="tag">Certified</span></div></div>
+                <div class="artisan-strip-card"><img src="Assets/avatar_ro.png" class="asc-avatar" alt="Ray O."><div class="asc-name font-mono">Ray O.</div><div class="asc-role" style="color:var(--text-secondary);font-size:.75rem">General Repairs</div><div class="asc-rating font-mono text-volt">★ 4.6</div><div class="asc-badges"><span class="tag">Insured</span><span class="tag">Emergency</span></div></div>
             </div>
             <div class="text-center mt-10">
                 <a href="artisans.html" class="view-all-link font-mono">Browse all 148 artisans →</a>

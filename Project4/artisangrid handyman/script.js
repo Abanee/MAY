@@ -9,11 +9,11 @@
    1. LIVE DATA — Artisan Pool & Category Pricing
 ────────────────────────────────────────────────────────────── */
 const ARTISANS = [
-    { initials: 'MV', name: 'Marcus V.',  title: 'Master Plumber',       eta: '12 min', dist: '1.4 miles away', color: 'var(--color-1)' },
-    { initials: 'EK', name: 'Elena K.',   title: 'Senior Carpenter',      eta: '8 min',  dist: '0.9 miles away', color: 'var(--color-2)' },
-    { initials: 'TR', name: 'Tom R.',     title: 'HVAC Technician',        eta: '18 min', dist: '2.1 miles away', color: 'var(--color-5)' },
-    { initials: 'SB', name: 'Sophie B.',  title: 'Licensed Electrician',   eta: '6 min',  dist: '0.7 miles away', color: 'var(--color-4)' },
-    { initials: 'RO', name: 'Ray O.',     title: 'General Repairs',        eta: '14 min', dist: '1.8 miles away', color: 'var(--color-3)' },
+    { initials: 'MV', name: 'Marcus V.',  title: 'Master Plumber',       eta: '12 min', dist: '1.4 miles away', color: 'var(--color-1)', image: 'Assets/avatar_mv.png' },
+    { initials: 'EK', name: 'Elena K.',   title: 'Senior Carpenter',      eta: '8 min',  dist: '0.9 miles away', color: 'var(--color-2)', image: 'Assets/avatar_ek.png' },
+    { initials: 'TR', name: 'Tom R.',     title: 'HVAC Technician',        eta: '18 min', dist: '2.1 miles away', color: 'var(--color-5)', image: 'Assets/avatar_tr.png' },
+    { initials: 'SB', name: 'Sophie B.',  title: 'Licensed Electrician',   eta: '6 min',  dist: '0.7 miles away', color: 'var(--color-4)', image: 'Assets/avatar_sb.png' },
+    { initials: 'RO', name: 'Ray O.',     title: 'General Repairs',        eta: '14 min', dist: '1.8 miles away', color: 'var(--color-3)', image: 'Assets/avatar_ro.png' },
 ];
 
 const PRICE_RANGES = {
@@ -64,25 +64,31 @@ let artisanIndex    = 0;
 let prefersReduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function fadeSwap(el, newText, newColor) {
+    if (!el) return;
     el.style.opacity = '0';
     el.style.transition = 'opacity 0.35s ease';
     setTimeout(() => {
-        el.textContent = newText;
-        if (newColor) el.style.background = newColor;
+        if (el.tagName === 'IMG') {
+            el.src = newText;
+        } else {
+            el.textContent = newText;
+            if (newColor) el.style.background = newColor;
+        }
         el.style.opacity = '1';
     }, 350);
 }
 
 function cycleArtisan() {
+    if (!artisanAvatar || !artisanName || !artisanTitle || !etaValue || !artisanDistance) return;
     artisanIndex = (artisanIndex + 1) % ARTISANS.length;
     const a = ARTISANS[artisanIndex];
 
-    fadeSwap(artisanAvatar, a.initials, a.color);
+    fadeSwap(artisanAvatar, a.image);
     fadeSwap(artisanName,   a.name);
     fadeSwap(artisanTitle,  a.title);
     fadeSwap(etaValue,      a.eta);
 
-    artisanDistance.textContent = a.dist;
+    if (artisanDistance) artisanDistance.textContent = a.dist;
 
     // Randomise live metrics
     const count  = 138 + Math.floor(Math.random() * 28);
@@ -329,49 +335,54 @@ if (ctaBtn) {
 /* ──────────────────────────────────────────────────────────────
    12. THEME TOGGLER LOGIC — toggles light-theme and saves choice
 ────────────────────────────────────────────────────────────── */
-const themeToggleBtn = $('theme-toggle');
+const themeToggleBtns = document.querySelectorAll('#theme-toggle, #theme-toggle-mobile');
 
-if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', function () {
+themeToggleBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
         const isLight = document.documentElement.classList.toggle('light-theme');
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
         
-        // Add a subtle rotation transition to the theme icon
-        const sunIcon = themeToggleBtn.querySelector('.sun-icon');
-        const moonIcon = themeToggleBtn.querySelector('.moon-icon');
-        
-        if (isLight) {
-            if (sunIcon) sunIcon.style.transform = 'rotate(18deg)';
-            setTimeout(() => { if (sunIcon) sunIcon.style.transform = ''; }, 200);
-        } else {
-            if (moonIcon) moonIcon.style.transform = 'rotate(-18deg)';
-            setTimeout(() => { if (moonIcon) moonIcon.style.transform = ''; }, 200);
-        }
+        // Rotate icons on all theme buttons
+        themeToggleBtns.forEach(b => {
+            const sunIcon = b.querySelector('.sun-icon');
+            const moonIcon = b.querySelector('.moon-icon');
+            if (isLight) {
+                if (sunIcon) sunIcon.style.transform = 'rotate(18deg)';
+                setTimeout(() => { if (sunIcon) sunIcon.style.transform = ''; }, 200);
+            } else {
+                if (moonIcon) moonIcon.style.transform = 'rotate(-18deg)';
+                setTimeout(() => { if (moonIcon) moonIcon.style.transform = ''; }, 200);
+            }
+        });
     });
-}
+});
 
 /* ──────────────────────────────────────────────────────────────
    13. RTL / LTR DIRECTION TOGGLER
    ────────────────────────────────────────────────────────────── */
-const rtlToggleBtn = document.getElementById('rtl-toggle');
-if (rtlToggleBtn) {
-    const label = rtlToggleBtn.querySelector('.rtl-label');
+const rtlToggleBtns = document.querySelectorAll('#rtl-toggle, #rtl-toggle-mobile');
+if (rtlToggleBtns.length > 0) {
     const updateLabel = () => {
         const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
-        if (label) label.textContent = isRtl ? 'LTR' : 'RTL';
+        rtlToggleBtns.forEach(btn => {
+            const label = btn.querySelector('.rtl-label');
+            if (label) label.textContent = isRtl ? 'LTR' : 'RTL';
+        });
     };
     updateLabel();
 
-    rtlToggleBtn.addEventListener('click', function () {
-        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
-        if (isRtl) {
-            document.documentElement.removeAttribute('dir');
-            localStorage.setItem('dir', 'ltr');
-        } else {
-            document.documentElement.setAttribute('dir', 'rtl');
-            localStorage.setItem('dir', 'rtl');
-        }
-        updateLabel();
+    rtlToggleBtns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
+            if (isRtl) {
+                document.documentElement.removeAttribute('dir');
+                localStorage.setItem('dir', 'ltr');
+            } else {
+                document.documentElement.setAttribute('dir', 'rtl');
+                localStorage.setItem('dir', 'rtl');
+            }
+            updateLabel();
+        });
     });
 }
 

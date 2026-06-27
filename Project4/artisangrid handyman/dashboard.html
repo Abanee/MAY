@@ -102,7 +102,7 @@
                 </div>
 
                 <!-- Theme Toggle -->
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                <button id="theme-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Theme">
                     <svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/>
                     </svg>
@@ -112,10 +112,12 @@
                 </button>
 
                 <!-- Direction Toggle -->
-                <button id="rtl-toggle" class="theme-toggle-btn" aria-label="Toggle Layout Direction">
+                <button id="rtl-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Layout Direction">
                     <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
 
+                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
+                <a href="signup.html" class="nav-cta hidden xl:inline-block">Sign Up</a>
                 <button class="nav-cta hidden xl:inline-block" onclick="document.querySelector('.dash-nav-item[data-tab=\'book\']').click()">+ Book a Job</button>
 
                 <button class="xl:hidden hamburger" id="menu-toggle" aria-label="Open menu">
@@ -125,12 +127,24 @@
         </div>
         <div class="mobile-menu hidden" id="mobile-menu">
             <a href="index.html">Home</a>
+            <a href="home2.html">Home 2</a>
             <a href="services.html">Services</a>
             <a href="artisans.html">Artisans</a>
             <a href="pricing.html">Pricing</a>
             <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
-            <a href="dashboard.html">Dashboard</a>
+            <div class="flex items-center gap-4 mt-4 mb-2">
+                <button id="theme-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Theme">
+                    <svg class="sun-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
+                    <svg class="moon-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    <span>Theme</span>
+                </button>
+                <button id="rtl-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Layout Direction">
+                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
+                </button>
+            </div>
+            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
+            <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard</a>
             <a href="#" class="nav-cta text-center mt-2 py-2" onclick="document.querySelector('.dash-nav-item[data-tab=\'book\']').click()">+ Book a Job</a>
         </div>
     </nav>
@@ -299,7 +313,7 @@
                         <div class="job-card-title font-mono">Electrical Panel Inspection</div>
                         <div class="job-card-meta font-mono">Booked today at 09:14 AM</div>
                         <div class="artisan-track" style="margin-top:20px">
-                            <div class="artisan-avatar font-mono" style="background:var(--color-4)">SB</div>
+                            <img src="Assets/avatar_sb.png" class="artisan-avatar" alt="Sophie B.">
                             <div class="artisan-info">
                                 <div class="artisan-name font-mono">Sophie B.</div>
                                 <div class="artisan-title">Licensed Electrician · ★ 4.9</div>
@@ -334,7 +348,7 @@
                         <div class="job-card-title font-mono">Plumbing Leak — Kitchen Sink</div>
                         <div class="job-card-meta font-mono">Started at 08:42 AM · ~35 min remaining</div>
                         <div class="artisan-track" style="margin-top:20px">
-                            <div class="artisan-avatar font-mono" style="background:var(--color-1)">MV</div>
+                            <img src="Assets/avatar_mv.png" class="artisan-avatar" alt="Marcus V.">
                             <div class="artisan-info">
                                 <div class="artisan-name font-mono">Marcus V.</div>
                                 <div class="artisan-title">Master Plumber · ★ 4.9</div>
@@ -373,7 +387,7 @@
                         <div class="job-card-title font-mono">HVAC Annual Service</div>
                         <div class="job-card-meta font-mono">Scheduled for tomorrow · 2:00 PM</div>
                         <div class="artisan-track" style="margin-top:20px">
-                            <div class="artisan-avatar font-mono" style="background:var(--color-5)">TR</div>
+                            <img src="Assets/avatar_tr.png" class="artisan-avatar" alt="Tom R.">
                             <div class="artisan-info">
                                 <div class="artisan-name font-mono">Tom R.</div>
                                 <div class="artisan-title">HVAC Technician · ★ 4.7</div>
@@ -403,7 +417,7 @@
                         <div class="job-card-title font-mono">Kitchen Cabinet Installation</div>
                         <div class="job-card-meta font-mono">Scheduled for Fri Jun 28 · 10:00 AM</div>
                         <div class="artisan-track" style="margin-top:20px">
-                            <div class="artisan-avatar font-mono" style="background:var(--color-2)">EK</div>
+                            <img src="Assets/avatar_ek.png" class="artisan-avatar" alt="Elena K.">
                             <div class="artisan-info">
                                 <div class="artisan-name font-mono">Elena K.</div>
                                 <div class="artisan-title">Senior Carpenter · ★ 4.8</div>
@@ -454,7 +468,7 @@
                             <div class="job-id font-mono">#JOB-2815</div>
                         </div>
                         <div class="artisan-track" style="margin-top:16px">
-                            <div class="artisan-avatar artisan-avatar--sm font-mono" style="background:var(--color-3)">RO</div>
+                            <img src="Assets/avatar_ro.png" class="artisan-avatar artisan-avatar--sm" alt="Ray O.">
                             <div class="artisan-info">
                                 <div class="artisan-name font-mono" style="font-size:0.875rem">Ray O.</div>
                                 <div class="artisan-title">General Repairs · $120 paid</div>
@@ -494,7 +508,7 @@
                             <div class="job-id font-mono">#JOB-2801</div>
                         </div>
                         <div class="artisan-track" style="margin-top:16px">
-                            <div class="artisan-avatar artisan-avatar--sm font-mono" style="background:var(--color-4)">SB</div>
+                            <img src="Assets/avatar_sb.png" class="artisan-avatar artisan-avatar--sm" alt="Sophie B.">
                             <div class="artisan-info">
                                 <div class="artisan-name font-mono" style="font-size:0.875rem">Sophie B.</div>
                                 <div class="artisan-title">Licensed Electrician · $95 paid</div>
@@ -534,7 +548,7 @@
                             <div class="job-id font-mono">#JOB-2788</div>
                         </div>
                         <div class="artisan-track" style="margin-top:16px">
-                            <div class="artisan-avatar artisan-avatar--sm font-mono" style="background:var(--color-1)">MV</div>
+                            <img src="Assets/avatar_mv.png" class="artisan-avatar artisan-avatar--sm" alt="Marcus V.">
                             <div class="artisan-info">
                                 <div class="artisan-name font-mono" style="font-size:0.875rem">Marcus V.</div>
                                 <div class="artisan-title">Master Plumber · $145 paid</div>

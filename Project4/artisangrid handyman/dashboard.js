@@ -3,52 +3,12 @@
    Customer Dashboard: Ratings · Booking · Live Tracking · Tabs
    ============================================================ */
 
-'use strict';
+(function () {
+    'use strict';
 
-/* ──────────────────────────────────────────────────────────────
-   1. THEME TOGGLE (mirror of script.js, standalone for dashboard)
-────────────────────────────────────────────────────────────── */
-const themeToggleBtn = document.getElementById('theme-toggle');
-if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', function () {
-        const isLight = document.documentElement.classList.toggle('light-theme');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        const sunIcon  = this.querySelector('.sun-icon');
-        const moonIcon = this.querySelector('.moon-icon');
-        if (isLight) {
-            if (sunIcon)  { sunIcon.style.transform  = 'rotate(18deg)'; setTimeout(() => { sunIcon.style.transform  = ''; }, 200); }
-        } else {
-            if (moonIcon) { moonIcon.style.transform = 'rotate(-18deg)'; setTimeout(() => { moonIcon.style.transform = ''; }, 200); }
-        }
-    });
-}
 
-/* ──────────────────────────────────────────────────────────────
-   2. MOBILE MENU TOGGLE
-────────────────────────────────────────────────────────────── */
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function () {
-        mobileMenu.classList.toggle('hidden');
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        this.setAttribute('aria-expanded', String(isOpen));
-        const spans = this.querySelectorAll('span');
-        if (isOpen) {
-            spans[0].style.transform = 'translateY(6px) rotate(45deg)';
-            spans[1].style.opacity   = '0';
-            spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
-        } else {
-            spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-        }
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            menuToggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-        });
-    });
-}
+
+
 
 /* ──────────────────────────────────────────────────────────────
    3. BOOKING WIDGET — Category pills + price estimates
@@ -537,4 +497,5 @@ if (saveProfileBtn) {
         }, 1000);
     });
 }
+})();
 

@@ -36,16 +36,38 @@
                     <a href="about.html" class="nav-link">About</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
-                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
+                <button id="theme-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
                 <!-- Direction Toggle Button -->
-                <button id="rtl-toggle" class="theme-toggle-btn" aria-label="Toggle Layout Direction">
+                <button id="rtl-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Layout Direction">
                     <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
-                <a href="dashboard.html" class="nav-cta hidden xl:inline-block">Dashboard →</a>
+                <a href="dashboard.html" class="nav-cta-outline hidden xl:inline-block">Dashboard</a>
+                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
+                <a href="signup.html" class="nav-cta hidden xl:inline-block">Sign Up</a>
                 <button class="xl:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
             </div>
         </div>
-        <div class="mobile-menu hidden" id="mobile-menu"><a href="index.html">Home</a><a href="services.html">Services</a><a href="artisans.html">Artisans</a><a href="pricing.html">Pricing</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard →</a></div>
+        <div class="mobile-menu hidden" id="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="home2.html">Home 2</a>
+            <a href="services.html">Services</a>
+            <a href="artisans.html">Artisans</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <div class="flex items-center gap-4 mt-4 mb-2">
+                <button id="theme-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Theme">
+                    <svg class="sun-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
+                    <svg class="moon-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    <span>Theme</span>
+                </button>
+                <button id="rtl-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Layout Direction">
+                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
+                </button>
+            </div>
+            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
+            <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard</a>
+        </div>
     </nav>
 
     <!-- PAGE HERO -->
@@ -93,7 +115,7 @@
                 <!-- Plumbing -->
                 <div class="artisan-dir-card" data-trade="plumbing">
                     <div class="adc-top">
-                        <div class="adc-avatar font-mono" style="background:var(--color-1)">MV</div>
+                        <img src="Assets/avatar_mv.png" class="adc-avatar" alt="Marcus V.">
                         <div class="adc-info">
                             <div class="adc-name font-mono">Marcus V.</div>
                             <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Master Plumber · 12 yrs exp.</div>
@@ -111,7 +133,7 @@
 
                 <div class="artisan-dir-card" data-trade="electrical">
                     <div class="adc-top">
-                        <div class="adc-avatar font-mono" style="background:var(--color-4)">SB</div>
+                        <img src="Assets/avatar_sb.png" class="adc-avatar" alt="Sophie B.">
                         <div class="adc-info">
                             <div class="adc-name font-mono">Sophie B.</div>
                             <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Licensed Electrician · 6 yrs exp.</div>
@@ -129,7 +151,7 @@
 
                 <div class="artisan-dir-card" data-trade="carpentry">
                     <div class="adc-top">
-                        <div class="adc-avatar font-mono" style="background:var(--color-2)">EK</div>
+                        <img src="Assets/avatar_ek.png" class="adc-avatar" alt="Elena K.">
                         <div class="adc-info">
                             <div class="adc-name font-mono">Elena K.</div>
                             <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Senior Carpenter · 8 yrs exp.</div>
@@ -147,7 +169,7 @@
 
                 <div class="artisan-dir-card" data-trade="hvac">
                     <div class="adc-top">
-                        <div class="adc-avatar font-mono" style="background:var(--color-5)">TR</div>
+                        <img src="Assets/avatar_tr.png" class="adc-avatar" alt="Tom R.">
                         <div class="adc-info">
                             <div class="adc-name font-mono">Tom R.</div>
                             <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">HVAC Technician · 10 yrs exp.</div>
@@ -165,7 +187,7 @@
 
                 <div class="artisan-dir-card" data-trade="general">
                     <div class="adc-top">
-                        <div class="adc-avatar font-mono" style="background:var(--color-3)">RO</div>
+                        <img src="Assets/avatar_ro.png" class="adc-avatar" alt="Ray O.">
                         <div class="adc-info">
                             <div class="adc-name font-mono">Ray O.</div>
                             <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">General Repairs · 15 yrs exp.</div>
@@ -183,7 +205,7 @@
 
                 <div class="artisan-dir-card" data-trade="painting">
                     <div class="adc-top">
-                        <div class="adc-avatar font-mono" style="background:var(--color-4)">LN</div>
+                        <img src="Assets/avatar_ln.png" class="adc-avatar" alt="Lena N.">
                         <div class="adc-info">
                             <div class="adc-name font-mono">Lena N.</div>
                             <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Painter & Decorator · 9 yrs exp.</div>
@@ -201,7 +223,7 @@
 
                 <div class="artisan-dir-card" data-trade="electrical">
                     <div class="adc-top">
-                        <div class="adc-avatar font-mono" style="background:var(--color-1)">JA</div>
+                        <img src="Assets/avatar_ja.png" class="adc-avatar" alt="Jake A.">
                         <div class="adc-info">
                             <div class="adc-name font-mono">Jake A.</div>
                             <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Electrician · 4 yrs exp.</div>
@@ -219,7 +241,7 @@
 
                 <div class="artisan-dir-card" data-trade="plumbing">
                     <div class="adc-top">
-                        <div class="adc-avatar font-mono" style="background:var(--color-5)">DH</div>
+                        <img src="Assets/avatar_dh.png" class="adc-avatar" alt="Dana H.">
                         <div class="adc-info">
                             <div class="adc-name font-mono">Dana H.</div>
                             <div class="adc-role" style="color:var(--text-secondary);font-size:.8rem">Plumber · 7 yrs exp.</div>

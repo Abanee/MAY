@@ -4,52 +4,16 @@
    Pricing, About pages
    ============================================================ */
 
-'use strict';
+(function () {
+    'use strict';
 
-/* ── Shared helpers ─────────────────────────────────────── */
-const $ = id => document.getElementById(id);
+    /* ── Shared helpers ─────────────────────────────────────── */
+    const $ = id => document.getElementById(id);
 const $$ = sel => document.querySelectorAll(sel);
 
-/* ── Theme Toggler (shared with all pages) ──────────────── */
-const themeToggleBtn = $('theme-toggle');
-if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', function () {
-        const isLight = document.documentElement.classList.toggle('light-theme');
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        const sunIcon = this.querySelector('.sun-icon');
-        const moonIcon = this.querySelector('.moon-icon');
-        if (isLight) {
-            if (sunIcon) { sunIcon.style.transform = 'rotate(18deg)'; setTimeout(() => { sunIcon.style.transform = ''; }, 200); }
-        } else {
-            if (moonIcon) { moonIcon.style.transform = 'rotate(-18deg)'; setTimeout(() => { moonIcon.style.transform = ''; }, 200); }
-        }
-    });
-}
 
-/* ── Mobile Menu (shared) ────────────────────────────────── */
-const menuToggle = $('menu-toggle');
-const mobileMenu = $('mobile-menu');
-if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', function () {
-        mobileMenu.classList.toggle('hidden');
-        const isOpen = !mobileMenu.classList.contains('hidden');
-        this.setAttribute('aria-expanded', String(isOpen));
-        const spans = this.querySelectorAll('span');
-        if (isOpen) {
-            spans[0].style.transform = 'translateY(6px) rotate(45deg)';
-            spans[1].style.opacity   = '0';
-            spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
-        } else {
-            spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-        }
-    });
-    mobileMenu.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
-            menuToggle.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
-        });
-    });
-}
+
+
 
 /* ── Utility bar live count (shared) ─────────────────────── */
 const artisanCount = $('artisan-count');
@@ -204,30 +168,7 @@ priceRows.forEach(row => {
 ══════════════════════════════════════════════════════════ */
 // (Ticker is handled by CSS animation, nothing extra needed here)
 
-/* ──────────────────────────────────────────────────────────────
-   RTL / LTR DIRECTION TOGGLER
-   ────────────────────────────────────────────────────────────── */
-const rtlToggleBtn = document.getElementById('rtl-toggle');
-if (rtlToggleBtn) {
-    const label = rtlToggleBtn.querySelector('.rtl-label');
-    const updateLabel = () => {
-        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
-        if (label) label.textContent = isRtl ? 'LTR' : 'RTL';
-    };
-    updateLabel();
 
-    rtlToggleBtn.addEventListener('click', function () {
-        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
-        if (isRtl) {
-            document.documentElement.removeAttribute('dir');
-            localStorage.setItem('dir', 'ltr');
-        } else {
-            document.documentElement.setAttribute('dir', 'rtl');
-            localStorage.setItem('dir', 'rtl');
-        }
-        updateLabel();
-    });
-}
 
 /* ──────────────────────────────────────────────────────────────
    PRICING PAGE CUSTOM INTERACTIVES
@@ -415,3 +356,4 @@ if (estTradeSelect && estServiceSelect && estStdPriceText && estMemPriceText && 
     populateServices('electrical');
     calculateEstimate();
 }
+})();

@@ -2,11 +2,12 @@
    ArtisanGrid — contact.js
    Contact page: form validation, SLA bar animation, FAQ
    ============================================================ */
-'use strict';
+(function () {
+    'use strict';
 
-/* ── Helpers ──────────────────────────────────────────────── */
-const $  = (id) => document.getElementById(id);
-const $$ = (sel) => document.querySelectorAll(sel);
+    /* ── Helpers ──────────────────────────────────────────────── */
+    const $  = (id) => document.getElementById(id);
+    const $$ = (sel) => document.querySelectorAll(sel);
 
 /* ── Contact Form Validation & Submit ─────────────────────── */
 (function initContactForm() {
@@ -179,4 +180,5 @@ const $$ = (sel) => document.querySelectorAll(sel);
             }
         });
     }, 8000);
+})();
 })();
