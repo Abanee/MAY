@@ -182,21 +182,21 @@ const groupArtisans = document.getElementById('group-artisans');
 
 if (toggleHomeowners && toggleArtisans && groupHomeowners && groupArtisans) {
     // Initialize state to avoid relying purely on CSS class
-    groupArtisans.style.display = 'none';
-    groupHomeowners.style.display = 'grid'; // .plans-grid uses grid
+    groupArtisans.style.setProperty('display', 'none', 'important');
+    groupHomeowners.style.setProperty('display', 'flex', 'important');
 
     toggleHomeowners.addEventListener('click', () => {
         toggleHomeowners.classList.add('active');
         toggleArtisans.classList.remove('active');
-        groupHomeowners.style.display = 'grid';
-        groupArtisans.style.display = 'none';
+        groupHomeowners.style.setProperty('display', 'flex', 'important');
+        groupArtisans.style.setProperty('display', 'none', 'important');
     });
 
     toggleArtisans.addEventListener('click', () => {
         toggleArtisans.classList.add('active');
         toggleHomeowners.classList.remove('active');
-        groupArtisans.style.display = 'grid';
-        groupHomeowners.style.display = 'none';
+        groupArtisans.style.setProperty('display', 'flex', 'important');
+        groupHomeowners.style.setProperty('display', 'none', 'important');
     });
 }
 
