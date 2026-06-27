@@ -51,10 +51,10 @@
     
     --color-1:    #0284C7; /* Darker Cyan */
     --color-1-rgb: 2, 130, 199;
-    --color-2:    #C026D3; /* Darker Magenta */
-    --color-3:    #D97706; /* Darker Gold */
+    --color-2:    #0284C7; /* Mapped to Cyan (was Magenta) */
+    --color-3:    #0D9488; /* Mapped to Teal (was Gold) */
     --color-4:    #059669; /* Darker Emerald */
-    --color-5:    #7C3AED; /* Darker Purple */
+    --color-5:    #0284C7; /* Mapped to Cyan (was Purple) */
     
     --nav-bg:     rgba(255, 255, 255, 0.88);
     --grain-opacity: 0.015;
@@ -641,6 +641,10 @@ body,
 
 .section-header {
     margin-bottom: 56px;
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .section-eyebrow {
@@ -663,7 +667,9 @@ body,
 .section-sub {
     font-size: 0.9375rem;
     color: var(--text-secondary);
-    max-width: 400px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -722,12 +728,16 @@ body,
    ARTISAN CARDS
 ══════════════════════════════════════════════════════════════ */
 .artisan-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 14px;
 }
 
 .artisan-card {
+    flex: 1 1 300px;
+    max-width: 380px;
+    width: 100%;
     background: var(--surface);
     border: 1px solid var(--border);
     padding: 24px;
@@ -1211,4 +1221,73 @@ body,
 }
 .auth-footer a:hover {
     text-decoration: underline;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   UNIVERSAL CARD GRID CENTERING FIX
+   Centers items when a grid has only 1 or 2 children across all modes
+══════════════════════════════════════════════════════════════ */
+.stats-grid:has(> :last-child:nth-child(1)),
+.stats-grid:has(> :last-child:nth-child(2)),
+.process-grid:has(> :last-child:nth-child(1)),
+.process-grid:has(> :last-child:nth-child(2)),
+.artisan-directory-grid:has(> :last-child:nth-child(1)),
+.artisan-directory-grid:has(> :last-child:nth-child(2)),
+.pricing-how-grid:has(> :last-child:nth-child(1)),
+.pricing-how-grid:has(> :last-child:nth-child(2)),
+.trust-cards-grid:has(> :last-child:nth-child(1)),
+.trust-cards-grid:has(> :last-child:nth-child(2)),
+.services-preview-grid:has(> :last-child:nth-child(1)),
+.services-preview-grid:has(> :last-child:nth-child(2)),
+.testimonials-grid:has(> :last-child:nth-child(1)),
+.testimonials-grid:has(> :last-child:nth-child(2)),
+.plans-grid:has(> :last-child:nth-child(1)),
+.plans-grid:has(> :last-child:nth-child(2)),
+.svc-jobs-grid:has(> :last-child:nth-child(1)),
+.svc-jobs-grid:has(> :last-child:nth-child(2)),
+.dash-stats-grid:has(> :last-child:nth-child(1)),
+.dash-stats-grid:has(> :last-child:nth-child(2)),
+.review-grid:has(> :last-child:nth-child(1)),
+.review-grid:has(> :last-child:nth-child(2)),
+.response-sla-grid:has(> :last-child:nth-child(1)),
+.response-sla-grid:has(> :last-child:nth-child(2)),
+.rate-index-grid:has(> :last-child:nth-child(1)),
+.rate-index-grid:has(> :last-child:nth-child(2)),
+.project-showcase-grid:has(> :last-child:nth-child(1)),
+.project-showcase-grid:has(> :last-child:nth-child(2)) {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.stats-grid:has(> :last-child:nth-child(1)) > *,
+.stats-grid:has(> :last-child:nth-child(2)) > *,
+.process-grid:has(> :last-child:nth-child(1)) > *,
+.process-grid:has(> :last-child:nth-child(2)) > *,
+.artisan-directory-grid:has(> :last-child:nth-child(1)) > *,
+.artisan-directory-grid:has(> :last-child:nth-child(2)) > *,
+.pricing-how-grid:has(> :last-child:nth-child(1)) > *,
+.pricing-how-grid:has(> :last-child:nth-child(2)) > *,
+.trust-cards-grid:has(> :last-child:nth-child(1)) > *,
+.trust-cards-grid:has(> :last-child:nth-child(2)) > *,
+.services-preview-grid:has(> :last-child:nth-child(1)) > *,
+.services-preview-grid:has(> :last-child:nth-child(2)) > *,
+.testimonials-grid:has(> :last-child:nth-child(1)) > *,
+.testimonials-grid:has(> :last-child:nth-child(2)) > *,
+.plans-grid:has(> :last-child:nth-child(1)) > *,
+.plans-grid:has(> :last-child:nth-child(2)) > *,
+.svc-jobs-grid:has(> :last-child:nth-child(1)) > *,
+.svc-jobs-grid:has(> :last-child:nth-child(2)) > *,
+.dash-stats-grid:has(> :last-child:nth-child(1)) > *,
+.dash-stats-grid:has(> :last-child:nth-child(2)) > *,
+.review-grid:has(> :last-child:nth-child(1)) > *,
+.review-grid:has(> :last-child:nth-child(2)) > *,
+.response-sla-grid:has(> :last-child:nth-child(1)) > *,
+.response-sla-grid:has(> :last-child:nth-child(2)) > *,
+.rate-index-grid:has(> :last-child:nth-child(1)) > *,
+.rate-index-grid:has(> :last-child:nth-child(2)) > *,
+.project-showcase-grid:has(> :last-child:nth-child(1)) > *,
+.project-showcase-grid:has(> :last-child:nth-child(2)) > * {
+    flex: 1 1 300px;
+    max-width: 380px;
 }

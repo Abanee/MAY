@@ -181,18 +181,22 @@ const groupHomeowners = document.getElementById('group-homeowners');
 const groupArtisans = document.getElementById('group-artisans');
 
 if (toggleHomeowners && toggleArtisans && groupHomeowners && groupArtisans) {
+    // Initialize state to avoid relying purely on CSS class
+    groupArtisans.style.display = 'none';
+    groupHomeowners.style.display = 'grid'; // .plans-grid uses grid
+
     toggleHomeowners.addEventListener('click', () => {
         toggleHomeowners.classList.add('active');
         toggleArtisans.classList.remove('active');
-        groupHomeowners.classList.remove('hidden');
-        groupArtisans.classList.add('hidden');
+        groupHomeowners.style.display = 'grid';
+        groupArtisans.style.display = 'none';
     });
 
     toggleArtisans.addEventListener('click', () => {
         toggleArtisans.classList.add('active');
         toggleHomeowners.classList.remove('active');
-        groupArtisans.classList.remove('hidden');
-        groupHomeowners.classList.add('hidden');
+        groupArtisans.style.display = 'grid';
+        groupHomeowners.style.display = 'none';
     });
 }
 
