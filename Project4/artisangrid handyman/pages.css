@@ -1010,18 +1010,23 @@
     justify-content: center;
 }
 
-.adc-top { display: flex; align-items: flex-start; gap: 12px; }
+.adc-top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+}
 .adc-avatar {
-    width: 48px; height: 48px;
+    grid-column: 1 / -1;
+    width: 100%;
+    height: 200px;
     border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    font-weight: 700; color: #fff; font-size: 0.85rem;
-    flex-shrink: 0;
+    display: block;
     object-fit: cover;
+    object-position: center 15%;
 }
 .adc-info { flex: 1; min-width: 0; }
 .adc-name { font-weight: 700; font-size: 0.9375rem; color: var(--offwhite); }
-.adc-rating { font-size: 0.8rem; flex-shrink: 0; }
+.adc-rating { font-size: 0.875rem; font-weight: 700; flex-shrink: 0; }
 .adc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .adc-stats {
     display: flex;
