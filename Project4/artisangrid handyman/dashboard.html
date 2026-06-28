@@ -64,89 +64,7 @@
         </svg>
     </div>
 
-    <!-- ═══════════════════════════════════════
-         UTILITY BAR
-    ═══════════════════════════════════════ -->
-    <div class="utility-bar">
-        <div class="container mx-auto px-6 flex items-center justify-between">
-            <div class="flex items-center gap-2 font-mono text-xs">
-                <span class="pulse-dot"></span>
-                <span id="artisan-count">148 Verified Artisans Active in Sector 4</span>
-            </div>
-            <div class="hidden md:flex items-center gap-6 font-mono text-xs text-sec">
-                <span>Mon–Sat  06:00–22:00</span>
-                <span class="text-volt font-semibold">Emergency 24/7</span>
-            </div>
-        </div>
-    </div>
 
-    <!-- ═══════════════════════════════════════
-         NAVIGATION — Home + Dashboard (active)
-    ═══════════════════════════════════════ -->
-    <nav class="main-nav">
-        <div class="container mx-auto px-6 flex items-center justify-between h-16">
-            <a href="index.html" class="flex items-center gap-2.5 font-mono font-bold text-xl tracking-tight select-none" style="text-decoration:none">
-                <img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto">
-                <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
-            </a>
-            <div class="flex items-center gap-4 md:gap-8">
-                <div class="hidden xl:flex items-center gap-8">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="home2.html" class="nav-link">Home 2</a>
-                    <a href="about.html" class="nav-link">About</a>
-                    <a href="services.html" class="nav-link">Services</a>
-                    <a href="artisans.html" class="nav-link">Artisans</a>
-                    <a href="pricing.html" class="nav-link">Pricing</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
-                    <a href="dashboard.html" class="nav-link nav-link--active" style="color:var(--volt)">Dashboard</a>
-                </div>
-
-                <!-- Theme Toggle -->
-                <button id="theme-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Theme">
-                    <svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/>
-                    </svg>
-                    <svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-                    </svg>
-                </button>
-
-                <!-- Direction Toggle -->
-                <button id="rtl-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Layout Direction">
-                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
-                </button>
-                <a href="dashboard.html" class="nav-cta hidden xl:inline-block">Dashboard</a>
-                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
-                <button class="nav-cta hidden xl:inline-block" onclick="document.querySelector('.dash-nav-item[data-tab=\'book\']').click()">+ Book a Job</button>
-
-                <button class="xl:hidden hamburger" id="menu-toggle" aria-label="Open menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </div>
-        <div class="mobile-menu hidden" id="mobile-menu">
-            <a href="index.html">Home</a>
-            <a href="home2.html">Home 2</a>
-            <a href="about.html">About</a>
-            <a href="services.html">Services</a>
-            <a href="artisans.html">Artisans</a>
-            <a href="pricing.html">Pricing</a>
-            <a href="contact.html">Contact</a>
-            <div class="flex items-center gap-4 mt-4 mb-2">
-                <button id="theme-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Theme">
-                    <svg class="sun-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
-                    <svg class="moon-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
-                    <span>Theme</span>
-                </button>
-                <button id="rtl-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Layout Direction">
-                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
-                </button>
-            </div>
-            <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard</a>
-            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
-            <a href="#" class="nav-cta text-center mt-2 py-2" onclick="document.querySelector('.dash-nav-item[data-tab=\'book\']').click()">+ Book a Job</a>
-        </div>
-    </nav>
 
     <!-- ═══════════════════════════════════════
          DASHBOARD WRAPPER LAYOUT
@@ -177,6 +95,9 @@
                 <button class="dash-nav-item" data-tab="profile">
                     <span>👤</span> My Profile
                 </button>
+                <a href="login.html" class="dash-nav-item mt-auto font-mono text-red-500 hover:text-red-400" style="margin-top: auto; text-decoration: none;">
+                    <span>🚪</span> Logout
+                </a>
             </nav>
         </aside>
 
@@ -230,17 +151,86 @@
                         <span class="dash-stat-label font-mono">Platform Fee</span>
                     </div>
                 </div>
+
+                <!-- Overview Extra Content -->
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-10">
+                    <!-- Recent Activity Card -->
+                    <div class="lg:col-span-2 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-mono text-xs font-bold text-offwhite uppercase tracking-wider">Recent Activity</h3>
+                            <button class="text-xs text-volt font-mono hover:underline" onclick="document.querySelector('.dash-nav-item[data-tab=\'history\']').click()">View All</button>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex items-center justify-between p-4 bg-[var(--surface)] border border-[var(--border)] rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🔧</span>
+                                    <div>
+                                        <div class="font-mono text-xs font-bold text-offwhite">Kitchen Sink Leak Fixed</div>
+                                        <div class="text-[10px] text-sec">Completed by Marcus V.</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-mono text-volt bg-[rgba(212,255,0,0.08)] px-2.5 py-0.5 rounded border border-[rgba(212,255,0,0.2)]">PAID</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-[var(--surface)] border border-[var(--border)] rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">⚡</span>
+                                    <div>
+                                        <div class="font-mono text-xs font-bold text-offwhite">AC Annual Tune-up Scheduled</div>
+                                        <div class="text-[10px] text-sec">Confirmed with Tom R. for tomorrow</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-mono text-c1 bg-[rgba(var(--color-1-rgb),0.08)] px-2.5 py-0.5 rounded border border-[rgba(var(--color-1-rgb),0.2)]">UPCOMING</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 bg-[var(--surface)] border border-[var(--border)] rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🪚</span>
+                                    <div>
+                                        <div class="font-mono text-xs font-bold text-offwhite">Floating Shelves Installed</div>
+                                        <div class="text-[10px] text-sec">Completed by Elena K.</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-mono text-sec bg-[var(--border)] px-2.5 py-0.5 rounded border border-[var(--border)]">REVIEWED</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Platform System Alerts / Tips -->
+                    <div class="bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-mono text-xs font-bold text-offwhite uppercase tracking-wider mb-6">Network Health</h3>
+                            <div class="flex flex-col gap-4">
+                                <div class="flex items-start gap-2.5">
+                                    <span class="text-green-500 text-xs mt-0.5">●</span>
+                                    <div>
+                                        <div class="font-mono text-[11px] font-bold text-offwhite">All Systems Operational</div>
+                                        <p class="text-[10px] text-sec leading-relaxed mt-1">Average dispatch SLA in your area is currently 12 minutes.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-2.5 border-t border-[var(--border)] pt-4">
+                                    <span class="text-volt text-xs mt-0.5">ℹ️</span>
+                                    <div>
+                                        <div class="font-mono text-[11px] font-bold text-offwhite">Zero-Fee Verification</div>
+                                        <p class="text-[10px] text-sec leading-relaxed mt-1">ArtisanGrid charges no platform fees. Standard Stripe card processing of 2.9% + 30¢ applies to direct credit cards.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="dash-book-cta font-mono w-full text-center mt-6 py-2.5 text-xs" style="border:none;cursor:pointer" onclick="document.querySelector('.dash-nav-item[data-tab=\'book\']').click()">
+                            Book Dispatch Now
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- TAB 2: BOOK A HANDYMAN -->
             <div id="tab-book" class="dash-tab-content hidden">
-                <div class="section-header">
+                <div class="section-header text-left mx-0" style="text-align: left; margin-left: 0; margin-right: auto; max-width: 600px; margin-bottom: 32px;">
                     <span class="section-eyebrow font-mono">— NEW BOOKING</span>
                     <h2 class="section-title font-mono">
                         Book a<br>
                         <span class="text-c1">Handyman.</span>
                     </h2>
-                    <p class="section-sub">Describe your issue and get matched in minutes.</p>
+                    <p class="section-sub text-left" style="margin-left: 0;">Describe your issue and get matched in minutes.</p>
                 </div>
 
                 <div class="booking-widget mt-8">
@@ -253,18 +243,20 @@
                         <button class="pill" data-category="painting">🖌️ Painting</button>
                     </div>
 
-                    <div class="booking-form-row">
-                        <div class="cta-bar" style="flex:1;min-width:0">
+                    <div class="flex flex-col md:flex-row items-stretch gap-4">
+                        <div class="flex-[2] bg-[var(--surface)] border border-[var(--border-mid)] rounded-xl flex items-center px-4 py-3.5 focus-within:border-[var(--color-1)] transition-all duration-300">
                             <input
                                 type="text"
-                                class="cta-input"
-                                placeholder="Describe your issue in detail…"
+                                class="bg-transparent border-none outline-none w-full text-offwhite text-xs font-mono"
+                                placeholder="Describe your issue in detail (e.g. leaking sink, light switch install)…"
                                 id="book-input"
                                 autocomplete="off"
                             />
                         </div>
-                        <input type="datetime-local" class="book-datetime font-mono" id="book-datetime" title="Schedule for later (leave blank for ASAP)"/>
-                        <button class="cta-btn font-mono" id="book-btn">Request Dispatch →</button>
+                        <div class="flex-1 bg-[var(--surface)] border border-[var(--border-mid)] rounded-xl flex items-center px-4 py-3.5 focus-within:border-[var(--color-1)] transition-all duration-300 min-w-[200px]">
+                            <input type="datetime-local" class="bg-transparent border-none outline-none text-offwhite font-mono text-xs cursor-pointer w-full" id="book-datetime" title="Schedule for later (leave blank for ASAP)"/>
+                        </div>
+                        <button class="bg-[var(--volt)] text-[var(--carbon)] hover:opacity-90 font-mono font-bold text-xs px-6 py-4 rounded-xl shadow-lg transition-all duration-300 whitespace-nowrap" id="book-btn" style="border:none; cursor:pointer;">Request Dispatch →</button>
                     </div>
 
                     <div class="booking-estimate" id="booking-estimate">
@@ -285,18 +277,80 @@
                             <p class="font-mono text-xs text-sec mt-1">An artisan has been matched. You'll receive confirmation shortly.</p>
                         </div>
                     </div>
+
+                    <!-- Booking Extra Content: Trade Rates & Safeguards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10 border-t border-[var(--border)] pt-8">
+                        <!-- Trade Rates Grid -->
+                        <div class="bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6">
+                            <h3 class="font-mono text-xs font-bold text-offwhite uppercase tracking-wider mb-4">Trade Rate Estimates (Avg. Market)</h3>
+                            <div class="grid grid-cols-2 gap-x-6 gap-y-3">
+                                <div class="flex justify-between border-b border-[var(--border)] pb-1.5">
+                                    <span class="font-mono text-[10px] text-sec">⚡ Electrical</span>
+                                    <span class="font-mono text-[10px] text-volt font-bold">$45–$95/hr</span>
+                                </div>
+                                <div class="flex justify-between border-b border-[var(--border)] pb-1.5">
+                                    <span class="font-mono text-[10px] text-sec">🔧 Plumbing</span>
+                                    <span class="font-mono text-[10px] text-volt font-bold">$50–$110/hr</span>
+                                </div>
+                                <div class="flex justify-between border-b border-[var(--border)] pb-1.5">
+                                    <span class="font-mono text-[10px] text-sec">🪚 Carpentry</span>
+                                    <span class="font-mono text-[10px] text-sec">$40–$85/hr</span>
+                                </div>
+                                <div class="flex justify-between border-b border-[var(--border)] pb-1.5">
+                                    <span class="font-mono text-[10px] text-sec">❄️ HVAC</span>
+                                    <span class="font-mono text-[10px] text-sec">$55–$120/hr</span>
+                                </div>
+                                <div class="flex justify-between border-b border-[var(--border)] pb-1.5">
+                                    <span class="font-mono text-[10px] text-sec">🛠️ General Repair</span>
+                                    <span class="font-mono text-[10px] text-sec">$35–$70/hr</span>
+                                </div>
+                                <div class="flex justify-between border-b border-[var(--border)] pb-1.5">
+                                    <span class="font-mono text-[10px] text-sec">🖌️ Painting</span>
+                                    <span class="font-mono text-[10px] text-sec">$30–$65/hr</span>
+                                </div>
+                            </div>
+                            <p class="text-[9px] text-mut mt-3 font-mono leading-relaxed">
+                                Rates are direct contractor rates with zero markup. Final scope and price will be agreed upon chat or onsite check.
+                            </p>
+                        </div>
+
+                        <!-- Platform Guarantees checklist -->
+                        <div class="bg-[var(--surface-2)] border border-[var(--border)] rounded-xl p-6 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-mono text-xs font-bold text-offwhite uppercase tracking-wider mb-4">ArtisanGrid Guarantees</h3>
+                                <div class="flex flex-col gap-2.5">
+                                    <div class="flex items-center gap-2">
+                                        <span class="text-volt text-xs">✓</span>
+                                        <span class="font-mono text-[10px] text-sec">All artisans double-vetted and background-checked</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 border-t border-[var(--border)] pt-2.5">
+                                        <span class="text-volt text-xs">✓</span>
+                                        <span class="font-mono text-[10px] text-sec">Stripe escrow holds your funds safely until you check off</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 border-t border-[var(--border)] pt-2.5">
+                                        <span class="text-volt text-xs">✓</span>
+                                        <span class="font-mono text-[10px] text-sec">No platform fees or hidden commission markups</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-6 p-3 bg-[var(--surface)] border border-[var(--border)] rounded-lg">
+                                <div class="font-mono text-[10px] text-offwhite font-bold mb-1">Need Urgent Help?</div>
+                                <p class="text-[9px] text-sec leading-relaxed">For emergency gas leaks, burst pipes, or power outages, use our direct line: <span class="text-volt font-bold">1-800-DISPATCH</span>.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- TAB 3: ACTIVE & UPCOMING JOBS -->
             <div id="tab-active" class="dash-tab-content hidden">
-                <div class="section-header">
+                <div class="section-header text-left mx-0" style="text-align: left; margin-left: 0; margin-right: auto; max-width: 600px; margin-bottom: 32px;">
                     <span class="section-eyebrow font-mono">— LIVE STATUS</span>
                     <h2 class="section-title font-mono">
                         Active &<br>
                         <span class="text-volt">Upcoming.</span>
                     </h2>
-                    <p class="section-sub">Real-time tracking for all your booked jobs.</p>
+                    <p class="section-sub text-left" style="margin-left: 0;">Real-time tracking for all your booked jobs.</p>
                 </div>
 
                 <div class="jobs-grid mt-8">
@@ -370,10 +424,8 @@
                             <span>Est. $45–$120</span>
                         </div>
                         <div class="job-card-actions">
-                            <button class="job-card-actions">
-                                <button class="job-action-btn font-mono" onclick="alert('Job details: Replacing P-trap and supply line.')">📋 Job Details</button>
-                                <button class="job-action-btn job-action-btn--danger font-mono" onclick="alert('Support team notified.')">⚠️ Report Issue</button>
-                            </div>
+                            <button class="job-action-btn font-mono" onclick="alert('Job details: Replacing P-trap and supply line.')">📋 Job Details</button>
+                            <button class="job-action-btn job-action-btn--danger font-mono" onclick="alert('Support team notified.')">⚠️ Report Issue</button>
                         </div>
                     </div>
 
@@ -441,13 +493,13 @@
 
             <!-- TAB 4: JOB HISTORY & REVIEWS -->
             <div id="tab-history" class="dash-tab-content hidden">
-                <div class="section-header">
+                <div class="section-header text-left mx-0" style="text-align: left; margin-left: 0; margin-right: auto; max-width: 600px; margin-bottom: 32px;">
                     <span class="section-eyebrow font-mono">— JOB HISTORY</span>
                     <h2 class="section-title font-mono">
                         Rate &<br>
                         <span class="text-c4">Review.</span>
                     </h2>
-                    <p class="section-sub">Your completed jobs. Honest feedback builds a better network.</p>
+                    <p class="section-sub text-left" style="margin-left: 0;">Your completed jobs. Honest feedback builds a better network.</p>
                 </div>
 
                 <div class="history-tabs font-mono" id="history-tabs">
@@ -571,10 +623,10 @@
 
             <!-- TAB 5: MY PROFILE -->
             <div id="tab-profile" class="dash-tab-content hidden">
-                <div class="section-header">
+                <div class="section-header text-left mx-0" style="text-align: left; margin-left: 0; margin-right: auto; max-width: 600px; margin-bottom: 32px;">
                     <span class="section-eyebrow font-mono">— ACCOUNT SETTINGS</span>
                     <h2 class="section-title font-mono">My Profile.</h2>
-                    <p class="section-sub">Update your contact info, sectors, and default payment options.</p>
+                    <p class="section-sub text-left" style="margin-left: 0;">Update your contact info, sectors, and default payment options.</p>
                 </div>
                 
                 <div class="profile-form-grid mt-8">
@@ -628,84 +680,7 @@
         </main>
     </div>
 
-    <!-- ═══════════════════════════════════════
-         FOOTER
-    ═══════════════════════════════════════ -->
-    <!-- <footer class="site-footer" id="footer">
-        <div class="container mx-auto px-6">
-            <div class="footer-grid">
-                <!-- Left brand info -->
-                <div class="footer-brand max-w-sm">
-                    <a href="index.html" class="flex items-center gap-2.5 font-mono font-bold text-xl mb-3" style="text-decoration: none;">
-                        <img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto">
-                        <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
-                    </a>
-                    <p class="text-sec text-xs leading-relaxed mb-4">
-                        The only platform built entirely around the craft — not the commission. Direct connection, zero platform fees, and neighborhood-vetted specialists.
-                    </p>
-                    <div class="flex gap-3 mb-6">
-                        <a href="#" class="social-icon" aria-label="Twitter">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="Instagram">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="GitHub">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="LinkedIn">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                    </div>
-                    <div class="footer-badge font-mono">
-                        <span class="pulse-dot"></span>
-                        <span id="footer-count">148 artisans online</span>
-                    </div>
-                </div>
 
-                <!-- Footer Links Wrapper (grouped for grid control) -->
-                <div class="footer-links">
-                    <div class="footer-col">
-                        <div class="footer-col-title font-mono">Platform</div>
-                        <a href="services.html">Services</a>
-                        <a href="pricing.html">Pricing</a>
-                        <a href="artisans.html">Artisans</a>
-                        <a href="home2.html">Home 2</a>
-                    </div>
-                    <div class="footer-col">
-                        <div class="footer-col-title font-mono">Company</div>
-                        <a href="about.html">About</a>
-                        <a href="about.html#trust">Trust & Safety</a>
-                        <a href="#">Careers</a>
-                        <a href="contact.html">Contact</a>
-                    </div>
-                    <div class="footer-col">
-                        <div class="footer-col-title font-mono">Resources</div>
-                        <a href="#">Help Center</a>
-                        <a href="#">System Status</a>
-                        <a href="#">Press Kit</a>
-                        <a href="#">Privacy Policy</a>
-                    </div>
-                </div>
-
-                <!-- Newsletter signup -->
-                <div class="footer-newsletter max-w-xs">
-                    <div class="footer-col-title font-mono mb-2">Subscribe to GridUpdates</div>
-                    <p class="text-sec text-[11px] leading-relaxed mb-4">
-                        Weekly digest of active sector rates, artisan availability reports, and seasonal maintenance safety tips.
-                    </p>
-                    <form class="newsletter-form font-mono" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-                        <input type="email" class="newsletter-input" placeholder="email@address.com" required aria-label="Email address"/>
-                        <button type="submit" class="newsletter-submit">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <span class="font-mono text-xs text-mut">© 2026 ArtisanGrid. All rights reserved.</span>
-                <span class="font-mono text-xs text-mut hidden md:inline">Built for real work. Not for stock photos.</span>
-            </div>
-        </div>
-    </footer> -->
 
     <script src="script.js"></script>
     <script src="dashboard.js"></script>

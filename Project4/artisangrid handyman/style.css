@@ -915,14 +915,16 @@ body,
 }
 
 .footer-col-title {
-    font-size: 0.6rem;
-    letter-spacing: 0.18em;
-    color: var(--text-muted);
-    margin-bottom: 4px;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--offwhite);
+    font-weight: 700;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
 .footer-col a {
-    font-size: 0.8125rem;
+    font-size: 0.875rem;
     color: var(--text-secondary);
     text-decoration: none;
     transition: color 0.2s;
