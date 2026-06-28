@@ -415,30 +415,6 @@ document.addEventListener('DOMContentLoaded', () => {
     window.switchDashboardTab(savedTab);
 });
 
-/* ──────────────────────────────────────────────────────────────
-   13. RTL / LTR DIRECTION TOGGLER
-   ────────────────────────────────────────────────────────────── */
-const rtlToggleBtn = document.getElementById('rtl-toggle');
-if (rtlToggleBtn) {
-    const label = rtlToggleBtn.querySelector('.rtl-label');
-    const updateLabel = () => {
-        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
-        if (label) label.textContent = isRtl ? 'LTR' : 'RTL';
-    };
-    updateLabel();
-
-    rtlToggleBtn.addEventListener('click', function () {
-        const isRtl = document.documentElement.getAttribute('dir') === 'rtl';
-        if (isRtl) {
-            document.documentElement.removeAttribute('dir');
-            localStorage.setItem('dir', 'ltr');
-        } else {
-            document.documentElement.setAttribute('dir', 'rtl');
-            localStorage.setItem('dir', 'rtl');
-        }
-        updateLabel();
-    });
-}
 
 /* ──────────────────────────────────────────────────────────────
    14. DASHBOARD TAB SWITCHING SYSTEM
@@ -497,5 +473,56 @@ if (saveProfileBtn) {
         }, 1000);
     });
 }
+
+/* ──────────────────────────────────────────────────────────────
+   15. MOBILE SIDEBAR DRAWER TOGGLE
+   ────────────────────────────────────────────────────────────── */
+const dashMenuToggle = document.getElementById('dash-menu-toggle');
+const dashSidebar = document.querySelector('.dash-sidebar');
+const dashBackdrop = document.getElementById('dash-sidebar-backdrop');
+
+if (dashMenuToggle && dashSidebar && dashBackdrop) {
+    function toggleSidebar(forceState) {
+        const isOpen = typeof forceState === 'boolean' ? forceState : !dashSidebar.classList.contains('open');
+        
+        dashSidebar.classList.toggle('open', isOpen);
+        dashBackdrop.classList.toggle('open', isOpen);
+        dashMenuToggle.setAttribute('aria-expanded', String(isOpen));
+        
+        // Animate hamburger to X
+        const spans = dashMenuToggle.querySelectorAll('span');
+        if (spans.length >= 3) {
+            if (isOpen) {
+                spans[0].style.transform = 'translateY(6px) rotate(45deg)';
+                spans[1].style.opacity   = '0';
+                spans[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+            } else {
+                spans[0].style.transform = '';
+                spans[1].style.opacity   = '';
+                spans[2].style.transform = '';
+            }
+        }
+    }
+    
+    dashMenuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleSidebar();
+    });
+    
+    dashBackdrop.addEventListener('click', function() {
+        toggleSidebar(false);
+    });
+    
+    // Close when any nav item is clicked
+    const navItems = dashSidebar.querySelectorAll('.dash-nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+                toggleSidebar(false);
+            }
+        });
+    });
+}
+
 })();
 

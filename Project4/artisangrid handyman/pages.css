@@ -81,10 +81,7 @@
 }
 
 .photo-hero-accent {
-    background: linear-gradient(135deg, #0D9488 0%, #06B6D4 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--volt);
 }
 
 .photo-hero-sub {
@@ -103,8 +100,8 @@
 }
 
 .photo-btn-primary {
-    background: linear-gradient(135deg, #0D9488 0%, #06B6D4 100%);
-    color: #0A0A0E;
+    background: var(--cta-bg);
+    color: var(--cta-text);
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.85rem;
     font-weight: 700;
@@ -115,7 +112,7 @@
     transition: all 0.2s ease;
     display: inline-block;
 }
-.photo-btn-primary:hover { background: #c2eb00; transform: translateY(-2px); }
+.photo-btn-primary:hover { background: var(--cta-hover); transform: translateY(-2px); }
 
 .photo-btn-secondary {
     background: rgba(255,255,255,0.08);
@@ -1550,7 +1547,6 @@
     .trust-cards-grid { grid-template-columns: 1fr; }
     .svc-jobs-grid { grid-template-columns: 1fr 1fr; }
     .about-split-stats { grid-template-columns: repeat(3, 1fr); }
-    .cta-banner-inner { grid-template-columns: 1fr; gap: 40px; }
     .join-checklist { grid-template-columns: 1fr; }
     .trust-strip { flex-direction: column; gap: 24px; }
     .trust-sep { display: none; }
@@ -1559,6 +1555,10 @@
     .comparison-header, .comparison-row { grid-template-columns: 1fr 1fr 1fr; }
     .page-hero { padding: 56px 0 48px; }
     .page-hero-title { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+}
+
+@media (max-width: 640px) {
+    .cta-banner-inner { grid-template-columns: 1fr; gap: 40px; }
 }
 
 @media (max-width: 480px) {

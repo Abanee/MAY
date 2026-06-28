@@ -66,14 +66,38 @@
 
 
 
+    <!-- Mobile Dashboard Header -->
+    <header class="dash-mobile-header">
+        <a href="index.html" class="flex items-center gap-2.5 font-mono font-bold text-lg" style="text-decoration: none;">
+            <img src="logo.png" alt="ArtisanGrid Logo" class="h-5 w-auto">
+            <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
+        </a>
+        <button class="hamburger" id="dash-menu-toggle" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Sidebar Backdrop -->
+    <div class="dash-sidebar-backdrop" id="dash-sidebar-backdrop"></div>
+
     <!-- ═══════════════════════════════════════
          DASHBOARD WRAPPER LAYOUT
     ═══════════════════════════════════════ -->
     <div class="dash-layout">
         <!-- Dashboard Left Sidebar -->
         <aside class="dash-sidebar">
+            <!-- Sidebar Brand/Logo -->
+            <div class="dash-sidebar-brand">
+                <a href="index.html" class="flex items-center gap-2.5 font-mono font-bold text-lg" style="text-decoration: none;">
+                    <img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto">
+                    <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
+                </a>
+            </div>
+
             <div class="dash-sidebar-profile">
-                <div class="dsp-avatar font-mono">JR</div>
+                <img src="Assets/avatar_jd.png" alt="James R." class="dsp-avatar">
                 <div>
                     <div class="dsp-name">James R.</div>
                     <div class="dsp-role font-mono">GOLD MEMBER</div>
@@ -95,7 +119,18 @@
                 <button class="dash-nav-item" data-tab="profile">
                     <span>👤</span> My Profile
                 </button>
-                <a href="login.html" class="dash-nav-item mt-auto font-mono text-red-500 hover:text-red-400" style="margin-top: auto; text-decoration: none;">
+                
+                <div class="dash-sidebar-actions mt-auto flex items-center gap-3" style="margin-top: auto; padding: 12px 16px; border-top: 1px solid var(--border); padding-top: 16px; margin-bottom: 8px;">
+                    <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                        <svg class="sun-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
+                        <svg class="moon-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    </button>
+                    <button id="rtl-toggle" class="theme-toggle-btn" aria-label="Toggle Layout Direction">
+                        <span class="font-mono text-xs font-bold rtl-label">RTL</span>
+                    </button>
+                </div>
+                
+                <a href="login.html" class="dash-nav-item font-mono text-red-500 hover:text-red-400" style="text-decoration: none;">
                     <span>🚪</span> Logout
                 </a>
             </nav>
