@@ -624,19 +624,85 @@
         </div>
     </section>
 
-    <!-- TRUST STRIP -->
+    <!-- TRUST SECTION -->
     <section class="section-dark">
         <div class="container mx-auto px-6">
-            <div class="trust-strip">
-                <div class="trust-item"><div class="trust-icon">✅</div><div class="trust-label font-mono">All Artisans Licensed</div></div>
-                <div class="trust-sep"></div>
-                <div class="trust-item"><div class="trust-icon">🛡️</div><div class="trust-label font-mono">Insured Coverage</div></div>
-                <div class="trust-sep"></div>
-                <div class="trust-item"><div class="trust-icon">🔍</div><div class="trust-label font-mono">Background Checked</div></div>
-                <div class="trust-sep"></div>
-                <div class="trust-item"><div class="trust-icon">$0</div><div class="trust-label font-mono">Zero Platform Fee</div></div>
-                <div class="trust-sep"></div>
-                <div class="trust-item"><div class="trust-icon">⚡</div><div class="trust-label font-mono">24/7 Emergency</div></div>
+            <div class="section-header text-center mx-auto" style="max-width: 800px; margin-bottom: 48px;">
+                <span class="section-eyebrow font-mono">— GUARANTEES</span>
+                <h2 class="section-title font-mono">Our Trust &<br><span class="headline-accent">Safety Standards.</span></h2>
+                <p class="section-sub text-center mx-auto">Every job dispatched through our network is backed by these standard platform safeguards.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Card 1 -->
+                <div class="bento-card flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
+                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/carp3.jpg')"></div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-volt">✅</span>
+                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Licensed</h3>
+                        </div>
+                        <p class="text-sec text-[11px] leading-relaxed">
+                            Every artisan holds a verified state or sector trade license.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bento-card flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
+                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/carp2.jpg')"></div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-volt">🛡️</span>
+                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Insured</h3>
+                        </div>
+                        <p class="text-sec text-[11px] leading-relaxed">
+                            Covered by our master $5,000,000 property damage policy.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bento-card flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
+                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/general3.jpg')"></div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-volt">🔍</span>
+                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Vetted</h3>
+                        </div>
+                        <p class="text-sec text-[11px] leading-relaxed">
+                            Comprehensive background and criminal checks on all members.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bento-card flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
+                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/general4.jpg')"></div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-volt">$0</span>
+                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Zero Fees</h3>
+                        </div>
+                        <p class="text-sec text-[11px] leading-relaxed">
+                            No markups or platform commissions. Keep 100% direct pricing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bento-card flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
+                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/electric3.jpg')"></div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-volt">⚡</span>
+                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Emergency</h3>
+                        </div>
+                        <p class="text-sec text-[11px] leading-relaxed">
+                            24/7 priority emergency dispatch routing in under 15 minutes.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -646,10 +712,10 @@
             <div class="footer-grid">
                 <!-- Left brand info -->
                 <div class="footer-brand max-w-sm">
-                    <div class="flex items-center gap-2.5 font-mono font-bold text-xl mb-3">
+                    <a href="index.html" class="flex items-center gap-2.5 font-mono font-bold text-xl mb-3" style="text-decoration: none;">
                         <img src="logo.png" alt="ArtisanGrid Logo" class="h-6 w-auto">
                         <span><span class="text-volt">Artisan</span><span class="text-offwhite">Grid</span></span>
-                    </div>
+                    </a>
                     <p class="text-sec text-xs leading-relaxed mb-4">
                         The only platform built entirely around the craft — not the commission. Direct connection, zero platform fees, and neighborhood-vetted specialists.
                     </p>

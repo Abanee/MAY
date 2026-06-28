@@ -1458,6 +1458,52 @@
 }
 .timeline-content:hover { border-color: var(--border-hover); }
 
+/* Responsive Zig-Zag Timeline for Tablet & Desktop */
+@media (min-width: 768px) {
+    .timeline {
+        padding-left: 0;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .timeline-item {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end; /* Card on the right */
+        margin-bottom: 50px;
+        gap: 0;
+    }
+    .timeline-item:nth-child(odd) {
+        justify-content: flex-start; /* Card on the left */
+    }
+    .timeline-content {
+        width: 45%;
+        flex: none; /* Override flex: 1 */
+    }
+    .timeline-dot {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 24px;
+    }
+    .timeline-year {
+        left: 50%;
+        width: 80px;
+        top: 22px;
+        font-size: 0.75rem;
+    }
+    .timeline-item:nth-child(odd) .timeline-year {
+        left: calc(50% + 20px);
+        text-align: left;
+    }
+    .timeline-item:nth-child(even) .timeline-year {
+        left: calc(50% - 100px);
+        text-align: right;
+    }
+}
+
 /* Join checklist */
 .join-checklist {
     display: grid;
