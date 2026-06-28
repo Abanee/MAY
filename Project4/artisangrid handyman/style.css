@@ -252,6 +252,32 @@ body,
 .light-theme .theme-toggle-btn .sun-icon { display: block; }
 .light-theme .theme-toggle-btn .moon-icon { display: none; }
 
+.main-nav .theme-toggle-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    background: transparent;
+    color: var(--volt);
+    border: 1px solid var(--volt);
+    padding: 0 17px;
+    height: 32px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+.main-nav .theme-toggle-btn:hover {
+    background: var(--volt);
+    color: var(--cta-text);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--accent-glow);
+}
+
 /* ── Hamburger ──────────────────────────────────────────────── */
 .hamburger {
     background: none;

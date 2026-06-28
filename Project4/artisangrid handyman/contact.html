@@ -31,28 +31,28 @@
                 <div class="hidden xl:flex items-center gap-8">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="home2.html" class="nav-link">Home 2</a>
+                    <a href="about.html" class="nav-link">About</a>
                     <a href="services.html" class="nav-link">Services</a>
                     <a href="artisans.html" class="nav-link">Artisans</a>
                     <a href="pricing.html" class="nav-link">Pricing</a>
-                    <a href="about.html" class="nav-link">About</a>
                     <a href="contact.html" class="nav-link" style="color:var(--volt)">Contact</a>
                 </div>
                 <button id="theme-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
                 <button id="rtl-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Layout Direction">
                     <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
-                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
                 <a href="dashboard.html" class="nav-cta hidden xl:inline-block">Dashboard</a>
+                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
                 <button class="xl:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu hidden" id="mobile-menu">
             <a href="index.html">Home</a>
             <a href="home2.html">Home 2</a>
+            <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <a href="artisans.html">Artisans</a>
             <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
             <div class="flex items-center gap-4 mt-4 mb-2">
                 <button id="theme-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Theme">
@@ -64,8 +64,8 @@
                     <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
             </div>
-            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
             <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard</a>
+            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
         </div>
     </nav>
 
@@ -328,34 +328,44 @@
         </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section-dark" id="faq">
+    <!-- Escalation Flow Section -->
+    <section class="section-dark" id="escalation-flow">
         <div class="container mx-auto px-6">
             <div class="section-header">
-                <span class="section-eyebrow font-mono">- QUICK ANSWERS</span>
-                <h2 class="section-title font-mono">Common Questions<br><span style="color:var(--color-3)">Answered Fast.</span></h2>
+                <span class="section-eyebrow font-mono">— RESOLUTION</span>
+                <h2 class="section-title font-mono">Escalation<br><span style="color:var(--color-3)">Pathways.</span></h2>
+                <p class="section-sub">Transparent handling when things don't go according to plan.</p>
             </div>
 
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question font-mono" id="cfaq-1-btn" aria-expanded="false" aria-controls="cfaq-1-ans">How do I report a problem with an artisan? <span class="faq-chevron">&#9662;</span></button>
-                    <div class="faq-answer" id="cfaq-1-ans" role="region" aria-labelledby="cfaq-1-btn">Log in to your dashboard, open the relevant job, and click "Report Issue". Alternatively, email safety@artisangrid.com. Safety reports are treated as priority and we respond within 1 hour.</div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <!-- Step 1 -->
+                <div class="bento-card relative overflow-hidden" style="border-left: 4px solid var(--color-1);">
+                    <div class="absolute right-4 top-4 text-xs font-mono opacity-25">PATH 01</div>
+                    <h3 class="font-mono text-base font-bold text-offwhite mb-3">General Support</h3>
+                    <p class="text-sec text-xs leading-relaxed mb-4">
+                        Scheduling adjustments, platform navigation, or helper accounts.
+                    </p>
+                    <div class="font-mono text-[10px] text-volt">RESPONSE SLA: &lt; 2 hours</div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question font-mono" id="cfaq-2-btn" aria-expanded="false" aria-controls="cfaq-2-ans">I am an artisan and I need help with my account. <span class="faq-chevron">&#9662;</span></button>
-                    <div class="faq-answer" id="cfaq-2-ans" role="region" aria-labelledby="cfaq-2-btn">Email artisan@artisangrid.com with your registered name and issue. For urgent account lockouts, call the main line and choose option 2. We resolve artisan account issues within 24 hours.</div>
+
+                <!-- Step 2 -->
+                <div class="bento-card relative overflow-hidden" style="border-left: 4px solid var(--color-2);">
+                    <div class="absolute right-4 top-4 text-xs font-mono opacity-25">PATH 02</div>
+                    <h3 class="font-mono text-base font-bold text-offwhite mb-3">Dispute & Billing Panel</h3>
+                    <p class="text-sec text-xs leading-relaxed mb-4">
+                        Discrepancies in artisan invoicing or work scope adjustments.
+                    </p>
+                    <div class="font-mono text-[10px] text-volt">RESPONSE SLA: &lt; 24 hours</div>
                 </div>
-                <div class="faq-item">
-                    <button class="faq-question font-mono" id="cfaq-3-btn" aria-expanded="false" aria-controls="cfaq-3-ans">How do I dispute a charge or request a refund? <span class="faq-chevron">&#9662;</span></button>
-                    <div class="faq-answer" id="cfaq-3-ans" role="region" aria-labelledby="cfaq-3-btn">Navigate to your dashboard, then Job History, then the relevant job, then Dispute Charge. Our billing team reviews disputes within 48 hours. Full refunds are issued for verified disputes within 5 business days.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question font-mono" id="cfaq-4-btn" aria-expanded="false" aria-controls="cfaq-4-ans">Can I contact you for press or partnership inquiries? <span class="faq-chevron">&#9662;</span></button>
-                    <div class="faq-answer" id="cfaq-4-ans" role="region" aria-labelledby="cfaq-4-btn">Yes, email press@artisangrid.com. We respond to media and partnership inquiries within 2 business days. Attach any press kit or proposal brief for faster routing.</div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question font-mono" id="cfaq-5-btn" aria-expanded="false" aria-controls="cfaq-5-ans">What if I need to cancel a job last-minute? <span class="faq-chevron">&#9662;</span></button>
-                    <div class="faq-answer" id="cfaq-5-ans" role="region" aria-labelledby="cfaq-5-btn">You can cancel up to 4 hours before the scheduled time with no penalty. Cancellations within 4 hours may incur a small call-out fee. Cancel via dashboard or contact us immediately for emergencies.</div>
+
+                <!-- Step 3 -->
+                <div class="bento-card relative overflow-hidden" style="border-left: 4px solid var(--color-3);">
+                    <div class="absolute right-4 top-4 text-xs font-mono opacity-25">PATH 03</div>
+                    <h3 class="font-mono text-base font-bold text-offwhite mb-3">Safety & Licensing Escalations</h3>
+                    <p class="text-sec text-xs leading-relaxed mb-4">
+                        Reports of code violations, safety concerns, or licensing lapses.
+                    </p>
+                    <div class="font-mono text-[10px] text-volt">RESPONSE SLA: Instant (&lt; 1 hour)</div>
                 </div>
             </div>
         </div>

@@ -30,10 +30,10 @@
                 <div class="hidden xl:flex items-center gap-8">
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="home2.html" class="nav-link">Home 2</a>
+                    <a href="about.html" class="nav-link">About</a>
                     <a href="services.html" class="nav-link">Services</a>
                     <a href="artisans.html" class="nav-link">Artisans</a>
                     <a href="pricing.html" class="nav-link" style="color:var(--volt)">Pricing</a>
-                    <a href="about.html" class="nav-link">About</a>
                     <a href="contact.html" class="nav-link">Contact</a>
                 </div>
                 <button id="theme-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Theme"><svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg><svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></button>
@@ -41,18 +41,18 @@
                 <button id="rtl-toggle" class="theme-toggle-btn hidden xl:inline-flex" aria-label="Toggle Layout Direction">
                     <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
-                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
                 <a href="dashboard.html" class="nav-cta hidden xl:inline-block">Dashboard</a>
+                <a href="login.html" class="nav-cta-outline hidden xl:inline-block">Login</a>
                 <button class="xl:hidden hamburger" id="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
             </div>
         </div>
         <div class="mobile-menu hidden" id="mobile-menu">
             <a href="index.html">Home</a>
             <a href="home2.html">Home 2</a>
+            <a href="about.html">About</a>
             <a href="services.html">Services</a>
             <a href="artisans.html">Artisans</a>
             <a href="pricing.html">Pricing</a>
-            <a href="about.html">About</a>
             <a href="contact.html">Contact</a>
             <div class="flex items-center gap-4 mt-4 mb-2">
                 <button id="theme-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Theme">
@@ -64,8 +64,8 @@
                     <span class="font-mono text-xs font-bold rtl-label">RTL</span>
                 </button>
             </div>
-            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
             <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard</a>
+            <a href="login.html" class="nav-cta-outline text-center mt-2 py-2">Login</a>
         </div>
     </nav>
 
@@ -447,6 +447,22 @@
                 <div class="faq-item">
                     <button class="faq-question font-mono" id="faq-5-btn" aria-expanded="false" aria-controls="faq-5-ans">What payment methods are accepted? <span class="faq-chevron">▾</span></button>
                     <div class="faq-answer" id="faq-5-ans" role="region" aria-labelledby="faq-5-btn">Card (Visa/Mastercard/Amex), bank transfer, Apple Pay, Google Pay, and PayPal. Cash jobs can be flagged as cash-in-hand with manual confirmation.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-6-btn" aria-expanded="false" aria-controls="faq-6-ans">Is there a contract for Pro plans? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-6-ans" role="region" aria-labelledby="faq-6-btn">No. The Pro plan for artisans is completely pay-as-you-go. You can cancel or resume your subscription at any time directly from your dashboard with one click.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-7-btn" aria-expanded="false" aria-controls="faq-7-ans">How do you verify background checks? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-7-ans" role="region" aria-labelledby="faq-7-btn">We partner with Checkr for comprehensive national criminal and sex offender checks. Licensing is cross-referenced live with sector state registries twice a year.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-8-btn" aria-expanded="false" aria-controls="faq-8-ans">What if a job gets cancelled? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-8-ans" role="region" aria-labelledby="faq-8-btn">If cancelled more than 4 hours prior, no fee applies. Within 4 hours, a small call-out fee is reserved for the artisan to compensate for scheduling space.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question font-mono" id="faq-9-btn" aria-expanded="false" aria-controls="faq-9-ans">Are there any hidden fees? <span class="faq-chevron">▾</span></button>
+                    <div class="faq-answer" id="faq-9-ans" role="region" aria-labelledby="faq-9-btn">Zero. The estimate you see is based on local averages, and the final invoice matches your agreed quote. Card transactions are handled via Stripe with standard network rates.</div>
                 </div>
             </div>
         </div>
