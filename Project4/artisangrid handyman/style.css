@@ -159,12 +159,20 @@ body,
 ══════════════════════════════════════════════════════════════ */
 .main-nav {
     background: var(--nav-bg);
-    border-bottom: 1px solid var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: sticky;
-    top: 37px;
+    top: 49px;
     z-index: 190;
+    width: calc(100% - 48px);
+    max-width: 1280px;
+    margin: 12px auto 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+}
+.light-theme .main-nav {
+    box-shadow: 0 4px 30px rgba(15, 23, 42, 0.05);
 }
 
 .nav-link {
@@ -320,6 +328,16 @@ body,
 }
 
 @media (max-width: 1279px) {
+    .main-nav {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        border-inline: none !important;
+        border-top: none !important;
+        top: 37px !important;
+        box-shadow: none !important;
+    }
     .mobile-menu:not(.hidden) {
         display: flex;
         background: var(--surface);
@@ -340,6 +358,13 @@ body,
     align-items: center;
     position: relative;
     overflow: hidden;
+}
+
+@media (min-width: 1280px) {
+    .hero-section {
+        margin-top: -115px;
+        padding-top: 187px;
+    }
 }
 
 /* Subtle grid background */

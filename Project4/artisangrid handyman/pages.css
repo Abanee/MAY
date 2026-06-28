@@ -34,6 +34,14 @@
     overflow: hidden;
 }
 
+@media (min-width: 1280px) {
+    .photo-hero {
+        margin-top: -115px;
+        min-height: 100vh;
+        padding-top: 115px;
+    }
+}
+
 .photo-hero-bg {
     position: absolute;
     inset: 0;
@@ -216,6 +224,13 @@
     padding: 80px 0 72px;
     position: relative;
     overflow: hidden;
+}
+
+@media (min-width: 1280px) {
+    .page-hero {
+        margin-top: -115px;
+        padding-top: 195px;
+    }
 }
 .page-hero::before {
     content: '';
