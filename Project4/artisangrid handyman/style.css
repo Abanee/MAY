@@ -21,10 +21,10 @@
     
     --color-1:    #06B6D4; /* Vibrant Cyan */
     --color-1-rgb: 6, 182, 212;
-    --color-2:    #D946EF; /* Vibrant Purple */
-    --color-3:    #F59E0B; /* Vibrant Gold */
+    --color-2:    #06B6D4; /* Mapped to Cyan (was Purple) */
+    --color-3:    #D4FF00; /* Mapped to Volt (was Gold) */
     --color-4:    #10B981; /* Vibrant Emerald */
-    --color-5:    #8B5CF6; /* Vibrant Violet */
+    --color-5:    #06B6D4; /* Mapped to Cyan (was Violet) */
     
     --nav-bg:     rgba(10, 10, 14, 0.88);
     --grain-opacity: 0.032;

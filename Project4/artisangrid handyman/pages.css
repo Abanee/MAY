@@ -19,10 +19,10 @@
     --border-mid: rgba(255, 255, 255, 0.12);
     --border-hover: rgba(255, 255, 255, 0.18);
     --color-1: #06B6D4;
-    --color-2: #D946EF;
-    --color-3: #F59E0B;
+    --color-2: #06B6D4; /* Mapped to Cyan */
+    --color-3: #D4FF00; /* Mapped to Volt */
     --color-4: #10B981;
-    --color-5: #8B5CF6;
+    --color-5: #06B6D4; /* Mapped to Cyan */
     --cta-bg: var(--volt);
     --cta-text: #0A0A0E;
     --cta-hover: #c2eb00;
@@ -660,11 +660,9 @@
 ══════════════════════════════════════════════════════════════ */
 .artisan-strip {
     display: flex;
+    flex-wrap: wrap;
     gap: 14px;
-    overflow-x: auto;
     padding-bottom: 8px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-1) transparent;
     justify-content: center;
 }
 
@@ -678,8 +676,8 @@
     align-items: center;
     gap: 10px;
     text-align: center;
-    min-width: 160px;
-    flex-shrink: 0;
+    flex: 1 1 140px;
+    max-width: 200px;
     transition: border-color 0.25s, transform 0.25s;
 }
 .artisan-strip-card:hover {
@@ -1535,7 +1533,7 @@
 }
 
 @media (max-width: 768px) {
-    .artisan-strip { justify-content: flex-start; }
+    .artisan-strip { justify-content: center; }
     .photo-hero-headline { font-size: clamp(2.4rem, 9vw, 3.6rem); }
     .photo-hero-cta-group { flex-direction: column; }
     .photo-stats-strip { flex-direction: column; gap: 16px; width: 100%; }
