@@ -974,6 +974,20 @@ body,
     .hamburger { display: flex; }
 }
 
+@media (max-width: 1279px) {
+    /* Hide navbar-level theme/RTL buttons — they live in hamburger menu */
+    #theme-toggle,
+    #rtl-toggle { display: none !important; }
+}
+
+@media (max-width: 900px) {
+    /* Fix footer blank right space at tablet: override max-w-sm on brand */
+    .footer-brand { max-width: 100%; width: 100%; }
+    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .footer-links { flex-wrap: wrap; gap: 28px; }
+    .footer-newsletter { width: 100%; max-width: 100%; }
+}
+
 @media (max-width: 768px) {
     .hero-section { padding: 56px 0 64px; min-height: auto; }
     .process-grid { grid-template-columns: 1fr; gap: 1px; }

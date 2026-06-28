@@ -1083,9 +1083,10 @@
 }
 
 .phc-step {
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--color-1);
     margin-bottom: 14px;
 }
 .phc-icon { font-size: 1.6rem; margin-bottom: 14px; display: block; }
@@ -1566,6 +1567,22 @@
     .about-split-stats { grid-template-columns: repeat(2, 1fr); }
     .comp-them { display: none; }
     .comparison-header, .comparison-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── 360px Price Table Fix ─────────────────────────────────── */
+@media (max-width: 400px) {
+    /* Collapse to 3 columns: badge | job type | price high — hide Low col */
+    .price-table-header,
+    .price-row {
+        grid-template-columns: auto 1fr auto;
+        padding: 10px 12px;
+        gap: 8px;
+    }
+    /* Hide the "Low" column */
+    .pt-col:nth-child(3),
+    .pt-low { display: none; }
+    .pt-trade-badge { font-size: 0.6rem; padding: 3px 7px; }
+    .pt-col { font-size: 0.75rem; }
 }
 
 /* ══════════════════════════════════════════════════════════════
