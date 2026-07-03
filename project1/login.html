@@ -270,12 +270,40 @@
     @media (max-width: 480px) {
       .portal-card { padding: 36px 24px; }
     }
+
+    .portal-controls {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 1000;
+    }
+    .portal-controls .theme-toggle,
+    .portal-controls .dir-toggle {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+    [dir="rtl"] .portal-controls {
+      right: auto;
+      left: 24px;
+    }
   </style>
 </head>
 <body>
   <div class="page-transition active"></div>
 
-
+  <!-- Top Controls -->
+  <div class="portal-controls">
+    <button class="theme-toggle" aria-label="Toggle light/dark mode">
+      <i class="fas fa-sun icon-sun"></i>
+      <i class="fas fa-moon icon-moon"></i>
+    </button>
+    <button class="dir-toggle" aria-label="Toggle layout direction">
+      RTL
+    </button>
+  </div>
 
   <!-- ═══════ PORTAL LOGIN CARD ═══════ -->
   <section class="portal-section">

@@ -526,7 +526,7 @@ body {
 .heading-xl {
   font-family: 'Cinzel', serif;
   font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.1;
   color: var(--text-primary);
   letter-spacing: 0.02em;
@@ -535,7 +535,7 @@ body {
 .heading-lg {
   font-family: 'Cinzel', serif;
   font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.15;
   color: var(--text-primary);
   letter-spacing: 0.02em;
@@ -1682,7 +1682,7 @@ footer {
 .option-card-title {
   font-family: 'Cinzel', serif;
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   color: var(--text-primary);
   margin-bottom: 4px;
@@ -2233,4 +2233,68 @@ footer {
 /* ─── CUSTOM HERO HIGHLIGHT & SHARDED HERO CONTACTS ─── */
 .hero-slanted-highlight {
   color: var(--accent-gold) !important;
+}
+
+/* ─── HEADING & PARAGRAPH FONT WEIGHT OVERRIDES ─── */
+h1, h2, h3, h4, h5, h6,
+.heading-xl, .heading-lg, .heading-md,
+.footer-heading, .option-card-title, .cert-logo,
+.info-card-title, .threat-title, .svc-title,
+.portal-title, .hero-title, .card-title {
+  font-weight: 600 !important;
+}
+
+p,
+.hero-desc,
+.step-text,
+.card-text,
+.testimonial-text,
+.footer-desc,
+.svc-desc,
+.portal-subtitle,
+.warranty-desc {
+  font-weight: 450 !important;
+}
+
+/* ─── HERO BADGE / LABEL ─── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border-gold) !important;
+  padding: 8px 20px !important;
+  margin-bottom: 36px !important;
+  background: rgba(8, 9, 12, 0.92) !important; /* Dark obsidian background for clear readability on bright images */
+  backdrop-filter: blur(10px) !important;
+}
+
+[data-theme="light"] .hero-badge {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border-color: rgba(26, 108, 240, 0.35) !important;
+}
+
+.hero-badge span {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+}
+
+.hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-gold);
+  border-radius: 50%;
+  animation: pulse-gold-glow 2s ease infinite;
+}
+
+@keyframes pulse-gold-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(var(--accent-gold-rgb), 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(var(--accent-gold-rgb), 0);
+  }
 }
