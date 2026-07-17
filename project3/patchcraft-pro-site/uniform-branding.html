@@ -35,8 +35,8 @@
     .add-ub:hover{background:rgba(52,211,153,.18);border-color:rgba(52,211,153,.4);color:var(--text-primary);}
     .package-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative;overflow:hidden;transition:border-color .3s ease,transform .3s ease;}
     .package-card:hover{transform:translateY(-4px);}
-    .package-card.featured-pkg{border-color:rgba(52,211,153,.3);background:linear-gradient(135deg,rgba(52,211,153,.08),var(--surface));}
-    .package-card.featured-pkg::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(52,211,153,.4),transparent);}
+    .package-card.featured-pkg{border-color:rgba(245,158,11,.3);background:linear-gradient(135deg,rgba(245,158,11,.08),var(--surface));}
+    .package-card.featured-pkg::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(245,158,11,.45),transparent);}
     .pkg-tag{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:100px;font-family:'Plus Jakarta Sans',sans-serif;font-size:10px;font-weight:700;margin-bottom:14px;}
     .pkg-include{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border-soft);font-family:'Inter',sans-serif;font-size:12.5px;color:var(--text-body);}
     .pkg-include:last-child{border-bottom:none;}
@@ -147,10 +147,10 @@
       <div class="grid md:grid-cols-3 gap-6 mb-16">
         <!-- Starter -->
         <div class="package-card">
-          <div class="pkg-tag" style="background:var(--surface-soft);border:1px solid var(--border);color:var(--text-muted);">
+          <div class="pkg-tag" style="background:var(--amber-tint-10);border:1px solid var(--amber-tint-20);color:var(--amber-4);">
             <i data-lucide="layers" class="w-3.5 h-3.5"></i> Starter
           </div>
-          <div class="font-jakarta font-black text-3xl text-[var(--text-primary)] mb-1">$1.80<span class="text-base font-inter font-normal text-[var(--text-faint)]">/patch</span></div>
+          <div class="font-jakarta font-black text-3xl text-[var(--amber-4)] mb-1">$1.80<span class="text-base font-inter font-normal text-[var(--text-faint)]">/patch</span></div>
           <div class="text-xs text-[var(--text-faint)] font-inter mb-6">500 – 999 units · Single product type</div>
           <div class="space-y-1 mb-8">
             <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>1 patch / badge type</div>
@@ -160,15 +160,15 @@
             <div class="pkg-include"><i data-lucide="x" class="w-4 h-4 check-faint flex-shrink-0"></i>Multi-product matching</div>
             <div class="pkg-include"><i data-lucide="x" class="w-4 h-4 check-faint flex-shrink-0"></i>Dedicated account manager</div>
           </div>
-          <a href="contact.html" class="stitch-btn-ghost block w-full py-3 text-center border border-[var(--border-strong)] text-[var(--text-primary)] font-jakarta font-bold rounded-xl text-sm hover:border-[var(--border-stronger)] transition-all">Get Started</a>
+          <a href="contact.html" class="stitch-btn-ghost block w-full py-3 text-center border border-[rgba(245,158,11,0.3)] text-[var(--amber-4)] font-jakarta font-bold rounded-xl text-sm hover:border-[var(--amber-5)] hover:bg-[var(--amber-tint-08)] transition-all">Get Started</a>
         </div>
 
         <!-- Professional (featured) -->
         <div class="package-card featured-pkg">
-          <div class="pkg-tag" style="background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.3);color:var(--emerald);">
+          <div class="pkg-tag" style="background:rgba(245,158,11,0.15);border:1px solid rgba(245,158,11,0.35);color:var(--amber-4);">
             <i data-lucide="star" class="w-3.5 h-3.5"></i> Professional — Most Popular
           </div>
-          <div class="font-jakarta font-black text-3xl text-[var(--emerald)] mb-1">$1.20<span class="text-base font-inter font-normal text-[var(--text-faint)]">/patch</span></div>
+          <div class="font-jakarta font-black text-3xl text-[var(--amber-4)] mb-1">$1.20<span class="text-base font-inter font-normal text-[var(--text-faint)]">/patch</span></div>
           <div class="text-xs text-[var(--text-faint)] font-inter mb-6">1,000 – 4,999 units · Up to 3 product types</div>
           <div class="space-y-1 mb-8">
             <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>Up to 3 patch/badge types</div>
@@ -178,7 +178,7 @@
             <div class="pkg-include"><i data-lucide="check" class="w-4 h-4 check-green flex-shrink-0"></i>10-day lead time</div>
             <div class="pkg-include"><i data-lucide="x" class="w-4 h-4 check-faint flex-shrink-0"></i>Dedicated account manager</div>
           </div>
-          <a href="contact.html" class="stitch-btn block w-full py-3 text-center bg-[var(--emerald)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm" style="color:#0A0F1C;">Get This Package</a>
+          <a href="contact.html" class="stitch-btn block w-full py-3 text-center bg-[var(--amber-5)] text-[var(--on-accent)] font-jakarta font-bold rounded-xl text-sm">Get This Package</a>
         </div>
 
         <!-- Enterprise -->
@@ -738,8 +738,8 @@
           <a href="#" aria-label="LinkedIn" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
-          <a href="#" aria-label="Twitter" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+          <a href="#" aria-label="X" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
           <a href="#" aria-label="Facebook" class="w-8 h-8 rounded-lg bg-[var(--surface-soft)] border border-[var(--border)] flex items-center justify-center text-[var(--text-muted)] hover:text-[var(--amber-5)] hover:border-[var(--amber-tint-20)] transition-all">
             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>

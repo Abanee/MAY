@@ -1340,14 +1340,14 @@ html[dir="rtl"] .journey-step:hover {
 /* Footer social icons visibility fix */
 footer a[aria-label="Instagram"] svg,
 footer a[aria-label="LinkedIn"] svg,
-footer a[aria-label="Twitter"] svg,
+footer a[aria-label="X"] svg,
 footer a[aria-label="Facebook"] svg {
   stroke: var(--text-muted) !important;
   color: var(--text-muted) !important;
 }
 footer a[aria-label="Instagram"]:hover svg,
 footer a[aria-label="LinkedIn"]:hover svg,
-footer a[aria-label="Twitter"]:hover svg,
+footer a[aria-label="X"]:hover svg,
 footer a[aria-label="Facebook"]:hover svg {
   stroke: var(--amber-5) !important;
   color: var(--amber-5) !important;
