@@ -120,23 +120,30 @@ pills.forEach(pill => {
         pills.forEach(p => p.classList.remove('active'));
         this.classList.add('active');
 
-        // Update pricing estimator
+        // Sync with hero slideshow if active
         const cat = this.dataset.category;
+        if (typeof syncSlideshowWithCategory === 'function') {
+            syncSlideshowWithCategory(cat);
+        }
+
+        // Update pricing estimator (safeguarded)
         const range = PRICE_RANGES[cat];
         if (!range) return;
 
-        priceLow.style.transition  = 'opacity 0.25s';
-        priceHigh.style.transition = 'opacity 0.25s';
-        priceLow.style.opacity  = '0';
-        priceHigh.style.opacity = '0';
+        if (priceLow && priceHigh && priceCat) {
+            priceLow.style.transition  = 'opacity 0.25s';
+            priceHigh.style.transition = 'opacity 0.25s';
+            priceLow.style.opacity  = '0';
+            priceHigh.style.opacity = '0';
 
-        setTimeout(() => {
-            priceLow.textContent  = range.low;
-            priceHigh.textContent = range.high;
-            priceCat.textContent  = range.label;
-            priceLow.style.opacity  = '1';
-            priceHigh.style.opacity = '1';
-        }, 240);
+            setTimeout(() => {
+                priceLow.textContent  = range.low;
+                priceHigh.textContent = range.high;
+                priceCat.textContent  = range.label;
+                priceLow.style.opacity  = '1';
+                priceHigh.style.opacity = '1';
+            }, 240);
+        }
     });
 });
 
@@ -385,4 +392,77 @@ if (rtlToggleBtns.length > 0) {
         });
     });
 }
+
+/* ──────────────────────────────────────────────────────────────
+   14. HERO SLIDESHOW — auto cycle + category sync
+   ────────────────────────────────────────────────────────────── */
+let syncSlideshowWithCategory = null;
+
+(function() {
+    const slideshowContainer = $('hero-slideshow-container');
+    if (!slideshowContainer) return;
+
+    const slides = slideshowContainer.querySelectorAll('.hero-slide');
+    if (slides.length === 0) return;
+
+    // Categories mapping corresponding to the slide indices:
+    // Index 0: Carpenter (Carpentry)
+    // Index 1: Electric (Electrical)
+    // Index 2: Plumber (Plumbing)
+    const categories = ['carpentry', 'electrical', 'plumbing'];
+    let currentSlide = 0;
+    let slideshowTimer = null;
+    const SLIDESHOW_INTERVAL = 2000; // 2 seconds transition
+
+    function showSlide(index) {
+        if (index < 0 || index >= slides.length) return;
+
+        slides.forEach((slide, i) => {
+            if (i === index) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        currentSlide = index;
+
+        // Auto highlight the corresponding category pill on the left
+        const targetCategory = categories[index];
+        const matchingPill = document.querySelector(`.pill[data-category="${targetCategory}"]`);
+        if (matchingPill) {
+            pills.forEach(p => p.classList.remove('active'));
+            matchingPill.classList.add('active');
+        }
+    }
+
+    function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+    }
+
+    function startSlideshow() {
+        stopSlideshow();
+        slideshowTimer = setInterval(nextSlide, SLIDESHOW_INTERVAL);
+    }
+
+    function stopSlideshow() {
+        if (slideshowTimer) {
+            clearInterval(slideshowTimer);
+        }
+    }
+
+    // Expose synchronization function to category pill clicks
+    syncSlideshowWithCategory = function(category) {
+        const index = categories.indexOf(category);
+        if (index !== -1) {
+            showSlide(index);
+            startSlideshow(); // Reset cycle timer when manually triggered
+        }
+    };
+
+    // Initialize slideshow
+    showSlide(0);
+    startSlideshow();
+})();
 
