@@ -1147,12 +1147,28 @@ body,
     .main-nav #rtl-toggle { display: none !important; }
 }
 
-@media (max-width: 900px) {
-    /* Fix footer blank right space at tablet: override max-w-sm on brand */
-    .footer-brand { max-width: 100%; width: 100%; }
-    .footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
-    .footer-links { flex-wrap: wrap; gap: 28px; }
-    .footer-newsletter { width: 100%; max-width: 100%; }
+@media (max-width: 1023px) {
+    /* Fix footer blank space at tablet: let brand take full-width, links and newsletter sit side-by-side */
+    .footer-brand {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 24px;
+    }
+    .footer-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: space-between !important;
+        gap: 40px !important;
+    }
+    .footer-links {
+        flex: 1 1 auto;
+        gap: 36px;
+    }
+    .footer-newsletter {
+        flex: 0 1 320px;
+        width: 100%;
+        max-width: 320px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1799,3 +1815,44 @@ body,
 }
 
 /* ── Hero Slideshow is displayed on all viewports for premium visual impact ── */
+
+/* Center leftover cards in grids on tablet screens (768px to 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Neighborhood Coverage Grid */
+    #coverage .grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 16px !important;
+    }
+    #coverage .neighborhood-card {
+        flex: 0 1 calc(33.333% - 12px) !important;
+        max-width: calc(33.333% - 12px) !important;
+    }
+
+    /* Pricing Plans Grid */
+    .plans-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 24px !important;
+    }
+    .plans-grid > * {
+        flex: 0 1 calc(50% - 12px) !important;
+        max-width: calc(50% - 12px) !important;
+    }
+
+    /* Artisan Cards & Directory Grids */
+    .artisan-grid,
+    .artisan-directory-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 24px !important;
+    }
+    .artisan-grid > *,
+    .artisan-directory-grid > * {
+        flex: 0 1 calc(50% - 12px) !important;
+        max-width: calc(50% - 12px) !important;
+    }
+}
