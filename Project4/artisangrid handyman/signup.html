@@ -63,6 +63,17 @@
         </svg>
     </div>
 
+    <!-- Floating Theme & RTL Toggles -->
+    <div class="fixed top-6 right-6 z-50 flex items-center gap-3">
+        <button id="theme-toggle" class="theme-toggle-btn w-10 h-10 border border-[var(--border)] bg-[var(--surface-2)]/40 backdrop-blur rounded-lg flex items-center justify-center text-sec hover:text-offwhite transition-colors" aria-label="Toggle Theme">
+            <svg class="sun-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-15.07 1.41 1.41m11.31 11.31 1.41 1.41M2 12h2m16 0h2m-15.07 7.07 1.41-1.41m11.31-11.31 1.41-1.41"/></svg>
+            <svg class="moon-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+        <button id="rtl-toggle" class="theme-toggle-btn w-10 h-10 border border-[var(--border)] bg-[var(--surface-2)]/40 backdrop-blur rounded-lg flex items-center justify-center text-sec hover:text-offwhite transition-colors" aria-label="Toggle Layout Direction">
+            <span class="font-mono text-xs font-bold rtl-label">RTL</span>
+        </button>
+    </div>
+
     <!-- AUTH SECTION CONTAINER -->
     <main class="auth-wrapper min-h-screen flex items-center justify-center py-12">
         <div class="auth-card">

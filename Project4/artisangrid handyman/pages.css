@@ -14,18 +14,18 @@
     --offwhite: #F3F4F6;
     --text-secondary: #a1a1aa;
     --text-muted: #52525b;
-    --volt: #D4FF00;
+    --volt: #F59E0B;
     --border: rgba(255, 255, 255, 0.06);
     --border-mid: rgba(255, 255, 255, 0.12);
     --border-hover: rgba(255, 255, 255, 0.18);
     --color-1: #06B6D4;
     --color-2: #06B6D4; /* Mapped to Cyan */
-    --color-3: #D4FF00; /* Mapped to Volt */
+    --color-3: #F59E0B; /* Mapped to Volt */
     --color-4: #10B981;
     --color-5: #06B6D4; /* Mapped to Cyan */
     --cta-bg: var(--volt);
     --cta-text: #0A0A0E;
-    --cta-hover: #c2eb00;
+    --cta-hover: #D97706;
 
     position: relative;
     min-height: calc(100vh - 74px);
@@ -77,6 +77,11 @@
 
 .photo-hero-inner {
     max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .photo-hero-headline {
@@ -87,13 +92,9 @@
     color: #F3F4F6;
     margin-bottom: 24px;
 }
-
 .photo-hero-accent {
     display: inline-block;
-    background: linear-gradient(135deg, var(--volt) 0%, var(--color-1) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: inherit;
 }
 
 .photo-hero-sub {
@@ -102,6 +103,8 @@
     color: rgba(243, 244, 246, 0.75);
     max-width: 520px;
     margin-bottom: 36px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .photo-hero-cta-group {
@@ -109,6 +112,7 @@
     flex-wrap: wrap;
     gap: 14px;
     margin-bottom: 48px;
+    justify-content: center;
 }
 
 .photo-btn-primary {
@@ -844,7 +848,7 @@
 }
 
 .svc-job-card-img {
-    height: 150px;
+    height: 220px;
     background-size: cover;
     background-position: center;
     width: 100%;

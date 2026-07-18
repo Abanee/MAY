@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="pages.css">
     <script>
@@ -39,7 +39,7 @@
                         c1: 'var(--color-1)', c2: 'var(--color-2)',
                         c3: 'var(--color-3)', c4: 'var(--color-4)', c5: 'var(--color-5)',
                     },
-                    fontFamily: { mono: ['JetBrains Mono', 'monospace'], sans: ['Inter', 'sans-serif'] }
+                    fontFamily: { heading: ['Outfit', 'sans-serif'], sans: ['Plus Jakarta Sans', 'sans-serif'] }
                 }
             }
         }
@@ -131,10 +131,10 @@
         <div class="photo-hero-overlay"></div>
         <div class="container mx-auto px-6 photo-hero-content">
             <div class="photo-hero-inner">
-                <div class="eyebrow font-mono text-xs tracking-widest mb-6" style="color:var(--color-1)">
-                    — MULTI-TRADE AGGREGATOR PLATFORM
+                <div class="eyebrow font-sans text-xs tracking-widest mb-6" style="color:var(--text-secondary)">
+                    — YOUR LOCAL HANDYMAN NETWORK
                 </div>
-                <h1 class="photo-hero-headline">
+                <h1 class="photo-hero-headline" style="font-family:'Outfit',sans-serif">
                     <span class="block font-light" style="opacity:.7">Every Trade.</span>
                     <span class="block font-black photo-hero-accent">One Platform.</span>
                     <span class="block font-extrabold" style="opacity:.9">Zero Compromise.</span>
@@ -178,103 +178,100 @@
     <!-- TICKER -->
     <div class="social-ticker" aria-label="Live activity feed">
         <div class="ticker-track">
-            <span class="ticker-item">⚡ Sarah M. booked an electrician — 3 min ago</span><span class="ticker-sep">·</span>
-            <span class="ticker-item">🔧 James R. rated Marcus V. ★★★★★ — just now</span><span class="ticker-sep">·</span>
-            <span class="ticker-item">🪚 New artisan: Elena K. — Senior Carpenter joined</span><span class="ticker-sep">·</span>
-            <span class="ticker-item">❄️ HVAC emergency resolved in 18 mins — Sector 7</span><span class="ticker-sep">·</span>
-            <span class="ticker-item">🔧 Pipe burst fixed in Sector 2 — 11 min ago</span><span class="ticker-sep">·</span>
-            <span class="ticker-item">⚡ Panel upgrade booked — Tom R. dispatched</span><span class="ticker-sep">·</span>
-            <span class="ticker-item">⚡ Sarah M. booked an electrician — 3 min ago</span><span class="ticker-sep">·</span>
-            <span class="ticker-item">🔧 James R. rated Marcus V. ★★★★★ — just now</span><span class="ticker-sep">·</span>
-        </div>
-    </div>
-
-    <!-- SERVICES PREVIEW -->
-    <section class="section-alt" id="services-preview">
-        <div class="container mx-auto px-6">
-            <div class="section-header">
-                <span class="section-eyebrow font-mono">— WHAT WE COVER</span>
-                <h2 class="section-title font-mono">Every Trade<br><span style="color:var(--color-1)">Under One Roof.</span></h2>
+                <h2 class="section-title">Every Trade<br><span style="color:var(--color-1)">Under One Roof.</span></h2>
                 <p class="section-sub">From a dripping tap to a full rewire — our network covers it all.</p>
             </div>
             <div class="services-preview-grid">
                 <a href="services.html#electrical" class="service-preview-card">
-                    <div class="svc-icon-wrap" style="--svc-color:var(--color-1)">⚡</div>
-                    <div class="svc-info"><div class="svc-name font-mono">Electrical</div><div class="svc-desc">Rewiring, panel upgrades, outlets, lighting</div><div class="svc-meta font-mono">from <span style="color:var(--color-1)">$60</span></div></div>
-                    <div class="svc-arrow font-mono">→</div>
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-1)">
+                        <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <div class="svc-info"><div class="svc-name">Electrical</div><div class="svc-desc">Rewiring, panel upgrades, outlets, lighting</div><div class="svc-meta">from <span style="color:var(--color-1)">$60</span></div></div>
+                    <div class="svc-arrow">→</div>
                 </a>
                 <a href="services.html#plumbing" class="service-preview-card">
-                    <div class="svc-icon-wrap" style="--svc-color:var(--color-5)">🔧</div>
-                    <div class="svc-info"><div class="svc-name font-mono">Plumbing</div><div class="svc-desc">Leaks, drains, fixtures, water heaters</div><div class="svc-meta font-mono">from <span style="color:var(--color-5)">$45</span></div></div>
-                    <div class="svc-arrow font-mono">→</div>
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-5)">
+                        <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <div class="svc-info"><div class="svc-name">Plumbing</div><div class="svc-desc">Leaks, drains, fixtures, water heaters</div><div class="svc-meta">from <span style="color:var(--color-5)">$45</span></div></div>
+                    <div class="svc-arrow">→</div>
                 </a>
                 <a href="services.html#carpentry" class="service-preview-card">
-                    <div class="svc-icon-wrap" style="--svc-color:var(--color-3)">🪚</div>
-                    <div class="svc-info"><div class="svc-name font-mono">Carpentry</div><div class="svc-desc">Framing, decks, cabinets, doors, flooring</div><div class="svc-meta font-mono">from <span style="color:var(--color-3)">$55</span></div></div>
-                    <div class="svc-arrow font-mono">→</div>
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-3)">
+                        <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg>
+                    </div>
+                    <div class="svc-info"><div class="svc-name">Carpentry</div><div class="svc-desc">Framing, decks, cabinets, doors, flooring</div><div class="svc-meta">from <span style="color:var(--color-3)">$55</span></div></div>
+                    <div class="svc-arrow">→</div>
                 </a>
                 <a href="services.html#hvac" class="service-preview-card">
-                    <div class="svc-icon-wrap" style="--svc-color:var(--color-2)">❄️</div>
-                    <div class="svc-info"><div class="svc-name font-mono">HVAC</div><div class="svc-desc">AC, heating, ventilation, thermostats</div><div class="svc-meta font-mono">from <span style="color:var(--color-2)">$80</span></div></div>
-                    <div class="svc-arrow font-mono">→</div>
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-2)">
+                        <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07"/></svg>
+                    </div>
+                    <div class="svc-info"><div class="svc-name">HVAC</div><div class="svc-desc">AC, heating, ventilation, thermostats</div><div class="svc-meta">from <span style="color:var(--color-2)">$80</span></div></div>
+                    <div class="svc-arrow">→</div>
                 </a>
                 <a href="services.html#painting" class="service-preview-card">
-                    <div class="svc-icon-wrap" style="--svc-color:var(--color-4)">🖌️</div>
-                    <div class="svc-info"><div class="svc-name font-mono">Painting</div><div class="svc-desc">Interior, exterior, prep, finishing</div><div class="svc-meta font-mono">from <span style="color:var(--color-4)">$40</span></div></div>
-                    <div class="svc-arrow font-mono">→</div>
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-4)">
+                        <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
+                    </div>
+                    <div class="svc-info"><div class="svc-name">Painting</div><div class="svc-desc">Interior, exterior, prep, finishing</div><div class="svc-meta">from <span style="color:var(--color-4)">$40</span></div></div>
+                    <div class="svc-arrow">→</div>
                 </a>
                 <a href="services.html#general" class="service-preview-card">
-                    <div class="svc-icon-wrap" style="--svc-color:var(--color-1)">🛠️</div>
-                    <div class="svc-info"><div class="svc-name font-mono">General Repairs</div><div class="svc-desc">Anything else — we have a specialist</div><div class="svc-meta font-mono">from <span style="color:var(--color-1)">$35</span></div></div>
-                    <div class="svc-arrow font-mono">→</div>
+                    <div class="svc-icon-wrap" style="--svc-color:var(--color-1)">
+                        <svg class="icon-svg icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <div class="svc-info"><div class="svc-name">General Repairs</div><div class="svc-desc">Anything else — we have a specialist</div><div class="svc-meta">from <span style="color:var(--color-1)">$35</span></div></div>
+                    <div class="svc-arrow">→</div>
                 </a>
             </div>
             <div class="text-center mt-12">
-                <a href="services.html" class="view-all-link font-mono">View all 18 service categories →</a>
+                <a href="services.html" class="view-all-link">View all 18 service categories →</a>
             </div>
         </div>
     </section>
+
 
     <!-- TESTIMONIALS -->
     <section class="section-dark" id="testimonials">
         <div class="container mx-auto px-6">
             <div class="section-header">
-                <span class="section-eyebrow font-mono">— REAL REVIEWS</span>
-                <h2 class="section-title font-mono">What Your<br><span style="color:var(--color-4)">Neighbors Say.</span></h2>
-                <p class="section-sub">Unfiltered. From real homeowners in your area.</p>
+                <span class="section-eyebrow">REAL REVIEWS</span>
+                <h2 class="section-title">What Your<br><span style="color:var(--color-4)">Neighbors Say.</span></h2>
+                <p class="section-sub">Unfiltered. From real homeowners in your neighborhood.</p>
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="tc-stars font-mono text-volt">★★★★★</div>
+                    <div class="tc-stars text-volt">★★★★★</div>
                     <p class="tc-text">"Marcus fixed our burst pipe at 11pm. Had the water back on within 40 minutes. The live ETA tracking on the dashboard was brilliant — I knew exactly when he'd arrive."</p>
                     <div class="tc-author">
                         <img src="Assets/avatar_jd.png" class="tc-avatar" alt="Jamie D.">
-                        <div class="tc-meta"><div class="tc-name font-mono">Jamie D.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 4 · Plumbing</div></div>
+                        <div class="tc-meta"><div class="tc-name">Jamie D.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Brooklyn Heights · Plumbing</div></div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="tc-stars font-mono text-volt">★★★★★</div>
+                    <div class="tc-stars text-volt">★★★★★</div>
                     <p class="tc-text">"Sophie rewired the entire ground floor. Professional, tidy, and the price was exactly what was quoted — no hidden extras. I've already recommended ArtisanGrid to six friends."</p>
                     <div class="tc-author">
                         <img src="Assets/avatar_rl.png" class="tc-avatar" alt="Rachel L.">
-                        <div class="tc-meta"><div class="tc-name font-mono">Rachel L.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 7 · Electrical</div></div>
+                        <div class="tc-meta"><div class="tc-name">Rachel L.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Park Slope · Electrical</div></div>
                     </div>
                 </div>
                 <div class="testimonial-card">
-                    <div class="tc-stars font-mono text-volt">★★★★☆</div>
+                    <div class="tc-stars text-volt">★★★★☆</div>
                     <p class="tc-text">"Built us a custom deck in 3 days. Elena brought her own specialist tools and the finish was exceptional. Only docking one star because availability was limited — booked out two days ahead."</p>
                     <div class="tc-author">
                         <img src="Assets/avatar_mp.png" class="tc-avatar" alt="Mark P.">
-                        <div class="tc-meta"><div class="tc-name font-mono">Mark P.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 2 · Carpentry</div></div>
+                        <div class="tc-meta"><div class="tc-name">Mark P.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Williamsburg · Carpentry</div></div>
                     </div>
                 </div>
                 <div class="testimonial-card tc-featured">
-                    <div class="tc-feature-badge font-mono">MOST HELPFUL</div>
-                    <div class="tc-stars font-mono text-volt">★★★★★</div>
+                    <div class="tc-feature-badge">MOST HELPFUL</div>
+                    <div class="tc-stars text-volt">★★★★★</div>
                     <p class="tc-text">"I was sceptical of yet another app, but ArtisanGrid is genuinely different. No upsells, no bait-and-switch pricing. Tom serviced our entire HVAC system and the quote was bang on. The zero-fee model actually makes it cheaper than calling individual contractors."</p>
                     <div class="tc-author">
                         <img src="Assets/avatar_aw.png" class="tc-avatar" alt="Amara W.">
-                        <div class="tc-meta"><div class="tc-name font-mono">Amara W.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Sector 1 · HVAC</div></div>
+                        <div class="tc-meta"><div class="tc-name">Amara W.</div><div class="tc-loc text-xs" style="color:var(--text-secondary)">Carroll Gardens · HVAC</div></div>
                     </div>
                 </div>
             </div>
@@ -339,8 +336,18 @@
                     <input type="text" class="cta-input" placeholder="e.g. Boiler making noise…" id="h2-search" autocomplete="off"/>
                     <button class="cta-btn" id="h2-cta-btn">Request Dispatch →</button>
                 </div>
-                <div class="cta-trust-row font-mono text-xs mt-4" style="color:var(--text-muted)">
-                    <span>🔒 No account needed</span><span>·</span><span>⚡ Average match: 47 seconds</span><span>·</span><span>$0 booking fee</span>
+                <div class="cta-trust-row text-xs mt-4" style="color:var(--text-muted);font-family:'Plus Jakarta Sans',sans-serif;display:flex;align-items:center;gap:8px;justify-content:center;flex-wrap:wrap">
+                    <span style="display:inline-flex;align-items:center;gap:4px">
+                        <svg class="icon-svg" style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        No account needed
+                    </span>
+                    <span>·</span>
+                    <span style="display:inline-flex;align-items:center;gap:4px">
+                        <svg class="icon-svg" style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        Average match: 47 seconds
+                    </span>
+                    <span>·</span>
+                    <span>$0 booking fee</span>
                 </div>
             </div>
         </div>

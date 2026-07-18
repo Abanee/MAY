@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ArtisanGrid — Local Handyman Service Aggregator</title>
+    <title>ArtisanGrid — Trusted Local Handymen, Every Trade</title>
+    <meta name="description" content="Book background-checked, licensed handymen across every trade — plumbing, electrical, carpentry, HVAC and more. ArtisanGrid: zero platform fees, instant local dispatch.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script>
         (function() {
@@ -41,8 +42,8 @@
                         c5:       'var(--color-5)',
                     },
                     fontFamily: {
-                        mono: ['JetBrains Mono', 'monospace'],
-                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
                     }
                 }
             }
@@ -138,8 +139,8 @@
                     <svg class="moon-icon w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                     <span>Theme</span>
                 </button>
-                <button id="rtl-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg font-mono text-xs text-[var(--text-secondary)]" aria-label="Toggle Layout Direction">
-                    <span class="font-mono text-xs font-bold rtl-label">RTL</span>
+                <button id="rtl-toggle-mobile" class="theme-toggle-btn w-full flex items-center justify-center gap-2 py-2.5 border border-[var(--border)] rounded-lg text-xs text-[var(--text-secondary)]" aria-label="Toggle Layout Direction">
+                    <span class="text-xs font-bold rtl-label">RTL</span>
                 </button>
             </div>
             <a href="dashboard.html" class="nav-cta text-center mt-2 py-2">Dashboard</a>
@@ -154,30 +155,42 @@
         <div class="hero-glow-1" aria-hidden="true"></div>
         <div class="hero-glow-2" aria-hidden="true"></div>
 
+
         <div class="container mx-auto px-6">
             <div class="hero-grid">
                 <div class="hero-left">
-                    <div class="eyebrow font-mono text-xs tracking-widest mb-6">
-                        — TRUSTED CRAFTWORK NETWORK
+                    <div class="eyebrow font-sans text-xs tracking-widest mb-6">
+                        — TRUSTED LOCAL HANDYMEN · BROOKLYN & BEYOND
                     </div>
-                    <h1 class="hero-headline font-sans">
-                        <span class="headline-word font-light opacity-80">Bespoke</span>
-                        <span class="headline-word font-extrabold text-offwhite">Repairs.</span><br>
-                        <span class="headline-accent font-black">Instant Dispatch.</span>
+                    <h1 class="hero-headline font-heading" style="font-family:'Outfit',sans-serif">
+                        <span class="headline-word font-light opacity-80">Reliable Local</span>
+                        <span class="headline-word font-extrabold text-offwhite">Handymen.</span><br>
+                        <span class="headline-accent font-black">Done Right, Today.</span>
                     </h1>
                     <p class="hero-sub mt-6 mb-8 text-sec text-sm leading-relaxed max-w-md">
-                        Zero platform markups. Every artisan is background-checked,
-                        licensed, and rated by your neighbors — not an algorithm.
+                        Every artisan is background-checked, licensed &amp; rated by your neighbors — not an algorithm. Zero platform markups, instant local dispatch.
                     </p>
                     <div class="category-pills mb-8" id="category-pills">
-                        <button class="pill active" data-category="electrical">⚡ Electrical</button>
-                        <button class="pill"        data-category="plumbing">🔧 Plumbing</button>
-                        <button class="pill"        data-category="carpentry">🪚 Carpentry</button>
-                        <button class="pill"        data-category="hvac">❄️ HVAC</button>
+                        <button class="pill active" data-category="electrical">
+                            <svg class="icon-svg icon-svg-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            Electrical
+                        </button>
+                        <button class="pill" data-category="plumbing">
+                            <svg class="icon-svg icon-svg-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            Plumbing
+                        </button>
+                        <button class="pill" data-category="carpentry">
+                            <svg class="icon-svg icon-svg-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg>
+                            Carpentry
+                        </button>
+                        <button class="pill" data-category="hvac">
+                            <svg class="icon-svg icon-svg-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07"/></svg>
+                            HVAC
+                        </button>
                     </div>
                     <div class="cta-bar">
                         <input type="text" class="cta-input" placeholder="Describe your issue…" id="search-input" autocomplete="off"/>
-                        <button class="cta-btn" id="cta-btn">Request Urgent Dispatch →</button>
+                        <button class="cta-btn" id="cta-btn">Get Local Help Now →</button>
                     </div>
                 </div>
                 <div class="hero-right" id="hero-slideshow-container">
@@ -196,26 +209,6 @@
     ═══════════════════════════════════════ -->
     <div class="social-ticker" aria-label="Live activity feed">
         <div class="ticker-track" id="ticker-track">
-            <span class="ticker-item">⚡ Sarah M. booked an electrician — 3 min ago</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">🔧 James R. rated Marcus V. ★★★★★ — just now</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">🪚 New artisan: Elena K. — Senior Carpenter joined</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">❄️ HVAC emergency resolved in 18 mins — Sector 7</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">🔧 Pipe burst fixed in Sector 2 — 11 min ago</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">⚡ Panel upgrade booked — Tom R. dispatched</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">⚡ Sarah M. booked an electrician — 3 min ago</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">🔧 James R. rated Marcus V. ★★★★★ — just now</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">🪚 New artisan: Elena K. — Senior Carpenter joined</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">❄️ HVAC emergency resolved in 18 mins — Sector 7</span>
-            <span class="ticker-sep">·</span>
             <span class="ticker-item">🔧 Pipe burst fixed in Sector 2 — 11 min ago</span>
             <span class="ticker-sep">·</span>
             <span class="ticker-item">⚡ Panel upgrade booked — Tom R. dispatched</span>
@@ -229,31 +222,128 @@
     <section class="section-alt" id="how-it-works">
         <div class="container mx-auto px-6">
             <div class="section-header">
-                <span class="section-eyebrow font-mono">— PROCESS</span>
-                <h2 class="section-title font-mono">
+                <span class="section-eyebrow">HOW IT WORKS</span>
+                <h2 class="section-title">
                     From Request<br>
                     <span class="text-c1">to Resolved.</span>
                 </h2>
-                <p class="section-sub">Three steps. No middlemen. Full transparency.</p>
+                <p class="section-sub">Three simple steps. No middlemen. Full transparency from request to fix.</p>
             </div>
             <div class="process-grid">
                 <div class="process-card">
-                    <div class="process-num font-mono">01</div>
-                    <div class="process-icon">🛠️</div>
-                    <h3 class="process-title font-mono">Describe the Job</h3>
+                    <div class="process-num">01</div>
+                    <div class="process-icon">
+                        <svg class="icon-svg icon-svg-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="m9 14 2 2 4-4"/></svg>
+                    </div>
+                    <h3 class="process-title">Describe the Job</h3>
                     <p class="process-desc">Type what's broken. Our system matches your request to vetted local specialists in real time — no vague dropdown categories.</p>
                 </div>
                 <div class="process-card">
-                    <div class="process-num font-mono">02</div>
-                    <div class="process-icon">📍</div>
-                    <h3 class="process-title font-mono">Artisan Dispatched</h3>
+                    <div class="process-num">02</div>
+                    <div class="process-icon">
+                        <svg class="icon-svg icon-svg-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3 class="process-title">Artisan Dispatched</h3>
                     <p class="process-desc">A verified professional accepts within minutes. Track their real-time location and ETA directly from your dashboard.</p>
                 </div>
                 <div class="process-card">
-                    <div class="process-num font-mono">03</div>
-                    <div class="process-icon">✅</div>
-                    <h3 class="process-title font-mono">Done. You Rate.</h3>
+                    <div class="process-num">03</div>
+                    <div class="process-icon">
+                        <svg class="icon-svg icon-svg-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                    </div>
+                    <h3 class="process-title">Done. You Rate.</h3>
                     <p class="process-desc">Pay only after the work is confirmed complete. Your honest rating shapes who rises in the network — accountability built in.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         [NEW] NEIGHBORHOOD COVERAGE CHECKER
+    ═══════════════════════════════════════ -->
+    <section class="section-dark border-t border-[var(--border)]" id="coverage">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow">LOCAL COVERAGE</span>
+                <h2 class="section-title">
+                    Your Neighborhood,<br>
+                    <span class="text-volt">Fully Covered.</span>
+                </h2>
+                <p class="section-sub">Active handymen are dispatching across your area right now. Enter your zip code to check live availability.</p>
+            </div>
+
+            <!-- Coverage Map Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
+                <div class="neighborhood-card">
+                    <div class="nh-dot active"></div>
+                    <div class="nh-name">Park Slope</div>
+                    <div class="nh-count">12 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot active"></div>
+                    <div class="nh-name">Brooklyn Heights</div>
+                    <div class="nh-count">8 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot active"></div>
+                    <div class="nh-name">Williamsburg</div>
+                    <div class="nh-count">17 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot active"></div>
+                    <div class="nh-name">Carroll Gardens</div>
+                    <div class="nh-count">6 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot active"></div>
+                    <div class="nh-name">Greenwood</div>
+                    <div class="nh-count">9 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot"></div>
+                    <div class="nh-name">Downtown BK</div>
+                    <div class="nh-count">4 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot active"></div>
+                    <div class="nh-name">Bushwick</div>
+                    <div class="nh-count">11 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot active"></div>
+                    <div class="nh-name">Red Hook</div>
+                    <div class="nh-count">5 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot"></div>
+                    <div class="nh-name">Fort Greene</div>
+                    <div class="nh-count">7 active</div>
+                </div>
+                <div class="neighborhood-card">
+                    <div class="nh-dot active"></div>
+                    <div class="nh-name">Flatbush</div>
+                    <div class="nh-count">14 active</div>
+                </div>
+            </div>
+
+            <!-- Zip Code Checker -->
+            <div class="zip-checker-wrap">
+                <div class="zip-checker-inner">
+                    <div class="zip-checker-text">
+                        <svg class="icon-svg icon-svg-xl mb-4" style="color:var(--volt)" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <h3 style="font-family:'Outfit',sans-serif;font-size:1.3rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">Check Your Zip Code</h3>
+                        <p style="color:var(--text-secondary);font-size:0.875rem;line-height:1.6">Enter your zip code to see live artisan availability in your exact neighborhood.</p>
+                    </div>
+                    <div class="zip-checker-form">
+                        <div class="zip-input-row">
+                            <input type="text" class="zip-input" id="zip-input" placeholder="e.g. 11201" maxlength="5" autocomplete="postal-code" aria-label="Enter your zip code"/>
+                            <button class="zip-btn" id="zip-btn">
+                                <svg class="icon-svg icon-svg-sm mr-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                                Check Coverage
+                            </button>
+                        </div>
+                        <div class="zip-result" id="zip-result" style="display:none"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -262,11 +352,11 @@
     <!-- ═══════════════════════════════════════
          SECTION 2.5: TRANSPARENCY COMPARISON
     ═══════════════════════════════════════ -->
-    <section class="section-dark border-t border-[var(--border)]" id="comparison">
+    <section class="section-alt border-t border-[var(--border)]" id="comparison">
         <div class="container mx-auto px-6">
             <div class="section-header">
-                <span class="section-eyebrow font-mono">— TRANSPARENCY</span>
-                <h2 class="section-title font-mono">
+                <span class="section-eyebrow">TRANSPARENCY</span>
+                <h2 class="section-title">
                     Zero Markups.<br>
                     <span class="text-volt">No Middleman Cut.</span>
                 </h2>
@@ -275,48 +365,48 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mt-12">
                 <!-- Card 1: Traditional Aggregators -->
-                <div class="p-8 border border-[var(--border)] bg-surface rounded-none relative overflow-hidden transition-all duration-300 hover:border-[var(--border-hover)]">
-                    <div class="absolute top-0 right-0 bg-red-500/10 text-red-500 px-4 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider border-b border-l border-[var(--border)]">Typical Aggregator</div>
-                    <h3 class="font-mono font-bold text-xl mb-6 text-red-500 mt-4">Traditional Middleman</h3>
+                <div class="p-8 border border-[var(--border)] bg-surface rounded-xl relative overflow-hidden transition-all duration-300 hover:border-[var(--border-hover)]">
+                    <div class="absolute top-0 right-0 bg-red-500/10 text-red-400 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider border-b border-l border-[var(--border)] rounded-bl-lg" style="font-family:'Plus Jakarta Sans',sans-serif">Typical Aggregator</div>
+                    <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.15rem;color:#f87171;margin-top:1rem;margin-bottom:1.25rem">Traditional Middleman</h3>
                     <ul class="space-y-4 text-sm text-sec">
                         <li class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">✕</span>
+                            <svg class="icon-svg-md mt-0.5 flex-shrink-0" style="color:#f87171" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
                             <div><strong>15% to 30% Markups</strong> added automatically to all invoices.</div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">✕</span>
+                            <svg class="icon-svg-md mt-0.5 flex-shrink-0" style="color:#f87171" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
                             <div><strong>Algorithm Assignment</strong> prioritizes paid ads over local ratings.</div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">✕</span>
+                            <svg class="icon-svg-md mt-0.5 flex-shrink-0" style="color:#f87171" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
                             <div><strong>Hidden Booking Fees</strong> added at check-out for "service operations".</div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="text-red-500 font-bold">✕</span>
+                            <svg class="icon-svg-md mt-0.5 flex-shrink-0" style="color:#f87171" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
                             <div><strong>Delayed Payouts</strong> holding the artisan's earnings for up to 14 days.</div>
                         </li>
                     </ul>
                 </div>
 
                 <!-- Card 2: ArtisanGrid -->
-                <div class="p-8 border-2 border-[var(--volt)] bg-surface rounded-none relative overflow-hidden transition-all duration-300 shadow-[4px_4px_0px_0px_var(--volt)]">
-                    <div class="absolute top-0 right-0 bg-[var(--volt)] text-[#0A0A0E] px-4 py-1.5 font-mono text-[10px] font-bold uppercase tracking-wider">ArtisanGrid Model</div>
-                    <h3 class="font-mono font-bold text-xl mb-6 text-volt mt-4">100% Commission-Free</h3>
+                <div class="p-8 border-2 border-[var(--volt)] bg-surface rounded-xl relative overflow-hidden transition-all duration-300" style="box-shadow: 0 8px 32px rgba(245,158,11,0.15)">
+                    <div class="absolute top-0 right-0 px-4 py-1.5 text-[10px] font-bold uppercase tracking-wider rounded-bl-lg" style="background:var(--volt);color:#0B0F19;font-family:'Plus Jakarta Sans',sans-serif">ArtisanGrid Model</div>
+                    <h3 style="font-family:'Outfit',sans-serif;font-weight:700;font-size:1.15rem;color:var(--volt);margin-top:1rem;margin-bottom:1.25rem">100% Commission-Free</h3>
                     <ul class="space-y-4 text-sm text-sec">
                         <li class="flex items-start gap-3">
-                            <span class="text-volt font-bold">✓</span>
+                            <svg class="icon-svg-md mt-0.5 flex-shrink-0 text-volt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                             <div><strong>$0 Platform Fees</strong>. Pay exactly what the artisan quotes.</div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="text-volt font-bold">✓</span>
+                            <svg class="icon-svg-md mt-0.5 flex-shrink-0 text-volt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                             <div><strong>Choose Your Specialist</strong> based on direct, un-manipulated review history.</div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="text-volt font-bold">✓</span>
+                            <svg class="icon-svg-md mt-0.5 flex-shrink-0 text-volt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                             <div><strong>No Middlemen</strong>. Speak directly with the technician before dispatch.</div>
                         </li>
                         <li class="flex items-start gap-3">
-                            <span class="text-volt font-bold">✓</span>
+                            <svg class="icon-svg-md mt-0.5 flex-shrink-0 text-volt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 11 3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
                             <div><strong>Direct Payment</strong>. Artisans keep 100% of their earnings instantly.</div>
                         </li>
                     </ul>
@@ -328,78 +418,78 @@
     <!-- ═══════════════════════════════════════
          SECTION 3: FEATURED ARTISANS
     ═══════════════════════════════════════ -->
-    <section class="section-dark" id="artisans">
+    <section class="section-dark border-t border-[var(--border)]" id="artisans">
         <div class="container mx-auto px-6">
             <div class="section-header">
-                <span class="section-eyebrow font-mono">— OUR NETWORK</span>
-                <h2 class="section-title font-mono">
+                <span class="section-eyebrow">OUR NETWORK</span>
+                <h2 class="section-title">
                     The People<br>
                     <span class="text-c4">Behind the Work.</span>
                 </h2>
-                <p class="section-sub">Real craftspeople. Verified licenses. Zero markups.</p>
+                <p class="section-sub">Real craftspeople from your neighborhood. Verified licenses. Zero markups.</p>
             </div>
             <div class="artisan-grid">
                 <div class="artisan-card">
                     <img src="Assets/avatar_mv.png" class="artisan-card-avatar" alt="Marcus V.">
                     <div class="artisan-card-info">
-                        <div class="artisan-card-name font-mono">Marcus V.</div>
-                        <div class="artisan-card-role">Master Plumber · 12 yrs exp.</div>
+                        <div class="artisan-card-name">Marcus V.</div>
+                        <div class="artisan-card-role">Master Plumber &middot; 12 yrs exp.</div>
                         <div class="artisan-card-tags">
                             <span class="tag">Licensed</span><span class="tag">Insured</span><span class="tag">Emergency</span>
                         </div>
                     </div>
-                    <div class="artisan-card-rating font-mono text-volt">★ 4.9</div>
+                    <div class="artisan-card-rating text-volt">★ 4.9</div>
                 </div>
                 <div class="artisan-card">
                     <img src="Assets/avatar_ek.png" class="artisan-card-avatar" alt="Elena K.">
                     <div class="artisan-card-info">
-                        <div class="artisan-card-name font-mono">Elena K.</div>
-                        <div class="artisan-card-role">Senior Carpenter · 8 yrs exp.</div>
+                        <div class="artisan-card-name">Elena K.</div>
+                        <div class="artisan-card-role">Senior Carpenter &middot; 8 yrs exp.</div>
                         <div class="artisan-card-tags">
                             <span class="tag">Licensed</span><span class="tag">Insured</span>
                         </div>
                     </div>
-                    <div class="artisan-card-rating font-mono text-volt">★ 4.8</div>
+                    <div class="artisan-card-rating text-volt">★ 4.8</div>
                 </div>
                 <div class="artisan-card">
                     <img src="Assets/avatar_tr.png" class="artisan-card-avatar" alt="Tom R.">
                     <div class="artisan-card-info">
-                        <div class="artisan-card-name font-mono">Tom R.</div>
-                        <div class="artisan-card-role">HVAC Technician · 10 yrs exp.</div>
+                        <div class="artisan-card-name">Tom R.</div>
+                        <div class="artisan-card-role">HVAC Technician &middot; 10 yrs exp.</div>
                         <div class="artisan-card-tags">
                             <span class="tag">Licensed</span><span class="tag">24/7</span>
                         </div>
                     </div>
-                    <div class="artisan-card-rating font-mono text-volt">★ 4.7</div>
+                    <div class="artisan-card-rating text-volt">★ 4.7</div>
                 </div>
                 <div class="artisan-card">
                     <img src="Assets/avatar_sb.png" class="artisan-card-avatar" alt="Sophie B.">
                     <div class="artisan-card-info">
-                        <div class="artisan-card-name font-mono">Sophie B.</div>
-                        <div class="artisan-card-role">Licensed Electrician · 6 yrs exp.</div>
+                        <div class="artisan-card-name">Sophie B.</div>
+                        <div class="artisan-card-role">Licensed Electrician &middot; 6 yrs exp.</div>
                         <div class="artisan-card-tags">
                             <span class="tag">Licensed</span><span class="tag">Certified</span>
                         </div>
                     </div>
-                    <div class="artisan-card-rating font-mono text-volt">★ 4.9</div>
+                    <div class="artisan-card-rating text-volt">★ 4.9</div>
                 </div>
                 <div class="artisan-card">
                     <img src="Assets/avatar_ro.png" class="artisan-card-avatar" alt="Ray O.">
                     <div class="artisan-card-info">
-                        <div class="artisan-card-name font-mono">Ray O.</div>
-                        <div class="artisan-card-role">General Repairs · 15 yrs exp.</div>
+                        <div class="artisan-card-name">Ray O.</div>
+                        <div class="artisan-card-role">General Repairs &middot; 15 yrs exp.</div>
                         <div class="artisan-card-tags">
                             <span class="tag">Licensed</span><span class="tag">Insured</span><span class="tag">Emergency</span>
                         </div>
                     </div>
-                    <div class="artisan-card-rating font-mono text-volt">★ 4.6</div>
+                    <div class="artisan-card-rating text-volt">★ 4.6</div>
                 </div>
                 <div class="artisan-card artisan-card--cta">
                     <div class="artisan-cta-inner">
-                        <div class="text-mut font-mono text-xs mb-3 tracking-wider">JOIN THE NETWORK</div>
-                        <div class="text-offwhite font-mono font-bold text-lg mb-2">Are you an artisan?</div>
+                        <div class="text-mut text-xs mb-3 tracking-wider" style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;letter-spacing:0.1em">JOIN THE NETWORK</div>
+                        <div class="text-offwhite font-bold text-lg mb-2" style="font-family:'Outfit',sans-serif">Are you a skilled handyman?</div>
                         <p class="text-sec text-sm mb-4 leading-relaxed">Keep 100% of your earnings. We take zero commission.</p>
-                        <a href="#" class="artisan-join-btn font-mono">Apply Now →</a>
+                        <a href="#" class="artisan-join-btn">Apply Now →</a>
                     </div>
                 </div>
             </div>
@@ -412,46 +502,132 @@
     <section class="section-alt border-t border-[var(--border)]" id="trust-guarantee">
         <div class="container mx-auto px-6">
             <div class="section-header">
-                <span class="section-eyebrow font-mono">— GUARANTEE</span>
-                <h2 class="section-title font-mono">
+                <span class="section-eyebrow">GUARANTEE</span>
+                <h2 class="section-title">
                     Solid Work.<br>
-                    <span class="text-c1">Total Protection.</span>
+                    <span class="text-c4">Total Protection.</span>
                 </h2>
                 <p class="section-sub">Standard on every job, zero exceptions.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
                 <!-- Card 1 -->
                 <div class="bento-card" style="border-top: 3px solid var(--color-1);">
-                    <div class="text-2xl mb-4">🛡️</div>
-                    <h3 class="font-mono text-base font-bold text-offwhite mb-2">Property Protection</h3>
+                    <div class="icon-box icon-box-blue mb-4">
+                        <svg class="icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">Property Protection</h3>
                     <p class="text-sec text-xs leading-relaxed">
                         Every job dispatched through ArtisanGrid is covered by our master $5,000,000 property damage policy.
                     </p>
                 </div>
                 <!-- Card 2 -->
                 <div class="bento-card" style="border-top: 3px solid var(--color-2);">
-                    <div class="text-2xl mb-4">🔍</div>
-                    <h3 class="font-mono text-base font-bold text-offwhite mb-2">Double-Vetting</h3>
+                    <div class="icon-box icon-box-orange mb-4">
+                        <svg class="icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    </div>
+                    <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">Double-Vetting</h3>
                     <p class="text-sec text-xs leading-relaxed">
                         Criminal background check plus active sector license verification. Updated automatically every 12 months.
                     </p>
                 </div>
                 <!-- Card 3 -->
-                <div class="bento-card" style="border-top: 3px solid var(--color-3);">
-                    <div class="text-2xl mb-4">⏳</div>
-                    <h3 class="font-mono text-base font-bold text-offwhite mb-2">48h Payment Escrow</h3>
+                <div class="bento-card" style="border-top: 3px solid var(--color-4);">
+                    <div class="icon-box icon-box-green mb-4">
+                        <svg class="icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </div>
+                    <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">48h Payment Escrow</h3>
                     <p class="text-sec text-xs leading-relaxed">
                         Payments are securely held in escrow and only released to the artisan 48 hours after you verify job completion.
                     </p>
                 </div>
                 <!-- Card 4 -->
-                <div class="bento-card" style="border-top: 3px solid var(--color-4);">
-                    <div class="text-2xl mb-4">⚡</div>
-                    <h3 class="font-mono text-base font-bold text-offwhite mb-2">Emergency Service SLA</h3>
+                <div class="bento-card" style="border-top: 3px solid var(--volt);">
+                    <div class="icon-box mb-4">
+                        <svg class="icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                    </div>
+                    <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">Emergency Service SLA</h3>
                     <p class="text-sec text-xs leading-relaxed">
                         Active emergency dispatches are contractually picked up by nearest local partners within an average of 14 minutes.
                     </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         [NEW] QUICK PROJECT COST ESTIMATOR
+    ═══════════════════════════════════════ -->
+    <section class="section-dark border-t border-[var(--border)]" id="cost-estimator">
+        <div class="container mx-auto px-6">
+            <div class="section-header">
+                <span class="section-eyebrow">PRICING GUIDE</span>
+                <h2 class="section-title">
+                    Know the Cost<br>
+                    <span class="text-volt">Before You Book.</span>
+                </h2>
+                <p class="section-sub">Get an instant local pricing estimate for any home repair. No sign-up needed.</p>
+            </div>
+
+            <div class="estimator-wrap">
+                <!-- Trade selector -->
+                <div class="estimator-trades" id="est-trade-btns">
+                    <button class="est-trade-btn active" data-trade="electrical">
+                        <svg class="icon-svg icon-svg-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        <span>Electrical</span>
+                    </button>
+                    <button class="est-trade-btn" data-trade="plumbing">
+                        <svg class="icon-svg icon-svg-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        <span>Plumbing</span>
+                    </button>
+                    <button class="est-trade-btn" data-trade="carpentry">
+                        <svg class="icon-svg icon-svg-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg>
+                        <span>Carpentry</span>
+                    </button>
+                    <button class="est-trade-btn" data-trade="hvac">
+                        <svg class="icon-svg icon-svg-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07"/></svg>
+                        <span>HVAC</span>
+                    </button>
+                    <button class="est-trade-btn" data-trade="painting">
+                        <svg class="icon-svg icon-svg-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
+                        <span>Painting</span>
+                    </button>
+                    <button class="est-trade-btn" data-trade="general">
+                        <svg class="icon-svg icon-svg-md" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="6" height="4"/><rect x="2" y="10" width="6" height="4"/><rect x="2" y="17" width="6" height="4"/><path d="M12 5h10"/><path d="M12 12h10"/><path d="M12 19h10"/></svg>
+                        <span>General</span>
+                    </button>
+                </div>
+
+                <div class="estimator-body">
+                    <div class="estimator-left">
+                        <label class="est-label">Select a service</label>
+                        <select class="est-select" id="est-service-h1">
+                            <option value="0">Outlet Installation</option>
+                            <option value="1">Lighting &amp; Fixtures</option>
+                            <option value="2">Panel Upgrade</option>
+                            <option value="3">Full Rewire</option>
+                            <option value="4">Circuit Breaker</option>
+                            <option value="5">EV Charger Install</option>
+                        </select>
+                    </div>
+                    <div class="estimator-results">
+                        <div class="est-result-item">
+                            <div class="est-result-label">Estimated Cost</div>
+                            <div class="est-result-val" id="est-cost-h1" style="color:var(--volt)">$60 – $95</div>
+                        </div>
+                        <div class="est-result-item">
+                            <div class="est-result-label">Duration</div>
+                            <div class="est-result-val" id="est-duration-h1">1–2 hrs</div>
+                        </div>
+                        <div class="est-result-item">
+                            <div class="est-result-label">Platform Fee</div>
+                            <div class="est-result-val" style="color:var(--color-4)">$0</div>
+                        </div>
+                    </div>
+                    <div class="estimator-cta">
+                        <a href="services.html" class="cta-btn" style="text-decoration:none;display:inline-block;padding:14px 28px">Book a Local Handyman →</a>
+                        <p class="text-mut text-xs mt-3">No account required &nbsp;&middot;&nbsp; Average match: 47 sec</p>
+                    </div>
                 </div>
             </div>
         </div>

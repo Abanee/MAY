@@ -24,14 +24,14 @@ const PRICE_RANGES = {
 };
 
 const TICKER_UPDATES = [
-    '⚡ Sarah M. booked an electrician — just now',
-    '🔧 James R. rated Marcus V. ★★★★★ — 2 min ago',
-    '❄️ HVAC emergency resolved in 18 mins — Sector 7',
-    '🪚 Deck repair completed — Ray O. — 5 min ago',
-    '🔧 Pipe burst fixed in Sector 2 — 9 min ago',
-    '⚡ Panel upgrade complete — Sophie B. — 11 min ago',
-    '🪚 New artisan: Elena K. — Senior Carpenter joined',
-    '🔧 Hot water restored — Marcus V. — 3 min ago',
+    'Electrical • Sarah M. booked an electrician — just now',
+    'Rating • James R. rated Marcus V. ★★★★★ — 2 min ago',
+    'HVAC • Emergency resolved in 18 mins — Park Slope',
+    'Carpentry • Deck repair completed — Ray O. — 5 min ago',
+    'Plumbing • Pipe burst fixed in Brooklyn Heights — 9 min ago',
+    'Electrical • Panel upgrade complete — Sophie B. — 11 min ago',
+    'Network • New artisan Elena K. — Senior Carpenter joined',
+    'Plumbing • Hot water restored — Marcus V. — 3 min ago',
 ];
 
 /* ──────────────────────────────────────────────────────────────
@@ -466,3 +466,170 @@ let syncSlideshowWithCategory = null;
     startSlideshow();
 })();
 
+
+/* ============================================================
+   Neighborhood Coverage Checker
+   ============================================================ */
+(function initZipChecker() {
+    const zipInput  = document.getElementById('zip-input');
+    const zipBtn    = document.getElementById('zip-btn');
+    const zipResult = document.getElementById('zip-result');
+    if (!zipInput || !zipBtn || !zipResult) return;
+
+    // Brooklyn/NYC zip codes with coverage data
+    const COVERED_ZIPS = {
+        '11201': { area: 'Brooklyn Heights',  artisans: 8,  avgEta: '11 min' },
+        '11215': { area: 'Park Slope',        artisans: 12, avgEta: '9 min'  },
+        '11211': { area: 'Williamsburg',      artisans: 17, avgEta: '7 min'  },
+        '11231': { area: 'Carroll Gardens',   artisans: 6,  avgEta: '14 min' },
+        '11218': { area: 'Kensington',        artisans: 9,  avgEta: '12 min' },
+        '11205': { area: 'Fort Greene',       artisans: 7,  avgEta: '10 min' },
+        '11207': { area: 'Bushwick',          artisans: 11, avgEta: '13 min' },
+        '11231': { area: 'Red Hook',          artisans: 5,  avgEta: '16 min' },
+        '11226': { area: 'Flatbush',          artisans: 14, avgEta: '8 min'  },
+        '11217': { area: 'Park Slope North',  artisans: 10, avgEta: '10 min' },
+        '10001': { area: 'Manhattan / Chelsea',artisans: 22, avgEta: '6 min'  },
+        '10002': { area: 'Lower East Side',   artisans: 19, avgEta: '7 min'  },
+        '10003': { area: 'East Village',      artisans: 15, avgEta: '8 min'  },
+    };
+
+    function checkZip() {
+        const zip = zipInput.value.trim();
+        if (!/^\d{5}$/.test(zip)) {
+            zipResult.className = 'zip-result error';
+            zipResult.style.display = 'block';
+            zipResult.textContent = 'Please enter a valid 5-digit zip code.';
+            return;
+        }
+        const data = COVERED_ZIPS[zip];
+        if (data) {
+            zipResult.className = 'zip-result success';
+            zipResult.style.display = 'block';
+            zipResult.innerHTML = `✓ Coverage confirmed for ${data.area} — <strong>${data.artisans} handymen active</strong>, avg. arrival <strong>${data.avgEta}</strong>.`;
+        } else {
+            zipResult.className = 'zip-result error';
+            zipResult.style.display = 'block';
+            zipResult.innerHTML = 'No active artisans in this area yet — <a href="contact.html" style="color:inherit;text-decoration:underline">request early access</a>.';
+        }
+    }
+
+    zipBtn.addEventListener('click', checkZip);
+    zipInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') checkZip(); });
+    zipInput.addEventListener('input', () => {
+        if (zipResult.style.display !== 'none') {
+            zipResult.style.display = 'none';
+        }
+    });
+})();
+
+/* ============================================================
+   Cost Estimator Component
+   ============================================================ */
+(function initEstimator() {
+    const tradeBtns  = document.querySelectorAll('.est-trade-btn');
+    const serviceEl  = document.getElementById('est-service-h1');
+    const costEl     = document.getElementById('est-cost-h1');
+    const durationEl = document.getElementById('est-duration-h1');
+    if (!tradeBtns.length || !serviceEl) return;
+
+    const TRADE_DATA = {
+        electrical: {
+            services: [
+                { name: 'Outlet Installation',  cost: '$60 – $95',    dur: '1–2 hrs' },
+                { name: 'Lighting & Fixtures',  cost: '$75 – $140',   dur: '1–3 hrs' },
+                { name: 'Panel Upgrade',        cost: '$800 – $2,400',dur: '4–8 hrs' },
+                { name: 'Full Rewire',          cost: '$3,500+',       dur: '2–3 days' },
+                { name: 'Circuit Breaker',      cost: '$120 – $250',  dur: '1–2 hrs' },
+                { name: 'EV Charger Install',   cost: '$400 – $900',  dur: '2–4 hrs' },
+            ]
+        },
+        plumbing: {
+            services: [
+                { name: 'Leak Repair',          cost: '$75 – $150',   dur: '1–2 hrs' },
+                { name: 'Drain Unclogging',     cost: '$80 – $200',   dur: '1–3 hrs' },
+                { name: 'Faucet Replacement',   cost: '$90 – $175',   dur: '1–2 hrs' },
+                { name: 'Pipe Burst Repair',    cost: '$150 – $500',  dur: '2–6 hrs' },
+                { name: 'Water Heater',         cost: '$400 – $1,200',dur: '2–4 hrs' },
+                { name: 'Toilet Replacement',   cost: '$120 – $300',  dur: '1–3 hrs' },
+            ]
+        },
+        carpentry: {
+            services: [
+                { name: 'Door Repair',          cost: '$80 – $200',   dur: '1–3 hrs' },
+                { name: 'Cabinet Installation', cost: '$200 – $800',  dur: '2–5 hrs' },
+                { name: 'Flooring Repair',      cost: '$100 – $350',  dur: '2–6 hrs' },
+                { name: 'Deck Build',           cost: '$3,000+',       dur: '3–5 days' },
+                { name: 'Fence Install',        cost: '$800 – $2,500',dur: '1–2 days' },
+                { name: 'Framing Work',         cost: '$500 – $2,000',dur: '1–3 days' },
+            ]
+        },
+        hvac: {
+            services: [
+                { name: 'AC Tune-Up',           cost: '$80 – $150',   dur: '1–2 hrs' },
+                { name: 'Filter Replacement',   cost: '$40 – $80',    dur: '30–60 min' },
+                { name: 'Duct Cleaning',        cost: '$300 – $600',  dur: '2–4 hrs' },
+                { name: 'AC Unit Install',      cost: '$1,500 – $4,000', dur: '4–8 hrs' },
+                { name: 'Heat Pump Service',    cost: '$120 – $350',  dur: '2–3 hrs' },
+                { name: 'Emergency Repair',     cost: '$150 – $500',  dur: '1–4 hrs' },
+            ]
+        },
+        painting: {
+            services: [
+                { name: 'Room Interior',        cost: '$150 – $400',  dur: '4–8 hrs' },
+                { name: 'Exterior Wall',        cost: '$500 – $2,000',dur: '1–3 days' },
+                { name: 'Trim & Molding',       cost: '$80 – $200',   dur: '2–4 hrs' },
+                { name: 'Ceiling Paint',        cost: '$100 – $300',  dur: '2–4 hrs' },
+                { name: 'Cabinet Painting',     cost: '$400 – $1,000',dur: '1–2 days' },
+                { name: 'Stucco/Texturing',     cost: '$200 – $600',  dur: '3–6 hrs' },
+            ]
+        },
+        general: {
+            services: [
+                { name: 'Furniture Assembly',   cost: '$40 – $120',   dur: '1–3 hrs' },
+                { name: 'Picture Hanging',      cost: '$30 – $75',    dur: '30–90 min' },
+                { name: 'Caulking & Sealing',   cost: '$60 – $150',   dur: '1–3 hrs' },
+                { name: 'Gutter Cleaning',      cost: '$80 – $200',   dur: '1–2 hrs' },
+                { name: 'Power Washing',        cost: '$100 – $300',  dur: '1–3 hrs' },
+                { name: 'Drywall Patch',        cost: '$75 – $200',   dur: '1–3 hrs' },
+            ]
+        }
+    };
+
+    let currentTrade = 'electrical';
+
+    function populateServices(trade) {
+        const data = TRADE_DATA[trade];
+        if (!data || !serviceEl) return;
+        serviceEl.innerHTML = '';
+        data.services.forEach((svc, i) => {
+            const opt = document.createElement('option');
+            opt.value = i;
+            opt.textContent = svc.name;
+            serviceEl.appendChild(opt);
+        });
+        updateResult(trade, 0);
+    }
+
+    function updateResult(trade, index) {
+        const svc = TRADE_DATA[trade].services[index];
+        if (!svc) return;
+        if (costEl)     costEl.textContent = svc.cost;
+        if (durationEl) durationEl.textContent = svc.dur;
+    }
+
+    tradeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tradeBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentTrade = btn.dataset.trade;
+            populateServices(currentTrade);
+        });
+    });
+
+    serviceEl.addEventListener('change', () => {
+        updateResult(currentTrade, parseInt(serviceEl.value, 10));
+    });
+
+    // Initialize
+    populateServices('electrical');
+})();

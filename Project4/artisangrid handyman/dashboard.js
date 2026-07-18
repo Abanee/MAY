@@ -14,12 +14,12 @@
    3. BOOKING WIDGET — Category pills + price estimates
 ────────────────────────────────────────────────────────────── */
 const BOOK_PRICES = {
-    electrical: { range: '$60 — $150', avail: '⚡ Electricians available in ~6 min' },
-    plumbing:   { range: '$45 — $120', avail: '🔧 Plumbers available in ~12 min' },
-    carpentry:  { range: '$55 — $200', avail: '🪚 Carpenters available in ~20 min' },
-    hvac:       { range: '$80 — $250', avail: '❄️ HVAC technicians available in ~18 min' },
-    general:    { range: '$40 — $130', avail: '🛠️ Handymen available in ~8 min' },
-    painting:   { range: '$70 — $320', avail: '🖌️ Painters available in ~30 min' },
+    electrical: { range: '$60 — $150', avail: 'Electricians available in ~6 min' },
+    plumbing:   { range: '$45 — $120', avail: 'Plumbers available in ~12 min' },
+    carpentry:  { range: '$55 — $200', avail: 'Carpenters available in ~20 min' },
+    hvac:       { range: '$80 — $250', avail: 'HVAC technicians available in ~18 min' },
+    general:    { range: '$40 — $130', avail: 'Handymen available in ~8 min' },
+    painting:   { range: '$70 — $320', avail: 'Painters available in ~30 min' },
 };
 
 const bookPills   = document.querySelectorAll('#book-pills .pill');

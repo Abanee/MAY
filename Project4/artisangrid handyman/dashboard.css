@@ -734,6 +734,7 @@
     top: 0;
     height: 100vh;
     overflow-y: auto;
+    align-self: start;
 }
 
 .dash-sidebar-profile {
@@ -871,8 +872,8 @@
 
 /* Card Widget Styles */
 .profile-card-preview {
-    background: linear-gradient(135deg, var(--surface-2) 0%, #1c1c2a 100%);
-    border: 1px solid var(--border-hover);
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 14px;
     padding: 24px;
     max-width: 380px;
@@ -884,7 +885,7 @@
 .pcp-chip {
     width: 36px;
     height: 28px;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.18);
     border-radius: 4px;
     margin-bottom: 24px;
 }
@@ -893,7 +894,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.1rem;
     letter-spacing: 0.1em;
-    color: var(--offwhite);
+    color: #FFFFFF;
     margin-bottom: 24px;
 }
 
@@ -906,7 +907,7 @@
 .pcp-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.55rem;
-    color: var(--text-muted);
+    color: #94A3B8;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -914,7 +915,7 @@
 .pcp-val {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.72rem;
-    color: var(--offwhite);
+    color: #FFFFFF;
     margin-top: 4px;
 }
 
