@@ -302,14 +302,6 @@
 }
 
 /* ── Services Page Hero Specific Styles ─────────────────────── */
-.services-hero-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 56px;
-    align-items: center;
-    position: relative;
-    z-index: 10;
-}
 
 .page-hero-ctas {
     display: flex;
@@ -365,114 +357,12 @@
     transform: translateY(0);
 }
 
-.services-hero-nav {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-}
 
-.svc-hero-card {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 18px 16px;
-    text-decoration: none;
-    color: inherit;
-    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    position: relative;
-    overflow: hidden;
-}
-
-.svc-hero-card-icon {
-    font-size: 1.5rem;
-    width: 44px;
-    height: 44px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: color-mix(in srgb, var(--card-accent, var(--color-1)) 12%, transparent);
-    border: 1px solid color-mix(in srgb, var(--card-accent, var(--color-1)) 22%, transparent);
-    color: var(--card-accent);
-    flex-shrink: 0;
-    transition: all 0.25s ease;
-}
-
-.svc-hero-card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    flex: 1;
-    min-width: 0;
-}
-
-.svc-hero-card-title {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--offwhite);
-    transition: color 0.25s ease;
-}
-
-.svc-hero-card-price {
-    font-size: 0.72rem;
-    color: var(--text-muted);
-}
-
-.svc-hero-card-arrow {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    transition: all 0.25s ease;
-}
-
-/* Hover effects for hero cards */
-.svc-hero-card:hover {
-    border-color: var(--card-accent);
-    transform: translateY(-3px);
-    background: var(--surface-2);
-    box-shadow: 0 8px 24px color-mix(in srgb, var(--card-accent) 8%, transparent);
-}
-.svc-hero-card:hover .svc-hero-card-icon {
-    background: var(--card-accent);
-    color: #fff;
-    transform: scale(1.05);
-}
-.svc-hero-card:hover .svc-hero-card-arrow {
-    color: var(--card-accent);
-    transform: translateX(3px);
-}
-
-/* RTL layout overrides for the hero card arrow */
-[dir="rtl"] .svc-hero-card-arrow {
-    transform: rotate(180deg);
-}
-[dir="rtl"] .svc-hero-card:hover .svc-hero-card-arrow {
-    transform: rotate(180deg) translateX(3px);
-}
 
 /* Responsive adjustments */
-@media (max-width: 1024px) {
-    .services-hero-grid {
-        gap: 40px;
-    }
-}
-
 @media (max-width: 768px) {
-    .services-hero-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-    }
     .page-hero-inner {
         max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .services-hero-nav {
-        grid-template-columns: 1fr;
-        gap: 10px;
     }
 }
 
@@ -1929,4 +1819,10 @@
     border-top: 1px solid var(--border);
     padding-top: 14px;
     margin-top: auto;
+}
+
+.trust-card-flex {
+    flex: 1 1 220px;
+    max-width: 280px;
+    min-height: 280px;
 }
