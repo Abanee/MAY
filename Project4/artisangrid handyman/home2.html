@@ -316,23 +316,33 @@
     <!-- COMPARISON TABLE -->
     <section class="section-alt" id="why-artisangrid">
         <div class="container mx-auto px-6">
-            <div class="section-header">
-                <span class="section-eyebrow font-mono">— THE DIFFERENCE</span>
-                <h2 class="section-title font-mono">Not a Contractor.<br><span class="text-volt">A Network.</span></h2>
-                <p class="section-sub">We aggregate the best local specialists across all trades — not one trade's own branded site.</p>
-            </div>
-            <div class="comparison-table">
-                <div class="comparison-header">
-                    <div class="comp-col comp-label font-mono">Feature</div>
-                    <div class="comp-col comp-them font-mono">Single-Trade Contractor</div>
-                    <div class="comp-col comp-us font-mono">ArtisanGrid</div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Side: Header + Table (takes 7 cols on large screens) -->
+                <div class="lg:col-span-7 flex flex-col gap-6">
+                    <div class="section-header !text-left !mx-0 !max-w-none mb-0">
+                        <span class="section-eyebrow font-mono">— THE DIFFERENCE</span>
+                        <h2 class="section-title font-mono text-left">Not a Contractor.<br><span class="text-volt">A Network.</span></h2>
+                        <p class="section-sub !mx-0 !max-w-none text-left">We aggregate the best local specialists across all trades — not one trade's own branded site.</p>
+                    </div>
+                    <div class="comparison-table">
+                        <div class="comparison-header">
+                            <div class="comp-col comp-label font-mono">Feature</div>
+                            <div class="comp-col comp-them font-mono">Single-Trade Contractor</div>
+                            <div class="comp-col comp-us font-mono">ArtisanGrid</div>
+                        </div>
+                        <div class="comparison-row"><div class="comp-col comp-label">Multiple Trades</div><div class="comp-col comp-them"><span class="comp-no">✕</span> One trade only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> 18 categories</div></div>
+                        <div class="comparison-row"><div class="comp-col comp-label">Platform Fee</div><div class="comp-col comp-them"><span class="comp-no">✕</span> 15–30% markup</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Zero. Always.</div></div>
+                        <div class="comparison-row"><div class="comp-col comp-label">Live ETA Tracking</div><div class="comp-col comp-them"><span class="comp-no">✕</span> Phone call only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Real-time dashboard</div></div>
+                        <div class="comparison-row"><div class="comp-col comp-label">Verified Reviews</div><div class="comp-col comp-them"><span class="comp-no">✕</span> Self-curated</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Neighbor-verified</div></div>
+                        <div class="comparison-row"><div class="comp-col comp-label">Background Checks</div><div class="comp-col comp-them"><span class="comp-no">~</span> Varies</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> All artisans</div></div>
+                        <div class="comparison-row"><div class="comp-col comp-label">Emergency 24/7</div><div class="comp-col comp-them"><span class="comp-no">~</span> Select only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Network-wide</div></div>
+                    </div>
                 </div>
-                <div class="comparison-row"><div class="comp-col comp-label">Multiple Trades</div><div class="comp-col comp-them"><span class="comp-no">✕</span> One trade only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> 18 categories</div></div>
-                <div class="comparison-row"><div class="comp-col comp-label">Platform Fee</div><div class="comp-col comp-them"><span class="comp-no">✕</span> 15–30% markup</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Zero. Always.</div></div>
-                <div class="comparison-row"><div class="comp-col comp-label">Live ETA Tracking</div><div class="comp-col comp-them"><span class="comp-no">✕</span> Phone call only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Real-time dashboard</div></div>
-                <div class="comparison-row"><div class="comp-col comp-label">Verified Reviews</div><div class="comp-col comp-them"><span class="comp-no">✕</span> Self-curated</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Neighbor-verified</div></div>
-                <div class="comparison-row"><div class="comp-col comp-label">Background Checks</div><div class="comp-col comp-them"><span class="comp-no">~</span> Varies</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> All artisans</div></div>
-                <div class="comparison-row"><div class="comp-col comp-label">Emergency 24/7</div><div class="comp-col comp-them"><span class="comp-no">~</span> Select only</div><div class="comp-col comp-us"><span class="comp-yes">✓</span> Network-wide</div></div>
+                <!-- Right Side: Large Realistic Image (takes 5 cols on large screens) -->
+                <div class="lg:col-span-5 relative rounded-2xl overflow-hidden border border-[var(--border-mid)] shadow-2xl h-[420px] lg:h-[500px]">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('Assets/artisan_working.png')"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[var(--carbon)] via-transparent to-transparent opacity-60"></div>
+                </div>
             </div>
         </div>
     </section>

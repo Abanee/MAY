@@ -22,6 +22,7 @@
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 32px;
+    justify-content: center;
 }
 
 .contact-badge {
@@ -149,7 +150,7 @@
 .cf-label {
     font-size: 0.65rem;
     letter-spacing: 0.1em;
-    color: var(--text-muted);
+    color: var(--text-secondary);
     text-transform: uppercase;
 }
 
@@ -545,7 +546,7 @@
 
 @media (max-width: 640px) {
     .cf-row { grid-template-columns: 1fr; }
-    .contact-hero-badges { flex-direction: column; align-items: flex-start; }
+    .contact-hero-badges { flex-direction: column; align-items: center; }
     .response-sla-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
 }
 

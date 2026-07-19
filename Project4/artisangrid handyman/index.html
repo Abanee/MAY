@@ -207,38 +207,44 @@
     ═══════════════════════════════════════ -->
     <section class="section-alt" id="how-it-works">
         <div class="container mx-auto px-6">
-            <div class="section-header">
-                <span class="section-eyebrow">HOW IT WORKS</span>
-                <h2 class="section-title">
-                    From Request<br>
-                    <span class="text-c1">to Resolved.</span>
-                </h2>
-                <p class="section-sub">Three simple steps. No middlemen. Full transparency from request to fix.</p>
-            </div>
-            <div class="process-grid">
-                <div class="process-card">
-                    <div class="process-num">01</div>
-                    <div class="process-icon">
-                        <svg class="icon-svg icon-svg-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="m9 14 2 2 4-4"/></svg>
-                    </div>
-                    <h3 class="process-title">Describe the Job</h3>
-                    <p class="process-desc">Type what's broken. Our system matches your request to vetted local specialists in real time — no vague dropdown categories.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Image Side -->
+                <div class="relative rounded-2xl overflow-hidden border border-[var(--border-mid)] shadow-2xl h-[400px] lg:h-[480px]">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('Assets/handyman_greeting.png')"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[var(--carbon)] via-transparent to-transparent opacity-60"></div>
                 </div>
-                <div class="process-card">
-                    <div class="process-num">02</div>
-                    <div class="process-icon">
-                        <svg class="icon-svg icon-svg-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <!-- Text / Steps Side -->
+                <div class="flex flex-col gap-6">
+                    <div>
+                        <span class="section-eyebrow font-mono">— HOW IT WORKS</span>
+                        <h2 class="section-title font-heading text-left">From Request<br><span class="text-c1">to Resolved.</span></h2>
+                        <p class="text-sec text-sm leading-relaxed mt-4">
+                            Three simple steps. No middlemen. Full transparency from request to fix. ArtisanGrid connects you directly to vetted local specialists.
+                        </p>
                     </div>
-                    <h3 class="process-title">Artisan Dispatched</h3>
-                    <p class="process-desc">A verified professional accepts within minutes. Track their real-time location and ETA directly from your dashboard.</p>
-                </div>
-                <div class="process-card">
-                    <div class="process-num">03</div>
-                    <div class="process-icon">
-                        <svg class="icon-svg icon-svg-xl" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+                    <div class="flex flex-col gap-8 mt-4">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--surface-2)] border border-[var(--border)] flex items-center justify-center font-mono font-bold text-volt text-sm">1</div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-[var(--offwhite)] mb-1">Describe the Job</h3>
+                                <p class="text-sec text-xs leading-relaxed">Type what's broken. Our system matches your request to vetted local specialists in real time — no vague dropdown categories.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--surface-2)] border border-[var(--border)] flex items-center justify-center font-mono font-bold text-volt text-sm">2</div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-[var(--offwhite)] mb-1">Artisan Dispatched</h3>
+                                <p class="text-sec text-xs leading-relaxed">A verified professional accepts within minutes. Track their real-time location and ETA directly from your dashboard.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--surface-2)] border border-[var(--border)] flex items-center justify-center font-mono font-bold text-volt text-sm">3</div>
+                            <div>
+                                <h3 class="font-heading font-bold text-base text-[var(--offwhite)] mb-1">Done. You Rate.</h3>
+                                <p class="text-sec text-xs leading-relaxed">Pay only after the work is confirmed complete. Your honest rating shapes who rises in the network — accountability built in.</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="process-title">Done. You Rate.</h3>
-                    <p class="process-desc">Pay only after the work is confirmed complete. Your honest rating shapes who rises in the network — accountability built in.</p>
                 </div>
             </div>
         </div>
