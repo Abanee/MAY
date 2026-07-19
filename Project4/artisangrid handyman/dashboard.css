@@ -186,7 +186,7 @@
 
 .booking-est-sep {
     color: var(--text-muted);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .booking-est-note {
@@ -790,7 +790,7 @@
     border: none;
     outline: none;
     cursor: pointer;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.78rem;
     font-weight: 600;
     color: var(--text-secondary);
@@ -867,7 +867,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .profile-field-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.68rem;
     letter-spacing: 0.08em;
     color: var(--text-muted);
@@ -918,7 +918,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .pcp-number {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 1.1rem;
     letter-spacing: 0.1em;
     color: #FFFFFF;
@@ -932,7 +932,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .pcp-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.55rem;
     color: #94A3B8;
     letter-spacing: 0.08em;
@@ -940,7 +940,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .pcp-val {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.72rem;
     color: #FFFFFF;
     margin-top: 4px;

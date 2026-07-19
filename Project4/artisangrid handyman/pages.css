@@ -118,7 +118,7 @@
 .photo-btn-primary {
     background: var(--cta-bg);
     color: var(--cta-text);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
     letter-spacing: 0.03em;
@@ -133,7 +133,7 @@
 .photo-btn-secondary {
     background: rgba(255,255,255,0.08);
     color: var(--offwhite);
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.03em;
@@ -184,7 +184,7 @@
 }
 
 .photo-stat-label {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.65rem;
     letter-spacing: 0.08em;
     color: rgba(243,244,246,0.5);
@@ -556,10 +556,10 @@
     align-items: center;
 }
 .comp-label { color: var(--text-secondary); font-size: 0.8rem; }
-.comp-them  { color: var(--text-muted); font-size: 0.78rem; border-left: 1px solid var(--border); }
+.comp-them  { color: var(--text-secondary); opacity: 0.85; font-size: 0.78rem; border-left: 1px solid var(--border); }
 .comp-us    { font-size: 0.78rem; border-left: 1px solid var(--border); }
 
-.comparison-header .comp-col { font-size: 0.62rem; letter-spacing: 0.12em; color: var(--text-muted); }
+.comparison-header .comp-col { font-size: 0.62rem; letter-spacing: 0.12em; color: var(--text-secondary); }
 .comparison-header .comp-us  { color: var(--volt); }
 
 .comp-yes { color: var(--color-4); margin-right: 6px; font-weight: 700; }
@@ -788,7 +788,7 @@
 }
 
 .svc-job-card-price {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.78rem;
     font-weight: 700;
     color: var(--volt);
@@ -831,7 +831,7 @@
     border: 1px solid var(--border);
     border-radius: 10px;
     flex-shrink: 0;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.875rem;
     font-weight: 700;
     color: var(--volt);
@@ -1045,7 +1045,7 @@
 }
 .pt-trade-badge {
     display: inline-block;
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'Plus Jakarta Sans', sans-serif;
     font-size: 0.68rem;
     padding: 4px 10px;
     border-radius: 6px;
