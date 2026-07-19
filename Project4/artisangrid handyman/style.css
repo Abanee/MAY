@@ -1045,15 +1045,20 @@ body,
 .site-footer {
     background: var(--surface);
     border-top: 1px solid var(--border);
-    padding: 64px 0 36px;
+    padding: 80px 0 40px;
 }
 
+/* Mobile-first base layout (Single Column) */
 .footer-grid {
-    display: flex;
-    justify-content: space-between;
-    gap: 48px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 36px;
     margin-bottom: 48px;
-    flex-wrap: wrap;
+}
+
+.footer-brand {
+    grid-column: span 1;
+    max-width: 100%;
 }
 
 .footer-badge {
@@ -1068,9 +1073,35 @@ body,
 }
 
 .footer-links {
-    display: flex;
-    gap: 56px;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+/* Tablet (min-width: 768px) */
+@media (min-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 48px;
+    }
+    .footer-brand {
+        grid-column: span 2;
+    }
+    .footer-links {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+}
+
+/* Desktop (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: 3.5fr 4.5fr 3fr;
+        gap: 64px;
+    }
+    .footer-brand {
+        grid-column: span 1;
+    }
 }
 
 .footer-col {
@@ -1103,7 +1134,7 @@ body,
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 16px;
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1147,36 +1178,10 @@ body,
     .main-nav #rtl-toggle { display: none !important; }
 }
 
-@media (max-width: 1023px) {
-    /* Fix footer blank space at tablet: let brand take full-width, links and newsletter sit side-by-side */
-    .footer-brand {
-        max-width: 100%;
-        width: 100%;
-        margin-bottom: 24px;
-    }
-    .footer-grid {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: space-between !important;
-        gap: 40px !important;
-    }
-    .footer-links {
-        flex: 1 1 auto;
-        gap: 36px;
-    }
-    .footer-newsletter {
-        flex: 0 1 320px;
-        width: 100%;
-        max-width: 320px;
-    }
-}
-
 @media (max-width: 768px) {
     .hero-section { padding: 56px 0 64px; min-height: auto; }
     .process-grid { grid-template-columns: 1fr; gap: 1px; }
     .artisan-grid { grid-template-columns: 1fr; }
-    .footer-grid  { display: flex; flex-direction: column; gap: 36px; }
-    .footer-links { gap: 24px; }
     .section-alt,
     .section-dark { padding: 72px 0; }
     .stats-grid { gap: 6px; }
