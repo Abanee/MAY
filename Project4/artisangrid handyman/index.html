@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages.css">
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme');
@@ -191,16 +192,131 @@
     </section>
 
     <!-- ═══════════════════════════════════════
-         SOCIAL PROOF TICKER
+         SECTION 1.5: EXPLORE VETTED SERVICES
     ═══════════════════════════════════════ -->
-    <div class="social-ticker" aria-label="Live activity feed">
-        <div class="ticker-track" id="ticker-track">
-            <span class="ticker-item">🔧 Pipe burst fixed in Sector 2 — 11 min ago</span>
-            <span class="ticker-sep">·</span>
-            <span class="ticker-item">⚡ Panel upgrade booked — Tom R. dispatched</span>
-            <span class="ticker-sep">·</span>
-        </div>
-    </div>
+    <section class="section border-t border-[var(--border)] py-20" id="trade-specialties">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="section-eyebrow font-mono">— EXPLORE VETTED SERVICES</span>
+                <h2 class="section-title font-mono">Professional Care for Every Part of Your Home</h2>
+                <p class="section-sub">Browse our primary trade specialties. Connect directly with licensed experts and skip the platform markups.</p>
+            </div>
+
+            <div class="trade-grid">
+                <!-- Electrical -->
+                <a href="services.html#electrical" class="trade-card">
+                    <div class="trade-card-bg" style="background-image: url('Assets/electric_service.png')"></div>
+                    <div class="trade-card-overlay"></div>
+                    <div class="trade-card-content">
+                        <div class="trade-card-header">
+                            <div class="trade-card-icon">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                            <h3 class="trade-card-title">Electrical</h3>
+                        </div>
+                        <p class="trade-card-desc">Certified rewiring, safety inspections, panel upgrades, and smart home lighting integrations.</p>
+                        <div class="trade-card-footer font-mono">
+                            <span class="trade-card-meta">Active Pros: <strong>16</strong></span>
+                            <span class="trade-card-link">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Plumbing -->
+                <a href="services.html#plumbing" class="trade-card">
+                    <div class="trade-card-bg" style="background-image: url('Assets/plumbing_service.png')"></div>
+                    <div class="trade-card-overlay"></div>
+                    <div class="trade-card-content">
+                        <div class="trade-card-header">
+                            <div class="trade-card-icon">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                            </div>
+                            <h3 class="trade-card-title">Plumbing</h3>
+                        </div>
+                        <p class="trade-card-desc">Emergency leak resolution, boiler replacement, drain cleaning, and fixture installations.</p>
+                        <div class="trade-card-footer font-mono">
+                            <span class="trade-card-meta">Active Pros: <strong>22</strong></span>
+                            <span class="trade-card-link">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Carpentry -->
+                <a href="services.html#carpentry" class="trade-card">
+                    <div class="trade-card-bg" style="background-image: url('Assets/carpentry_service.png')"></div>
+                    <div class="trade-card-overlay"></div>
+                    <div class="trade-card-content">
+                        <div class="trade-card-header">
+                            <div class="trade-card-icon">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/></svg>
+                            </div>
+                            <h3 class="trade-card-title">Carpentry</h3>
+                        </div>
+                        <p class="trade-card-desc">Custom floating shelves, structural framing, cabinetry, trim work, and deck repairs.</p>
+                        <div class="trade-card-footer font-mono">
+                            <span class="trade-card-meta">Active Pros: <strong>18</strong></span>
+                            <span class="trade-card-link">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- HVAC -->
+                <a href="services.html#hvac" class="trade-card">
+                    <div class="trade-card-bg" style="background-image: url('Assets/hvac_service.png')"></div>
+                    <div class="trade-card-overlay"></div>
+                    <div class="trade-card-content">
+                        <div class="trade-card-header">
+                            <div class="trade-card-icon">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M2 12h20M12 2v20M4.93 4.93l14.14 14.14M19.07 4.93 4.93 19.07"/></svg>
+                            </div>
+                            <h3 class="trade-card-title">HVAC</h3>
+                        </div>
+                        <p class="trade-card-desc">AC repair and tune-ups, heating system maintenance, filter swaps, and air quality systems.</p>
+                        <div class="trade-card-footer font-mono">
+                            <span class="trade-card-meta">Active Pros: <strong>12</strong></span>
+                            <span class="trade-card-link">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Painting -->
+                <a href="services.html#painting" class="trade-card">
+                    <div class="trade-card-bg" style="background-image: url('Assets/painting_service.png')"></div>
+                    <div class="trade-card-overlay"></div>
+                    <div class="trade-card-content">
+                        <div class="trade-card-header">
+                            <div class="trade-card-icon">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M18.37 2.63 14 7l-1.59-1.59a2 2 0 0 0-2.82 0L8 7l9 9 1.59-1.59a2 2 0 0 0 0-2.82L17 10l4.37-4.37a2.12 2.12 0 1 0-3-3Z"/><path d="M9 8c-2 3-4 3.5-7 4l8 10c2-1 6-5 6-7"/><path d="M14.5 17.5 4.5 15"/></svg>
+                            </div>
+                            <h3 class="trade-card-title">Painting</h3>
+                        </div>
+                        <p class="trade-card-desc">Interior wall painting, trim and baseboard refinishing, cabinet painting, and drywall patching.</p>
+                        <div class="trade-card-footer font-mono">
+                            <span class="trade-card-meta">Active Pros: <strong>15</strong></span>
+                            <span class="trade-card-link">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- General Repairs -->
+                <a href="services.html#general" class="trade-card">
+                    <div class="trade-card-bg" style="background-image: url('Assets/general_repairs.png')"></div>
+                    <div class="trade-card-overlay"></div>
+                    <div class="trade-card-content">
+                        <div class="trade-card-header">
+                            <div class="trade-card-icon">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+                            </div>
+                            <h3 class="trade-card-title">General Repairs</h3>
+                        </div>
+                        <p class="trade-card-desc">TV mounting, smart home setup, door adjustments, drywall fixes, and general assembly services.</p>
+                        <div class="trade-card-footer font-mono">
+                            <span class="trade-card-meta">Active Pros: <strong>30</strong></span>
+                            <span class="trade-card-link">Explore →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
 
     <!-- ═══════════════════════════════════════
          SECTION 2: HOW IT WORKS
@@ -249,6 +365,99 @@
             </div>
         </div>
     </section>
+
+    <!-- ═══════════════════════════════════════
+         [NEW] NEIGHBOR PROJECT SHOWCASE
+    ═══════════════════════════════════════ -->
+    <section class="section border-t border-[var(--border)] py-20" id="showcase">
+        <div class="container mx-auto px-6">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="section-eyebrow font-mono">— QUALITY CRAFT IN ACTION</span>
+                <h2 class="section-title font-mono">Neighbor Project Showcase</h2>
+                <p class="section-sub">Explore actual repairs and structural improvements completed by local specialists in your sector, with direct pricing transparency.</p>
+            </div>
+
+            <div class="project-showcase-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="Assets/shelves_showcase_real.png" alt="Custom Floating Shelves" class="project-img">
+                        <span class="project-tag font-mono">CARPENTRY</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title font-mono">Custom Floating Oak Shelves</h3>
+                        <p class="project-desc">Elena K. designed and fitted structural floating solid oak shelving to complement a fireplace alcove.</p>
+                        <div class="project-meta text-xs" style="color:var(--text-muted)">
+                            <span>Client: <strong style="color:var(--offwhite)">David K.</strong></span>
+                            <span class="font-mono text-volt">★ 5.0</span>
+                        </div>
+                        <div class="project-footer">
+                            <span class="font-mono text-xs" style="color:var(--text-muted)">Direct Cost: <strong style="color:var(--color-2)">$280</strong></span>
+                            <span class="font-mono text-xs text-sec">⏱ 5 Hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="Assets/heater_showcase_real.png" alt="Tankless Water Heater Install" class="project-img">
+                        <span class="project-tag font-mono">PLUMBING</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title font-mono">Tankless Water Heater Install</h3>
+                        <p class="project-desc">Marcus V. completed a residential upgrade from a traditional hot water boiler to a high-efficiency tankless heater.</p>
+                        <div class="project-meta text-xs" style="color:var(--text-muted)">
+                            <span>Client: <strong style="color:var(--offwhite)">Sarah L.</strong></span>
+                            <span class="font-mono text-volt">★ 5.0</span>
+                        </div>
+                        <div class="project-footer">
+                            <span class="font-mono text-xs" style="color:var(--text-muted)">Direct Cost: <strong style="color:var(--color-1)">$850</strong></span>
+                            <span class="font-mono text-xs text-sec">⏱ 6 Hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="Assets/lighting_showcase_real.png" alt="Smart Home Lighting" class="project-img">
+                        <span class="project-tag font-mono">ELECTRICAL</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title font-mono">Smart Home Lighting Integration</h3>
+                        <p class="project-desc">Sophie B. rewired a living room and integrated smart Lutron dimmers compatible with HomeKit & Alexa.</p>
+                        <div class="project-meta text-xs" style="color:var(--text-muted)">
+                            <span>Client: <strong style="color:var(--offwhite)">Julian M.</strong></span>
+                            <span class="font-mono text-volt">★ 4.9</span>
+                        </div>
+                        <div class="project-footer">
+                            <span class="font-mono text-xs" style="color:var(--text-muted)">Direct Cost: <strong style="color:var(--color-4)">$320</strong></span>
+                            <span class="font-mono text-xs text-sec">⏱ 3 Hours</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="Assets/hvac_showcase_real.png" alt="Condenser Fan Repair" class="project-img">
+                        <span class="project-tag font-mono">HVAC</span>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title font-mono">Condenser Fan Motor Repair</h3>
+                        <p class="project-desc">Tom R. diagnosed a home cooling failure and replaced a dead blower motor to restore full A/C operation.</p>
+                        <div class="project-meta text-xs" style="color:var(--text-muted)">
+                            <span>Client: <strong style="color:var(--offwhite)">Clara H.</strong></span>
+                            <span class="font-mono text-volt">★ 5.0</span>
+                        </div>
+                        <div class="project-footer">
+                            <span class="font-mono text-xs" style="color:var(--text-muted)">Direct Cost: <strong style="color:var(--color-5)">$190</strong></span>
+                            <span class="font-mono text-xs text-sec">⏱ 1.5 Hours</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
     <!-- ═══════════════════════════════════════
          [NEW] NEIGHBORHOOD COVERAGE CHECKER
@@ -497,51 +706,72 @@
                 <span class="section-eyebrow">GUARANTEE</span>
                 <h2 class="section-title">
                     Solid Work.<br>
-                    <span class="text-c4">Total Protection.</span>
+                    <span class="text-volt">Total Protection.</span>
                 </h2>
-                <p class="section-sub">Standard on every job, zero exceptions.</p>
+                <p class="section-sub">Standard on every job, zero exceptions. Your trust and safety are built into our network core.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-                <!-- Card 1 -->
-                <div class="bento-card" style="border-top: 3px solid var(--color-1);">
-                    <div class="icon-box icon-box-blue mb-4">
-                        <svg class="icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="trust-split">
+                <!-- Left Column: Visual Panel -->
+                <div class="trust-split-left">
+                    <div class="trust-visual">
+                        <img src="Assets/handyman_team_collage.png" alt="Artisan Trust & Safety Verification" class="trust-visual-img">
+                        <div class="trust-visual-overlay"></div>
+                        <span class="trust-visual-badge">100% Vetted</span>
+                        <div class="trust-visual-content">
+                            <h3 class="trust-visual-title">Rigorous Vetting Standards</h3>
+                            <p class="trust-visual-desc">Every artisan on ArtisanGrid undergoes thorough criminal background checks, license verification, and continuous quality monitoring by actual neighborhood feedback.</p>
+                        </div>
                     </div>
-                    <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">Property Protection</h3>
-                    <p class="text-sec text-xs leading-relaxed">
-                        Every job dispatched through ArtisanGrid is covered by our master $5,000,000 property damage policy.
-                    </p>
                 </div>
-                <!-- Card 2 -->
-                <div class="bento-card" style="border-top: 3px solid var(--color-2);">
-                    <div class="icon-box icon-box-orange mb-4">
-                        <svg class="icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+
+                <!-- Right Column: Guarantee Cards -->
+                <div class="trust-split-right">
+                    <div class="trust-list">
+                        <!-- Card 1 -->
+                        <div class="trust-item-card" style="border-top: 3px solid var(--color-1);">
+                            <div class="trust-item-icon-box" style="background: rgba(14,165,233,0.1); color: var(--color-1);">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="trust-item-title">Property Protection</h3>
+                                <p class="trust-item-desc">Every job dispatched through ArtisanGrid is covered by our master $5,000,000 property damage policy. Your home is always protected.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="trust-item-card" style="border-top: 3px solid var(--color-2);">
+                            <div class="trust-item-icon-box" style="background: rgba(249,115,22,0.1); color: var(--color-2);">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="trust-item-title">Double-Vetting Process</h3>
+                                <p class="trust-item-desc">Criminal background checks plus active trade license verification. Updated automatically every 12 months for 100% compliance.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="trust-item-card" style="border-top: 3px solid var(--color-4);">
+                            <div class="trust-item-icon-box" style="background: rgba(16,185,129,0.1); color: var(--color-4);">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="trust-item-title">48h Payment Escrow</h3>
+                                <p class="trust-item-desc">Payments are securely held in escrow and only released to the artisan 48 hours after you verify that the work is completed to your satisfaction.</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="trust-item-card" style="border-top: 3px solid var(--volt);">
+                            <div class="trust-item-icon-box" style="background: rgba(245,158,11,0.1); color: var(--volt);">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="trust-item-title">Emergency Service SLA</h3>
+                                <p class="trust-item-desc">Active emergency dispatches are contractually accepted by nearest local specialists within an average of 14 minutes. We resolve issues today.</p>
+                            </div>
+                        </div>
                     </div>
-                    <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">Double-Vetting</h3>
-                    <p class="text-sec text-xs leading-relaxed">
-                        Criminal background check plus active sector license verification. Updated automatically every 12 months.
-                    </p>
-                </div>
-                <!-- Card 3 -->
-                <div class="bento-card" style="border-top: 3px solid var(--color-4);">
-                    <div class="icon-box icon-box-green mb-4">
-                        <svg class="icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    </div>
-                    <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">48h Payment Escrow</h3>
-                    <p class="text-sec text-xs leading-relaxed">
-                        Payments are securely held in escrow and only released to the artisan 48 hours after you verify job completion.
-                    </p>
-                </div>
-                <!-- Card 4 -->
-                <div class="bento-card" style="border-top: 3px solid var(--volt);">
-                    <div class="icon-box mb-4">
-                        <svg class="icon-svg-lg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
-                    </div>
-                    <h3 style="font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--offwhite);margin-bottom:8px">Emergency Service SLA</h3>
-                    <p class="text-sec text-xs leading-relaxed">
-                        Active emergency dispatches are contractually picked up by nearest local partners within an average of 14 minutes.
-                    </p>
                 </div>
             </div>
         </div>
