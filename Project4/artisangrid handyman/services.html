@@ -571,82 +571,72 @@
     </section>
 
     <!-- TRUST SECTION -->
-    <section class="section-dark">
+    <section class="section-dark" id="trust-safeguards">
         <div class="container mx-auto px-6">
-            <div class="section-header text-center mx-auto" style="max-width: 800px; margin-bottom: 48px;">
-                <span class="section-eyebrow font-mono">— GUARANTEES</span>
-                <h2 class="section-title font-mono">Our Trust &<br><span class="headline-accent">Safety Standards.</span></h2>
-                <p class="section-sub text-center mx-auto">Every job dispatched through our network is backed by these standard platform safeguards.</p>
-            </div>
-
-            <div class="flex flex-wrap justify-center gap-6">
-                <!-- Card 1 -->
-                <div class="bento-card trust-card-flex flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
-                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/carp3.jpg')"></div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <svg class="w-4 h-4 text-volt flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Licensed</h3>
-                        </div>
-                        <p class="text-sec text-[11px] leading-relaxed">
-                            Every artisan holds a verified state or sector trade license.
-                        </p>
-                    </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Left Side: Image -->
+                <div class="lg:col-span-5 relative rounded-2xl overflow-hidden border border-[var(--border-mid)] shadow-2xl h-[450px] lg:h-[550px]">
+                    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('Assets/trust_verification.png')"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-[var(--carbon)] via-transparent to-transparent opacity-60"></div>
                 </div>
-
-                <!-- Card 2 -->
-                <div class="bento-card trust-card-flex flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
-                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/carp2.jpg')"></div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <svg class="w-4 h-4 text-volt flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Insured</h3>
-                        </div>
-                        <p class="text-sec text-[11px] leading-relaxed">
-                            Covered our master $5,000,000 property damage policy.
-                        </p>
+                <!-- Right Side: Text & Safeguards List -->
+                <div class="lg:col-span-7 flex flex-col gap-6">
+                    <div class="section-header !text-left !mx-0 !max-w-none mb-4">
+                        <span class="section-eyebrow font-mono">— GUARANTEES</span>
+                        <h2 class="section-title font-mono text-left">Our Trust &<br><span class="headline-accent">Safety Standards.</span></h2>
+                        <p class="section-sub !mx-0 !max-w-none text-left">Every job dispatched through our network is backed by these standard platform safeguards.</p>
                     </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="bento-card trust-card-flex flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
-                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/general3.jpg')"></div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <svg class="w-4 h-4 text-volt flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Vetted</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <!-- Standard 1 -->
+                        <div class="p-5 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--color-1)]/10 flex items-center justify-center text-[var(--color-1)]">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider mb-1">Licensed</h3>
+                                <p class="text-sec text-[11px] leading-relaxed">Every artisan holds a verified state or sector trade license, checked annually.</p>
+                            </div>
                         </div>
-                        <p class="text-sec text-[11px] leading-relaxed">
-                            Comprehensive background and criminal checks on all members.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="bento-card trust-card-flex flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
-                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/general4.jpg')"></div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <svg class="w-4 h-4 text-volt flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Zero Fees</h3>
+                        <!-- Standard 2 -->
+                        <div class="p-5 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--color-1)]/10 flex items-center justify-center text-[var(--color-1)]">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider mb-1">Insured</h3>
+                                <p class="text-sec text-[11px] leading-relaxed">Covered by our master $5,000,000 property damage policy for absolute peace of mind.</p>
+                            </div>
                         </div>
-                        <p class="text-sec text-[11px] leading-relaxed">
-                            No markups platform comm-ission. Keep 100% direct pricing.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="bento-card trust-card-flex flex flex-col justify-between p-6 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl hover:border-[var(--border-hover)] transition-all duration-300">
-                    <div class="h-28 w-full rounded-lg mb-4 bg-cover bg-center border border-[var(--border)]" style="background-image: url('Assets/electric3.jpg')"></div>
-                    <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <svg class="w-4 h-4 text-volt flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                            <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider">Emergency</h3>
+                        <!-- Standard 3 -->
+                        <div class="p-5 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--color-1)]/10 flex items-center justify-center text-[var(--color-1)]">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider mb-1">Vetted</h3>
+                                <p class="text-sec text-[11px] leading-relaxed">Comprehensive national background and criminal checks run on all network members.</p>
+                            </div>
                         </div>
-                        <p class="text-sec text-[11px] leading-relaxed">
-                            24/7 priority emergency dispatch routing in under 15 minutes.
-                        </p>
+                        <!-- Standard 4 -->
+                        <div class="p-5 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--color-1)]/10 flex items-center justify-center text-[var(--color-1)]">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider mb-1">Zero Fees</h3>
+                                <p class="text-sec text-[11px] leading-relaxed">No markups or platform commissions. Keep 100% direct neighbor-to-neighbor rates.</p>
+                            </div>
+                        </div>
+                        <!-- Standard 5 -->
+                        <div class="p-5 bg-[var(--surface-2)] border border-[var(--border)] rounded-xl flex gap-4 sm:col-span-2">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-[var(--color-1)]/10 flex items-center justify-center text-[var(--color-1)]">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-mono text-xs font-extrabold text-offwhite uppercase tracking-wider mb-1">24/7 Emergency Response</h3>
+                                <p class="text-sec text-[11px] leading-relaxed">Emergency dispatches are routed automatically to active partners in under 15 minutes.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
