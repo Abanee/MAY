@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membership Plans — Marlowe &amp; Finch Book Shop &amp; Lending Library</title>
+<meta name="description" content="Join Marlowe and Finch — an exclusive reading community with curated membership plans, unlimited borrowing, priority reservations, and member-only reading events.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: { light: '#FAF7F2', dark: '#121212' },
+          card: { light: '#FFFFFF', dark: '#1D1D1D' },
+          primary: { light: '#234E52', dark: '#4FAF8F' },
+          accent: { light: '#C79A3B', dark: '#D4A64A' },
+          ink: { light: '#2E2E2E', dark: '#F5F5F5' },
+          hairline: { light: '#E7E1D8', dark: '#2D2D2D' },
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          display: ['Cormorant Garamond', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
+<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
+  <div class="book-loader">
+    <svg width="88" height="70" viewBox="0 0 88 70" fill="none">
+      <path id="loader-left" d="M44 8C34 2 18 1 6 4V56C18 53 34 54 44 60V8Z" fill="none" stroke="currentColor" class="text-primary-light dark:text-primary-dark" stroke-width="1.6"/>
+      <path id="loader-right" d="M44 8C54 2 70 1 82 4V56C70 53 54 54 44 60V8Z" fill="none" stroke="currentColor" class="text-accent-light dark:text-accent-dark" stroke-width="1.6"/>
+    </svg>
+    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">Marlowe &amp; Finch</p>
+  </div>
+</div>
+<div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%"></div>
+<div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[5] hidden lg:block"></div>
+<div id="toast-zone" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] flex flex-col gap-3 items-center pointer-events-none"></div>
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+    <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Marlowe and Finch home">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" class="text-primary-light dark:text-primary-dark"><path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="15" y1="6" x2="15" y2="24.5" stroke="currentColor" stroke-width="1.5"/></svg>
+      <span class="font-serif text-lg tracking-tight">Marlowe &amp; Finch</span>
+    </a>
+    <ul class="hidden lg:flex items-center gap-8 text-[13.5px] tracking-wide">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Home 2</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="book.html" class="nav-link">Book Collection</a></li>
+      <li><a href="membership.html" class="nav-link mem-active-link" aria-current="page">Membership</a></li>
+      <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+      <li><a href="index.html#newsletter" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="flex items-center gap-2">
+      <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+        <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
+        <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <a href="dashboard.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center">
+        <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-xl border-t border-hairline-light dark:border-hairline-dark">
+    <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
+      <li><a href="index.html" class="mobile-link">Home</a></li>
+      <li><a href="home2.html" class="mobile-link">Home 2</a></li>
+      <li><a href="about.html" class="mobile-link">About</a></li>
+      <li><a href="book.html" class="mobile-link">Book Collection</a></li>
+      <li><a href="membership.html" class="mobile-link text-accent-light dark:text-accent-dark">Membership</a></li>
+      <li><a href="dashboard.html" class="mobile-link">Dashboard</a></li>
+      <li><a href="index.html#newsletter" class="mobile-link">Contact</a></li>
+      <li><a href="dashboard.html" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+    </ul>
+  </div>
+</header>
+<div id="search-modal" class="fixed inset-0 z-[90] hidden">
+  <div class="absolute inset-0 bg-[#12100c]/80 backdrop-blur-sm" id="search-backdrop"></div>
+  <div class="relative max-w-3xl mx-auto mt-[8vh] lg:mt-[12vh] px-6">
+    <div class="bg-bg-light dark:bg-card-dark rounded-2xl shadow-2xl p-6 lg:p-8 search-pop">
+      <div class="flex items-center gap-4 border-b border-hairline-light dark:border-hairline-dark pb-4">
+        <svg width="20" height="20" viewBox="0 0 18 18" fill="none" class="text-ink-light/40 dark:text-ink-dark/40"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input id="search-input" type="text" placeholder="Search titles, authors, genres..." class="flex-1 bg-transparent outline-none font-serif text-xl lg:text-2xl placeholder:text-ink-light/30 dark:placeholder:text-ink-dark/30" aria-label="Search">
+        <button id="search-close" aria-label="Close search" class="text-ink-light/50 dark:text-ink-dark/50 hover:text-accent-light dark:hover:text-accent-dark text-sm">ESC</button>
+      </div>
+    </div>
+  </div>
+</div>
+<main>
+<!-- SECTION 1: HERO -->
+<section id="mem-hero" class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Membership hero">
+  <div class="absolute inset-0 mem-hero-bg"></div>
+  <div class="absolute inset-0 mem-lamp-glow"></div>
+  <div class="absolute inset-0 bg-gradient-to-b from-[#0d1a16]/60 via-[#16231F]/50 to-[#0d1a16]"></div>
+  <div id="mem-particles" class="absolute inset-0" aria-hidden="true"></div>
+  <div class="mem-ray mem-ray-1" aria-hidden="true"></div>
+  <div class="mem-ray mem-ray-2" aria-hidden="true"></div>
+  <div class="mem-float-book mfb1" aria-hidden="true"><div style="width:52px;height:76px;border-radius:4px;background:#7B5B3B;box-shadow:-3px 0 0 rgba(0,0,0,.2) inset;"></div></div>
+  <div class="mem-float-book mfb2" aria-hidden="true"><div style="width:44px;height:64px;border-radius:4px;background:#3B5B7B;box-shadow:-3px 0 0 rgba(0,0,0,.2) inset;"></div></div>
+  <div class="mem-float-book mfb3" aria-hidden="true"><div style="width:60px;height:44px;border-radius:4px;background:#C79A3B;box-shadow:-3px 0 0 rgba(0,0,0,.2) inset;"></div></div>
+  <div class="mem-float-book mfb4" aria-hidden="true"><div style="width:48px;height:70px;border-radius:4px;background:#234E52;box-shadow:-3px 0 0 rgba(0,0,0,.2) inset;"></div></div>
+  <div class="relative z-10 max-w-[1200px] mx-auto px-6 pt-28 grid lg:grid-cols-[1fr_420px] gap-16 items-center w-full">
+    <div>
+      <p class="reveal text-[12px] tracking-[0.45em] uppercase text-[#D4A64A] mb-5">Est. 1994 - Exclusive Reading Community</p>
+      <h1 class="reveal font-serif text-5xl sm:text-6xl lg:text-[72px] leading-[1.06] text-[#FAF7F2] font-light" style="transition-delay:.1s">Join a Community<br class="hidden sm:block"><em class="not-italic text-[#D4A64A]">That Loves</em><br class="hidden sm:block"> Reading</h1>
+      <p class="reveal mt-7 text-[#FAF7F2]/70 text-base lg:text-lg max-w-lg font-light leading-relaxed" style="transition-delay:.2s">Step into an exclusive circle of readers. Borrow freely, discover deeply, and belong to a library that remembers what you love.</p>
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-4" style="transition-delay:.3s">
+        <a href="#mem-plans" class="ripple magnetic px-8 py-4 rounded-full bg-[#D4A64A] text-[#16231F] font-semibold text-sm tracking-wide hover:brightness-110 transition text-center">Become a Member</a>
+        <a href="book.html" class="ripple magnetic px-8 py-4 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2] font-medium text-sm tracking-wide hover:bg-[#FAF7F2]/10 transition text-center">Explore Books</a>
+      </div>
+      <div class="reveal mt-12 flex flex-wrap gap-8" style="transition-delay:.4s">
+        <div><p class="font-serif text-3xl text-[#D4A64A]">6,250+</p><p class="text-xs tracking-[0.18em] uppercase text-[#FAF7F2]/50 mt-1">Members</p></div>
+        <div class="w-px bg-[#FAF7F2]/15 hidden sm:block"></div>
+        <div><p class="font-serif text-3xl text-[#D4A64A]">18,400</p><p class="text-xs tracking-[0.18em] uppercase text-[#FAF7F2]/50 mt-1">Books Available</p></div>
+        <div class="w-px bg-[#FAF7F2]/15 hidden sm:block"></div>
+        <div><p class="font-serif text-3xl text-[#D4A64A]">312</p><p class="text-xs tracking-[0.18em] uppercase text-[#FAF7F2]/50 mt-1">Events / Year</p></div>
+      </div>
+    </div>
+    <!-- Membership Card -->
+    <div class="reveal hidden lg:flex justify-center" style="transition-delay:.35s">
+      <div class="mem-id-float" id="mem-card-wrap" aria-label="Sample membership card mockup">
+        <div class="mem-id-card">
+          <div class="mem-id-face mem-id-front">
+            <div class="mem-card-shimmer"></div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 30 30" fill="none" class="text-[#D4A64A]"><path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/><line x1="15" y1="6" x2="15" y2="24.5" stroke="currentColor" stroke-width="1.5"/></svg>
+                <span class="font-serif text-[14px] text-[#FAF7F2]/90">Marlowe &amp; Finch</span>
+              </div>
+              <span class="text-[10px] tracking-[0.18em] uppercase text-[#D4A64A] font-semibold bg-[#D4A64A]/15 px-2 py-0.5 rounded-full">Scholar</span>
+            </div>
+            <div class="mem-chip"></div>
+            <div class="mt-auto">
+              <p class="text-[10px] tracking-[0.12em] uppercase text-[#FAF7F2]/45 mb-1">Member Name</p>
+              <p class="font-serif text-[21px] text-[#FAF7F2] leading-tight">Eleanor R. Hayes</p>
+              <div class="flex items-end justify-between mt-5">
+                <div><p class="text-[9px] uppercase tracking-[0.12em] text-[#FAF7F2]/40 mb-0.5">Member Since</p><p class="text-sm text-[#FAF7F2]/80">Jan 2021</p></div>
+                <div><p class="text-[9px] uppercase tracking-[0.12em] text-[#FAF7F2]/40 mb-0.5">Member ID</p><p class="text-sm text-[#FAF7F2]/80">MF-08447</p></div>
+                <div class="mem-qr"><div class="mem-qr-inner"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="mem-id-face mem-id-back">
+            <p class="text-xs tracking-[0.15em] uppercase text-ink-light/40 dark:text-ink-dark/40 mb-4">Scholar Benefits</p>
+            <ul class="space-y-2.5 text-sm text-ink-light/70 dark:text-ink-dark/70">
+              <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-primary-light/15 dark:bg-primary-dark/20 grid place-items-center flex-shrink-0 text-primary-light dark:text-primary-dark text-xs">&#10003;</span>Unlimited Borrowing</li>
+              <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-primary-light/15 dark:bg-primary-dark/20 grid place-items-center flex-shrink-0 text-primary-light dark:text-primary-dark text-xs">&#10003;</span>45-Day Borrowing Period</li>
+              <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-primary-light/15 dark:bg-primary-dark/20 grid place-items-center flex-shrink-0 text-primary-light dark:text-primary-dark text-xs">&#10003;</span>Early Access - New Arrivals</li>
+              <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-primary-light/15 dark:bg-primary-dark/20 grid place-items-center flex-shrink-0 text-primary-light dark:text-primary-dark text-xs">&#10003;</span>Exclusive Workshops</li>
+              <li class="flex items-center gap-2"><span class="w-5 h-5 rounded-full bg-primary-light/15 dark:bg-primary-dark/20 grid place-items-center flex-shrink-0 text-primary-light dark:text-primary-dark text-xs">&#10003;</span>Family Membership (4)</li>
+            </ul>
+            <div class="mt-5 pt-4 border-t border-hairline-light dark:border-hairline-dark"><p class="text-xs text-ink-light/45 dark:text-ink-dark/45">Valid 12 months from issue. Non-transferable.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#FAF7F2]/50">
+    <div class="mouse-scroll"></div>
+    <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+  </div>
+  <div class="absolute -bottom-1 inset-x-0 h-40 bg-gradient-to-b from-transparent to-bg-light dark:to-bg-dark pointer-events-none"></div>
+</section>
+<!-- SECTION 2: PLANS -->
+<section id="mem-plans" class="py-28 lg:py-40 px-6" aria-labelledby="plans-heading">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="text-center mb-20 reveal-scroll">
+      <p class="eyebrow mb-3">Find Your Reading Tier</p>
+      <h2 id="plans-heading" class="section-title">Membership Plans</h2>
+      <p class="mt-5 text-ink-light/60 dark:text-ink-dark/60 max-w-md mx-auto text-sm leading-relaxed">Three carefully designed tiers for every kind of reader.</p>
+    </div>
+    <div class="flex items-center justify-center gap-4 mb-14 reveal-scroll">
+      <span class="text-sm font-medium" id="bill-monthly-label">Monthly</span>
+      <button id="bill-toggle" role="switch" aria-checked="false" aria-label="Toggle annual billing" class="mem-bill-switch"><span class="mem-bill-thumb"></span></button>
+      <span class="text-sm" id="bill-annual-label">Annual <span class="ml-1.5 text-[11px] font-semibold bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark px-2 py-0.5 rounded-full">Save 20%</span></span>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+      <div class="mem-plan-card reveal-scroll">
+        <div class="mem-plan-badge" style="--badge-bg:#7B5B3B">Explorer</div>
+        <div class="mt-6">
+          <p class="text-xs tracking-[0.2em] uppercase text-ink-light/45 dark:text-ink-dark/45">For the Casual Browser</p>
+          <div class="flex items-baseline gap-1 mt-3">
+            <span class="font-serif text-[44px] leading-none plan-price" data-monthly="299" data-annual="239">299</span>
+            <span class="font-serif text-lg text-ink-light/60 dark:text-ink-dark/60">&#8377;</span>
+            <span class="text-sm text-ink-light/45 dark:text-ink-dark/45">/mo</span>
+          </div>
+          <p class="text-xs text-accent-light dark:text-accent-dark mt-1.5 h-4 plan-annual-note" data-annual-note="2,868 billed annually"></p>
+        </div>
+        <div class="my-7 h-px bg-hairline-light dark:bg-hairline-dark"></div>
+        <ul class="space-y-4 text-sm text-ink-light/75 dark:text-ink-dark/75 mb-8">
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Borrow up to <strong>3 books</strong></li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span><strong>14-day</strong> borrowing period</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Event invitations</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Email reminders</li>
+          <li class="mem-feat-item mem-feat-muted"><span class="mem-feat-icon mem-feat-dot"></span>Priority reservations</li>
+          <li class="mem-feat-item mem-feat-muted"><span class="mem-feat-icon mem-feat-dot"></span>Reading club access</li>
+        </ul>
+        <button class="mem-plan-btn ripple w-full py-3.5 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-primary-light dark:hover:border-primary-dark transition text-sm font-medium" data-plan="Explorer" data-price="299">Choose Explorer</button>
+      </div>
+      <div class="mem-plan-card mem-plan-featured reveal-scroll" style="transition-delay:.1s">
+        <div class="mem-plan-tag">Most Loved</div>
+        <div class="mem-plan-badge" style="--badge-bg:#234E52">Reader</div>
+        <div class="mt-6">
+          <p class="text-xs tracking-[0.2em] uppercase text-ink-light/45 dark:text-ink-dark/45">For the Weekly Visitor</p>
+          <div class="flex items-baseline gap-1 mt-3">
+            <span class="font-serif text-[44px] leading-none plan-price" data-monthly="599" data-annual="479">599</span>
+            <span class="font-serif text-lg text-ink-light/60 dark:text-ink-dark/60">&#8377;</span>
+            <span class="text-sm text-ink-light/45 dark:text-ink-dark/45">/mo</span>
+          </div>
+          <p class="text-xs text-accent-light dark:text-accent-dark mt-1.5 h-4 plan-annual-note" data-annual-note="5,748 billed annually"></p>
+        </div>
+        <div class="my-7 h-px bg-hairline-light/50 dark:bg-hairline-dark/50"></div>
+        <ul class="space-y-4 text-sm text-ink-light/75 dark:text-ink-dark/75 mb-8">
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Borrow up to <strong>8 books</strong></li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span><strong>30-day</strong> borrowing period</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Priority reservations</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Reading club access</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Personalized recommendations</li>
+          <li class="mem-feat-item mem-feat-muted"><span class="mem-feat-icon mem-feat-dot"></span>Family membership</li>
+        </ul>
+        <button class="mem-plan-btn mem-plan-btn-featured ripple w-full py-3.5 rounded-full transition text-sm font-semibold" data-plan="Reader" data-price="599">Choose Reader</button>
+      </div>
+      <div class="mem-plan-card reveal-scroll" style="transition-delay:.2s">
+        <div class="mem-plan-badge" style="--badge-bg:#5B3B6B">Scholar</div>
+        <div class="mt-6">
+          <p class="text-xs tracking-[0.2em] uppercase text-ink-light/45 dark:text-ink-dark/45">For the Devoted Collector</p>
+          <div class="flex items-baseline gap-1 mt-3">
+            <span class="font-serif text-[44px] leading-none plan-price" data-monthly="999" data-annual="799">999</span>
+            <span class="font-serif text-lg text-ink-light/60 dark:text-ink-dark/60">&#8377;</span>
+            <span class="text-sm text-ink-light/45 dark:text-ink-dark/45">/mo</span>
+          </div>
+          <p class="text-xs text-accent-light dark:text-accent-dark mt-1.5 h-4 plan-annual-note" data-annual-note="9,588 billed annually"></p>
+        </div>
+        <div class="my-7 h-px bg-hairline-light dark:bg-hairline-dark"></div>
+        <ul class="space-y-4 text-sm text-ink-light/75 dark:text-ink-dark/75 mb-8">
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span><strong>Unlimited</strong> borrowing</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span><strong>45-day</strong> borrowing period</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Early access to new arrivals</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Premium reading events</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Exclusive workshops</li>
+          <li class="mem-feat-item"><span class="mem-feat-icon mem-feat-check"></span>Family membership (4)</li>
+        </ul>
+        <button class="mem-plan-btn ripple w-full py-3.5 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-primary-light dark:hover:border-primary-dark transition text-sm font-medium" data-plan="Scholar" data-price="999">Choose Scholar</button>
+      </div>
+    </div>
+    <p class="text-center mt-12"><a href="#mem-join" class="text-sm text-ink-light/50 dark:text-ink-dark/50 underline underline-offset-4 hover:text-accent-light dark:hover:text-accent-dark transition">See full benefits and join today</a></p>
+  </div>
+</section>
+<!-- SECTION 3: WHY JOIN -->
+<section id="mem-why" class="py-28 lg:py-40 px-6 bg-card-light/40 dark:bg-card-dark/30 relative overflow-hidden" aria-labelledby="why-heading">
+  <div class="mem-bg-silhouette sil-1" aria-hidden="true"></div>
+  <div class="mem-bg-silhouette sil-2" aria-hidden="true"></div>
+  <div class="max-w-[1200px] mx-auto relative">
+    <div class="reveal-scroll mb-20 max-w-lg">
+      <p class="eyebrow mb-3">Member Privileges</p>
+      <h2 id="why-heading" class="section-title">Why Become a Member</h2>
+      <p class="mt-4 text-ink-light/60 dark:text-ink-dark/60 text-sm leading-relaxed">More than a library card - a key to an entire reading life.</p>
+    </div>
+    <div class="mem-why-grid">
+      <div class="mem-why-card mem-why-large reveal-scroll">
+        <div class="mem-why-icon-wrap" style="--ic:#234E52"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 2l2.68 6L21 8.73l-5 4.73L17.36 20 12 16.9 6.64 20 8 13.46 3 8.73 9.32 8z"/></svg></div>
+        <h3 class="font-serif text-2xl mt-5 mb-3">Unlimited Reading Opportunities</h3>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">From timeless classics to this week's most borrowed title - every book in our 18,400-title collection is within reach. No caps, no waiting, just reading.</p>
+        <div class="mem-why-counter mt-6 flex items-baseline gap-2">
+          <span class="mem-counter font-serif text-4xl text-primary-light dark:text-primary-dark" data-target="18400">0</span>
+          <span class="text-xs tracking-[0.15em] uppercase text-ink-light/45 dark:text-ink-dark/45">Titles Available</span>
+        </div>
+      </div>
+      <div class="mem-why-card reveal-scroll" style="transition-delay:.08s">
+        <div class="mem-why-icon-wrap" style="--ic:#7B5B3B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3 class="font-serif text-xl mt-5 mb-2">Easy Online Borrowing</h3>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Reserve and manage your reading list from anywhere. Your dashboard shows exactly what you have, when it is due, and what is next.</p>
+      </div>
+      <div class="mem-why-card reveal-scroll" style="transition-delay:.14s">
+        <div class="mem-why-icon-wrap" style="--ic:#3B5B7B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <h3 class="font-serif text-xl mt-5 mb-2">Due Date Reminders</h3>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Gentle nudges before a deadline - never a surprise fine. Renew with one tap, anytime, from your phone.</p>
+      </div>
+      <div class="mem-why-card reveal-scroll" style="transition-delay:.2s">
+        <div class="mem-why-icon-wrap" style="--ic:#C79A3B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <h3 class="font-serif text-xl mt-5 mb-2">Personalized Recommendations</h3>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Our booksellers study your reading history to curate titles you will genuinely love - not an algorithm, but human instinct.</p>
+      </div>
+      <div class="mem-why-card reveal-scroll" style="transition-delay:.26s">
+        <div class="mem-why-icon-wrap" style="--ic:#5B3B6B"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3 class="font-serif text-xl mt-5 mb-2">Reading Events and Workshops</h3>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Members-only evenings with authors, Sunday poetry circles, and exclusive writing workshops held in our reading room after hours.</p>
+      </div>
+      <div class="mem-why-card mem-why-accent reveal-scroll" style="transition-delay:.32s">
+        <div class="mem-why-icon-wrap" style="--ic:#234E52"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg></div>
+        <h3 class="font-serif text-xl mt-5 mb-2">Priority Access to New Books</h3>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Scholar members receive a private 48-hour window to reserve new arrivals before they open to the general catalogue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SECTION 4: EXPERIENCE TIMELINE -->
+<section id="mem-experience" class="py-28 lg:py-40 px-6" aria-labelledby="experience-heading">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="text-center mb-20 reveal-scroll">
+      <p class="eyebrow mb-3">Your Reading Journey</p>
+      <h2 id="experience-heading" class="section-title">The Member Experience</h2>
+      <p class="mt-4 text-ink-light/60 dark:text-ink-dark/60 max-w-sm mx-auto text-sm leading-relaxed">From the moment you join to earning your first reading rewards.</p>
+    </div>
+    <div class="mem-timeline-wrap" role="list" aria-label="Membership journey steps">
+      <div class="mem-step reveal-scroll" role="listitem">
+        <div class="mem-step-icon" style="--si:#234E52"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M20 7H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="mem-step-connector" aria-hidden="true"></div>
+        <div class="mem-step-num">01</div>
+        <h4 class="font-serif text-base lg:text-lg mt-3">Join Membership</h4>
+        <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-1.5 leading-relaxed">Pick a plan, fill one quick form, get your card instantly.</p>
+      </div>
+      <div class="mem-step reveal-scroll" role="listitem" style="transition-delay:.08s">
+        <div class="mem-step-icon" style="--si:#7B5B3B"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="mem-step-connector" aria-hidden="true"></div>
+        <div class="mem-step-num">02</div>
+        <h4 class="font-serif text-base lg:text-lg mt-3">Browse Books</h4>
+        <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-1.5 leading-relaxed">Explore 18,400 titles across every genre and era.</p>
+      </div>
+      <div class="mem-step reveal-scroll" role="listitem" style="transition-delay:.16s">
+        <div class="mem-step-icon" style="--si:#3B5B7B"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="mem-step-connector" aria-hidden="true"></div>
+        <div class="mem-step-num">03</div>
+        <h4 class="font-serif text-base lg:text-lg mt-3">Borrow Online</h4>
+        <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-1.5 leading-relaxed">Reserve from your dashboard - collect or request delivery.</p>
+      </div>
+      <div class="mem-step reveal-scroll" role="listitem" style="transition-delay:.24s">
+        <div class="mem-step-icon" style="--si:#C79A3B"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="mem-step-connector" aria-hidden="true"></div>
+        <div class="mem-step-num">04</div>
+        <h4 class="font-serif text-base lg:text-lg mt-3">Read and Enjoy</h4>
+        <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-1.5 leading-relaxed">Generous borrowing periods let you read at your own pace.</p>
+      </div>
+      <div class="mem-step reveal-scroll" role="listitem" style="transition-delay:.32s">
+        <div class="mem-step-icon" style="--si:#5B3B6B"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg></div>
+        <div class="mem-step-connector" aria-hidden="true"></div>
+        <div class="mem-step-num">05</div>
+        <h4 class="font-serif text-base lg:text-lg mt-3">Return or Renew</h4>
+        <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-1.5 leading-relaxed">Return to any shelf or renew with one tap. No queues.</p>
+      </div>
+      <div class="mem-step reveal-scroll" role="listitem" style="transition-delay:.4s">
+        <div class="mem-step-icon" style="--si:#D4A64A"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="mem-step-connector last" aria-hidden="true"></div>
+        <div class="mem-step-num">06</div>
+        <h4 class="font-serif text-base lg:text-lg mt-3">Earn Rewards</h4>
+        <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-1.5 leading-relaxed">Every book read unlocks points toward events and free months.</p>
+      </div>
+    </div>
+    <!-- Dashboard preview -->
+    <div class="mt-24 reveal-scroll">
+      <p class="text-center text-xs tracking-[0.2em] uppercase text-ink-light/40 dark:text-ink-dark/40 mb-10">Member Dashboard Preview</p>
+      <div class="mem-dash-preview">
+        <div class="mem-dash-sidebar hidden md:flex flex-col gap-2 p-4 border-r border-hairline-light dark:border-hairline-dark">
+          <div class="w-8 h-8 rounded-lg bg-primary-light/10 dark:bg-primary-dark/15 grid place-items-center mb-3">
+            <svg width="14" height="14" viewBox="0 0 30 30" fill="none" class="text-primary-light dark:text-primary-dark"><path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          </div>
+          <div class="mem-dash-nav-item active"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+          <div class="mem-dash-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+          <div class="mem-dash-nav-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        </div>
+        <div class="flex-1 p-6">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+            <div class="mem-dash-stat"><p class="text-[10px] uppercase tracking-[0.12em] text-ink-light/45 dark:text-ink-dark/45">Borrowed</p><p class="font-serif text-2xl mt-1">3</p><div class="progress-track mt-2"><div class="progress-fill" style="width:50%"></div></div></div>
+            <div class="mem-dash-stat"><p class="text-[10px] uppercase tracking-[0.12em] text-ink-light/45 dark:text-ink-dark/45">Due Soon</p><p class="font-serif text-2xl mt-1 text-accent-light dark:text-accent-dark">1</p><div class="progress-track mt-2"><div class="progress-fill" style="width:30%"></div></div></div>
+            <div class="mem-dash-stat"><p class="text-[10px] uppercase tracking-[0.12em] text-ink-light/45 dark:text-ink-dark/45">Wishlist</p><p class="font-serif text-2xl mt-1">12</p><div class="progress-track mt-2"><div class="progress-fill" style="width:80%"></div></div></div>
+            <div class="mem-dash-stat"><p class="text-[10px] uppercase tracking-[0.12em] text-ink-light/45 dark:text-ink-dark/45">Read 2026</p><p class="font-serif text-2xl mt-1 text-primary-light dark:text-primary-dark">41</p><div class="progress-track mt-2"><div class="progress-fill" style="width:68%"></div></div></div>
+          </div>
+          <p class="text-[11px] uppercase tracking-[0.18em] text-ink-light/40 dark:text-ink-dark/40 mb-3">Currently Borrowed</p>
+          <div class="flex gap-3 overflow-x-auto no-scrollbar pb-2">
+            <div class="mem-dash-book" style="--bc:#4A6B5B"><span style="writing-mode:vertical-rl;padding:8px 4px;font-size:9px;color:#FAF7F2;font-family:Fraunces,serif;">Cartographer</span></div>
+            <div class="mem-dash-book" style="--bc:#7B3B3B"><span style="writing-mode:vertical-rl;padding:8px 4px;font-size:9px;color:#FAF7F2;font-family:Fraunces,serif;">Salt and Marrow</span></div>
+            <div class="mem-dash-book" style="--bc:#3B5B7B"><span style="writing-mode:vertical-rl;padding:8px 4px;font-size:9px;color:#FAF7F2;font-family:Fraunces,serif;">Quiet History</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="text-center mt-6"><a href="dashboard.html" class="text-sm text-ink-light/55 dark:text-ink-dark/55 underline underline-offset-4 hover:text-accent-light dark:hover:text-accent-dark transition">View your full dashboard</a></p>
+    </div>
+  </div>
+</section>
+<!-- SECTION 5: JOIN TODAY -->
+<section id="mem-join" class="relative py-28 lg:py-44 px-6 overflow-hidden" aria-labelledby="join-heading">
+  <div class="absolute inset-0 mem-join-bg"></div>
+  <div class="absolute inset-0 mem-join-glow"></div>
+  <div id="mem-join-particles" class="absolute inset-0" aria-hidden="true"></div>
+  <div class="mem-join-book jb1" aria-hidden="true"></div>
+  <div class="mem-join-book jb2" aria-hidden="true"></div>
+  <div class="relative z-10 max-w-[1100px] mx-auto">
+    <div class="grid lg:grid-cols-[1fr_400px] gap-20 items-start">
+      <div>
+        <div class="reveal-scroll">
+          <p class="text-[12px] tracking-[0.4em] uppercase text-[#D4A64A] mb-5">Begin Your Story</p>
+          <h2 id="join-heading" class="font-serif text-[#FAF7F2] text-5xl lg:text-[60px] leading-[1.08] font-light">Start Your Reading<br><em class="not-italic text-[#D4A64A]">Journey</em> Today</h2>
+          <p class="mt-6 text-[#FAF7F2]/65 text-base leading-relaxed max-w-md">Thousands of readers have already found their pace, their genre, and their community inside Marlowe and Finch. Your shelf is waiting.</p>
+        </div>
+        <div class="reveal-scroll mt-10 grid grid-cols-3 gap-6">
+          <div><p class="font-serif text-3xl text-[#D4A64A] mem-counter" data-target="6250">0</p><p class="text-[11px] tracking-[0.15em] uppercase text-[#FAF7F2]/50 mt-1">Members</p></div>
+          <div><p class="font-serif text-3xl text-[#D4A64A] mem-counter" data-target="94200">0</p><p class="text-[11px] tracking-[0.15em] uppercase text-[#FAF7F2]/50 mt-1">Borrowed</p></div>
+          <div><p class="font-serif text-3xl text-[#D4A64A] mem-counter" data-target="31">0</p><p class="text-[11px] tracking-[0.15em] uppercase text-[#FAF7F2]/50 mt-1">Years Open</p></div>
+        </div>
+        <div class="reveal-scroll mt-10">
+          <p class="text-[11px] tracking-[0.2em] uppercase text-[#FAF7F2]/45 mb-4">Every Membership Includes</p>
+          <ul class="grid sm:grid-cols-2 gap-3">
+            <li class="mem-join-check">Access to 18,400+ Titles</li>
+            <li class="mem-join-check">Digital Member Dashboard</li>
+            <li class="mem-join-check">Due Date Reminders</li>
+            <li class="mem-join-check">Reading Event Invitations</li>
+            <li class="mem-join-check">Staff-Curated Picks</li>
+            <li class="mem-join-check">Reading Rewards Programme</li>
+          </ul>
+        </div>
+        <div class="reveal-scroll mt-10 flex flex-col sm:flex-row gap-4">
+          <a href="#mem-plans" class="ripple magnetic px-8 py-4 rounded-full bg-[#D4A64A] text-[#16231F] font-semibold text-sm tracking-wide hover:brightness-110 transition text-center">Become a Member</a>
+          <a href="index.html#newsletter" class="ripple magnetic px-8 py-4 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2] font-medium text-sm tracking-wide hover:bg-[#FAF7F2]/10 transition text-center">Contact Library</a>
+        </div>
+      </div>
+      <div class="reveal-scroll" style="transition-delay:.15s">
+        <div class="mem-nl-card">
+          <p class="text-xs tracking-[0.25em] uppercase text-accent-light dark:text-accent-dark mb-1">Stay In The Loop</p>
+          <h3 class="font-serif text-2xl mt-2 mb-2">Letters from the Library</h3>
+          <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed mb-6">One short letter a month - new arrivals, events, and a staff-picked poem.</p>
+          <form id="mem-nl-form" class="flex flex-col gap-3" novalidate>
+            <input type="text" id="mem-nl-name" placeholder="Your name" class="input-field" aria-label="Your name" required>
+            <input type="email" id="mem-nl-email" placeholder="Your email address" class="input-field" aria-label="Email address" required>
+            <select class="input-field" aria-label="Preferred genre">
+              <option value="">Favourite genre (optional)</option>
+              <option>Mystery</option><option>Fantasy</option><option>Science</option>
+              <option>History</option><option>Poetry</option><option>Biography</option>
+            </select>
+            <button type="submit" class="btn-primary ripple mt-1">Subscribe to Letters</button>
+            <p id="mem-nl-msg" class="text-xs text-primary-light dark:text-primary-dark h-4 text-center"></p>
+          </form>
+        </div>
+        <div class="mt-6 mem-quote-card">
+          <p class="font-display italic text-[17px] leading-relaxed">"I have borrowed 41 books this year and the reading room still smells like the first day I walked in."</p>
+          <div class="flex items-center gap-3 mt-5">
+            <div class="avatar" style="background:#3B5B7B">RM</div>
+            <div><p class="text-sm font-medium">Renata Mbeki</p><p class="text-xs text-ink-light/45 dark:text-ink-dark/45">Scholar Member - 41 books this year</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="absolute -bottom-1 inset-x-0 h-32 bg-gradient-to-b from-transparent to-bg-light dark:to-bg-dark pointer-events-none"></div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-[#16231F] dark:bg-[#0a0c0b] text-[#FAF7F2] pt-20 pb-8 px-6">
+  <div class="max-w-[1300px] mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-14">
+    <div class="lg:col-span-1">
+      <div class="flex items-center gap-2.5 mb-4">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none" class="text-[#D4A64A]"><path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <span class="font-serif text-lg">Marlowe &amp; Finch</span>
+      </div>
+      <p class="text-sm text-[#FAF7F2]/55 leading-relaxed">A neighborhood book shop and lending library, open since 1994.</p>
+    </div>
+    <div>
+      <p class="footer-head">Quick Links</p>
+      <ul class="footer-list"><li><a href="index.html">Home</a></li><li><a href="book.html">Book Collection</a></li><li><a href="membership.html">Membership</a></li><li><a href="about.html">About</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Membership</p>
+      <ul class="footer-list"><li><a href="membership.html#mem-plans">Explorer Plan</a></li><li><a href="membership.html#mem-plans">Reader Plan</a></li><li><a href="membership.html#mem-plans">Scholar Plan</a></li><li><a href="dashboard.html">Member Login</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Library Hours</p>
+      <ul class="footer-list text-[#FAF7F2]/55"><li>Mon-Fri 9am-8pm</li><li>Saturday 10am-6pm</li><li>Sunday 11am-5pm</li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Visit Us</p>
+      <ul class="footer-list text-[#FAF7F2]/55"><li>14 Birchwood Lane</li><li>Chennai, TN 600001</li><li>hello@marloweandfinch.co</li></ul>
+    </div>
+  </div>
+  <div class="max-w-[1300px] mx-auto border-t border-[#FAF7F2]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#FAF7F2]/45">
+    <p>2026 Marlowe and Finch Book Shop. All rights reserved.</p>
+    <div class="flex gap-5">
+      <a href="#" aria-label="Instagram" class="hover:text-[#D4A64A] transition">Instagram</a>
+      <a href="#" aria-label="Facebook" class="hover:text-[#D4A64A] transition">Facebook</a>
+      <a href="#" aria-label="Pinterest" class="hover:text-[#D4A64A] transition">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-7 right-7 z-40 w-12 h-12 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light grid place-items-center shadow-lg opacity-0 pointer-events-none transition-all duration-300">
+  <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 13V3M3 8L8 3L13 8" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<script src="script.js"></script>
+</body>
+</html>

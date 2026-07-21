@@ -48,13 +48,13 @@
   <aside id="sidebar" class="sidebar fixed lg:sticky top-0 left-0 h-screen w-[264px] z-50 flex flex-col bg-card-light dark:bg-card-dark border-r border-hairline-light dark:border-hairline-dark -translate-x-full lg:translate-x-0 transition-transform duration-300">
 
     <!-- Logo -->
-    <div class="flex items-center gap-2.5 px-6 pt-6 pb-5">
+    <a href="index.html" class="flex items-center gap-2.5 px-6 pt-6 pb-5 hover:opacity-85 transition shrink-0">
       <svg width="26" height="26" viewBox="0 0 30 30" fill="none" class="text-primary-light dark:text-primary-dark shrink-0">
         <path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
         <line x1="15" y1="6" x2="15" y2="24.5" stroke="currentColor" stroke-width="1.5"/>
       </svg>
       <span class="sb-label font-serif text-[17px] tracking-tight leading-none">Marlowe &amp; Finch</span>
-    </div>
+    </a>
 
     <!-- Member card -->
     <div class="sb-label mx-4 mb-6 p-4 rounded-2xl bg-panel-light dark:bg-panel-dark flex items-center gap-3">
@@ -67,6 +67,10 @@
 
     <!-- Nav -->
     <nav class="flex-1 px-3 space-y-1 overflow-y-auto no-scrollbar">
+      <a href="index.html" class="nav-item">
+        <span class="material-symbols-outlined">arrow_back</span>
+        <span class="sb-label font-medium">Back to Library</span>
+      </a>
       <button data-view="dashboard" class="nav-item active">
         <span class="material-symbols-outlined">space_dashboard</span>
         <span class="sb-label">Dashboard</span>

@@ -801,3 +801,189 @@
 
   render();
 })();
+
+/* =====================================================================
+   MEMBERSHIP PLANS PAGE — interactions
+   Guarded so this file stays safe to share across all pages.
+   ===================================================================== */
+(() => {
+  const $  = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+  if (!$('#mem-hero')) return; // not on this page
+
+  /* ---------- PARTICLES (hero + join) ---------- */
+  function spawnParticles(containerId, count) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
+    for (let i = 0; i < count; i++) {
+      const span = document.createElement('span');
+      span.style.cssText = [
+        'position:absolute',
+        'width:' + (Math.random() * 3 + 1) + 'px',
+        'height:' + (Math.random() * 3 + 1) + 'px',
+        'border-radius:50%',
+        'background:rgba(250,247,242,' + (Math.random() * 0.3 + 0.1) + ')',
+        'left:' + Math.random() * 100 + '%',
+        'top:' + Math.random() * 100 + '%',
+        'animation:floatUp ' + (Math.random() * 14 + 8) + 's linear ' + Math.random() * 10 + 's infinite'
+      ].join(';');
+      el.appendChild(span);
+    }
+  }
+  spawnParticles('mem-particles', 35);
+  spawnParticles('mem-join-particles', 20);
+
+  /* ---------- HERO REVEAL ---------- */
+  const heroReveals = $$('#mem-hero .reveal');
+  setTimeout(() => {
+    heroReveals.forEach(el => el.classList.add('in'));
+  }, 200);
+
+  /* ---------- CARD PARALLAX on mouse move ---------- */
+  const cardWrap = document.getElementById('mem-card-wrap');
+  if (cardWrap) {
+    document.addEventListener('mousemove', (e) => {
+      const rect = cardWrap.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = (e.clientX - cx) / (window.innerWidth / 2);
+      const dy = (e.clientY - cy) / (window.innerHeight / 2);
+      cardWrap.style.transform = `perspective(1200px) rotateY(${dx * 8}deg) rotateX(${-dy * 6}deg)`;
+    });
+  }
+
+  /* ---------- BILLING TOGGLE ---------- */
+  const billToggle = document.getElementById('bill-toggle');
+  let isAnnual = false;
+  if (billToggle) {
+    billToggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      billToggle.setAttribute('aria-checked', isAnnual ? 'true' : 'false');
+      $$('.plan-price').forEach(el => {
+        const val = isAnnual ? el.dataset.annual : el.dataset.monthly;
+        el.textContent = val;
+        el.style.transition = 'all .3s';
+        el.style.transform = 'scale(1.08)';
+        setTimeout(() => { el.style.transform = 'scale(1)'; }, 300);
+      });
+      $$('.plan-annual-note').forEach(el => {
+        el.innerHTML = isAnnual ? ('&#8377;' + el.dataset.annualNote) : '';
+      });
+    });
+  }
+
+  /* ---------- PLAN BUTTONS ---------- */
+  $$('.mem-plan-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const plan = btn.dataset.plan;
+      const price = btn.dataset.price;
+      showToast('info', `Opening ${plan} plan — &#8377;${price}/mo`);
+      rippleEffect(btn, e);
+    });
+  });
+
+  /* ---------- RIPPLE --- */
+  function rippleEffect(el, e) {
+    if (!e) return;
+    const rect = el.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height) * 2;
+    const dot = document.createElement('span');
+    dot.className = 'ripple-dot';
+    dot.style.cssText = [
+      'width:' + size + 'px',
+      'height:' + size + 'px',
+      'left:' + (e.clientX - rect.left - size / 2) + 'px',
+      'top:' + (e.clientY - rect.top - size / 2) + 'px'
+    ].join(';');
+    el.appendChild(dot);
+    setTimeout(() => { dot.remove(); }, 700);
+  }
+
+  /* ---------- TOAST ---------- */
+  function showToast(type, msg) {
+    let zone = document.getElementById('toast-zone');
+    if (!zone) {
+      zone = document.createElement('div');
+      zone.id = 'toast-zone';
+      zone.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] flex flex-col gap-3 items-center pointer-events-none';
+      document.body.appendChild(zone);
+    }
+    const toast = document.createElement('div');
+    toast.className = 'toast ' + type;
+    toast.innerHTML = '<span>' + msg + '</span>';
+    zone.appendChild(toast);
+    setTimeout(() => {
+      toast.classList.add('leaving');
+      setTimeout(() => { toast.remove(); }, 400);
+    }, 3000);
+  }
+
+  /* ---------- NEWSLETTER FORM ---------- */
+  const nlForm = document.getElementById('mem-nl-form');
+  if (nlForm) {
+    nlForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('mem-nl-email').value.trim();
+      const msg = document.getElementById('mem-nl-msg');
+      if (!email || !email.includes('@')) {
+        msg.textContent = 'Please enter a valid email address.';
+        return;
+      }
+      msg.textContent = 'Welcome to the reading circle! Check your inbox soon.';
+      nlForm.reset();
+      showToast('success', 'Subscribed to Letters from the Library!');
+      setTimeout(() => { msg.textContent = ''; }, 5000);
+    });
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const delay = el.style.transitionDelay || '0s';
+        setTimeout(() => { el.classList.add('in'); }, parseFloat(delay) * 1000);
+        revealObs.unobserve(el);
+      }
+    });
+  }, { threshold: 0.12 });
+  $$('.reveal-scroll').forEach(el => revealObs.observe(el));
+
+  /* ---------- TIMELINE ITEMS REVEAL ---------- */
+  const timelineObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        timelineObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  $$('.mem-step').forEach(el => timelineObs.observe(el));
+
+  /* ---------- ANIMATED COUNTERS ---------- */
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target, 10);
+    const start = 0;
+    const duration = 1800;
+    let startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      const progress = Math.min((ts - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(start + (target - start) * eased);
+      el.textContent = current.toLocaleString();
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCounter(entry.target);
+        counterObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  $$('.mem-counter').forEach(el => counterObs.observe(el));
+})();
