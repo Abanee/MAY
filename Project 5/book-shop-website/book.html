@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Collection — Marlowe & Finch</title>
+<meta name="description" content="Browse the full Marlowe & Finch collection — genres, staff picks, new arrivals, and popular authors — before you join as a member.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..500,0..1,-50..200" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: { light: '#FAF7F2', dark: '#121212' },
+          card: { light: '#FFFFFF', dark: '#1D1D1D' },
+          primary: { light: '#234E52', dark: '#4FAF8F' },
+          accent: { light: '#C79A3B', dark: '#D4A64A' },
+          ink: { light: '#2E2E2E', dark: '#F5F5F5' },
+          hairline: { light: '#E7E1D8', dark: '#2D2D2D' },
+        },
+        fontFamily: { serif: ['Fraunces','serif'], sans: ['Inter','sans-serif'], display: ['Cormorant Garamond','serif'] }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+<style>.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;vertical-align:middle;line-height:1;}</style>
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
+
+<!-- ============ LOADER ============ -->
+<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
+  <div class="book-loader">
+    <span class="material-symbols-outlined text-primary-light dark:text-primary-dark" style="font-size:48px;display:inline-block;animation:loaderPulse 1.1s ease-in-out infinite alternate">auto_stories</span>
+    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">Marlowe &amp; Finch</p>
+  </div>
+</div>
+
+<div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%"></div>
+<div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[5] hidden lg:block"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+    <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Marlowe & Finch home">
+      <span class="material-symbols-outlined text-primary-light dark:text-primary-dark" style="font-size:26px">auto_stories</span>
+      <span class="font-serif text-lg tracking-tight">Marlowe &amp; Finch</span>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-8 text-[13.5px] tracking-wide">
+      <li><a href="index.html#hero" class="nav-link">Home</a></li>
+      <li><a href="home2.html#h2-hero" class="nav-link">Home 2</a></li>
+      <li><a href="book.html" class="nav-link bc-active-link" aria-current="page">Book Collection</a></li>
+      <li><a href="index.html#membership" class="nav-link">Membership</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+      <li><a href="index.html#newsletter" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition"><span class="material-symbols-outlined !text-[19px]">search</span></button>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+        <span id="icon-sun" class="material-symbols-outlined absolute !text-[19px] transition-all duration-500">light_mode</span>
+        <span id="icon-moon" class="material-symbols-outlined absolute !text-[19px] transition-all duration-500 opacity-0">dark_mode</span>
+      </button>
+      <a href="dashboard.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center"><span class="material-symbols-outlined">menu</span></button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-xl border-t border-hairline-light dark:border-hairline-dark">
+    <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
+      <li><a href="index.html#hero" class="mobile-link">Home</a></li>
+      <li><a href="home2.html#h2-hero" class="mobile-link">Home 2</a></li>
+      <li><a href="book.html" class="mobile-link bc-active-link">Book Collection</a></li>
+      <li><a href="index.html#membership" class="mobile-link">Membership</a></li>
+      <li><a href="about.html" class="mobile-link">About</a></li>
+      <li><a href="dashboard.html" class="mobile-link">Dashboard</a></li>
+      <li><a href="index.html#newsletter" class="mobile-link">Contact</a></li>
+      <li><a href="dashboard.html" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ SEARCH MODAL ============ -->
+<div id="search-modal" class="fixed inset-0 z-[90] hidden">
+  <div class="absolute inset-0 bg-[#12100c]/80 backdrop-blur-sm" id="search-backdrop"></div>
+  <div class="relative max-w-3xl mx-auto mt-[8vh] lg:mt-[12vh] px-6">
+    <div class="bg-bg-light dark:bg-card-dark rounded-2xl shadow-2xl p-6 lg:p-8 search-pop">
+      <div class="flex items-center gap-4 border-b border-hairline-light dark:border-hairline-dark pb-4">
+        <span class="material-symbols-outlined text-ink-light/40 dark:text-ink-dark/40">search</span>
+        <input id="search-input" type="text" placeholder="Search titles, authors, genres…" class="flex-1 bg-transparent outline-none font-serif text-xl lg:text-2xl placeholder:text-ink-light/30 dark:placeholder:text-ink-dark/30" aria-label="Search">
+        <button id="search-close" aria-label="Close search" class="text-ink-light/50 dark:text-ink-dark/50 hover:text-accent-light dark:hover:text-accent-dark text-sm">ESC</button>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-8 mt-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-ink-light/40 dark:text-ink-dark/40 mb-3">Trending Genres</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="chip">Mystery</button><button class="chip">Science Fiction</button><button class="chip">Romance</button><button class="chip">History</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-ink-light/40 dark:text-ink-dark/40 mb-3">Popular Right Now</p>
+          <ul class="space-y-2 text-sm">
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">Atomic Habits</li>
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">Signal &amp; Static</li>
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">Small Mercies</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- ============ SECTION 1 — HERO ============ -->
+<section id="bc-hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+  <div class="absolute inset-0 bc-hero-bg"></div>
+  <div class="absolute inset-0 lamp-glow"></div>
+  <div id="particles" class="absolute inset-0"></div>
+  <div class="absolute -bottom-1 inset-x-0 h-40 bg-gradient-to-b from-transparent to-bg-light dark:to-bg-dark pointer-events-none"></div>
+
+  <span class="bc-float hero-book hb1" style="font-size:58px" aria-hidden="true"><span class="material-symbols-outlined" style="font-size:58px">menu_book</span></span>
+  <span class="bc-float hero-book hb2" style="font-size:70px;color:#4FAF8F" aria-hidden="true"><span class="material-symbols-outlined" style="font-size:70px">auto_stories</span></span>
+  <span class="bc-float hero-book hb3" style="font-size:50px;color:#FAF7F2" aria-hidden="true"><span class="material-symbols-outlined" style="font-size:50px">import_contacts</span></span>
+
+  <div class="relative z-10 max-w-3xl mx-auto text-center px-6 pt-16">
+    <p class="reveal text-[13px] tracking-[0.4em] uppercase text-[#D4A64A] mb-6">The Full Collection</p>
+    <h1 class="reveal font-serif text-4xl sm:text-5xl lg:text-[68px] leading-[1.08] text-[#FAF7F2] font-light" style="transition-delay:.1s">Every Shelf,<br class="hidden sm:block"> Open to You</h1>
+    <p class="reveal mt-6 text-[#FAF7F2]/70 text-base lg:text-lg max-w-lg mx-auto font-light leading-relaxed" style="transition-delay:.2s">Browse thousands of titles across ten genres — curated by our booksellers, ready to borrow the moment you join.</p>
+
+    <form id="hero-search-form" class="reveal mt-9 flex flex-col sm:flex-row gap-2.5 max-w-xl mx-auto" style="transition-delay:.3s">
+      <input id="hero-search-input" type="text" placeholder="Search by title or author…" class="input-field !bg-[#FAF7F2] !text-[#2E2E2E] flex-1" aria-label="Search books">
+      <select id="hero-genre-select" class="input-field !bg-[#FAF7F2] !text-[#2E2E2E] sm:w-44" aria-label="Category">
+        <option value="">All Genres</option>
+        <option>Fiction</option><option>Mystery</option><option>Science Fiction</option><option>Romance</option><option>Biography</option><option>History</option><option>Children's Books</option><option>Technology</option><option>Self-Development</option><option>Business</option>
+      </select>
+      <button id="hero-search-btn" class="btn-mini !rounded-xl !px-6">Search</button>
+    </form>
+
+    <div class="reveal mt-6 flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay:.4s">
+      <a href="#discovery" class="magnetic px-8 py-3.5 rounded-full bg-[#D4A64A] text-[#16231F] font-medium text-sm tracking-wide hover:brightness-110 transition w-full sm:w-auto text-center">Browse All Books</a>
+      <a href="index.html#membership" class="magnetic px-8 py-3.5 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2] font-medium text-sm tracking-wide hover:bg-[#FAF7F2]/10 transition w-full sm:w-auto text-center">Become a Member</a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#FAF7F2]/50">
+    <div class="mouse-scroll"></div>
+    <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+  </div>
+</section>
+
+<!-- ============ SECTION 2 — EXPLORE GENRES ============ -->
+<section id="genres" class="py-24 lg:py-32 px-6">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-14">
+      <p class="eyebrow">Wander the Shelves</p>
+      <h2 class="section-title mt-3">Explore Genres</h2>
+      <p class="text-sm text-ink-light/55 dark:text-ink-dark/55 mt-3 max-w-md">Tap a genre to jump straight to matching titles below.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+      <div class="bc-genre-card reveal-scroll" data-genre="Fiction" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">auto_stories</span></div><p class="font-serif text-lg">Fiction</p><p class="stat-num text-2xl mt-1" data-target="214">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · character-driven stories</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="Mystery" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">quiz</span></div><p class="font-serif text-lg">Mystery</p><p class="stat-num text-2xl mt-1" data-target="128">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · twists &amp; whodunits</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="Science Fiction" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">rocket_launch</span></div><p class="font-serif text-lg">Sci-Fi</p><p class="stat-num text-2xl mt-1" data-target="96">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · future worlds</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="Romance" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">favorite</span></div><p class="font-serif text-lg">Romance</p><p class="stat-num text-2xl mt-1" data-target="142">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · heartfelt reads</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="Biography" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">person</span></div><p class="font-serif text-lg">Biography</p><p class="stat-num text-2xl mt-1" data-target="88">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · real lives</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="History" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">history_edu</span></div><p class="font-serif text-lg">History</p><p class="stat-num text-2xl mt-1" data-target="156">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · the long past</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="Children's Books" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">child_care</span></div><p class="font-serif text-lg">Children's</p><p class="stat-num text-2xl mt-1" data-target="175">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · picture &amp; chapter</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="Technology" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">memory</span></div><p class="font-serif text-lg">Technology</p><p class="stat-num text-2xl mt-1" data-target="73">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · how things work</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="Self-Development" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">psychology</span></div><p class="font-serif text-lg">Self-Dev.</p><p class="stat-num text-2xl mt-1" data-target="61">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · better habits</p></div>
+      <div class="bc-genre-card reveal-scroll" data-genre="Business" tabindex="0"><div class="bc-genre-icon"><span class="material-symbols-outlined">work</span></div><p class="font-serif text-lg">Business</p><p class="stat-num text-2xl mt-1" data-target="54">0</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 mt-1">titles · strategy &amp; craft</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3 — FEATURED COLLECTIONS ============ -->
+<section id="collections" class="py-24 lg:py-32 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16">
+      <p class="eyebrow">Chosen By Our Booksellers</p>
+      <h2 class="section-title mt-3">Featured Collections</h2>
+    </div>
+
+    <div class="space-y-24 lg:space-y-28">
+      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
+        <div class="book-cover-wrap order-1">
+          <div class="book-cover" style="--cover:#4A6B5B"><div class="cover-inner"><span class="cover-title">Staff<br>Picks</span><span class="cover-author">Curated Monthly</span></div><div class="bookmark-tag"></div></div>
+        </div>
+        <div class="order-2">
+          <span class="badge-available">62 Books</span>
+          <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-3">Staff Picks</h3>
+          <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">The titles our booksellers can't stop recommending — refreshed every month with a note on why each one made the shelf.</p>
+          <a href="#discovery" class="btn-primary inline-block">Explore Collection</a>
+        </div>
+      </article>
+
+      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
+        <div class="order-2 lg:order-1">
+          <span class="badge-available">34 Books</span>
+          <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-3">Award Winners</h3>
+          <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">Booker, Pulitzer, and Hugo winners spanning three decades — the shelf every serious reader starts with.</p>
+          <a href="#discovery" class="btn-primary inline-block">Explore Collection</a>
+        </div>
+        <div class="book-cover-wrap order-1 lg:order-2">
+          <div class="book-cover" style="--cover:#7B3B3B"><div class="cover-inner"><span class="cover-title">Award<br>Winners</span><span class="cover-author">Decades of Prizes</span></div><div class="bookmark-tag"></div></div>
+        </div>
+      </article>
+
+      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
+        <div class="book-cover-wrap order-1">
+          <div class="book-cover" style="--cover:#3B5B7B"><div class="cover-inner"><span class="cover-title">Best<br>Sellers</span><span class="cover-author">Most Borrowed</span></div><div class="bookmark-tag"></div></div>
+        </div>
+        <div class="order-2">
+          <span class="badge-available">89 Books</span>
+          <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-3">Best Sellers</h3>
+          <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">The most-borrowed titles of the season, ranked by our members' actual reading — not marketing budgets.</p>
+          <a href="#discovery" class="btn-primary inline-block">Explore Collection</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4 — NEW ARRIVALS ============ -->
+<section id="arrivals" class="py-24 lg:py-32 px-6">
+  <div class="max-w-[1300px] mx-auto flex items-end justify-between mb-12 px-6 lg:px-0">
+    <div>
+      <p class="eyebrow">Fresh On The Shelf</p>
+      <h2 class="section-title mt-3">New Arrivals</h2>
+    </div>
+    <div class="hidden sm:flex gap-2">
+      <button id="arr-prev" aria-label="Previous" class="carousel-btn"><span class="material-symbols-outlined !text-[18px]">chevron_left</span></button>
+      <button id="arr-next" aria-label="Next" class="carousel-btn"><span class="material-symbols-outlined !text-[18px]">chevron_right</span></button>
+    </div>
+  </div>
+
+  <div id="arrivals-track" class="flex gap-6 px-6 lg:px-[calc((100vw-1300px)/2)] overflow-x-auto no-scrollbar snap-x snap-mandatory pb-4">
+    <article class="arrival-card snap-start" style="--cover:#8a5a2b">
+      <div class="ribbon">New</div>
+      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
+      <div class="cover-inner"><span class="cover-title">The Quiet<br>Orchard</span><span class="cover-author">Marta Wren</span></div>
+      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A widow rebuilds her late husband's orchard, one grafted branch at a time.</p><p class="text-[11px] opacity-70">312 pages · Fiction · Reserved</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
+    </article>
+
+    <article class="arrival-card snap-start" style="--cover:#3B5B7B">
+      <div class="ribbon">New</div>
+      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
+      <div class="cover-inner"><span class="cover-title">Signal &amp;<br>Static</span><span class="cover-author">Tomas Reyes</span></div>
+      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A radio operator in 1962 intercepts a message that shouldn't exist yet.</p><p class="text-[11px] opacity-70">288 pages · Sci-Fi · Available</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
+    </article>
+
+    <article class="arrival-card snap-start" style="--cover:#7B3B3B">
+      <div class="ribbon">New</div>
+      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
+      <div class="cover-inner"><span class="cover-title">Marrow<br>Deep</span><span class="cover-author">Halle Osei</span></div>
+      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A forensic anthropologist returns to the town that made her leave.</p><p class="text-[11px] opacity-70">344 pages · Mystery · Borrowed</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
+    </article>
+
+    <article class="arrival-card snap-start" style="--cover:#5B3B6B">
+      <div class="ribbon">New</div>
+      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
+      <div class="cover-inner"><span class="cover-title">Circuit &amp;<br>Bone</span><span class="cover-author">Saoirse Fallon</span></div>
+      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A prosthetics designer uncovers a conspiracy in her own hands.</p><p class="text-[11px] opacity-70">342 pages · Sci-Fi · Available</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
+    </article>
+
+    <article class="arrival-card snap-start" style="--cover:#C79A3B">
+      <div class="ribbon">New</div>
+      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
+      <div class="cover-inner"><span class="cover-title">Small<br>Mercies</span><span class="cover-author">Adaeze Nwosu</span></div>
+      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A children's tale of a lighthouse keeper who collects lost things.</p><p class="text-[11px] opacity-70">64 pages · Children's · Available</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ SECTION 5 — POPULAR AUTHORS ============ -->
+<section id="authors" class="py-24 lg:py-32 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-14">
+      <p class="eyebrow">Voices On Our Shelves</p>
+      <h2 class="section-title mt-3">Popular Authors</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div class="bc-author-card reveal-scroll" tabindex="0">
+        <img src="https://i.pravatar.cc/400?img=47" loading="lazy" alt="Portrait of Inés Roldán">
+        <div class="bc-author-info"><p class="font-serif text-lg">Inés Roldán</p><p class="text-[11px] opacity-70">🇪🇸 Spain · 6 books</p><p class="bc-author-bio">Featured: <em>The Cartographer's Silence</em>. Known for slow, sensory literary fiction about inheritance and memory.</p></div>
+      </div>
+      <div class="bc-author-card reveal-scroll" tabindex="0">
+        <img src="https://i.pravatar.cc/400?img=32" loading="lazy" alt="Portrait of Halle Osei">
+        <div class="bc-author-info"><p class="font-serif text-lg">Halle Osei</p><p class="text-[11px] opacity-70">🇬🇭 Ghana · 4 books</p><p class="bc-author-bio">Featured: <em>Marrow Deep</em>. Writes tightly-plotted mysteries grounded in forensic science and small-town secrets.</p></div>
+      </div>
+      <div class="bc-author-card reveal-scroll" tabindex="0">
+        <img src="https://i.pravatar.cc/400?img=13" loading="lazy" alt="Portrait of Tomas Reyes">
+        <div class="bc-author-info"><p class="font-serif text-lg">Tomas Reyes</p><p class="text-[11px] opacity-70">🇨🇱 Chile · 5 books</p><p class="bc-author-bio">Featured: <em>Signal &amp; Static</em>. Cold War-era science fiction with a documentary eye for detail.</p></div>
+      </div>
+      <div class="bc-author-card reveal-scroll" tabindex="0">
+        <img src="https://i.pravatar.cc/400?img=25" loading="lazy" alt="Portrait of Priya Nair">
+        <div class="bc-author-info"><p class="font-serif text-lg">Priya Nair</p><p class="text-[11px] opacity-70">🇮🇳 India · 3 books</p><p class="bc-author-bio">Featured: <em>The Machine Garden</em>. An engineer-turned-essayist writing on technology with warmth and restraint.</p></div>
+      </div>
+      <div class="bc-author-card reveal-scroll" tabindex="0">
+        <img src="https://i.pravatar.cc/400?img=15" loading="lazy" alt="Portrait of Jonas Eklund">
+        <div class="bc-author-info"><p class="font-serif text-lg">Jonas Eklund</p><p class="text-[11px] opacity-70">🇸🇪 Sweden · 7 books</p><p class="bc-author-bio">Featured: <em>The Slow Migration</em>. Nature and history essays that trace patient, long-distance journeys.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 6 — BOOK DISCOVERY ============ -->
+<section id="discovery" class="py-24 lg:py-32 px-6">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-12">
+      <p class="eyebrow">Find Your Next Read</p>
+      <h2 class="section-title mt-3">Book Discovery</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-3">
+      <input id="disc-search" type="text" placeholder="Search by title…" class="input-field" aria-label="Search by title">
+      <select id="disc-genre" class="input-field" aria-label="Filter by genre">
+        <option value="">All Genres</option>
+        <option>Fiction</option><option>Mystery</option><option>Science Fiction</option><option>Romance</option><option>Biography</option><option>History</option><option>Children's Books</option><option>Technology</option><option>Self-Development</option><option>Business</option>
+      </select>
+      <select id="disc-author" class="input-field" aria-label="Filter by author">
+        <option value="">All Authors</option>
+        <option>Inés Roldán</option><option>Halle Osei</option><option>Tomas Reyes</option><option>Emily Henry</option><option>Renata Mbeki</option><option>Devon Kessler</option><option>Adaeze Nwosu</option><option>Priya Nair</option><option>James Clear</option><option>Jonas Eklund</option><option>Marta Wren</option><option>Saoirse Fallon</option><option>Gillian Flynn</option>
+      </select>
+      <select id="disc-availability" class="input-field" aria-label="Filter by availability">
+        <option value="">Any Availability</option>
+        <option value="available">Available</option><option value="borrowed">Borrowed</option><option value="reserved">Reserved</option>
+      </select>
+      <select id="disc-sort" class="input-field" aria-label="Sort books">
+        <option value="newest">Sort: Newest</option>
+        <option value="popular">Sort: Most Popular</option>
+        <option value="rated">Sort: Highest Rated</option>
+        <option value="az">Sort: A–Z</option>
+      </select>
+    </div>
+    <p id="discovery-count" class="text-xs text-ink-light/45 dark:text-ink-dark/45 mb-8">14 books found</p>
+
+    <div id="discovery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5"></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 7 — WHY JOIN OUR LIBRARY ============ -->
+<section id="join-benefits" class="py-24 lg:py-32 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-14">
+      <p class="eyebrow">Find Your Shelf</p>
+      <h2 class="section-title mt-3">Why Join Our Library</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+      <div class="bc-feature reveal-scroll"><div class="bc-feature-icon"><span class="material-symbols-outlined">auto_stories</span></div><div><p class="font-serif text-lg mb-1">Borrow Books</p><p class="text-sm text-ink-light/60 dark:text-ink-dark/60">Take home up to eight titles at a time, no late fees.</p></div></div>
+      <div class="bc-feature reveal-scroll"><div class="bc-feature-icon"><span class="material-symbols-outlined">bookmark_added</span></div><div><p class="font-serif text-lg mb-1">Reserve Books</p><p class="text-sm text-ink-light/60 dark:text-ink-dark/60">Hold a title before it's back on the shelf.</p></div></div>
+      <div class="bc-feature reveal-scroll"><div class="bc-feature-icon"><span class="material-symbols-outlined">notifications_active</span></div><div><p class="font-serif text-lg mb-1">Reading Reminders</p><p class="text-sm text-ink-light/60 dark:text-ink-dark/60">Gentle nudges before a due date, never a fine.</p></div></div>
+      <div class="bc-feature reveal-scroll"><div class="bc-feature-icon"><span class="material-symbols-outlined">auto_awesome</span></div><div><p class="font-serif text-lg mb-1">Member Picks</p><p class="text-sm text-ink-light/60 dark:text-ink-dark/60">Recommendations tuned to your borrowing history.</p></div></div>
+      <div class="bc-feature reveal-scroll"><div class="bc-feature-icon"><span class="material-symbols-outlined">event</span></div><div><p class="font-serif text-lg mb-1">Reading Events</p><p class="text-sm text-ink-light/60 dark:text-ink-dark/60">Author talks, book clubs, and Sunday poetry circles.</p></div></div>
+      <div class="bc-feature reveal-scroll"><div class="bc-feature-icon"><span class="material-symbols-outlined">history</span></div><div><p class="font-serif text-lg mb-1">Borrowing History</p><p class="text-sm text-ink-light/60 dark:text-ink-dark/60">A digital shelf of everything you've ever read with us.</p></div></div>
+    </div>
+
+    <div class="text-center"><a href="index.html#membership" class="btn-primary inline-block">Become a Member</a></div>
+  </div>
+</section>
+
+<!-- ============ SECTION 8 — NEWSLETTER & CTA ============ -->
+<section id="newsletter" class="relative py-28 lg:py-36 px-6 overflow-hidden">
+  <div class="absolute inset-0 bc-newsletter-bg"></div>
+  <span class="bc-float hero-book hb1" aria-hidden="true"><span class="material-symbols-outlined" style="font-size:44px">menu_book</span></span>
+  <span class="bc-float hero-book hb2" style="color:#4FAF8F" aria-hidden="true"><span class="material-symbols-outlined" style="font-size:52px">auto_stories</span></span>
+
+  <div class="relative max-w-xl mx-auto text-center">
+    <p class="eyebrow">Stay In The Loop</p>
+    <h2 class="section-title mt-3 mb-4 text-[#FAF7F2]">Letters From the Library</h2>
+    <p class="text-sm text-[#FAF7F2]/65 mb-10">One short letter a month — new arrivals, event invites, and a staff-picked poem.</p>
+
+    <form id="newsletter-form" class="flex flex-col gap-4">
+      <input type="text" required placeholder="Your name" class="input-field" aria-label="Name">
+      <input type="email" required placeholder="Your email address" class="input-field" aria-label="Email address">
+      <div class="flex flex-col sm:flex-row gap-3 mt-2">
+        <button type="submit" class="btn-primary flex-1">Subscribe</button>
+        <a href="index.html#membership" class="btn-mini flex-1 !bg-transparent !text-[#FAF7F2] border border-[#FAF7F2]/30 grid place-items-center">View Membership Plans</a>
+      </div>
+      <p id="newsletter-msg" class="text-xs text-accent-light dark:text-accent-dark h-4"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-[#16231F] dark:bg-[#0a0c0b] text-[#FAF7F2] pt-20 pb-8 px-6">
+  <div class="max-w-[1300px] mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-14">
+    <div class="lg:col-span-1">
+      <div class="flex items-center gap-2.5 mb-4">
+        <span class="material-symbols-outlined text-[#D4A64A]" style="font-size:24px">auto_stories</span>
+        <span class="font-serif text-lg">Marlowe &amp; Finch</span>
+      </div>
+      <p class="text-sm text-[#FAF7F2]/55 leading-relaxed">A neighborhood book shop and lending library, open since 1994.</p>
+    </div>
+    <div>
+      <p class="footer-head">Quick Links</p>
+      <ul class="footer-list"><li><a href="book.html#discovery">Books</a></li><li><a href="index.html#membership">Membership</a></li><li><a href="about.html">About</a></li><li><a href="dashboard.html">Dashboard</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Book Categories</p>
+      <ul class="footer-list"><li><a href="book.html#genres">Fiction</a></li><li><a href="book.html#genres">Mystery</a></li><li><a href="book.html#genres">Science Fiction</a></li><li><a href="book.html#genres">Biography</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Opening Hours</p>
+      <ul class="footer-list text-[#FAF7F2]/55"><li>Mon–Fri · 9am – 8pm</li><li>Saturday · 10am – 6pm</li><li>Sunday · 11am – 5pm</li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Visit Us</p>
+      <ul class="footer-list text-[#FAF7F2]/55"><li>14 Birchwood Lane</li><li>Chennai, TN 600001</li><li>hello@marloweandfinch.co</li></ul>
+    </div>
+  </div>
+  <div class="max-w-[1300px] mx-auto border-t border-[#FAF7F2]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#FAF7F2]/45">
+    <p>© 2026 Marlowe &amp; Finch Book Shop. All rights reserved.</p>
+    <div class="flex gap-5">
+      <a href="#" aria-label="Instagram" class="hover:text-[#D4A64A] transition">Instagram</a>
+      <a href="#" aria-label="Facebook" class="hover:text-[#D4A64A] transition">Facebook</a>
+      <a href="#" aria-label="Pinterest" class="hover:text-[#D4A64A] transition">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-7 right-7 z-40 w-12 h-12 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light grid place-items-center shadow-lg opacity-0 pointer-events-none transition-all duration-300"><span class="material-symbols-outlined !text-[18px]">arrow_upward</span></button>
+
+<script src="script.js"></script>
+</body>
+</html>

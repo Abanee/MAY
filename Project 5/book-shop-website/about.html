@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Marlowe & Finch — Book Shop & Lending Library</title>
+<meta name="description" content="The story behind Marlowe & Finch — a neighborhood book shop and lending library open since 1994. Meet the people, the shelves, and the community that keep it alive.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: { light: '#FAF7F2', dark: '#121212' },
+          card: { light: '#FFFFFF', dark: '#1D1D1D' },
+          primary: { light: '#234E52', dark: '#4FAF8F' },
+          accent: { light: '#C79A3B', dark: '#D4A64A' },
+          ink: { light: '#2E2E2E', dark: '#F5F5F5' },
+          hairline: { light: '#E7E1D8', dark: '#2D2D2D' },
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          display: ['Cormorant Garamond', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
+
+<!-- ============ LOADER ============ -->
+<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
+  <div class="book-loader">
+    <svg width="88" height="70" viewBox="0 0 88 70" fill="none">
+      <path id="loader-left" d="M44 8C34 2 18 1 6 4V56C18 53 34 54 44 60V8Z" fill="none" stroke="currentColor" class="text-primary-light dark:text-primary-dark" stroke-width="1.6"/>
+      <path id="loader-right" d="M44 8C54 2 70 1 82 4V56C70 53 54 54 44 60V8Z" fill="none" stroke="currentColor" class="text-accent-light dark:text-accent-dark" stroke-width="1.6"/>
+    </svg>
+    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">Marlowe &amp; Finch</p>
+  </div>
+</div>
+
+<!-- ============ READING PROGRESS ============ -->
+<div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%"></div>
+
+<!-- ============ CURSOR SPOTLIGHT (desktop only) ============ -->
+<div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[5] hidden lg:block"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+    <a href="index.html#hero" class="flex items-center gap-2.5 group" aria-label="Marlowe & Finch home">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" class="text-primary-light dark:text-primary-dark">
+        <path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <line x1="15" y1="6" x2="15" y2="24.5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="font-serif text-lg tracking-tight">Marlowe &amp; Finch</span>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-9 text-[13.5px] tracking-wide">
+      <li><a href="index.html#hero" class="nav-link">Home</a></li>
+      <li><a href="index.html#collection" class="nav-link">Books</a></li>
+      <li><a href="index.html#membership" class="nav-link">Membership</a></li>
+      <li><a href="index.html#events" class="nav-link">Events</a></li>
+      <li><a href="about.html" class="nav-link text-accent-light dark:text-accent-dark" aria-current="page">About</a></li>
+      <li><a href="index.html#dashboard" class="nav-link">Dashboard</a></li>
+      <li><a href="index.html#newsletter" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+        <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
+        <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <a href="index.html#dashboard" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center">
+        <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- mobile menu -->
+  <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-xl border-t border-hairline-light dark:border-hairline-dark">
+    <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
+      <li><a href="index.html#hero" class="mobile-link">Home</a></li>
+      <li><a href="index.html#collection" class="mobile-link">Books</a></li>
+      <li><a href="index.html#membership" class="mobile-link">Membership</a></li>
+      <li><a href="index.html#events" class="mobile-link">Events</a></li>
+      <li><a href="about.html" class="mobile-link text-accent-light dark:text-accent-dark">About</a></li>
+      <li><a href="index.html#dashboard" class="mobile-link">Dashboard</a></li>
+      <li><a href="index.html#newsletter" class="mobile-link">Contact</a></li>
+      <li><a href="index.html#dashboard" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ SEARCH MODAL ============ -->
+<div id="search-modal" class="fixed inset-0 z-[90] hidden">
+  <div class="absolute inset-0 bg-[#12100c]/80 backdrop-blur-sm" id="search-backdrop"></div>
+  <div class="relative max-w-3xl mx-auto mt-[8vh] lg:mt-[12vh] px-6">
+    <div class="bg-bg-light dark:bg-card-dark rounded-2xl shadow-2xl p-6 lg:p-8 search-pop">
+      <div class="flex items-center gap-4 border-b border-hairline-light dark:border-hairline-dark pb-4">
+        <svg width="20" height="20" viewBox="0 0 18 18" fill="none" class="text-ink-light/40 dark:text-ink-dark/40"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input id="search-input" type="text" placeholder="Search titles, authors, genres…" class="flex-1 bg-transparent outline-none font-serif text-xl lg:text-2xl placeholder:text-ink-light/30 dark:placeholder:text-ink-dark/30" aria-label="Search">
+        <button id="search-close" aria-label="Close search" class="text-ink-light/50 dark:text-ink-dark/50 hover:text-accent-light dark:hover:text-accent-dark text-sm">ESC</button>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-8 mt-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-ink-light/40 dark:text-ink-dark/40 mb-3">Trending Genres</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="chip">Mystery</button><button class="chip">Fantasy</button><button class="chip">Poetry</button><button class="chip">Biography</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-ink-light/40 dark:text-ink-dark/40 mb-3">Popular Right Now</p>
+          <ul class="space-y-2 text-sm">
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">The Cartographer's Silence</li>
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">Salt &amp; Marrow</li>
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">A Brief History of Quiet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+
+<!-- ============ AB-HERO — IMMERSIVE OPENING ============ -->
+<section id="ab-hero" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#16231F] dark:bg-[#0c0f0d]">
+  <div class="absolute inset-0">
+    <div class="absolute inset-0 shelf-bg"></div>
+    <div class="absolute inset-0 lamp-glow"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0e1613]/70 via-[#16231F]/60 to-[#0e1613]"></div>
+    <div id="particles" class="absolute inset-0"></div>
+  </div>
+
+  <div class="hero-book hb1" aria-hidden="true">
+    <svg width="70" height="46" viewBox="0 0 70 46"><rect width="70" height="46" rx="3" fill="#C79A3B" opacity="0.85"/><rect x="6" y="6" width="58" height="34" rx="1" fill="#FAF7F2" opacity="0.9"/></svg>
+  </div>
+  <div class="hero-book hb2" aria-hidden="true">
+    <svg width="54" height="70" viewBox="0 0 54 70"><rect width="54" height="70" rx="3" fill="#234E52"/></svg>
+  </div>
+  <div class="hero-book hb3" aria-hidden="true">
+    <svg width="60" height="40" viewBox="0 0 60 40"><rect width="60" height="40" rx="3" fill="#8a5a2b" opacity="0.8"/></svg>
+  </div>
+
+  <div class="relative z-10 max-w-3xl mx-auto text-center px-6 pt-20">
+    <p class="reveal text-[13px] tracking-[0.4em] uppercase text-[#D4A64A] mb-6 ab-hero-line-wrap">Our Story · Est. 1994</p>
+    <h1 class="reveal font-serif text-5xl sm:text-6xl lg:text-[72px] leading-[1.08] text-[#FAF7F2] font-light" style="transition-delay:.1s">
+      Where Every Story<br class="hidden sm:block"> Finds a Home
+    </h1>
+    <p class="reveal mt-7 text-[#FAF7F2]/70 text-base lg:text-lg max-w-xl mx-auto font-light leading-relaxed" style="transition-delay:.2s">
+      More than a bookshop — a room that has kept its lamps warm for three decades, so that every reader who walks in finds a chair, a shelf, and someone who remembers what they last borrowed.
+    </p>
+    <div class="ab-hero-line mt-9" style="transition-delay:.25s"></div>
+    <p class="reveal mt-6 font-display italic text-lg text-[#FAF7F2]/60" style="transition-delay:.3s">Scroll to walk through our thirty years.</p>
+  </div>
+
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#FAF7F2]/50">
+    <div class="mouse-scroll"></div>
+    <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+  </div>
+
+  <div class="absolute -bottom-1 inset-x-0 h-40 bg-gradient-to-b from-transparent to-bg-light dark:to-bg-dark pointer-events-none"></div>
+</section>
+
+<!-- ============ OUR STORY — OPEN BOOK TIMELINE ============ -->
+<section id="about" class="py-28 lg:py-36 px-6 overflow-hidden">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-6">
+      <p class="eyebrow">How We Began</p>
+      <h2 class="section-title mt-3">Our Story</h2>
+      <p class="mt-5 max-w-xl text-sm text-ink-light/60 dark:text-ink-dark/60">Hover — or tap — each book to open it and read the chapter of our story it holds.</p>
+    </div>
+  </div>
+
+  <div class="ab-story-track max-w-full">
+    <div class="ab-book reveal-scroll" style="--bc:#234E52; transition-delay:.05s">
+      <span class="ab-book-year">1991</span>
+      <div class="ab-page ab-page-l"><span>Ch. 1</span></div>
+      <div class="ab-page ab-page-r"><h4>The Beginning</h4><p>Josephine Marlowe sold her first hundred books from a market stall, lending out the ones she loved most and asking only that readers bring them back.</p></div>
+    </div>
+    <div class="ab-book reveal-scroll" style="--bc:#7B3B3B; transition-delay:.1s">
+      <span class="ab-book-year">1994</span>
+      <div class="ab-page ab-page-l"><span>Ch. 2</span></div>
+      <div class="ab-page ab-page-r"><h4>Opening Day</h4><p>On Birchwood Lane, the doors opened to a single wooden room, seven shelves, and a hand-painted sign: books to keep, and books to borrow.</p></div>
+    </div>
+    <div class="ab-book reveal-scroll" style="--bc:#3B6B57; transition-delay:.15s">
+      <span class="ab-book-year">1999</span>
+      <div class="ab-page ab-page-l"><span>Ch. 3</span></div>
+      <div class="ab-page ab-page-r"><h4>Growing Collection</h4><p>Adrian Finch joined as co-founder, and the collection tripled — mystery, poetry, and a children's corner built from an old ship's cabinet.</p></div>
+    </div>
+    <div class="ab-book reveal-scroll" style="--bc:#5B3B6B; transition-delay:.2s">
+      <span class="ab-book-year">2006</span>
+      <div class="ab-page ab-page-l"><span>Ch. 4</span></div>
+      <div class="ab-page ab-page-r"><h4>Community Expansion</h4><p>The lounge next door was knocked through, and the library began lending library cards to the whole neighborhood, free of charge.</p></div>
+    </div>
+    <div class="ab-book reveal-scroll" style="--bc:#8a5a2b; transition-delay:.25s">
+      <span class="ab-book-year">2014</span>
+      <div class="ab-page ab-page-l"><span>Ch. 5</span></div>
+      <div class="ab-page ab-page-r"><h4>Reading Events</h4><p>The first Sunday Poetry Circle drew six people and a pot of tea. It has not missed a Sunday since.</p></div>
+    </div>
+    <div class="ab-book reveal-scroll" style="--bc:#C79A3B; transition-delay:.3s">
+      <span class="ab-book-year">2026</span>
+      <div class="ab-page ab-page-l"><span>Ch. 6</span></div>
+      <div class="ab-page ab-page-r"><h4>Modern Digital Library</h4><p>A personal dashboard now sits beside the paper ledger — same handshake, same trust, just easier to track your due dates.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSION & VALUES ============ -->
+<section class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1000px] mx-auto">
+    <div class="grid lg:grid-cols-[1fr_1.3fr] gap-14 lg:gap-20 items-start">
+      <div class="lg:sticky lg:top-32">
+        <p class="eyebrow">What We Stand For</p>
+        <h2 class="section-title mt-3 mb-5">Mission &amp; Values</h2>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Every rule on our shelves — what we buy, what we lend, who we welcome — traces back to six commitments we made on opening day and have never renegotiated.</p>
+      </div>
+      <div>
+        <div class="ab-value-row reveal-scroll">
+          <span class="ab-value-num">I.</span>
+          <div><h3 class="font-serif text-xl mb-1.5">Inspire Reading</h3><p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">We hand-sell books the way a friend would — by conversation, not algorithm.</p></div>
+          <span class="bookmark-tag" aria-hidden="true"></span>
+        </div>
+        <div class="ab-value-row reveal-scroll" style="transition-delay:.05s">
+          <span class="ab-value-num">II.</span>
+          <div><h3 class="font-serif text-xl mb-1.5">Build Community</h3><p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">This room belongs to the block as much as it belongs to us.</p></div>
+          <span class="bookmark-tag" aria-hidden="true"></span>
+        </div>
+        <div class="ab-value-row reveal-scroll" style="transition-delay:.1s">
+          <span class="ab-value-num">III.</span>
+          <div><h3 class="font-serif text-xl mb-1.5">Encourage Lifelong Learning</h3><p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">No reader is ever too old, or too new, to start a shelf of their own.</p></div>
+          <span class="bookmark-tag" aria-hidden="true"></span>
+        </div>
+        <div class="ab-value-row reveal-scroll" style="transition-delay:.15s">
+          <span class="ab-value-num">IV.</span>
+          <div><h3 class="font-serif text-xl mb-1.5">Support Local Authors</h3><p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">A quarter of our new-arrivals table is reserved for writers from within 30 miles.</p></div>
+          <span class="bookmark-tag" aria-hidden="true"></span>
+        </div>
+        <div class="ab-value-row reveal-scroll" style="transition-delay:.2s">
+          <span class="ab-value-num">V.</span>
+          <div><h3 class="font-serif text-xl mb-1.5">Preserve Knowledge</h3><p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Our rare book section exists so certain editions never quietly disappear.</p></div>
+          <span class="bookmark-tag" aria-hidden="true"></span>
+        </div>
+        <div class="ab-value-row reveal-scroll" style="transition-delay:.25s">
+          <span class="ab-value-num">VI.</span>
+          <div><h3 class="font-serif text-xl mb-1.5">Welcome Every Reader</h3><p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Whatever you're reading, whoever you are — there's a chair here for you.</p></div>
+          <span class="bookmark-tag" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSIDE OUR LIBRARY — FRAMED GALLERY ============ -->
+<section class="py-28 lg:py-36 px-6">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16">
+      <p class="eyebrow">A Walk Through Our Rooms</p>
+      <h2 class="section-title mt-3">Inside Our Library</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="h2-frame reveal-scroll">
+        <div class="h2-frame-photo" style="aspect-ratio:3/4">
+          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#3B5B7B,#1c2e3f); width:100%; height:100%;"></div>
+        </div>
+        <p class="h2-frame-cap">Fiction Shelves</p>
+      </div>
+      <div class="h2-frame reveal-scroll" style="transition-delay:.05s">
+        <div class="h2-frame-photo" style="aspect-ratio:3/4">
+          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#C79A3B,#7d5f22); width:100%; height:100%;"></div>
+        </div>
+        <p class="h2-frame-cap">Children's Reading Corner</p>
+      </div>
+      <div class="h2-frame reveal-scroll" style="transition-delay:.1s">
+        <div class="h2-frame-photo" style="aspect-ratio:3/4">
+          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#4A6B5B,#233a30); width:100%; height:100%;"></div>
+        </div>
+        <p class="h2-frame-cap">Study Area</p>
+      </div>
+      <div class="h2-frame reveal-scroll" style="transition-delay:.15s">
+        <div class="h2-frame-photo" style="aspect-ratio:3/4">
+          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#7B3B3B,#3f1f1f); width:100%; height:100%;"></div>
+        </div>
+        <p class="h2-frame-cap">Coffee &amp; Reading Lounge</p>
+      </div>
+      <div class="h2-frame reveal-scroll" style="transition-delay:.2s">
+        <div class="h2-frame-photo" style="aspect-ratio:3/4">
+          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#5B3B6B,#2c1f34); width:100%; height:100%;"></div>
+        </div>
+        <p class="h2-frame-cap">Community Discussion Room</p>
+      </div>
+      <div class="h2-frame reveal-scroll" style="transition-delay:.25s">
+        <div class="h2-frame-photo" style="aspect-ratio:3/4">
+          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#234E52,#101f21); width:100%; height:100%;"></div>
+        </div>
+        <p class="h2-frame-cap">New Arrivals Display</p>
+      </div>
+      <div class="h2-frame reveal-scroll" style="transition-delay:.3s">
+        <div class="h2-frame-photo" style="aspect-ratio:3/4">
+          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#8a5a2b,#3f2a14); width:100%; height:100%;"></div>
+        </div>
+        <p class="h2-frame-cap">Rare Book Section</p>
+      </div>
+      <div class="h2-frame reveal-scroll" style="transition-delay:.35s">
+        <div class="h2-frame-photo" style="aspect-ratio:3/4">
+          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#3B6B57,#183028); width:100%; height:100%;"></div>
+        </div>
+        <p class="h2-frame-cap">The Reading Lamp Row</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MEET OUR TEAM ============ -->
+<section class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16">
+      <p class="eyebrow">The People On The Floor</p>
+      <h2 class="section-title mt-3">Meet Our Team</h2>
+      <p class="mt-5 max-w-xl text-sm text-ink-light/60 dark:text-ink-dark/60">Hover — or tap — a portrait to turn the page.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-7">
+
+      <div class="ab-team-wrap reveal-scroll">
+        <div class="ab-team-card">
+          <div class="ab-team-face ab-team-front" style="--tc:#234E52">
+            <span class="ab-team-mono">JM</span>
+            <p class="font-serif text-lg">Josephine Marlowe</p>
+            <p class="text-xs opacity-70">Founder</p>
+          </div>
+          <div class="ab-team-face ab-team-back">
+            <p class="font-display italic text-sm leading-relaxed mb-3">"A good library remembers you before you remember it."</p>
+            <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Opened the shop from a market stall in 1991. Favorite genre: literary fiction. Favorite book: <em>Middlemarch</em>. 35 years in books.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-team-wrap reveal-scroll" style="transition-delay:.05s">
+        <div class="ab-team-card">
+          <div class="ab-team-face ab-team-front" style="--tc:#7B3B3B">
+            <span class="ab-team-mono">AF</span>
+            <p class="font-serif text-lg">Adrian Finch</p>
+            <p class="text-xs opacity-70">Head Librarian</p>
+          </div>
+          <div class="ab-team-face ab-team-back">
+            <p class="font-display italic text-sm leading-relaxed mb-3">"Cataloguing is just remembering, written down."</p>
+            <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Joined in 1999 and built the rare book section by hand. Favorite genre: history. Favorite book: <em>The Name of the Rose</em>. 27 years in libraries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-team-wrap reveal-scroll" style="transition-delay:.1s">
+        <div class="ab-team-card">
+          <div class="ab-team-face ab-team-front" style="--tc:#3B6B57">
+            <span class="ab-team-mono">NR</span>
+            <p class="font-serif text-lg">Nadia Reyes</p>
+            <p class="text-xs opacity-70">Reading Coordinator</p>
+          </div>
+          <div class="ab-team-face ab-team-back">
+            <p class="font-display italic text-sm leading-relaxed mb-3">"Every reading list should have one book that scares you a little."</p>
+            <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Curates the new-arrivals table and staff picks. Favorite genre: science fiction. Favorite book: <em>The Left Hand of Darkness</em>. 9 years here.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-team-wrap reveal-scroll" style="transition-delay:.15s">
+        <div class="ab-team-card">
+          <div class="ab-team-face ab-team-front" style="--tc:#C79A3B">
+            <span class="ab-team-mono">TO</span>
+            <p class="font-serif text-lg">Tomas Okafor</p>
+            <p class="text-xs opacity-70">Events Manager</p>
+          </div>
+          <div class="ab-team-face ab-team-back">
+            <p class="font-display italic text-sm leading-relaxed mb-3">"Six people and a pot of tea is still a full house to me."</p>
+            <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Runs the Sunday Poetry Circle and author evenings. Favorite genre: poetry. Favorite book: <em>Devotions</em>. 11 years in events.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ab-team-wrap reveal-scroll" style="transition-delay:.2s">
+        <div class="ab-team-card">
+          <div class="ab-team-face ab-team-front" style="--tc:#5B3B6B">
+            <span class="ab-team-mono">SL</span>
+            <p class="font-serif text-lg">Saoirse Lin</p>
+            <p class="text-xs opacity-70">Community Volunteer</p>
+          </div>
+          <div class="ab-team-face ab-team-back">
+            <p class="font-display italic text-sm leading-relaxed mb-3">"I shelve on Saturdays because it's the closest thing I have to church."</p>
+            <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Leads the children's literacy program. Favorite genre: children's. Favorite book: <em>The Velveteen Rabbit</em>. 4 years volunteering.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIBRARY JOURNEY — STATS ============ -->
+<section class="relative py-28 lg:py-32 px-6 bg-primary-light dark:bg-[#0f1a18] text-bg-light overflow-hidden">
+  <div class="ab-numbers-bg" aria-hidden="true">
+    <svg width="1400" height="200" viewBox="0 0 1400 200">
+      <g fill="#FAF7F2">
+        <rect x="20" y="40" width="20" height="120" rx="2"/><rect x="50" y="20" width="20" height="140" rx="2"/><rect x="80" y="60" width="20" height="100" rx="2"/>
+        <rect x="220" y="30" width="20" height="130" rx="2"/><rect x="250" y="50" width="20" height="110" rx="2"/><rect x="280" y="15" width="20" height="145" rx="2"/>
+        <rect x="420" y="45" width="20" height="115" rx="2"/><rect x="450" y="25" width="20" height="135" rx="2"/><rect x="480" y="55" width="20" height="105" rx="2"/>
+        <rect x="620" y="35" width="20" height="125" rx="2"/><rect x="650" y="10" width="20" height="150" rx="2"/><rect x="680" y="48" width="20" height="112" rx="2"/>
+        <rect x="820" y="40" width="20" height="120" rx="2"/><rect x="850" y="20" width="20" height="140" rx="2"/><rect x="880" y="60" width="20" height="100" rx="2"/>
+        <rect x="1020" y="30" width="20" height="130" rx="2"/><rect x="1050" y="50" width="20" height="110" rx="2"/><rect x="1080" y="15" width="20" height="145" rx="2"/>
+        <rect x="1220" y="45" width="20" height="115" rx="2"/><rect x="1250" y="25" width="20" height="135" rx="2"/><rect x="1280" y="55" width="20" height="105" rx="2"/>
+      </g>
+    </svg>
+  </div>
+  <div class="relative max-w-[1200px] mx-auto text-center mb-14">
+    <p class="text-[13px] tracking-[0.4em] uppercase text-bg-light/60 mb-3">Thirty-Two Years, In Numbers</p>
+    <h2 class="font-serif text-3xl lg:text-4xl font-light">Our Library Journey</h2>
+  </div>
+  <div class="relative max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 text-center">
+    <div><p class="stat-num" data-target="18400">0</p><p class="stat-label">Books Available</p></div>
+    <div><p class="stat-num" data-target="6250">0</p><p class="stat-label">Registered Members</p></div>
+    <div><p class="stat-num" data-target="32">0</p><p class="stat-label">Years Serving</p></div>
+    <div><p class="stat-num" data-target="312">0</p><p class="stat-label">Reading Events</p></div>
+    <div><p class="stat-num" data-target="46">0</p><p class="stat-label">Partner Publishers</p></div>
+    <div><p class="stat-num" data-target="94200">0</p><p class="stat-label">Books Borrowed</p></div>
+  </div>
+</section>
+
+<!-- ============ WHAT MAKES US DIFFERENT ============ -->
+<section class="py-28 lg:py-36 px-6">
+  <div class="max-w-[900px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16">
+      <p class="eyebrow">A Different Kind Of Shelf</p>
+      <h2 class="section-title mt-3">What Makes Us Different</h2>
+    </div>
+
+    <div class="ab-compare-head">
+      <p class="text-sm font-medium text-ink-light/50 dark:text-ink-dark/50">Traditional Bookstore</p>
+      <span></span>
+      <p class="text-sm font-serif text-lg text-right">Marlowe &amp; Finch</p>
+    </div>
+
+    <div class="ab-compare-row">
+      <p class="ab-compare-val no">Rarely tracked</p>
+      <p class="ab-compare-topic">Community</p>
+      <p class="ab-compare-val yes">Neighborhood library card, free</p>
+    </div>
+    <div class="ab-compare-row">
+      <p class="ab-compare-val no">Buy only</p>
+      <p class="ab-compare-topic">Borrowing</p>
+      <p class="ab-compare-val yes">Borrow up to 12 books at once</p>
+    </div>
+    <div class="ab-compare-row">
+      <p class="ab-compare-val no">Occasional signings</p>
+      <p class="ab-compare-topic">Reading Events</p>
+      <p class="ab-compare-val yes">Weekly circles &amp; author evenings</p>
+    </div>
+    <div class="ab-compare-row">
+      <p class="ab-compare-val no">Loyalty points</p>
+      <p class="ab-compare-topic">Membership</p>
+      <p class="ab-compare-val yes">Tiered plans built around reading habits</p>
+    </div>
+    <div class="ab-compare-row">
+      <p class="ab-compare-val no">Bestseller tables</p>
+      <p class="ab-compare-topic">Recommendations</p>
+      <p class="ab-compare-val yes">Hand-picked by staff who know you</p>
+    </div>
+    <div class="ab-compare-row">
+      <p class="ab-compare-val no">None</p>
+      <p class="ab-compare-topic">Digital Dashboard</p>
+      <p class="ab-compare-val yes">Track due dates &amp; reading history</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITY IMPACT ============ -->
+<section class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16">
+      <p class="eyebrow">Beyond Our Own Shelves</p>
+      <h2 class="section-title mt-3">Community Impact</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      <div class="ab-impact-card reveal-scroll">
+        <p class="ab-impact-tag">Book Donations</p>
+        <h3 class="font-serif text-xl mt-2 mb-2">2,400 Books Rehomed</h3>
+        <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Every returned duplicate finds its way to a shelter, clinic, or classroom instead of a bin.</p>
+        <div class="ab-impact-more"><p class="text-xs text-ink-light/50 dark:text-ink-dark/50 leading-relaxed">Run in partnership with three local shelters since 2011.</p></div>
+      </div>
+      <div class="ab-impact-card reveal-scroll" style="transition-delay:.05s">
+        <p class="ab-impact-tag">Children's Literacy</p>
+        <h3 class="font-serif text-xl mt-2 mb-2">140 Kids, Every Term</h3>
+        <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Our reading-buddy program pairs volunteers with beginning readers after school.</p>
+        <div class="ab-impact-more"><p class="text-xs text-ink-light/50 dark:text-ink-dark/50 leading-relaxed">Free library cards issued to every enrolled family.</p></div>
+      </div>
+      <div class="ab-impact-card reveal-scroll" style="transition-delay:.1s">
+        <p class="ab-impact-tag">School Partnerships</p>
+        <h3 class="font-serif text-xl mt-2 mb-2">6 Local Schools</h3>
+        <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Class sets travel to classrooms each term, no fees, no fines for lost pages.</p>
+        <div class="ab-impact-more"><p class="text-xs text-ink-light/50 dark:text-ink-dark/50 leading-relaxed">Coordinated directly with each school's librarian.</p></div>
+      </div>
+      <div class="ab-impact-card reveal-scroll" style="transition-delay:.15s">
+        <p class="ab-impact-tag">Author Meetups</p>
+        <h3 class="font-serif text-xl mt-2 mb-2">30+ Local Writers Hosted</h3>
+        <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Debut authors get their first public reading here, free of charge.</p>
+        <div class="ab-impact-more"><p class="text-xs text-ink-light/50 dark:text-ink-dark/50 leading-relaxed">A quarter of our shelves stay reserved for local voices.</p></div>
+      </div>
+      <div class="ab-impact-card reveal-scroll" style="transition-delay:.2s">
+        <p class="ab-impact-tag">Reading Programs</p>
+        <h3 class="font-serif text-xl mt-2 mb-2">Summer Reading Trail</h3>
+        <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">A neighborhood-wide reading challenge that's run every July since 2015.</p>
+        <div class="ab-impact-more"><p class="text-xs text-ink-light/50 dark:text-ink-dark/50 leading-relaxed">Last summer: 900 participants, ages 4 to 84.</p></div>
+      </div>
+      <div class="ab-impact-card reveal-scroll" style="transition-delay:.25s">
+        <p class="ab-impact-tag">Neighborhood Events</p>
+        <h3 class="font-serif text-xl mt-2 mb-2">Open Doors, Every Sunday</h3>
+        <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">The lounge is free to book for neighborhood clubs and quiet study groups.</p>
+        <div class="ab-impact-more"><p class="text-xs text-ink-light/50 dark:text-ink-dark/50 leading-relaxed">Ask the front desk — most Sundays are already spoken for.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ READER TESTIMONIALS — PINNED NOTICE BOARD ============ -->
+<section class="py-28 lg:py-36 px-6 overflow-hidden" style="background: repeating-linear-gradient(0deg, rgba(199,154,59,0.05) 0px, rgba(199,154,59,0.05) 2px, transparent 2px, transparent 46px);">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16">
+      <p class="eyebrow">Pinned To Our Notice Board</p>
+      <h2 class="section-title mt-3">Reader Testimonials</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 pt-4">
+      <div class="h2-note reveal-scroll" style="--tilt:-2deg">
+        <div class="h2-pin" aria-hidden="true"></div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="avatar" style="background:#3B5B7B">RM</div>
+          <div><p class="text-sm font-medium">Renata Mbeki</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Scholar Member · Favorite: History</p></div>
+        </div>
+        <p class="font-display italic text-[17px] leading-relaxed mb-4">"I've borrowed 41 books this year and the reading room still smells like the first day I walked in."</p>
+        <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★★</span><span>41 books borrowed</span></div>
+      </div>
+      <div class="h2-note reveal-scroll" style="--tilt:1.5deg; transition-delay:.05s">
+        <div class="h2-pin" aria-hidden="true"></div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="avatar" style="background:#7B3B3B">DK</div>
+          <div><p class="text-sm font-medium">Devon Kessler</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Reader Member · Favorite: Mystery</p></div>
+        </div>
+        <p class="font-display italic text-[17px] leading-relaxed mb-4">"The staff remembered I liked Nordic noir and set aside three titles before I even asked."</p>
+        <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★★</span><span>29 books borrowed</span></div>
+      </div>
+      <div class="h2-note reveal-scroll" style="--tilt:-1deg; transition-delay:.1s">
+        <div class="h2-pin" aria-hidden="true"></div>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="avatar" style="background:#C79A3B">SF</div>
+          <div><p class="text-sm font-medium">Saoirse Fallon</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Explorer Member · Favorite: Poetry</p></div>
+        </div>
+        <p class="font-display italic text-[17px] leading-relaxed mb-4">"Sunday Poetry Circle is the calmest hour of my week. I look forward to it more than the weekend itself."</p>
+        <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★☆</span><span>17 books borrowed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[760px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-14">
+      <p class="eyebrow">Before You Visit</p>
+      <h2 class="section-title mt-3">Frequently Asked Questions</h2>
+    </div>
+
+    <div class="ab-faq-item">
+      <button class="ab-faq-q" aria-expanded="false">How do I become a member? <svg class="ab-faq-icon" width="18" height="18" viewBox="0 0 18 18"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <div class="ab-faq-a"><p>Pick a plan on our Membership page, or sign up in person — either way, your library card is ready the same day.</p></div>
+    </div>
+    <div class="ab-faq-item">
+      <button class="ab-faq-q" aria-expanded="false">How many books can I borrow at once? <svg class="ab-faq-icon" width="18" height="18" viewBox="0 0 18 18"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <div class="ab-faq-a"><p>It depends on your membership tier — Explorer members borrow 3 at a time, Reader members 8, and Scholar members borrow without limit.</p></div>
+    </div>
+    <div class="ab-faq-item">
+      <button class="ab-faq-q" aria-expanded="false">What are the return deadlines? <svg class="ab-faq-icon" width="18" height="18" viewBox="0 0 18 18"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <div class="ab-faq-a"><p>Standard loans run three weeks, with one free renewal from your dashboard if no one else has reserved the title.</p></div>
+    </div>
+    <div class="ab-faq-item">
+      <button class="ab-faq-q" aria-expanded="false">Are there late fees? <svg class="ab-faq-icon" width="18" height="18" viewBox="0 0 18 18"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <div class="ab-faq-a"><p>A small grace-period reminder comes first. Fees only apply after two weeks overdue, and are capped at the price of the book.</p></div>
+    </div>
+    <div class="ab-faq-item">
+      <button class="ab-faq-q" aria-expanded="false">How do I join a reading event? <svg class="ab-faq-icon" width="18" height="18" viewBox="0 0 18 18"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <div class="ab-faq-a"><p>Browse our Events page and reserve a free seat — members get pre-sale access a week before public booking opens.</p></div>
+    </div>
+    <div class="ab-faq-item">
+      <button class="ab-faq-q" aria-expanded="false">Can I reserve a book that's checked out? <svg class="ab-faq-icon" width="18" height="18" viewBox="0 0 18 18"><line x1="9" y1="2" x2="9" y2="16" stroke="currentColor" stroke-width="1.6"/><line x1="2" y1="9" x2="16" y2="9" stroke="currentColor" stroke-width="1.6"/></svg></button>
+      <div class="ab-faq-a"><p>Yes — place a hold from your dashboard and we'll notify you the moment it's back on the shelf.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ JOIN OUR READING COMMUNITY — CTA ============ -->
+<section class="relative py-28 lg:py-36 px-6 overflow-hidden">
+  <div class="absolute inset-0 ab-cta-glow"></div>
+  <div class="hero-book hb1" style="top:14%; left:6%; transform:rotate(-6deg);" aria-hidden="true">
+    <svg width="52" height="34" viewBox="0 0 70 46"><rect width="70" height="46" rx="3" fill="#C79A3B" opacity="0.5"/></svg>
+  </div>
+  <div class="hero-book hb2" style="bottom:12%; right:6%; transform:rotate(8deg);" aria-hidden="true">
+    <svg width="40" height="52" viewBox="0 0 54 70"><rect width="54" height="70" rx="3" fill="#234E52" opacity="0.5"/></svg>
+  </div>
+  <div class="relative max-w-2xl mx-auto text-center">
+    <p class="eyebrow">Your Next Chapter</p>
+    <h2 class="section-title mt-3 mb-5">Join Our Reading Community</h2>
+    <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 mb-10 max-w-lg mx-auto leading-relaxed">Thirty-two years in, the door is still open the same way it was on day one — come see the shelves for yourself.</p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="index.html#membership" class="magnetic btn-primary">Become a Member</a>
+      <a href="index.html#collection" class="magnetic px-8 py-4 rounded-full border border-hairline-light dark:border-hairline-dark font-medium text-sm tracking-wide hover:border-accent-light dark:hover:border-accent-dark transition">Browse Books</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-[#16231F] dark:bg-[#0a0c0b] text-[#FAF7F2] pt-20 pb-8 px-6">
+  <div class="max-w-[1300px] mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-14">
+    <div class="lg:col-span-1">
+      <div class="flex items-center gap-2.5 mb-4">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none" class="text-[#D4A64A]"><path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <span class="font-serif text-lg">Marlowe &amp; Finch</span>
+      </div>
+      <p class="text-sm text-[#FAF7F2]/55 leading-relaxed">A neighborhood book shop and lending library, open since 1994.</p>
+    </div>
+    <div>
+      <p class="footer-head">Quick Links</p>
+      <ul class="footer-list"><li><a href="index.html#collection">Books</a></li><li><a href="index.html#membership">Membership</a></li><li><a href="index.html#events">Events</a></li><li><a href="about.html">About</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Genres</p>
+      <ul class="footer-list"><li><a href="index.html#genres">Mystery</a></li><li><a href="index.html#genres">Fantasy</a></li><li><a href="index.html#genres">Poetry</a></li><li><a href="index.html#genres">Biography</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Library Hours</p>
+      <ul class="footer-list text-[#FAF7F2]/55"><li>Mon–Fri · 9am – 8pm</li><li>Saturday · 10am – 6pm</li><li>Sunday · 11am – 5pm</li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Visit Us</p>
+      <ul class="footer-list text-[#FAF7F2]/55"><li>14 Birchwood Lane</li><li>Chennai, TN 600001</li><li>hello@marloweandfinch.co</li></ul>
+    </div>
+  </div>
+  <div class="max-w-[1300px] mx-auto border-t border-[#FAF7F2]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#FAF7F2]/45">
+    <p>© 2026 Marlowe &amp; Finch Book Shop. All rights reserved.</p>
+    <div class="flex gap-5">
+      <a href="#" aria-label="Instagram" class="hover:text-[#D4A64A] transition">Instagram</a>
+      <a href="#" aria-label="Facebook" class="hover:text-[#D4A64A] transition">Facebook</a>
+      <a href="#" aria-label="Pinterest" class="hover:text-[#D4A64A] transition">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-7 right-7 z-40 w-12 h-12 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light grid place-items-center shadow-lg opacity-0 pointer-events-none transition-all duration-300">
+  <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 13V3M3 8L8 3L13 8" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

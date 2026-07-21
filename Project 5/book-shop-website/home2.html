@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Endless Library — Marlowe &amp; Finch</title>
+<meta name="description" content="Step into an infinite reading hallway. Explore genres, librarian's picks, and membership at Marlowe & Finch Book Shop & Lending Library.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: { light: '#FAF7F2', dark: '#121212' },
+          card: { light: '#FFFFFF', dark: '#1D1D1D' },
+          primary: { light: '#234E52', dark: '#4FAF8F' },
+          accent: { light: '#C79A3B', dark: '#D4A64A' },
+          ink: { light: '#2E2E2E', dark: '#F5F5F5' },
+          hairline: { light: '#E7E1D8', dark: '#2D2D2D' },
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          display: ['Cormorant Garamond', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
+
+<!-- ============ LOADER ============ -->
+<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
+  <div class="book-loader">
+    <svg width="88" height="70" viewBox="0 0 88 70" fill="none">
+      <path id="loader-left" d="M44 8C34 2 18 1 6 4V56C18 53 34 54 44 60V8Z" fill="none" stroke="currentColor" class="text-primary-light dark:text-primary-dark" stroke-width="1.6"/>
+      <path id="loader-right" d="M44 8C54 2 70 1 82 4V56C70 53 54 54 44 60V8Z" fill="none" stroke="currentColor" class="text-accent-light dark:text-accent-dark" stroke-width="1.6"/>
+    </svg>
+    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">The Endless Library</p>
+  </div>
+</div>
+
+<!-- ============ READING PROGRESS ============ -->
+<div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%"></div>
+
+<!-- ============ CURSOR SPOTLIGHT (desktop only) ============ -->
+<div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[5] hidden lg:block"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+    <a href="#h2-hero" class="flex items-center gap-2.5 group" aria-label="Marlowe & Finch home">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" class="text-primary-light dark:text-primary-dark">
+        <path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <line x1="15" y1="6" x2="15" y2="24.5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="font-serif text-lg tracking-tight">Marlowe &amp; Finch</span>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-8 text-[13.5px] tracking-wide">
+      <li><a href="#h2-hero" class="nav-link">Home</a></li>
+      <li><a href="#picks" class="nav-link">Books</a></li>
+      <li><a href="#membership" class="nav-link">Membership</a></li>
+      <li><a href="#events" class="nav-link">Events</a></li>
+      <li><a href="#journey" class="nav-link">About</a></li>
+      <li><a href="#app" class="nav-link">Dashboard</a></li>
+      <li><a href="#newsletter" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <a href="index.html" class="h2-alt-link hidden md:inline-block">Home 1</a>
+      <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+        <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
+        <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <a href="#app" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center">
+        <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- mobile menu -->
+  <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-xl border-t border-hairline-light dark:border-hairline-dark">
+    <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
+      <li><a href="#h2-hero" class="mobile-link">Home</a></li>
+      <li><a href="#picks" class="mobile-link">Books</a></li>
+      <li><a href="#membership" class="mobile-link">Membership</a></li>
+      <li><a href="#events" class="mobile-link">Events</a></li>
+      <li><a href="#journey" class="mobile-link">About</a></li>
+      <li><a href="#app" class="mobile-link">Dashboard</a></li>
+      <li><a href="#newsletter" class="mobile-link">Contact</a></li>
+      <li><a href="index.html" class="mobile-link">View Home 1 →</a></li>
+      <li><a href="#app" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ SEARCH MODAL ============ -->
+<div id="search-modal" class="fixed inset-0 z-[90] hidden">
+  <div class="absolute inset-0 bg-[#12100c]/80 backdrop-blur-sm" id="search-backdrop"></div>
+  <div class="relative max-w-3xl mx-auto mt-[8vh] lg:mt-[12vh] px-6">
+    <div class="bg-bg-light dark:bg-card-dark rounded-2xl shadow-2xl p-6 lg:p-8 search-pop">
+      <div class="flex items-center gap-4 border-b border-hairline-light dark:border-hairline-dark pb-4">
+        <svg width="20" height="20" viewBox="0 0 18 18" fill="none" class="text-ink-light/40 dark:text-ink-dark/40"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input id="search-input" type="text" placeholder="Search titles, authors, genres…" class="flex-1 bg-transparent outline-none font-serif text-xl lg:text-2xl placeholder:text-ink-light/30 dark:placeholder:text-ink-dark/30" aria-label="Search">
+        <button id="search-close" aria-label="Close search" class="text-ink-light/50 dark:text-ink-dark/50 hover:text-accent-light dark:hover:text-accent-dark text-sm">ESC</button>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-8 mt-6">
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-ink-light/40 dark:text-ink-dark/40 mb-3">Trending Genres</p>
+          <div class="flex flex-wrap gap-2">
+            <button class="chip">Mystery</button><button class="chip">Fantasy</button><button class="chip">Poetry</button><button class="chip">Biography</button>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs uppercase tracking-[0.2em] text-ink-light/40 dark:text-ink-dark/40 mb-3">Popular Right Now</p>
+          <ul class="space-y-2 text-sm">
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">The Cartographer's Silence</li>
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">Salt &amp; Marrow</li>
+            <li class="hover:text-accent-light dark:hover:text-accent-dark cursor-pointer transition">A Brief History of Quiet</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- ============================================================
+     HERO — THE ENDLESS LIBRARY (cinematic hallway)
+     ============================================================ -->
+<section id="h2-hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <div class="h2-hallway" aria-hidden="true">
+    <div class="h2-wall h2-wall-l"></div>
+    <div class="h2-wall h2-wall-r"></div>
+    <div class="h2-floor"></div>
+    <div class="h2-vanish-glow"></div>
+    <div id="h2-dust" class="h2-dust absolute inset-0"></div>
+    <div id="h2-fragments" class="absolute inset-0"></div>
+  </div>
+  <div class="h2-spotlight" aria-hidden="true"></div>
+
+  <!-- animated library clock -->
+  <svg class="h2-clock" viewBox="0 0 64 64" aria-hidden="true">
+    <circle class="face" cx="32" cy="32" r="30"/>
+    <line class="h2-hour" x1="32" y1="32" x2="32" y2="18"/>
+    <line class="h2-min" x1="32" y1="32" x2="32" y2="12"/>
+    <circle cx="32" cy="32" r="1.6" fill="#D4A64A"/>
+  </svg>
+
+  <div class="relative z-10 max-w-3xl mx-auto text-center px-6 pt-24">
+    <p class="reveal h2-hero-eyebrow text-[12.5px] tracking-[0.4em] uppercase text-[#D4A64A] mb-6">The Endless Library</p>
+    <h1 class="reveal font-serif text-5xl sm:text-6xl lg:text-[74px] leading-[1.08] text-[#FAF7F2] font-light" style="transition-delay:.1s">
+      Every Shelf Holds<br class="hidden sm:block"> Your Next Adventure
+    </h1>
+    <p class="reveal mt-7 text-[#FAF7F2]/70 text-base lg:text-lg max-w-xl mx-auto font-light leading-relaxed" style="transition-delay:.2s">
+      Walk the hallway. Every spine you pass was chosen by hand — follow it as far as your curiosity allows.
+    </p>
+    <div class="reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay:.3s">
+      <a href="#picks" class="magnetic px-8 py-4 rounded-full bg-[#D4A64A] text-[#16231F] font-medium text-sm tracking-wide hover:brightness-110 transition w-full sm:w-auto text-center">Browse Collection</a>
+      <a href="#membership" class="magnetic px-8 py-4 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2] font-medium text-sm tracking-wide hover:bg-[#FAF7F2]/10 transition w-full sm:w-auto text-center">Become a Member</a>
+    </div>
+
+    <div class="reveal h2-stat-row mt-16" style="transition-delay:.4s">
+      <div><p class="stat-num text-[#FAF7F2]" data-target="12000">0</p><p class="stat-label text-[#FAF7F2]/60">Books</p></div>
+      <div><p class="stat-num text-[#FAF7F2]" data-target="850">0</p><p class="stat-label text-[#FAF7F2]/60">Members</p></div>
+      <div><p class="stat-num text-[#FAF7F2]" data-target="42">0</p><p class="stat-label text-[#FAF7F2]/60">Weekly Events</p></div>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#FAF7F2]/50">
+    <div class="mouse-scroll"></div>
+    <span class="text-[10px] tracking-[0.3em] uppercase">Walk In</span>
+  </div>
+
+  <div class="absolute -bottom-1 inset-x-0 h-40 bg-gradient-to-b from-transparent to-bg-light dark:to-bg-dark pointer-events-none z-[6]"></div>
+</section>
+
+<!-- ============================================================
+     SECTION 2 — EXPLORE THROUGH STORIES (radial bookshelf)
+     ============================================================ -->
+<section id="explore" class="py-28 lg:py-36 px-6">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
+      <p class="eyebrow">A Wheel of Genres</p>
+      <h2 class="section-title mt-3">Explore Through Stories</h2>
+      <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mt-4 max-w-md">Hover any spine to see what waits inside that shelf.</p>
+    </div>
+
+    <div class="h2-radial-wrap h2-reveal reveal-scroll">
+      <div class="h2-radial-hub">
+        <p class="h2-hub-title">Pick a Genre</p>
+        <p class="h2-hub-desc">Ten shelves, one hallway — hover a spine to preview it.</p>
+        <p class="h2-hub-count">Start Browsing</p>
+      </div>
+
+      <div class="h2-spoke" style="--ang:0" tabindex="0" data-genre="Mystery" data-desc="Locked rooms, cold cases, and narrators you shouldn't quite trust." data-count="128 Titles"><div class="h2-spoke-book" style="--sc:#7B3B3B"><span>Mystery</span></div></div>
+
+      <div class="h2-spoke" style="--ang:36" tabindex="0" data-genre="Fantasy" data-desc="Maps at the front, magic in the margins, worlds worth getting lost in." data-count="204 Titles"><div class="h2-spoke-book" style="--sc:#3B5B7B"><span>Fantasy</span></div></div>
+
+      <div class="h2-spoke" style="--ang:72" tabindex="0" data-genre="History" data-desc="The past, carefully footnoted and surprisingly page-turning." data-count="142 Titles"><div class="h2-spoke-book" style="--sc:#7B5B3B"><span>History</span></div></div>
+
+      <div class="h2-spoke" style="--ang:108" tabindex="0" data-genre="Business" data-desc="Strategy, leadership, and a few honest failures worth learning from." data-count="76 Titles"><div class="h2-spoke-book" style="--sc:#234E52"><span>Business</span></div></div>
+
+      <div class="h2-spoke" style="--ang:144" tabindex="0" data-genre="Technology" data-desc="Where the machines are headed, explained without the jargon." data-count="91 Titles"><div class="h2-spoke-book" style="--sc:#3B6B57"><span>Tech</span></div></div>
+
+      <div class="h2-spoke" style="--ang:180" tabindex="0" data-genre="Romance" data-desc="Slow burns, second chances, and the kind of endings you hope for." data-count="167 Titles"><div class="h2-spoke-book" style="--sc:#8a3b5b"><span>Romance</span></div></div>
+
+      <div class="h2-spoke" style="--ang:216" tabindex="0" data-genre="Science" data-desc="Curiosity, dressed up in careful sentences and even better questions." data-count="96 Titles"><div class="h2-spoke-book" style="--sc:#3b6b8a"><span>Science</span></div></div>
+
+      <div class="h2-spoke" style="--ang:252" tabindex="0" data-genre="Children" data-desc="Read-alouds, first chapter books, and a very well-loved corner." data-count="175 Titles"><div class="h2-spoke-book" style="--sc:#C79A3B"><span>Children</span></div></div>
+
+      <div class="h2-spoke" style="--ang:288" tabindex="0" data-genre="Poetry" data-desc="Short enough for a coffee break, long enough to stay with you." data-count="61 Titles"><div class="h2-spoke-book" style="--sc:#5B3B6B"><span>Poetry</span></div></div>
+
+      <div class="h2-spoke" style="--ang:324" tabindex="0" data-genre="Biography" data-desc="Whole lives, condensed into the chapters that mattered most." data-count="88 Titles"><div class="h2-spoke-book" style="--sc:#6b4b3b"><span>Biography</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 3 — LIBRARIAN'S PICKS (editorial newspaper layout)
+     ============================================================ -->
+<section id="picks" class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
+      <p class="eyebrow">The Front Page</p>
+      <h2 class="section-title mt-3">Librarian's Picks</h2>
+    </div>
+
+    <!-- feature story -->
+    <article class="h2-pick-feature grid lg:grid-cols-[340px_1fr] gap-10 lg:gap-16 items-center h2-reveal reveal-scroll">
+      <div class="h2-pick-cover mx-auto w-full max-w-[300px]">
+        <div class="h2-flip-inner" style="--cover:#4A6B5B">
+          <div class="cover-inner"><span class="cover-title">The Cartographer's<br>Silence</span><span class="cover-author">Inés Roldán</span></div>
+        </div>
+        <div class="h2-page"></div>
+        <div class="h2-bookmark-2"></div>
+      </div>
+      <div>
+        <span class="text-[11px] uppercase tracking-[0.2em] text-accent-light dark:text-accent-dark font-semibold">Editor's Recommendation</span>
+        <h3 class="font-serif text-3xl lg:text-[42px] leading-tight mt-3 mb-4">A map with no names, only feelings</h3>
+        <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-6 max-w-xl">A cartographer inherits a map that marks grief instead of geography, and follows it across three continents to find the town her mother never spoke of. Our most requested title this season — and for good reason.</p>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ink-light/55 dark:text-ink-dark/55 mb-7">
+          <span>⏱ 6 hr 20 min read</span>
+          <span class="badge-available">Available Now</span>
+        </div>
+        <div class="flex gap-4">
+          <button class="btn-primary">Borrow This Book</button>
+          <button class="px-6 py-3.5 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-accent-light dark:hover:border-accent-dark transition text-sm font-medium">Purchase Copy</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- column list of secondary picks -->
+    <div class="grid md:grid-cols-2 gap-x-12 mt-6">
+      <div class="h2-pick-list-item h2-reveal reveal-scroll">
+        <div class="h2-pick-thumb" style="--cover:#7B3B3B"></div>
+        <div><h4 class="font-serif text-lg mb-1">Marrow Deep</h4><p class="text-xs text-ink-light/55 dark:text-ink-dark/55">Halle Osei · 22 min read · 2 Left</p></div>
+        <button class="btn-mini">Borrow</button>
+      </div>
+      <div class="h2-pick-list-item h2-reveal reveal-scroll">
+        <div class="h2-pick-thumb" style="--cover:#3B5B7B"></div>
+        <div><h4 class="font-serif text-lg mb-1">Signal &amp; Static</h4><p class="text-xs text-ink-light/55 dark:text-ink-dark/55">Tomas Reyes · 19 min read · Available</p></div>
+        <button class="btn-mini">Borrow</button>
+      </div>
+      <div class="h2-pick-list-item h2-reveal reveal-scroll">
+        <div class="h2-pick-thumb" style="--cover:#5B3B6B"></div>
+        <div><h4 class="font-serif text-lg mb-1">The Slow Migration</h4><p class="text-xs text-ink-light/55 dark:text-ink-dark/55">Jonas Eklund · 14 min read · Available</p></div>
+        <button class="btn-mini">Borrow</button>
+      </div>
+      <div class="h2-pick-list-item h2-reveal reveal-scroll">
+        <div class="h2-pick-thumb" style="--cover:#8a5a2b"></div>
+        <div><h4 class="font-serif text-lg mb-1">The Quiet Orchard</h4><p class="text-xs text-ink-light/55 dark:text-ink-dark/55">Marta Wren · 24 min read · Available</p></div>
+        <button class="btn-mini">Borrow</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 4 — THE READING JOURNEY (winding path)
+     ============================================================ -->
+<section id="journey" class="py-28 lg:py-36 px-6 h2-journey-wrap overflow-hidden">
+  <svg class="h2-journey-svg hidden lg:block" viewBox="0 0 200 900" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M170,20 C40,90 40,140 170,210 C40,280 40,330 170,400 C40,470 40,520 170,590 C40,660 40,710 170,780"/>
+  </svg>
+  <div class="max-w-[1300px] mx-auto relative">
+    <div class="flex flex-col items-center text-center mb-20 h2-reveal reveal-scroll">
+      <p class="eyebrow">How It Works</p>
+      <h2 class="section-title mt-3">The Reading Journey</h2>
+    </div>
+
+    <div class="flex flex-col gap-16 lg:gap-24">
+      <div class="h2-stop lg:ml-auto lg:mr-[8%]"><span class="h2-stop-num">1</span><div><h3 class="font-serif text-xl mb-1.5">Choose Books</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Wander the shelves or search by mood — we'll help you narrow it down.</p></div></div>
+
+      <div class="h2-stop lg:ml-[8%]"><span class="h2-stop-num">2</span><div><h3 class="font-serif text-xl mb-1.5">Become a Member</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Pick a plan in under two minutes — no paperwork, just a library card.</p></div></div>
+
+      <div class="h2-stop lg:ml-auto lg:mr-[8%]"><span class="h2-stop-num">3</span><div><h3 class="font-serif text-xl mb-1.5">Borrow</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Check out titles in-store or reserve online for same-day pickup.</p></div></div>
+
+      <div class="h2-stop lg:ml-[8%]"><span class="h2-stop-num">4</span><div><h3 class="font-serif text-xl mb-1.5">Read</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Take your time — reading rooms are open long after the shop closes.</p></div></div>
+
+      <div class="h2-stop lg:ml-auto lg:mr-[8%]"><span class="h2-stop-num">5</span><div><h3 class="font-serif text-xl mb-1.5">Return</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Drop books in the return chute anytime — gentle reminders before due dates.</p></div></div>
+
+      <div class="h2-stop lg:ml-[8%]"><span class="h2-stop-num">6</span><div><h3 class="font-serif text-xl mb-1.5">Earn Rewards</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Every return earns points toward events, merch, and member-only launches.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5 — INTERACTIVE BOOKSHELF (realistic shelf)
+     ============================================================ -->
+<section class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
+      <p class="eyebrow">Pull One Off The Shelf</p>
+      <h2 class="section-title mt-3">Interactive Bookshelf</h2>
+      <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mt-4 max-w-md">Hover a spine — it slides forward and opens its cover.</p>
+    </div>
+
+    <div class="h2-shelf-unit h2-reveal reveal-scroll">
+      <div class="h2-shelf-tier">
+        <div class="h2-book" style="width:34px;height:150px" tabindex="0">
+          <div class="h2-book-spine" style="--sc:#7B3B3B;width:34px;height:150px"><span>Marrow Deep</span></div>
+          <div class="h2-book-panel"><p class="font-serif text-base mb-1">Marrow Deep</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Halle Osei · Mystery</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">A forensic anthropologist returns to the town that made her leave.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div>
+        </div>
+        <div class="h2-book" style="width:26px;height:130px" tabindex="0"><div class="h2-book-spine" style="--sc:#3B5B7B;width:26px;height:130px"><span>Signal</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">Signal &amp; Static</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Tomas Reyes · Sci-Fi</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">A radio operator intercepts a message that shouldn't exist yet.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book" style="width:40px;height:160px" tabindex="0"><div class="h2-book-spine" style="--sc:#234E52;width:40px;height:160px"><span>A Brief History of Quiet</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">A Brief History of Quiet</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Priya Nandakumar · Essays</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">Sixteen essays on the disappearing art of stillness.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book" style="width:22px;height:120px" tabindex="0"><div class="h2-book-spine" style="--sc:#C79A3B;width:22px;height:120px"><span>Small Mercies</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">Small Mercies</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Adaeze Nwosu · Children</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">A lighthouse keeper who collects lost things.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book" style="width:30px;height:140px" tabindex="0"><div class="h2-book-spine" style="--sc:#5B3B6B;width:30px;height:140px"><span>Salt &amp; Marrow</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">Salt &amp; Marrow</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Owen Baptiste · Historical Fiction</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">Two sisters keep a secret buried in the salt flats.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book hidden sm:block" style="width:24px;height:110px" tabindex="0"><div class="h2-book-spine" style="--sc:#8a5a2b;width:24px;height:110px"><span>The Quiet Orchard</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">The Quiet Orchard</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Marta Wren · Fiction</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">A widow rebuilds her late husband's orchard, branch by branch.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book hidden lg:block" style="width:36px;height:155px" tabindex="0"><div class="h2-book-spine" style="--sc:#4A6B5B;width:36px;height:155px"><span>The Cartographer's Silence</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">The Cartographer's Silence</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Inés Roldán · Literary Fiction</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">A cartographer follows a map that marks feelings, not places.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+      </div>
+      <div class="h2-shelf-tier">
+        <div class="h2-book" style="width:28px;height:135px" tabindex="0"><div class="h2-book-spine" style="--sc:#3B6B57;width:28px;height:135px"><span>The Slow Migration</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">The Slow Migration</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Jonas Eklund · Nature</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">Essays following the arctic tern's 44,000-mile journey.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book" style="width:32px;height:145px" tabindex="0"><div class="h2-book-spine" style="--sc:#7B5B3B;width:32px;height:145px"><span>Field Notes</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">Field Notes on Rain</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Corin Ashby · Nonfiction</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">A meteorologist's love letter to bad weather.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book" style="width:24px;height:120px" tabindex="0"><div class="h2-book-spine" style="--sc:#6b4b3b;width:24px;height:120px"><span>Salt Road</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">The Salt Road</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Femi Achebe · Biography</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">One trader's life along four centuries of coastline.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book hidden sm:block" style="width:38px;height:158px" tabindex="0"><div class="h2-book-spine" style="--sc:#8a3b5b;width:38px;height:158px"><span>Second Chances</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">Second Chances</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Lena Brandt · Romance</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">Two old friends, one bookshop, and a decade of unsent letters.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+        <div class="h2-book hidden lg:block" style="width:26px;height:128px" tabindex="0"><div class="h2-book-spine" style="--sc:#3b6b8a;width:26px;height:128px"><span>Origins</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">Origins</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Dr. Sena Okafor · Science</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">A short, wondering history of the first ten minutes of everything.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 6 — READING EVENTS (tickets)
+     ============================================================ -->
+<section id="events" class="py-28 lg:py-36 px-6">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
+      <p class="eyebrow">Save the Date</p>
+      <h2 class="section-title mt-3">Reading Events</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="h2-ticket h2-reveal reveal-scroll">
+        <div class="h2-ticket-main">
+          <p class="text-xs uppercase tracking-[0.15em] text-accent-light dark:text-accent-dark mb-2">Aug 02 · 7:00 PM</p>
+          <h3 class="font-serif text-xl mb-2">An Evening with Inés Roldán</h3>
+          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mb-1">Venue: Main Reading Room</p>
+          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mb-4">Seats: 14 left</p>
+          <button class="btn-mini">Reserve Seat</button>
+        </div>
+        <div class="h2-ticket-stub" style="--stub:#4A6B5B"><span class="h2-perf top"></span>Ticket #041<span class="h2-perf bottom"></span></div>
+      </div>
+
+      <div class="h2-ticket h2-reveal reveal-scroll">
+        <div class="h2-ticket-main">
+          <p class="text-xs uppercase tracking-[0.15em] text-accent-light dark:text-accent-dark mb-2">Aug 09 · 6:30 PM</p>
+          <h3 class="font-serif text-xl mb-2">Sunday Poetry Circle</h3>
+          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mb-1">Venue: The Fireside Nook</p>
+          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mb-4">Seats: 6 left</p>
+          <button class="btn-mini">Reserve Seat</button>
+        </div>
+        <div class="h2-ticket-stub" style="--stub:#7B3B3B"><span class="h2-perf top"></span>Ticket #042<span class="h2-perf bottom"></span></div>
+      </div>
+
+      <div class="h2-ticket h2-reveal reveal-scroll">
+        <div class="h2-ticket-main">
+          <p class="text-xs uppercase tracking-[0.15em] text-accent-light dark:text-accent-dark mb-2">Aug 16 · 10:00 AM</p>
+          <h3 class="font-serif text-xl mb-2">Family Story Morning</h3>
+          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mb-1">Venue: Children's Corner</p>
+          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mb-4">Seats: 22 left</p>
+          <button class="btn-mini">Reserve Seat</button>
+        </div>
+        <div class="h2-ticket-stub" style="--stub:#3B5B7B"><span class="h2-perf top"></span>Ticket #043<span class="h2-perf bottom"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 7 — MEMBERSHIP EXPERIENCE (flip ID cards)
+     ============================================================ -->
+<section id="membership" class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1200px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
+      <p class="eyebrow">Carry a Card, Not a Cart</p>
+      <h2 class="section-title mt-3">Membership Experience</h2>
+      <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mt-4 max-w-md">Hover a card to see what it unlocks.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="h2-id-wrap h2-reveal reveal-scroll" tabindex="0">
+        <div class="h2-id-card">
+          <div class="h2-id-face h2-id-front">
+            <div class="flex justify-between items-start"><span class="h2-id-emboss text-lg">Explorer</span><div class="h2-id-chip"></div></div>
+            <div><p class="text-[10px] tracking-[0.2em] uppercase text-[#FAF7F2]/50">Member No.</p><p class="font-serif text-lg">EX-00841</p></div>
+          </div>
+          <div class="h2-id-face h2-id-back">
+            <p class="font-serif text-xl mb-4 px-6">Explorer</p>
+            <ul class="space-y-2.5 text-sm text-ink-light/70 dark:text-ink-dark/70 px-6 mb-6">
+              <li>✓ 3 books at a time</li><li>✓ Standard reservations</li><li>✓ Digital reminders</li>
+            </ul>
+            <p class="px-6 font-serif text-2xl">₹299<span class="text-xs font-sans opacity-50">/mo</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h2-id-wrap h2-reveal reveal-scroll" tabindex="0">
+        <div class="h2-id-card">
+          <div class="h2-id-face h2-id-front h2-id-reader">
+            <div class="flex justify-between items-start"><span class="h2-id-emboss text-lg">Reader</span><div class="h2-id-chip"></div></div>
+            <div><p class="text-[10px] tracking-[0.2em] uppercase text-[#FAF7F2]/50">Member No.</p><p class="font-serif text-lg">RD-01193</p></div>
+          </div>
+          <div class="h2-id-face h2-id-back">
+            <p class="font-serif text-xl mb-4 px-6">Reader <span class="text-xs text-accent-light dark:text-accent-dark align-middle">Most Loved</span></p>
+            <ul class="space-y-2.5 text-sm text-ink-light/70 dark:text-ink-dark/70 px-6 mb-6">
+              <li>✓ 8 books at a time</li><li>✓ Priority reservations</li><li>✓ One reading club</li><li>✓ Event pre-sale access</li>
+            </ul>
+            <p class="px-6 font-serif text-2xl">₹599<span class="text-xs font-sans opacity-50">/mo</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="h2-id-wrap h2-reveal reveal-scroll" tabindex="0">
+        <div class="h2-id-card">
+          <div class="h2-id-face h2-id-front h2-id-scholar">
+            <div class="flex justify-between items-start"><span class="h2-id-emboss text-lg">Scholar</span><div class="h2-id-chip"></div></div>
+            <div><p class="text-[10px] tracking-[0.2em] uppercase text-[#FAF7F2]/50">Member No.</p><p class="font-serif text-lg">SC-00276</p></div>
+          </div>
+          <div class="h2-id-face h2-id-back">
+            <p class="font-serif text-xl mb-4 px-6">Scholar</p>
+            <ul class="space-y-2.5 text-sm text-ink-light/70 dark:text-ink-dark/70 px-6 mb-6">
+              <li>✓ Unlimited books</li><li>✓ All reading clubs</li><li>✓ Family sharing (4)</li><li>✓ Exclusive launch invites</li>
+            </ul>
+            <p class="px-6 font-serif text-2xl">₹999<span class="text-xs font-sans opacity-50">/mo</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 8 — READING ENVIRONMENT (framed gallery)
+     ============================================================ -->
+<section class="py-28 lg:py-36 px-6">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
+      <p class="eyebrow">Come Sit Awhile</p>
+      <h2 class="section-title mt-3">Reading Environment</h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="h2-frame h2-reveal reveal-scroll">
+        <div class="h2-frame-photo" style="aspect-ratio:4/5"><div class="h2-photo-bg" style="background:linear-gradient(160deg,#4A6B5B,#234E52 60%,#16302f)"></div></div>
+        <p class="h2-frame-cap">Reading Corners</p>
+      </div>
+      <div class="h2-frame h2-reveal reveal-scroll">
+        <div class="h2-frame-photo" style="aspect-ratio:4/5"><div class="h2-photo-bg" style="background:linear-gradient(160deg,#8a5a2b,#5c3a1c 60%,#3a2412)"></div></div>
+        <p class="h2-frame-cap">Library Interiors</p>
+      </div>
+      <div class="h2-frame h2-reveal reveal-scroll">
+        <div class="h2-frame-photo" style="aspect-ratio:4/5"><div class="h2-photo-bg" style="background:linear-gradient(160deg,#C79A3B,#8a6a26 60%,#5c481a)"></div></div>
+        <p class="h2-frame-cap">Children's Area</p>
+      </div>
+      <div class="h2-frame h2-reveal reveal-scroll">
+        <div class="h2-frame-photo" style="aspect-ratio:4/5"><div class="h2-photo-bg" style="background:linear-gradient(160deg,#7B3B3B,#4d2424 60%,#2e1515)"></div></div>
+        <p class="h2-frame-cap">Coffee Corner</p>
+      </div>
+      <div class="h2-frame h2-reveal reveal-scroll">
+        <div class="h2-frame-photo" style="aspect-ratio:4/5"><div class="h2-photo-bg" style="background:linear-gradient(160deg,#3B5B7B,#22384d 60%,#152230)"></div></div>
+        <p class="h2-frame-cap">Book Discussions</p>
+      </div>
+      <div class="h2-frame h2-reveal reveal-scroll">
+        <div class="h2-frame-photo" style="aspect-ratio:4/5"><div class="h2-photo-bg" style="background:linear-gradient(160deg,#5B3B6B,#382541 60%,#221528)"></div></div>
+        <p class="h2-frame-cap">The Reading Loft</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 9 — COMMUNITY WALL (pinned notes)
+     ============================================================ -->
+<section class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40 overflow-hidden">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-20 h2-reveal reveal-scroll">
+      <p class="eyebrow">Pinned By Our Members</p>
+      <h2 class="section-title mt-3">Community Wall</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10 pt-4">
+      <div class="h2-note h2-reveal reveal-scroll" style="--tilt:-2deg; animation-delay:.2s">
+        <span class="h2-pin"></span>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="avatar" style="background:#3B5B7B">RM</div>
+          <div><p class="text-sm font-medium">Renata Mbeki</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Scholar Member</p></div>
+        </div>
+        <p class="font-display italic text-[16px] leading-relaxed mb-2">Recommends: <strong class="not-italic">Salt &amp; Marrow</strong></p>
+        <p class="text-sm text-ink-light/70 dark:text-ink-dark/70 mb-4">"41 books this year and the reading room still smells like my first day."</p>
+        <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★★</span><span>41 borrowed</span></div>
+      </div>
+
+      <div class="h2-note h2-reveal reveal-scroll" style="--tilt:1.5deg; animation-delay:.6s">
+        <span class="h2-pin"></span>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="avatar" style="background:#7B3B3B">DK</div>
+          <div><p class="text-sm font-medium">Devon Kessler</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Reader Member</p></div>
+        </div>
+        <p class="font-display italic text-[16px] leading-relaxed mb-2">Recommends: <strong class="not-italic">Marrow Deep</strong></p>
+        <p class="text-sm text-ink-light/70 dark:text-ink-dark/70 mb-4">"Staff set aside three Nordic noir titles before I even asked."</p>
+        <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★★</span><span>29 borrowed</span></div>
+      </div>
+
+      <div class="h2-note h2-reveal reveal-scroll" style="--tilt:-1deg; animation-delay:1s">
+        <span class="h2-pin"></span>
+        <div class="flex items-center gap-3 mb-4">
+          <div class="avatar" style="background:#C79A3B">SF</div>
+          <div><p class="text-sm font-medium">Saoirse Fallon</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Explorer Member</p></div>
+        </div>
+        <p class="font-display italic text-[16px] leading-relaxed mb-2">Recommends: <strong class="not-italic">Field Notes on Rain</strong></p>
+        <p class="text-sm text-ink-light/70 dark:text-ink-dark/70 mb-4">"Sunday Poetry Circle is the calmest hour of my week."</p>
+        <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★☆</span><span>17 borrowed</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 10 — LIBRARY NUMBERS
+     ============================================================ -->
+<section class="relative py-28 lg:py-32 px-6 bg-primary-light dark:bg-[#0f1a18] text-bg-light overflow-hidden">
+  <div class="h2-numbers-bg" aria-hidden="true">
+    <svg width="1600" height="120" viewBox="0 0 1600 120"><g stroke="#FAF7F2" stroke-width="1" fill="none" opacity="0.6">
+      <rect x="20" y="20" width="30" height="80" rx="2"/><rect x="60" y="30" width="30" height="70" rx="2"/><rect x="100" y="10" width="30" height="90" rx="2"/>
+      <rect x="220" y="25" width="30" height="75" rx="2"/><rect x="260" y="15" width="30" height="85" rx="2"/><rect x="300" y="30" width="30" height="70" rx="2"/>
+      <rect x="420" y="20" width="30" height="80" rx="2"/><rect x="460" y="30" width="30" height="70" rx="2"/><rect x="500" y="10" width="30" height="90" rx="2"/>
+      <rect x="620" y="25" width="30" height="75" rx="2"/><rect x="660" y="15" width="30" height="85" rx="2"/><rect x="700" y="30" width="30" height="70" rx="2"/>
+      <rect x="820" y="20" width="30" height="80" rx="2"/><rect x="860" y="30" width="30" height="70" rx="2"/><rect x="900" y="10" width="30" height="90" rx="2"/>
+      <rect x="1020" y="25" width="30" height="75" rx="2"/><rect x="1060" y="15" width="30" height="85" rx="2"/><rect x="1100" y="30" width="30" height="70" rx="2"/>
+      <rect x="1220" y="20" width="30" height="80" rx="2"/><rect x="1260" y="30" width="30" height="70" rx="2"/><rect x="1300" y="10" width="30" height="90" rx="2"/>
+      <rect x="1420" y="25" width="30" height="75" rx="2"/><rect x="1460" y="15" width="30" height="85" rx="2"/><rect x="1500" y="30" width="30" height="70" rx="2"/>
+    </g></svg>
+  </div>
+  <div class="relative max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 text-center h2-reveal reveal-scroll">
+    <div><p class="stat-num" data-target="18400">0</p><p class="stat-label">Books</p></div>
+    <div><p class="stat-num" data-target="24">0</p><p class="stat-label">Genres</p></div>
+    <div><p class="stat-num" data-target="3120">0</p><p class="stat-label">Borrowed / mo</p></div>
+    <div><p class="stat-num" data-target="312">0</p><p class="stat-label">Events</p></div>
+    <div><p class="stat-num" data-target="6250">0</p><p class="stat-label">Members</p></div>
+    <div><p class="stat-num" data-target="410">0</p><p class="stat-label">Authors</p></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 11 — MOBILE LIBRARY APP
+     ============================================================ -->
+<section id="app" class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+  <div class="max-w-[1300px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div class="h2-phone h2-reveal reveal-scroll">
+      <div class="h2-phone-screen">
+        <p class="text-[10px] uppercase tracking-[0.2em] opacity-50 mb-1">Good evening,</p>
+        <p class="font-serif text-lg mb-4">Renata</p>
+        <div class="h2-app-row"><div class="h2-app-cover" style="background:#7B3B3B"></div><div class="flex-1"><p class="text-xs font-medium">Marrow Deep</p><p class="text-[10px] opacity-50">Due in 3 days</p></div></div>
+        <div class="h2-app-row"><div class="h2-app-cover" style="background:#3B5B7B"></div><div class="flex-1"><p class="text-xs font-medium">Signal &amp; Static</p><p class="text-[10px] opacity-50">Due in 9 days</p></div></div>
+        <div class="h2-app-row" style="border-bottom:none"><div class="h2-app-cover" style="background:#C79A3B"></div><div class="flex-1"><p class="text-xs font-medium">Small Mercies</p><p class="text-[10px] opacity-50">Wishlisted</p></div></div>
+        <div class="mt-4 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[11px] text-center py-2.5 font-medium">+ Borrow a Book</div>
+      </div>
+    </div>
+
+    <div class="h2-reveal reveal-scroll">
+      <p class="eyebrow">In Your Pocket</p>
+      <h2 class="section-title mt-3 mb-5">The Member Dashboard</h2>
+      <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8 max-w-md">Track due dates, revisit your borrowing history, hold your wishlist, and get recommendations built around what you've actually read — all from your phone.</p>
+      <ul class="space-y-3 text-sm text-ink-light/70 dark:text-ink-dark/70 mb-9">
+        <li>✓ Borrow history &amp; due reminders</li>
+        <li>✓ One-tap borrow requests</li>
+        <li>✓ Personalized wishlist</li>
+        <li>✓ Full catalog search</li>
+      </ul>
+      <div class="flex flex-wrap gap-3">
+        <button class="h2-store-btn"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M3 2l10 7-10 7z"/></svg><span class="text-xs">App Store</span></button>
+        <button class="h2-store-btn"><svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M3 2l10 7-10 7z"/></svg><span class="text-xs">Google Play</span></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 12 — NEWSLETTER (envelope)
+     ============================================================ -->
+<section id="newsletter" class="py-28 lg:py-36 px-6 relative overflow-hidden">
+  <div class="relative max-w-xl mx-auto text-center h2-reveal reveal-scroll">
+    <div id="h2-envelope" class="h2-envelope">
+      <div class="h2-env-body"></div>
+      <div class="h2-env-flap"></div>
+    </div>
+    <p class="eyebrow">Stay In The Loop</p>
+    <h2 class="section-title mt-3 mb-4">Letters From the Library</h2>
+    <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mb-10">One short letter a month — new arrivals, event invites, and a staff-picked poem.</p>
+
+    <form id="newsletter-form" class="flex flex-col gap-4">
+      <input type="email" required placeholder="Your email address" class="input-field" aria-label="Email address">
+      <select class="input-field" aria-label="Genre preference">
+        <option>Preferred genre (optional)</option>
+        <option>Mystery</option><option>Fantasy</option><option>Science</option><option>History</option><option>Poetry</option>
+      </select>
+      <button type="submit" class="btn-primary mt-2">Subscribe</button>
+      <p id="newsletter-msg" class="text-xs text-primary-light dark:text-primary-dark h-4"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-[#16231F] dark:bg-[#0a0c0b] text-[#FAF7F2] pt-20 pb-8 px-6">
+  <div class="max-w-[1300px] mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-14">
+    <div class="lg:col-span-1">
+      <div class="flex items-center gap-2.5 mb-4">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none" class="text-[#D4A64A]"><path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <span class="font-serif text-lg">Marlowe &amp; Finch</span>
+      </div>
+      <p class="text-sm text-[#FAF7F2]/55 leading-relaxed">A neighborhood book shop and lending library, open since 1994.</p>
+      <a href="index.html" class="h2-alt-link inline-block mt-5 text-[#FAF7F2]">View Home 1</a>
+    </div>
+    <div>
+      <p class="footer-head">Quick Links</p>
+      <ul class="footer-list"><li><a href="#picks">Books</a></li><li><a href="#membership">Membership</a></li><li><a href="#events">Events</a></li><li><a href="#journey">About</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Genres</p>
+      <ul class="footer-list"><li><a href="#explore">Mystery</a></li><li><a href="#explore">Fantasy</a></li><li><a href="#explore">Poetry</a></li><li><a href="#explore">Biography</a></li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Library Hours</p>
+      <ul class="footer-list text-[#FAF7F2]/55"><li>Mon–Fri · 9am – 8pm</li><li>Saturday · 10am – 6pm</li><li>Sunday · 11am – 5pm</li></ul>
+    </div>
+    <div>
+      <p class="footer-head">Visit Us</p>
+      <ul class="footer-list text-[#FAF7F2]/55"><li>14 Birchwood Lane</li><li>Chennai, TN 600001</li><li>hello@marloweandfinch.co</li></ul>
+    </div>
+  </div>
+  <div class="max-w-[1300px] mx-auto border-t border-[#FAF7F2]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#FAF7F2]/45">
+    <p>© 2026 Marlowe &amp; Finch Book Shop. All rights reserved.</p>
+    <div class="flex gap-5">
+      <a href="#" aria-label="Instagram" class="hover:text-[#D4A64A] transition">Instagram</a>
+      <a href="#" aria-label="Facebook" class="hover:text-[#D4A64A] transition">Facebook</a>
+      <a href="#" aria-label="Pinterest" class="hover:text-[#D4A64A] transition">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-7 right-7 z-40 w-12 h-12 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light grid place-items-center shadow-lg opacity-0 pointer-events-none transition-all duration-300">
+  <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 13V3M3 8L8 3L13 8" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
