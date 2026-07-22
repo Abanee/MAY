@@ -70,7 +70,8 @@
         <span id="icon-sun" class="material-symbols-outlined absolute !text-[19px] transition-all duration-500">light_mode</span>
         <span id="icon-moon" class="material-symbols-outlined absolute !text-[19px] transition-all duration-500 opacity-0">dark_mode</span>
       </button>
-      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-4 py-2 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Login</a>
+      <a href="dashboard.html" class="hidden md:inline-flex magnetic px-4 py-2 rounded-full border border-primary-light/40 dark:border-accent-dark/40 text-primary-light dark:text-accent-dark hover:bg-primary-light/10 dark:hover:bg-accent-dark/10 text-[13px] font-medium tracking-wide transition">Dashboard</a>
       <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center"><span class="material-symbols-outlined">menu</span></button>
     </div>
   </nav>
@@ -82,9 +83,11 @@
       <li><a href="about.html" class="mobile-link">About</a></li>
       <li><a href="book.html" class="mobile-link bc-active-link">Book Collection</a></li>
       <li><a href="membership.html" class="mobile-link">Membership</a></li>
-      <li><a href="dashboard.html" class="mobile-link">Dashboard</a></li>
       <li><a href="contact.html" class="mobile-link">Contact</a></li>
-      <li><a href="login.html" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+      <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+        <a href="login.html" class="flex-1 text-center px-4 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Login</a>
+        <a href="dashboard.html" class="flex-1 text-center px-4 py-2.5 rounded-full border border-primary-light dark:border-accent-dark text-primary-light dark:text-accent-dark text-sm font-medium">Dashboard</a>
+      </li>
     </ul>
   </div>
 </header>

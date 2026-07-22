@@ -84,7 +84,8 @@
         <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
       </button>
       <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
-      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-4 py-2 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Login</a>
+      <a href="dashboard.html" class="hidden md:inline-flex magnetic px-4 py-2 rounded-full border border-primary-light/40 dark:border-accent-dark/40 text-primary-light dark:text-accent-dark hover:bg-primary-light/10 dark:hover:bg-accent-dark/10 text-[13px] font-medium tracking-wide transition">Dashboard</a>
       <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center">
         <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
@@ -101,7 +102,8 @@
       <li><a href="membership.html" class="mobile-link">Membership</a></li>
       <li><a href="contact.html" class="mobile-link">Contact</a></li>
       <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
-        <a href="login.html" class="flex-1 text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Member Login</a>
+        <a href="login.html" class="flex-1 text-center px-4 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Login</a>
+        <a href="dashboard.html" class="flex-1 text-center px-4 py-2.5 rounded-full border border-primary-light dark:border-accent-dark text-primary-light dark:text-accent-dark text-sm font-medium">Dashboard</a>
         <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold">RTL</button>
       </li>
     </ul>
@@ -140,53 +142,213 @@
 
 <main>
 <!-- ============================================================
-     HERO — THE ENDLESS LIBRARY (cinematic hallway)
+     HERO — THE ENDLESS LIBRARY (LUXURY 3D SPREAD)
      ============================================================ -->
-<section id="h2-hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-  <div class="h2-hallway" aria-hidden="true">
-    <div class="h2-wall h2-wall-l"></div>
-    <div class="h2-wall h2-wall-r"></div>
-    <div class="h2-floor"></div>
-    <div class="h2-vanish-glow"></div>
-    <div id="h2-dust" class="h2-dust absolute inset-0"></div>
-    <div id="h2-fragments" class="absolute inset-0"></div>
+<section id="hero" class="hero-luxury relative min-h-screen flex items-center overflow-hidden">
+  <!-- Background ambient effects -->
+  <div class="hero-bg-grid" aria-hidden="true"></div>
+  <div class="hero-bg-glow" aria-hidden="true"></div>
+  <div class="hero-bg-vignette" aria-hidden="true"></div>
+  <div class="hero-dust-particles" aria-hidden="true">
+    <span style="left: 12%; top: 25%; animation-delay: 0s;"></span>
+    <span style="left: 32%; top: 65%; animation-delay: 1.5s;"></span>
+    <span style="left: 68%; top: 35%; animation-delay: 0.8s;"></span>
+    <span style="left: 88%; top: 75%; animation-delay: 2.2s;"></span>
+    <span style="left: 48%; top: 45%; animation-delay: 3.1s;"></span>
   </div>
-  <div class="h2-spotlight" aria-hidden="true"></div>
 
-  <!-- animated library clock -->
-  <svg class="h2-clock" viewBox="0 0 64 64" aria-hidden="true">
-    <circle class="face" cx="32" cy="32" r="30"/>
-    <line class="h2-hour" x1="32" y1="32" x2="32" y2="18"/>
-    <line class="h2-min" x1="32" y1="32" x2="32" y2="12"/>
-    <circle cx="32" cy="32" r="1.6" fill="#D4A64A"/>
-  </svg>
+  <div class="relative z-10 max-w-[1360px] mx-auto px-6 lg:px-12 w-full pt-28 pb-20 flex items-center min-h-screen">
+    <div class="grid lg:grid-cols-[45%_55%] gap-12 lg:gap-8 items-center w-full">
 
-  <div class="relative z-10 max-w-3xl mx-auto text-center px-6 pt-24">
-    <p class="reveal h2-hero-eyebrow text-[12.5px] tracking-[0.4em] uppercase text-[#D4A64A] mb-6">The Endless Library</p>
-    <h1 class="reveal font-serif text-5xl sm:text-6xl lg:text-[74px] leading-[1.08] text-[#FAF7F2] font-light" style="transition-delay:.1s">
-      Every Shelf Holds<br class="hidden sm:block"> Your Next Adventure
-    </h1>
-    <p class="reveal mt-7 text-[#FAF7F2]/70 text-base lg:text-lg max-w-xl mx-auto font-light leading-relaxed" style="transition-delay:.2s">
-      Walk the hallway. Every spine you pass was chosen by hand — follow it as far as your curiosity allows.
-    </p>
-    <div class="reveal mt-10 flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay:.3s">
-      <a href="#picks" class="magnetic px-8 py-4 rounded-full bg-[#D4A64A] text-[#16231F] font-medium text-sm tracking-wide hover:brightness-110 transition w-full sm:w-auto text-center">Browse Collection</a>
-      <a href="#membership" class="magnetic px-8 py-4 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2] font-medium text-sm tracking-wide hover:bg-[#FAF7F2]/10 transition w-full sm:w-auto text-center">Become a Member</a>
+      <!-- LEFT COLUMN: Editorial Text (45%) -->
+      <div class="flex flex-col justify-center text-left order-2 lg:order-1">
+        <p class="hero-subtitle mb-4">THE ENDLESS LIBRARY · EST. 1994</p>
+        
+        <h1 class="hero-heading font-serif text-4xl sm:text-5xl lg:text-[62px] leading-[1.08] text-[#FAF7F2] font-light mb-6" id="heroHeading">
+          Every Shelf Holds<br class="hidden sm:block"> Your Next Adventure
+        </h1>
+        
+        <p class="hero-paragraph text-sm sm:text-base text-[#FAF7F2]/80 leading-relaxed max-w-md mb-8" id="heroParagraph">
+          Walk the hallway. Every spine you pass was chosen by hand — follow it as far as your curiosity allows.
+        </p>
+
+        <div class="hero-buttons flex flex-col sm:flex-row items-stretch sm:items-center gap-4" id="heroButtons">
+          <a href="#explore" class="hero-btn-primary">Browse Collection</a>
+          <a href="membership.html" class="hero-btn-secondary">Become a Member</a>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: 3D Realistic Hardcover Book (55%) -->
+      <div class="hero-book-col flex items-center justify-center relative py-6 order-1 lg:order-2">
+        <div class="book-stage" id="bookStage">
+          <!-- Soft Natural Shadow -->
+          <div class="book-shadow" id="bookShadow"></div>
+          
+          <!-- 3D Book Container -->
+          <div class="book-3d" id="book3D">
+            <!-- Hardcover Base Wings (Left & Right Leather Boards) -->
+            <div class="book-cover-left"></div>
+            <div class="book-cover-right"></div>
+            <div class="book-spine-leather"></div>
+
+            <!-- Authentic Book Binding Headband & Footband (Top & Bottom spine stitching) -->
+            <div class="spine-headband-top"></div>
+            <div class="spine-footband-bottom"></div>
+
+            <!-- Paper Block Thickness Edges (Left & Right 3D stacked edges) -->
+            <div class="paper-block-edge-left"></div>
+            <div class="paper-block-edge-right"></div>
+
+            <!-- Stationary Left Page Base (inside left cover) -->
+            <div class="book-page-left">
+              <div class="page-paper-texture"></div>
+              <div class="page-gutter-overlay-left"></div>
+              <div class="page-content-wrapper flex flex-col items-center justify-between h-full py-4 px-4">
+                <div class="page-header-seal">✦ EX LIBRIS ✦</div>
+                <h4 class="font-serif text-sm sm:text-base text-[#101814] font-medium text-center">MARLOWE &amp; FINCH</h4>
+                <p class="page-body-quote font-serif italic text-xs sm:text-sm text-[#2E2922] text-center leading-relaxed px-1">"A room without books is like a body without a soul."</p>
+                <div class="page-footer-mark">EST. 1994 · ARCHIVES</div>
+              </div>
+            </div>
+
+            <!-- Stationary Right Page Base (Page 5) -->
+            <div class="book-page-right">
+              <div class="page-paper-texture"></div>
+              <div class="page-gutter-overlay-right"></div>
+              <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                <span class="leaf-tag">CHAPTER V</span>
+                <h3 class="leaf-heading">Discover Stories That Stay With You</h3>
+                <div class="leaf-divider"></div>
+                <p class="text-[11px] text-[#101814]/65 tracking-wider uppercase">Marlowe &amp; Finch</p>
+              </div>
+            </div>
+
+            <!-- Turning Leaf 4 (Members Library) -->
+            <div class="book-leaf leaf-4" id="leaf4">
+              <div class="leaf-face leaf-front">
+                <div class="page-paper-texture"></div>
+                <div class="page-gutter-overlay-right"></div>
+                <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                  <span class="leaf-tag">CHAPTER IV</span>
+                  <h3 class="leaf-heading">Members Library</h3>
+                  <div class="leaf-divider"></div>
+                  <p class="text-[11px] text-[#101814]/65 tracking-wider uppercase">18,400+ Borrowable Titles</p>
+                </div>
+              </div>
+              <div class="leaf-face leaf-back">
+                <div class="page-paper-texture"></div>
+                <div class="page-gutter-overlay-left"></div>
+                <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                  <span class="leaf-tag">CHAPTER III · NOTES</span>
+                  <p class="font-serif italic text-xs sm:text-sm text-[#2E2922] leading-relaxed">"Quiet corners, fireside nooks, and reading lamps."</p>
+                  <div class="leaf-divider"></div>
+                  <span class="text-[10px] text-[#D6A74D] uppercase font-medium">Reading Rooms</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Turning Leaf 3 (Reading Rooms) -->
+            <div class="book-leaf leaf-3" id="leaf3">
+              <div class="leaf-face leaf-front">
+                <div class="page-paper-texture"></div>
+                <div class="page-gutter-overlay-right"></div>
+                <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                  <span class="leaf-tag">CHAPTER III</span>
+                  <h3 class="leaf-heading">Reading Rooms</h3>
+                  <div class="leaf-divider"></div>
+                  <p class="text-[11px] text-[#101814]/65 tracking-wider uppercase">Quiet Corner &amp; Fireside Nook</p>
+                </div>
+              </div>
+              <div class="leaf-face leaf-back">
+                <div class="page-paper-texture"></div>
+                <div class="page-gutter-overlay-left"></div>
+                <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                  <span class="leaf-tag">CHAPTER II · NOTES</span>
+                  <p class="font-serif italic text-xs sm:text-sm text-[#2E2922] leading-relaxed">"First editions, antiquaries, and signed volumes."</p>
+                  <div class="leaf-divider"></div>
+                  <span class="text-[10px] text-[#D6A74D] uppercase font-medium">Rare Vault</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Turning Leaf 2 (Curated Collections) -->
+            <div class="book-leaf leaf-2" id="leaf2">
+              <div class="leaf-face leaf-front">
+                <div class="page-paper-texture"></div>
+                <div class="page-gutter-overlay-right"></div>
+                <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                  <span class="leaf-tag">CHAPTER II</span>
+                  <h3 class="leaf-heading">Curated Collections</h3>
+                  <div class="leaf-divider"></div>
+                  <p class="text-[11px] text-[#101814]/65 tracking-wider uppercase">First Editions &amp; Rarities</p>
+                </div>
+              </div>
+              <div class="leaf-face leaf-back">
+                <div class="page-paper-texture"></div>
+                <div class="page-gutter-overlay-left"></div>
+                <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                  <span class="leaf-tag">CHAPTER I · NOTES</span>
+                  <p class="font-serif italic text-xs sm:text-sm text-[#2E2922] leading-relaxed">"Every title earned its place on our oak shelves."</p>
+                  <div class="leaf-divider"></div>
+                  <span class="text-[10px] text-[#D6A74D] uppercase font-medium">Our Story</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Turning Leaf 1 (Marlowe & Finch) -->
+            <div class="book-leaf leaf-1" id="leaf1">
+              <div class="leaf-face leaf-front">
+                <div class="page-paper-texture"></div>
+                <div class="page-gutter-overlay-right"></div>
+                <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                  <span class="leaf-tag">CHAPTER I</span>
+                  <h3 class="leaf-heading">Marlowe &amp; Finch</h3>
+                  <div class="leaf-divider"></div>
+                  <p class="text-[11px] text-[#101814]/65 tracking-wider uppercase">Est. 1994 · London &amp; Chennai</p>
+                </div>
+              </div>
+              <div class="leaf-face leaf-back">
+                <div class="page-paper-texture"></div>
+                <div class="page-gutter-overlay-left"></div>
+                <div class="leaf-content flex flex-col items-center justify-center h-full text-center px-4 py-4">
+                  <span class="leaf-tag">WELCOME</span>
+                  <p class="font-serif italic text-xs sm:text-sm text-[#2E2922] leading-relaxed">"A luxury bookshop &amp; lending library."</p>
+                  <div class="leaf-divider"></div>
+                  <span class="text-[10px] text-[#D6A74D] uppercase font-medium">ANNO 1994</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hardcover Front -->
+            <div class="book-cover-front" id="coverFront">
+              <div class="cover-exterior">
+                <div class="cover-border">
+                  <div class="cover-crest">✦</div>
+                  <h2 class="cover-main-title">MARLOWE &amp; FINCH</h2>
+                  <p class="cover-sub-title">BOOKSHOP &amp; LENDING LIBRARY</p>
+                </div>
+              </div>
+              <div class="cover-interior">
+                <div class="interior-plate">
+                  <p class="plate-title">EX LIBRIS</p>
+                  <p class="plate-name">Marlowe &amp; Finch</p>
+                  <p class="plate-year">EST. 1994</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
-
-    <div class="reveal h2-stat-row mt-16" style="transition-delay:.4s">
-      <div><p class="stat-num text-[#FAF7F2]" data-target="12000">0</p><p class="stat-label text-[#FAF7F2]/60">Books</p></div>
-      <div><p class="stat-num text-[#FAF7F2]" data-target="850">0</p><p class="stat-label text-[#FAF7F2]/60">Members</p></div>
-      <div><p class="stat-num text-[#FAF7F2]" data-target="42">0</p><p class="stat-label text-[#FAF7F2]/60">Weekly Events</p></div>
-    </div>
   </div>
 
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#FAF7F2]/50">
-    <div class="mouse-scroll"></div>
-    <span class="text-[10px] tracking-[0.3em] uppercase">Walk In</span>
+  <!-- Minimal Scroll Indicator -->
+  <div class="hero-scroll-indicator" aria-hidden="true">
+    <span class="scroll-label">SCROLL</span>
+    <div class="scroll-line"></div>
   </div>
-
-  <div class="absolute -bottom-1 inset-x-0 h-40 bg-gradient-to-b from-transparent to-bg-light dark:to-bg-dark pointer-events-none z-[6]"></div>
 </section>
 
 <!-- ============================================================
@@ -355,63 +517,101 @@
 </section>
 
 <!-- ============================================================
-     SECTION 5B — BOOK SHOP & LENDING LIBRARY
+     SECTION 5B — SPECIAL COLLECTIONS & RARE VAULT
      ============================================================ -->
-<section id="our-services" class="py-28 lg:py-36 px-6">
+<section id="special-collections" class="py-28 lg:py-36 px-6">
   <div class="max-w-[1300px] mx-auto">
     <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
-      <p class="eyebrow">Two Ways to Read</p>
-      <h2 class="section-title mt-3">Book Shop &amp; Lending Library</h2>
-      <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mt-4 max-w-2xl leading-relaxed">Marlowe &amp; Finch has always held two truths at once — a curated bookshop where you take a story home forever, and a lending library where 18,400 titles wait patiently for their next reader.</p>
+      <p class="eyebrow">Rare Finds &amp; Archives</p>
+      <h2 class="section-title mt-3">Special Collections &amp; Literary Vault</h2>
+      <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mt-4 max-w-2xl leading-relaxed">Beyond our open shelves lies Marlowe &amp; Finch's guarded vault — housing climate-controlled first editions, original author manuscripts, and curated monthly reserve boxes for true literary connoisseurs.</p>
     </div>
 
-    <div class="grid lg:grid-cols-2 gap-10 xl:gap-14">
-      <!-- BOOK SHOP -->
+    <div class="grid lg:grid-cols-3 gap-8 xl:gap-10">
+      <!-- VAULT CARD 1: FIRST EDITIONS -->
       <div class="svc-card h2-reveal reveal-scroll group">
         <div class="svc-img-wrap">
-          <img src="bookshop_interior.png" alt="Marlowe & Finch bookshop interior with warm amber lamps and curated shelves" class="svc-img" loading="lazy">
-          <div class="svc-img-overlay"></div>
-          <span class="svc-badge svc-badge--shop">The Book Shop</span>
+          <div class="h-64 sm:h-72 w-full bg-gradient-to-br from-[#1c2b24] via-[#234E52] to-[#101a17] relative overflow-hidden flex items-center justify-center p-8 text-center">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#C79A3B_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-light/20 dark:bg-accent-dark/20 border border-accent-light/40 dark:border-accent-dark/40 grid place-items-center text-accent-light dark:text-accent-dark text-2xl font-serif">✦</div>
+              <span class="text-xs uppercase tracking-[0.25em] text-[#D4A64A] font-medium">Climate Controlled</span>
+              <h4 class="font-serif text-2xl text-[#FAF7F2] mt-2">The First Edition Vault</h4>
+            </div>
+          </div>
+          <span class="svc-badge svc-badge--shop">Rare Volumes</span>
         </div>
         <div class="svc-body">
-          <p class="svc-eyebrow">Own a Story</p>
-          <h3 class="svc-title">Browse, Buy &amp; Collect</h3>
-          <p class="svc-desc">Our ground-floor shop is curated title-by-title. New releases, local authors, rare leather-bound editions, and a coffee corner built for lingering. Every purchase supports independent publishing.</p>
+          <p class="svc-eyebrow">Preserved History</p>
+          <h3 class="svc-title">Antiquarian &amp; 1st Editions</h3>
+          <p class="svc-desc">Hand-pressed leather bindings, gold-embossed spines, and rare first printings preserved in oak vitrines. Available for private viewing and member consultation.</p>
           <ul class="svc-list" role="list">
-            <li><span class="svc-icon svc-icon--shop">✦</span> Handpicked new releases &amp; classics</li>
-            <li><span class="svc-icon svc-icon--shop">✦</span> Collector &amp; leather-bound editions</li>
-            <li><span class="svc-icon svc-icon--shop">✦</span> Local &amp; independent author spotlight</li>
-            <li><span class="svc-icon svc-icon--shop">✦</span> In-store coffee nook &amp; reading chairs</li>
-            <li><span class="svc-icon svc-icon--shop">✦</span> Wax-seal gift wrapping, complimentary</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> 19th-century first editions &amp; original printings</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Hand-stitched leather &amp; gold leaf gilding</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> White-glove reading room reservations</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Professional appraisal &amp; conservation</li>
           </ul>
-          <a href="book.html" class="svc-btn svc-btn--shop">Explore the Bookshop →</a>
+          <a href="book.html" class="svc-btn svc-btn--shop">Browse Vault Catalog →</a>
         </div>
       </div>
 
-      <!-- LENDING LIBRARY -->
+      <!-- VAULT CARD 2: ORIGINAL MANUSCRIPTS -->
       <div class="svc-card h2-reveal reveal-scroll group" style="transition-delay:.1s">
         <div class="svc-img-wrap">
-          <img src="lending_library.png" alt="Marlowe & Finch lending library reading room with tall shelves" class="svc-img" loading="lazy">
-          <div class="svc-img-overlay svc-img-overlay--lib"></div>
-          <span class="svc-badge svc-badge--lib">The Library</span>
+          <div class="h-64 sm:h-72 w-full bg-gradient-to-br from-[#3a2c1e] via-[#5c3a1c] to-[#241a10] relative overflow-hidden flex items-center justify-center p-8 text-center">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#C79A3B_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-light/20 dark:bg-accent-dark/20 border border-accent-light/40 dark:border-accent-dark/40 grid place-items-center text-accent-light dark:text-accent-dark text-2xl font-serif">✒</div>
+              <span class="text-xs uppercase tracking-[0.25em] text-[#D4A64A] font-medium">Author Archives</span>
+              <h4 class="font-serif text-2xl text-[#FAF7F2] mt-2">Manuscripts &amp; Marginalia</h4>
+            </div>
+          </div>
+          <span class="svc-badge svc-badge--lib">Archival Papers</span>
         </div>
         <div class="svc-body">
-          <p class="svc-eyebrow svc-eyebrow--lib">Borrow a World</p>
-          <h3 class="svc-title">Borrow, Track &amp; Return</h3>
-          <p class="svc-desc">Our lending library holds 18,400+ titles. Members borrow books, track return deadlines from their personal dashboard, renew online, and drop returns in our 24-hour box. Reading without limits.</p>
+          <p class="svc-eyebrow svc-eyebrow--lib">Raw Literature</p>
+          <h3 class="svc-title">Original Author Manuscripts</h3>
+          <p class="svc-desc">Annotated drafts, personal letters, and original manuscript pages donated by beloved local and global authors. Experience stories in their rawest form.</p>
           <ul class="svc-list" role="list">
-            <li><span class="svc-icon svc-icon--lib">✦</span> 18,400+ titles across 14 genres</li>
-            <li><span class="svc-icon svc-icon--lib">✦</span> Digital borrow &amp; deadline dashboard</li>
-            <li><span class="svc-icon svc-icon--lib">✦</span> Priority holds on new arrivals</li>
-            <li><span class="svc-icon svc-icon--lib">✦</span> 24-hour drop-box returns &amp; renewals</li>
-            <li><span class="svc-icon svc-icon--lib">✦</span> Members-only literary events</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Rare handwritten author notes &amp; drafts</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Unreleased chapters &amp; alternate endings</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Bi-monthly private archive viewings</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> High-resolution digital transcript access</li>
           </ul>
-          <a href="membership.html" class="svc-btn svc-btn--lib">View Membership Plans →</a>
+          <a href="about.html" class="svc-btn svc-btn--lib">Learn Archive History →</a>
+        </div>
+      </div>
+
+      <!-- VAULT CARD 3: CURATOR'S RESERVE BOX -->
+      <div class="svc-card h2-reveal reveal-scroll group" style="transition-delay:.2s">
+        <div class="svc-img-wrap">
+          <div class="h-64 sm:h-72 w-full bg-gradient-to-br from-[#2c4a4d] via-[#234E52] to-[#122220] relative overflow-hidden flex items-center justify-center p-8 text-center">
+            <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#C79A3B_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            <div class="relative z-10">
+              <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-accent-light/20 dark:bg-accent-dark/20 border border-accent-light/40 dark:border-accent-dark/40 grid place-items-center text-accent-light dark:text-accent-dark text-2xl font-serif">🎁</div>
+              <span class="text-xs uppercase tracking-[0.25em] text-[#D4A64A] font-medium">Monthly Discovery</span>
+              <h4 class="font-serif text-2xl text-[#FAF7F2] mt-2">The Curator's Reserve Box</h4>
+            </div>
+          </div>
+          <span class="svc-badge svc-badge--shop">Member Exclusive</span>
+        </div>
+        <div class="svc-body">
+          <p class="svc-eyebrow">Mystery Selection</p>
+          <h3 class="svc-title">Wax-Sealed Monthly Reserve</h3>
+          <p class="svc-desc">Every month, our head librarian selects a hidden masterpiece wrapped in parchment and wax-sealed, complete with tea pairings and reading commentary.</p>
+          <ul class="svc-list" role="list">
+            <li><span class="svc-icon svc-icon--shop">✦</span> Handpicked title matched to your taste</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Custom brass bookmark &amp; wax seal</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Artisan loose-leaf tea sample included</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Printed curator's essay &amp; discussion prompts</li>
+          </ul>
+          <a href="membership.html" class="svc-btn svc-btn--shop">Reserve Next Month's Box →</a>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ============================================================
      SECTION 6 — READING EVENTS (tickets)

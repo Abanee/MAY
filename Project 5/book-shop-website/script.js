@@ -14,18 +14,38 @@
   /* ---------- THEME ---------- */
   const root = document.documentElement;
   const sun = $('#icon-sun'), moon = $('#icon-moon');
+  
+  // Preload hero images to prevent flickering on theme toggle
+  const imgLight = new Image(); imgLight.src = 'Assets/heroimage.png';
+  const imgDark = new Image(); imgDark.src = 'Assets/home1herodark.png';
+
   const applyTheme = (dark) => {
     root.classList.toggle('dark', dark);
-    sun.style.opacity = dark ? 0 : 1;
-    moon.style.opacity = dark ? 1 : 0;
+    if (sun) sun.style.opacity = dark ? 0 : 1;
+    if (moon) moon.style.opacity = dark ? 1 : 0;
+    
+    const heroLightEl = $('#hero-img-light');
+    const heroDarkEl = $('#hero-img-dark');
+    if (heroLightEl && heroDarkEl) {
+      if (dark) {
+        heroLightEl.classList.add('hidden');
+        heroDarkEl.classList.remove('hidden');
+      } else {
+        heroDarkEl.classList.add('hidden');
+        heroLightEl.classList.remove('hidden');
+      }
+    }
   };
   const saved = localStorage.getItem('mf-theme');
   applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
-  $('#theme-toggle').addEventListener('click', () => {
-    const dark = !root.classList.contains('dark');
-    applyTheme(dark);
-    localStorage.setItem('mf-theme', dark ? 'dark' : 'light');
-  });
+  const themeToggleBtn = $('#theme-toggle');
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const dark = !root.classList.contains('dark');
+      applyTheme(dark);
+      localStorage.setItem('mf-theme', dark ? 'dark' : 'light');
+    });
+  }
 
   /* ---------- RTL TOGGLE ---------- */
   const applyRTL = (rtl) => {
@@ -1140,3 +1160,114 @@
     });
   }
 })();
+
+/* =====================================================================
+   LUXURY CINEMATIC HERO BOOK ENGINE
+   ===================================================================== */
+(function initLuxuryHeroBook() {
+  const coverFront = document.getElementById('coverFront');
+  const leaf1 = document.getElementById('leaf1');
+  const leaf2 = document.getElementById('leaf2');
+  const leaf3 = document.getElementById('leaf3');
+  const leaf4 = document.getElementById('leaf4');
+  
+  const heroHeading = document.getElementById('heroHeading');
+  const heroParagraph = document.getElementById('heroParagraph');
+  const heroButtons = document.getElementById('heroButtons');
+
+  if (!coverFront) return;
+
+  // Initial Z-Index Stacking
+  if (leaf1) leaf1.style.zIndex = '40';
+  if (leaf2) leaf2.style.zIndex = '30';
+  if (leaf3) leaf3.style.zIndex = '20';
+  if (leaf4) leaf4.style.zIndex = '10';
+
+  // Intro Animation Sequence
+  // Step 1: Wait 400ms then open cover
+  setTimeout(() => {
+    coverFront.classList.add('is-open');
+
+    // Step 2: Turn Leaf 1 ("Marlowe & Finch") after 1400ms
+    setTimeout(() => {
+      if (leaf1) {
+        leaf1.style.zIndex = '60'; // Boost during flight
+        leaf1.classList.add('turned-1');
+        setTimeout(() => { leaf1.style.zIndex = '10'; }, 1100);
+      }
+
+      // Step 3: Turn Leaf 2 ("Curated Collections") after 1200ms
+      setTimeout(() => {
+        if (leaf2) {
+          leaf2.style.zIndex = '60';
+          leaf2.classList.add('turned-2');
+          setTimeout(() => { leaf2.style.zIndex = '12'; }, 1100);
+        }
+
+        // Step 4: Turn Leaf 3 ("Reading Rooms") after 1200ms
+        setTimeout(() => {
+          if (leaf3) {
+            leaf3.style.zIndex = '60';
+            leaf3.classList.add('turned-3');
+            setTimeout(() => { leaf3.style.zIndex = '14'; }, 1100);
+          }
+
+          // Step 5: Turn Leaf 4 ("Members Library") after 1200ms
+          setTimeout(() => {
+            if (leaf4) {
+              leaf4.style.zIndex = '60';
+              leaf4.classList.add('turned-4');
+              setTimeout(() => { leaf4.style.zIndex = '16'; }, 1100);
+            }
+
+            // Step 6: Fade upward Left Editorial Text after last page turn
+            setTimeout(() => {
+              if (heroHeading) {
+                heroHeading.style.opacity = '1';
+                heroHeading.style.transform = 'translateY(0)';
+              }
+              if (heroParagraph) {
+                heroParagraph.style.opacity = '1';
+                heroParagraph.style.transform = 'translateY(0)';
+              }
+              if (heroButtons) {
+                heroButtons.style.opacity = '1';
+                heroButtons.style.transform = 'translateY(0)';
+              }
+            }, 600);
+
+          }, 1200);
+        }, 1200);
+      }, 1200);
+    }, 1400);
+  }, 400);
+
+  // Mouse Interaction (Max 4deg Tilt & Natural Shadow Shift)
+  const heroSection = document.getElementById('hero');
+  const book3D = document.getElementById('book3D');
+  const bookShadow = document.getElementById('bookShadow');
+
+  if (heroSection && book3D) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      const tiltX = (-y / (rect.height / 2)) * 4; // Max 4 deg
+      const tiltY = (x / (rect.width / 2)) * 4;   // Max 4 deg
+
+      book3D.style.transform = `rotateX(${14 + tiltX}deg) rotateY(${-8 + tiltY}deg)`;
+      if (bookShadow) {
+        bookShadow.style.transform = `rotateX(80deg) translateX(${tiltY * 3.5}px) translateY(${tiltX * 2}px)`;
+      }
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      book3D.style.transform = `rotateX(14deg) rotateY(-8deg)`;
+      if (bookShadow) {
+        bookShadow.style.transform = `rotateX(80deg)`;
+      }
+    });
+  }
+})();
+
