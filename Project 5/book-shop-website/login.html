@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Login — Marlowe &amp; Finch Book Shop &amp; Lending Library</title>
+<meta name="description" content="Sign in or join Marlowe & Finch — a luxury neighborhood reading room. Manage books, reservations, and explore community events.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: { light: '#FAF7F2', dark: '#121212' },
+          card: { light: '#FFFFFF', dark: '#1D1D1D' },
+          primary: { light: '#234E52', dark: '#4FAF8F' },
+          accent: { light: '#C79A3B', dark: '#D4A64A' },
+          ink: { light: '#2E2E2E', dark: '#F5F5F5' },
+          hairline: { light: '#E7E1D8', dark: '#2D2D2D' },
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          display: ['Cormorant Garamond', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500 min-h-screen flex flex-col justify-between">
+
+<!-- ============ LOADER ============ -->
+<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
+  <div class="book-loader">
+    <svg width="88" height="70" viewBox="0 0 88 70" fill="none">
+      <path id="loader-left" d="M44 8C34 2 18 1 6 4V56C18 53 34 54 44 60V8Z" fill="none" stroke="currentColor" class="text-primary-light dark:text-primary-dark" stroke-width="1.6"/>
+      <path id="loader-right" d="M44 8C54 2 70 1 82 4V56C70 53 54 54 44 60V8Z" fill="none" stroke="currentColor" class="text-accent-light dark:text-accent-dark" stroke-width="1.6"/>
+    </svg>
+    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">Marlowe &amp; Finch</p>
+  </div>
+</div>
+
+<!-- ============ TOAST CONTAINER ============ -->
+<div id="toast-zone" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] flex flex-col gap-3 items-center pointer-events-none"></div>
+
+<!-- ============ SLIM HEADER (Login page — no nav links) ============ -->
+<header class="fixed top-0 inset-x-0 z-50 bg-bg-light/90 dark:bg-bg-dark/90 backdrop-blur-xl border-b border-hairline-light dark:border-hairline-dark transition-all duration-500">
+  <div class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+    <a href="index.html" class="flex items-center gap-2.5" aria-label="Marlowe & Finch home">
+      <svg width="26" height="26" viewBox="0 0 30 30" fill="none" class="text-primary-light dark:text-primary-dark">
+        <path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <line x1="15" y1="6" x2="15" y2="24.5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="font-serif text-base tracking-tight">Marlowe &amp; Finch</span>
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="text-sm text-ink-light/60 dark:text-ink-dark/60 hover:text-accent-light dark:hover:text-accent-dark transition">← Back to Library</a>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+        <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
+        <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="flex-1 flex items-center justify-center pt-28 pb-16 px-6">
+  
+  <div class="w-full max-w-md bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl p-6 sm:p-10 shadow-sm relative overflow-hidden transition-all">
+    <!-- Brand badge -->
+    <div class="flex items-center justify-center gap-2 mb-6">
+      <svg width="22" height="22" viewBox="0 0 30 30" fill="none" class="text-primary-light dark:text-primary-dark shrink-0">
+        <path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <line x1="15" y1="6" x2="15" y2="24.5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="font-serif text-sm tracking-wide">Marlowe &amp; Finch</span>
+    </div>
+
+    <!-- View Switch Tabs -->
+    <div class="flex border-b border-hairline-light dark:border-hairline-dark mb-8">
+      <button id="tab-login" class="flex-1 pb-3 text-sm font-semibold border-b-2 border-primary-light dark:border-primary-dark text-ink-light dark:text-ink-dark transition">
+        Sign In
+      </button>
+      <button id="tab-signup" class="flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent text-ink-light/45 dark:text-ink-dark/45 hover:text-ink-light dark:hover:text-ink-dark transition">
+        Create Account
+      </button>
+    </div>
+
+    <!-- Login Form View -->
+    <div id="login-view" class="space-y-6">
+      <div class="text-center mb-6">
+        <h2 class="font-serif text-2xl font-light">Welcome Back</h2>
+        <p class="text-xs text-ink-light/50 dark:text-ink-dark/50 mt-1">Access your member portal &amp; reading list</p>
+      </div>
+
+      <!-- Third party log-ins -->
+      <div class="grid grid-cols-2 gap-3">
+        <button class="flex items-center justify-center px-4 py-3 rounded-xl border border-hairline-light dark:border-hairline-dark hover:bg-primary-light/5 dark:hover:bg-primary-dark/5 transition text-xs font-semibold" onclick="handleSocialLogin('Google')">
+          <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24"><path fill="#EA4335" d="M12.24 10.285V14.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.859-3.579-7.859-8s3.529-8 7.859-8c2.46 0 4.105 1.025 5.047 1.926l3.227-3.104C18.28 1.93 15.49 1 12.24 1 5.92 1 1 5.92 1 12s4.92 11 11.24 11c6.59 0 11-4.63 11-11.2 0-.756-.08-1.333-.18-1.815H12.24z"/></svg>
+          Google
+        </button>
+        <button class="flex items-center justify-center px-4 py-3 rounded-xl border border-hairline-light dark:border-hairline-dark hover:bg-primary-light/5 dark:hover:bg-primary-dark/5 transition text-xs font-semibold" onclick="handleSocialLogin('Apple')">
+          <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.05-1.05.04-2.3.7-3.05 1.59-.64.74-1.2 1.88-1.08 2.99 1.17.09 2.35-.61 3.14-1.53z"/></svg>
+          Apple
+        </button>
+      </div>
+
+      <div class="relative flex items-center justify-center my-4">
+        <div class="absolute inset-x-0 h-px bg-hairline-light dark:bg-hairline-dark"></div>
+        <span class="relative z-10 bg-bg-light dark:bg-bg-dark px-3 text-[10px] uppercase tracking-widest text-ink-light/40 dark:text-ink-dark/40">Or Use Credentials</span>
+      </div>
+
+      <!-- Log-in credentials -->
+      <form id="credentials-login-form" class="space-y-4" novalidate>
+        <label class="field">
+          <span class="text-xs uppercase tracking-wider text-ink-light/50 dark:text-ink-dark/50">Email Address</span>
+          <input type="email" id="login-email" class="input-field mt-1.5" placeholder="eleanor@example.com" required>
+        </label>
+        <label class="field">
+          <span class="text-xs uppercase tracking-wider text-ink-light/50 dark:text-ink-dark/50">Password</span>
+          <input type="password" id="login-pass" class="input-field mt-1.5" placeholder="••••••••" required>
+        </label>
+        <div class="flex items-center justify-between text-xs pt-1">
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input type="checkbox" class="rounded border-hairline-light dark:border-hairline-dark text-primary-light focus:ring-0">
+            <span class="text-ink-light/60 dark:text-ink-dark/60">Remember me</span>
+          </label>
+          <a href="#" class="text-accent-light dark:text-accent-dark hover:underline" onclick="showToast('Password reset link sent to your registered email.', 'info')">Forgot Password?</a>
+        </div>
+        <button type="submit" class="btn-primary ripple w-full py-3.5 text-sm font-semibold tracking-wide hover:brightness-105 transition mt-2">
+          Sign In
+        </button>
+      </form>
+    </div>
+
+    <!-- Sign-Up Form View -->
+    <div id="signup-view" class="hidden space-y-6">
+      <div class="text-center mb-6">
+        <h2 class="font-serif text-2xl font-light">Join the Club</h2>
+        <p class="text-xs text-ink-light/50 dark:text-ink-dark/50 mt-1">Unlock borrowing rights &amp; exclusive reading circles</p>
+      </div>
+
+      <!-- Third party log-ins -->
+      <div class="grid grid-cols-2 gap-3">
+        <button class="flex items-center justify-center px-4 py-3 rounded-xl border border-hairline-light dark:border-hairline-dark hover:bg-primary-light/5 dark:hover:bg-primary-dark/5 transition text-xs font-semibold" onclick="handleSocialLogin('Google')">
+          <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24"><path fill="#EA4335" d="M12.24 10.285V14.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.859-3.579-7.859-8s3.529-8 7.859-8c2.46 0 4.105 1.025 5.047 1.926l3.227-3.104C18.28 1.93 15.49 1 12.24 1 5.92 1 1 5.92 1 12s4.92 11 11.24 11c6.59 0 11-4.63 11-11.2 0-.756-.08-1.333-.18-1.815H12.24z"/></svg>
+          Google
+        </button>
+        <button class="flex items-center justify-center px-4 py-3 rounded-xl border border-hairline-light dark:border-hairline-dark hover:bg-primary-light/5 dark:hover:bg-primary-dark/5 transition text-xs font-semibold" onclick="handleSocialLogin('Apple')">
+          <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.05-1.05.04-2.3.7-3.05 1.59-.64.74-1.2 1.88-1.08 2.99 1.17.09 2.35-.61 3.14-1.53z"/></svg>
+          Apple
+        </button>
+      </div>
+
+      <div class="relative flex items-center justify-center my-4">
+        <div class="absolute inset-x-0 h-px bg-hairline-light dark:bg-hairline-dark"></div>
+        <span class="relative z-10 bg-bg-light dark:bg-bg-dark px-3 text-[10px] uppercase tracking-widest text-ink-light/40 dark:text-ink-dark/40">Or Sign Up</span>
+      </div>
+
+      <!-- Sign-up credentials -->
+      <form id="credentials-signup-form" class="space-y-4" novalidate>
+        <label class="field">
+          <span class="text-xs uppercase tracking-wider text-ink-light/50 dark:text-ink-dark/50">Full Name</span>
+          <input type="text" id="signup-name" class="input-field mt-1.5" placeholder="Eleanor Hayes" required>
+        </label>
+        <label class="field">
+          <span class="text-xs uppercase tracking-wider text-ink-light/50 dark:text-ink-dark/50">Email Address</span>
+          <input type="email" id="signup-email" class="input-field mt-1.5" placeholder="eleanor@example.com" required>
+        </label>
+        <label class="field">
+          <span class="text-xs uppercase tracking-wider text-ink-light/50 dark:text-ink-dark/50">Password</span>
+          <input type="password" id="signup-pass" class="input-field mt-1.5" placeholder="••••••••" required>
+        </label>
+        <button type="submit" class="btn-primary ripple w-full py-3.5 text-sm font-semibold tracking-wide hover:brightness-105 transition mt-2">
+          Register &amp; Proceed
+        </button>
+      </form>
+    </div>
+
+    <!-- Alert placeholder -->
+    <p id="auth-msg" class="text-xs text-center text-primary-light dark:text-primary-dark h-4 mt-4 font-medium"></p>
+  </div>
+
+</main>
+
+<footer class="py-6 border-t border-hairline-light dark:border-hairline-dark text-center text-xs text-ink-light/45 dark:text-ink-dark/45 bg-[#16231F] text-[#FAF7F2] dark:bg-[#0a0c0b]">
+  <div class="max-w-[1300px] mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p>© 2026 Marlowe &amp; Finch. All rights reserved.</p>
+    <div class="flex gap-4">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="contact.html" class="hover:underline">Contact Support</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // Page-specific tab switching logic
+  const tabLogin = document.getElementById('tab-login');
+  const tabSignup = document.getElementById('tab-signup');
+  const loginView = document.getElementById('login-view');
+  const signupView = document.getElementById('signup-view');
+
+  tabLogin.addEventListener('click', () => {
+    tabLogin.className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-primary-light dark:border-primary-dark text-ink-light dark:text-ink-dark transition";
+    tabSignup.className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent text-ink-light/45 dark:text-ink-dark/45 hover:text-ink-light dark:hover:text-ink-dark transition";
+    loginView.classList.remove('hidden');
+    signupView.classList.add('hidden');
+  });
+
+  tabSignup.addEventListener('click', () => {
+    tabSignup.className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-primary-light dark:border-primary-dark text-ink-light dark:text-ink-dark transition";
+    tabLogin.className = "flex-1 pb-3 text-sm font-semibold border-b-2 border-transparent text-ink-light/45 dark:text-ink-dark/45 hover:text-ink-light dark:hover:text-ink-dark transition";
+    signupView.classList.remove('hidden');
+    loginView.classList.add('hidden');
+  });
+
+  // Direct Social Logins Mock
+  function handleSocialLogin(provider) {
+    let zone = document.getElementById('toast-zone');
+    if (!zone) {
+      zone = document.createElement('div');
+      zone.id = 'toast-zone';
+      zone.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] flex flex-col gap-3 items-center pointer-events-none';
+      document.body.appendChild(zone);
+    }
+    const t = document.createElement('div');
+    t.className = 'toast success';
+    t.innerHTML = `<span>Logged in with ${provider} successfully! Redirecting...</span>`;
+    zone.appendChild(t);
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 1500);
+  }
+</script>
+</body>
+</html>

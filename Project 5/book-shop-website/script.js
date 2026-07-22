@@ -3,12 +3,13 @@
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!$('#site-nav')) return; // not on this page (e.g. dashboard.html has its own header)
+  if (document.body.classList.contains('dashboard-page')) return;
 
   /* ---------- LOADER ---------- */
-  window.addEventListener('load', () => {
-    setTimeout(() => $('#loader').classList.add('loaded'), 500);
-  });
+  const loaderEl = document.getElementById('loader');
+  if (loaderEl) {
+    window.addEventListener('load', () => { setTimeout(() => loaderEl.classList.add('loaded'), 500); });
+  }
 
   /* ---------- THEME ---------- */
   const root = document.documentElement;
@@ -26,30 +27,49 @@
     localStorage.setItem('mf-theme', dark ? 'dark' : 'light');
   });
 
+  /* ---------- RTL TOGGLE ---------- */
+  const applyRTL = (rtl) => {
+    root.setAttribute('dir', rtl ? 'rtl' : 'ltr');
+    const btns = document.querySelectorAll('#rtl-toggle, #rtl-toggle-mobile');
+    btns.forEach(b => { if (b) b.textContent = rtl ? 'LTR' : 'RTL'; });
+    localStorage.setItem('mf-rtl', rtl ? '1' : '0');
+  };
+  const savedRTL = localStorage.getItem('mf-rtl') === '1';
+  applyRTL(savedRTL);
+  document.querySelectorAll('#rtl-toggle, #rtl-toggle-mobile').forEach(btn => {
+    if (btn) btn.addEventListener('click', () => applyRTL(root.getAttribute('dir') !== 'rtl'));
+  });
+
   /* ---------- NAV: glass on scroll + progress + back to top ---------- */
   const nav = $('#site-nav');
   const progress = $('#progress-bar');
   const backTop = $('#back-to-top');
-  const onScroll = () => {
-    const y = window.scrollY;
-    nav.classList.toggle('scrolled', y > 40);
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    progress.style.width = `${h > 0 ? (y / h) * 100 : 0}%`;
-    if (y > 600) { backTop.style.opacity = 1; backTop.style.pointerEvents = 'auto'; }
-    else { backTop.style.opacity = 0; backTop.style.pointerEvents = 'none'; }
-  };
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  if (nav && progress) {
+    const onScroll = () => {
+      const y = window.scrollY;
+      nav.classList.toggle('scrolled', y > 40);
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      progress.style.width = `${h > 0 ? (y / h) * 100 : 0}%`;
+      if (backTop) {
+        if (y > 600) { backTop.style.opacity = 1; backTop.style.pointerEvents = 'auto'; }
+        else { backTop.style.opacity = 0; backTop.style.pointerEvents = 'none'; }
+      }
+    };
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    if (backTop) backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
 
   /* ---------- MOBILE MENU ---------- */
   const menuBtn = $('#menu-toggle'), mobileMenu = $('#mobile-menu');
-  let menuOpen = false;
-  menuBtn.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    mobileMenu.style.maxHeight = menuOpen ? mobileMenu.scrollHeight + 'px' : '0px';
-  });
-  $$('#mobile-menu a').forEach(a => a.addEventListener('click', () => { menuOpen = false; mobileMenu.style.maxHeight = '0px'; }));
+  if (menuBtn && mobileMenu) {
+    let menuOpen = false;
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.style.maxHeight = menuOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+    });
+    $$('#mobile-menu a').forEach(a => a.addEventListener('click', () => { menuOpen = false; mobileMenu.style.maxHeight = '0px'; }));
+  }
 
   /* ---------- MAGNETIC BUTTONS ---------- */
   if (!reduceMotion && window.matchMedia('(hover:hover)').matches) {
@@ -986,4 +1006,137 @@
     });
   }, { threshold: 0.5 });
   $$('.mem-counter').forEach(el => counterObs.observe(el));
+})();
+
+/* =====================================================================
+   CONTACT & AUTH PAGES — interactions
+   Guarded so this file stays safe to share across all pages.
+   ===================================================================== */
+(() => {
+  const $  = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+  // Helper for toasts on these pages
+  function showLocalToast(type, msg) {
+    let zone = document.getElementById('toast-zone');
+    if (!zone) {
+      zone = document.createElement('div');
+      zone.id = 'toast-zone';
+      zone.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] flex flex-col gap-3 items-center pointer-events-none';
+      document.body.appendChild(zone);
+    }
+    const toast = document.createElement('div');
+    toast.className = 'toast ' + type;
+    toast.innerHTML = '<span>' + msg + '</span>';
+    zone.appendChild(toast);
+    setTimeout(() => {
+      toast.classList.add('leaving');
+      setTimeout(() => { toast.remove(); }, 400);
+    }, 3000);
+  }
+
+  // 1. Contact Form Handler
+  const contactForm = document.getElementById('contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const subject = document.getElementById('contact-subject').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+      const msgPlaceholder = document.getElementById('contact-form-msg');
+
+      if (!name || !email || !subject || !message) {
+        msgPlaceholder.textContent = 'Please fill out all required fields.';
+        msgPlaceholder.className = 'text-xs text-center text-red-500 h-4 mt-2 font-medium';
+        return;
+      }
+      if (!email.includes('@')) {
+        msgPlaceholder.textContent = 'Please enter a valid email address.';
+        msgPlaceholder.className = 'text-xs text-center text-red-500 h-4 mt-2 font-medium';
+        return;
+      }
+
+      msgPlaceholder.textContent = 'Sending message...';
+      msgPlaceholder.className = 'text-xs text-center text-primary-light dark:text-primary-dark h-4 mt-2 font-medium';
+
+      setTimeout(() => {
+        msgPlaceholder.textContent = 'Message sent successfully! We will get back to you soon.';
+        msgPlaceholder.className = 'text-xs text-center text-green-600 dark:text-[#4FAF8F] h-4 mt-2 font-medium';
+        contactForm.reset();
+        showLocalToast('success', 'Message sent successfully!');
+        setTimeout(() => { msgPlaceholder.textContent = ''; }, 5000);
+      }, 1200);
+    });
+  }
+
+  // 2. Login Form Handler
+  const loginForm = document.getElementById('credentials-login-form');
+  if (loginForm) {
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const pass = document.getElementById('login-pass').value.trim();
+      const authMsg = document.getElementById('auth-msg');
+
+      if (!email || !pass) {
+        authMsg.textContent = 'Please enter both email and password.';
+        authMsg.className = 'text-xs text-center text-red-500 h-4 mt-4 font-medium';
+        return;
+      }
+      if (!email.includes('@')) {
+        authMsg.textContent = 'Please enter a valid email address.';
+        authMsg.className = 'text-xs text-center text-red-500 h-4 mt-4 font-medium';
+        return;
+      }
+
+      authMsg.textContent = 'Signing in...';
+      authMsg.className = 'text-xs text-center text-primary-light dark:text-primary-dark h-4 mt-4 font-medium';
+
+      setTimeout(() => {
+        showLocalToast('success', 'Logged in successfully! Redirecting...');
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1000);
+      }, 1000);
+    });
+  }
+
+  // 3. Sign-Up Form Handler
+  const signupForm = document.getElementById('credentials-signup-form');
+  if (signupForm) {
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('signup-name').value.trim();
+      const email = document.getElementById('signup-email').value.trim();
+      const pass = document.getElementById('signup-pass').value.trim();
+      const authMsg = document.getElementById('auth-msg');
+
+      if (!name || !email || !pass) {
+        authMsg.textContent = 'Please fill out all fields.';
+        authMsg.className = 'text-xs text-center text-red-500 h-4 mt-4 font-medium';
+        return;
+      }
+      if (!email.includes('@')) {
+        authMsg.textContent = 'Please enter a valid email address.';
+        authMsg.className = 'text-xs text-center text-red-500 h-4 mt-4 font-medium';
+        return;
+      }
+      if (pass.length < 6) {
+        authMsg.textContent = 'Password must be at least 6 characters.';
+        authMsg.className = 'text-xs text-center text-red-500 h-4 mt-4 font-medium';
+        return;
+      }
+
+      authMsg.textContent = 'Creating account...';
+      authMsg.className = 'text-xs text-center text-primary-light dark:text-primary-dark h-4 mt-4 font-medium';
+
+      setTimeout(() => {
+        showLocalToast('success', 'Account created! Welcome to Marlowe & Finch.');
+        setTimeout(() => {
+          window.location.href = 'dashboard.html';
+        }, 1200);
+      }, 1000);
+    });
+  }
 })();

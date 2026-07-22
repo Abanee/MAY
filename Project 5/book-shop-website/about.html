@@ -71,8 +71,7 @@
       <li><a href="about.html" class="nav-link mem-active-link" aria-current="page">About</a></li>
       <li><a href="book.html" class="nav-link">Book Collection</a></li>
       <li><a href="membership.html" class="nav-link">Membership</a></li>
-      <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-      <li><a href="index.html#newsletter" class="nav-link">Contact</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
      </ul>
 
     <div class="flex items-center gap-2">
@@ -83,7 +82,8 @@
         <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
         <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
       </button>
-      <a href="index.html#dashboard" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
+      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
       <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center">
         <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
@@ -98,9 +98,11 @@
       <li><a href="about.html" class="mobile-link text-accent-light dark:text-accent-dark">About</a></li>
       <li><a href="book.html" class="mobile-link">Book Collection</a></li>
       <li><a href="membership.html" class="mobile-link">Membership</a></li>
-      <li><a href="dashboard.html" class="mobile-link">Dashboard</a></li>
-      <li><a href="index.html#newsletter" class="mobile-link">Contact</a></li>
-      <li><a href="dashboard.html" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+      <li><a href="contact.html" class="mobile-link">Contact</a></li>
+      <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+        <a href="login.html" class="flex-1 text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Member Login</a>
+        <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold">RTL</button>
+      </li>
     </ul>
   </div>
 </header>
@@ -272,54 +274,102 @@
       <p class="eyebrow">A Walk Through Our Rooms</p>
       <h2 class="section-title mt-3">Inside Our Library</h2>
     </div>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
       <div class="h2-frame reveal-scroll">
-        <div class="h2-frame-photo" style="aspect-ratio:3/4">
-          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#3B5B7B,#1c2e3f); width:100%; height:100%;"></div>
+        <div class="svc-img-wrap" style="aspect-ratio:3/4">
+          <img src="bookshop_interior.png" alt="Marlowe & Finch fiction shelves" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay"></div>
         </div>
         <p class="h2-frame-cap">Fiction Shelves</p>
       </div>
       <div class="h2-frame reveal-scroll" style="transition-delay:.05s">
-        <div class="h2-frame-photo" style="aspect-ratio:3/4">
-          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#C79A3B,#7d5f22); width:100%; height:100%;"></div>
+        <div class="svc-img-wrap" style="aspect-ratio:3/4">
+          <img src="lending_library.png" alt="Lending library reading room" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay svc-img-overlay--lib"></div>
         </div>
-        <p class="h2-frame-cap">Children's Reading Corner</p>
+        <p class="h2-frame-cap">Lending Library Room</p>
       </div>
       <div class="h2-frame reveal-scroll" style="transition-delay:.1s">
-        <div class="h2-frame-photo" style="aspect-ratio:3/4">
-          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#4A6B5B,#233a30); width:100%; height:100%;"></div>
+        <div class="svc-img-wrap" style="aspect-ratio:3/4">
+          <img src="reading_events.png" alt="Literary event in reading room" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay"></div>
         </div>
-        <p class="h2-frame-cap">Study Area</p>
+        <p class="h2-frame-cap">Reading Events</p>
       </div>
       <div class="h2-frame reveal-scroll" style="transition-delay:.15s">
-        <div class="h2-frame-photo" style="aspect-ratio:3/4">
-          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#7B3B3B,#3f1f1f); width:100%; height:100%;"></div>
+        <div class="svc-img-wrap" style="aspect-ratio:3/4">
+          <img src="about_founders.png" alt="Josephine Marlowe and Adrian Finch at the original book stall, 1991" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay"></div>
         </div>
-        <p class="h2-frame-cap">Coffee &amp; Reading Lounge</p>
+        <p class="h2-frame-cap">The Founders, 1991</p>
       </div>
-      <div class="h2-frame reveal-scroll" style="transition-delay:.2s">
-        <div class="h2-frame-photo" style="aspect-ratio:3/4">
-          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#5B3B6B,#2c1f34); width:100%; height:100%;"></div>
-        </div>
-        <p class="h2-frame-cap">Community Discussion Room</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOK SHOP & LENDING LIBRARY — DUAL SERVICE ============ -->
+<section id="our-services" class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40 overflow-hidden">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 reveal-scroll">
+      <p class="eyebrow">Two Ways to Read</p>
+      <h2 class="section-title mt-3">Our Shop &amp; Lending Library</h2>
+      <p class="mt-5 max-w-2xl text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">From the very first market stall, Marlowe &amp; Finch has carried two promises — to sell books that earn their place on your shelf forever, and to lend titles to every reader, regardless of budget. The ground floor is the bookshop. The reading rooms above are the library. Same address. Two experiences.</p>
+    </div>
+
+    <!-- Founder photo + dual column layout -->
+    <div class="grid lg:grid-cols-[1fr_1.1fr] gap-14 lg:gap-20 items-center mb-20 reveal-scroll">
+      <div class="ab-founder-img-wrap">
+        <img src="about_founders.png" alt="Josephine Marlowe and Adrian Finch at their first market stall in 1991" loading="lazy">
+        <p class="ab-founder-caption">Josephine &amp; Adrian · Birchwood Market, 1991</p>
       </div>
-      <div class="h2-frame reveal-scroll" style="transition-delay:.25s">
-        <div class="h2-frame-photo" style="aspect-ratio:3/4">
-          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#234E52,#101f21); width:100%; height:100%;"></div>
-        </div>
-        <p class="h2-frame-cap">New Arrivals Display</p>
+      <div>
+        <p class="eyebrow mb-3">The Original Promise</p>
+        <h3 class="font-serif text-2xl lg:text-3xl font-light mb-5">Books to Keep, &amp; Books to Borrow</h3>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed mb-5">When Josephine Marlowe set up her first stall in 1991, she painted two signs. One read <em>For Sale</em> — the books she'd sourced and curated. The other read <em>Borrow &amp; Return</em> — the titles she loved most and couldn't bear to sell. That dual promise opened the very first day of Marlowe &amp; Finch, and has never changed.</p>
+        <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Today, the ground floor is home to our curated book shop — new releases, collector's editions, local authors, and a coffee nook. The floors above hold the lending library — 18,400 titles available to every member, tracked by our digital dashboard, with return deadlines that are gentle and fair.</p>
       </div>
-      <div class="h2-frame reveal-scroll" style="transition-delay:.3s">
-        <div class="h2-frame-photo" style="aspect-ratio:3/4">
-          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#8a5a2b,#3f2a14); width:100%; height:100%;"></div>
+    </div>
+
+    <!-- Two service cards -->
+    <div class="grid lg:grid-cols-2 gap-10 xl:gap-14">
+      <div class="svc-card reveal-scroll group">
+        <div class="svc-img-wrap">
+          <img src="bookshop_interior.png" alt="The Book Shop interior" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay"></div>
+          <span class="svc-badge svc-badge--shop">The Book Shop</span>
         </div>
-        <p class="h2-frame-cap">Rare Book Section</p>
+        <div class="svc-body">
+          <p class="svc-eyebrow">Ground Floor</p>
+          <h3 class="svc-title">Browse, Buy &amp; Collect</h3>
+          <p class="svc-desc">Curated new releases, rare editions, local authors, and complimentary wax-seal gift wrapping. A coffee nook for lingering. Everything chosen by hand.</p>
+          <ul class="svc-list" role="list">
+            <li><span class="svc-icon svc-icon--shop">✦</span> Curated new arrivals &amp; bestsellers</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Collector &amp; leather-bound editions</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Local &amp; independent author titles</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Coffee nook &amp; reading chairs</li>
+          </ul>
+          <a href="book.html" class="svc-btn svc-btn--shop">Browse the Bookshop →</a>
+        </div>
       </div>
-      <div class="h2-frame reveal-scroll" style="transition-delay:.35s">
-        <div class="h2-frame-photo" style="aspect-ratio:3/4">
-          <div class="h2-photo-bg" style="background:linear-gradient(160deg,#3B6B57,#183028); width:100%; height:100%;"></div>
+
+      <div class="svc-card reveal-scroll group" style="transition-delay:.1s">
+        <div class="svc-img-wrap">
+          <img src="lending_library.png" alt="The Lending Library reading room" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay svc-img-overlay--lib"></div>
+          <span class="svc-badge svc-badge--lib">The Library</span>
         </div>
-        <p class="h2-frame-cap">The Reading Lamp Row</p>
+        <div class="svc-body">
+          <p class="svc-eyebrow svc-eyebrow--lib">Upper Floors</p>
+          <h3 class="svc-title">Borrow, Track &amp; Return</h3>
+          <p class="svc-desc">18,400+ titles across 14 genres. A digital dashboard tracks your borrowed books and return deadlines. Drop returns in the 24-hour box. No surprises. Just reading.</p>
+          <ul class="svc-list" role="list">
+            <li><span class="svc-icon svc-icon--lib">✦</span> 18,400+ titles across 14 genres</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Digital borrow &amp; deadline tracker</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> 24-hour drop-box returns &amp; renewals</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Members-only events &amp; reading clubs</li>
+          </ul>
+          <a href="membership.html" class="svc-btn svc-btn--lib">View Membership Plans →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -621,8 +671,8 @@
     <h2 class="section-title mt-3 mb-5">Join Our Reading Community</h2>
     <p class="text-sm text-ink-light/65 dark:text-ink-dark/65 mb-10 max-w-lg mx-auto leading-relaxed">Thirty-two years in, the door is still open the same way it was on day one — come see the shelves for yourself.</p>
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="index.html#membership" class="magnetic btn-primary">Become a Member</a>
-      <a href="index.html#collection" class="magnetic px-8 py-4 rounded-full border border-hairline-light dark:border-hairline-dark font-medium text-sm tracking-wide hover:border-accent-light dark:hover:border-accent-dark transition">Browse Books</a>
+      <a href="membership.html" class="magnetic btn-primary">Become a Member</a>
+      <a href="book.html" class="magnetic px-8 py-4 rounded-full border border-hairline-light dark:border-hairline-dark font-medium text-sm tracking-wide hover:border-accent-light dark:hover:border-accent-dark transition">Browse Books</a>
     </div>
   </div>
 </section>
@@ -641,7 +691,7 @@
     </div>
     <div>
       <p class="footer-head">Quick Links</p>
-      <ul class="footer-list"><li><a href="index.html#collection">Books</a></li><li><a href="index.html#membership">Membership</a></li><li><a href="index.html#events">Events</a></li><li><a href="about.html">About</a></li></ul>
+      <ul class="footer-list"><li><a href="index.html">Home</a></li><li><a href="book.html">Book Collection</a></li><li><a href="membership.html">Membership</a></li><li><a href="about.html">About</a></li></ul>
     </div>
     <div>
       <p class="footer-head">Genres</p>

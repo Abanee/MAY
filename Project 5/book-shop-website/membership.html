@@ -58,8 +58,7 @@
       <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="book.html" class="nav-link">Book Collection</a></li>
       <li><a href="membership.html" class="nav-link mem-active-link" aria-current="page">Membership</a></li>
-      <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-      <li><a href="index.html#newsletter" class="nav-link">Contact</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
     <div class="flex items-center gap-2">
       <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
@@ -69,7 +68,8 @@
         <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
         <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
       </button>
-      <a href="dashboard.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
+      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
       <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center">
         <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
@@ -82,9 +82,11 @@
       <li><a href="about.html" class="mobile-link">About</a></li>
       <li><a href="book.html" class="mobile-link">Book Collection</a></li>
       <li><a href="membership.html" class="mobile-link text-accent-light dark:text-accent-dark">Membership</a></li>
-      <li><a href="dashboard.html" class="mobile-link">Dashboard</a></li>
-      <li><a href="index.html#newsletter" class="mobile-link">Contact</a></li>
-      <li><a href="dashboard.html" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+      <li><a href="contact.html" class="mobile-link">Contact</a></li>
+      <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+        <a href="login.html" class="flex-1 text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Member Login</a>
+        <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold">RTL</button>
+      </li>
     </ul>
   </div>
 </header>
@@ -474,7 +476,7 @@
     </div>
     <div>
       <p class="footer-head">Membership</p>
-      <ul class="footer-list"><li><a href="membership.html#mem-plans">Explorer Plan</a></li><li><a href="membership.html#mem-plans">Reader Plan</a></li><li><a href="membership.html#mem-plans">Scholar Plan</a></li><li><a href="dashboard.html">Member Login</a></li></ul>
+      <ul class="footer-list"><li><a href="membership.html#mem-plans">Explorer Plan</a></li><li><a href="membership.html#mem-plans">Reader Plan</a></li><li><a href="membership.html#mem-plans">Scholar Plan</a></li><li><a href="login.html">Member Login</a></li></ul>
     </div>
     <div>
       <p class="footer-head">Library Hours</p>

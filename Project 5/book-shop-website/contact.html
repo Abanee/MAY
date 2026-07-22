@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Marlowe &amp; Finch Book Shop &amp; Lending Library</title>
+<meta name="description" content="Get in touch with Marlowe & Finch. Find our hours, location, contact details, or send us a message directly.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: { light: '#FAF7F2', dark: '#121212' },
+          card: { light: '#FFFFFF', dark: '#1D1D1D' },
+          primary: { light: '#234E52', dark: '#4FAF8F' },
+          accent: { light: '#C79A3B', dark: '#D4A64A' },
+          ink: { light: '#2E2E2E', dark: '#F5F5F5' },
+          hairline: { light: '#E7E1D8', dark: '#2D2D2D' },
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          display: ['Cormorant Garamond', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
+
+<!-- ============ LOADER ============ -->
+<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
+  <div class="book-loader">
+    <svg width="88" height="70" viewBox="0 0 88 70" fill="none">
+      <path id="loader-left" d="M44 8C34 2 18 1 6 4V56C18 53 34 54 44 60V8Z" fill="none" stroke="currentColor" class="text-primary-light dark:text-primary-dark" stroke-width="1.6"/>
+      <path id="loader-right" d="M44 8C54 2 70 1 82 4V56C70 53 54 54 44 60V8Z" fill="none" stroke="currentColor" class="text-accent-light dark:text-accent-dark" stroke-width="1.6"/>
+    </svg>
+    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">Marlowe &amp; Finch</p>
+  </div>
+</div>
+
+<!-- ============ READING PROGRESS ============ -->
+<div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%"></div>
+
+<!-- ============ CURSOR SPOTLIGHT ============ -->
+<div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[5] hidden lg:block"></div>
+
+<!-- ============ TOAST CONTAINER ============ -->
+<div id="toast-zone" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] flex flex-col gap-3 items-center pointer-events-none"></div>
+
+<!-- ============ NAVIGATION ============ -->
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+    <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Marlowe &amp; Finch home">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" class="text-primary-light dark:text-primary-dark">
+        <path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+        <line x1="15" y1="6" x2="15" y2="24.5" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      <span class="font-serif text-lg tracking-tight">Marlowe &amp; Finch</span>
+    </a>
+
+    <ul class="hidden lg:flex items-center gap-8 text-[13.5px] tracking-wide text-ink-light dark:text-ink-dark">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Home 2</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="book.html" class="nav-link">Book Collection</a></li>
+      <li><a href="membership.html" class="nav-link">Membership</a></li>
+      <li><a href="contact.html" class="nav-link text-accent-light dark:text-accent-dark" aria-current="page">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-ink-light dark:text-ink-dark">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden text-ink-light dark:text-ink-dark">
+        <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
+        <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider text-ink-light dark:text-ink-dark">RTL</button>
+      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center text-ink-light dark:text-ink-dark">
+        <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- mobile menu -->
+  <div id="mobile-menu" class="lg:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-xl border-t border-hairline-light dark:border-hairline-dark">
+    <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
+      <li><a href="index.html" class="mobile-link">Home</a></li>
+      <li><a href="home2.html" class="mobile-link">Home 2</a></li>
+      <li><a href="about.html" class="mobile-link">About</a></li>
+      <li><a href="book.html" class="mobile-link">Book Collection</a></li>
+      <li><a href="membership.html" class="mobile-link">Membership</a></li>
+      <li><a href="contact.html" class="mobile-link text-accent-light dark:text-accent-dark">Contact</a></li>
+      <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+        <a href="login.html" class="flex-1 text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Member Login</a>
+        <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold">RTL</button>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ SEARCH MODAL ============ -->
+<div id="search-modal" class="fixed inset-0 z-[90] hidden">
+  <div class="absolute inset-0 bg-[#12100c]/80 backdrop-blur-sm" id="search-backdrop"></div>
+  <div class="relative max-w-3xl mx-auto mt-[8vh] lg:mt-[12vh] px-6">
+    <div class="bg-bg-light dark:bg-card-dark rounded-2xl shadow-2xl p-6 lg:p-8 search-pop">
+      <div class="flex items-center gap-4 border-b border-hairline-light dark:border-hairline-dark pb-4">
+        <svg width="20" height="20" viewBox="0 0 18 18" fill="none" class="text-ink-light/40 dark:text-ink-dark/40"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input id="search-input" type="text" placeholder="Search titles, authors, genres…" class="flex-1 bg-transparent outline-none font-serif text-xl lg:text-2xl placeholder:text-ink-light/30 dark:placeholder:text-ink-dark/30" aria-label="Search">
+        <button id="search-close" aria-label="Close search" class="text-ink-light/50 dark:text-ink-dark/50 hover:text-accent-light dark:hover:text-accent-dark text-sm">ESC</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CONTACT HERO ============ -->
+<section class="relative h-[55vh] min-h-[360px] flex items-end overflow-hidden">
+  <img src="contact_hero_banner.png" alt="Marlowe & Finch bookshop storefront at golden hour" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager">
+  <div class="absolute inset-0 bg-gradient-to-b from-[#16231F]/20 via-[#16231F]/40 to-[#16231F]/90"></div>
+  <div class="relative z-10 max-w-[1300px] mx-auto w-full px-6 pb-14">
+    <p class="text-[12px] tracking-[0.4em] uppercase text-[#D4A64A] mb-3">Marlowe &amp; Finch · Est. 1994</p>
+    <h1 class="font-serif text-4xl sm:text-5xl lg:text-[60px] font-light text-[#FAF7F2] leading-[1.1] mb-4">Come Visit Us</h1>
+    <p class="text-[#FAF7F2]/70 text-sm lg:text-base max-w-lg leading-relaxed">14 Birchwood Lane, Nungambakkam · Open every day · hello@marloweandfinch.co</p>
+  </div>
+</section>
+
+<main class="pt-16 pb-24 px-6 max-w-[1300px] mx-auto">
+  <div class="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-20 items-start">
+    
+    <!-- Left Column: Details & Map -->
+    <div class="space-y-10 reveal" style="transition-delay: .1s">
+      
+      <!-- Info Cards -->
+      <div class="grid sm:grid-cols-2 gap-8">
+        <div>
+          <h3 class="font-serif text-lg text-primary-light dark:text-primary-dark mb-3">Our Location</h3>
+          <p class="text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">
+            14 Birchwood Lane<br>
+            Nungambakkam, Chennai<br>
+            Tamil Nadu 600034
+          </p>
+        </div>
+        <div>
+          <h3 class="font-serif text-lg text-primary-light dark:text-primary-dark mb-3">Hours of Rest</h3>
+          <p class="text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">
+            Mon – Fri : 9 am – 8 pm<br>
+            Saturday : 10 am – 6 pm<br>
+            Sunday : 11 am – 5 pm
+          </p>
+        </div>
+        <div>
+          <h3 class="font-serif text-lg text-primary-light dark:text-primary-dark mb-3">Direct Inquiries</h3>
+          <p class="text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">
+            Phone: +91 44 2827 8844<br>
+            Email: hello@marloweandfinch.co
+          </p>
+        </div>
+        <div>
+          <h3 class="font-serif text-lg text-primary-light dark:text-primary-dark mb-3">Social Desk</h3>
+          <div class="flex gap-4 mt-2">
+            <a href="#" class="text-sm text-ink-light/60 hover:text-accent-light dark:text-ink-dark/60 dark:hover:text-accent-dark transition">Instagram</a>
+            <a href="#" class="text-sm text-ink-light/60 hover:text-accent-light dark:text-ink-dark/60 dark:hover:text-accent-dark transition">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map Mockup -->
+      <div class="relative overflow-hidden rounded-2xl border border-hairline-light dark:border-hairline-dark bg-card-light dark:bg-card-dark p-6 h-[260px] flex flex-col justify-end shadow-sm">
+        <div class="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none" style="background-image: radial-gradient(circle at 70% 30%, var(--primary-light, #234E52) 1px, transparent 1px), linear-gradient(45deg, #e7e1d8 25%, transparent 25%), linear-gradient(-45deg, #e7e1d8 25%, transparent 25%); background-size: 24px 24px;"></div>
+        <div class="absolute inset-0 bg-[#ebe7df] dark:bg-[#1a1a1a] flex items-center justify-center p-4">
+          <!-- Pin -->
+          <div class="relative flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-primary-light dark:bg-primary-dark flex items-center justify-center text-bg-light dark:text-bg-dark shadow-md z-10 animate-bounce">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21l-8-8h16l-8 8z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="w-12 h-2.5 bg-black/10 dark:bg-black/35 rounded-full filter blur-sm transform translate-y-1"></div>
+            <!-- Popover -->
+            <div class="absolute bottom-10 bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark text-[11px] font-medium px-2.5 py-1 rounded shadow-lg whitespace-nowrap">
+              Marlowe &amp; Finch
+            </div>
+          </div>
+        </div>
+        <div class="relative z-10 bg-bg-light/90 dark:bg-bg-dark/95 backdrop-blur-md border border-hairline-light dark:border-hairline-dark p-3.5 rounded-xl flex items-center justify-between">
+          <div>
+            <p class="text-xs font-semibold">14 Birchwood Lane</p>
+            <p class="text-[10px] text-ink-light/50 dark:text-ink-dark/50">Nungambakkam, Chennai</p>
+          </div>
+          <a href="https://maps.google.com" target="_blank" class="text-[11px] font-semibold text-accent-light dark:text-accent-dark hover:underline">Get Directions &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Premium Form -->
+    <div class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl p-6 sm:p-10 shadow-sm reveal" style="transition-delay: .2s">
+      <h2 class="font-serif text-2xl mb-2">Send a Message</h2>
+      <p class="text-xs text-ink-light/50 dark:text-ink-dark/50 mb-8">We usually respond within one business day.</p>
+      
+      <form id="contact-form" class="space-y-6" novalidate>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <label class="field">
+            <span class="text-xs tracking-wider uppercase text-ink-light/50 dark:text-ink-dark/50">Full Name</span>
+            <input type="text" id="contact-name" class="input-field mt-2" placeholder="Eleanor Hayes" required>
+          </label>
+          <label class="field">
+            <span class="text-xs tracking-wider uppercase text-ink-light/50 dark:text-ink-dark/50">Email Address</span>
+            <input type="email" id="contact-email" class="input-field mt-2" placeholder="eleanor@example.com" required>
+          </label>
+        </div>
+        
+        <div class="grid sm:grid-cols-2 gap-6">
+          <label class="field">
+            <span class="text-xs tracking-wider uppercase text-ink-light/50 dark:text-ink-dark/50">Subject</span>
+            <input type="text" id="contact-subject" class="input-field mt-2" placeholder="Membership inquiry" required>
+          </label>
+          <label class="field">
+            <span class="text-xs tracking-wider uppercase text-ink-light/50 dark:text-ink-dark/50">Membership ID (Optional)</span>
+            <input type="text" id="contact-member-id" class="input-field mt-2" placeholder="MF-08447">
+          </label>
+        </div>
+
+        <label class="field">
+          <span class="text-xs tracking-wider uppercase text-ink-light/50 dark:text-ink-dark/50">Message Details</span>
+          <textarea id="contact-message" rows="5" class="input-field mt-2 resize-none" placeholder="Write your thoughts here..." required></textarea>
+        </label>
+
+        <button type="submit" class="btn-primary ripple w-full py-4 text-sm font-semibold tracking-wide hover:brightness-105 transition mt-2">
+          Send Message
+        </button>
+        <p id="contact-form-msg" class="text-xs text-center text-primary-light dark:text-primary-dark h-4 mt-2 font-medium"></p>
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-[#16231F] dark:bg-[#0a0c0b] text-[#FAF7F2] pt-20 pb-8 px-6">
+  <div class="max-w-[1300px] mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-14">
+    <div class="lg:col-span-1">
+      <div class="flex items-center gap-2.5 mb-4">
+        <svg width="26" height="26" viewBox="0 0 30 30" fill="none" class="text-[#D4A64A]"><path d="M15 6C11 3 5 2.5 2 3.8V22C5 20.8 11 21.3 15 24.5C19 21.3 25 20.8 28 22V3.8C25 2.5 19 3 15 6Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <span class="font-serif text-lg">Marlowe &amp; Finch</span>
+      </div>
+      <p class="text-sm text-[#FAF7F2]/55 leading-relaxed">A neighborhood book shop and lending library, open since 1994.</p>
+    </div>
+    <div>
+      <p class="footer-head">Quick Links</p>
+      <ul class="footer-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Book Collection</a></li>
+        <li><a href="membership.html">Membership</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Membership</p>
+      <ul class="footer-list">
+        <li><a href="membership.html#mem-plans">Explorer Plan</a></li>
+        <li><a href="membership.html#mem-plans">Reader Plan</a></li>
+        <li><a href="membership.html#mem-plans">Scholar Plan</a></li>
+        <li><a href="login.html">Member Login</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Library Hours</p>
+      <ul class="footer-list text-[#FAF7F2]/55">
+        <li>Mon–Fri · 9am – 8pm</li>
+        <li>Saturday · 10am – 6pm</li>
+        <li>Sunday · 11am – 5pm</li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Visit Us</p>
+      <ul class="footer-list text-[#FAF7F2]/55">
+        <li>14 Birchwood Lane</li>
+        <li>Chennai, TN 600001</li>
+        <li>hello@marloweandfinch.co</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-[1300px] mx-auto border-t border-[#FAF7F2]/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#FAF7F2]/45">
+    <p>© 2026 Marlowe &amp; Finch Book Shop. All rights reserved.</p>
+    <div class="flex gap-5">
+      <a href="#" aria-label="Instagram" class="hover:text-[#D4A64A] transition">Instagram</a>
+      <a href="#" aria-label="Facebook" class="hover:text-[#D4A64A] transition">Facebook</a>
+      <a href="#" aria-label="Pinterest" class="hover:text-[#D4A64A] transition">Pinterest</a>
+    </div>
+  </div>
+</footer>
+
+<button id="back-to-top" aria-label="Back to top" class="fixed bottom-7 right-7 z-40 w-12 h-12 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light grid place-items-center shadow-lg opacity-0 pointer-events-none transition-all duration-300">
+  <svg width="16" height="16" viewBox="0 0 16 16"><path d="M8 13V3M3 8L8 3L13 8" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

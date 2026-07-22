@@ -71,8 +71,7 @@
       <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="book.html" class="nav-link">Book Collection</a></li>
       <li><a href="membership.html" class="nav-link">Membership</a></li>
-      <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-      <li><a href="#newsletter" class="nav-link">Contact</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
 
     <div class="flex items-center gap-2">
@@ -83,7 +82,8 @@
         <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
         <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
       </button>
-      <a href="dashboard.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
+      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
       <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center">
         <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
@@ -98,9 +98,11 @@
       <li><a href="about.html" class="mobile-link">About</a></li>
       <li><a href="book.html" class="mobile-link">Book Collection</a></li>
       <li><a href="membership.html" class="mobile-link">Membership</a></li>
-      <li><a href="dashboard.html" class="mobile-link">Dashboard</a></li>
-      <li><a href="#newsletter" class="mobile-link">Contact</a></li>
-      <li><a href="dashboard.html" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+      <li><a href="contact.html" class="mobile-link">Contact</a></li>
+      <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+        <a href="login.html" class="flex-1 text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Member Login</a>
+        <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold">RTL</button>
+      </li>
     </ul>
   </div>
 </header>
@@ -188,17 +190,90 @@
     </div>
 
     <div class="shelf-row" id="genre-shelf">
-      <!-- each .genre-book generated identically -->
-      <div class="genre-book" style="--book-color:#7B3B3B"><div class="spine"><span>Mystery</span></div><div class="genre-meta">128 titles</div></div>
-      <div class="genre-book" style="--book-color:#3B5B7B"><div class="spine"><span>Fantasy</span></div><div class="genre-meta">204 titles</div></div>
-      <div class="genre-book" style="--book-color:#3B6B57"><div class="spine"><span>Science</span></div><div class="genre-meta">96 titles</div></div>
-      <div class="genre-book" style="--book-color:#7B5B3B"><div class="spine"><span>History</span></div><div class="genre-meta">142 titles</div></div>
-      <div class="genre-book" style="--book-color:#C79A3B"><div class="spine"><span>Children</span></div><div class="genre-meta">175 titles</div></div>
-      <div class="genre-book" style="--book-color:#5B3B6B"><div class="spine"><span>Biography</span></div><div class="genre-meta">88 titles</div></div>
-      <div class="genre-book" style="--book-color:#234E52"><div class="spine"><span>Poetry</span></div><div class="genre-meta">61 titles</div></div>
+      <!-- each .genre-book using a real generated high-res spine background image -->
+      <div class="genre-book" style="--book-img:url('mystery_spine.png'); --book-color:#7B3B3B"><div class="spine"><span>Mystery</span></div><div class="genre-meta">128 titles</div></div>
+      <div class="genre-book" style="--book-img:url('fantasy_spine.png'); --book-color:#3B5B7B"><div class="spine"><span>Fantasy</span></div><div class="genre-meta">204 titles</div></div>
+      <div class="genre-book" style="--book-img:url('science_spine.png'); --book-color:#3B6B57"><div class="spine"><span>Science</span></div><div class="genre-meta">96 titles</div></div>
+      <div class="genre-book" style="--book-img:url('history_spine.png'); --book-color:#7B5B3B"><div class="spine"><span>History</span></div><div class="genre-meta">142 titles</div></div>
+      <div class="genre-book" style="--book-img:url('children_spine.png'); --book-color:#C79A3B"><div class="spine"><span>Children</span></div><div class="genre-meta">175 titles</div></div>
+      <div class="genre-book" style="--book-img:url('biography_spine.png'); --book-color:#5B3B6B"><div class="spine"><span>Biography</span></div><div class="genre-meta">88 titles</div></div>
+      <div class="genre-book" style="--book-img:url('poetry_spine.png'); --book-color:#234E52"><div class="spine"><span>Poetry</span></div><div class="genre-meta">61 titles</div></div>
     </div>
   </div>
 </section>
+
+<!-- ============ BOOK SHOP & LENDING LIBRARY — DUAL SERVICE ============ -->
+<section id="our-services" class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40 overflow-hidden">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 reveal-scroll">
+      <p class="eyebrow">Two Ways to Read</p>
+      <h2 class="section-title mt-3">Book Shop &amp; Lending Library</h2>
+      <p class="mt-5 max-w-2xl text-sm text-ink-light/60 dark:text-ink-dark/60 leading-relaxed">Marlowe &amp; Finch has always been two things at once — a curated bookshop where you take a story home for keeps, and a lending library where you borrow your way through thousands of titles. Two paths. One address.</p>
+    </div>
+
+    <!-- Two-column service cards -->
+    <div class="grid lg:grid-cols-2 gap-10 xl:gap-14">
+
+      <!-- BOOK SHOP CARD -->
+      <div class="svc-card reveal-scroll group">
+        <div class="svc-img-wrap">
+          <img src="bookshop_interior.png" alt="The Marlowe & Finch Book Shop interior with warm amber lamps and wooden shelves" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay"></div>
+          <span class="svc-badge svc-badge--shop">The Book Shop</span>
+        </div>
+        <div class="svc-body">
+          <p class="svc-eyebrow">Own a Story</p>
+          <h3 class="svc-title">Browse, Buy &amp; Collect</h3>
+          <p class="svc-desc">Our ground-floor shop is stocked with carefully chosen new releases, classic editions, local authors, and rare collector's finds. Every title earns its place. Browse with a cup of coffee. Leave with something you'll keep forever.</p>
+          <ul class="svc-list" role="list">
+            <li><span class="svc-icon svc-icon--shop">✦</span> Curated new arrivals &amp; bestsellers</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Local &amp; independent author titles</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Collector &amp; leather-bound editions</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> In-store coffee nook &amp; reading chairs</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Complimentary wax-seal gift wrapping</li>
+          </ul>
+          <a href="book.html" class="svc-btn svc-btn--shop">Explore the Bookshop →</a>
+        </div>
+      </div>
+
+      <!-- LENDING LIBRARY CARD -->
+      <div class="svc-card reveal-scroll group" style="transition-delay:.1s">
+        <div class="svc-img-wrap">
+          <img src="lending_library.png" alt="The Marlowe & Finch Lending Library reading room with tall shelves and mahogany desk" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay svc-img-overlay--lib"></div>
+          <span class="svc-badge svc-badge--lib">The Library</span>
+        </div>
+        <div class="svc-body">
+          <p class="svc-eyebrow svc-eyebrow--lib">Borrow a World</p>
+          <h3 class="svc-title">Borrow, Track &amp; Return</h3>
+          <p class="svc-desc">Upstairs, the lending library holds over 18,400 titles across 14 genres. Members borrow books, track return deadlines from a personal dashboard, drop returns in our 24-hour box, and get gentle reminders before a due date. No surprises. Just reading.</p>
+          <ul class="svc-list" role="list">
+            <li><span class="svc-icon svc-icon--lib">✦</span> 18,400+ titles across 14 genres</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Digital borrow &amp; return deadline tracker</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Priority holds on new arrivals</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> 24-hour drop-box returns &amp; renewals</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Members-only literary events</li>
+          </ul>
+          <a href="membership.html" class="svc-btn svc-btn--lib">View Membership Plans →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats strip -->
+    <div class="svc-stats-strip reveal-scroll mt-16">
+      <div class="svc-stat"><strong>18,400+</strong><span>Library Titles</span></div>
+      <div class="svc-stat-divider"></div>
+      <div class="svc-stat"><strong>6,250</strong><span>Active Members</span></div>
+      <div class="svc-stat-divider"></div>
+      <div class="svc-stat"><strong>94,200+</strong><span>Books Borrowed</span></div>
+      <div class="svc-stat-divider"></div>
+      <div class="svc-stat"><strong>31 yrs</strong><span>In the Community</span></div>
+    </div>
+
+  </div>
+</section>
+
 
 <!-- ============ FEATURED COLLECTION ============ -->
 <section id="collection" class="py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
@@ -519,7 +594,7 @@
     </div>
     <div>
       <p class="footer-head">Quick Links</p>
-      <ul class="footer-list"><li><a href="#collection">Books</a></li><li><a href="#membership">Membership</a></li><li><a href="#events">Events</a></li><li><a href="#about">About</a></li></ul>
+      <ul class="footer-list"><li><a href="index.html">Home</a></li><li><a href="book.html">Book Collection</a></li><li><a href="membership.html">Membership</a></li><li><a href="about.html">About</a></li></ul>
     </div>
     <div>
       <p class="footer-head">Genres</p>

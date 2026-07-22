@@ -71,8 +71,7 @@
       <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="book.html" class="nav-link">Book Collection</a></li>
       <li><a href="membership.html" class="nav-link">Membership</a></li>
-      <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
-      <li><a href="index.html#newsletter" class="nav-link">Contact</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
 
     <div class="flex items-center gap-2">
@@ -84,7 +83,8 @@
         <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
         <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
       </button>
-      <a href="dashboard.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
+      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
+      <a href="login.html" class="hidden md:inline-flex magnetic ml-1 px-5 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Member Login</a>
       <button id="menu-toggle" aria-label="Open menu" class="lg:hidden w-10 h-10 rounded-full grid place-items-center">
         <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
@@ -99,9 +99,11 @@
       <li><a href="about.html" class="mobile-link">About</a></li>
       <li><a href="book.html" class="mobile-link">Book Collection</a></li>
       <li><a href="membership.html" class="mobile-link">Membership</a></li>
-      <li><a href="dashboard.html" class="mobile-link">Dashboard</a></li>
-      <li><a href="index.html#newsletter" class="mobile-link">Contact</a></li>
-      <li><a href="dashboard.html" class="mt-2 inline-block text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm">Member Login</a></li>
+      <li><a href="contact.html" class="mobile-link">Contact</a></li>
+      <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+        <a href="login.html" class="flex-1 text-center px-5 py-3 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Member Login</a>
+        <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold">RTL</button>
+      </li>
     </ul>
   </div>
 </header>
@@ -347,6 +349,65 @@
         <div class="h2-book" style="width:24px;height:120px" tabindex="0"><div class="h2-book-spine" style="--sc:#6b4b3b;width:24px;height:120px"><span>Salt Road</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">The Salt Road</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Femi Achebe · Biography</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">One trader's life along four centuries of coastline.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
         <div class="h2-book hidden sm:block" style="width:38px;height:158px" tabindex="0"><div class="h2-book-spine" style="--sc:#8a3b5b;width:38px;height:158px"><span>Second Chances</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">Second Chances</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Lena Brandt · Romance</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">Two old friends, one bookshop, and a decade of unsent letters.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
         <div class="h2-book hidden lg:block" style="width:26px;height:128px" tabindex="0"><div class="h2-book-spine" style="--sc:#3b6b8a;width:26px;height:128px"><span>Origins</span></div><div class="h2-book-panel"><p class="font-serif text-base mb-1">Origins</p><p class="text-xs text-ink-light/55 dark:text-ink-dark/55 mb-2">Dr. Sena Okafor · Science</p><p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mb-3">A short, wondering history of the first ten minutes of everything.</p><div class="flex gap-2"><button class="btn-mini">Borrow</button><button class="btn-mini" style="background:transparent;border:1px solid #E7E1D8;color:inherit">Wishlist</button></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SECTION 5B — BOOK SHOP & LENDING LIBRARY
+     ============================================================ -->
+<section id="our-services" class="py-28 lg:py-36 px-6">
+  <div class="max-w-[1300px] mx-auto">
+    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
+      <p class="eyebrow">Two Ways to Read</p>
+      <h2 class="section-title mt-3">Book Shop &amp; Lending Library</h2>
+      <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mt-4 max-w-2xl leading-relaxed">Marlowe &amp; Finch has always held two truths at once — a curated bookshop where you take a story home forever, and a lending library where 18,400 titles wait patiently for their next reader.</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10 xl:gap-14">
+      <!-- BOOK SHOP -->
+      <div class="svc-card h2-reveal reveal-scroll group">
+        <div class="svc-img-wrap">
+          <img src="bookshop_interior.png" alt="Marlowe & Finch bookshop interior with warm amber lamps and curated shelves" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay"></div>
+          <span class="svc-badge svc-badge--shop">The Book Shop</span>
+        </div>
+        <div class="svc-body">
+          <p class="svc-eyebrow">Own a Story</p>
+          <h3 class="svc-title">Browse, Buy &amp; Collect</h3>
+          <p class="svc-desc">Our ground-floor shop is curated title-by-title. New releases, local authors, rare leather-bound editions, and a coffee corner built for lingering. Every purchase supports independent publishing.</p>
+          <ul class="svc-list" role="list">
+            <li><span class="svc-icon svc-icon--shop">✦</span> Handpicked new releases &amp; classics</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Collector &amp; leather-bound editions</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Local &amp; independent author spotlight</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> In-store coffee nook &amp; reading chairs</li>
+            <li><span class="svc-icon svc-icon--shop">✦</span> Wax-seal gift wrapping, complimentary</li>
+          </ul>
+          <a href="book.html" class="svc-btn svc-btn--shop">Explore the Bookshop →</a>
+        </div>
+      </div>
+
+      <!-- LENDING LIBRARY -->
+      <div class="svc-card h2-reveal reveal-scroll group" style="transition-delay:.1s">
+        <div class="svc-img-wrap">
+          <img src="lending_library.png" alt="Marlowe & Finch lending library reading room with tall shelves" class="svc-img" loading="lazy">
+          <div class="svc-img-overlay svc-img-overlay--lib"></div>
+          <span class="svc-badge svc-badge--lib">The Library</span>
+        </div>
+        <div class="svc-body">
+          <p class="svc-eyebrow svc-eyebrow--lib">Borrow a World</p>
+          <h3 class="svc-title">Borrow, Track &amp; Return</h3>
+          <p class="svc-desc">Our lending library holds 18,400+ titles. Members borrow books, track return deadlines from their personal dashboard, renew online, and drop returns in our 24-hour box. Reading without limits.</p>
+          <ul class="svc-list" role="list">
+            <li><span class="svc-icon svc-icon--lib">✦</span> 18,400+ titles across 14 genres</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Digital borrow &amp; deadline dashboard</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Priority holds on new arrivals</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> 24-hour drop-box returns &amp; renewals</li>
+            <li><span class="svc-icon svc-icon--lib">✦</span> Members-only literary events</li>
+          </ul>
+          <a href="membership.html" class="svc-btn svc-btn--lib">View Membership Plans →</a>
+        </div>
       </div>
     </div>
   </div>
@@ -647,7 +708,7 @@
     </div>
     <div>
       <p class="footer-head">Quick Links</p>
-      <ul class="footer-list"><li><a href="#picks">Books</a></li><li><a href="#membership">Membership</a></li><li><a href="#events">Events</a></li><li><a href="#journey">About</a></li></ul>
+      <ul class="footer-list"><li><a href="index.html">Home</a></li><li><a href="book.html">Book Collection</a></li><li><a href="membership.html">Membership</a></li><li><a href="about.html">About</a></li></ul>
     </div>
     <div>
       <p class="footer-head">Genres</p>
