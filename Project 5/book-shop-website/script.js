@@ -339,20 +339,55 @@
   }
 
   /* ---------- RADIAL GENRE WHEEL ---------- */
+  const hubTitle = $('.h2-hub-title'), hubDesc = $('.h2-hub-desc'), hubCount = $('.h2-hub-count'), radialHub = $('.h2-radial-hub');
   const spokes = $$('.h2-spoke');
-  const hubTitle = $('.h2-hub-title'), hubDesc = $('.h2-hub-desc'), hubCount = $('.h2-hub-count');
-  const defaultHub = hubTitle ? { title: hubTitle.textContent, desc: hubDesc.textContent, count: hubCount.textContent } : null;
-  spokes.forEach(sp => {
-    const setHub = () => {
-      if (!hubTitle) return;
-      hubTitle.textContent = sp.dataset.genre || defaultHub.title;
-      hubDesc.textContent = sp.dataset.desc || defaultHub.desc;
-      hubCount.textContent = sp.dataset.count || defaultHub.count;
+
+  if (hubTitle && spokes.length) {
+    const defaultTitle = hubTitle.textContent;
+    const defaultDesc = hubDesc ? hubDesc.textContent : '';
+    const defaultCount = hubCount ? hubCount.textContent : '';
+
+    const setHubText = (title, desc, count) => {
+      if (hubTitle) hubTitle.textContent = title;
+      if (hubDesc) hubDesc.textContent = desc;
+      if (hubCount) hubCount.textContent = count;
     };
-    sp.addEventListener('mouseenter', setHub);
-    sp.addEventListener('focus', setHub);
-    sp.addEventListener('mouseleave', () => { if (defaultHub) { hubTitle.textContent = defaultHub.title; hubDesc.textContent = defaultHub.desc; hubCount.textContent = defaultHub.count; } });
-  });
+
+    spokes.forEach(spoke => {
+      const genre = spoke.getAttribute('data-genre') || spoke.dataset.genre || '';
+      const desc = spoke.getAttribute('data-desc') || spoke.dataset.desc || '';
+      const count = spoke.getAttribute('data-count') || spoke.dataset.count || '';
+
+      const handleHover = () => {
+        spokes.forEach(s => s.classList.remove('active-spoke'));
+        spoke.classList.add('active-spoke');
+        setHubText(genre, desc, count);
+      };
+
+      spoke.addEventListener('mouseenter', handleHover);
+      spoke.addEventListener('mouseover', handleHover);
+      spoke.addEventListener('focus', handleHover);
+      spoke.addEventListener('touchstart', handleHover, { passive: true });
+
+      spoke.addEventListener('click', () => {
+        handleHover();
+        if (genre) {
+          window.location.href = `book.html?genre=${encodeURIComponent(genre)}`;
+        }
+      });
+    });
+
+    if (radialHub) {
+      radialHub.addEventListener('click', () => {
+        const activeGenre = hubTitle.textContent;
+        if (activeGenre && activeGenre !== 'Pick a Genre') {
+          window.location.href = `book.html?genre=${encodeURIComponent(activeGenre)}`;
+        } else {
+          window.location.href = 'book.html';
+        }
+      });
+    }
+  }
 
   /* ---------- WINDING JOURNEY SCROLL REVEAL ---------- */
   const stopObserver = new IntersectionObserver((entries) => {
