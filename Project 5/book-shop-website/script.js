@@ -84,11 +84,29 @@
   const menuBtn = $('#menu-toggle'), mobileMenu = $('#mobile-menu');
   if (menuBtn && mobileMenu) {
     let menuOpen = false;
-    menuBtn.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      mobileMenu.style.maxHeight = menuOpen ? mobileMenu.scrollHeight + 'px' : '0px';
+    const toggleMenu = (state) => {
+      menuOpen = typeof state === 'boolean' ? state : !menuOpen;
+      if (menuOpen) {
+        mobileMenu.style.maxHeight = (mobileMenu.scrollHeight + 40) + 'px';
+        menuBtn.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileMenu.style.maxHeight = '0px';
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+    };
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMenu();
     });
-    $$('#mobile-menu a').forEach(a => a.addEventListener('click', () => { menuOpen = false; mobileMenu.style.maxHeight = '0px'; }));
+    $$('#mobile-menu a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+    document.addEventListener('click', (e) => {
+      if (menuOpen && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+        toggleMenu(false);
+      }
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1280 && menuOpen) toggleMenu(false);
+    });
   }
 
   /* ---------- MAGNETIC BUTTONS ---------- */
