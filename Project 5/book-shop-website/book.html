@@ -36,23 +36,15 @@
 </head>
 <body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
 
-<!-- ============ LOADER ============ -->
-<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
-  <div class="book-loader">
-    <span class="material-symbols-outlined text-primary-light dark:text-primary-dark" style="font-size:48px;display:inline-block;animation:loaderPulse 1.1s ease-in-out infinite alternate">auto_stories</span>
-    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">Marlowe &amp; Finch</p>
-  </div>
-</div>
-
 <div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%"></div>
 <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[5] hidden lg:block"></div>
 
 <!-- ============ NAVIGATION ============ -->
-<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
-  <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+<header id="site-nav" class="fixed top-3 sm:top-4 inset-x-3 sm:inset-x-6 max-w-[1380px] mx-auto z-50 transition-all duration-500 rounded-full bg-bg-light/85 dark:bg-bg-dark/85 backdrop-blur-xl border border-hairline-light/80 dark:border-hairline-dark/80 shadow-lg shadow-black/5">
+  <nav class="flex items-center justify-between px-5 sm:px-8 py-3">
     <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Marlowe & Finch home">
-      <img src="Assets/logo.png" alt="Marlowe & Finch Logo" class="h-8 sm:h-9 w-auto object-contain shrink-0" />
-      <span class="font-serif text-lg tracking-tight">Marlowe &amp; Finch</span>
+      <img src="Assets/logo.png" alt="Marlowe & Finch Logo" class="h-7 sm:h-8 w-auto object-contain shrink-0" />
+      <span class="font-serif text-base sm:text-lg tracking-tight">Marlowe &amp; Finch</span>
     </a>
 
     <ul class="hidden xl:flex items-center gap-8 text-[13.5px] tracking-wide">
@@ -67,18 +59,18 @@
     </ul>
 
     <div class="flex items-center gap-2">
-      <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition"><span class="material-symbols-outlined !text-[19px]">search</span></button>
-      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+      <button id="search-open" aria-label="Open search" class="magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition"><span class="material-symbols-outlined !text-[19px]">search</span></button>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
         <span id="icon-sun" class="material-symbols-outlined absolute !text-[19px] transition-all duration-500">light_mode</span>
         <span id="icon-moon" class="material-symbols-outlined absolute !text-[19px] transition-all duration-500 opacity-0">dark_mode</span>
       </button>
       <a href="login.html" class="hidden xl:inline-flex magnetic ml-1 px-4 py-2 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Login</a>
       <a href="dashboard.html" class="hidden xl:inline-flex magnetic px-4 py-2 rounded-full border border-primary-light/40 dark:border-accent-dark/40 text-primary-light dark:text-accent-dark hover:bg-primary-light/10 dark:hover:bg-accent-dark/10 text-[13px] font-medium tracking-wide transition">Dashboard</a>
-      <button id="menu-toggle" aria-label="Open menu" class="xl:hidden w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition"><span class="material-symbols-outlined">menu</span></button>
+      <button id="menu-toggle" aria-label="Open menu" class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition"><span class="material-symbols-outlined">menu</span></button>
     </div>
   </nav>
 
-  <div id="mobile-menu" class="xl:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-xl border-t border-hairline-light dark:border-hairline-dark">
+  <div id="mobile-menu" class="xl:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-2xl border-t border-hairline-light/60 dark:border-hairline-dark/60 rounded-b-[28px]">
     <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
       <li><a href="index.html" class="mobile-link">Home</a></li>
       <li><a href="home2.html" class="mobile-link">Home 2</a></li>

@@ -38,17 +38,6 @@
 </head>
 <body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
 
-<!-- ============ LOADER ============ -->
-<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
-  <div class="book-loader">
-    <svg width="88" height="70" viewBox="0 0 88 70" fill="none">
-      <path id="loader-left" d="M44 8C34 2 18 1 6 4V56C18 53 34 54 44 60V8Z" fill="none" stroke="currentColor" class="text-primary-light dark:text-primary-dark" stroke-width="1.6"/>
-      <path id="loader-right" d="M44 8C54 2 70 1 82 4V56C70 53 54 54 44 60V8Z" fill="none" stroke="currentColor" class="text-accent-light dark:text-accent-dark" stroke-width="1.6"/>
-    </svg>
-    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">Marlowe &amp; Finch</p>
-  </div>
-</div>
-
 <!-- ============ READING PROGRESS ============ -->
 <div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%"></div>
 
@@ -73,11 +62,11 @@
 </div>
 
 <!-- ============ NAVIGATION ============ -->
-<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
-  <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+<header id="site-nav" class="fixed top-3 sm:top-4 inset-x-3 sm:inset-x-6 max-w-[1380px] mx-auto z-50 transition-all duration-500 rounded-full bg-bg-light/85 dark:bg-bg-dark/85 backdrop-blur-xl border border-hairline-light/80 dark:border-hairline-dark/80 shadow-lg shadow-black/5">
+  <nav class="flex items-center justify-between px-5 sm:px-8 py-3">
     <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Marlowe & Finch home">
-      <img src="Assets/logo.png" alt="Marlowe & Finch Logo" class="h-8 sm:h-9 w-auto object-contain shrink-0" />
-      <span class="font-serif text-lg tracking-tight">Marlowe &amp; Finch</span>
+      <img src="Assets/logo.png" alt="Marlowe & Finch Logo" class="h-7 sm:h-8 w-auto object-contain shrink-0" />
+      <span class="font-serif text-base sm:text-lg tracking-tight">Marlowe &amp; Finch</span>
     </a>
 
     <ul class="hidden xl:flex items-center gap-8 text-[13.5px] tracking-wide">
@@ -91,24 +80,24 @@
     </ul>
 
     <div class="flex items-center gap-2">
-      <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
+      <button id="search-open" aria-label="Open search" class="magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
-      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
         <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
         <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
       </button>
-      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
+      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
       <a href="login.html" class="hidden xl:inline-flex magnetic ml-1 px-4 py-2 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Login</a>
       <a href="dashboard.html" class="hidden xl:inline-flex magnetic px-4 py-2 rounded-full border border-primary-light/40 dark:border-accent-dark/40 text-primary-light dark:text-accent-dark hover:bg-primary-light/10 dark:hover:bg-accent-dark/10 text-[13px] font-medium tracking-wide transition">Dashboard</a>
-      <button id="menu-toggle" aria-label="Open menu" class="xl:hidden w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
+      <button id="menu-toggle" aria-label="Open menu" class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
         <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
       </button>
     </div>
   </nav>
 
   <!-- mobile menu -->
-  <div id="mobile-menu" class="xl:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-xl border-t border-hairline-light dark:border-hairline-dark">
+  <div id="mobile-menu" class="xl:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-2xl border-t border-hairline-light/60 dark:border-hairline-dark/60 rounded-b-[28px]">
     <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
       <li><a href="index.html" class="mobile-link">Home</a></li>
       <li><a href="home2.html" class="mobile-link">Home 2</a></li>
