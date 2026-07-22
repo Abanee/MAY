@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Marlowe &amp; Finch Book Shop &amp; Lending Library</title>
+<meta name="description" content="Explore the visual gallery of Marlowe & Finch — luxury reading rooms, rare archives, architectural spaces, and artisanal quiet nooks.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="Assets/logo.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          bg: { light: '#FAF7F2', dark: '#121212' },
+          card: { light: '#FFFFFF', dark: '#1D1D1D' },
+          primary: { light: '#234E52', dark: '#4FAF8F' },
+          accent: { light: '#C79A3B', dark: '#D4A64A' },
+          ink: { light: '#2E2E2E', dark: '#F5F5F5' },
+          hairline: { light: '#E7E1D8', dark: '#2D2D2D' },
+        },
+        fontFamily: {
+          serif: ['Fraunces', 'serif'],
+          sans: ['Inter', 'sans-serif'],
+          display: ['Cormorant Garamond', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
+
+<!-- ============ LOADER ============ -->
+<div id="loader" class="fixed inset-0 z-[100] bg-bg-light dark:bg-bg-dark flex items-center justify-center transition-opacity duration-700">
+  <div class="book-loader">
+    <svg width="88" height="70" viewBox="0 0 88 70" fill="none">
+      <path id="loader-left" d="M44 8C34 2 18 1 6 4V56C18 53 34 54 44 60V8Z" fill="none" stroke="currentColor" class="text-primary-light dark:text-primary-dark" stroke-width="1.6"/>
+      <path id="loader-right" d="M44 8C54 2 70 1 82 4V56C70 53 54 54 44 60V8Z" fill="none" stroke="currentColor" class="text-accent-light dark:text-accent-dark" stroke-width="1.6"/>
+    </svg>
+    <p class="mt-5 text-xs tracking-[0.35em] uppercase text-ink-light/50 dark:text-ink-dark/50 font-medium">Marlowe &amp; Finch</p>
+  </div>
+</div>
+
+<!-- ============ READING PROGRESS ============ -->
+<div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%"></div>
+
+<!-- ============ CURSOR SPOTLIGHT ============ -->
+<div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[5] hidden lg:block"></div>
+
+<!-- ============ TOAST CONTAINER ============ -->
+<div id="toast-zone" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] flex flex-col gap-3 items-center pointer-events-none"></div>
+
+<!-- ============ SEARCH MODAL ============ -->
+<div id="search-modal" class="fixed inset-0 z-[90] bg-black/60 backdrop-blur-md hidden flex-col items-center justify-start pt-24 px-6 transition-opacity duration-300">
+  <div class="w-full max-w-2xl bg-card-light dark:bg-card-dark rounded-3xl p-6 sm:p-8 shadow-2xl border border-hairline-light dark:border-hairline-dark relative">
+    <button id="search-close" class="absolute top-6 right-6 text-ink-light/50 dark:text-ink-dark/50 hover:text-ink-light dark:hover:text-ink-dark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="font-serif text-xl mb-4">Search Gallery &amp; Library Archives</h3>
+    <div class="relative">
+      <input type="text" id="search-input" placeholder="Search architecture, rare editions, reading nooks..." class="w-full px-5 py-4 rounded-full bg-bg-light dark:bg-bg-dark border border-hairline-light dark:border-hairline-dark text-sm focus:outline-none focus:border-accent-light dark:focus:border-accent-dark">
+    </div>
+    <div id="search-results" class="mt-6 space-y-3 max-h-60 overflow-y-auto"></div>
+  </div>
+</div>
+
+<!-- ============ NAVIGATION ============ -->
+<header id="site-nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-500">
+  <nav class="max-w-[1400px] mx-auto flex items-center justify-between px-6 lg:px-10 py-5">
+    <a href="index.html" class="flex items-center gap-2.5 group" aria-label="Marlowe & Finch home">
+      <img src="Assets/logo.png" alt="Marlowe & Finch Logo" class="h-8 sm:h-9 w-auto object-contain shrink-0" />
+      <span class="font-serif text-lg tracking-tight">Marlowe &amp; Finch</span>
+    </a>
+
+    <ul class="hidden xl:flex items-center gap-8 text-[13.5px] tracking-wide">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="home2.html" class="nav-link">Home 2</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="book.html" class="nav-link">Books</a></li>
+      <li><a href="membership.html" class="nav-link">Plans</a></li>
+      <li><a href="gallery.html" class="nav-link mem-active-link" aria-current="page">Gallery</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button id="search-open" aria-label="Open search" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+        <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
+        <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      </button>
+      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
+      <a href="login.html" class="hidden xl:inline-flex magnetic ml-1 px-4 py-2 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Login</a>
+      <a href="dashboard.html" class="hidden xl:inline-flex magnetic px-4 py-2 rounded-full border border-primary-light/40 dark:border-accent-dark/40 text-primary-light dark:text-accent-dark hover:bg-primary-light/10 dark:hover:bg-accent-dark/10 text-[13px] font-medium tracking-wide transition">Dashboard</a>
+      <button id="menu-toggle" aria-label="Open menu" class="xl:hidden w-10 h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
+        <svg width="20" height="14" viewBox="0 0 20 14"><line x1="0" y1="1" x2="20" y2="1" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="7" x2="20" y2="7" stroke="currentColor" stroke-width="1.5"/><line x1="0" y1="13" x2="20" y2="13" stroke="currentColor" stroke-width="1.5"/></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- mobile menu -->
+  <div id="mobile-menu" class="xl:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-xl border-t border-hairline-light dark:border-hairline-dark">
+    <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
+      <li><a href="index.html" class="mobile-link">Home</a></li>
+      <li><a href="home2.html" class="mobile-link">Home 2</a></li>
+      <li><a href="about.html" class="mobile-link">About</a></li>
+      <li><a href="book.html" class="mobile-link">Books</a></li>
+      <li><a href="membership.html" class="mobile-link">Plans</a></li>
+      <li><a href="gallery.html" class="mobile-link text-accent-light dark:text-accent-dark">Gallery</a></li>
+      <li><a href="contact.html" class="mobile-link">Contact</a></li>
+      <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+        <a href="login.html" class="flex-1 text-center px-4 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Login</a>
+        <a href="dashboard.html" class="flex-1 text-center px-4 py-2.5 rounded-full border border-primary-light dark:border-accent-dark text-primary-light dark:text-accent-dark text-sm font-medium">Dashboard</a>
+        <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold">RTL</button>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<main class="pt-32 pb-24 px-6 lg:px-12">
+  <div class="max-w-[1400px] mx-auto space-y-12">
+    
+    <!-- GALLERY HERO HEADER -->
+    <div class="text-center max-w-3xl mx-auto space-y-4">
+      <p class="text-xs font-semibold tracking-[0.3em] uppercase text-accent-light dark:text-accent-dark">Visual Treasury · 16 Curated Views</p>
+      <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl text-ink-light dark:text-ink-dark font-light tracking-tight">
+        The Gallery of <span class="italic font-display text-accent-light dark:text-accent-dark">Quiet Luxury.</span>
+      </h1>
+      <p class="text-base sm:text-lg text-ink-light/70 dark:text-ink-dark/70 font-sans leading-relaxed">
+        Step inside Marlowe &amp; Finch through light, wood, and paper. Explore our reading rooms, rare archives, architectural sanctuaries, and bookbinding ateliers.
+      </p>
+    </div>
+
+    <!-- CATEGORY FILTER TABS -->
+    <div class="flex flex-wrap items-center justify-center gap-3 pt-2">
+      <button class="gallery-filter-btn active px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition border border-accent-light dark:border-accent-dark bg-accent-light dark:bg-accent-dark text-bg-light dark:text-bg-dark" data-filter="all">All (16)</button>
+      <button class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition border border-hairline-light dark:border-hairline-dark hover:border-accent-light dark:hover:border-accent-dark text-ink-light dark:text-ink-dark" data-filter="spaces">Architecture &amp; Spaces</button>
+      <button class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition border border-hairline-light dark:border-hairline-dark hover:border-accent-light dark:hover:border-accent-dark text-ink-light dark:text-ink-dark" data-filter="archives">Rare Archives</button>
+      <button class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition border border-hairline-light dark:border-hairline-dark hover:border-accent-light dark:hover:border-accent-dark text-ink-light dark:text-ink-dark" data-filter="nooks">Reading Nooks</button>
+      <button class="gallery-filter-btn px-5 py-2.5 rounded-full text-xs font-medium tracking-wide transition border border-hairline-light dark:border-hairline-dark hover:border-accent-light dark:hover:border-accent-dark text-ink-light dark:text-ink-dark" data-filter="atelier">Atelier &amp; Coffee</button>
+    </div>
+
+    <!-- 16 GALLERY GRID ITEMS -->
+    <div id="gallery-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+
+      <!-- ITEM 1 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="spaces" data-title="The Grand Archway Sanctuary" data-desc="Natural daylight entering through floor-to-ceiling arched windows onto hand-carved mahogany bookshelves." data-img="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1200&q=85" alt="The Grand Archway Sanctuary" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Architecture &amp; Spaces</span>
+          <h3 class="font-serif text-xl">The Grand Archway Sanctuary</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Natural daylight entering through floor-to-ceiling arched windows onto hand-carved mahogany bookshelves.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 2 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="nooks" data-title="Sunlit Alcove & Armchair" data-desc="Curated private reading corner with custom bouclé lounge chair, warm sun rays, and olive greenery." data-img="Assets/heroimage.png">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="Assets/heroimage.png" alt="Sunlit Alcove & Armchair" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Reading Nooks</span>
+          <h3 class="font-serif text-xl">Sunlit Alcove &amp; Armchair</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Curated private reading corner with custom bouclé lounge chair, warm sun rays, and olive greenery.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 3 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="archives" data-title="The Rare First Editions Collection" data-desc="Temperature-controlled oak cabinets storing rare 18th-century first editions and gilded manuscripts." data-img="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1200&q=85" alt="The Rare First Editions Collection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Rare Archives</span>
+          <h3 class="font-serif text-xl">The Rare First Editions Collection</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Temperature-controlled oak cabinets storing rare 18th-century first editions and gilded manuscripts.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 4 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="spaces" data-title="Spiral Oak Stairway & Stacks" data-desc="Sculptural spiral staircase connecting the main library gallery to upper research mezzanines." data-img="https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=1200&q=85" alt="Spiral Oak Stairway & Stacks" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Architecture &amp; Spaces</span>
+          <h3 class="font-serif text-xl">Spiral Oak Stairway &amp; Stacks</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Sculptural spiral staircase connecting the main library gallery to upper research mezzanines.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 5 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="atelier" data-title="Artisan Coffee & Morning Reading" data-desc="Freshly roasted single-origin pourover coffee served alongside morning literature." data-img="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1200&q=85" alt="Artisan Coffee & Morning Reading" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Atelier &amp; Coffee</span>
+          <h3 class="font-serif text-xl">Artisan Coffee &amp; Morning Reading</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Freshly roasted single-origin pourover coffee served alongside morning literature.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 6 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="spaces" data-title="The Grand Mahogany Hall" data-desc="Soaring double-height ceilings with brass rolling ladders and wall-to-wall fiction shelves." data-img="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1200&q=85" alt="The Grand Mahogany Hall" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Architecture &amp; Spaces</span>
+          <h3 class="font-serif text-xl">The Grand Mahogany Hall</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Soaring double-height ceilings with brass rolling ladders and wall-to-wall fiction shelves.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 7 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="nooks" data-title="Scholars’ Study Nook" data-desc="Intimate desk alcove equipped with warm brass reading lamps and vintage leather blotters." data-img="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=85" alt="Scholars’ Study Nook" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Reading Nooks</span>
+          <h3 class="font-serif text-xl">Scholars’ Study Nook</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Intimate desk alcove equipped with warm brass reading lamps and vintage leather blotters.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 8 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="nooks" data-title="Midnight Solitude Library" data-desc="Evening atmosphere inside Marlowe & Finch with warm amber lighting and deep green velvet accents." data-img="Assets/home1herodark.png">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="Assets/home1herodark.png" alt="Midnight Solitude Library" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Reading Nooks</span>
+          <h3 class="font-serif text-xl">Midnight Solitude Library</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Evening atmosphere inside Marlowe &amp; Finch with warm amber lighting and deep green velvet accents.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 9 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="archives" data-title="Hand-Bound Leather Archives" data-desc="Close-up detail of gold-leaf spine stamping and antique calfskin binding." data-img="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=1200&q=85" alt="Hand-Bound Leather Archives" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Rare Archives</span>
+          <h3 class="font-serif text-xl">Hand-Bound Leather Archives</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Close-up detail of gold-leaf spine stamping and antique calfskin binding.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 10 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="nooks" data-title="The Courtyard Terrace" data-desc="Outdoor garden terrace surrounded by climbing ivy and fragrant jasmine for summer afternoon reading." data-img="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=1200&q=85" alt="The Courtyard Terrace" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Reading Nooks</span>
+          <h3 class="font-serif text-xl">The Courtyard Terrace</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Outdoor garden terrace surrounded by climbing ivy and fragrant jasmine for summer afternoon reading.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 11 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="archives" data-title="Curated Poetry Nook" data-desc="Selected anthology corner showcasing first-print poetry and philosophical essays." data-img="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=85" alt="Curated Poetry Nook" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Rare Archives</span>
+          <h3 class="font-serif text-xl">Curated Poetry Nook</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Selected anthology corner showcasing first-print poetry and philosophical essays.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 12 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="atelier" data-title="The Writer's Desk" data-desc="Vintage mechanical typewriter and archival linen paper prepared for resident authors." data-img="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=1200&q=85" alt="The Writer's Desk" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Atelier &amp; Coffee</span>
+          <h3 class="font-serif text-xl">The Writer's Desk</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Vintage mechanical typewriter and archival linen paper prepared for resident authors.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 13 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="nooks" data-title="Brass Lantern Reading Bays" data-desc="Private study bays featuring solid brass banker lamps and sound-dampening acoustic wall paneling." data-img="https://images.unsplash.com/photo-1526243741027-444d633d7365?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1526243741027-444d633d7365?auto=format&fit=crop&w=1200&q=85" alt="Brass Lantern Reading Bays" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Reading Nooks</span>
+          <h3 class="font-serif text-xl">Brass Lantern Reading Bays</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Private study bays featuring solid brass banker lamps and sound-dampening acoustic wall paneling.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 14 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="spaces" data-title="Mezzanine Reserve Section" data-desc="Upper-level gallery housing member reservations, rare folios, and art history volumes." data-img="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1200&q=85" alt="Mezzanine Reserve Section" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Architecture &amp; Spaces</span>
+          <h3 class="font-serif text-xl">Mezzanine Reserve Section</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Upper-level gallery housing member reservations, rare folios, and art history volumes.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 15 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="atelier" data-title="The Atelier Bookbindery" data-desc="In-house restoration studio where master artisans preserve vintage covers and repair antique spines." data-img="https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1476275466078-4007374efbbe?auto=format&fit=crop&w=1200&q=85" alt="The Atelier Bookbindery" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Atelier &amp; Coffee</span>
+          <h3 class="font-serif text-xl">The Atelier Bookbindery</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">In-house restoration studio where master artisans preserve vintage covers and repair antique spines.</p>
+        </div>
+      </div>
+
+      <!-- ITEM 16 -->
+      <div class="gallery-card group relative rounded-3xl overflow-hidden bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-2xl transition-all duration-500 cursor-pointer" data-category="atelier" data-title="Evening Reading Salon & Tea" data-desc="Nightly tea tasting and open reading lounge for library members." data-img="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1200&q=85">
+        <div class="aspect-[4/5] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=1200&q=85" alt="Evening Reading Salon & Tea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-6 flex flex-col justify-end text-white">
+          <span class="text-[10px] tracking-[0.2em] uppercase text-[#D4A64A] font-semibold mb-1">Atelier &amp; Coffee</span>
+          <h3 class="font-serif text-xl">Evening Reading Salon &amp; Tea</h3>
+          <p class="text-xs text-white/80 mt-1 line-clamp-2">Nightly tea tasting and open reading lounge for library members.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- LIGHTBOX MODAL -->
+<div id="gallery-lightbox" class="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl hidden flex-col justify-between p-6 sm:p-10 transition-opacity duration-300">
+  <div class="flex items-center justify-between text-white/70 text-xs">
+    <span id="lb-counter" class="tracking-widest uppercase">1 / 16</span>
+    <button id="lb-close" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white grid place-items-center transition">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  
+  <div class="relative flex-1 flex items-center justify-center my-4 overflow-hidden">
+    <button id="lb-prev" class="absolute left-2 sm:left-6 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white grid place-items-center transition">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <img id="lb-img" src="" alt="" class="max-h-[75vh] max-w-full object-contain rounded-2xl shadow-2xl transition-transform duration-300">
+    <button id="lb-next" class="absolute right-2 sm:right-6 z-10 w-12 h-12 rounded-full bg-white/10 hover:bg-white/25 text-white grid place-items-center transition">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <div class="text-center text-white max-w-xl mx-auto space-y-1">
+    <span id="lb-cat" class="text-[10px] tracking-[0.25em] uppercase text-[#D4A64A] font-semibold">Architecture &amp; Spaces</span>
+    <h3 id="lb-title" class="font-serif text-2xl">The Grand Archway Sanctuary</h3>
+    <p id="lb-desc" class="text-xs text-white/70 leading-relaxed">Natural daylight entering through floor-to-ceiling arched windows onto hand-carved mahogany bookshelves.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-[#16231F] dark:bg-[#0a0c0b] text-[#FAF7F2] pt-20 pb-8 px-6">
+  <div class="max-w-[1300px] mx-auto grid sm:grid-cols-2 lg:grid-cols-5 gap-12 pb-14">
+    <div class="lg:col-span-1">
+      <div class="flex items-center gap-2.5 mb-4">
+        <img src="Assets/logo.png" alt="Marlowe & Finch Logo" class="h-7 sm:h-8 w-auto object-contain shrink-0" />
+        <span class="font-serif text-lg">Marlowe &amp; Finch</span>
+      </div>
+      <p class="text-sm text-[#FAF7F2]/55 leading-relaxed">A neighborhood book shop and lending library, open since 1994.</p>
+    </div>
+    <div>
+      <p class="footer-head">Quick Links</p>
+      <ul class="footer-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="book.html">Books</a></li>
+        <li><a href="membership.html">Plans</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Membership</p>
+      <ul class="footer-list">
+        <li><a href="membership.html#mem-plans">Explorer Plan</a></li>
+        <li><a href="membership.html#mem-plans">Reader Plan</a></li>
+        <li><a href="membership.html#mem-plans">Scholar Plan</a></li>
+        <li><a href="login.html">Member Login</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Library Hours</p>
+      <ul class="footer-list text-[#FAF7F2]/55">
+        <li>Mon-Fri 9am-8pm</li>
+        <li>Saturday 10am-6pm</li>
+        <li>Sunday 11am-5pm</li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-head">Visit Us</p>
+      <ul class="footer-list text-[#FAF7F2]/55">
+        <li>14 Birchwood Lane</li>
+        <li>Chennai, TN 600001</li>
+        <li>hello@marloweandfinch.co</li>
+      </ul>
+    </div>
+  </div>
+  <div class="max-w-[1300px] mx-auto pt-8 border-t border-[#FAF7F2]/10 flex flex-col sm:flex-row items-center justify-between text-xs text-[#FAF7F2]/40 gap-4">
+    <p>© 2026 Marlowe &amp; Finch. All rights reserved.</p>
+    <div class="flex gap-6">
+      <a href="contact.html" class="hover:underline">Privacy Policy</a>
+      <a href="contact.html" class="hover:underline">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script>
+  // GALLERY SPECIFIC INTERACTIVITY
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+    const cards = Array.from(document.querySelectorAll('.gallery-card'));
+    const lightbox = document.getElementById('gallery-lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbTitle = document.getElementById('lb-[#lb-title]') || document.getElementById('lb-title');
+    const lbDesc = document.getElementById('lb-desc');
+    const lbCat = document.getElementById('lb-cat');
+    const lbCounter = document.getElementById('lb-counter');
+    const lbClose = document.getElementById('lb-close');
+    const lbPrev = document.getElementById('lb-prev');
+    const lbNext = document.getElementById('lb-next');
+
+    let currentIndex = 0;
+
+    // Filter Logic
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-accent-light', 'dark:bg-accent-dark', 'text-bg-light', 'dark:text-bg-dark');
+          b.classList.add('border-hairline-light', 'dark:border-hairline-dark', 'text-ink-light', 'dark:text-ink-dark');
+        });
+        btn.classList.add('active', 'bg-accent-light', 'dark:bg-accent-dark', 'text-bg-light', 'dark:text-bg-dark');
+        
+        const filter = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Lightbox Open
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        currentIndex = idx;
+        updateLightbox();
+        lightbox.classList.remove('hidden');
+        lightbox.classList.add('flex');
+      });
+    });
+
+    function updateLightbox() {
+      const card = cards[currentIndex];
+      lbImg.src = card.getAttribute('data-img');
+      lbTitle.textContent = card.getAttribute('data-title');
+      lbDesc.textContent = card.getAttribute('data-desc');
+      const cat = card.getAttribute('data-category');
+      lbCat.textContent = cat === 'spaces' ? 'Architecture & Spaces' : cat === 'archives' ? 'Rare Archives' : cat === 'nooks' ? 'Reading Nooks' : 'Atelier & Coffee';
+      lbCounter.textContent = `${currentIndex + 1} / ${cards.length}`;
+    }
+
+    lbClose.addEventListener('click', () => {
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    });
+
+    lbPrev.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+      updateLightbox();
+    });
+
+    lbNext.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updateLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('hidden')) {
+        if (e.key === 'Escape') lbClose.click();
+        if (e.key === 'ArrowLeft') lbPrev.click();
+        if (e.key === 'ArrowRight') lbNext.click();
+      }
+    });
+  });
+</script>
+</body>
+</html>
