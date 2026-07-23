@@ -21,8 +21,10 @@
 
   const applyTheme = (dark) => {
     root.classList.toggle('dark', dark);
-    if (sun) sun.style.opacity = dark ? 0 : 1;
-    if (moon) moon.style.opacity = dark ? 1 : 0;
+    const suns = document.querySelectorAll('#icon-sun, #icon-sun-mobile');
+    const moons = document.querySelectorAll('#icon-moon, #icon-moon-mobile');
+    suns.forEach(s => { if (s) s.style.opacity = dark ? '0' : '1'; });
+    moons.forEach(m => { if (m) m.style.opacity = dark ? '1' : '0'; });
     
     const heroLightEl = $('#hero-img-light');
     const heroDarkEl = $('#hero-img-dark');
@@ -38,14 +40,13 @@
   };
   const saved = localStorage.getItem('mf-theme');
   applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
-  const themeToggleBtn = $('#theme-toggle');
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
+  document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach(btn => {
+    btn.addEventListener('click', () => {
       const dark = !root.classList.contains('dark');
       applyTheme(dark);
       localStorage.setItem('mf-theme', dark ? 'dark' : 'light');
     });
-  }
+  });
 
   /* ---------- RTL TOGGLE ---------- */
   const applyRTL = (rtl) => {
@@ -57,7 +58,7 @@
   const savedRTL = localStorage.getItem('mf-rtl') === '1';
   applyRTL(savedRTL);
   document.querySelectorAll('#rtl-toggle, #rtl-toggle-mobile').forEach(btn => {
-    if (btn) btn.addEventListener('click', () => applyRTL(root.getAttribute('dir') !== 'rtl'));
+    btn.addEventListener('click', () => applyRTL(root.getAttribute('dir') !== 'rtl'));
   });
 
   /* ---------- NAV: glass on scroll + progress + back to top ---------- */
@@ -81,7 +82,7 @@
   }
 
   /* ---------- MOBILE MENU ---------- */
-  const menuBtn = $('#menu-toggle'), mobileMenu = $('#mobile-menu');
+  const menuBtn = $('#menu-toggle'), mobileMenu = $('#mobile-menu'), siteNav = $('#site-nav');
   if (menuBtn && mobileMenu) {
     let menuOpen = false;
     const toggleMenu = (state) => {
@@ -89,9 +90,11 @@
       if (menuOpen) {
         mobileMenu.style.maxHeight = (mobileMenu.scrollHeight + 40) + 'px';
         menuBtn.setAttribute('aria-expanded', 'true');
+        if (siteNav) siteNav.classList.add('mobile-nav-open');
       } else {
         mobileMenu.style.maxHeight = '0px';
         menuBtn.setAttribute('aria-expanded', 'false');
+        if (siteNav) siteNav.classList.remove('mobile-nav-open');
       }
     };
     menuBtn.addEventListener('click', (e) => {
@@ -1319,6 +1322,141 @@
       book3D.style.transform = `rotateX(14deg) rotateY(-8deg)`;
       if (bookShadow) {
         bookShadow.style.transform = `rotateX(80deg)`;
+      }
+    });
+  }
+})();
+
+/* =====================================================================
+   DASHBOARD NAVIGATION & VIEW ENGINE
+   ===================================================================== */
+(function initDashboardEngine() {
+  const sidebar = document.getElementById('sidebar');
+  const drawerOverlay = document.getElementById('drawer-overlay');
+  const hamburger = document.getElementById('hamburger');
+  const collapseBtn = document.getElementById('collapse-btn');
+  const collapseIcon = document.getElementById('collapse-icon');
+  const darkToggle = document.getElementById('dark-toggle');
+  const currentDateEl = document.getElementById('current-date');
+
+  // Check if we are on dashboard.html
+  if (!sidebar) return;
+
+  // 1. Current Date Header Display
+  if (currentDateEl) {
+    const options = { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' };
+    currentDateEl.textContent = new Date().toLocaleDateString('en-US', options);
+  }
+
+  // 2. View Switching Function
+  window.switchView = function(viewName) {
+    const views = document.querySelectorAll('main section.view');
+    const navItems = document.querySelectorAll('nav .nav-item[data-view]');
+
+    if (!views.length) return;
+
+    views.forEach(v => {
+      if (v.getAttribute('data-view') === viewName) {
+        v.classList.remove('hidden');
+      } else {
+        v.classList.add('hidden');
+      }
+    });
+
+    navItems.forEach(item => {
+      if (item.getAttribute('data-view') === viewName) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // Close mobile drawer after view selection
+    closeMobileDrawer();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Attach click events to nav items
+  document.querySelectorAll('nav .nav-item[data-view]').forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.preventDefault();
+      const view = this.getAttribute('data-view');
+      switchView(view);
+    });
+  });
+
+  // 3. Mobile Hamburger & Overlay Drawer
+  function openMobileDrawer() {
+    if (sidebar) sidebar.classList.remove('-translate-x-full');
+    if (drawerOverlay) drawerOverlay.classList.remove('hidden');
+  }
+
+  function closeMobileDrawer() {
+    if (sidebar && window.innerWidth < 1024) {
+      sidebar.classList.add('-translate-x-full');
+    }
+    if (drawerOverlay) drawerOverlay.classList.add('hidden');
+  }
+
+  if (hamburger) {
+    hamburger.addEventListener('click', function(e) {
+      e.preventDefault();
+      openMobileDrawer();
+    });
+  }
+
+  if (drawerOverlay) {
+    drawerOverlay.addEventListener('click', function() {
+      closeMobileDrawer();
+    });
+  }
+
+  // 4. Sidebar Collapse Toggle (Desktop)
+  if (collapseBtn) {
+    let collapsed = false;
+    collapseBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      collapsed = !collapsed;
+      if (collapsed) {
+        sidebar.classList.add('w-[80px]');
+        sidebar.classList.remove('w-[264px]');
+        document.querySelectorAll('.sb-label').forEach(el => el.classList.add('hidden'));
+        if (collapseIcon) collapseIcon.textContent = 'chevron_right';
+      } else {
+        sidebar.classList.remove('w-[80px]');
+        sidebar.classList.add('w-[264px]');
+        document.querySelectorAll('.sb-label').forEach(el => el.classList.remove('hidden'));
+        if (collapseIcon) collapseIcon.textContent = 'chevron_left';
+      }
+    });
+  }
+
+  // 5. Dark Mode Toggle
+  if (darkToggle) {
+    darkToggle.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.documentElement.classList.toggle('dark');
+      const isDark = document.documentElement.classList.contains('dark');
+      try {
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      } catch (err) {}
+      
+      const darkIcon = document.getElementById('dark-icon');
+      if (darkIcon) {
+        darkIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+      }
+    });
+  }
+
+  // Handle global search filter
+  const globalSearch = document.getElementById('global-search');
+  if (globalSearch) {
+    globalSearch.addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') {
+        const val = this.value.trim();
+        if (val) {
+          showToast(`Filtered books for "${val}"`, 'info');
+        }
       }
     });
   }

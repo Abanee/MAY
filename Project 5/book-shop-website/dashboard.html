@@ -65,10 +65,6 @@
 
     <!-- Nav -->
     <nav class="flex-1 px-3 space-y-1 overflow-y-auto no-scrollbar">
-      <a href="index.html" class="nav-item">
-        <span class="material-symbols-outlined">arrow_back</span>
-        <span class="sb-label font-medium">Back to Library</span>
-      </a>
       <button data-view="dashboard" class="nav-item active">
         <span class="material-symbols-outlined">space_dashboard</span>
         <span class="sb-label">Dashboard</span>
@@ -93,19 +89,19 @@
     </nav>
 
     <!-- Bottom -->
-    <div class="px-3 pb-5 pt-3 border-t border-hairline-light dark:border-hairline-dark space-y-1">
-      <button id="dark-toggle" class="nav-item w-full">
-        <span class="material-symbols-outlined" id="dark-icon">dark_mode</span>
-        <span class="sb-label">Dark Mode</span>
-        <span class="ml-auto sb-label w-9 h-5 rounded-full bg-hairline-light dark:bg-primary-dark relative transition-colors" id="toggle-track">
-          <span class="absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform dark:translate-x-4" id="toggle-dot"></span>
-        </span>
-      </button>
-      <button class="nav-item w-full" onclick="showToast('Help center opening…','info')">
-        <span class="material-symbols-outlined">help</span>
-        <span class="sb-label">Help</span>
-      </button>
-      <button class="nav-item w-full" onclick="showToast('Signed out. See you soon, Eleanor.','success'); setTimeout(() => window.location.href='index.html', 1200)">
+    <div class="px-3 pb-5 pt-3 border-t border-hairline-light dark:border-hairline-dark space-y-2">
+      <!-- Theme & RTL in the SAME row -->
+      <div class="grid grid-cols-2 gap-2">
+        <button id="dark-toggle" class="flex items-center justify-center gap-2 py-2 px-2 rounded-xl bg-panel-light dark:bg-panel-dark hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 border border-hairline-light dark:border-hairline-dark text-xs font-semibold transition text-ink-light dark:text-ink-dark">
+          <span class="material-symbols-outlined !text-[18px]" id="dark-icon">dark_mode</span>
+          <span class="sb-label">Theme</span>
+        </button>
+        <button id="rtl-toggle" class="flex items-center justify-center gap-2 py-2 px-2 rounded-xl bg-panel-light dark:bg-panel-dark hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 border border-hairline-light dark:border-hairline-dark text-xs font-semibold transition text-ink-light dark:text-ink-dark">
+          <span class="material-symbols-outlined !text-[18px]">translate</span>
+          <span class="sb-label">RTL</span>
+        </button>
+      </div>
+      <button id="logout-btn" class="nav-item w-full text-red-500 dark:text-red-400 hover:bg-red-500/10 transition">
         <span class="material-symbols-outlined">logout</span>
         <span class="sb-label">Logout</span>
       </button>
@@ -412,6 +408,324 @@
 <!-- Toast container -->
 <div id="toast-container" class="fixed bottom-5 right-5 z-[100] space-y-2"></div>
 
+<script src="script.js"></script>
+<script>
+  (function() {
+    // -------------------------------------------------------------
+    // DATA DEFINITIONS
+    // -------------------------------------------------------------
+    const recommendedBooks = [
+      { id: 1, title: "The Cartographer's Silence", author: "Inés Roldán", cover: "cartographer_cover.png", genre: "Fiction", rating: "4.5" },
+      { id: 2, title: "Salt & Marrow", author: "Owen Baptiste", cover: "salt_marrow_cover.png", genre: "History", rating: "5.0" },
+      { id: 3, title: "A Brief History of Quiet", author: "Priya Nandakumar", cover: "quiet_cover.png", genre: "Essays", rating: "4.2" },
+      { id: 4, title: "Signal & Static", author: "Tomas Reyes", cover: "arrival_signal_cover.png", genre: "Sci-Fi", rating: "4.8" }
+    ];
+
+    const myBooksData = [
+      { id: 101, title: "The Midnight Library", author: "Matt Haig", cover: "quiet_cover.png", type: "borrowed", genre: "Fiction", due: "In 4 days (Jul 27)", progress: 72 },
+      { id: 102, title: "Salt & Marrow", author: "Owen Baptiste", cover: "salt_marrow_cover.png", type: "borrowed", genre: "History", due: "In 12 days (Aug 04)", progress: 35 },
+      { id: 103, title: "The Cartographer's Silence", author: "Inés Roldán", cover: "cartographer_cover.png", type: "borrowed", genre: "Fiction", due: "In 19 days (Aug 11)", progress: 10 },
+      { id: 104, title: "Marrow Deep", author: "Halle Osei", cover: "arrival_marrow_cover.png", type: "reserved", genre: "Mystery", due: "Available for Pickup", progress: 0 },
+      { id: 105, title: "The Slow Migration", author: "Jonas Eklund", cover: "arrival_migration_cover.png", type: "wishlist", genre: "Non-Fiction", due: "On Wishlist", progress: 0 }
+    ];
+
+    const notificationsData = [
+      { id: 1, title: "Book Due Reminder", desc: "The Midnight Library is due in 4 days (Jul 27).", category: "due", time: "2 hours ago", unread: true },
+      { id: 2, title: "Reservation Ready", desc: "Marrow Deep is ready for pickup at Nungambakkam counter.", category: "reservation", time: "1 day ago", unread: true },
+      { id: 3, title: "Sunday Poetry Circle", desc: "Your seat for Aug 09 Poetry Circle is confirmed.", category: "event", time: "2 days ago", unread: true },
+      { id: 4, title: "Library Announcement", desc: "New rare archives acquired for the August exhibition.", category: "announcement", time: "4 days ago", unread: false }
+    ];
+
+    // -------------------------------------------------------------
+    // VIEW SWITCHER
+    // -------------------------------------------------------------
+    window.switchView = function(viewName) {
+      const views = document.querySelectorAll('main section.view');
+      const navBtns = document.querySelectorAll('nav [data-view]');
+
+      views.forEach(v => {
+        if (v.getAttribute('data-view') === viewName) {
+          v.classList.remove('hidden');
+        } else {
+          v.classList.add('hidden');
+        }
+      });
+
+      navBtns.forEach(btn => {
+        if (btn.getAttribute('data-view') === viewName) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      closeDrawer();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Attach click listeners to all nav items
+    document.querySelectorAll('nav [data-view]').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const view = this.getAttribute('data-view');
+        switchView(view);
+      });
+    });
+
+    // -------------------------------------------------------------
+    // RENDER FUNCTIONS
+    // -------------------------------------------------------------
+    function renderRecommended() {
+      const grid = document.getElementById('recommended-grid');
+      if (!grid) return;
+      grid.innerHTML = recommendedBooks.map(b => `
+        <div class="bg-panel-light dark:bg-panel-dark border border-hairline-light dark:border-hairline-dark rounded-2xl p-3 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
+          <img src="${b.cover}" alt="${b.title}" class="w-full h-32 object-cover rounded-xl shadow-sm mb-2.5">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-accent-light dark:text-accent-dark">${b.genre}</span>
+            <p class="font-serif text-sm font-semibold truncate text-ink-light dark:text-ink-dark mt-0.5">${b.title}</p>
+            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 truncate">${b.author}</p>
+          </div>
+          <button class="mt-3 w-full py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark text-xs font-semibold hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark dark:hover:text-[#121212] transition" onclick="showToast('Added &quot;${b.title}&quot; to your borrowing cart','success')">Borrow</button>
+        </div>
+      `).join('');
+    }
+
+    function renderActivityTimeline() {
+      const el = document.getElementById('activity-timeline');
+      if (!el) return;
+      const items = [
+        { title: "Finished Chapter 14", desc: "The Midnight Library by Matt Haig", time: "Today, 10:15 AM", icon: "menu_book" },
+        { title: "Borrowed New Title", desc: "Salt & Marrow by Owen Baptiste", time: "Yesterday, 4:30 PM", icon: "download" },
+        { title: "Attended Event", desc: "An Evening with Inés Roldán", time: "Jul 20, 2026", icon: "event" },
+        { title: "Returned Book", desc: "A Brief History of Quiet", time: "Jul 18, 2026", icon: "assignment_return" }
+      ];
+      el.innerHTML = items.map(item => `
+        <div class="flex items-start gap-3.5">
+          <div class="w-8 h-8 rounded-full bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark grid place-items-center shrink-0 mt-0.5">
+            <span class="material-symbols-outlined !text-[17px]">${item.icon}</span>
+          </div>
+          <div class="flex-1 min-w-0 border-b border-hairline-light/50 dark:border-hairline-dark/50 pb-3">
+            <p class="text-xs font-semibold text-ink-light dark:text-ink-dark">${item.title}</p>
+            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 truncate">${item.desc}</p>
+            <span class="text-[10px] text-ink-light/40 dark:text-ink-dark/40 mt-1 block">${item.time}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderDueDates() {
+      const el = document.getElementById('due-dates-list');
+      if (!el) return;
+      const items = [
+        { title: "The Midnight Library", due: "Jul 27 (4 days left)", badge: "bg-amber-500/15 text-amber-600 dark:text-amber-400" },
+        { title: "Salt & Marrow", due: "Aug 04 (12 days left)", badge: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" },
+        { title: "The Cartographer's Silence", due: "Aug 11 (19 days left)", badge: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" }
+      ];
+      el.innerHTML = items.map(item => `
+        <div class="p-3 rounded-xl bg-panel-light dark:bg-panel-dark flex items-center justify-between gap-3">
+          <div class="min-w-0">
+            <p class="text-xs font-semibold truncate text-ink-light dark:text-ink-dark">${item.title}</p>
+            <span class="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1 ${item.badge}">${item.due}</span>
+          </div>
+          <button class="text-xs font-semibold text-accent-light dark:text-accent-dark hover:underline shrink-0" onclick="showToast('Renewed borrowing period for &quot;${item.title}&quot;!','success')">Renew</button>
+        </div>
+      `).join('');
+    }
+
+    function renderMyBooks(filterType = 'borrowed') {
+      const grid = document.getElementById('mybooks-grid');
+      if (!grid) return;
+      const filtered = myBooksData.filter(b => filterType === 'all' || b.type === filterType);
+      grid.innerHTML = filtered.map(b => `
+        <div class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl p-3.5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
+          <img src="${b.cover}" alt="${b.title}" class="w-full h-36 object-cover rounded-xl shadow-sm mb-3">
+          <div>
+            <span class="text-[10px] uppercase font-bold tracking-wider text-accent-light dark:text-accent-dark">${b.genre}</span>
+            <p class="font-serif text-sm font-semibold truncate text-ink-light dark:text-ink-dark mt-0.5">${b.title}</p>
+            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 truncate mb-2">${b.author}</p>
+            <p class="text-[10px] font-medium text-ink-light/50 dark:text-ink-dark/50">${b.due}</p>
+          </div>
+          <button class="mt-3.5 w-full py-1.5 rounded-lg bg-primary-light dark:bg-primary-dark text-white dark:text-[#121212] text-xs font-semibold hover:opacity-90 transition" onclick="showToast('Action updated for &quot;${b.title}&quot;','info')">Manage</button>
+        </div>
+      `).join('');
+    }
+
+    function renderNotifications(filter = 'all') {
+      const list = document.getElementById('notifications-list');
+      if (!list) return;
+      const filtered = notificationsData.filter(n => filter === 'all' || n.category === filter);
+      list.innerHTML = filtered.map(n => `
+        <div class="p-4 rounded-2xl bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark flex items-start gap-4 shadow-sm ${n.unread ? 'ring-1 ring-accent-light/30 dark:ring-accent-dark/30' : ''}">
+          <div class="w-10 h-10 rounded-full bg-accent-light/10 dark:bg-accent-dark/20 text-accent-light dark:text-accent-dark grid place-items-center shrink-0">
+            <span class="material-symbols-outlined !text-[20px]">notifications</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center justify-between gap-2">
+              <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">${n.title}</p>
+              <span class="text-[10px] text-ink-light/40 dark:text-ink-dark/40">${n.time}</span>
+            </div>
+            <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mt-1 leading-relaxed">${n.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // -------------------------------------------------------------
+    // INTERACTIVE CONTROLS (TABS & DRAWER)
+    // -------------------------------------------------------------
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const sidebar = document.getElementById('sidebar');
+
+    function closeDrawer() {
+      if (sidebar && window.innerWidth < 1024) {
+        sidebar.classList.add('-translate-x-full');
+      }
+      if (drawerOverlay) drawerOverlay.classList.add('hidden');
+    }
+
+    const hamburger = document.getElementById('hamburger');
+    if (hamburger) {
+      hamburger.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (sidebar) sidebar.classList.remove('-translate-x-full');
+        if (drawerOverlay) drawerOverlay.classList.remove('hidden');
+      });
+    }
+
+    if (drawerOverlay) {
+      drawerOverlay.addEventListener('click', closeDrawer);
+    }
+
+    // My Books Tab Buttons
+    document.querySelectorAll('#mybooks-tabs [data-tab]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#mybooks-tabs [data-tab]').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderMyBooks(this.getAttribute('data-tab'));
+      });
+    });
+
+    // Notification Filters
+    document.querySelectorAll('#notif-filters [data-filter]').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('#notif-filters [data-filter]').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderNotifications(this.getAttribute('data-filter'));
+      });
+    });
+
+    // -------------------------------------------------------------
+    // TOAST NOTIFICATION HELPER
+    // -------------------------------------------------------------
+    window.showToast = function(msg, type = 'success') {
+      let container = document.getElementById('toast-container');
+      if (!container) {
+        container = document.createElement('div');
+        container.id = 'toast-container';
+        container.className = 'fixed bottom-5 right-5 z-[100] space-y-2 pointer-events-none';
+        document.body.appendChild(container);
+      }
+      const t = document.createElement('div');
+      t.className = `px-4 py-3 rounded-2xl text-xs font-semibold text-white shadow-xl pointer-events-auto flex items-center gap-2 transition-all duration-300 transform translate-y-2 opacity-0 ${type === 'error' ? 'bg-red-600' : type === 'info' ? 'bg-primary-light dark:bg-primary-dark' : 'bg-emerald-600'}`;
+      t.innerHTML = `<span>${msg}</span>`;
+      container.appendChild(t);
+      setTimeout(() => { t.classList.remove('translate-y-2', 'opacity-0'); }, 10);
+      setTimeout(() => {
+        t.classList.add('opacity-0', 'translate-y-2');
+        setTimeout(() => t.remove(), 300);
+      }, 3000);
+    };
+
+    // -------------------------------------------------------------
+    // DARK MODE, RTL & LOGOUT BUTTON HANDLERS
+    // -------------------------------------------------------------
+    const darkToggle = document.getElementById('dark-toggle');
+    function updateDarkToggleUI(isDark) {
+      const darkIcon = document.getElementById('dark-icon');
+      const toggleDot = document.getElementById('toggle-dot');
+      if (darkIcon) darkIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+      if (toggleDot) {
+        if (isDark) {
+          toggleDot.classList.add('translate-x-4');
+        } else {
+          toggleDot.classList.remove('translate-x-4');
+        }
+      }
+    }
+
+    if (darkToggle) {
+      darkToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isDark = !document.documentElement.classList.contains('dark');
+        document.documentElement.classList.toggle('dark', isDark);
+        try { localStorage.setItem('mf-theme', isDark ? 'dark' : 'light'); } catch(err) {}
+        updateDarkToggleUI(isDark);
+        showToast(`Switched to ${isDark ? 'Dark' : 'Light'} Mode`, 'info');
+      });
+    }
+
+    // Sync initial dark toggle UI state
+    updateDarkToggleUI(document.documentElement.classList.contains('dark'));
+
+    // RTL Toggle Handler
+    const rtlToggle = document.getElementById('rtl-toggle');
+    if (rtlToggle) {
+      rtlToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+        document.documentElement.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+        try { localStorage.setItem('mf-rtl', isRTL ? '0' : '1'); } catch(err) {}
+        showToast(`Switched layout to ${isRTL ? 'LTR' : 'RTL'}`, 'info');
+      });
+    }
+
+    // Logout Handler
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        showToast('Signed out successfully! Redirecting to library...', 'success');
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 1200);
+      });
+    }
+
+    window.markAllRead = function() {
+      notificationsData.forEach(n => n.unread = false);
+      const badge = document.getElementById('nav-notif-badge');
+      if (badge) badge.style.display = 'none';
+      renderNotifications('all');
+      showToast('All notifications marked as read.', 'success');
+    };
+
+    // -------------------------------------------------------------
+    // INITIALIZATION ON LOAD
+    // -------------------------------------------------------------
+    renderRecommended();
+    renderActivityTimeline();
+    renderDueDates();
+    renderMyBooks('borrowed');
+    renderNotifications('all');
+
+    // Stat counter animation
+    document.querySelectorAll('.stat-number').forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+      let curr = 0;
+      const step = Math.max(1, Math.floor(target / 20));
+      const timer = setInterval(() => {
+        curr += step;
+        if (curr >= target) {
+          curr = target;
+          clearInterval(timer);
+        }
+        el.textContent = curr;
+      }, 40);
+    });
+
+  })();
+</script>
 <script src="script.js"></script>
 </body>
 </html>

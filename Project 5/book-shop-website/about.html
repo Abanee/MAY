@@ -67,11 +67,11 @@
       <button id="search-open" aria-label="Open search" class="magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><line x1="12.5" y1="12.5" x2="17" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
       </button>
-      <button id="theme-toggle" aria-label="Toggle dark mode" class="magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
+      <button id="theme-toggle" aria-label="Toggle dark mode" class="hidden xl:grid magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition relative overflow-hidden">
         <svg id="icon-sun" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
         <svg id="icon-moon" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
       </button>
-      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
+      <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="hidden xl:grid magnetic w-9 h-9 sm:w-10 sm:h-10 rounded-full place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-[11px] font-bold tracking-wider">RTL</button>
       <a href="login.html" class="hidden xl:inline-flex magnetic ml-1 px-4 py-2 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-[13px] font-medium tracking-wide hover:opacity-90 transition">Login</a>
       <a href="dashboard.html" class="hidden xl:inline-flex magnetic px-4 py-2 rounded-full border border-primary-light/40 dark:border-accent-dark/40 text-primary-light dark:text-accent-dark hover:bg-primary-light/10 dark:hover:bg-accent-dark/10 text-[13px] font-medium tracking-wide transition">Dashboard</a>
       <button id="menu-toggle" aria-label="Open menu" class="xl:hidden w-9 h-9 sm:w-10 sm:h-10 rounded-full grid place-items-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition">
@@ -82,7 +82,7 @@
 
   <!-- mobile menu -->
   <div id="mobile-menu" class="xl:hidden max-h-0 overflow-hidden transition-all duration-500 bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-2xl border-t border-hairline-light/60 dark:border-hairline-dark/60 rounded-b-[28px]">
-    <ul class="flex flex-col px-8 py-6 gap-5 text-sm">
+    <ul class="flex flex-col px-8 py-6 gap-4 text-sm">
       <li><a href="index.html" class="mobile-link">Home</a></li>
       <li><a href="home2.html" class="mobile-link">Home 2</a></li>
       <li><a href="about.html" class="mobile-link text-accent-light dark:text-accent-dark">About</a></li>
@@ -90,10 +90,16 @@
       <li><a href="membership.html" class="mobile-link">Plans</a></li>
       <li><a href="gallery.html" class="mobile-link">Gallery</a></li>
       <li><a href="contact.html" class="mobile-link">Contact</a></li>
-      <li class="flex items-center gap-3 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+      <li class="flex items-center justify-center gap-4 pt-3 border-t border-hairline-light dark:border-hairline-dark">
+        <button id="theme-toggle-mobile" aria-label="Toggle dark mode" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center relative overflow-hidden transition hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50">
+          <svg id="icon-sun-mobile" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
+          <svg id="icon-moon-mobile" width="18" height="18" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        </button>
+        <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold tracking-wider transition hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50">RTL</button>
+      </li>
+      <li class="flex items-center gap-3">
         <a href="login.html" class="flex-1 text-center px-4 py-2.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light text-sm font-medium">Login</a>
         <a href="dashboard.html" class="flex-1 text-center px-4 py-2.5 rounded-full border border-primary-light dark:border-accent-dark text-primary-light dark:text-accent-dark text-sm font-medium">Dashboard</a>
-        <button id="rtl-toggle-mobile" aria-label="Toggle RTL" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark grid place-items-center text-[11px] font-bold">RTL</button>
       </li>
     </ul>
   </div>
@@ -500,7 +506,7 @@
       <div class="ab-team-wrap reveal-scroll">
         <div class="ab-team-card">
           <div class="ab-team-face ab-team-front" style="--tc:#234E52">
-            <span class="ab-team-mono">JM</span>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80" alt="Josephine Marlowe" class="w-20 h-20 rounded-full object-cover mb-3 ring-4 ring-white/20 shadow-md">
             <p class="font-serif text-lg">Josephine Marlowe</p>
             <p class="text-xs opacity-70">Founder</p>
           </div>
@@ -514,7 +520,7 @@
       <div class="ab-team-wrap reveal-scroll" style="transition-delay:.05s">
         <div class="ab-team-card">
           <div class="ab-team-face ab-team-front" style="--tc:#7B3B3B">
-            <span class="ab-team-mono">AF</span>
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80" alt="Adrian Finch" class="w-20 h-20 rounded-full object-cover mb-3 ring-4 ring-white/20 shadow-md">
             <p class="font-serif text-lg">Adrian Finch</p>
             <p class="text-xs opacity-70">Head Librarian</p>
           </div>
@@ -528,7 +534,7 @@
       <div class="ab-team-wrap reveal-scroll" style="transition-delay:.1s">
         <div class="ab-team-card">
           <div class="ab-team-face ab-team-front" style="--tc:#3B6B57">
-            <span class="ab-team-mono">NR</span>
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&q=80" alt="Nadia Reyes" class="w-20 h-20 rounded-full object-cover mb-3 ring-4 ring-white/20 shadow-md">
             <p class="font-serif text-lg">Nadia Reyes</p>
             <p class="text-xs opacity-70">Reading Coordinator</p>
           </div>
@@ -542,7 +548,7 @@
       <div class="ab-team-wrap reveal-scroll" style="transition-delay:.15s">
         <div class="ab-team-card">
           <div class="ab-team-face ab-team-front" style="--tc:#C79A3B">
-            <span class="ab-team-mono">TO</span>
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80" alt="Tomas Okafor" class="w-20 h-20 rounded-full object-cover mb-3 ring-4 ring-white/20 shadow-md">
             <p class="font-serif text-lg">Tomas Okafor</p>
             <p class="text-xs opacity-70">Events Manager</p>
           </div>
@@ -556,7 +562,7 @@
       <div class="sm:col-span-2 lg:col-span-1 sm:max-w-[380px] lg:max-w-none sm:mx-auto lg:mx-0 w-full ab-team-wrap reveal-scroll" style="transition-delay:.2s">
         <div class="ab-team-card">
           <div class="ab-team-face ab-team-front" style="--tc:#5B3B6B">
-            <span class="ab-team-mono">SL</span>
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Saoirse Lin" class="w-20 h-20 rounded-full object-cover mb-3 ring-4 ring-white/20 shadow-md">
             <p class="font-serif text-lg">Saoirse Lin</p>
             <p class="text-xs opacity-70">Community Volunteer</p>
           </div>
@@ -573,24 +579,24 @@
 
 <!-- ============ LIBRARY JOURNEY — STATS ============ -->
 <section class="relative py-28 lg:py-32 px-6 bg-primary-light dark:bg-[#0f1a18] text-bg-light overflow-hidden">
-  <div class="ab-numbers-bg" aria-hidden="true">
-    <svg width="1400" height="200" viewBox="0 0 1400 200">
-      <g fill="#FAF7F2">
-        <rect x="20" y="40" width="20" height="120" rx="2"/><rect x="50" y="20" width="20" height="140" rx="2"/><rect x="80" y="60" width="20" height="100" rx="2"/>
-        <rect x="220" y="30" width="20" height="130" rx="2"/><rect x="250" y="50" width="20" height="110" rx="2"/><rect x="280" y="15" width="20" height="145" rx="2"/>
-        <rect x="420" y="45" width="20" height="115" rx="2"/><rect x="450" y="25" width="20" height="135" rx="2"/><rect x="480" y="55" width="20" height="105" rx="2"/>
-        <rect x="620" y="35" width="20" height="125" rx="2"/><rect x="650" y="10" width="20" height="150" rx="2"/><rect x="680" y="48" width="20" height="112" rx="2"/>
-        <rect x="820" y="40" width="20" height="120" rx="2"/><rect x="850" y="20" width="20" height="140" rx="2"/><rect x="880" y="60" width="20" height="100" rx="2"/>
-        <rect x="1020" y="30" width="20" height="130" rx="2"/><rect x="1050" y="50" width="20" height="110" rx="2"/><rect x="1080" y="15" width="20" height="145" rx="2"/>
-        <rect x="1220" y="45" width="20" height="115" rx="2"/><rect x="1250" y="25" width="20" height="135" rx="2"/><rect x="1280" y="55" width="20" height="105" rx="2"/>
+  <div class="ab-numbers-bg absolute inset-0 opacity-20 pointer-events-none overflow-hidden flex items-center justify-center" aria-hidden="true">
+    <svg width="100%" height="100%" viewBox="0 0 1200 160" preserveAspectRatio="none" class="w-full h-full">
+      <path d="M0,80 Q300,140 600,80 T1200,80" fill="none" stroke="#D4A64A" stroke-width="2" stroke-dasharray="8 8" class="animate-pulse"></path>
+      <g fill="#FAF7F2" opacity="0.35">
+        <rect x="6%" y="30" width="16" height="100" rx="3"/>
+        <rect x="22%" y="20" width="16" height="120" rx="3"/>
+        <rect x="39%" y="40" width="16" height="90" rx="3"/>
+        <rect x="56%" y="25" width="16" height="110" rx="3"/>
+        <rect x="73%" y="35" width="16" height="100" rx="3"/>
+        <rect x="90%" y="20" width="16" height="120" rx="3"/>
       </g>
     </svg>
   </div>
-  <div class="relative max-w-[1200px] mx-auto text-center mb-14">
+  <div class="relative max-w-[1240px] mx-auto text-center mb-14">
     <p class="text-[13px] tracking-[0.4em] uppercase text-bg-light/60 mb-3">Thirty-Two Years, In Numbers</p>
     <h2 class="font-serif text-3xl lg:text-4xl font-light">Our Library Journey</h2>
   </div>
-  <div class="relative max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 text-center">
+  <div class="relative max-w-[1240px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 lg:gap-10 text-center items-center justify-between">
     <div><p class="stat-num" data-target="18400">0</p><p class="stat-label">Books Available</p></div>
     <div><p class="stat-num" data-target="6250">0</p><p class="stat-label">Registered Members</p></div>
     <div><p class="stat-num" data-target="32">0</p><p class="stat-label">Years Serving</p></div>
@@ -705,7 +711,7 @@
     <div class="grid md:grid-cols-3 gap-8">
       <div class="h2-note reveal-scroll">
         <div class="flex items-center gap-3 mb-4">
-          <div class="avatar font-semibold text-white grid place-items-center w-10 h-10 rounded-full text-xs shrink-0" style="background:#3B5B7B">RM</div>
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Renata Mbeki" class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
           <div><p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Renata Mbeki</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Scholar Member · Favorite: History</p></div>
         </div>
         <p class="font-display italic text-[16px] leading-relaxed mb-4 text-ink-light/80 dark:text-ink-dark/80">"I've borrowed 41 books this year and the reading room still smells like the first day I walked in."</p>
@@ -714,7 +720,7 @@
 
       <div class="h2-note reveal-scroll">
         <div class="flex items-center gap-3 mb-4">
-          <div class="avatar font-semibold text-white grid place-items-center w-10 h-10 rounded-full text-xs shrink-0" style="background:#7B3B3B">DK</div>
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Devon Kessler" class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
           <div><p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Devon Kessler</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Reader Member · Favorite: Mystery</p></div>
         </div>
         <p class="font-display italic text-[16px] leading-relaxed mb-4 text-ink-light/80 dark:text-ink-dark/80">"The staff remembered I liked Nordic noir and set aside three titles before I even asked."</p>
@@ -723,7 +729,7 @@
 
       <div class="h2-note reveal-scroll">
         <div class="flex items-center gap-3 mb-4">
-          <div class="avatar font-semibold text-white grid place-items-center w-10 h-10 rounded-full text-xs shrink-0" style="background:#C79A3B">SF</div>
+          <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Saoirse Fallon" class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
           <div><p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Saoirse Fallon</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Explorer Member · Favorite: Poetry</p></div>
         </div>
         <p class="font-display italic text-[16px] leading-relaxed mb-4 text-ink-light/80 dark:text-ink-dark/80">"Sunday Poetry Circle is the calmest hour of my week. I look forward to it more than the weekend itself."</p>
