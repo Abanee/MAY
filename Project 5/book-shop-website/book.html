@@ -119,22 +119,23 @@
 
 <main>
 <!-- ============ SECTION 1 — HERO ============ -->
-<section id="bc-hero" class="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
-  <div class="absolute inset-0 bc-hero-bg"></div>
-  <div class="absolute inset-0 lamp-glow"></div>
-  <div id="particles" class="absolute inset-0"></div>
-  <div class="absolute -bottom-1 inset-x-0 h-40 bg-gradient-to-b from-transparent to-bg-light dark:to-bg-dark pointer-events-none"></div>
+<section id="bc-hero" class="relative py-28 sm:py-36 lg:py-44 flex items-center justify-center overflow-hidden bg-[#16231F] dark:bg-[#0c0f0d] text-center px-4 sm:px-6">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute inset-0 bc-hero-bg opacity-30"></div>
+    <div class="absolute inset-0 lamp-glow"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-[#0e1613]/90 via-[#16231F]/80 to-[#0e1613]/95"></div>
+  </div>
 
-  <span class="bc-float hero-book hb1" style="font-size:58px" aria-hidden="true"><span class="material-symbols-outlined" style="font-size:58px">menu_book</span></span>
-  <span class="bc-float hero-book hb2" style="font-size:70px;color:#4FAF8F" aria-hidden="true"><span class="material-symbols-outlined" style="font-size:70px">auto_stories</span></span>
-  <span class="bc-float hero-book hb3" style="font-size:50px;color:#FAF7F2" aria-hidden="true"><span class="material-symbols-outlined" style="font-size:50px">import_contacts</span></span>
+  <div class="relative z-10 max-w-3xl mx-auto pt-14 sm:pt-20">
+    <p class="reveal text-xs sm:text-[13px] tracking-[0.35em] uppercase text-[#D4A64A] mb-5 font-semibold">The Full Collection · 18,400+ Volumes</p>
+    <h1 class="reveal font-serif text-4xl sm:text-5xl lg:text-[68px] leading-[1.08] text-[#FAF7F2] font-light">
+      Every Shelf,<br class="hidden sm:block"> Open to You
+    </h1>
+    <p class="reveal mt-6 text-[#FAF7F2]/80 text-sm sm:text-base lg:text-lg max-w-xl mx-auto font-light leading-relaxed">
+      Browse thousands of titles across ten genres — curated by our booksellers, ready to borrow the moment you join.
+    </p>
 
-  <div class="relative z-10 max-w-3xl mx-auto text-center px-6 pt-16">
-    <p class="reveal text-[13px] tracking-[0.4em] uppercase text-[#D4A64A] mb-6">The Full Collection</p>
-    <h1 class="reveal font-serif text-4xl sm:text-5xl lg:text-[68px] leading-[1.08] text-[#FAF7F2] font-light" style="transition-delay:.1s">Every Shelf,<br class="hidden sm:block"> Open to You</h1>
-    <p class="reveal mt-6 text-[#FAF7F2]/70 text-base lg:text-lg max-w-lg mx-auto font-light leading-relaxed" style="transition-delay:.2s">Browse thousands of titles across ten genres — curated by our booksellers, ready to borrow the moment you join.</p>
-
-    <form id="hero-search-form" class="reveal mt-9 flex flex-col sm:flex-row gap-2.5 max-w-xl mx-auto" style="transition-delay:.3s">
+    <form id="hero-search-form" class="reveal mt-8 flex flex-col sm:flex-row gap-2.5 max-w-xl mx-auto">
       <input id="hero-search-input" type="text" placeholder="Search by title or author…" class="input-field !bg-[#FAF7F2] !text-[#2E2E2E] flex-1" aria-label="Search books">
       <select id="hero-genre-select" class="input-field !bg-[#FAF7F2] !text-[#2E2E2E] sm:w-44" aria-label="Category">
         <option value="">All Genres</option>
@@ -143,15 +144,10 @@
       <button id="hero-search-btn" class="btn-mini !rounded-xl !px-6">Search</button>
     </form>
 
-    <div class="reveal mt-6 flex flex-col sm:flex-row items-center justify-center gap-4" style="transition-delay:.4s">
+    <div class="reveal mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
       <a href="#discovery" class="magnetic px-8 py-3.5 rounded-full bg-[#D4A64A] text-[#16231F] font-medium text-sm tracking-wide hover:brightness-110 transition w-full sm:w-auto text-center">Browse All Books</a>
-      <a href="index.html#membership" class="magnetic px-8 py-3.5 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2] font-medium text-sm tracking-wide hover:bg-[#FAF7F2]/10 transition w-full sm:w-auto text-center">Become a Member</a>
+      <a href="membership.html" class="magnetic px-8 py-3.5 rounded-full border border-[#FAF7F2]/30 text-[#FAF7F2] font-medium text-sm tracking-wide hover:bg-[#FAF7F2]/10 transition w-full sm:w-auto text-center">Become a Member</a>
     </div>
-  </div>
-
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-[#FAF7F2]/50">
-    <div class="mouse-scroll"></div>
-    <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
   </div>
 </section>
 
@@ -179,102 +175,240 @@
   </div>
 </section>
 
-<!-- ============ SECTION 3 — FEATURED COLLECTIONS ============ -->
-<section id="collections" class="relative overflow-hidden py-24 lg:py-32 px-6 bg-card-light/60 dark:bg-card-dark/40">
+<!-- ============ SECTION 3 — UNIQUE LENDING BUNDLES ============ -->
+<section id="reading-bundles" class="relative overflow-hidden py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-card-light/60 dark:bg-card-dark/40 border-y border-hairline-light dark:border-hairline-dark">
   <div class="max-w-[1300px] mx-auto relative z-10">
     <div class="flex flex-col items-center text-center mb-16">
-      <p class="eyebrow">Chosen By Our Booksellers</p>
-      <h2 class="section-title mt-3">Featured Collections</h2>
+      <p class="eyebrow">Handpicked Reading Journeys</p>
+      <h2 class="section-title mt-3">Curated Reading Bundles</h2>
+      <p class="text-xs sm:text-sm text-ink-light/65 dark:text-ink-dark/65 mt-2 max-w-lg leading-relaxed">Theme-matched multi-volume sets bundled together for continuous weekend reading — borrow all volumes in a single click.</p>
     </div>
 
-    <div class="space-y-24 lg:space-y-28">
-      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
-        <div class="book-cover-wrap order-1">
-          <div class="book-3d-card"><div class="book-3d-inner"><img src="cartographer_cover.png" alt="Staff Picks Collection" class="book-3d-cover-img" /></div><div class="bookmark-tag"></div></div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- BUNDLE 1 -->
+      <div class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll">
+        <div class="h-60 w-full overflow-hidden relative">
+          <img src="cartographer_cover.png" alt="The Cozy Mystery &amp; Noir Trilogy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-[#C79A3B] text-black shadow-md">3 Volume Set</span>
+          <span class="absolute bottom-3.5 left-4 text-xs font-semibold uppercase tracking-wider text-white/90">Curated Bundle · Mystery</span>
         </div>
-        <div class="order-2">
-          <span class="badge-available">62 Books</span>
-          <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-3">Staff Picks</h3>
-          <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">The titles our booksellers can't stop recommending — refreshed every month with a note on why each one made the shelf.</p>
-          <a href="#discovery" class="btn-primary inline-block">Explore Collection</a>
+        <div class="p-6 flex flex-col flex-1 justify-between gap-5">
+          <div>
+            <h3 class="font-serif text-2xl font-semibold mb-2 text-ink-light dark:text-ink-dark group-hover:text-accent-light dark:group-hover:text-accent-dark transition-colors">The Noir &amp; Mystery Trilogy</h3>
+            <p class="text-xs sm:text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">Includes <em>The Cartographer's Silence</em>, <em>Marrow Deep</em>, and <em>Small Mercies</em>. Perfect for readers who love fog-drenched investigations and tight forensic secrets.</p>
+          </div>
+          
+          <div class="pt-3 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+            <div>
+              <p class="text-[11px] font-semibold text-accent-light dark:text-accent-dark">★ 4.9 · 18h Read</p>
+              <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-0.5">3/3 Volumes Available</p>
+            </div>
+            <button class="btn-primary !py-2 !px-4 !text-xs" onclick="bcToast('Reserved The Noir &amp; Mystery Trilogy bundle!')">Borrow Set →</button>
+          </div>
         </div>
-      </article>
+      </div>
 
-      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
-        <div class="order-2 lg:order-1">
-          <span class="badge-available">34 Books</span>
-          <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-3">Award Winners</h3>
-          <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">Booker, Pulitzer, and Hugo winners spanning three decades — the shelf every serious reader starts with.</p>
-          <a href="#discovery" class="btn-primary inline-block">Explore Collection</a>
+      <!-- BUNDLE 2 -->
+      <div class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll" style="transition-delay:.05s">
+        <div class="h-60 w-full overflow-hidden relative">
+          <img src="salt_marrow_cover.png" alt="Speculative Sci-Fi Frontiers" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-[#3B5B7B] text-white shadow-md">4 Volume Set</span>
+          <span class="absolute bottom-3.5 left-4 text-xs font-semibold uppercase tracking-wider text-white/90">Curated Bundle · Sci-Fi</span>
         </div>
-        <div class="book-cover-wrap order-1 lg:order-2">
-          <div class="book-3d-card"><div class="book-3d-inner"><img src="salt_marrow_cover.png" alt="Award Winners Collection" class="book-3d-cover-img" /></div><div class="bookmark-tag"></div></div>
+        <div class="p-6 flex flex-col flex-1 justify-between gap-5">
+          <div>
+            <h3 class="font-serif text-2xl font-semibold mb-2 text-ink-light dark:text-ink-dark group-hover:text-accent-light dark:group-hover:text-accent-dark transition-colors">Speculative Sci-Fi Frontiers</h3>
+            <p class="text-xs sm:text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">Includes <em>Signal &amp; Static</em>, <em>Circuit &amp; Bone</em>, and <em>The Machine Garden</em>. An immersive journey through Cold War radio signals, cybernetics, and future gardens.</p>
+          </div>
+          
+          <div class="pt-3 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+            <div>
+              <p class="text-[11px] font-semibold text-accent-light dark:text-accent-dark">★ 4.8 · 22h Read</p>
+              <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-0.5">4/4 Volumes Available</p>
+            </div>
+            <button class="btn-primary !py-2 !px-4 !text-xs" onclick="bcToast('Reserved Speculative Sci-Fi Frontiers bundle!')">Borrow Set →</button>
+          </div>
         </div>
-      </article>
+      </div>
 
-      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
-        <div class="book-cover-wrap order-1">
-          <div class="book-3d-card"><div class="book-3d-inner"><img src="quiet_cover.png" alt="Best Sellers Collection" class="book-3d-cover-img" /></div><div class="bookmark-tag"></div></div>
+      <!-- BUNDLE 3 -->
+      <div class="md:col-span-2 lg:col-span-1 md:max-w-[440px] lg:max-w-none md:mx-auto lg:mx-0 w-full bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll" style="transition-delay:.1s">
+        <div class="h-60 w-full overflow-hidden relative">
+          <img src="quiet_cover.png" alt="Masterworks of History &amp; Memory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+          <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-[#7B3B3B] text-white shadow-md">3 Volume Set</span>
+          <span class="absolute bottom-3.5 left-4 text-xs font-semibold uppercase tracking-wider text-white/90">Curated Bundle · History</span>
         </div>
-        <div class="order-2">
-          <span class="badge-available">89 Books</span>
-          <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-3">Best Sellers</h3>
-          <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">The most-borrowed titles of the season, ranked by our members' actual reading — not marketing budgets.</p>
-          <a href="#discovery" class="btn-primary inline-block">Explore Collection</a>
+        <div class="p-6 flex flex-col flex-1 justify-between gap-5">
+          <div>
+            <h3 class="font-serif text-2xl font-semibold mb-2 text-ink-light dark:text-ink-dark group-hover:text-accent-light dark:group-hover:text-accent-dark transition-colors">Masterworks of History</h3>
+            <p class="text-xs sm:text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">Includes <em>The Slow Migration</em>, <em>Quiet Orchard</em>, and <em>Lost Archives of Birchwood</em>. Patient, beautiful prose detailing history, heritage, and quiet luxury.</p>
+          </div>
+          
+          <div class="pt-3 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+            <div>
+              <p class="text-[11px] font-semibold text-accent-light dark:text-accent-dark">★ 5.0 · 15h Read</p>
+              <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-0.5">3/3 Volumes Available</p>
+            </div>
+            <button class="btn-primary !py-2 !px-4 !text-xs" onclick="bcToast('Reserved Masterworks of History bundle!')">Borrow Set →</button>
+          </div>
         </div>
-      </article>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ============ SECTION 4 — NEW ARRIVALS ============ -->
-<section id="arrivals" class="relative overflow-hidden py-24 lg:py-32 px-6">
-  <div class="max-w-[1300px] mx-auto relative z-10 flex items-end justify-between mb-12 px-6 lg:px-0">
+<section id="arrivals" class="relative overflow-hidden py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-[1300px] mx-auto relative z-10 flex items-center justify-between mb-10 sm:mb-12">
     <div>
       <p class="eyebrow">Fresh On The Shelf</p>
-      <h2 class="section-title mt-3">New Arrivals</h2>
+      <h2 class="section-title mt-2">New Arrivals</h2>
+      <p class="text-xs sm:text-sm text-ink-light/65 dark:text-ink-dark/65 mt-2">Newly cataloged volumes hot off the press, available to borrow this week.</p>
     </div>
-    <div class="hidden sm:flex gap-2">
-      <button id="arr-prev" aria-label="Previous" class="carousel-btn"><span class="material-symbols-outlined !text-[18px]">chevron_left</span></button>
-      <button id="arr-next" aria-label="Next" class="carousel-btn"><span class="material-symbols-outlined !text-[18px]">chevron_right</span></button>
+    <div class="hidden sm:flex items-center gap-2">
+      <button id="arr-prev" aria-label="Previous arrival" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark flex items-center justify-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-ink-light dark:text-ink-dark"><span class="material-symbols-outlined !text-[20px]">chevron_left</span></button>
+      <button id="arr-next" aria-label="Next arrival" class="w-10 h-10 rounded-full border border-hairline-light dark:border-hairline-dark flex items-center justify-center hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition text-ink-light dark:text-ink-dark"><span class="material-symbols-outlined !text-[20px]">chevron_right</span></button>
     </div>
   </div>
 
-  <div class="max-w-[1300px] mx-auto px-6">
-    <div id="arrivals-track" class="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory py-4">
-    <article class="arrival-card snap-start" style="--cover:#8a5a2b">
-      <div class="ribbon">New</div>
-      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
-      <div class="cover-inner"><span class="cover-title">The Quiet<br>Orchard</span><span class="cover-author">Marta Wren</span></div>
-      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A widow rebuilds her late husband's orchard, one grafted branch at a time.</p><p class="text-[11px] opacity-70">312 pages · Fiction · Reserved</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
-    </article>
+  <div class="max-w-[1300px] mx-auto">
+    <div id="arrivals-track" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 sm:gap-6">
+      
+      <!-- ARRIVAL CARD 1 -->
+      <article class="arrival-card bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_orchard_cover.png" alt="The Quiet Orchard Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C79A3B] text-black shadow-md">New</span>
+          <button class="btn-wishlist !w-8 !h-8 absolute top-3 right-3 z-10 !bg-white/90 dark:!bg-black/70 !border-none text-red-500 hover:scale-110 transition grid place-items-center" aria-label="Add to wishlist">
+            <span class="material-symbols-outlined !text-[16px]">favorite</span>
+          </button>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase tracking-wider text-white/75 font-semibold">Fiction · 312p</span>
+            <h3 class="font-serif text-lg font-semibold leading-tight text-white mt-0.5">The Quiet Orchard</h3>
+            <p class="text-xs text-white/80 mt-0.5">Marta Wren</p>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col flex-1 justify-between gap-3">
+          <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 leading-relaxed line-clamp-2">A widow rebuilds her late husband's orchard, one grafted branch at a time.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-amber-600 dark:text-amber-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Reserved
+            </span>
+            <button class="px-3 py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark text-xs font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark transition" onclick="bcToast('Previewing The Quiet Orchard…')">Borrow</button>
+          </div>
+        </div>
+      </article>
 
-    <article class="arrival-card snap-start" style="--cover:#3B5B7B">
-      <div class="ribbon">New</div>
-      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
-      <div class="cover-inner"><span class="cover-title">Signal &amp;<br>Static</span><span class="cover-author">Tomas Reyes</span></div>
-      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A radio operator in 1962 intercepts a message that shouldn't exist yet.</p><p class="text-[11px] opacity-70">288 pages · Sci-Fi · Available</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
-    </article>
+      <!-- ARRIVAL CARD 2 -->
+      <article class="arrival-card bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll" style="transition-delay:.05s">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_signal_cover.png" alt="Signal &amp; Static Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C79A3B] text-black shadow-md">New</span>
+          <button class="btn-wishlist !w-8 !h-8 absolute top-3 right-3 z-10 !bg-white/90 dark:!bg-black/70 !border-none text-red-500 hover:scale-110 transition grid place-items-center" aria-label="Add to wishlist">
+            <span class="material-symbols-outlined !text-[16px]">favorite</span>
+          </button>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase tracking-wider text-white/75 font-semibold">Sci-Fi · 288p</span>
+            <h3 class="font-serif text-lg font-semibold leading-tight text-white mt-0.5">Signal &amp; Static</h3>
+            <p class="text-xs text-white/80 mt-0.5">Tomas Reyes</p>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col flex-1 justify-between gap-3">
+          <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 leading-relaxed line-clamp-2">A radio operator in 1962 intercepts a broadcast that shouldn't exist yet.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Available
+            </span>
+            <button class="px-3 py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark text-xs font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark transition" onclick="bcToast('Borrowing Signal &amp; Static…')">Borrow</button>
+          </div>
+        </div>
+      </article>
 
-    <article class="arrival-card snap-start" style="--cover:#7B3B3B">
-      <div class="ribbon">New</div>
-      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
-      <div class="cover-inner"><span class="cover-title">Marrow<br>Deep</span><span class="cover-author">Halle Osei</span></div>
-      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A forensic anthropologist returns to the town that made her leave.</p><p class="text-[11px] opacity-70">344 pages · Mystery · Borrowed</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
-    </article>
+      <!-- ARRIVAL CARD 3 -->
+      <article class="arrival-card bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll" style="transition-delay:.1s">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_marrow_cover.png" alt="Marrow Deep Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C79A3B] text-black shadow-md">New</span>
+          <button class="btn-wishlist !w-8 !h-8 absolute top-3 right-3 z-10 !bg-white/90 dark:!bg-black/70 !border-none text-red-500 hover:scale-110 transition grid place-items-center" aria-label="Add to wishlist">
+            <span class="material-symbols-outlined !text-[16px]">favorite</span>
+          </button>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase tracking-wider text-white/75 font-semibold">Mystery · 344p</span>
+            <h3 class="font-serif text-lg font-semibold leading-tight text-white mt-0.5">Marrow Deep</h3>
+            <p class="text-xs text-white/80 mt-0.5">Halle Osei</p>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col flex-1 justify-between gap-3">
+          <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 leading-relaxed line-clamp-2">A forensic anthropologist returns to solve a ancient small-town mystery.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-rose-600 dark:text-rose-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Borrowed
+            </span>
+            <button class="px-3 py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark text-xs font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark transition" onclick="bcToast('Added to Hold List')">Hold</button>
+          </div>
+        </div>
+      </article>
 
-    <article class="arrival-card snap-start" style="--cover:#5B3B6B">
-      <div class="ribbon">New</div>
-      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
-      <div class="cover-inner"><span class="cover-title">Circuit &amp;<br>Bone</span><span class="cover-author">Saoirse Fallon</span></div>
-      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A prosthetics designer uncovers a conspiracy in her own hands.</p><p class="text-[11px] opacity-70">342 pages · Sci-Fi · Available</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
-    </article>
+      <!-- ARRIVAL CARD 4 -->
+      <article class="arrival-card bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll" style="transition-delay:.15s">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_mercies_cover.png" alt="Circuit &amp; Bone Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C79A3B] text-black shadow-md">New</span>
+          <button class="btn-wishlist !w-8 !h-8 absolute top-3 right-3 z-10 !bg-white/90 dark:!bg-black/70 !border-none text-red-500 hover:scale-110 transition grid place-items-center" aria-label="Add to wishlist">
+            <span class="material-symbols-outlined !text-[16px]">favorite</span>
+          </button>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase tracking-wider text-white/75 font-semibold">Sci-Fi · 342p</span>
+            <h3 class="font-serif text-lg font-semibold leading-tight text-white mt-0.5">Circuit &amp; Bone</h3>
+            <p class="text-xs text-white/80 mt-0.5">Saoirse Fallon</p>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col flex-1 justify-between gap-3">
+          <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 leading-relaxed line-clamp-2">A prosthetics designer uncovers a hidden conspiracy in her own hands.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Available
+            </span>
+            <button class="px-3 py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark text-xs font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark transition" onclick="bcToast('Borrowing Circuit &amp; Bone…')">Borrow</button>
+          </div>
+        </div>
+      </article>
 
-    <article class="arrival-card snap-start" style="--cover:#C79A3B">
-      <div class="ribbon">New</div>
-      <button class="btn-wishlist !w-9 !h-9 absolute top-4 right-4 z-10 !bg-[#FAF7F2]/90 !border-none" aria-label="Add to wishlist"><span class="material-symbols-outlined">favorite</span></button>
-      <div class="arrival-hover"><p class="text-xs leading-relaxed mb-2">A children's tale of a lighthouse keeper who collects lost things.</p><p class="text-[11px] opacity-70">64 pages · Children's · Available</p><div class="flex gap-1.5 mt-3"><button class="btn-mini flex-1 !text-[11px]" onclick="bcToast('Preview coming soon.')">Preview</button><button class="btn-mini flex-1 !text-[11px]" disabled title="Members only">Borrow</button></div></div>
-    </article>
+      <!-- ARRIVAL CARD 5 -->
+      <article class="sm:col-span-2 md:col-span-1 lg:col-span-1 sm:max-w-[380px] md:max-w-none sm:mx-auto md:mx-0 w-full arrival-card bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll" style="transition-delay:.2s">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_migration_cover.png" alt="The Slow Migration Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#C79A3B] text-black shadow-md">New</span>
+          <button class="btn-wishlist !w-8 !h-8 absolute top-3 right-3 z-10 !bg-white/90 dark:!bg-black/70 !border-none text-red-500 hover:scale-110 transition grid place-items-center" aria-label="Add to wishlist">
+            <span class="material-symbols-outlined !text-[16px]">favorite</span>
+          </button>
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase tracking-wider text-white/75 font-semibold">Essays · 210p</span>
+            <h3 class="font-serif text-lg font-semibold leading-tight text-white mt-0.5">The Slow Migration</h3>
+            <p class="text-xs text-white/80 mt-0.5">Jonas Eklund</p>
+          </div>
+        </div>
+        <div class="p-4 flex flex-col flex-1 justify-between gap-3">
+          <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 leading-relaxed line-clamp-2">Nature and history essays that trace patient, long-distance journeys.</p>
+          <div class="flex items-center justify-between pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <span class="inline-flex items-center gap-1.5 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Available
+            </span>
+            <button class="px-3 py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark text-xs font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark transition" onclick="bcToast('Borrowing The Slow Migration…')">Borrow</button>
+          </div>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -304,7 +438,7 @@
         <img src="https://i.pravatar.cc/400?img=25" loading="lazy" alt="Portrait of Priya Nair">
         <div class="bc-author-info"><p class="font-serif text-lg">Priya Nair</p><p class="text-[11px] opacity-70">🇮🇳 India · 3 books</p><p class="bc-author-bio">Featured: <em>The Machine Garden</em>. An engineer-turned-essayist writing on technology with warmth and restraint.</p></div>
       </div>
-      <div class="bc-author-card reveal-scroll" tabindex="0">
+      <div class="sm:col-span-2 lg:col-span-1 sm:max-w-[380px] lg:max-w-none sm:mx-auto lg:mx-0 w-full bc-author-card reveal-scroll" tabindex="0">
         <img src="https://i.pravatar.cc/400?img=15" loading="lazy" alt="Portrait of Jonas Eklund">
         <div class="bc-author-info"><p class="font-serif text-lg">Jonas Eklund</p><p class="text-[11px] opacity-70">🇸🇪 Sweden · 7 books</p><p class="bc-author-bio">Featured: <em>The Slow Migration</em>. Nature and history essays that trace patient, long-distance journeys.</p></div>
       </div>
