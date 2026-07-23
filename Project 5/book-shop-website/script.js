@@ -181,21 +181,43 @@
   /* ---------- STAT COUNTERS ---------- */
   const statEls = $$('.stat-num');
   const animateCount = (el) => {
+    if (el.dataset.animated === 'true') return;
+    el.dataset.animated = 'true';
     const target = parseInt(el.dataset.target, 10);
-    const dur = 1600;
+    if (isNaN(target)) return;
+    const dur = 1500;
     const start = performance.now();
     const step = (now) => {
       const p = Math.min((now - start) / dur, 1);
       const eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(eased * target).toLocaleString();
-      if (p < 1) requestAnimationFrame(step);
+      const currentVal = Math.round(eased * target);
+      let suffix = '';
+      if (target >= 1000) suffix = '+';
+      el.textContent = currentVal.toLocaleString() + suffix;
+      if (p < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = target.toLocaleString() + suffix;
+      }
     };
     requestAnimationFrame(step);
   };
   const statObserver = new IntersectionObserver((entries) => {
-    entries.forEach(en => { if (en.isIntersecting) { animateCount(en.target); statObserver.unobserve(en.target); } });
-  }, { threshold: 0.5 });
-  statEls.forEach(el => statObserver.observe(el));
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        animateCount(en.target);
+        statObserver.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+  statEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      animateCount(el);
+    } else {
+      statObserver.observe(el);
+    }
+  });
 
   /* ---------- ARRIVALS CAROUSEL ---------- */
   const track = $('#arrivals-track');

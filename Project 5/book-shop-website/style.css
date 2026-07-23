@@ -537,17 +537,23 @@ body { -webkit-font-smoothing: antialiased; }
   transform: scale(1.07);
 }
 
+/* ===================== TIMELINE ===================== */
+.timeline-dot { position: absolute; left: -34px; top: 6px; width: 14px; height: 14px; border-radius: 50%; background: #FAF7F2; border: 3px solid #C79A3B; z-index: 2; }
+.dark .timeline-dot { background: #121212; border-color: #D4A64A; }
+@media (min-width: 1024px) { .timeline-dot { left: -48px; } }
+
 /* ===================== REVIEWS ===================== */
-.note-card { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 4px; padding: 1.8rem; transform: rotate(var(--tilt,0deg)); transition: all .4s; box-shadow: 0 12px 24px -14px rgba(0,0,0,0.15); opacity: 0; }
+.note-card { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 4px; padding: 1.8rem; transform: rotate(var(--tilt,0deg)); transition: all .4s; box-shadow: 0 12px 24px -14px rgba(0,0,0,0.15); opacity: 0; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
 .dark .note-card { background: #1D1D1D; border-color: #2D2D2D; }
 .note-card.in { opacity: 1; }
 .note-card:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 20px 36px -16px rgba(0,0,0,0.22); }
 .avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #FAF7F2; font-size: 12px; font-weight: 600; }
 
 /* ===================== MEMBERSHIP ===================== */
-.plan-card { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 20px; padding: 2.4rem; position: relative; transition: all .35s; }
-.dark .plan-card { background: #1D1D1D; border-color: #2D2D2D; }
-.plan-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px -22px rgba(0,0,0,0.2); }
+.plan-card, .mem-plan-card { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 20px; padding: 2.4rem; position: relative; transition: all .35s; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+.dark .plan-card, .dark .mem-plan-card { background: #1D1D1D; border-color: #2D2D2D; }
+.plan-card:hover, .mem-plan-card:hover { transform: translateY(-6px); box-shadow: 0 24px 44px -22px rgba(0,0,0,0.2); }
+.mem-plan-btn { margin-top: auto; }
 .plan-featured { border: 1px solid #C79A3B; box-shadow: 0 0 0 1px #C79A3B33, 0 24px 44px -20px rgba(199,154,59,0.3); background: linear-gradient(180deg, rgba(199,154,59,0.04), transparent 40%); }
 .plan-tag { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #C79A3B; color: #16231F; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; padding: 5px 14px; border-radius: 999px; text-transform: uppercase; }
 

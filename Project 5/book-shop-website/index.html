@@ -472,22 +472,20 @@
       <h2 class="section-title mt-3">Why Join Our Library</h2>
     </div>
 
-    <div class="relative pl-10 lg:pl-14" id="timeline">
-      <div class="absolute left-3 lg:left-5 top-0 bottom-0 w-[3px] bg-hairline-light dark:bg-hairline-dark rounded-full overflow-hidden">
-        <div id="timeline-fill" class="w-full bg-accent-light dark:bg-accent-dark" style="height:0%"></div>
-      </div>
+    <div class="relative pl-10 lg:pl-14 space-y-10" id="timeline">
+      <div class="absolute left-[13px] lg:left-[21px] top-3 bottom-3 w-[2px] bg-accent-light/50 dark:bg-accent-dark/50"></div>
 
-      <div class="timeline-item reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Unlimited Borrowing</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Take home as many books as you can read — no caps, no late fatigue, just a running list of what's next.</p></div>
+      <div class="timeline-item relative reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Unlimited Borrowing</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Take home as many books as you can read — no caps, no late fatigue, just a running list of what's next.</p></div>
 
-      <div class="timeline-item reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Priority Reservations</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">First hold on new arrivals and staff picks before they reach the shelf.</p></div>
+      <div class="timeline-item relative reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Priority Reservations</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">First hold on new arrivals and staff picks before they reach the shelf.</p></div>
 
-      <div class="timeline-item reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Reading Clubs</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Join one of six monthly circles, from Sunday Poetry to Late-Night Horror.</p></div>
+      <div class="timeline-item relative reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Reading Clubs</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Join one of six monthly circles, from Sunday Poetry to Late-Night Horror.</p></div>
 
-      <div class="timeline-item reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Digital Reminders</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Gentle nudges before a due date — never a surprise fine.</p></div>
+      <div class="timeline-item relative reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Digital Reminders</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Gentle nudges before a due date — never a surprise fine.</p></div>
 
-      <div class="timeline-item reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Exclusive Launches</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Members-only author evenings, held in our reading room after hours.</p></div>
+      <div class="timeline-item relative reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Exclusive Launches</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">Members-only author evenings, held in our reading room after hours.</p></div>
 
-      <div class="timeline-item reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Family Memberships</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">One card, four borrowing lists — built for households that read differently.</p></div>
+      <div class="timeline-item relative reveal-scroll"><span class="timeline-dot"></span><h3 class="font-serif text-xl mb-1.5">Family Memberships</h3><p class="text-sm text-ink-light/65 dark:text-ink-dark/65 leading-relaxed">One card, four borrowing lists — built for households that read differently.</p></div>
     </div>
   </div>
 </section>
@@ -669,35 +667,47 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="plan-card">
-        <h3 class="font-serif text-2xl mb-1">Explorer</h3>
-        <p class="text-sm text-ink-light/55 dark:text-ink-dark/55 mb-6">For the casual browser</p>
-        <p class="text-4xl font-serif mb-6">₹299<span class="text-sm font-sans text-ink-light/50 dark:text-ink-dark/50">/mo</span></p>
-        <ul class="space-y-3 text-sm text-ink-light/70 dark:text-ink-dark/70 mb-8">
-          <li>✓ 3 books at a time</li><li>✓ Standard reservations</li><li>✓ Digital reminders</li>
-        </ul>
-        <button class="w-full py-3 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-primary-light dark:hover:border-primary-dark transition text-sm font-medium">Choose Explorer</button>
+      <div class="plan-card flex flex-col justify-between h-full">
+        <div>
+          <h3 class="font-serif text-2xl mb-1">Explorer</h3>
+          <p class="text-sm text-ink-light/55 dark:text-ink-dark/55 mb-6">For the casual browser</p>
+          <p class="text-4xl font-serif mb-6">₹299<span class="text-sm font-sans text-ink-light/50 dark:text-ink-dark/50">/mo</span></p>
+          <ul class="space-y-3 text-sm text-ink-light/70 dark:text-ink-dark/70 mb-8">
+            <li>✓ 3 books at a time</li><li>✓ Standard reservations</li><li>✓ Digital reminders</li>
+          </ul>
+        </div>
+        <div class="mt-auto pt-6">
+          <button class="w-full py-3 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-primary-light dark:hover:border-primary-dark transition text-sm font-medium">Choose Explorer</button>
+        </div>
       </div>
 
-      <div class="plan-card plan-featured">
-        <span class="plan-tag">Most Loved</span>
-        <h3 class="font-serif text-2xl mb-1">Reader</h3>
-        <p class="text-sm text-ink-light/55 dark:text-ink-dark/55 mb-6">For the weekly visitor</p>
-        <p class="text-4xl font-serif mb-6">₹599<span class="text-sm font-sans text-ink-light/50 dark:text-ink-dark/50">/mo</span></p>
-        <ul class="space-y-3 text-sm text-ink-light/70 dark:text-ink-dark/70 mb-8">
-          <li>✓ 8 books at a time</li><li>✓ Priority reservations</li><li>✓ One reading club</li><li>✓ Event pre-sale access</li>
-        </ul>
-        <button class="w-full py-3 rounded-full bg-accent-light dark:bg-accent-dark text-[#16231F] hover:brightness-105 transition text-sm font-medium">Choose Reader</button>
+      <div class="plan-card plan-featured flex flex-col justify-between h-full">
+        <div>
+          <span class="plan-tag">Most Loved</span>
+          <h3 class="font-serif text-2xl mb-1">Reader</h3>
+          <p class="text-sm text-ink-light/55 dark:text-ink-dark/55 mb-6">For the weekly visitor</p>
+          <p class="text-4xl font-serif mb-6">₹599<span class="text-sm font-sans text-ink-light/50 dark:text-ink-dark/50">/mo</span></p>
+          <ul class="space-y-3 text-sm text-ink-light/70 dark:text-ink-dark/70 mb-8">
+            <li>✓ 8 books at a time</li><li>✓ Priority reservations</li><li>✓ One reading club</li><li>✓ Event pre-sale access</li>
+          </ul>
+        </div>
+        <div class="mt-auto pt-6">
+          <button class="w-full py-3 rounded-full bg-accent-light dark:bg-accent-dark text-[#16231F] hover:brightness-105 transition text-sm font-medium">Choose Reader</button>
+        </div>
       </div>
 
-      <div class="plan-card md:col-span-2 lg:col-span-1 md:max-w-[440px] lg:max-w-none md:mx-auto lg:mx-0 w-full">
-        <h3 class="font-serif text-2xl mb-1">Scholar</h3>
-        <p class="text-sm text-ink-light/55 dark:text-ink-dark/55 mb-6">For the devoted collector</p>
-        <p class="text-4xl font-serif mb-6">₹999<span class="text-sm font-sans text-ink-light/50 dark:text-ink-dark/50">/mo</span></p>
-        <ul class="space-y-3 text-sm text-ink-light/70 dark:text-ink-dark/70 mb-8">
-          <li>✓ Unlimited books</li><li>✓ All reading clubs</li><li>✓ Family sharing (4)</li><li>✓ Exclusive launch invites</li>
-        </ul>
-        <button class="w-full py-3 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-primary-light dark:hover:border-primary-dark transition text-sm font-medium">Choose Scholar</button>
+      <div class="plan-card md:col-span-2 lg:col-span-1 md:max-w-[440px] lg:max-w-none md:mx-auto lg:mx-0 w-full flex flex-col justify-between h-full">
+        <div>
+          <h3 class="font-serif text-2xl mb-1">Scholar</h3>
+          <p class="text-sm text-ink-light/55 dark:text-ink-dark/55 mb-6">For the devoted collector</p>
+          <p class="text-4xl font-serif mb-6">₹999<span class="text-sm font-sans text-ink-light/50 dark:text-ink-dark/50">/mo</span></p>
+          <ul class="space-y-3 text-sm text-ink-light/70 dark:text-ink-dark/70 mb-8">
+            <li>✓ Unlimited books</li><li>✓ All reading clubs</li><li>✓ Family sharing (4)</li><li>✓ Exclusive launch invites</li>
+          </ul>
+        </div>
+        <div class="mt-auto pt-6">
+          <button class="w-full py-3 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-primary-light dark:hover:border-primary-dark transition text-sm font-medium">Choose Scholar</button>
+        </div>
       </div>
     </div>
     <p class="text-center mt-10"><a href="#dashboard" class="text-sm underline underline-offset-4 decoration-hairline-light dark:decoration-hairline-dark hover:decoration-accent-light dark:hover:decoration-accent-dark text-ink-light/70 dark:text-ink-dark/70">View full membership comparison →</a></p>
@@ -705,13 +715,13 @@
 </section>
 
 <!-- ============ READING STATISTICS ============ -->
-<section id="dashboard" class="py-28 lg:py-32 px-6 bg-primary-light dark:bg-[#0f1a18] text-bg-light">
-  <div class="max-w-[1200px] mx-auto grid grid-cols-2 md:grid-cols-5 gap-10 text-center">
-    <div><p class="stat-num" data-target="18400">0</p><p class="stat-label">Books Available</p></div>
-    <div><p class="stat-num" data-target="6250">0</p><p class="stat-label">Members</p></div>
-    <div><p class="stat-num" data-target="94200">0</p><p class="stat-label">Books Borrowed</p></div>
-    <div><p class="stat-num" data-target="312">0</p><p class="stat-label">Events Hosted</p></div>
-    <div><p class="stat-num" data-target="31">0</p><p class="stat-label">Years Serving</p></div>
+<section id="dashboard" class="py-24 lg:py-32 px-6 bg-primary-light dark:bg-[#0f1a18] text-bg-light">
+  <div class="max-w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-10 text-center">
+    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[44px] font-light leading-none mb-2" data-target="18400">18,400+</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Books Available</p></div>
+    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[44px] font-light leading-none mb-2" data-target="6250">6,250</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Members</p></div>
+    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[44px] font-light leading-none mb-2" data-target="94200">94,200+</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Books Borrowed</p></div>
+    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[44px] font-light leading-none mb-2" data-target="312">312</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Events Hosted</p></div>
+    <div class="col-span-2 sm:col-span-1 mx-auto sm:mx-0"><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[44px] font-light leading-none mb-2" data-target="31">31</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Years Serving</p></div>
   </div>
 </section>
 
