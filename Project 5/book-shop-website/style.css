@@ -549,6 +549,10 @@ body { -webkit-font-smoothing: antialiased; }
 .note-card:hover { transform: rotate(0deg) translateY(-4px); box-shadow: 0 20px 36px -16px rgba(0,0,0,0.22); }
 .avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: #FAF7F2; font-size: 12px; font-weight: 600; }
 
+/* ===================== BOOK CARDS ===================== */
+.book-card { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+.book-card > button, .book-card .btn-mini { margin-top: auto; }
+
 /* ===================== MEMBERSHIP ===================== */
 .plan-card, .mem-plan-card { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 20px; padding: 2.4rem; position: relative; transition: all .35s; display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
 .dark .plan-card, .dark .mem-plan-card { background: #1D1D1D; border-color: #2D2D2D; }

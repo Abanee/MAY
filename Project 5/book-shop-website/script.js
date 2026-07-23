@@ -848,15 +848,17 @@
 
   function bookCard(b){
     const [cls,label] = statusMeta[b.status];
-    return `<div class="book-card">
+    return `<div class="book-card flex flex-col justify-between h-full">
       <div class="dash-cover-wrap"><span class="status-pill ${cls}">${label}</span><img src="${cover(b.cover)}" loading="lazy" alt="${b.title} cover"></div>
-      <div>
-        <p class="text-[13.5px] font-semibold leading-snug">${b.title}</p>
-        <p class="text-[11.5px] text-ink-light/50 dark:text-ink-dark/50">${b.author} · ${b.genre}</p>
-        <p class="text-[11px] text-accent-light dark:text-accent-dark mt-0.5">${stars(b.rating)} <span class="text-ink-light/40 dark:text-ink-dark/40">${b.rating}</span></p>
+      <div class="flex-1 flex flex-col justify-between my-2">
+        <div>
+          <p class="text-[13.5px] font-semibold leading-snug">${b.title}</p>
+          <p class="text-[11.5px] text-ink-light/50 dark:text-ink-dark/50">${b.author} · ${b.genre}</p>
+          <p class="text-[11px] text-accent-light dark:text-accent-dark mt-0.5">${stars(b.rating)} <span class="text-ink-light/40 dark:text-ink-dark/40">${b.rating}</span></p>
+        </div>
         <p class="text-[11.5px] text-ink-light/55 dark:text-ink-dark/55 mt-1 leading-snug">${b.summary}</p>
       </div>
-      <button class="btn-mini w-full !text-[11px] mt-1" onclick="bcToast('“${b.title}” — full details are a member perk.')">View Details</button>
+      <button class="btn-mini w-full !text-[11px] mt-auto" onclick="bcToast('“${b.title}” — full details are a member perk.')">View Details</button>
     </div>`;
   }
 

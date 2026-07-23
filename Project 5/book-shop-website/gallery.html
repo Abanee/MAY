@@ -458,6 +458,29 @@
 
     let currentIndex = 0;
 
+    function alignGrid() {
+      const visible = cards.filter(c => c.style.display !== 'none');
+      cards.forEach(c => c.classList.remove('lg:col-start-2', 'sm:col-span-2', 'sm:max-w-md', 'sm:mx-auto', 'xl:col-start-2'));
+      if (!visible.length) return;
+
+      const w = window.innerWidth;
+      let cols = 1;
+      if (w >= 1280) cols = 4;
+      else if (w >= 1024) cols = 3;
+      else if (w >= 640) cols = 2;
+
+      if (cols > 1 && visible.length % cols === 1) {
+        const lastCard = visible[visible.length - 1];
+        if (cols === 3) {
+          lastCard.classList.add('lg:col-start-2');
+        } else if (cols === 4) {
+          lastCard.classList.add('xl:col-start-2');
+        } else if (cols === 2) {
+          lastCard.classList.add('sm:col-span-2', 'sm:max-w-md', 'sm:mx-auto');
+        }
+      }
+    }
+
     // Filter Logic
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -475,8 +498,12 @@
             card.style.display = 'none';
           }
         });
+        alignGrid();
       });
     });
+
+    alignGrid();
+    window.addEventListener('resize', alignGrid, { passive: true });
 
     // Lightbox Open
     cards.forEach((card, idx) => {
