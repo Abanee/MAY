@@ -506,88 +506,109 @@
 </section>
 
 <!-- ============================================================
-     SECTION 3 — LIBRARIAN'S PICKS (editorial newspaper layout)
+     SECTION 3 — LIBRARIAN'S PICKS (editorial curator showcase)
      ============================================================ -->
-<section id="picks" class="relative overflow-hidden py-28 lg:py-36 px-6 bg-card-light/60 dark:bg-card-dark/40">
+<section id="picks" class="relative overflow-hidden py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-card-light/60 dark:bg-card-dark/40 border-y border-hairline-light dark:border-hairline-dark">
   <div class="max-w-[1300px] mx-auto relative z-10">
-    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
-      <p class="eyebrow">The Front Page</p>
-      <h2 class="section-title mt-3">Librarian's Picks</h2>
+    <div class="flex flex-col items-center text-center mb-16 reveal-scroll">
+      <p class="eyebrow">Librarian's Monthly Digest</p>
+      <h2 class="section-title mt-3">The Curator's Desk · Volume IV</h2>
+      <p class="text-xs sm:text-sm text-ink-light/65 dark:text-ink-dark/65 mt-3 max-w-lg leading-relaxed">Hand-selected masterpieces, archived manuscripts, and literary recommendations by our head archivist.</p>
     </div>
 
-    <!-- feature story -->
-    <article class="h2-pick-feature grid lg:grid-cols-[340px_1fr] gap-10 lg:gap-16 items-center h2-reveal reveal-scroll">
-      <div class="h2-pick-cover mx-auto w-full max-w-[300px]">
-        <div class="h2-flip-inner overflow-hidden rounded-[4px_10px_10px_4px]">
-          <img src="cartographer_cover.png" alt="The Cartographer's Silence by Inés Roldán" class="w-full h-full object-cover" />
-        </div>
-        <div class="h2-page"></div>
-        <div class="h2-bookmark-2"></div>
+    <!-- Feature Spotlight Card -->
+    <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl p-6 sm:p-10 shadow-lg hover:shadow-2xl transition-all duration-300 grid lg:grid-cols-[380px_1fr] gap-8 lg:gap-12 items-center reveal-scroll mb-14">
+      <div class="w-full max-w-[340px] mx-auto aspect-[3/4] overflow-hidden rounded-2xl shadow-md border border-hairline-light/50 dark:border-hairline-dark/50 relative group">
+        <img src="Assets/Editor's Recommendation.png" alt="The Lost Archives of Saint-Germain cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <span class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold bg-accent-light dark:bg-accent-dark text-[#16231F] shadow-md">Archivist Choice</span>
       </div>
       <div>
-        <span class="text-[11px] uppercase tracking-[0.2em] text-accent-light dark:text-accent-dark font-semibold">Editor's Recommendation</span>
-        <h3 class="font-serif text-3xl lg:text-[42px] leading-tight mt-3 mb-4">A map with no names, only feelings</h3>
-        <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-6 max-w-xl">A cartographer inherits a map that marks grief instead of geography, and follows it across three continents to find the town her mother never spoke of. Our most requested title this season — and for good reason.</p>
-        <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-ink-light/55 dark:text-ink-dark/55 mb-7">
-          <span>⏱ 6 hr 20 min read</span>
-          <span class="badge-available">Available Now</span>
+        <div class="flex items-center gap-3 mb-3">
+          <span class="text-xs font-semibold uppercase tracking-widest text-accent-light dark:text-accent-dark">Issue #4 Curator Feature</span>
+          <span class="text-xs text-ink-light/50 dark:text-ink-dark/50">·</span>
+          <span class="text-xs text-ink-light/60 dark:text-ink-dark/60">Historical Fiction &amp; Mystery</span>
         </div>
-        <div class="flex gap-4">
-          <button class="btn-primary">Borrow This Book</button>
-          <button class="px-6 py-3.5 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-accent-light dark:hover:border-accent-dark transition text-sm font-medium">Purchase Copy</button>
+        <h3 class="font-serif text-3xl sm:text-4xl lg:text-[44px] leading-tight text-ink-light dark:text-ink-dark font-light mb-4">The Lost Archives of Saint-Germain</h3>
+        <p class="text-sm sm:text-base text-ink-light/75 dark:text-ink-dark/75 leading-relaxed mb-6 font-light max-w-2xl">
+          "A haunting 19th-century Paris investigation that weaves secret botanical gardens, ciphered journals, and forgotten cartography into an atmospheric masterpiece."
+        </p>
+        <div class="flex flex-wrap items-center gap-6 text-xs text-ink-light/65 dark:text-ink-dark/65 mb-8 pt-4 border-t border-hairline-light dark:border-hairline-dark">
+          <span class="font-medium text-accent-light dark:text-accent-dark">★ 4.9 Curator Rating</span>
+          <span>⏱ 8 hr read</span>
+          <span>410 pages</span>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-semibold">Available Now</span>
+        </div>
+        <div class="flex flex-wrap gap-4">
+          <button class="btn-primary !py-3 !px-7" onclick="bcToast('Reserved The Lost Archives of Saint-Germain!')">Borrow Curator Pick →</button>
+          <button class="px-6 py-3 rounded-full border border-hairline-light dark:border-hairline-dark hover:border-accent-light dark:hover:border-accent-dark transition text-sm font-medium" onclick="bcToast('Opening staff review…')">Read Staff Review</button>
         </div>
       </div>
     </article>
 
-    <!-- column list of secondary picks as image cards -->
-    <div class="grid md:grid-cols-2 gap-6 lg:gap-8 mt-10">
-      <div class="h2-pick-card h2-reveal reveal-scroll">
-        <div class="h2-pick-card-img">
-          <img src="arrival_marrow_cover.png" alt="Marrow Deep by Halle Osei" />
+    <!-- 3-Card Editorial Grid (Secondary Picks) -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      
+      <!-- PICK CARD 1 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll">
+        <div class="relative aspect-[3/4] w-full overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=600&q=80" alt="Chronicles of the Midnight Sea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent-light dark:bg-accent-dark text-[#16231F]">Sci-Fi</span>
         </div>
-        <div class="flex-1 min-w-0">
-          <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300 mb-1.5">2 Copies Left</span>
-          <h4 class="font-serif text-lg font-semibold text-ink-light dark:text-ink-dark truncate">Marrow Deep</h4>
-          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-0.5">Halle Osei · ⏱ 22 min read</p>
+        <div class="p-5 flex flex-col flex-1 justify-between gap-4">
+          <div>
+            <h4 class="font-serif text-xl font-semibold text-ink-light dark:text-ink-dark group-hover:text-accent-light dark:group-hover:text-accent-dark transition-colors mb-1">Chronicles of the Midnight Sea</h4>
+            <p class="text-xs text-accent-light dark:text-accent-dark font-medium mb-2">Elias Vance · ⏱ 6h Read</p>
+            <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 leading-relaxed">An epic voyage across starlit cosmic ocean worlds and forgotten naval outposts.</p>
+          </div>
+          <div class="pt-3 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+            <span class="text-[11px] font-medium text-emerald-600 dark:text-emerald-400">Available</span>
+            <button class="px-3 py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark text-xs font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark transition" onclick="bcToast('Borrowing Chronicles of the Midnight Sea…')">Borrow</button>
+          </div>
         </div>
-        <button class="btn-mini shrink-0">Borrow</button>
-      </div>
+      </article>
 
-      <div class="h2-pick-card h2-reveal reveal-scroll">
-        <div class="h2-pick-card-img">
-          <img src="arrival_signal_cover.png" alt="Signal &amp; Static by Tomas Reyes" />
+      <!-- PICK CARD 2 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll" style="transition-delay:.05s">
+        <div class="relative aspect-[3/4] w-full overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="The Glass House of Vienna" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent-light dark:bg-accent-dark text-[#16231F]">Fiction</span>
         </div>
-        <div class="flex-1 min-w-0">
-          <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300 mb-1.5">Available Now</span>
-          <h4 class="font-serif text-lg font-semibold text-ink-light dark:text-ink-dark truncate">Signal &amp; Static</h4>
-          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-0.5">Tomas Reyes · ⏱ 19 min read</p>
+        <div class="p-5 flex flex-col flex-1 justify-between gap-4">
+          <div>
+            <h4 class="font-serif text-xl font-semibold text-ink-light dark:text-ink-dark group-hover:text-accent-light dark:group-hover:text-accent-dark transition-colors mb-1">The Glass House of Vienna</h4>
+            <p class="text-xs text-accent-light dark:text-accent-dark font-medium mb-2">Clara Lindqvist · ⏱ 7h Read</p>
+            <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 leading-relaxed">Interwoven family secrets across turn-of-the-century Austria's grand conservatories.</p>
+          </div>
+          <div class="pt-3 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+            <span class="text-[11px] font-medium text-emerald-600 dark:text-emerald-400">Available</span>
+            <button class="px-3 py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark text-xs font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark transition" onclick="bcToast('Borrowing The Glass House of Vienna…')">Borrow</button>
+          </div>
         </div>
-        <button class="btn-mini shrink-0">Borrow</button>
-      </div>
+      </article>
 
-      <div class="h2-pick-card h2-reveal reveal-scroll">
-        <div class="h2-pick-card-img">
-          <img src="arrival_migration_cover.png" alt="The Slow Migration by Jonas Eklund" />
+      <!-- PICK CARD 3 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full reveal-scroll" style="transition-delay:.1s">
+        <div class="relative aspect-[3/4] w-full overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1543002588-bfa74002ed7e?auto=format&fit=crop&w=600&q=80" alt="Whispers in the Evergreen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-accent-light dark:bg-accent-dark text-[#16231F]">Mystery</span>
         </div>
-        <div class="flex-1 min-w-0">
-          <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300 mb-1.5">Available Now</span>
-          <h4 class="font-serif text-lg font-semibold text-ink-light dark:text-ink-dark truncate">The Slow Migration</h4>
-          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-0.5">Jonas Eklund · ⏱ 14 min read</p>
+        <div class="p-5 flex flex-col flex-1 justify-between gap-4">
+          <div>
+            <h4 class="font-serif text-xl font-semibold text-ink-light dark:text-ink-dark group-hover:text-accent-light dark:group-hover:text-accent-dark transition-colors mb-1">Whispers in the Evergreen</h4>
+            <p class="text-xs text-accent-light dark:text-accent-dark font-medium mb-2">Kaelen Ross · ⏱ 5h Read</p>
+            <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 leading-relaxed">A forgotten mountain village holds answers to a decade-old missing manuscript.</p>
+          </div>
+          <div class="pt-3 border-t border-hairline-light dark:border-hairline-dark flex items-center justify-between">
+            <span class="text-[11px] font-medium text-amber-600 dark:text-amber-400">Reserved</span>
+            <button class="px-3 py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark text-xs font-medium hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark transition" onclick="bcToast('Previewing Whispers in the Evergreen…')">Borrow</button>
+          </div>
         </div>
-        <button class="btn-mini shrink-0">Borrow</button>
-      </div>
+      </article>
 
-      <div class="h2-pick-card h2-reveal reveal-scroll">
-        <div class="h2-pick-card-img">
-          <img src="arrival_orchard_cover.png" alt="The Quiet Orchard by Marta Wren" />
-        </div>
-        <div class="flex-1 min-w-0">
-          <span class="inline-block text-[10px] font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300 mb-1.5">Available Now</span>
-          <h4 class="font-serif text-lg font-semibold text-ink-light dark:text-ink-dark truncate">The Quiet Orchard</h4>
-          <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mt-0.5">Marta Wren · ⏱ 24 min read</p>
-        </div>
-        <button class="btn-mini shrink-0">Borrow</button>
-      </div>
     </div>
   </div>
 </section>
