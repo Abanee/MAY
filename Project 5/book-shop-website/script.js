@@ -846,7 +846,23 @@
 
   if (!$('#bc-hero')) return; // not on this page
 
-  const cover = seed => `https://picsum.photos/seed/${seed}/240/340`;
+  const coverMap = {
+    'cart-silence': 'cartographer_cover.png',
+    'marrow-deep': 'arrival_marrow_cover.png',
+    'signal-static': 'arrival_signal_cover.png',
+    'beach-read': 'quiet_cover.png',
+    'quiet-ascent': 'biography_spine.png',
+    'empires-salt': 'history_spine.png',
+    'small-mercies': 'arrival_mercies_cover.png',
+    'machine-garden': 'science_spine.png',
+    'atomic-habits': 'poetry_spine.png',
+    'founders-table': 'bundle_scifi_frontiers.png',
+    'slow-migration': 'arrival_migration_cover.png',
+    'quiet-orchard': 'arrival_orchard_cover.png',
+    'circuit-bone': 'fantasy_spine.png',
+    'gone-girl': 'mystery_spine.png'
+  };
+  const cover = seed => coverMap[seed] || `${seed}.png`;
 
   const BOOKS = [
     { id:1, title:"The Cartographer's Silence", author:"Inés Roldán", genre:"Fiction", cover:"cart-silence", rating:4.5, status:"available", pages:312, summary:"A cartographer follows a map with no names across three continents." },
