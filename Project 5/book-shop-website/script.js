@@ -61,6 +61,28 @@
     btn.addEventListener('click', () => applyRTL(root.getAttribute('dir') !== 'rtl'));
   });
 
+  /* ---------- ACTIVE NAV LINK HIGHLIGHT ---------- */
+  const initActiveNav = () => {
+    let currentPage = window.location.pathname.split('/').pop().toLowerCase();
+    if (!currentPage || currentPage === '/') currentPage = 'index.html';
+
+    const navLinks = document.querySelectorAll('#site-nav a, #mobile-menu a');
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#')) return;
+      const targetPage = href.split('/').pop().toLowerCase();
+      
+      const isMatch = (currentPage === 'index.html' && targetPage === 'index.html') ||
+                      (currentPage !== 'index.html' && targetPage === currentPage);
+
+      if (isMatch) {
+        link.classList.add('nav-link-active');
+        link.setAttribute('aria-current', 'page');
+      }
+    });
+  };
+  initActiveNav();
+
   /* ---------- NAV: glass on scroll + progress + back to top ---------- */
   const nav = $('#site-nav');
   const progress = $('#progress-bar');
