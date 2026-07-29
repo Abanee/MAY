@@ -5,10 +5,11 @@
 
   if (document.body.classList.contains('dashboard-page')) return;
 
-  /* ---------- LOADER ---------- */
+  /* ---------- LOADER (DISABLED) ---------- */
   const loaderEl = document.getElementById('loader');
   if (loaderEl) {
-    window.addEventListener('load', () => { setTimeout(() => loaderEl.classList.add('loaded'), 500); });
+    loaderEl.style.display = 'none';
+    loaderEl.classList.add('loaded');
   }
 
   /* ---------- THEME ---------- */
@@ -187,7 +188,7 @@
   timelineItems.forEach(el => timelineObserver.observe(el));
 
   const timelineSection = $('#timeline');
-  if (timelineSection) {
+  if (timelineSection && timelineFill) {
     const updateFill = () => {
       const r = timelineSection.getBoundingClientRect();
       const vh = window.innerHeight;
