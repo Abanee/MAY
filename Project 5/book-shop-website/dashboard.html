@@ -514,21 +514,95 @@
       `).join('');
     }
 
+    function renderMonthlyChart() {
+      const chart = document.getElementById('monthly-chart');
+      if (!chart) return;
+      const months = [
+        { month: 'Jan', hours: 14, books: 4, height: '40%' },
+        { month: 'Feb', hours: 18, books: 5, height: '55%' },
+        { month: 'Mar', hours: 12, books: 3, height: '35%' },
+        { month: 'Apr', hours: 22, books: 7, height: '70%' },
+        { month: 'May', hours: 16, books: 5, height: '48%' },
+        { month: 'Jun', hours: 26, books: 8, height: '85%' },
+        { month: 'Jul', hours: 20, books: 6, height: '65%' }
+      ];
+      chart.innerHTML = `
+        <div class="flex items-end justify-between gap-2 sm:gap-4 h-full w-full pt-6 pb-1">
+          ${months.map(m => `
+            <div class="flex flex-col items-center flex-1 h-full justify-end group cursor-pointer">
+              <span class="text-[10px] font-mono text-accent-light dark:text-accent-dark font-semibold opacity-0 group-hover:opacity-100 transition-opacity mb-1">${m.hours}h</span>
+              <div class="w-full bg-accent-light/20 dark:bg-accent-dark/20 rounded-t-xl transition-all duration-500 group-hover:bg-accent-light dark:group-hover:bg-accent-dark relative overflow-hidden" style="height: ${m.height}">
+                <div class="absolute bottom-0 inset-x-0 bg-primary-light/40 dark:bg-primary-dark/40" style="height: 35%"></div>
+              </div>
+              <span class="text-[11px] font-medium text-ink-light/70 dark:text-ink-dark/70 mt-2">${m.month}</span>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderGenreBars() {
+      const container = document.getElementById('genre-bars');
+      if (!container) return;
+      const genres = [
+        { name: 'Literary & Fiction', pct: 42, count: '28 books', color: 'bg-[#C79A3B]' },
+        { name: 'Mystery & Thriller', pct: 28, count: '18 books', color: 'bg-[#234E52] dark:bg-[#4FAF8F]' },
+        { name: 'Sci-Fi & Speculative', pct: 18, count: '12 books', color: 'bg-[#3B5B7B]' },
+        { name: 'History & Essays', pct: 12, count: '8 books', color: 'bg-[#7B3B3B]' }
+      ];
+      container.innerHTML = genres.map(g => `
+        <div class="space-y-1.5">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-medium text-ink-light dark:text-ink-dark">${g.name}</span>
+            <span class="text-ink-light/60 dark:text-ink-dark/60 font-mono text-[11px]">${g.count} (${g.pct}%)</span>
+          </div>
+          <div class="w-full h-2 rounded-full bg-hairline-light dark:bg-hairline-dark overflow-hidden">
+            <div class="h-full rounded-full ${g.color} transition-all duration-700" style="width: ${g.pct}%"></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderBadgesGrid() {
+      const grid = document.getElementById('badges-grid');
+      if (!grid) return;
+      const badges = [
+        { name: 'Avid Reader', desc: '50+ books read', icon: 'military_tech' },
+        { name: '14-Day Streak', desc: 'Read 2 weeks', icon: 'local_fire_department' },
+        { name: 'Bookworm', desc: '100+ hours spent', icon: 'auto_stories' },
+        { name: 'Night Owl', desc: 'Late night read', icon: 'bedtime' },
+        { name: 'Archivist', desc: 'Rare volume read', icon: 'history_edu' },
+        { name: 'Gold Member', desc: 'Top tier badge', icon: 'workspace_premium' }
+      ];
+      grid.innerHTML = badges.map(b => `
+        <div class="p-3 rounded-2xl bg-panel-light dark:bg-panel-dark border border-hairline-light dark:border-hairline-dark text-center flex flex-col items-center justify-center gap-1 hover:border-accent-light/50 transition group">
+          <div class="w-9 h-9 rounded-full bg-accent-light/15 text-accent-light dark:bg-accent-dark/20 dark:text-accent-dark grid place-items-center group-hover:scale-110 transition shrink-0">
+            <span class="material-symbols-outlined !text-[18px]">${b.icon}</span>
+          </div>
+          <p class="text-[11px] font-semibold text-ink-light dark:text-ink-dark leading-tight mt-0.5">${b.name}</p>
+          <p class="text-[9.5px] text-ink-light/50 dark:text-ink-dark/50 leading-tight">${b.desc}</p>
+        </div>
+      `).join('');
+    }
+
     function renderDueDates() {
       const el = document.getElementById('due-dates-list');
       if (!el) return;
       const items = [
-        { title: "The Midnight Library", due: "Jul 27 (4 days left)", badge: "bg-amber-500/15 text-amber-600 dark:text-amber-400" },
-        { title: "Salt & Marrow", due: "Aug 04 (12 days left)", badge: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" },
-        { title: "The Cartographer's Silence", due: "Aug 11 (19 days left)", badge: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400" }
+        { title: "The Midnight Library", author: "Matt Haig", due: "Jul 27, 2026", status: "Due Soon (4 days)", badge: "bg-amber-500/15 text-amber-600 dark:text-amber-400", avail: "4 copies in library" },
+        { title: "Salt & Marrow", author: "Owen Baptiste", due: "Aug 04, 2026", status: "Active (12 days)", badge: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400", avail: "2 copies in library" },
+        { title: "The Cartographer's Silence", author: "Inés Roldán", due: "Aug 11, 2026", status: "Active (19 days)", badge: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400", avail: "6 copies in library" }
       ];
       el.innerHTML = items.map(item => `
-        <div class="p-3 rounded-xl bg-panel-light dark:bg-panel-dark flex items-center justify-between gap-3">
+        <div class="p-3.5 rounded-2xl bg-panel-light dark:bg-panel-dark border border-hairline-light dark:border-hairline-dark flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div class="min-w-0">
-            <p class="text-xs font-semibold truncate text-ink-light dark:text-ink-dark">${item.title}</p>
-            <span class="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mt-1 ${item.badge}">${item.due}</span>
+            <div class="flex items-center gap-2">
+              <p class="text-xs font-semibold truncate text-ink-light dark:text-ink-dark">${item.title}</p>
+              <span class="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full ${item.badge}">${item.status}</span>
+            </div>
+            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 mt-1">Due Date: <strong class="text-ink-light dark:text-ink-dark">${item.due}</strong> · <span class="text-emerald-600 dark:text-emerald-400 font-mono">${item.avail}</span></p>
           </div>
-          <button class="text-xs font-semibold text-accent-light dark:text-accent-dark hover:underline shrink-0" onclick="showToast('Renewed borrowing period for &quot;${item.title}&quot;!','success')">Renew</button>
+          <button class="text-xs font-semibold py-1.5 px-3 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark dark:hover:text-bg-dark transition shrink-0" onclick="showToast('Renewed borrowing period for &quot;${item.title}&quot;!','success')">Renew Book</button>
         </div>
       `).join('');
     }
@@ -539,14 +613,21 @@
       const filtered = myBooksData.filter(b => filterType === 'all' || b.type === filterType);
       grid.innerHTML = filtered.map(b => `
         <div class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl p-3.5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <img src="${b.cover}" alt="${b.title}" class="w-full h-36 object-cover rounded-xl shadow-sm mb-3">
-          <div>
-            <span class="text-[10px] uppercase font-bold tracking-wider text-accent-light dark:text-accent-dark">${b.genre}</span>
-            <p class="font-serif text-sm font-semibold truncate text-ink-light dark:text-ink-dark mt-0.5">${b.title}</p>
-            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 truncate mb-2">${b.author}</p>
-            <p class="text-[10px] font-medium text-ink-light/50 dark:text-ink-dark/50">${b.due}</p>
+          <div class="relative aspect-[3/4] w-full mb-3 rounded-xl overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+            <img src="${b.cover}" alt="${b.title}" class="w-full h-full object-cover">
+            <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[9.5px] font-bold uppercase ${b.type === 'borrowed' ? 'bg-emerald-600 text-white' : b.type === 'reserved' ? 'bg-amber-600 text-white' : 'bg-primary-light text-white'}">${b.type}</span>
           </div>
-          <button class="mt-3.5 w-full py-1.5 rounded-lg bg-primary-light dark:bg-primary-dark text-white dark:text-[#121212] text-xs font-semibold hover:opacity-90 transition" onclick="showToast('Action updated for &quot;${b.title}&quot;','info')">Manage</button>
+          <div class="space-y-1">
+            <span class="text-[10px] uppercase font-bold tracking-wider text-accent-light dark:text-accent-dark">${b.genre}</span>
+            <p class="font-serif text-sm font-semibold truncate text-ink-light dark:text-ink-dark">${b.title}</p>
+            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 truncate">${b.author}</p>
+            
+            <div class="pt-2 border-t border-hairline-light dark:border-hairline-dark text-[10.5px]">
+              <p class="text-ink-light/70 dark:text-ink-dark/70 font-medium">Due: <span class="font-bold text-ink-light dark:text-ink-dark">${b.due}</span></p>
+              <p class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] mt-0.5">✦ 8 copies available</p>
+            </div>
+          </div>
+          <button class="mt-3.5 w-full py-1.5 rounded-lg bg-primary-light dark:bg-primary-dark text-white dark:text-[#121212] text-xs font-semibold hover:opacity-90 transition" onclick="showToast('Updated status for &quot;${b.title}&quot;','info')">Manage Book</button>
         </div>
       `).join('');
     }
@@ -706,7 +787,11 @@
     renderRecommended();
     renderActivityTimeline();
     renderDueDates();
+    renderMonthlyChart();
+    renderGenreBars();
+    renderBadgesGrid();
     renderMyBooks('borrowed');
+    renderNotifications('all');
     renderNotifications('all');
 
     // Stat counter animation
