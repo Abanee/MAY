@@ -1270,7 +1270,7 @@
       authMsg.className = 'text-xs text-center text-primary-light dark:text-primary-dark h-4 mt-4 font-medium';
 
       setTimeout(() => {
-        showLocalToast('success', 'Account created! Welcome to Marlowe & Finch.');
+        showLocalToast('success', 'Account created! Welcome to Ashwood Books.');
         setTimeout(() => {
           window.location.href = 'dashboard.html';
         }, 1200);
