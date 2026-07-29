@@ -272,14 +272,40 @@
               <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 !text-[18px] text-ink-light/40 dark:text-ink-dark/40">search</span>
               <input id="books-search" type="text" placeholder="Search your books…" class="w-full pl-9 pr-3 py-2.5 rounded-full bg-panel-light dark:bg-panel-dark text-sm outline-none border border-transparent focus:border-accent-light dark:focus:border-accent-dark">
             </div>
-            <select id="genre-filter" class="px-4 py-2.5 rounded-full bg-panel-light dark:bg-panel-dark text-sm outline-none">
-              <option value="">All Genres</option>
-              <option>Fiction</option>
-              <option>Fantasy</option>
-              <option>Mystery</option>
-              <option>Non-Fiction</option>
-              <option>Romance</option>
-            </select>
+            <div class="relative w-full sm:w-auto min-w-[140px] max-w-full" id="custom-genre-dropdown">
+              <input type="hidden" id="genre-filter" value="" />
+              <button type="button" id="genre-dropdown-btn" class="w-full flex items-center justify-between gap-2 pl-4 pr-3 py-2.5 rounded-full bg-panel-light dark:bg-panel-dark text-ink-light dark:text-ink-dark text-sm outline-none border border-hairline-light/60 dark:border-hairline-dark/60 focus:border-accent-light dark:focus:border-accent-dark cursor-pointer shadow-sm transition">
+                <span id="genre-selected-text">All Genres</span>
+                <span class="material-symbols-outlined !text-[18px] text-ink-light/50 dark:text-ink-dark/50 transition-transform duration-200" id="genre-dropdown-arrow">expand_more</span>
+              </button>
+
+              <div id="genre-dropdown-menu" class="hidden absolute top-full left-0 right-0 w-full mt-1.5 z-50 bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl shadow-2xl overflow-hidden py-1 text-sm transition-all duration-200">
+                <button type="button" data-value="" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark font-medium transition flex items-center justify-between bg-panel-light/60 dark:bg-panel-dark/60">
+                  <span>All Genres</span>
+                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon">check</span>
+                </button>
+                <button type="button" data-value="Fiction" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
+                  <span>Fiction</span>
+                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
+                </button>
+                <button type="button" data-value="Fantasy" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
+                  <span>Fantasy</span>
+                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
+                </button>
+                <button type="button" data-value="Mystery" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
+                  <span>Mystery</span>
+                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
+                </button>
+                <button type="button" data-value="Non-Fiction" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
+                  <span>Non-Fiction</span>
+                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
+                </button>
+                <button type="button" data-value="Romance" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
+                  <span>Romance</span>
+                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -686,6 +712,54 @@
         renderMyBooks(this.getAttribute('data-tab'));
       });
     });
+
+    // Custom Genre Dropdown Controls
+    const genreBtn = document.getElementById('genre-dropdown-btn');
+    const genreMenu = document.getElementById('genre-dropdown-menu');
+    const genreArrow = document.getElementById('genre-dropdown-arrow');
+    const genreInput = document.getElementById('genre-filter');
+    const genreSelectedText = document.getElementById('genre-selected-text');
+
+    if (genreBtn && genreMenu) {
+      genreBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const isHidden = genreMenu.classList.contains('hidden');
+        genreMenu.classList.toggle('hidden', !isHidden);
+        if (genreArrow) genreArrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+      });
+
+      document.querySelectorAll('.genre-option').forEach(opt => {
+        opt.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const val = this.getAttribute('data-value');
+          const text = this.querySelector('span').textContent;
+          if (genreInput) {
+            genreInput.value = val;
+            genreInput.dispatchEvent(new Event('change', { bubbles: true }));
+          }
+          if (genreSelectedText) genreSelectedText.textContent = text;
+          
+          document.querySelectorAll('.genre-option').forEach(o => {
+            const check = o.querySelector('.check-icon');
+            if (check) check.classList.add('hidden');
+            o.classList.remove('font-semibold', 'bg-panel-light/60', 'dark:bg-panel-dark/60');
+          });
+          const thisCheck = this.querySelector('.check-icon');
+          if (thisCheck) thisCheck.classList.remove('hidden');
+          this.classList.add('font-semibold', 'bg-panel-light/60', 'dark:bg-panel-dark/60');
+
+          genreMenu.classList.add('hidden');
+          if (genreArrow) genreArrow.style.transform = 'rotate(0deg)';
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (genreMenu && !genreMenu.classList.contains('hidden')) {
+          genreMenu.classList.add('hidden');
+          if (genreArrow) genreArrow.style.transform = 'rotate(0deg)';
+        }
+      });
+    }
 
     // Notification Filters
     document.querySelectorAll('#notif-filters [data-filter]').forEach(btn => {

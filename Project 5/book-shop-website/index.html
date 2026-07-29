@@ -298,15 +298,15 @@
       <!-- LEFT COLUMN: The Wooden Bookshelf (col-span-12 lg:col-span-6 xl:col-span-7) -->
       <div class="lg:col-span-6 xl:col-span-7 flex flex-col justify-between bg-card-light/60 dark:bg-card-dark/40 border border-hairline-light dark:border-hairline-dark p-4 sm:p-6 lg:p-8 rounded-3xl shadow-sm relative overflow-hidden">
         
-        <div class="mb-3 sm:mb-4 flex items-center justify-between gap-2">
-          <span class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-accent-light dark:text-accent-dark flex items-center gap-1.5">
+        <div class="mb-3 sm:mb-4 flex flex-wrap items-center justify-between gap-1.5 sm:gap-2">
+          <span class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-accent-light dark:text-accent-dark flex items-center gap-1.5 shrink-0">
             <span class="material-symbols-outlined !text-base">shelves</span> Main Alcove Shelf
           </span>
-          <span class="text-[10px] sm:text-xs text-ink-light/50 dark:text-ink-dark/50 font-mono">7 Spines · Click to Inspect</span>
+          <span class="text-[10px] sm:text-xs text-ink-light/50 dark:text-ink-dark/50 font-mono shrink-0">7 Spines · Click to Inspect</span>
         </div>
 
         <!-- Shelf Container -->
-        <div class="shelf-row w-full my-auto flex justify-center items-end gap-1.5 sm:gap-2.5 md:gap-3.5 overflow-x-auto no-scrollbar py-6 sm:py-8" id="genre-shelf">
+        <div class="shelf-row w-full my-auto flex flex-nowrap justify-start sm:justify-center items-end gap-1.5 sm:gap-2.5 md:gap-3.5 overflow-x-auto no-scrollbar py-6 sm:py-8" id="genre-shelf">
           <div class="genre-book active" data-genre="mystery" style="--book-img:url('mystery_spine.png'); --book-color:#7B3B3B"><div class="spine"><span>Mystery</span></div><div class="genre-meta">128 titles</div></div>
           <div class="genre-book" data-genre="fantasy" style="--book-img:url('fantasy_spine.png'); --book-color:#3B5B7B"><div class="spine"><span>Fantasy</span></div><div class="genre-meta">204 titles</div></div>
           <div class="genre-book" data-genre="science" style="--book-img:url('science_spine.png'); --book-color:#3B6B57"><div class="spine"><span>Science</span></div><div class="genre-meta">96 titles</div></div>
@@ -670,21 +670,15 @@
 </section>
 
 <!-- ============ NEW ARRIVALS ============ -->
-<section class="py-28 lg:py-36 bg-card-light/60 dark:bg-card-dark/40 overflow-hidden">
-  <div class="max-w-[1300px] mx-auto px-6 flex items-end justify-between mb-14">
-    <div>
-      <p class="eyebrow">Fresh Off The Press</p>
-      <h2 class="section-title mt-3">New Arrivals</h2>
-    </div>
-    <div class="hidden sm:flex gap-2">
-      <button id="arr-prev" aria-label="Previous" class="carousel-btn">←</button>
-      <button id="arr-next" aria-label="Next" class="carousel-btn">→</button>
-    </div>
+<section class="py-24 lg:py-32 bg-card-light/60 dark:bg-card-dark/40 overflow-hidden">
+  <div class="max-w-[1300px] mx-auto px-6 flex flex-col items-center text-center mb-12">
+    <p class="eyebrow">Fresh Off The Press</p>
+    <h2 class="section-title mt-3">New Arrivals</h2>
   </div>
 
   <div class="max-w-[1300px] mx-auto px-6">
-    <div id="arrivals-track" class="flex gap-6 overflow-x-auto no-scrollbar snap-x snap-mandatory py-4">
-      <article class="arrival-card snap-start">
+    <div id="arrivals-track" class="flex flex-wrap justify-center gap-6 py-4">
+      <article class="arrival-card">
         <img src="arrival_orchard_cover.png" alt="The Quiet Orchard by Marta Wren" class="arrival-cover-img" />
         <div class="ribbon">New</div>
         <div class="arrival-hover">
@@ -696,7 +690,7 @@
         </div>
       </article>
 
-      <article class="arrival-card snap-start">
+      <article class="arrival-card">
         <img src="arrival_signal_cover.png" alt="Signal &amp; Static by Tomas Reyes" class="arrival-cover-img" />
         <div class="ribbon">New</div>
         <div class="arrival-hover">
@@ -708,7 +702,7 @@
         </div>
       </article>
 
-      <article class="arrival-card snap-start">
+      <article class="arrival-card">
         <img src="arrival_marrow_cover.png" alt="Marrow Deep by Halle Osei" class="arrival-cover-img" />
         <div class="ribbon">New</div>
         <div class="arrival-hover">
@@ -720,7 +714,7 @@
         </div>
       </article>
 
-      <article class="arrival-card snap-start">
+      <article class="arrival-card">
         <img src="arrival_migration_cover.png" alt="The Slow Migration by Jonas Eklund" class="arrival-cover-img" />
         <div class="ribbon">New</div>
         <div class="arrival-hover">
@@ -732,7 +726,7 @@
         </div>
       </article>
 
-      <article class="arrival-card snap-start">
+      <article class="arrival-card">
         <img src="arrival_mercies_cover.png" alt="Small Mercies by Adaeze Nwosu" class="arrival-cover-img" />
         <div class="ribbon">New</div>
         <div class="arrival-hover">
@@ -741,6 +735,18 @@
           <p class="text-xs leading-relaxed mb-3">A children's tale of a lighthouse keeper who collects lost things.</p>
           <p class="text-[11px] opacity-70">64 pages · Children · Available</p>
           <button class="btn-mini btn-borrow-now mt-3" data-book-title="Small Mercies">Borrow Now</button>
+        </div>
+      </article>
+
+      <article class="arrival-card">
+        <img src="arrival_whispering_tides_cover.png" alt="Whispering Tides by Clara Sterling" class="arrival-cover-img" />
+        <div class="ribbon">New</div>
+        <div class="arrival-hover">
+          <h4 class="font-serif text-lg text-[#FAF7F2] mb-1">Whispering Tides</h4>
+          <p class="text-xs text-[#FAF7F2]/70 mb-2">by Clara Sterling</p>
+          <p class="text-xs leading-relaxed mb-3">An antique compass reveals hidden chambers beneath an ancient coastal observatory.</p>
+          <p class="text-[11px] opacity-70">352 pages · Mystery · Available</p>
+          <button class="btn-mini btn-borrow-now mt-3" data-book-title="Whispering Tides">Borrow Now</button>
         </div>
       </article>
     </div>

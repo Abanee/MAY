@@ -380,10 +380,16 @@ body { -webkit-font-smoothing: antialiased; }
 }
 
 @media (max-width: 440px) {
-  .genre-book { width: 42px; height: 150px; min-width: 42px; }
-  .genre-book .spine { padding: 1rem 0; }
-  .genre-book .spine span { font-size: 9.5px; letter-spacing: 0.08em; }
-  .shelf-row { gap: 0.35rem; padding: 1.5rem 0.25rem 0.25rem; }
+  .genre-book { width: 38px; height: 145px; min-width: 38px; }
+  .genre-book .spine { padding: 0.8rem 0; }
+  .genre-book .spine span { font-size: 9px; letter-spacing: 0.05em; }
+  .shelf-row { gap: 0.25rem; padding: 1.5rem 0.15rem 0.25rem; flex-wrap: nowrap !important; justify-content: flex-start; }
+}
+
+@media (max-width: 380px) {
+  .genre-book { width: 35px; height: 135px; min-width: 35px; }
+  .genre-book .spine span { font-size: 8.5px; letter-spacing: 0.03em; }
+  .shelf-row { gap: 0.18rem; }
 }
 
 /* ===================== FEATURED COLLECTION ===================== */
@@ -603,9 +609,21 @@ body { -webkit-font-smoothing: antialiased; }
 }
 
 /* ===================== NEW ARRIVALS ===================== */
+#arrivals-track {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 980px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
 .arrival-card {
   flex: 0 0 210px;
-  height: 320px;
+  width: 210px;
+  height: 315px;
   border-radius: 4px 10px 10px 4px;
   position: relative;
   box-shadow: -5px 0 0 rgba(0,0,0,0.2) inset, 8px 16px 30px -10px rgba(0,0,0,0.35);
@@ -669,8 +687,21 @@ body { -webkit-font-smoothing: antialiased; }
   opacity: 1;
   transform: translateY(0);
 }
+
+@media (max-width: 920px) and (min-width: 641px) {
+  #arrivals-track {
+    max-width: 780px;
+    gap: 1.2rem;
+  }
+  .arrival-card { flex: 0 0 170px; width: 170px; height: 260px; }
+}
+
 @media (max-width: 640px) {
-  .arrival-card { flex: 0 0 175px; height: 265px; }
+  #arrivals-track {
+    gap: 0.85rem;
+    padding: 0.5rem 0;
+  }
+  .arrival-card { flex: 0 0 calc(50% - 0.5rem); width: calc(50% - 0.5rem); max-width: 165px; height: 245px; }
 }
 
 /* ===================== EVENTS ===================== */
