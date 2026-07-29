@@ -254,8 +254,8 @@
       <div class="relative order-2 lg:order-2 h-[280px] xs:h-[340px] sm:h-[440px] md:h-[480px] lg:h-[540px] xl:h-[580px] w-full rounded-[22px] sm:rounded-[32px] overflow-hidden shadow-2xl shadow-black/15 group my-auto">
         <!-- Light & Dark Mode Images -->
         <div class="absolute inset-0 overflow-hidden">
-          <img src="Assets/heroimage.png" id="hero-img-light" alt="Marlowe & Finch luxury reading room daylight" class="w-full h-full object-cover animate-hero-zoom transition-transform duration-700 dark:hidden" />
-          <img src="Assets/home1herodark.png" id="hero-img-dark" alt="Marlowe & Finch luxury reading room dark mode" class="w-full h-full object-cover animate-hero-zoom transition-transform duration-700 hidden dark:block" />
+          <img src="./home/home1.png" id="hero-img-light" alt="Marlowe & Finch luxury reading room daylight" class="w-full h-full object-cover animate-hero-zoom transition-transform duration-700 dark:hidden" />
+          <img src="./home/home2.png" id="hero-img-dark" alt="Marlowe & Finch luxury reading room dark mode" class="w-full h-full object-cover animate-hero-zoom transition-transform duration-700 hidden dark:block" />
         </div>
 
         <!-- Subtle overlay gradient at top/bottom for editorial depth -->
@@ -290,23 +290,121 @@
 </section>
 
 <!-- ============ GENRES SHELF ============ -->
-<section id="genres" class="relative overflow-hidden py-28 lg:py-36 px-6">
-  <div class="max-w-[1300px] mx-auto relative z-10">
-    <div class="flex flex-col items-center text-center mb-16">
-      <p class="eyebrow">Wander the Shelves</p>
-      <h2 class="section-title mt-3">Popular Genres</h2>
+<section id="genres" class="relative overflow-hidden py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-bg-light dark:bg-bg-dark transition-colors duration-500">
+  <div class="max-w-[1380px] mx-auto relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col items-center text-center mb-10 sm:mb-14">
+      <div class="inline-flex items-center gap-2 mb-1.5">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent-light dark:bg-accent-dark animate-pulse"></span>
+        <p class="eyebrow uppercase tracking-[0.3em]">Wander the Shelves</p>
+      </div>
+      <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-serif">Popular Genres</h2>
+      <p class="mt-3 text-xs sm:text-sm md:text-base text-ink-light/65 dark:text-ink-dark/65 max-w-xl">
+        Select any volume spine on the shelf to discover curated titles, collection highlights, and reading alcoves.
+      </p>
     </div>
 
-    <div class="shelf-row" id="genre-shelf">
-      <!-- each .genre-book using a real generated high-res spine background image -->
-      <div class="genre-book" style="--book-img:url('mystery_spine.png'); --book-color:#7B3B3B"><div class="spine"><span>Mystery</span></div><div class="genre-meta">128 titles</div></div>
-      <div class="genre-book" style="--book-img:url('fantasy_spine.png'); --book-color:#3B5B7B"><div class="spine"><span>Fantasy</span></div><div class="genre-meta">204 titles</div></div>
-      <div class="genre-book" style="--book-img:url('science_spine.png'); --book-color:#3B6B57"><div class="spine"><span>Science</span></div><div class="genre-meta">96 titles</div></div>
-      <div class="genre-book" style="--book-img:url('history_spine.png'); --book-color:#7B5B3B"><div class="spine"><span>History</span></div><div class="genre-meta">142 titles</div></div>
-      <div class="genre-book" style="--book-img:url('children_spine.png'); --book-color:#C79A3B"><div class="spine"><span>Children</span></div><div class="genre-meta">175 titles</div></div>
-      <div class="genre-book" style="--book-img:url('biography_spine.png'); --book-color:#5B3B6B"><div class="spine"><span>Biography</span></div><div class="genre-meta">88 titles</div></div>
-      <div class="genre-book" style="--book-img:url('poetry_spine.png'); --book-color:#234E52"><div class="spine"><span>Poetry</span></div><div class="genre-meta">61 titles</div></div>
+    <!-- 2-COLUMN LAYOUT (<1024px, 820px, 760px, 360px responsive grid) -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-12 items-stretch">
+      
+      <!-- LEFT COLUMN: The Wooden Bookshelf (col-span-12 lg:col-span-6 xl:col-span-7) -->
+      <div class="lg:col-span-6 xl:col-span-7 flex flex-col justify-between bg-card-light/60 dark:bg-card-dark/40 border border-hairline-light dark:border-hairline-dark p-4 sm:p-6 lg:p-8 rounded-3xl shadow-sm relative overflow-hidden">
+        
+        <div class="mb-3 sm:mb-4 flex items-center justify-between gap-2">
+          <span class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-accent-light dark:text-accent-dark flex items-center gap-1.5">
+            <span class="material-symbols-outlined !text-base">shelves</span> Main Alcove Shelf
+          </span>
+          <span class="text-[10px] sm:text-xs text-ink-light/50 dark:text-ink-dark/50 font-mono">7 Spines · Click to Inspect</span>
+        </div>
+
+        <!-- Shelf Container -->
+        <div class="shelf-row w-full my-auto flex justify-center items-end gap-1.5 sm:gap-2.5 md:gap-3.5 overflow-x-auto no-scrollbar py-6 sm:py-8" id="genre-shelf">
+          <div class="genre-book active" data-genre="mystery" style="--book-img:url('mystery_spine.png'); --book-color:#7B3B3B"><div class="spine"><span>Mystery</span></div><div class="genre-meta">128 titles</div></div>
+          <div class="genre-book" data-genre="fantasy" style="--book-img:url('fantasy_spine.png'); --book-color:#3B5B7B"><div class="spine"><span>Fantasy</span></div><div class="genre-meta">204 titles</div></div>
+          <div class="genre-book" data-genre="science" style="--book-img:url('science_spine.png'); --book-color:#3B6B57"><div class="spine"><span>Science</span></div><div class="genre-meta">96 titles</div></div>
+          <div class="genre-book" data-genre="history" style="--book-img:url('history_spine.png'); --book-color:#7B5B3B"><div class="spine"><span>History</span></div><div class="genre-meta">142 titles</div></div>
+          <div class="genre-book" data-genre="children" style="--book-img:url('children_spine.png'); --book-color:#C79A3B"><div class="spine"><span>Children</span></div><div class="genre-meta">175 titles</div></div>
+          <div class="genre-book" data-genre="biography" style="--book-img:url('biography_spine.png'); --book-color:#5B3B6B"><div class="spine"><span>Biography</span></div><div class="genre-meta">88 titles</div></div>
+          <div class="genre-book" data-genre="poetry" style="--book-img:url('poetry_spine.png'); --book-color:#234E52"><div class="spine"><span>Poetry</span></div><div class="genre-meta">61 titles</div></div>
+        </div>
+
+        <!-- Shelf Helper Footer -->
+        <div class="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-hairline-light/60 dark:border-hairline-dark/60 flex flex-wrap items-center justify-between text-xs text-ink-light/60 dark:text-ink-dark/60 gap-2">
+          <p class="text-[11px] sm:text-xs">💡 Click or hover any spine to switch spotlight</p>
+          <a href="book.html" class="font-medium text-accent-light dark:text-accent-dark hover:underline flex items-center gap-1 text-[11px] sm:text-xs">Explore All 14 Genres →</a>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Genre Spotlight & Active Exploration Panel (col-span-12 lg:col-span-6 xl:col-span-5) -->
+      <div class="lg:col-span-6 xl:col-span-5 flex flex-col justify-between bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark p-5 sm:p-7 lg:p-8 rounded-3xl shadow-xl transition-all duration-500 relative overflow-hidden" id="genre-spotlight-panel">
+        
+        <!-- Subtle Glow Background -->
+        <div class="absolute -top-24 -right-24 w-60 h-60 bg-accent-light/10 dark:bg-accent-dark/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div>
+          <!-- Header Badge -->
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-light/15 dark:bg-accent-dark/20 text-accent-light dark:text-accent-dark text-[11px] sm:text-xs font-semibold tracking-wider uppercase">
+              <span class="w-1.5 h-1.5 rounded-full bg-accent-light dark:bg-accent-dark animate-pulse"></span>
+              Genre Spotlight
+            </span>
+            <span class="text-xs font-mono font-bold text-primary-light dark:text-primary-dark" id="spotlight-count">128 Titles Available</span>
+          </div>
+
+          <!-- Active Genre Title & Sub-categories -->
+          <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-ink-light dark:text-ink-dark mb-1.5 transition-all duration-300" id="spotlight-title">Mystery &amp; Crime</h3>
+          <p class="text-xs font-mono text-accent-light dark:text-accent-dark mb-4 transition-all duration-300" id="spotlight-sub">Noir · Whodunit · Psychological Thrillers · Cozy Mysteries</p>
+          <p class="text-xs sm:text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed mb-6 font-sans transition-all duration-300" id="spotlight-desc">
+            Step into dark alleys, uncrackable ciphers, and locked-room mysteries. Our mystery vault houses vintage detective classics and modern edge-of-your-seat thrillers.
+          </p>
+
+          <!-- Featured Book Card inside Spotlight -->
+          <div class="flex items-center gap-3.5 sm:gap-4 p-3.5 sm:p-4 rounded-2xl bg-bg-light/80 dark:bg-bg-dark/80 border border-hairline-light dark:border-hairline-dark mb-6 shadow-sm">
+            <div class="w-14 h-20 sm:w-16 sm:h-22 shrink-0 rounded-lg overflow-hidden shadow-md bg-accent-light/20 flex items-center justify-center">
+              <img src="cartographer_cover.png" alt="Featured Book" id="spotlight-book-img" class="w-full h-full object-cover transition-opacity duration-300" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[10px] uppercase font-bold tracking-widest text-primary-light dark:text-primary-dark">Featured Choice</span>
+              <h4 class="font-serif text-sm sm:text-base font-medium text-ink-light dark:text-ink-dark truncate" id="spotlight-book-title">The Cartographer's Silence</h4>
+              <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 truncate" id="spotlight-book-author">by Inés Roldán</p>
+              <div class="flex items-center gap-1 mt-1 text-xs text-accent-light dark:text-accent-dark">
+                ★★★★★ <span class="text-[11px] text-ink-light/50 dark:text-ink-dark/50 ml-1" id="spotlight-book-rating">4.9 (312 reviews)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Interactive Genre Selector Chips & Action Buttons -->
+        <div class="space-y-4 pt-2">
+          <div>
+            <p class="text-[10.5px] uppercase tracking-wider text-ink-light/50 dark:text-ink-dark/50 mb-2 font-semibold">Quick Switch</p>
+            <div class="flex flex-wrap gap-1.5 sm:gap-2" id="genre-quick-chips">
+              <button data-genre="mystery" class="genre-chip active">Mystery</button>
+              <button data-genre="fantasy" class="genre-chip">Fantasy</button>
+              <button data-genre="science" class="genre-chip">Science</button>
+              <button data-genre="history" class="genre-chip">History</button>
+              <button data-genre="children" class="genre-chip">Children</button>
+              <button data-genre="biography" class="genre-chip">Biography</button>
+              <button data-genre="poetry" class="genre-chip">Poetry</button>
+            </div>
+          </div>
+
+          <div class="pt-2 flex flex-col xs:flex-row gap-3">
+            <a href="book.html" id="spotlight-link" class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs sm:text-sm font-medium tracking-wide shadow-md hover:opacity-90 transition">
+              <span id="spotlight-btn-text">Browse Mystery Books</span>
+              <span>→</span>
+            </a>
+            <a href="membership.html" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-hairline-light dark:border-hairline-dark text-ink-light dark:text-ink-dark text-xs sm:text-sm font-medium hover:bg-hairline-light/40 dark:hover:bg-hairline-dark/40 transition">
+              Reserve Copy
+            </a>
+          </div>
+        </div>
+
+      </div>
+
     </div>
+
   </div>
 </section>
 
@@ -391,71 +489,92 @@
       <h2 class="section-title mt-3">Featured Collection</h2>
     </div>
 
-    <div class="space-y-24 lg:space-y-32">
+    <div class="space-y-12 lg:space-y-16">
       <!-- Featured 1 -->
-      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
-        <div class="book-cover-wrap order-1">
-          <div class="book-3d-card">
-            <div class="book-3d-inner">
-              <img src="cartographer_cover.png" alt="The Cartographer's Silence by Inés Roldán" class="book-3d-cover-img" />
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center reveal-scroll bg-card-light/50 dark:bg-card-dark/30 border border-hairline-light/80 dark:border-hairline-dark/80 p-5 sm:p-8 lg:p-10 rounded-3xl shadow-sm">
+        <div class="book-cover-wrap order-1 lg:col-span-5 flex justify-center w-full">
+          <div class="book-display-frame">
+            <span class="book-display-badge">Exhibition Reserve</span>
+            <div class="book-3d-card">
+              <div class="book-3d-inner">
+                <img src="cartographer_cover.png" alt="The Cartographer's Silence by Inés Roldán" class="book-3d-cover-img" />
+              </div>
+              <div class="bookmark-tag"></div>
             </div>
-            <div class="bookmark-tag"></div>
+            <div class="book-display-footer">
+              <span>Hardcover · 312 Pages</span>
+              <span>Vault Item #042</span>
+            </div>
           </div>
         </div>
-        <div class="order-2">
+        <div class="order-2 lg:col-span-7">
           <span class="badge-available">Available Now</span>
           <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-2">The Cartographer's Silence</h3>
           <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mb-4">by Inés Roldán · Literary Fiction</p>
           <div class="flex items-center gap-1 mb-5" aria-label="Rating 4.5 out of 5">★★★★<span class="opacity-40">★</span><span class="text-xs ml-2 text-ink-light/50 dark:text-ink-dark/50">4.5 (312 reviews)</span></div>
           <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">A cartographer inherits a map with no names, only feelings — and follows it across three continents to find the town her mother never spoke of.</p>
           <div class="flex gap-4">
-            <button class="btn-primary">Borrow This Book</button>
+            <button class="btn-primary btn-borrow-now" data-book-title="The Cartographer's Silence">Borrow This Book</button>
             <button class="btn-wishlist" aria-label="Add to wishlist"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 15.5C9 15.5 2 11.2 2 6.6C2 4.3 3.8 2.5 6.1 2.5C7.4 2.5 8.5 3.1 9 4C9.5 3.1 10.6 2.5 11.9 2.5C14.2 2.5 16 4.3 16 6.6C16 11.2 9 15.5 9 15.5Z" stroke="currentColor" stroke-width="1.4"/></svg></button>
           </div>
         </div>
       </article>
 
       <!-- Featured 2 -->
-      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
-        <div class="order-2 lg:order-1">
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center reveal-scroll bg-card-light/50 dark:bg-card-dark/30 border border-hairline-light/80 dark:border-hairline-dark/80 p-5 sm:p-8 lg:p-10 rounded-3xl shadow-sm">
+        <div class="order-2 lg:order-1 lg:col-span-7">
           <span class="badge-waitlist">3 Copies Left</span>
           <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-2">Salt &amp; Marrow</h3>
           <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mb-4">by Owen Baptiste · Historical Fiction</p>
           <div class="flex items-center gap-1 mb-5" aria-label="Rating 5 out of 5">★★★★★<span class="text-xs ml-2 text-ink-light/50 dark:text-ink-dark/50">5.0 (208 reviews)</span></div>
           <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">On a windswept fishing island, two sisters keep a secret buried in the salt flats — one that resurfaces the night a stranger's boat runs aground.</p>
           <div class="flex gap-4">
-            <button class="btn-primary">Reserve This Book</button>
+            <button class="btn-primary btn-borrow-now" data-book-title="Salt &amp; Marrow">Reserve This Book</button>
             <button class="btn-wishlist" aria-label="Add to wishlist"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 15.5C9 15.5 2 11.2 2 6.6C2 4.3 3.8 2.5 6.1 2.5C7.4 2.5 8.5 3.1 9 4C9.5 3.1 10.6 2.5 11.9 2.5C14.2 2.5 16 4.3 16 6.6C16 11.2 9 15.5 9 15.5Z" stroke="currentColor" stroke-width="1.4"/></svg></button>
           </div>
         </div>
-        <div class="book-cover-wrap order-1 lg:order-2">
-          <div class="book-3d-card">
-            <div class="book-3d-inner">
-              <img src="salt_marrow_cover.png" alt="Salt &amp; Marrow by Owen Baptiste" class="book-3d-cover-img" />
+        <div class="book-cover-wrap order-1 lg:order-2 lg:col-span-5 flex justify-center w-full">
+          <div class="book-display-frame">
+            <span class="book-display-badge">Historical Vault</span>
+            <div class="book-3d-card">
+              <div class="book-3d-inner">
+                <img src="salt_marrow_cover.png" alt="Salt &amp; Marrow by Owen Baptiste" class="book-3d-cover-img" />
+              </div>
+              <div class="bookmark-tag"></div>
             </div>
-            <div class="bookmark-tag"></div>
+            <div class="book-display-footer">
+              <span>Clothbound · 288 Pages</span>
+              <span>Vault Item #109</span>
+            </div>
           </div>
         </div>
       </article>
 
       <!-- Featured 3 -->
-      <article class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center reveal-scroll">
-        <div class="book-cover-wrap order-1">
-          <div class="book-3d-card">
-            <div class="book-3d-inner">
-              <img src="quiet_cover.png" alt="A Brief History of Quiet by Priya Nandakumar" class="book-3d-cover-img" />
+      <article class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center reveal-scroll bg-card-light/50 dark:bg-card-dark/30 border border-hairline-light/80 dark:border-hairline-dark/80 p-5 sm:p-8 lg:p-10 rounded-3xl shadow-sm">
+        <div class="book-cover-wrap order-1 lg:col-span-5 flex justify-center w-full">
+          <div class="book-display-frame">
+            <span class="book-display-badge">Reader Favorite</span>
+            <div class="book-3d-card">
+              <div class="book-3d-inner">
+                <img src="quiet_cover.png" alt="A Brief History of Quiet by Priya Nandakumar" class="book-3d-cover-img" />
+              </div>
+              <div class="bookmark-tag"></div>
             </div>
-            <div class="bookmark-tag"></div>
+            <div class="book-display-footer">
+              <span>Paperback · 204 Pages</span>
+              <span>Vault Item #088</span>
+            </div>
           </div>
         </div>
-        <div class="order-2">
+        <div class="order-2 lg:col-span-7">
           <span class="badge-available">Available Now</span>
           <h3 class="font-serif text-3xl lg:text-4xl mt-4 mb-2">A Brief History of Quiet</h3>
           <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mb-4">by Priya Nandakumar · Essays</p>
           <div class="flex items-center gap-1 mb-5" aria-label="Rating 4 out of 5">★★★★<span class="opacity-40">★</span><span class="text-xs ml-2 text-ink-light/50 dark:text-ink-dark/50">4.2 (156 reviews)</span></div>
           <p class="text-ink-light/70 dark:text-ink-dark/70 leading-relaxed mb-8">Sixteen essays on the disappearing art of stillness — from monastery kitchens to the last quiet carriage on a commuter train.</p>
           <div class="flex gap-4">
-            <button class="btn-primary">Borrow This Book</button>
+            <button class="btn-primary btn-borrow-now" data-book-title="A Brief History of Quiet">Borrow This Book</button>
             <button class="btn-wishlist" aria-label="Add to wishlist"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 15.5C9 15.5 2 11.2 2 6.6C2 4.3 3.8 2.5 6.1 2.5C7.4 2.5 8.5 3.1 9 4C9.5 3.1 10.6 2.5 11.9 2.5C14.2 2.5 16 4.3 16 6.6C16 11.2 9 15.5 9 15.5Z" stroke="currentColor" stroke-width="1.4"/></svg></button>
           </div>
         </div>
@@ -586,7 +705,7 @@
           <p class="text-xs text-[#FAF7F2]/70 mb-2">by Marta Wren</p>
           <p class="text-xs leading-relaxed mb-3">A widow rebuilds her late husband's orchard, one grafted branch at a time.</p>
           <p class="text-[11px] opacity-70">312 pages · Fiction · Available</p>
-          <button class="btn-mini mt-3">Borrow Now</button>
+          <button class="btn-mini btn-borrow-now mt-3" data-book-title="The Quiet Orchard">Borrow Now</button>
         </div>
       </article>
 
@@ -598,7 +717,7 @@
           <p class="text-xs text-[#FAF7F2]/70 mb-2">by Tomas Reyes</p>
           <p class="text-xs leading-relaxed mb-3">A radio operator in 1962 intercepts a message that shouldn't exist yet.</p>
           <p class="text-[11px] opacity-70">288 pages · Sci-Fi · Available</p>
-          <button class="btn-mini mt-3">Borrow Now</button>
+          <button class="btn-mini btn-borrow-now mt-3" data-book-title="Signal &amp; Static">Borrow Now</button>
         </div>
       </article>
 
@@ -610,7 +729,7 @@
           <p class="text-xs text-[#FAF7F2]/70 mb-2">by Halle Osei</p>
           <p class="text-xs leading-relaxed mb-3">A forensic anthropologist returns to the town that made her leave.</p>
           <p class="text-[11px] opacity-70">344 pages · Mystery · 2 Left</p>
-          <button class="btn-mini mt-3">Borrow Now</button>
+          <button class="btn-mini btn-borrow-now mt-3" data-book-title="Marrow Deep">Borrow Now</button>
         </div>
       </article>
 
@@ -622,7 +741,7 @@
           <p class="text-xs text-[#FAF7F2]/70 mb-2">by Jonas Eklund</p>
           <p class="text-xs leading-relaxed mb-3">Essays following the arctic tern's 44,000-mile yearly journey.</p>
           <p class="text-[11px] opacity-70">204 pages · Nature · Available</p>
-          <button class="btn-mini mt-3">Borrow Now</button>
+          <button class="btn-mini btn-borrow-now mt-3" data-book-title="The Slow Migration">Borrow Now</button>
         </div>
       </article>
 
@@ -634,7 +753,7 @@
           <p class="text-xs text-[#FAF7F2]/70 mb-2">by Adaeze Nwosu</p>
           <p class="text-xs leading-relaxed mb-3">A children's tale of a lighthouse keeper who collects lost things.</p>
           <p class="text-[11px] opacity-70">64 pages · Children · Available</p>
-          <button class="btn-mini mt-3">Borrow Now</button>
+          <button class="btn-mini btn-borrow-now mt-3" data-book-title="Small Mercies">Borrow Now</button>
         </div>
       </article>
     </div>
@@ -706,7 +825,7 @@
           <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Renata Mbeki" class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
           <div><p class="text-sm font-medium">Renata Mbeki</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Scholar Member · Favorite: History</p></div>
         </div>
-        <p class="font-display italic text-[17px] leading-relaxed mb-4">"I've borrowed 41 books this year and the reading room still smells like the first day I walked in."</p>
+        <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] text-ink-light/85 dark:text-ink-dark/85 leading-relaxed mb-4">"I've borrowed 41 books this year and the reading room still smells like the first day I walked in."</p>
         <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★★</span><span>41 books borrowed</span></div>
       </div>
 
@@ -715,7 +834,7 @@
           <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Devon Kessler" class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
           <div><p class="text-sm font-medium">Devon Kessler</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Reader Member · Favorite: Mystery</p></div>
         </div>
-        <p class="font-display italic text-[17px] leading-relaxed mb-4">"The staff remembered I liked Nordic noir and set aside three titles before I even asked."</p>
+        <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] text-ink-light/85 dark:text-ink-dark/85 leading-relaxed mb-4">"The staff remembered I liked Nordic noir and set aside three titles before I even asked."</p>
         <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★★</span><span>29 books borrowed</span></div>
       </div>
 
@@ -724,7 +843,7 @@
           <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Saoirse Fallon" class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
           <div><p class="text-sm font-medium">Saoirse Fallon</p><p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Explorer Member · Favorite: Poetry</p></div>
         </div>
-        <p class="font-display italic text-[17px] leading-relaxed mb-4">"Sunday Poetry Circle is the calmest hour of my week. I look forward to it more than the weekend itself."</p>
+        <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] text-ink-light/85 dark:text-ink-dark/85 leading-relaxed mb-4">"Sunday Poetry Circle is the calmest hour of my week. I look forward to it more than the weekend itself."</p>
         <div class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50"><span>★★★★☆</span><span>17 books borrowed</span></div>
       </div>
     </div>
@@ -799,31 +918,90 @@
 </section>
 
 <!-- ============ READING INSPIRATION ============ -->
-<section class="py-32 lg:py-40 px-6 relative overflow-hidden">
+<!-- <section class="py-32 lg:py-40 px-6 relative overflow-hidden">
   <div class="absolute inset-0 quote-bg"></div>
   <div class="relative max-w-3xl mx-auto text-center">
     <span class="font-serif text-7xl text-accent-light/30 dark:text-accent-dark/30 leading-none">“</span>
     <p id="quote-text" class="font-display italic text-2xl lg:text-3xl leading-relaxed mt-2 mb-6 transition-opacity duration-700">A room without books is like a body without a soul.</p>
     <p id="quote-author" class="text-sm tracking-[0.2em] uppercase text-ink-light/50 dark:text-ink-dark/50 transition-opacity duration-700">— Marcus Tullius Cicero</p>
   </div>
-</section>
+</section> -->
 
-<!-- ============ NEWSLETTER ============ -->
-<section id="newsletter" class="py-28 lg:py-36 px-6 relative overflow-hidden bg-card-light/60 dark:bg-card-dark/40">
-  <div class="relative max-w-xl mx-auto text-center">
-    <p class="eyebrow">Stay In The Loop</p>
-    <h2 class="section-title mt-3 mb-4">Letters From the Library</h2>
-    <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mb-10">One short letter a month — new arrivals, event invites, and a staff-picked poem.</p>
+<!-- ============ NEWSLETTER / CTA SECTION ============ -->
+<section id="newsletter" class="py-20 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-bg-light dark:bg-bg-dark transition-colors duration-500">
+  <div class="max-w-[1380px] mx-auto relative z-10">
+    <div class="relative rounded-3xl p-6 sm:p-10 lg:p-14 overflow-hidden bg-gradient-to-br from-[#16231F] via-[#101916] to-[#0A100E] text-[#FAF7F2] border border-[#C79A3B]/30 shadow-2xl">
+      
+      <!-- Background Ambient Glow & Decorative Accent -->
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#C79A3B]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#3B6B57]/20 rounded-full blur-3xl pointer-events-none"></div>
 
-    <form id="newsletter-form" class="flex flex-col gap-4">
-      <input type="email" required placeholder="Your email address" class="input-field" aria-label="Email address">
-      <select class="input-field" aria-label="Genre preference">
-        <option>Preferred genre (optional)</option>
-        <option>Mystery</option><option>Fantasy</option><option>Science</option><option>History</option><option>Poetry</option>
-      </select>
-      <button type="submit" class="btn-primary mt-2">Subscribe</button>
-      <p id="newsletter-msg" class="text-xs text-primary-light dark:text-primary-dark h-4"></p>
-    </form>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+        
+        <!-- LEFT COLUMN: Headline & Value Proposition -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C79A3B]/15 border border-[#C79A3B]/30 text-[#D4A64A] text-xs font-semibold uppercase tracking-widest">
+            <span class="w-2 h-2 rounded-full bg-[#D4A64A] animate-pulse"></span>
+            Monthly Library Dispatch
+          </div>
+
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-[#FAF7F2]">
+            Letters From The Library
+          </h2>
+
+          <p class="text-sm sm:text-base text-[#FAF7F2]/75 leading-relaxed max-w-xl font-sans">
+            One short dispatch a month — curated new arrivals, invitations to private reading evenings, member perks, and a hand-picked poem from our archival vault.
+          </p>
+
+          <!-- Feature Trust Badges -->
+          <div class="pt-2 flex flex-wrap items-center gap-4 text-xs text-[#FAF7F2]/70 font-medium">
+            <span class="inline-flex items-center gap-1.5"><span class="text-[#D4A64A]">✓</span> 100% Spam Free</span>
+            <span class="inline-flex items-center gap-1.5"><span class="text-[#D4A64A]">✓</span> Unsubscribe Anytime</span>
+            <span class="inline-flex items-center gap-1.5"><span class="text-[#D4A64A]">✓</span> Private Event Invites</span>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Glassmorphic Interactive CTA Card -->
+        <div class="lg:col-span-5">
+          <div class="bg-white/10 dark:bg-black/30 backdrop-blur-xl border border-white/15 p-6 sm:p-8 rounded-2xl shadow-2xl space-y-4">
+            <div>
+              <h3 class="font-serif text-xl text-[#FAF7F2] font-medium mb-1">Subscribe to Letters</h3>
+              <p class="text-xs text-[#FAF7F2]/60">Delivered directly to your inbox on the 1st of every month.</p>
+            </div>
+
+            <form id="newsletter-form" class="space-y-3">
+              <div>
+                <input type="email" required placeholder="Enter your email address..." class="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/20 text-[#FAF7F2] placeholder-[#FAF7F2]/40 text-xs sm:text-sm focus:outline-none focus:border-[#D4A64A] transition" aria-label="Email address">
+              </div>
+
+              <div>
+                <select class="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/20 text-[#FAF7F2]/80 text-xs sm:text-sm focus:outline-none focus:border-[#D4A64A] transition" aria-label="Genre preference">
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Select preferred genre (optional)</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Mystery &amp; Thrillers</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Fantasy &amp; Myths</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Science &amp; Future</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">History &amp; Memoir</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Poetry &amp; Verse</option>
+                </select>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-[#C79A3B] hover:bg-[#D4A64A] text-[#121212] font-semibold text-xs sm:text-sm tracking-wide uppercase shadow-lg transition flex items-center justify-center gap-2">
+                <span>Join The Reading Circle</span>
+                <span>→</span>
+              </button>
+              
+              <p id="newsletter-msg" class="text-xs text-[#D4A64A] text-center min-h-[1.25rem]"></p>
+            </form>
+
+            <p class="text-[10.5px] text-center text-[#FAF7F2]/45 font-mono">
+              🔒 We respect your privacy. No marketing clutter.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </section>
 </main>

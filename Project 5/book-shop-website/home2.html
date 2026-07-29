@@ -861,59 +861,132 @@
 </section>
 
 <!-- ============================================================
-     SECTION 6 — READING EVENTS (Image Cards)
+     SECTION 6 — READING EVENTS (Flagship Spotlight + Timeline)
      ============================================================ -->
-<section id="events" class="py-28 lg:py-36 px-6">
-  <div class="max-w-[1300px] mx-auto">
-    <div class="flex flex-col items-center text-center mb-16 h2-reveal reveal-scroll">
-      <p class="eyebrow">Save the Date</p>
-      <h2 class="section-title mt-3">Reading Events</h2>
-      <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mt-4 max-w-md">Join author talks, Sunday circles, and family story mornings in our reading rooms.</p>
+<section id="events" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 bg-bg-light dark:bg-bg-dark transition-colors duration-500">
+  <div class="max-w-[1380px] mx-auto">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col items-center text-center mb-12 sm:mb-16">
+      <div class="inline-flex items-center gap-2 mb-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent-light dark:bg-accent-dark animate-pulse"></span>
+        <p class="eyebrow uppercase tracking-[0.3em]">Save the Date</p>
+      </div>
+      <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-serif">Literary Gatherings &amp; Events</h2>
+      <p class="mt-3 text-sm sm:text-base text-ink-light/65 dark:text-ink-dark/65 max-w-xl">
+        Intimate candlelight readings, author Q&amp;As, and Sunday poetry circles inside our historic reading rooms.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- EVENT CARD 1 -->
-      <div class="bg-white dark:bg-[#1D1D1D] border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full h2-reveal reveal-scroll">
-        <div class="h-52 w-full overflow-hidden relative">
-          <img src="event_author_reading.png" alt="An Evening with Inés Roldán" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md text-accent-light dark:text-accent-dark shadow-sm border border-hairline-light dark:border-hairline-dark">Aug 02 · 7:00 PM</span>
+    <!-- 12-COLUMN SHOWCASE GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+      
+      <!-- LEFT 7 COLS: Flagship Main Event Spotlight -->
+      <div class="lg:col-span-7 bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl overflow-hidden shadow-xl flex flex-col justify-between relative group">
+        <div class="h-64 sm:h-80 w-full overflow-hidden relative">
+          <img src="event_author_reading.png" alt="An Evening with Inés Roldán" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent"></div>
+          
+          <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex items-center gap-2">
+            <span class="px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-accent-light text-white dark:bg-accent-dark dark:text-bg-dark shadow-md">
+              ✦ Flagship Gathering
+            </span>
+            <span class="px-3 py-1 rounded-full text-xs font-mono bg-black/60 backdrop-blur-md text-white border border-white/20">
+              Aug 02 · 7:00 PM
+            </span>
+          </div>
+
+          <div class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white">
+            <span class="text-xs uppercase tracking-widest text-accent-light dark:text-accent-dark font-mono">Live Author Q&amp;A &amp; Book Signing</span>
+            <h3 class="font-serif text-2xl sm:text-3xl font-semibold text-white mt-1">An Evening with Inés Roldán</h3>
+          </div>
         </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="font-serif text-xl font-semibold mb-2 text-ink-light dark:text-ink-dark group-hover:text-primary-light dark:group-hover:text-primary-dark transition-colors">An Evening with Inés Roldán</h3>
-          <p class="text-xs text-ink-light/65 dark:text-ink-dark/65 mb-1.5 flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-accent-light dark:text-accent-dark"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Venue: Main Reading Room</p>
-          <p class="text-xs text-amber-600 dark:text-amber-400 font-medium mb-6 flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/><line x1="13" y1="5" x2="13" y2="19" stroke-dasharray="2 2"/></svg> 14 seats remaining</p>
-          <button class="btn-primary text-xs py-2.5 px-5 w-full mt-auto">Reserve Seat</button>
+
+        <div class="p-6 sm:p-8 flex flex-col justify-between flex-1 space-y-6">
+          <p class="text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed font-sans">
+            Join us upstairs in the mahogany reading hall for an intimate candlelit reading, live author interview, audience Q&amp;A, and exclusive signed copies of <em>The Cartographer's Silence</em>.
+          </p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2 text-xs border-t border-hairline-light/60 dark:border-hairline-dark/60">
+            <div>
+              <span class="block text-ink-light/50 dark:text-ink-dark/50 uppercase font-mono text-[10px]">Venue</span>
+              <span class="font-medium text-ink-light dark:text-ink-dark">Grand Reading Hall</span>
+            </div>
+            <div>
+              <span class="block text-ink-light/50 dark:text-ink-dark/50 uppercase font-mono text-[10px]">Availability</span>
+              <span class="font-semibold text-amber-600 dark:text-amber-400">14 Seats Remaining</span>
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+              <span class="block text-ink-light/50 dark:text-ink-dark/50 uppercase font-mono text-[10px]">Admission</span>
+              <span class="font-medium text-ink-light dark:text-ink-dark">Free for Members</span>
+            </div>
+          </div>
+
+          <div class="pt-2 flex flex-col sm:flex-row gap-3">
+            <a href="membership.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs sm:text-sm font-medium tracking-wide shadow-md hover:opacity-90 transition">
+              Reserve Seat Now →
+            </a>
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full border border-hairline-light dark:border-hairline-dark text-ink-light dark:text-ink-dark text-xs sm:text-sm font-medium hover:bg-hairline-light/40 dark:hover:bg-hairline-dark/40 transition">
+              View Directions
+            </a>
+          </div>
         </div>
       </div>
 
-      <!-- EVENT CARD 2 -->
-      <div class="bg-white dark:bg-[#1D1D1D] border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full h2-reveal reveal-scroll">
-        <div class="h-52 w-full overflow-hidden relative">
-          <img src="event_poetry_circle.png" alt="Sunday Poetry Circle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md text-accent-light dark:text-accent-dark shadow-sm border border-hairline-light dark:border-hairline-dark">Aug 09 · 6:30 PM</span>
+      <!-- RIGHT 5 COLS: Upcoming Events Timeline Schedule -->
+      <div class="lg:col-span-5 flex flex-col justify-between bg-card-light/60 dark:bg-card-dark/40 border border-hairline-light dark:border-hairline-dark rounded-3xl p-6 sm:p-8 shadow-sm">
+        <div class="mb-4 flex items-center justify-between">
+          <h4 class="font-serif text-lg font-semibold text-ink-light dark:text-ink-dark">Upcoming Schedule</h4>
+          <span class="text-xs font-mono text-accent-light dark:text-accent-dark">August 2026</span>
         </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="font-serif text-xl font-semibold mb-2 text-ink-light dark:text-ink-dark group-hover:text-primary-light dark:group-hover:text-primary-dark transition-colors">Sunday Poetry Circle</h3>
-          <p class="text-xs text-ink-light/65 dark:text-ink-dark/65 mb-1.5 flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-accent-light dark:text-accent-dark"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Venue: The Fireside Nook</p>
-          <p class="text-xs text-amber-600 dark:text-amber-400 font-medium mb-6 flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/><line x1="13" y1="5" x2="13" y2="19" stroke-dasharray="2 2"/></svg> 6 seats remaining</p>
-          <button class="btn-primary text-xs py-2.5 px-5 w-full mt-auto">Reserve Seat</button>
+
+        <div class="space-y-4 my-auto">
+          <!-- Item 1 -->
+          <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-bg-light/80 dark:bg-bg-dark/80 border border-hairline-light dark:border-hairline-dark hover:border-accent-light/50 dark:hover:border-accent-dark/50 transition group">
+            <div class="w-16 h-16 shrink-0 rounded-xl overflow-hidden shadow-sm">
+              <img src="event_poetry_circle.png" alt="Sunday Poetry Circle" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[10px] font-mono uppercase font-bold text-accent-light dark:text-accent-dark">Aug 09 · 6:30 PM</span>
+              <h5 class="font-serif text-base font-medium text-ink-light dark:text-ink-dark truncate">Sunday Poetry Circle</h5>
+              <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 truncate">Fireside Nook · 6 Seats Left</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-bg-light/80 dark:bg-bg-dark/80 border border-hairline-light dark:border-hairline-dark hover:border-accent-light/50 dark:hover:border-accent-dark/50 transition group">
+            <div class="w-16 h-16 shrink-0 rounded-xl overflow-hidden shadow-sm">
+              <img src="reading_events.png" alt="Family Story Morning" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[10px] font-mono uppercase font-bold text-accent-light dark:text-accent-dark">Aug 16 · 10:00 AM</span>
+              <h5 class="font-serif text-base font-medium text-ink-light dark:text-ink-dark truncate">Family Story Morning</h5>
+              <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 truncate">Children's Corner · 22 Seats Left</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="flex items-center gap-4 p-3.5 rounded-2xl bg-bg-light/80 dark:bg-bg-dark/80 border border-hairline-light dark:border-hairline-dark hover:border-accent-light/50 dark:hover:border-accent-dark/50 transition group">
+            <div class="w-16 h-16 shrink-0 rounded-xl overflow-hidden shadow-sm">
+              <img src="./home2/Coffee Corner.jpg" alt="Philosophy &amp; Coffee Salon" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[10px] font-mono uppercase font-bold text-accent-light dark:text-accent-dark">Aug 24 · 5:00 PM</span>
+              <h5 class="font-serif text-base font-medium text-ink-light dark:text-ink-dark truncate">Philosophy &amp; Coffee Salon</h5>
+              <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 truncate">Coffee Corner · 8 Seats Left</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-hairline-light/60 dark:border-hairline-dark/60 text-center">
+          <a href="contact.html" class="text-xs font-semibold text-accent-light dark:text-accent-dark hover:underline inline-flex items-center gap-1">
+            Host Your Own Private Reading Event →
+          </a>
         </div>
       </div>
 
-      <!-- EVENT CARD 3 -->
-      <div class="sm:col-span-2 lg:col-span-1 sm:max-w-[440px] lg:max-w-none sm:mx-auto lg:mx-0 w-full bg-white dark:bg-[#1D1D1D] border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col h-full h2-reveal reveal-scroll">
-        <div class="h-52 w-full overflow-hidden relative">
-          <img src="reading_events.png" alt="Family Story Morning" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-          <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-bg-light/95 dark:bg-bg-dark/95 backdrop-blur-md text-accent-light dark:text-accent-dark shadow-sm border border-hairline-light dark:border-hairline-dark">Aug 16 · 10:00 AM</span>
-        </div>
-        <div class="p-6 flex flex-col flex-1">
-          <h3 class="font-serif text-xl font-semibold mb-2 text-ink-light dark:text-ink-dark group-hover:text-primary-light dark:group-hover:text-primary-dark transition-colors">Family Story Morning</h3>
-          <p class="text-xs text-ink-light/65 dark:text-ink-dark/65 mb-1.5 flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-accent-light dark:text-accent-dark"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Venue: Children's Corner</p>
-          <p class="text-xs text-emerald-600 dark:text-emerald-400 font-medium mb-6 flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v2z"/><line x1="13" y1="5" x2="13" y2="19" stroke-dasharray="2 2"/></svg> 22 seats remaining</p>
-          <button class="btn-primary text-xs py-2.5 px-5 w-full mt-auto">Reserve Seat</button>
-        </div>
-      </div>
     </div>
+
   </div>
 </section>
 </section>
@@ -1026,56 +1099,81 @@
 </section>
 
 <!-- ============================================================
-     SECTION 10 — LIBRARY NUMBERS
+     SECTION 10 — CURATOR'S CUSTOM BOOK BOX SERVICE (Alternative)
      ============================================================ -->
-<section class="relative py-28 lg:py-32 px-6 bg-primary-light dark:bg-[#0f1a18] text-bg-light overflow-hidden">
-  <div class="h2-numbers-bg" aria-hidden="true">
-    <svg width="1600" height="120" viewBox="0 0 1600 120"><g stroke="#FAF7F2" stroke-width="1" fill="none" opacity="0.6">
-      <rect x="20" y="20" width="30" height="80" rx="2"/><rect x="60" y="30" width="30" height="70" rx="2"/><rect x="100" y="10" width="30" height="90" rx="2"/>
-      <rect x="220" y="25" width="30" height="75" rx="2"/><rect x="260" y="15" width="30" height="85" rx="2"/><rect x="300" y="30" width="30" height="70" rx="2"/>
-      <rect x="420" y="20" width="30" height="80" rx="2"/><rect x="460" y="30" width="30" height="70" rx="2"/><rect x="500" y="10" width="30" height="90" rx="2"/>
-      <rect x="620" y="25" width="30" height="75" rx="2"/><rect x="660" y="15" width="30" height="85" rx="2"/><rect x="700" y="30" width="30" height="70" rx="2"/>
-      <rect x="820" y="20" width="30" height="80" rx="2"/><rect x="860" y="30" width="30" height="70" rx="2"/><rect x="900" y="10" width="30" height="90" rx="2"/>
-      <rect x="1020" y="25" width="30" height="75" rx="2"/><rect x="1060" y="15" width="30" height="85" rx="2"/><rect x="1100" y="30" width="30" height="70" rx="2"/>
-      <rect x="1220" y="20" width="30" height="80" rx="2"/><rect x="1260" y="30" width="30" height="70" rx="2"/><rect x="1300" y="10" width="30" height="90" rx="2"/>
-      <rect x="1420" y="25" width="30" height="75" rx="2"/><rect x="1460" y="15" width="30" height="85" rx="2"/><rect x="1500" y="30" width="30" height="70" rx="2"/>
-    </g></svg>
-  </div>
-  <div class="relative max-w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 text-center h2-reveal reveal-scroll">
-    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[40px] font-light leading-none mb-2" data-target="18400">18,400+</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Books</p></div>
-    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[40px] font-light leading-none mb-2" data-target="24">24</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Genres</p></div>
-    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[40px] font-light leading-none mb-2" data-target="3120">3,120+</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Borrowed / mo</p></div>
-    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[40px] font-light leading-none mb-2" data-target="312">312</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Events</p></div>
-    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[40px] font-light leading-none mb-2" data-target="6250">6,250</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Members</p></div>
-    <div><p class="stat-num font-serif text-3xl sm:text-4xl lg:text-[40px] font-light leading-none mb-2" data-target="410">410</p><p class="stat-label text-xs uppercase tracking-[0.18em] opacity-70">Authors</p></div>
-  </div>
-</section>
+<section id="curator-service" class="py-24 lg:py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-bg-light dark:bg-bg-dark transition-colors duration-500">
+  <div class="max-w-[1380px] mx-auto relative z-10">
+    <div class="relative rounded-3xl p-6 sm:p-10 lg:p-14 overflow-hidden bg-gradient-to-br from-[#16231F] via-[#101916] to-[#0A100E] text-[#FAF7F2] border border-[#C79A3B]/30 shadow-2xl">
+      
+      <!-- Background Ambient Glow & Decorative Accent -->
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-[#C79A3B]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-[#3B6B57]/20 rounded-full blur-3xl pointer-events-none"></div>
 
-<!-- ============================================================
-     SECTION 11 — MOBILE LIBRARY APP
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+        
+        <!-- LEFT COLUMN: Headline & Custom Box Details -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#C79A3B]/15 border border-[#C79A3B]/30 text-[#D4A64A] text-xs font-semibold uppercase tracking-widest">
+            <span class="w-2 h-2 rounded-full bg-[#D4A64A] animate-pulse"></span>
+            Personal Concierge Service
+          </div>
 
-<-- ============================================================
-     SECTION 12 — NEWSLETTER (envelope)
-     ============================================================ -->
-<section id="newsletter" class="py-28 lg:py-36 px-6 relative overflow-hidden">
-  <div class="relative max-w-xl mx-auto text-center h2-reveal reveal-scroll">
-    <div id="h2-envelope" class="h2-envelope">
-      <div class="h2-env-body"></div>
-      <div class="h2-env-flap"></div>
+          <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-[#FAF7F2]">
+            Custom Curator's Box
+          </h2>
+
+          <p class="text-sm sm:text-base text-[#FAF7F2]/75 leading-relaxed max-w-xl font-sans">
+            Tell our senior booksellers what you love. Each month, we hand-select 3 hidden literary gems tailored to your taste, wrapped in archival paper with custom wax seals and delivered to your door.
+          </p>
+
+          <!-- Feature Trust Badges -->
+          <div class="pt-2 flex flex-wrap items-center gap-4 text-xs text-[#FAF7F2]/70 font-medium">
+            <span class="inline-flex items-center gap-1.5"><span class="text-[#D4A64A]">✦</span> Senior Curator Selections</span>
+            <span class="inline-flex items-center gap-1.5"><span class="text-[#D4A64A]">✦</span> Custom Brass Bookmark</span>
+            <span class="inline-flex items-center gap-1.5"><span class="text-[#D4A64A]">✦</span> Free Library Return Box</span>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Interactive Box Consultation Card -->
+        <div class="lg:col-span-5">
+          <div class="bg-white/10 dark:bg-black/30 backdrop-blur-xl border border-white/15 p-6 sm:p-8 rounded-2xl shadow-2xl space-y-4">
+            <div>
+              <h3 class="font-serif text-xl text-[#FAF7F2] font-medium mb-1">Request Curator Match</h3>
+              <p class="text-xs text-[#FAF7F2]/60">Our archivist will prepare your personalized reading plan.</p>
+            </div>
+
+            <form id="curator-form" class="space-y-3">
+              <div>
+                <input type="text" required placeholder="Your name..." class="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/20 text-[#FAF7F2] placeholder-[#FAF7F2]/40 text-xs sm:text-sm focus:outline-none focus:border-[#D4A64A] transition">
+              </div>
+
+              <div>
+                <input type="email" required placeholder="Your email address..." class="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/20 text-[#FAF7F2] placeholder-[#FAF7F2]/40 text-xs sm:text-sm focus:outline-none focus:border-[#D4A64A] transition">
+              </div>
+
+              <div>
+                <select class="w-full px-4 py-3 rounded-xl bg-black/30 border border-white/20 text-[#FAF7F2]/80 text-xs sm:text-sm focus:outline-none focus:border-[#D4A64A] transition">
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Select favorite genre</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Literary &amp; Contemporary Fiction</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Historical Mysteries &amp; Noir</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Speculative &amp; Sci-Fi Classics</option>
+                  <option class="bg-[#16231F] text-[#FAF7F2]">Poetry &amp; Archival Essays</option>
+                </select>
+              </div>
+
+              <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-[#C79A3B] hover:bg-[#D4A64A] text-[#121212] font-semibold text-xs sm:text-sm tracking-wide uppercase shadow-lg transition flex items-center justify-center gap-2">
+                <span>Request Custom Box</span>
+                <span>→</span>
+              </button>
+              
+              <p id="curator-msg" class="text-xs text-[#D4A64A] text-center min-h-[1.25rem]"></p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-    <p class="eyebrow">Stay In The Loop</p>
-    <h2 class="section-title mt-3 mb-4">Letters From the Library</h2>
-    <p class="text-sm text-ink-light/60 dark:text-ink-dark/60 mb-10">One short letter a month — new arrivals, event invites, and a staff-picked poem.</p>
-
-    <form id="newsletter-form" class="flex flex-col gap-4">
-      <input type="email" required placeholder="Your email address" class="input-field" aria-label="Email address">
-      <select class="input-field" aria-label="Genre preference">
-        <option>Preferred genre (optional)</option>
-        <option>Mystery</option><option>Fantasy</option><option>Science</option><option>History</option><option>Poetry</option>
-      </select>
-      <button type="submit" class="btn-primary mt-2">Subscribe</button>
-      <p id="newsletter-msg" class="text-xs text-primary-light dark:text-primary-dark h-4"></p>
-    </form>
   </div>
 </section>
 </main>

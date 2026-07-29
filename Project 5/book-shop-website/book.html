@@ -273,6 +273,283 @@
   </div>
 </section>
 
+<!-- ============ SECTION 3.5 — FILTER-BASED BESTSELLERS SHOWCASE ============ -->
+<section id="bestsellers" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 bg-card-light/50 dark:bg-card-dark/30 border-b border-hairline-light dark:border-hairline-dark">
+  <div class="max-w-[1380px] mx-auto relative z-10">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col items-center text-center mb-10 sm:mb-14">
+      <div class="inline-flex items-center gap-2 mb-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-accent-light dark:bg-accent-dark animate-pulse"></span>
+        <p class="eyebrow uppercase tracking-[0.3em]">Most Read Volumes</p>
+      </div>
+      <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-serif">Popular Bestsellers</h2>
+      <p class="mt-2 text-xs sm:text-sm md:text-base text-ink-light/65 dark:text-ink-dark/65 max-w-xl">
+        Explore top-rated volumes ranked by readers and booksellers across our 14 library alcoves.
+      </p>
+
+      <!-- Category Filter Tabs (Pure HTML UI) -->
+      <div class="mt-6 flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+        <button class="bestseller-tab active">All Bestsellers</button>
+        <button class="bestseller-tab">Fiction &amp; Mystery</button>
+        <button class="bestseller-tab">Sci-Fi &amp; Future</button>
+        <button class="bestseller-tab">History &amp; Memoir</button>
+        <button class="bestseller-tab">Poetry &amp; Art</button>
+      </div>
+    </div>
+
+    <!-- Filtered Bestseller Image Grid (Responsive: Desktop 4-col, <1024px 2-col, 820/760px 2-col, 360px 1-col) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      
+      <!-- BESTSELLER CARD 1 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="cartographer_cover.png" alt="The Cartographer's Silence" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#C79A3B] text-black shadow-md">#1 Bestseller</span>
+          <span class="absolute top-3 right-3 text-xs font-mono font-bold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">2.4k Sold</span>
+          
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase font-mono text-accent-light dark:text-accent-dark">Literary Fiction</span>
+            <h3 class="font-serif text-lg font-semibold text-white mt-0.5 truncate">The Cartographer's Silence</h3>
+            <p class="text-xs text-white/80 truncate">by Inés Roldán</p>
+          </div>
+        </div>
+
+        <div class="p-4 flex flex-col justify-between gap-4 flex-1">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-amber-500 font-semibold flex items-center gap-1">★★★★★ <span class="text-ink-light/60 dark:text-ink-dark/60 font-normal ml-1">4.9 (312)</span></span>
+            <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Available</span>
+          </div>
+
+          <div class="flex items-center gap-2 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <button class="flex-1 py-2 px-3 rounded-xl bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs font-medium hover:opacity-90 transition text-center" onclick="bcToast('Reserved The Cartographer\'s Silence!')">Borrow Now</button>
+            <button class="py-2 px-3 rounded-xl border border-hairline-light dark:border-hairline-dark text-xs font-medium hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 transition">Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- BESTSELLER CARD 2 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_signal_cover.png" alt="Signal &amp; Static" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#3B5B7B] text-white shadow-md">#2 Bestseller</span>
+          <span class="absolute top-3 right-3 text-xs font-mono font-bold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">1.8k Sold</span>
+          
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase font-mono text-accent-light dark:text-accent-dark">Sci-Fi &amp; Speculative</span>
+            <h3 class="font-serif text-lg font-semibold text-white mt-0.5 truncate">Signal &amp; Static</h3>
+            <p class="text-xs text-white/80 truncate">by Tomas Reyes</p>
+          </div>
+        </div>
+
+        <div class="p-4 flex flex-col justify-between gap-4 flex-1">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-amber-500 font-semibold flex items-center gap-1">★★★★★ <span class="text-ink-light/60 dark:text-ink-dark/60 font-normal ml-1">4.8 (190)</span></span>
+            <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Available</span>
+          </div>
+
+          <div class="flex items-center gap-2 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <button class="flex-1 py-2 px-3 rounded-xl bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs font-medium hover:opacity-90 transition text-center" onclick="bcToast('Reserved Signal &amp; Static!')">Borrow Now</button>
+            <button class="py-2 px-3 rounded-xl border border-hairline-light dark:border-hairline-dark text-xs font-medium hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 transition">Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- BESTSELLER CARD 3 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="salt_marrow_cover.png" alt="Salt &amp; Marrow" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#7B3B3B] text-white shadow-md">#3 Bestseller</span>
+          <span class="absolute top-3 right-3 text-xs font-mono font-bold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">1.6k Sold</span>
+          
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase font-mono text-accent-light dark:text-accent-dark">Historical Fiction</span>
+            <h3 class="font-serif text-lg font-semibold text-white mt-0.5 truncate">Salt &amp; Marrow</h3>
+            <p class="text-xs text-white/80 truncate">by Owen Baptiste</p>
+          </div>
+        </div>
+
+        <div class="p-4 flex flex-col justify-between gap-4 flex-1">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-amber-500 font-semibold flex items-center gap-1">★★★★★ <span class="text-ink-light/60 dark:text-ink-dark/60 font-normal ml-1">5.0 (208)</span></span>
+            <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold">3 Left</span>
+          </div>
+
+          <div class="flex items-center gap-2 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <button class="flex-1 py-2 px-3 rounded-xl bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs font-medium hover:opacity-90 transition text-center" onclick="bcToast('Reserved Salt &amp; Marrow!')">Reserve Copy</button>
+            <button class="py-2 px-3 rounded-xl border border-hairline-light dark:border-hairline-dark text-xs font-medium hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 transition">Details</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- BESTSELLER CARD 4 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_orchard_cover.png" alt="The Quiet Orchard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-[#3B6B57] text-white shadow-md">#4 Bestseller</span>
+          <span class="absolute top-3 right-3 text-xs font-mono font-bold text-white bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/20">1.2k Sold</span>
+          
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase font-mono text-accent-light dark:text-accent-dark">Contemporary Fiction</span>
+            <h3 class="font-serif text-lg font-semibold text-white mt-0.5 truncate">The Quiet Orchard</h3>
+            <p class="text-xs text-white/80 truncate">by Marta Wren</p>
+          </div>
+        </div>
+
+        <div class="p-4 flex flex-col justify-between gap-4 flex-1">
+          <div class="flex items-center justify-between text-xs">
+            <span class="text-amber-500 font-semibold flex items-center gap-1">★★★★★ <span class="text-ink-light/60 dark:text-ink-dark/60 font-normal ml-1">4.9 (145)</span></span>
+            <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Available</span>
+          </div>
+
+          <div class="flex items-center gap-2 pt-2 border-t border-hairline-light dark:border-hairline-dark">
+            <button class="flex-1 py-2 px-3 rounded-xl bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs font-medium hover:opacity-90 transition text-center" onclick="bcToast('Reserved The Quiet Orchard!')">Borrow Now</button>
+            <button class="py-2 px-3 rounded-xl border border-hairline-light dark:border-hairline-dark text-xs font-medium hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 transition">Details</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 3.6 — EXCLUSIVE DISCOUNTS & OFFERS ============ -->
+<section id="discounts" class="py-20 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-bg-light dark:bg-bg-dark border-b border-hairline-light dark:border-hairline-dark">
+  <div class="max-w-[1380px] mx-auto relative z-10">
+    
+    <!-- Banner Header Card -->
+    <div class="relative rounded-3xl p-6 sm:p-8 lg:p-10 mb-10 overflow-hidden bg-gradient-to-br from-[#16231F] via-[#101916] to-[#0A100E] text-[#FAF7F2] border border-[#C79A3B]/30 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div class="space-y-2 text-center sm:text-left">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C79A3B]/20 text-[#D4A64A] text-xs font-semibold uppercase tracking-wider">
+          ✦ Member Special Discount
+        </span>
+        <h2 class="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#FAF7F2]">Archival Hardcover &amp; Bundle Sale</h2>
+        <p class="text-xs sm:text-sm text-[#FAF7F2]/75 max-w-xl">Enjoy up to 40% off purchase editions for members, or borrow for free with your library card.</p>
+      </div>
+      <a href="membership.html" class="px-6 py-3 rounded-full bg-[#C79A3B] text-[#121212] font-semibold text-xs sm:text-sm uppercase tracking-wider hover:bg-[#D4A64A] transition shadow-md shrink-0">
+        Unlock Member Discounts →
+      </a>
+    </div>
+
+    <!-- Discount Book Cards Grid (Responsive: Desktop 4-col, <1024px 2-col, 820/760px 2-col, 360px 1-col) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      
+      <!-- DISCOUNT CARD 1 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="quiet_cover.png" alt="A Brief History of Quiet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-red-600 text-white shadow-md">-40% OFF</span>
+          
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase font-mono text-accent-light dark:text-accent-dark">Essays &amp; Philosophy</span>
+            <h3 class="font-serif text-lg font-semibold text-white mt-0.5 truncate">A Brief History of Quiet</h3>
+            <p class="text-xs text-white/80 truncate">by Priya Nandakumar</p>
+          </div>
+        </div>
+
+        <div class="p-4 flex flex-col justify-between gap-3 flex-1">
+          <div class="flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-ink-light dark:text-ink-dark">₹419</span>
+              <span class="text-xs text-ink-light/50 dark:text-ink-dark/50 line-through">₹699</span>
+            </div>
+            <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">In Stock</span>
+          </div>
+
+          <button class="w-full py-2.5 px-4 rounded-xl bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs font-medium hover:opacity-90 transition text-center" onclick="bcToast('Added A Brief History of Quiet to cart!')">Buy Discount Edition →</button>
+        </div>
+      </article>
+
+      <!-- DISCOUNT CARD 2 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_botanical_cipher_cover.png" alt="The Botanical Cipher" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-red-600 text-white shadow-md">-30% OFF</span>
+          
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase font-mono text-accent-light dark:text-accent-dark">Renaissance History</span>
+            <h3 class="font-serif text-lg font-semibold text-white mt-0.5 truncate">The Botanical Cipher</h3>
+            <p class="text-xs text-white/80 truncate">by Evelyn Rose</p>
+          </div>
+        </div>
+
+        <div class="p-4 flex flex-col justify-between gap-3 flex-1">
+          <div class="flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-ink-light dark:text-ink-dark">₹559</span>
+              <span class="text-xs text-ink-light/50 dark:text-ink-dark/50 line-through">₹799</span>
+            </div>
+            <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">In Stock</span>
+          </div>
+
+          <button class="w-full py-2.5 px-4 rounded-xl bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs font-medium hover:opacity-90 transition text-center" onclick="bcToast('Added The Botanical Cipher to cart!')">Buy Discount Edition →</button>
+        </div>
+      </article>
+
+      <!-- DISCOUNT CARD 3 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_starlight_archives_cover.png" alt="Starlight Archives" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-red-600 text-white shadow-md">-35% OFF</span>
+          
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase font-mono text-accent-light dark:text-accent-dark">Sci-Fi Classics</span>
+            <h3 class="font-serif text-lg font-semibold text-white mt-0.5 truncate">Starlight Archives</h3>
+            <p class="text-xs text-white/80 truncate">by Lyra Sterling</p>
+          </div>
+        </div>
+
+        <div class="p-4 flex flex-col justify-between gap-3 flex-1">
+          <div class="flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-ink-light dark:text-ink-dark">₹489</span>
+              <span class="text-xs text-ink-light/50 dark:text-ink-dark/50 line-through">₹749</span>
+            </div>
+            <span class="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-semibold">In Stock</span>
+          </div>
+
+          <button class="w-full py-2.5 px-4 rounded-xl bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs font-medium hover:opacity-90 transition text-center" onclick="bcToast('Added Starlight Archives to cart!')">Buy Discount Edition →</button>
+        </div>
+      </article>
+
+      <!-- DISCOUNT CARD 4 -->
+      <article class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 group flex flex-col justify-between">
+        <div class="relative aspect-[3/4] w-full overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
+          <img src="arrival_marrow_cover.png" alt="Marrow Deep" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10.5px] font-bold uppercase tracking-wider bg-red-600 text-white shadow-md">-25% OFF</span>
+          
+          <div class="absolute bottom-3 left-3 right-3 text-white">
+            <span class="text-[10px] uppercase font-mono text-accent-light dark:text-accent-dark">Mystery Thrillers</span>
+            <h3 class="font-serif text-lg font-semibold text-white mt-0.5 truncate">Marrow Deep</h3>
+            <p class="text-xs text-white/80 truncate">by Halle Osei</p>
+          </div>
+        </div>
+
+        <div class="p-4 flex flex-col justify-between gap-3 flex-1">
+          <div class="flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-ink-light dark:text-ink-dark">₹639</span>
+              <span class="text-xs text-ink-light/50 dark:text-ink-dark/50 line-through">₹849</span>
+            </div>
+            <span class="text-[11px] font-mono text-amber-600 dark:text-amber-400 font-semibold">Low Stock</span>
+          </div>
+
+          <button class="w-full py-2.5 px-4 rounded-xl bg-primary-light text-white dark:bg-primary-dark dark:text-bg-dark text-xs font-medium hover:opacity-90 transition text-center" onclick="bcToast('Added Marrow Deep to cart!')">Buy Discount Edition →</button>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============ SECTION 4 — NEW ARRIVALS ============ -->
 <section id="arrivals" class="relative overflow-hidden py-20 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8">
   <div class="max-w-[1300px] mx-auto relative z-10 flex flex-col items-center text-center mb-10 sm:mb-12">

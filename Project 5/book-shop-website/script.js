@@ -83,14 +83,13 @@
   };
   initActiveNav();
 
-  /* ---------- NAV: glass on scroll + progress + back to top ---------- */
+  /* ---------- NAV: progress + back to top (scroll animations removed) ---------- */
   const nav = $('#site-nav');
   const progress = $('#progress-bar');
   const backTop = $('#back-to-top');
-  if (nav && progress) {
+  if (progress) {
     const onScroll = () => {
       const y = window.scrollY;
-      nav.classList.toggle('scrolled', y > 40);
       const h = document.documentElement.scrollHeight - window.innerHeight;
       progress.style.width = `${h > 0 ? (y / h) * 100 : 0}%`;
       if (backTop) {
@@ -1522,5 +1521,208 @@
       }
     });
   }
+
+  // =========================================================================
+  // POPULAR GENRES SPOTLIGHT SWITCHER
+  // =========================================================================
+  const genreData = {
+    mystery: {
+      title: "Mystery & Crime",
+      count: "128 Titles Available",
+      sub: "Noir · Whodunit · Psychological Thrillers · Cozy Mysteries",
+      desc: "Step into dark alleys, uncrackable ciphers, and locked-room mysteries. Our mystery vault houses vintage detective classics and modern edge-of-your-seat thrillers.",
+      bookImg: "cartographer_cover.png",
+      bookTitle: "The Cartographer's Silence",
+      bookAuthor: "by Inés Roldán",
+      rating: "4.9 (312 reviews)",
+      btnText: "Browse Mystery Books"
+    },
+    fantasy: {
+      title: "Fantasy & Myths",
+      count: "204 Titles Available",
+      sub: "High Fantasy · Folklore · Urban Magic · Epics",
+      desc: "Escape into ancient kingdoms, mystical spells, and forgotten empires. From grand epics to intimate magical realism, discover stories beyond imagination.",
+      bookImg: "arrival_botanical_cipher_cover.png",
+      bookTitle: "Celestial Harmonies",
+      bookAuthor: "by Clara Vance",
+      rating: "4.95 (450 reviews)",
+      btnText: "Browse Fantasy Books"
+    },
+    science: {
+      title: "Science & Future",
+      count: "96 Titles Available",
+      sub: "Astrophysics · Quantum Mechanics · Sci-Fi · Evolution",
+      desc: "Discover the wonders of the cosmos, quantum theory, and speculative futures written by world-renowned scientists, engineers, and visionaries.",
+      bookImg: "arrival_signal_cover.png",
+      bookTitle: "Circuit & Bone",
+      bookAuthor: "by Dr. Julian Thorne",
+      rating: "4.85 (190 reviews)",
+      btnText: "Browse Science Books"
+    },
+    history: {
+      title: "History & Civilizations",
+      count: "142 Titles Available",
+      sub: "Ancient Rome · Maritime Voyages · World Wars · Biographies",
+      desc: "Uncover the rich archives of human history. Chronicles of fallen empires, grand revolutions, and forgotten trade routes documented across centuries.",
+      bookImg: "arrival_ancient_vault_cover.png",
+      bookTitle: "Historia Mundi Chronicles",
+      bookAuthor: "by Edward Gibbon",
+      rating: "4.88 (280 reviews)",
+      btnText: "Browse History Books"
+    },
+    children: {
+      title: "Children & Young Readers",
+      count: "175 Titles Available",
+      sub: "Fairy Tales · Illustrated Classics · Adventure · Fables",
+      desc: "Whimsical tales, vibrant illustrations, and enchanting bedtime adventures designed to spark curiosity and lifelong reading habits for young minds.",
+      bookImg: "arrival_starlight_archives_cover.png",
+      bookTitle: "The Starlight Crown",
+      bookAuthor: "by Eliza Reed",
+      rating: "4.92 (340 reviews)",
+      btnText: "Browse Children's Books"
+    },
+    biography: {
+      title: "Biography & Memoirs",
+      count: "88 Titles Available",
+      sub: "Autobiographies · Historical Leaders · Artists · Pioneers",
+      desc: "Read the true personal journeys of world leaders, revolutionary thinkers, master artists, and unsung heroes who shaped human culture.",
+      bookImg: "about_founders.png",
+      bookTitle: "Ancient Legends & Leaders",
+      bookAuthor: "by Marcus Vance",
+      rating: "4.87 (165 reviews)",
+      btnText: "Browse Biographies"
+    },
+    poetry: {
+      title: "Poetry & Verse",
+      count: "61 Titles Available",
+      sub: "Sonnets · Modern Free Verse · Haiku · Classical Anthology",
+      desc: "Lyrical prose, elegant verse, and bound anthologies for quiet moments of contemplation, deep emotion, and literary reflection.",
+      bookImg: "arrival_orchard_cover.png",
+      bookTitle: "Botanical Mercies",
+      bookAuthor: "by Saoirse Lin",
+      rating: "4.96 (120 reviews)",
+      btnText: "Browse Poetry Books"
+    }
+  };
+
+  const genreBooks = document.querySelectorAll('#genre-shelf .genre-book');
+  const genreChips = document.querySelectorAll('#genre-quick-chips .genre-chip');
+
+  function updateGenreSpotlight(genreKey) {
+    const data = genreData[genreKey];
+    if (!data) return;
+
+    // Active classes
+    genreBooks.forEach(b => b.classList.toggle('active', b.getAttribute('data-genre') === genreKey));
+    genreChips.forEach(c => c.classList.toggle('active', c.getAttribute('data-genre') === genreKey));
+
+    // Panel Elements
+    const titleEl = document.getElementById('spotlight-title');
+    const countEl = document.getElementById('spotlight-count');
+    const subEl = document.getElementById('spotlight-sub');
+    const descEl = document.getElementById('spotlight-desc');
+    const bookImg = document.getElementById('spotlight-book-img');
+    const bookTitle = document.getElementById('spotlight-book-title');
+    const bookAuthor = document.getElementById('spotlight-book-author');
+    const bookRating = document.getElementById('spotlight-book-rating');
+    const btnText = document.getElementById('spotlight-btn-text');
+
+    if (titleEl) titleEl.textContent = data.title;
+    if (countEl) countEl.textContent = data.count;
+    if (subEl) subEl.textContent = data.sub;
+    if (descEl) descEl.textContent = data.desc;
+    if (bookTitle) bookTitle.textContent = data.bookTitle;
+    if (bookAuthor) bookAuthor.textContent = data.bookAuthor;
+    if (bookRating) bookRating.textContent = data.rating;
+    if (btnText) btnText.textContent = data.btnText;
+    if (bookImg) {
+      bookImg.style.opacity = '0';
+      setTimeout(() => {
+        bookImg.src = data.bookImg;
+        bookImg.style.opacity = '1';
+      }, 150);
+    }
+  }
+
+  // Attach event listeners to spines and chips
+  genreBooks.forEach(book => {
+    book.addEventListener('click', () => {
+      const g = book.getAttribute('data-genre');
+      updateGenreSpotlight(g);
+    });
+    book.addEventListener('mouseenter', () => {
+      const g = book.getAttribute('data-genre');
+      updateGenreSpotlight(g);
+    });
+  });
+
+  // =========================================================================
+  // BORROW NOW BUTTON CLICK HANDLER (GLOBAL DELEGATION)
+  // =========================================================================
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.btn-borrow-now, .arrival-hover button');
+    if (btn) {
+      e.preventDefault();
+      e.stopPropagation();
+      const card = btn.closest('article, .arrival-card, .book-display-frame') || document;
+      const titleEl = card.querySelector('h3, h4, .font-serif');
+      const title = btn.getAttribute('data-book-title') || (titleEl ? titleEl.textContent.trim() : 'this volume');
+      
+      if (typeof showToast === 'function') {
+        showToast(`Borrow request for "${title}" received! Opening member portal...`, 'success');
+      } else {
+        alert(`Borrow request for "${title}" received! Opening member portal...`);
+      }
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1000);
+    }
+  });
+
+  // =========================================================================
+  // NEWSLETTER FORM SUBMIT HANDLER
+  // =========================================================================
+  const newsletterForm = document.getElementById('newsletter-form');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const msgEl = document.getElementById('newsletter-msg');
+      const emailInput = this.querySelector('input[type="email"]');
+      const email = emailInput ? emailInput.value : '';
+      
+      if (msgEl) msgEl.textContent = 'Subscribing to Letters From The Library...';
+      
+      setTimeout(() => {
+        if (msgEl) msgEl.textContent = '✓ Welcome to Letters From The Library!';
+        if (typeof showLocalToast === 'function') {
+          showLocalToast('success', `Subscribed ${email} to Letters From The Library!`);
+        }
+        newsletterForm.reset();
+        setTimeout(() => { if (msgEl) msgEl.textContent = ''; }, 4000);
+      }, 600);
+    });
+  }
+
+  // =========================================================================
+  // CURATOR BOX FORM SUBMIT HANDLER
+  // =========================================================================
+  const curatorForm = document.getElementById('curator-form');
+  if (curatorForm) {
+    curatorForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const msgEl = document.getElementById('curator-msg');
+      if (msgEl) msgEl.textContent = 'Submitting Curator Match Request...';
+      
+      setTimeout(() => {
+        if (msgEl) msgEl.textContent = '✓ Curator Request Received! We will be in touch.';
+        if (typeof showToast === 'function') {
+          showToast('Curator Match Request received! Check your email.', 'success');
+        }
+        curatorForm.reset();
+        setTimeout(() => { if (msgEl) msgEl.textContent = ''; }, 4000);
+      }, 600);
+    });
+  }
 })();
+
 
