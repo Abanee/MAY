@@ -1374,6 +1374,7 @@ body { -webkit-font-smoothing: antialiased; }
 .section-h { font-family: 'Fraunces', serif; font-size: 17px; font-weight: 500; }
 
 /* ===================== PROGRESS ===================== */
+#progress-bar { display: none !important; }
 .progress-track { height: 6px; border-radius: 999px; background: #E7E1D8; overflow: hidden; }
 .dark .progress-track { background: #2D2D2D; }
 .progress-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg,#234E52,#C79A3B); transition: width 1s cubic-bezier(.4,0,.2,1); }

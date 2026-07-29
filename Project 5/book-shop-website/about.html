@@ -45,9 +45,6 @@
 <body
   class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
 
-  <!-- ============ READING PROGRESS ============ -->
-  <div id="progress-bar" class="fixed top-0 left-0 h-[2px] bg-accent-light dark:bg-accent-dark z-[60]" style="width:0%">
-  </div>
 
   <!-- ============ CURSOR SPOTLIGHT (desktop only) ============ -->
   <div id="cursor-glow" class="pointer-events-none fixed inset-0 z-[5] hidden lg:block"></div>
@@ -1033,58 +1030,64 @@
           <p class="eyebrow">Pinned To Our Notice Board</p>
           <h2 class="section-title mt-3">Reader Testimonials</h2>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="h2-note reveal-scroll">
-            <div class="flex items-center gap-3 mb-4">
-              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
-                alt="Renata Mbeki"
-                class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
-              <div>
-                <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Renata Mbeki</p>
-                <p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Scholar Member · Favorite: History</p>
+        <div class="grid md:grid-cols-3 gap-8 items-stretch">
+          <div class="h2-note reveal-scroll flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center gap-3 mb-4">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80"
+                  alt="Renata Mbeki"
+                  class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
+                <div>
+                  <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Renata Mbeki</p>
+                  <p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Scholar Member · Favorite: History</p>
+                </div>
               </div>
+              <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] leading-relaxed mb-4 text-ink-light/85 dark:text-ink-dark/85">
+                "I've borrowed 41 books this year and the reading room still smells like the first day I walked in."</p>
             </div>
-            <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] leading-relaxed mb-4 text-ink-light/85 dark:text-ink-dark/85">
-              "I've borrowed 41 books this year and the reading room still smells like the first day I walked in."</p>
             <div
-              class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50 pt-3 border-t border-hairline-light/60 dark:border-hairline-dark/60">
+              class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50 pt-3 border-t border-hairline-light/60 dark:border-hairline-dark/60 mt-auto">
               <span>★★★★★</span><span>41 books borrowed</span>
             </div>
           </div>
 
-          <div class="h2-note reveal-scroll">
-            <div class="flex items-center gap-3 mb-4">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
-                alt="Devon Kessler"
-                class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
-              <div>
-                <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Devon Kessler</p>
-                <p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Reader Member · Favorite: Mystery</p>
+          <div class="h2-note reveal-scroll flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center gap-3 mb-4">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80"
+                  alt="Devon Kessler"
+                  class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
+                <div>
+                  <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Devon Kessler</p>
+                  <p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Reader Member · Favorite: Mystery</p>
+                </div>
               </div>
+              <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] leading-relaxed mb-4 text-ink-light/85 dark:text-ink-dark/85">"The
+                staff remembered I liked Nordic noir and set aside three titles before I even asked."</p>
             </div>
-            <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] leading-relaxed mb-4 text-ink-light/85 dark:text-ink-dark/85">"The
-              staff remembered I liked Nordic noir and set aside three titles before I even asked."</p>
             <div
-              class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50 pt-3 border-t border-hairline-light/60 dark:border-hairline-dark/60">
+              class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50 pt-3 border-t border-hairline-light/60 dark:border-hairline-dark/60 mt-auto">
               <span>★★★★★</span><span>29 books borrowed</span>
             </div>
           </div>
 
-          <div class="h2-note reveal-scroll">
-            <div class="flex items-center gap-3 mb-4">
-              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80"
-                alt="Saoirse Fallon"
-                class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
-              <div>
-                <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Saoirse Fallon</p>
-                <p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Explorer Member · Favorite: Poetry</p>
+          <div class="h2-note reveal-scroll flex flex-col justify-between h-full">
+            <div>
+              <div class="flex items-center gap-3 mb-4">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80"
+                  alt="Saoirse Fallon"
+                  class="w-10 h-10 rounded-full object-cover shrink-0 ring-2 ring-accent-light/40 dark:ring-accent-dark/40 shadow-sm">
+                <div>
+                  <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">Saoirse Fallon</p>
+                  <p class="text-[11px] text-ink-light/50 dark:text-ink-dark/50">Explorer Member · Favorite: Poetry</p>
+                </div>
               </div>
+              <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] leading-relaxed mb-4 text-ink-light/85 dark:text-ink-dark/85">
+                "Sunday Poetry Circle is the calmest hour of my week. I look forward to it more than the weekend itself."
+              </p>
             </div>
-            <p class="font-sans not-italic font-normal text-[15px] sm:text-[16px] leading-relaxed mb-4 text-ink-light/85 dark:text-ink-dark/85">
-              "Sunday Poetry Circle is the calmest hour of my week. I look forward to it more than the weekend itself."
-            </p>
             <div
-              class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50 pt-3 border-t border-hairline-light/60 dark:border-hairline-dark/60">
+              class="flex items-center justify-between text-xs text-ink-light/50 dark:text-ink-dark/50 pt-3 border-t border-hairline-light/60 dark:border-hairline-dark/60 mt-auto">
               <span>★★★★☆</span><span>17 books borrowed</span>
             </div>
           </div>

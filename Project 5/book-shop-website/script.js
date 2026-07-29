@@ -84,24 +84,19 @@
   };
   initActiveNav();
 
-  /* ---------- NAV: progress + back to top (scroll animations removed) ---------- */
+  /* ---------- NAV: back to top (scroll progress removed) ---------- */
   const nav = $('#site-nav');
-  const progress = $('#progress-bar');
   const backTop = $('#back-to-top');
-  if (progress) {
-    const onScroll = () => {
-      const y = window.scrollY;
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      progress.style.width = `${h > 0 ? (y / h) * 100 : 0}%`;
-      if (backTop) {
-        if (y > 600) { backTop.style.opacity = 1; backTop.style.pointerEvents = 'auto'; }
-        else { backTop.style.opacity = 0; backTop.style.pointerEvents = 'none'; }
-      }
-    };
-    document.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-    if (backTop) backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
+  const onScroll = () => {
+    const y = window.scrollY;
+    if (backTop) {
+      if (y > 600) { backTop.style.opacity = 1; backTop.style.pointerEvents = 'auto'; }
+      else { backTop.style.opacity = 0; backTop.style.pointerEvents = 'none'; }
+    }
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  if (backTop) backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
   /* ---------- MOBILE MENU ---------- */
   const menuBtn = $('#menu-toggle'), mobileMenu = $('#mobile-menu'), siteNav = $('#site-nav');
