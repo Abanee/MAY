@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Member Dashboard — Ashwood Books</title>
-<meta name="description" content="Your Ashwood Books member dashboard — borrowed books, reading activity, and account.">
+<meta name="description" content="Your Ashwood Books member dashboard — browse books, borrowed books, requests, and borrowing history.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700;800&family=Cormorant+Garamond:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..500,0..1,-50..200" rel="stylesheet">
 <link rel="icon" type="image/png" href="Assets/logo.png">
 
@@ -19,133 +19,245 @@
     theme: {
       extend: {
         colors: {
-          bg: { light: '#FAF7F2', dark: '#121212' },
-          panel: { light: '#F1ECE2', dark: '#181818' },
-          card: { light: '#FFFFFF', dark: '#1D1D1D' },
+          bg:      { light: '#FAF7F2', dark: '#121212' },
+          panel:   { light: '#F1ECE2', dark: '#1A1A1A' },
+          card:    { light: '#FFFFFF', dark: '#1D1D1D' },
           primary: { light: '#234E52', dark: '#4FAF8F' },
-          accent: { light: '#C79A3B', dark: '#D4A64A' },
-          ink: { light: '#2E2E2E', dark: '#F5F5F5' },
-          hairline: { light: '#E7E1D8', dark: '#2D2D2D' },
+          accent:  { light: '#C79A3B', dark: '#D4A64A' },
+          ink:     { light: '#2E2E2E', dark: '#F5F5F5' },
+          hairline:{ light: '#E7E1D8', dark: '#2D2D2D' },
         },
         fontFamily: {
-          serif: ['Fraunces', 'serif'],
-          sans: ['Inter', 'sans-serif'],
-          display: ['Cormorant Garamond', 'serif'],
+          serif: ['Fraunces','serif'],
+          sans:  ['Inter','sans-serif'],
         }
       }
     }
   }
 </script>
+
+<style>
+  /* ---------- Layout ---------- */
+  .sidebar { width: 240px; flex-shrink: 0; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* ---------- Nav items ---------- */
+  .nav-item { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 14px; border-radius: 12px; font-size: 13.5px; font-weight: 500; color: inherit; transition: background .15s; cursor: pointer; border: none; background: transparent; text-align: left; }
+  .nav-item:hover { background: rgba(35,78,82,.08); }
+  .dark .nav-item:hover { background: rgba(79,175,143,.1); }
+  .nav-item.active { background: #234E52; color: #FAF7F2; }
+  .dark .nav-item.active { background: #4FAF8F; color: #121212; }
+
+  /* ---------- Cards ---------- */
+  .card-block { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 20px; padding: 1.5rem; }
+  .dark .card-block { background: #1D1D1D; border-color: #2D2D2D; }
+  .stat-card { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 20px; padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 6px; }
+  .dark .stat-card { background: #1D1D1D; border-color: #2D2D2D; }
+  .stat-num { font-family: 'Fraunces', serif; font-size: 2rem; line-height: 1; }
+  .stat-lbl { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; opacity: .55; font-weight: 600; }
+
+  /* ---------- Section heading ---------- */
+  .sec-h { font-family: 'Fraunces', serif; font-size: 1.1rem; font-weight: 500; }
+
+  /* ---------- Table ---------- */
+  .dash-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .dash-table th { text-align: left; padding: 10px 12px; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; opacity: .5; font-weight: 700; border-bottom: 1px solid; }
+  .dash-table td { padding: 12px; border-bottom: 1px solid; vertical-align: middle; }
+  .dash-table th, .dash-table td { border-color: #E7E1D8; }
+  .dark .dash-table th, .dark .dash-table td { border-color: #2D2D2D; }
+  .dash-table tr:last-child td { border-bottom: none; }
+  .dash-table tr:hover td { background: rgba(241,236,226,.5); }
+  .dark .dash-table tr:hover td { background: rgba(45,45,45,.4); }
+
+  /* ---------- Status badges ---------- */
+  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 999px; letter-spacing: .03em; }
+  .badge-green  { background: rgba(34,197,94,.12); color: #16a34a; }
+  .dark .badge-green  { background: rgba(34,197,94,.15); color: #4ade80; }
+  .badge-orange { background: rgba(234,179,8,.12);  color: #b45309; }
+  .dark .badge-orange { background: rgba(234,179,8,.15);  color: #fbbf24; }
+  .badge-red    { background: rgba(239,68,68,.12);  color: #dc2626; }
+  .dark .badge-red    { background: rgba(239,68,68,.15);  color: #f87171; }
+  .badge-amber  { background: rgba(245,158,11,.12); color: #b45309; }
+  .dark .badge-amber  { background: rgba(245,158,11,.15); color: #fbbf24; }
+  .badge-emerald{ background: rgba(16,185,129,.12); color: #059669; }
+  .dark .badge-emerald{ background: rgba(16,185,129,.15); color: #34d399; }
+  .badge-gray   { background: rgba(107,114,128,.1); color: #4b5563; }
+  .dark .badge-gray   { background: rgba(107,114,128,.15); color: #9ca3af; }
+
+  /* ---------- Buttons ---------- */
+  .btn-sm { display: inline-flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all .15s; border: none; }
+  .btn-primary-sm { background: #234E52; color: #FAF7F2; }
+  .dark .btn-primary-sm { background: #4FAF8F; color: #121212; }
+  .btn-primary-sm:hover { opacity: .88; }
+  .btn-outline-sm { background: transparent; border: 1px solid #E7E1D8; color: #2E2E2E; }
+  .dark .btn-outline-sm { border-color: #2D2D2D; color: #F5F5F5; }
+  .btn-outline-sm:hover { background: rgba(35,78,82,.07); }
+  .dark .btn-outline-sm:hover { background: rgba(79,175,143,.1); }
+  .btn-renewal { background: rgba(16,185,129,.1); color: #059669; border: 1px solid rgba(16,185,129,.2); }
+  .dark .btn-renewal { background: rgba(16,185,129,.12); color: #34d399; border-color: rgba(16,185,129,.25); }
+  .btn-renewal:hover { background: rgba(16,185,129,.2); }
+  .btn-borrow-again { background: rgba(35,78,82,.1); color: #234E52; border: 1px solid rgba(35,78,82,.15); }
+  .dark .btn-borrow-again { background: rgba(79,175,143,.1); color: #4FAF8F; border-color: rgba(79,175,143,.2); }
+  .btn-borrow-again:hover { background: rgba(35,78,82,.18); }
+  .dark .btn-borrow-again:hover { background: rgba(79,175,143,.18); }
+  .btn-cancel { background: rgba(239,68,68,.08); color: #dc2626; border: 1px solid rgba(239,68,68,.15); }
+  .dark .btn-cancel { background: rgba(239,68,68,.1); color: #f87171; border-color: rgba(239,68,68,.2); }
+  .btn-cancel:hover { background: rgba(239,68,68,.15); }
+
+  /* ---------- Book cards (Browse) ---------- */
+  .book-card { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, box-shadow .2s; }
+  .dark .book-card { background: #1D1D1D; border-color: #2D2D2D; }
+  .book-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -16px rgba(0,0,0,.15); }
+  .dark .book-card:hover { box-shadow: 0 16px 40px -16px rgba(0,0,0,.4); }
+
+  /* ---------- Tab bar ---------- */
+  .tab-bar { display: flex; gap: 4px; border-bottom: 1px solid #E7E1D8; }
+  .dark .tab-bar { border-color: #2D2D2D; }
+  .tab-btn { padding: 9px 16px; font-size: 13px; font-weight: 600; border: none; background: transparent; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; color: rgba(46,46,46,.55); transition: all .15s; }
+  .dark .tab-btn { color: rgba(245,245,245,.45); }
+  .tab-btn.active { color: #234E52; border-bottom-color: #234E52; }
+  .dark .tab-btn.active { color: #4FAF8F; border-bottom-color: #4FAF8F; }
+  .tab-btn:hover:not(.active) { color: #234E52; }
+  .dark .tab-btn:hover:not(.active) { color: #4FAF8F; }
+
+  /* ---------- Input ---------- */
+  .dash-input { width: 100%; padding: 9px 14px; border-radius: 12px; background: #F1ECE2; border: 1px solid transparent; font-size: 13px; outline: none; transition: border .15s; color: #2E2E2E; }
+  .dark .dash-input { background: #1A1A1A; color: #F5F5F5; }
+  .dash-input:focus { border-color: #C79A3B; }
+  .dark .dash-input:focus { border-color: #D4A64A; }
+  select.dash-input { appearance: none; cursor: pointer; }
+
+  /* ---------- Header glass ---------- */
+  .glass-header { backdrop-filter: blur(12px); background: rgba(250,247,242,.85); border-bottom: 1px solid #E7E1D8; }
+  .dark .glass-header { background: rgba(18,18,18,.85); border-color: #2D2D2D; }
+
+  /* ---------- Welcome banner ---------- */
+  .banner-bg { background: linear-gradient(135deg, #16231F 0%, #234E52 60%, #1a3a40 100%); }
+
+  /* ---------- Membership card ---------- */
+  .membership-card { background: linear-gradient(135deg, #1a3a40 0%, #234E52 60%, #16231F 100%); }
+
+  /* ---------- Progress bar ---------- */
+  .progress-track { height: 5px; border-radius: 999px; background: rgba(231,225,216,.6); overflow: hidden; }
+  .dark .progress-track { background: rgba(45,45,45,.8); }
+  .progress-fill { height: 100%; border-radius: 999px; background: #C79A3B; }
+
+  /* ---------- Request status row ---------- */
+  .req-row { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 14px; border: 1px solid #E7E1D8; background: #FFFFFF; }
+  .dark .req-row { background: #1D1D1D; border-color: #2D2D2D; }
+
+  /* ---------- History row ---------- */
+  .hist-row { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 14px; border: 1px solid transparent; transition: background .15s; }
+  .hist-row:hover { background: #F1ECE2; }
+  .dark .hist-row:hover { background: rgba(45,45,45,.5); }
+
+  /* ---------- Search icon in input ---------- */
+  .input-wrap { position: relative; }
+  .input-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); font-size: 18px; opacity: .4; pointer-events: none; }
+  .input-wrap .dash-input { padding-left: 36px; }
+</style>
 <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-bg-light dark:bg-bg-dark text-ink-light dark:text-ink-dark font-sans antialiased transition-colors duration-500">
 
-<!-- ============ MOBILE OVERLAY ============ -->
-<div id="drawer-overlay" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 hidden lg:hidden"></div>
+<!-- Mobile overlay -->
+<div id="drawer-overlay" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden"></div>
 
 <div class="flex min-h-screen">
 
   <!-- ============ SIDEBAR ============ -->
-  <aside id="sidebar" class="sidebar fixed lg:sticky top-0 left-0 h-screen w-[264px] z-50 flex flex-col bg-card-light dark:bg-card-dark border-r border-hairline-light dark:border-hairline-dark -translate-x-full lg:translate-x-0 transition-transform duration-300">
+  <aside id="sidebar" class="sidebar fixed lg:sticky top-0 left-0 h-screen z-50 flex flex-col bg-card-light dark:bg-card-dark border-r border-hairline-light dark:border-hairline-dark -translate-x-full lg:translate-x-0 transition-transform duration-300">
 
     <!-- Logo -->
-    <a href="index.html" class="flex items-center gap-2.5 px-6 pt-6 pb-5 hover:opacity-85 transition shrink-0" aria-label="Ashwood Books home">
-      <img src="Assets/logo.png" alt="Ashwood Books Logo" class="h-7 sm:h-8 w-auto object-contain shrink-0" />
-      <span class="sb-label brand-logo-text text-[17px] leading-none">Ashwood Books</span>
+    <a href="index.html" class="flex items-center gap-2.5 px-5 pt-6 pb-5 hover:opacity-85 transition shrink-0" aria-label="Ashwood Books home">
+      <img src="Assets/logo.png" alt="Ashwood Books" class="h-7 w-auto object-contain shrink-0">
+      <span class="text-[16px] font-semibold">Ashwood Books</span>
     </a>
 
-    <!-- Member card -->
-    <div class="sb-label mx-4 mb-6 p-4 rounded-2xl bg-panel-light dark:bg-panel-dark flex items-center gap-3">
-      <img src="https://i.pravatar.cc/80?img=47" alt="Eleanor Hayes" class="w-11 h-11 rounded-full object-cover ring-2 ring-accent-light dark:ring-accent-dark shrink-0">
+    <!-- Member info -->
+    <div class="mx-4 mb-5 p-3.5 rounded-2xl bg-panel-light dark:bg-panel-dark flex items-center gap-3">
+      <img src="https://i.pravatar.cc/80?img=47" alt="Eleanor Hayes" class="w-10 h-10 rounded-full object-cover ring-2 ring-accent-light dark:ring-accent-dark shrink-0">
       <div class="min-w-0">
         <p class="text-sm font-semibold truncate">Eleanor Hayes</p>
-        <span class="inline-block mt-1 text-[10px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-accent-light/15 text-accent-light dark:bg-accent-dark/20 dark:text-accent-dark">Gold Member</span>
+        <span class="inline-block mt-0.5 text-[10px] font-bold tracking-wide uppercase px-2 py-0.5 rounded-full bg-accent-light/15 text-accent-light dark:bg-accent-dark/20 dark:text-accent-dark">Gold Member</span>
       </div>
     </div>
 
     <!-- Nav -->
-    <nav class="flex-1 px-3 space-y-1 overflow-y-auto no-scrollbar">
+    <nav class="flex-1 px-3 space-y-0.5 overflow-y-auto no-scrollbar">
       <button data-view="dashboard" class="nav-item active">
-        <span class="material-symbols-outlined">space_dashboard</span>
-        <span class="sb-label">Dashboard</span>
+        <span class="material-symbols-outlined !text-[20px]">space_dashboard</span>
+        Dashboard
       </button>
-      <button data-view="mybooks" class="nav-item">
-        <span class="material-symbols-outlined">auto_stories</span>
-        <span class="sb-label">My Books</span>
+      <button data-view="browse" class="nav-item">
+        <span class="material-symbols-outlined !text-[20px]">search</span>
+        Browse Books
       </button>
-      <button data-view="activity" class="nav-item">
-        <span class="material-symbols-outlined">monitoring</span>
-        <span class="sb-label">Reading Activity</span>
+      <button data-view="borrowed" class="nav-item">
+        <span class="material-symbols-outlined !text-[20px]">auto_stories</span>
+        My Borrowed Books
       </button>
+      <button data-view="requests" class="nav-item">
+        <span class="material-symbols-outlined !text-[20px]">inbox</span>
+        My Requests
+        <span class="ml-auto text-[10px] font-bold bg-accent-light dark:bg-accent-dark text-white dark:text-[#121212] rounded-full w-5 h-5 grid place-items-center" id="nav-req-badge">2</span>
+      </button>
+      <button data-view="history" class="nav-item">
+        <span class="material-symbols-outlined !text-[20px]">history</span>
+        Borrowing History
+      </button>
+
+      <div class="h-px bg-hairline-light dark:bg-hairline-dark my-3"></div>
+
       <button data-view="notifications" class="nav-item">
-        <span class="material-symbols-outlined">notifications</span>
-        <span class="sb-label">Notifications</span>
-        <span class="ml-auto sb-label bg-accent-light dark:bg-accent-dark text-[10px] font-bold text-white dark:text-[#121212] rounded-full w-5 h-5 grid place-items-center" id="nav-notif-badge">3</span>
+        <span class="material-symbols-outlined !text-[20px]">notifications</span>
+        Notifications
+        <span class="ml-auto text-[10px] font-bold bg-accent-light dark:bg-accent-dark text-white dark:text-[#121212] rounded-full w-5 h-5 grid place-items-center" id="nav-notif-badge">3</span>
       </button>
       <button data-view="profile" class="nav-item">
-        <span class="material-symbols-outlined">account_circle</span>
-        <span class="sb-label">Profile</span>
+        <span class="material-symbols-outlined !text-[20px]">account_circle</span>
+        Profile
       </button>
     </nav>
 
-    <!-- Bottom -->
-    <div class="px-3 pb-5 pt-3 border-t border-hairline-light dark:border-hairline-dark space-y-2">
-      <!-- Theme & RTL in the SAME row -->
-      <div class="grid grid-cols-2 gap-2">
-        <button id="dark-toggle" class="flex items-center justify-center gap-2 py-2 px-2 rounded-xl bg-panel-light dark:bg-panel-dark hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 border border-hairline-light dark:border-hairline-dark text-xs font-semibold transition text-ink-light dark:text-ink-dark">
-          <span class="material-symbols-outlined !text-[18px]" id="dark-icon">dark_mode</span>
-          <span class="sb-label">Theme</span>
-        </button>
-        <button id="rtl-toggle" class="flex items-center justify-center gap-2 py-2 px-2 rounded-xl bg-panel-light dark:bg-panel-dark hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 border border-hairline-light dark:border-hairline-dark text-xs font-semibold transition text-ink-light dark:text-ink-dark">
-          <span class="material-symbols-outlined !text-[18px]">translate</span>
-          <span class="sb-label">RTL</span>
-        </button>
-      </div>
-      <button id="logout-btn" class="nav-item w-full text-red-500 dark:text-red-400 hover:bg-red-500/10 transition">
-        <span class="material-symbols-outlined">logout</span>
-        <span class="sb-label">Logout</span>
+    <!-- Bottom actions -->
+    <div class="px-3 pb-5 pt-3 border-t border-hairline-light dark:border-hairline-dark space-y-1">
+      <button id="dark-toggle" class="nav-item">
+        <span class="material-symbols-outlined !text-[20px]" id="dark-icon">dark_mode</span>
+        <span id="dark-label">Dark Mode</span>
+      </button>
+      <button id="logout-btn" class="nav-item text-red-500 dark:text-red-400 hover:!bg-red-500/10">
+        <span class="material-symbols-outlined !text-[20px]">logout</span>
+        Logout
       </button>
     </div>
-
-    <!-- Collapse handle (desktop/tablet) -->
-    <button id="collapse-btn" class="hidden lg:grid place-items-center absolute -right-3 top-8 w-6 h-6 rounded-full bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow">
-      <span class="material-symbols-outlined !text-base" id="collapse-icon">chevron_left</span>
-    </button>
   </aside>
 
   <!-- ============ MAIN ============ -->
   <div class="flex-1 min-w-0 flex flex-col">
 
     <!-- HEADER -->
-    <header class="relative z-30 glass-header">
+    <header class="glass-header sticky top-0 z-30">
       <div class="flex items-center gap-3 px-4 sm:px-6 py-3.5">
         <button id="hamburger" class="lg:hidden w-9 h-9 grid place-items-center rounded-full hover:bg-primary-light/10 dark:hover:bg-primary-dark/10">
           <span class="material-symbols-outlined">menu</span>
         </button>
 
-        <div class="relative flex-1 max-w-md hidden sm:block">
-          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 !text-[19px] text-ink-light/40 dark:text-ink-dark/40">search</span>
-          <input id="global-search" type="text" placeholder="Search books, authors, genres…" class="w-full pl-10 pr-4 py-2.5 rounded-full bg-panel-light dark:bg-panel-dark text-sm border border-transparent focus:border-accent-light dark:focus:border-accent-dark outline-none transition">
+        <div class="relative flex-1 max-w-sm hidden sm:block input-wrap">
+          <span class="material-symbols-outlined input-icon">search</span>
+          <input id="header-search" type="text" placeholder="Search books, authors…" class="dash-input">
         </div>
-        <button class="sm:hidden w-9 h-9 grid place-items-center rounded-full hover:bg-primary-light/10 dark:hover:bg-primary-dark/10">
-          <span class="material-symbols-outlined">search</span>
-        </button>
 
-        <div class="ml-auto flex items-center gap-1.5 sm:gap-3">
-          <span class="hidden md:flex items-center gap-1.5 text-xs text-ink-light/60 dark:text-ink-dark/60 px-3 py-1.5 rounded-full bg-panel-light dark:bg-panel-dark">
-            <span class="material-symbols-outlined !text-[16px]">calendar_today</span>
-            <span id="current-date"></span>
-          </span>
-
-          <button class="relative w-10 h-10 grid place-items-center rounded-full hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition" onclick="switchView('notifications')">
+        <div class="ml-auto flex items-center gap-2">
+          <button class="btn-sm btn-primary-sm hidden sm:inline-flex" onclick="switchView('browse')">
+            <span class="material-symbols-outlined !text-[16px]">add</span>
+            Borrow a Book
+          </button>
+          <button class="w-9 h-9 grid place-items-center rounded-full hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 relative" onclick="switchView('notifications')">
             <span class="material-symbols-outlined">notifications</span>
-            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-accent-light dark:bg-accent-dark ring-2 ring-card-light dark:ring-card-dark"></span>
+            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-accent-light dark:bg-accent-dark ring-2 ring-card-light dark:ring-card-dark" id="notif-dot"></span>
           </button>
-
-          <button class="hidden sm:flex items-center gap-2 pl-2 pr-4 py-1.5 rounded-full bg-primary-light dark:bg-primary-dark text-bg-light dark:text-[#121212] text-[13px] font-semibold ripple hover:-translate-y-0.5 transition" onclick="showToast('Quick Borrow: search for a title to begin.','info')">
-            <span class="material-symbols-outlined !text-[18px]">add</span> Quick Borrow
-          </button>
-
           <button class="flex items-center gap-2 pl-1 pr-2 py-1 rounded-full hover:bg-primary-light/10 dark:hover:bg-primary-dark/10 transition" onclick="switchView('profile')">
             <img src="https://i.pravatar.cc/64?img=47" class="w-8 h-8 rounded-full object-cover" alt="Eleanor Hayes">
             <span class="hidden md:inline text-[13px] font-medium">Eleanor</span>
@@ -155,273 +267,216 @@
     </header>
 
     <!-- CONTENT -->
-    <main id="content" class="flex-1 p-4 sm:p-6 lg:p-8 max-w-[1400px] w-full mx-auto">
+    <main class="flex-1 p-4 sm:p-6 max-w-[1280px] w-full mx-auto space-y-0">
 
-      <!-- ============ VIEW: DASHBOARD ============ -->
-      <section data-view="dashboard" class="view space-y-6">
+      <!-- ======= VIEW: DASHBOARD ======= -->
+      <section data-view="dashboard" class="view space-y-5">
 
-        <!-- Welcome banner -->
-        <div class="relative overflow-hidden rounded-3xl banner-bg text-[#FAF7F2] p-6 sm:p-10">
+        <!-- Welcome -->
+        <div class="relative overflow-hidden rounded-2xl banner-bg text-[#FAF7F2] p-6 sm:p-8">
           <div class="relative z-10 max-w-lg">
-            <p class="eyebrow text-accent-dark">Good to see you</p>
-            <h1 class="font-serif font-light text-3xl sm:text-4xl mt-2 leading-tight">Welcome back, Eleanor</h1>
-            <p class="mt-3 text-sm text-[#FAF7F2]/70 max-w-sm">You're 4 chapters from finishing <em class="font-display italic not-italic sm:italic">The Midnight Library</em>. Pick up right where you left off.</p>
-            <button class="mt-6 px-5 py-2.5 rounded-full bg-accent-light dark:bg-accent-dark text-[#16231F] text-sm font-semibold ripple hover:-translate-y-0.5 transition" onclick="switchView('mybooks')">Continue Reading</button>
+            <p class="text-[11px] tracking-[.3em] uppercase text-accent-dark font-semibold mb-2">Good to see you</p>
+            <h1 class="font-serif font-light text-3xl sm:text-4xl leading-tight">Welcome back, Eleanor</h1>
+            <p class="mt-2 text-sm text-[#FAF7F2]/70 max-w-md">You're 4 chapters from finishing <em>The Midnight Library</em>. Your next due date is in 4 days.</p>
+            <div class="mt-5 flex gap-3">
+              <button class="btn-sm bg-accent-light dark:bg-accent-dark text-[#16231F] hover:brightness-110" onclick="switchView('borrowed')">View My Books</button>
+              <button class="btn-sm bg-white/10 text-[#FAF7F2] hover:bg-white/20 border border-white/20" onclick="switchView('browse')">Browse Catalogue</button>
+            </div>
           </div>
         </div>
 
-        <!-- Membership card + Stats -->
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4">
-          <div class="lg:col-span-1 rounded-3xl p-5 membership-card text-[#FAF7F2] flex flex-col justify-between min-h-[168px]">
+        <!-- Stats -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="lg:col-span-1 rounded-2xl membership-card text-[#FAF7F2] p-5 flex flex-col justify-between min-h-[120px]">
             <div class="flex items-center justify-between">
-              <span class="text-[11px] tracking-[0.2em] uppercase text-[#FAF7F2]/60">Membership</span>
-              <span class="material-symbols-outlined !text-[20px] text-accent-dark">workspace_premium</span>
+              <span class="text-[10px] tracking-[.2em] uppercase text-[#FAF7F2]/55">Membership</span>
+              <span class="material-symbols-outlined !text-[18px] text-accent-dark">workspace_premium</span>
             </div>
             <div>
-              <p class="font-serif text-xl">Gold Card</p>
-              <p class="text-[11px] text-[#FAF7F2]/50 mt-1">No. MF-2291 · Valid till Dec 2026</p>
+              <p class="font-serif text-lg">Gold Card</p>
+              <p class="text-[11px] text-[#FAF7F2]/45 mt-0.5">No. MF-2291 · Valid till Dec 2026</p>
             </div>
           </div>
-
           <div class="stat-card">
-            <span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[22px]">auto_stories</span>
-            <p class="stat-number" data-count="4">0</p>
-            <p class="stat-label">Borrowed Books</p>
+            <span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[20px]">auto_stories</span>
+            <p class="stat-num" data-count="4">0</p>
+            <p class="stat-lbl">Currently Borrowed</p>
           </div>
           <div class="stat-card">
-            <span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[22px]">task_alt</span>
-            <p class="stat-number" data-count="62">0</p>
-            <p class="stat-label">Books Returned</p>
+            <span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[20px]">task_alt</span>
+            <p class="stat-num" data-count="62">0</p>
+            <p class="stat-lbl">Books Returned</p>
           </div>
           <div class="stat-card">
-            <span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[22px]">favorite</span>
-            <p class="stat-number" data-count="11">0</p>
-            <p class="stat-label">Wishlist</p>
+            <span class="material-symbols-outlined text-amber-500 dark:text-amber-400 !text-[20px]">schedule</span>
+            <p class="stat-num text-amber-500 dark:text-amber-400">4 days</p>
+            <p class="stat-lbl">Next Due Date</p>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          <!-- Continue reading + Recommended -->
-          <div class="xl:col-span-2 space-y-6">
-            <div class="card-block">
-              <div class="flex items-center justify-between mb-4">
-                <h2 class="section-h">Continue Reading</h2>
-              </div>
-              <div class="flex items-center gap-4 p-3 rounded-2xl hover:bg-panel-light dark:hover:bg-panel-dark transition">
-                <img src="https://picsum.photos/seed/midnight-library/120/170" class="w-16 h-24 rounded-lg object-cover shadow-md" alt="The Midnight Library cover">
-                <div class="flex-1 min-w-0">
-                  <p class="font-serif text-lg truncate">The Midnight Library</p>
-                  <p class="text-xs text-ink-light/50 dark:text-ink-dark/50">Matt Haig</p>
-                  <div class="progress-track mt-2.5"><div class="progress-fill" style="width:72%"></div></div>
-                  <p class="text-[11px] mt-1 text-ink-light/50 dark:text-ink-dark/50">72% complete · 4 chapters left</p>
-                </div>
-                <button class="btn-mini shrink-0">Resume</button>
-              </div>
-            </div>
+        <!-- Quick links -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <button class="card-block flex items-center gap-3 hover:border-primary-light dark:hover:border-primary-dark transition cursor-pointer text-left" onclick="switchView('browse')">
+            <span class="w-10 h-10 rounded-full bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark grid place-items-center shrink-0">
+              <span class="material-symbols-outlined !text-[20px]">search</span>
+            </span>
+            <div><p class="text-sm font-semibold">Browse Books</p><p class="text-xs opacity-50 mt-0.5">Search & request titles</p></div>
+          </button>
+          <button class="card-block flex items-center gap-3 hover:border-primary-light dark:hover:border-primary-dark transition cursor-pointer text-left" onclick="switchView('borrowed')">
+            <span class="w-10 h-10 rounded-full bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark grid place-items-center shrink-0">
+              <span class="material-symbols-outlined !text-[20px]">auto_stories</span>
+            </span>
+            <div><p class="text-sm font-semibold">My Borrowed Books</p><p class="text-xs opacity-50 mt-0.5">4 active · 1 due soon</p></div>
+          </button>
+          <button class="card-block flex items-center gap-3 hover:border-primary-light dark:hover:border-primary-dark transition cursor-pointer text-left" onclick="switchView('requests')">
+            <span class="w-10 h-10 rounded-full bg-accent-light/10 dark:bg-accent-dark/15 text-accent-light dark:text-accent-dark grid place-items-center shrink-0">
+              <span class="material-symbols-outlined !text-[20px]">inbox</span>
+            </span>
+            <div><p class="text-sm font-semibold">My Requests</p><p class="text-xs opacity-50 mt-0.5">2 pending approvals</p></div>
+          </button>
+          <button class="card-block flex items-center gap-3 hover:border-primary-light dark:hover:border-primary-dark transition cursor-pointer text-left" onclick="switchView('history')">
+            <span class="w-10 h-10 rounded-full bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark grid place-items-center shrink-0">
+              <span class="material-symbols-outlined !text-[20px]">history</span>
+            </span>
+            <div><p class="text-sm font-semibold">Borrowing History</p><p class="text-xs opacity-50 mt-0.5">62 books returned</p></div>
+          </button>
+        </div>
 
-            <div class="card-block">
-              <div class="flex items-center justify-between mb-4">
-                <h2 class="section-h">Recommended for You</h2>
-                <span class="text-xs text-primary-light dark:text-primary-dark font-medium cursor-pointer" onclick="switchView('mybooks')">See all</span>
-              </div>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="recommended-grid"></div>
-            </div>
+      </section>
 
-            <div class="card-block">
-              <h2 class="section-h mb-4">Recent Activity</h2>
-              <div class="space-y-5" id="activity-timeline"></div>
+      <!-- ======= VIEW: BROWSE BOOKS ======= -->
+      <section data-view="browse" class="view hidden space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
+          <h1 class="font-serif text-2xl">Browse Books</h1>
+          <p class="text-xs opacity-50">18,400 titles available</p>
+        </div>
+
+        <!-- Search + Filters -->
+        <div class="card-block">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <div class="input-wrap flex-1">
+              <span class="material-symbols-outlined input-icon">search</span>
+              <input id="browse-search" type="text" placeholder="Search by title or author…" class="dash-input">
             </div>
+            <select id="browse-genre" class="dash-input sm:w-48">
+              <option value="">All Genres</option>
+              <option>Fiction</option>
+              <option>Mystery</option>
+              <option>Fantasy</option>
+              <option>Sci-Fi</option>
+              <option>History</option>
+              <option>Non-Fiction</option>
+              <option>Biography</option>
+              <option>Poetry</option>
+            </select>
+            <select id="browse-avail" class="dash-input sm:w-44">
+              <option value="">All Availability</option>
+              <option value="available">In Stock</option>
+              <option value="low">Low Stock</option>
+              <option value="out">Out of Stock</option>
+            </select>
           </div>
+        </div>
 
-          <!-- Right column -->
-          <div class="space-y-6">
-            <div class="card-block">
-              <h2 class="section-h mb-4">Reading Goal</h2>
-              <div class="flex items-center gap-5">
-                <div class="ring-progress shrink-0" style="--pct:64"><span>64%</span></div>
-                <div class="text-sm">
-                  <p class="font-medium">32 of 50 books</p>
-                  <p class="text-xs text-ink-light/50 dark:text-ink-dark/50 mt-1">2026 Reading Challenge</p>
-                </div>
-              </div>
-            </div>
+        <!-- Book Grid -->
+        <div id="browse-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"></div>
+      </section>
 
-            <div class="card-block">
-              <h2 class="section-h mb-1">Reading Hours</h2>
-              <p class="text-3xl font-serif mt-2" data-count="128">0</p>
-              <p class="text-xs text-ink-light/50 dark:text-ink-dark/50 mb-4">this year</p>
-              <div class="flex items-end gap-2 h-16">
-                <div class="bar-mini" style="height:35%"></div><div class="bar-mini" style="height:55%"></div><div class="bar-mini" style="height:40%"></div><div class="bar-mini" style="height:80%"></div><div class="bar-mini" style="height:60%"></div><div class="bar-mini" style="height:95%"></div><div class="bar-mini active" style="height:70%"></div>
-              </div>
-            </div>
-
-            <div class="card-block">
-              <h2 class="section-h mb-4">Upcoming Due Dates</h2>
-              <div class="space-y-3" id="due-dates-list"></div>
-            </div>
+      <!-- ======= VIEW: MY BORROWED BOOKS ======= -->
+      <section data-view="borrowed" class="view hidden space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
+          <h1 class="font-serif text-2xl">My Borrowed Books</h1>
+          <div class="flex gap-2 text-xs flex-wrap">
+            <span class="badge badge-green">● On Time</span>
+            <span class="badge badge-orange">● Due Soon (≤4 days)</span>
+            <span class="badge badge-red">● Overdue</span>
           </div>
+        </div>
+
+        <div class="card-block overflow-x-auto">
+          <table class="dash-table w-full" id="borrowed-table">
+            <thead>
+              <tr>
+                <th>Book</th>
+                <th>Borrowed Date</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="borrowed-tbody"></tbody>
+          </table>
         </div>
       </section>
 
-      <!-- ============ VIEW: MY BOOKS ============ -->
-      <section data-view="mybooks" class="view hidden space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 justify-between">
-          <h1 class="font-serif text-2xl">My Books</h1>
-          <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-            <div class="relative flex-1 sm:w-64">
-              <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 !text-[18px] text-ink-light/40 dark:text-ink-dark/40">search</span>
-              <input id="books-search" type="text" placeholder="Search your books…" class="w-full pl-9 pr-3 py-2.5 rounded-full bg-panel-light dark:bg-panel-dark text-sm outline-none border border-transparent focus:border-accent-light dark:focus:border-accent-dark">
-            </div>
-            <div class="relative w-full sm:w-auto min-w-[140px] max-w-full" id="custom-genre-dropdown">
-              <input type="hidden" id="genre-filter" value="" />
-              <button type="button" id="genre-dropdown-btn" class="w-full flex items-center justify-between gap-2 pl-4 pr-3 py-2.5 rounded-full bg-panel-light dark:bg-panel-dark text-ink-light dark:text-ink-dark text-sm outline-none border border-hairline-light/60 dark:border-hairline-dark/60 focus:border-accent-light dark:focus:border-accent-dark cursor-pointer shadow-sm transition">
-                <span id="genre-selected-text">All Genres</span>
-                <span class="material-symbols-outlined !text-[18px] text-ink-light/50 dark:text-ink-dark/50 transition-transform duration-200" id="genre-dropdown-arrow">expand_more</span>
-              </button>
+      <!-- ======= VIEW: MY REQUESTS ======= -->
+      <section data-view="requests" class="view hidden space-y-5">
+        <h1 class="font-serif text-2xl">My Requests</h1>
 
-              <div id="genre-dropdown-menu" class="hidden absolute top-full left-0 right-0 w-full mt-1.5 z-50 bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl shadow-2xl overflow-hidden py-1 text-sm transition-all duration-200">
-                <button type="button" data-value="" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark font-medium transition flex items-center justify-between bg-panel-light/60 dark:bg-panel-dark/60">
-                  <span>All Genres</span>
-                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon">check</span>
-                </button>
-                <button type="button" data-value="Fiction" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
-                  <span>Fiction</span>
-                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
-                </button>
-                <button type="button" data-value="Fantasy" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
-                  <span>Fantasy</span>
-                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
-                </button>
-                <button type="button" data-value="Mystery" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
-                  <span>Mystery</span>
-                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
-                </button>
-                <button type="button" data-value="Non-Fiction" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
-                  <span>Non-Fiction</span>
-                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
-                </button>
-                <button type="button" data-value="Romance" class="genre-option w-full text-left px-4 py-2 hover:bg-panel-light dark:hover:bg-panel-dark text-ink-light dark:text-ink-dark transition flex items-center justify-between">
-                  <span>Romance</span>
-                  <span class="material-symbols-outlined !text-[16px] text-accent-light dark:text-accent-dark check-icon hidden">check</span>
-                </button>
-              </div>
-            </div>
-          </div>
+        <div class="tab-bar" id="req-tabs">
+          <button data-rtab="all"      class="tab-btn active">All <span class="ml-1 text-[11px] opacity-60" id="req-count-all"></span></button>
+          <button data-rtab="pending"  class="tab-btn">Pending <span class="ml-1 text-[11px] opacity-60" id="req-count-pending"></span></button>
+          <button data-rtab="approved" class="tab-btn">Approved <span class="ml-1 text-[11px] opacity-60" id="req-count-approved"></span></button>
+          <button data-rtab="rejected" class="tab-btn">Rejected <span class="ml-1 text-[11px] opacity-60" id="req-count-rejected"></span></button>
         </div>
 
-        <div class="flex gap-2 border-b border-hairline-light dark:border-hairline-dark" id="mybooks-tabs">
-          <button data-tab="borrowed" class="tab-btn active">Borrowed <span class="tab-count">4</span></button>
-          <button data-tab="reserved" class="tab-btn">Reserved <span class="tab-count">2</span></button>
-          <button data-tab="wishlist" class="tab-btn">Wishlist <span class="tab-count">11</span></button>
-        </div>
-
-        <div id="mybooks-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5"></div>
+        <div id="requests-list" class="space-y-3"></div>
       </section>
 
-      <!-- ============ VIEW: READING ACTIVITY ============ -->
-      <section data-view="activity" class="view hidden space-y-6">
-        <h1 class="font-serif text-2xl">Reading Activity</h1>
-
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="stat-card"><span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[22px]">local_fire_department</span><p class="stat-number" data-count="18">0</p><p class="stat-label">Day Streak</p></div>
-          <div class="stat-card"><span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[22px]">menu_book</span><p class="stat-number" data-count="66">0</p><p class="stat-label">Books This Year</p></div>
-          <div class="stat-card"><span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[22px]">schedule</span><p class="stat-number" data-count="128">0</p><p class="stat-label">Hours Read</p></div>
-          <div class="stat-card"><span class="material-symbols-outlined text-primary-light dark:text-primary-dark !text-[22px]">military_tech</span><p class="stat-number" data-count="9">0</p><p class="stat-label">Badges Earned</p></div>
+      <!-- ======= VIEW: BORROWING HISTORY ======= -->
+      <section data-view="history" class="view hidden space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-3 justify-between">
+          <h1 class="font-serif text-2xl">Borrowing History</h1>
+          <p class="text-xs opacity-50">62 books returned in total</p>
         </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
-          <div class="xl:col-span-2 space-y-6">
-            <div class="card-block">
-              <h2 class="section-h mb-4">Monthly Reading Statistics</h2>
-              <div class="flex items-end gap-3 sm:gap-4 h-40" id="monthly-chart"></div>
-            </div>
-            <div class="card-block">
-              <h2 class="section-h mb-4">Reading Timeline</h2>
-              <div class="space-y-5" id="reading-timeline"></div>
-            </div>
-          </div>
-          <div class="space-y-6">
-            <div class="card-block">
-              <h2 class="section-h mb-4">Favorite Genres</h2>
-              <div class="space-y-3" id="genre-bars"></div>
-            </div>
-            <div class="card-block">
-              <h2 class="section-h mb-4">Achievement Badges</h2>
-              <div class="grid grid-cols-3 gap-3" id="badges-grid"></div>
-            </div>
-          </div>
-        </div>
+        <div class="card-block space-y-1" id="history-list"></div>
       </section>
 
-      <!-- ============ VIEW: NOTIFICATIONS ============ -->
-      <section data-view="notifications" class="view hidden space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      <!-- ======= VIEW: NOTIFICATIONS ======= -->
+      <section data-view="notifications" class="view hidden space-y-5">
+        <div class="flex items-center justify-between">
           <h1 class="font-serif text-2xl">Notifications</h1>
           <button class="text-sm text-primary-light dark:text-primary-dark font-medium" onclick="markAllRead()">Mark all as read</button>
         </div>
-
-        <div class="flex gap-2 flex-wrap" id="notif-filters">
-          <button data-filter="all" class="chip-filter active">All</button>
-          <button data-filter="due" class="chip-filter">Due Dates</button>
-          <button data-filter="reservation" class="chip-filter">Reservations</button>
-          <button data-filter="announcement" class="chip-filter">Announcements</button>
-          <button data-filter="event" class="chip-filter">Events</button>
-        </div>
-
-        <div class="space-y-3" id="notifications-list"></div>
+        <div id="notifications-list" class="space-y-3"></div>
       </section>
 
-      <!-- ============ VIEW: PROFILE ============ -->
-      <section data-view="profile" class="view hidden space-y-6">
+      <!-- ======= VIEW: PROFILE ======= -->
+      <section data-view="profile" class="view hidden space-y-5">
         <h1 class="font-serif text-2xl">Profile</h1>
-
         <div class="card-block flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <img src="https://i.pravatar.cc/160?img=47" class="w-20 h-20 rounded-full object-cover ring-4 ring-accent-light/30 dark:ring-accent-dark/30" alt="Eleanor Hayes">
           <div class="flex-1">
             <p class="font-serif text-xl">Eleanor Hayes</p>
-            <p class="text-sm text-ink-light/50 dark:text-ink-dark/50">Member since March 2021 · Gold Tier</p>
+            <p class="text-sm opacity-50 mt-1">Member since March 2021 · Gold Tier · MF-2291</p>
           </div>
-          <button class="btn-mini">Edit Photo</button>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div class="card-block">
-            <h2 class="section-h mb-4">Member Information</h2>
-            <div class="space-y-4">
-              <label class="field"><span>Full Name</span><input type="text" value="Eleanor Hayes" class="input-field"></label>
-              <label class="field"><span>Email</span><input type="email" value="eleanor.hayes@email.com" class="input-field"></label>
-              <label class="field"><span>Phone</span><input type="text" value="+1 (415) 555-0192" class="input-field"></label>
-              <label class="field"><span>Address</span><input type="text" value="1204 Elm Street, San Francisco, CA" class="input-field"></label>
-            </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div class="card-block space-y-4">
+            <h2 class="sec-h">Member Information</h2>
+            <label class="block space-y-1"><span class="text-xs opacity-55 font-semibold">Full Name</span><input type="text" value="Eleanor Hayes" class="dash-input mt-1"></label>
+            <label class="block space-y-1"><span class="text-xs opacity-55 font-semibold">Email</span><input type="email" value="eleanor.hayes@email.com" class="dash-input mt-1"></label>
+            <label class="block space-y-1"><span class="text-xs opacity-55 font-semibold">Phone</span><input type="text" value="+1 (415) 555-0192" class="dash-input mt-1"></label>
           </div>
-
-          <div class="space-y-6">
+          <div class="space-y-5">
             <div class="card-block">
-              <h2 class="section-h mb-4">Membership Details</h2>
+              <h2 class="sec-h mb-3">Membership Details</h2>
               <div class="text-sm space-y-2.5">
-                <div class="flex justify-between"><span class="text-ink-light/50 dark:text-ink-dark/50">Plan</span><span class="font-medium">Gold Annual</span></div>
-                <div class="flex justify-between"><span class="text-ink-light/50 dark:text-ink-dark/50">Renews</span><span class="font-medium">Dec 12, 2026</span></div>
-                <div class="flex justify-between"><span class="text-ink-light/50 dark:text-ink-dark/50">Max Borrow Limit</span><span class="font-medium">8 books</span></div>
+                <div class="flex justify-between"><span class="opacity-50">Plan</span><span class="font-semibold">Gold Annual</span></div>
+                <div class="flex justify-between"><span class="opacity-50">Renews</span><span class="font-semibold">Dec 12, 2026</span></div>
+                <div class="flex justify-between"><span class="opacity-50">Borrow Limit</span><span class="font-semibold">8 books</span></div>
+                <div class="flex justify-between"><span class="opacity-50">Currently Borrowed</span><span class="font-semibold">4 of 8</span></div>
               </div>
             </div>
-
             <div class="card-block">
-              <h2 class="section-h mb-4">Reading Preferences</h2>
+              <h2 class="sec-h mb-3">Reading Preferences</h2>
               <div class="flex flex-wrap gap-2">
-                <span class="pref-tag">Fiction</span><span class="pref-tag">Mystery</span><span class="pref-tag">Fantasy</span><span class="pref-tag">Poetry</span>
-                <button class="pref-tag !border-dashed">+ Add</button>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark font-semibold">Fiction</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark font-semibold">Mystery</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark font-semibold">Fantasy</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark font-semibold">Poetry</span>
               </div>
-            </div>
-
-            <div class="card-block">
-              <h2 class="section-h mb-4">Account &amp; Privacy Settings</h2>
-              <div class="space-y-3">
-                <div class="flex items-center justify-between"><span class="text-sm">Email notifications</span><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
-                <div class="flex items-center justify-between"><span class="text-sm">Show reading activity to other members</span><label class="switch"><input type="checkbox"><span class="switch-track"></span></label></div>
-                <div class="flex items-center justify-between"><span class="text-sm">Two-factor authentication</span><label class="switch"><input type="checkbox" checked><span class="switch-track"></span></label></div>
-              </div>
-              <button class="btn-mini mt-5" onclick="showToast('Password change link sent to your email.','success')">Change Password</button>
-              <button class="mt-5 ml-3 text-sm text-red-500 font-medium" onclick="showToast('Logout requires confirmation.','info')">Logout Confirmation</button>
             </div>
           </div>
         </div>
@@ -432,459 +487,443 @@
 </div>
 
 <!-- Toast container -->
-<div id="toast-container" class="fixed bottom-5 right-5 z-[100] space-y-2"></div>
+<div id="toast-container" class="fixed bottom-5 right-5 z-[100] space-y-2 pointer-events-none"></div>
 
-<script src="script.js"></script>
 <script>
-  (function() {
-    // -------------------------------------------------------------
-    // DATA DEFINITIONS
-    // -------------------------------------------------------------
-    const recommendedBooks = [
-      { id: 1, title: "The Cartographer's Silence", author: "Inés Roldán", cover: "cartographer_cover.png", genre: "Fiction", rating: "4.5" },
-      { id: 2, title: "Salt & Marrow", author: "Owen Baptiste", cover: "salt_marrow_cover.png", genre: "History", rating: "5.0" },
-      { id: 3, title: "A Brief History of Quiet", author: "Priya Nandakumar", cover: "quiet_cover.png", genre: "Essays", rating: "4.2" },
-      { id: 4, title: "Signal & Static", author: "Tomas Reyes", cover: "arrival_signal_cover.png", genre: "Sci-Fi", rating: "4.8" }
-    ];
+(function() {
 
-    const myBooksData = [
-      { id: 101, title: "The Midnight Library", author: "Matt Haig", cover: "quiet_cover.png", type: "borrowed", genre: "Fiction", due: "In 4 days (Jul 27)", progress: 72 },
-      { id: 102, title: "Salt & Marrow", author: "Owen Baptiste", cover: "salt_marrow_cover.png", type: "borrowed", genre: "History", due: "In 12 days (Aug 04)", progress: 35 },
-      { id: 103, title: "The Cartographer's Silence", author: "Inés Roldán", cover: "cartographer_cover.png", type: "borrowed", genre: "Fiction", due: "In 19 days (Aug 11)", progress: 10 },
-      { id: 104, title: "Marrow Deep", author: "Halle Osei", cover: "arrival_marrow_cover.png", type: "reserved", genre: "Mystery", due: "Available for Pickup", progress: 0 },
-      { id: 105, title: "The Slow Migration", author: "Jonas Eklund", cover: "arrival_migration_cover.png", type: "wishlist", genre: "Non-Fiction", due: "On Wishlist", progress: 0 }
-    ];
+  // ---------------------------------------------------------------
+  // DATA
+  // ---------------------------------------------------------------
 
-    const notificationsData = [
-      { id: 1, title: "Book Due Reminder", desc: "The Midnight Library is due in 4 days (Jul 27).", category: "due", time: "2 hours ago", unread: true },
-      { id: 2, title: "Reservation Ready", desc: "Marrow Deep is ready for pickup at Nungambakkam counter.", category: "reservation", time: "1 day ago", unread: true },
-      { id: 3, title: "Sunday Poetry Circle", desc: "Your seat for Aug 09 Poetry Circle is confirmed.", category: "event", time: "2 days ago", unread: true },
-      { id: 4, title: "Library Announcement", desc: "New rare archives acquired for the August exhibition.", category: "announcement", time: "4 days ago", unread: false }
-    ];
+  // Books catalogue
+  const catalogue = [
+    { id: 1,  title: "The Midnight Library",       author: "Matt Haig",          genre: "Fiction",    cover: "quiet_cover.png",            copies: 4,  avail: "available" },
+    { id: 2,  title: "Salt & Marrow",              author: "Owen Baptiste",       genre: "History",    cover: "salt_marrow_cover.png",       copies: 2,  avail: "available" },
+    { id: 3,  title: "The Cartographer's Silence", author: "Inés Roldán",        genre: "Fiction",    cover: "cartographer_cover.png",      copies: 1,  avail: "low"       },
+    { id: 4,  title: "A Brief History of Quiet",   author: "Priya Nandakumar",   genre: "Non-Fiction",cover: "arrival_echoes_cover.png",    copies: 6,  avail: "available" },
+    { id: 5,  title: "Signal & Static",            author: "Tomas Reyes",        genre: "Sci-Fi",     cover: "arrival_celestial_cover.png", copies: 0,  avail: "out"       },
+    { id: 6,  title: "Marrow Deep",                author: "Halle Osei",         genre: "Mystery",    cover: "arrival_echoes_cover.png",    copies: 3,  avail: "available" },
+    { id: 7,  title: "The Glass Kingdom",          author: "Sophia Amara",       genre: "Fantasy",    cover: "cartographer_cover.png",      copies: 1,  avail: "low"       },
+    { id: 8,  title: "Letters from Lisbon",        author: "Miguel Ferreira",    genre: "Biography",  cover: "salt_marrow_cover.png",       copies: 5,  avail: "available" },
+    { id: 9,  title: "The Slow Migration",         author: "Jonas Eklund",       genre: "Non-Fiction",cover: "quiet_cover.png",            copies: 0,  avail: "out"       },
+    { id: 10, title: "When Stars Fall",            author: "Aiko Tanaka",        genre: "Poetry",     cover: "arrival_celestial_cover.png", copies: 8,  avail: "available" },
+  ];
 
-    // -------------------------------------------------------------
-    // VIEW SWITCHER
-    // -------------------------------------------------------------
-    window.switchView = function(viewName) {
-      const views = document.querySelectorAll('main section.view');
-      const navBtns = document.querySelectorAll('nav [data-view]');
+  // Borrowed books
+  let borrowedBooks = [
+    { id: 101, title: "The Midnight Library",       author: "Matt Haig",        cover: "quiet_cover.png",        borrowedDate: "Jul 10, 2026", dueDate: "2026-07-31", daysLeft: 1  },
+    { id: 102, title: "Salt & Marrow",              author: "Owen Baptiste",     cover: "salt_marrow_cover.png",  borrowedDate: "Jul 16, 2026", dueDate: "2026-08-04", daysLeft: 12 },
+    { id: 103, title: "The Cartographer's Silence", author: "Inés Roldán",      cover: "cartographer_cover.png", borrowedDate: "Jul 22, 2026", dueDate: "2026-08-11", daysLeft: 19 },
+    { id: 104, title: "A Brief History of Quiet",   author: "Priya Nandakumar", cover: "arrival_echoes_cover.png",borrowedDate: "Jul 05, 2026", dueDate: "2026-07-29", daysLeft: -1 },
+  ];
 
-      views.forEach(v => {
-        if (v.getAttribute('data-view') === viewName) {
-          v.classList.remove('hidden');
-        } else {
-          v.classList.add('hidden');
-        }
-      });
+  // Requests
+  let requestsData = [
+    { id: 201, title: "Marrow Deep",         author: "Halle Osei",   status: "pending",  cover: "arrival_echoes_cover.png",   date: "Jul 28, 2026" },
+    { id: 202, title: "The Glass Kingdom",   author: "Sophia Amara", status: "pending",  cover: "cartographer_cover.png",     date: "Jul 27, 2026" },
+    { id: 203, title: "Letters from Lisbon", author: "Miguel Ferreira",status:"approved",cover: "salt_marrow_cover.png",      date: "Jul 25, 2026" },
+    { id: 204, title: "Signal & Static",     author: "Tomas Reyes",  status: "rejected", cover: "arrival_celestial_cover.png",date: "Jul 20, 2026" },
+  ];
 
-      navBtns.forEach(btn => {
-        if (btn.getAttribute('data-view') === viewName) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
+  // Borrowing History
+  const historyData = [
+    { id: 301, title: "A Pattern Language",     author: "Christopher Alexander", returnedDate: "Jul 18, 2026", cover: "cartographer_cover.png" },
+    { id: 302, title: "Norwegian Wood",          author: "Haruki Murakami",       returnedDate: "Jul 05, 2026", cover: "salt_marrow_cover.png"  },
+    { id: 303, title: "Educated",               author: "Tara Westover",         returnedDate: "Jun 22, 2026", cover: "quiet_cover.png"        },
+    { id: 304, title: "The Alchemist",          author: "Paulo Coelho",          returnedDate: "Jun 10, 2026", cover: "arrival_echoes_cover.png"},
+    { id: 305, title: "Sapiens",                author: "Yuval Noah Harari",     returnedDate: "May 28, 2026", cover: "arrival_celestial_cover.png"},
+    { id: 306, title: "Atomic Habits",          author: "James Clear",           returnedDate: "May 15, 2026", cover: "salt_marrow_cover.png"  },
+    { id: 307, title: "The Great Gatsby",       author: "F. Scott Fitzgerald",   returnedDate: "May 02, 2026", cover: "cartographer_cover.png" },
+    { id: 308, title: "To Kill a Mockingbird",  author: "Harper Lee",            returnedDate: "Apr 18, 2026", cover: "quiet_cover.png"        },
+  ];
 
-      closeDrawer();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
+  const notificationsData = [
+    { id: 1, title: "Book Due Reminder",    desc: "The Midnight Library is due in 1 day (Jul 31).",               category: "due",          time: "2 hours ago", unread: true  },
+    { id: 2, title: "Overdue Alert",        desc: "A Brief History of Quiet is 1 day overdue. Please return it.", category: "due",          time: "1 day ago",   unread: true  },
+    { id: 3, title: "Reservation Approved", desc: "Letters from Lisbon is ready for pickup at the front counter.", category: "reservation",  time: "2 days ago",  unread: true  },
+    { id: 4, title: "Library Announcement", desc: "New rare archives acquired for the August exhibition.",          category: "announcement", time: "4 days ago",  unread: false },
+  ];
 
-    // Attach click listeners to all nav items
-    document.querySelectorAll('nav [data-view]').forEach(btn => {
-      btn.addEventListener('click', function(e) {
-        e.preventDefault();
-        const view = this.getAttribute('data-view');
-        switchView(view);
-      });
+  // ---------------------------------------------------------------
+  // VIEW SWITCHER
+  // ---------------------------------------------------------------
+  window.switchView = function(viewName) {
+    document.querySelectorAll('main section.view').forEach(v => v.classList.add('hidden'));
+    document.querySelectorAll('nav [data-view]').forEach(btn => btn.classList.remove('active'));
+
+    const target = document.querySelector(`main section[data-view="${viewName}"]`);
+    if (target) target.classList.remove('hidden');
+
+    const navBtn = document.querySelector(`nav [data-view="${viewName}"]`);
+    if (navBtn) navBtn.classList.add('active');
+
+    closeDrawer();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Re-render when switching
+    if (viewName === 'browse')        renderBrowse();
+    if (viewName === 'borrowed')      renderBorrowed();
+    if (viewName === 'requests')      renderRequests('all');
+    if (viewName === 'history')       renderHistory();
+    if (viewName === 'notifications') renderNotifications();
+  };
+
+  document.querySelectorAll('nav [data-view]').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      switchView(this.getAttribute('data-view'));
+    });
+  });
+
+  // ---------------------------------------------------------------
+  // TOAST
+  // ---------------------------------------------------------------
+  window.showToast = function(msg, type = 'success') {
+    const container = document.getElementById('toast-container');
+    const t = document.createElement('div');
+    const color = type === 'error' ? 'bg-red-600' : type === 'info' ? 'bg-blue-600' : type === 'warning' ? 'bg-amber-500' : 'bg-emerald-600';
+    t.className = `pointer-events-auto px-4 py-3 rounded-2xl text-xs font-semibold text-white shadow-xl flex items-center gap-2 translate-y-2 opacity-0 transition-all duration-300 ${color}`;
+    t.textContent = msg;
+    container.appendChild(t);
+    setTimeout(() => t.classList.remove('translate-y-2', 'opacity-0'), 10);
+    setTimeout(() => { t.classList.add('opacity-0', 'translate-y-2'); setTimeout(() => t.remove(), 300); }, 3000);
+  };
+
+  // ---------------------------------------------------------------
+  // RENDER: BROWSE BOOKS
+  // ---------------------------------------------------------------
+  function availBadge(b) {
+    if (b.avail === 'out')       return `<span class="badge badge-red">Out of Stock</span>`;
+    if (b.avail === 'low')       return `<span class="badge badge-orange">${b.copies} copy left</span>`;
+    return `<span class="badge badge-green">${b.copies} copies</span>`;
+  }
+
+  function renderBrowse() {
+    const grid  = document.getElementById('browse-grid');
+    const query = (document.getElementById('browse-search')?.value || '').toLowerCase();
+    const genre = document.getElementById('browse-genre')?.value || '';
+    const avail = document.getElementById('browse-avail')?.value || '';
+
+    let books = catalogue.filter(b => {
+      const matchQ = !query || b.title.toLowerCase().includes(query) || b.author.toLowerCase().includes(query);
+      const matchG = !genre || b.genre === genre;
+      const matchA = !avail || b.avail === avail;
+      return matchQ && matchG && matchA;
     });
 
-    // -------------------------------------------------------------
-    // RENDER FUNCTIONS
-    // -------------------------------------------------------------
-    function renderRecommended() {
-      const grid = document.getElementById('recommended-grid');
-      if (!grid) return;
-      grid.innerHTML = recommendedBooks.map(b => `
-        <div class="bg-panel-light dark:bg-panel-dark border border-hairline-light dark:border-hairline-dark rounded-2xl p-3 flex flex-col justify-between hover:-translate-y-1 transition duration-300">
-          <img src="${b.cover}" alt="${b.title}" class="w-full h-32 object-cover rounded-xl shadow-sm mb-2.5">
+    if (!grid) return;
+
+    if (books.length === 0) {
+      grid.innerHTML = `<div class="col-span-full text-center py-16 opacity-40">
+        <span class="material-symbols-outlined !text-[40px]">search_off</span>
+        <p class="mt-2 text-sm">No books match your filters.</p>
+      </div>`;
+      return;
+    }
+
+    grid.innerHTML = books.map(b => `
+      <div class="book-card">
+        <div class="relative aspect-[3/4] bg-panel-light dark:bg-panel-dark overflow-hidden">
+          <img src="${b.cover}" alt="${b.title}" class="w-full h-full object-cover">
+          <div class="absolute top-2 left-2">${availBadge(b)}</div>
+        </div>
+        <div class="p-3.5 flex flex-col gap-2 flex-1">
           <div>
             <span class="text-[10px] uppercase font-bold tracking-wider text-accent-light dark:text-accent-dark">${b.genre}</span>
-            <p class="font-serif text-sm font-semibold truncate text-ink-light dark:text-ink-dark mt-0.5">${b.title}</p>
-            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 truncate">${b.author}</p>
+            <p class="font-serif text-sm font-semibold leading-snug mt-0.5 text-ink-light dark:text-ink-dark">${b.title}</p>
+            <p class="text-[11px] opacity-55 truncate">${b.author}</p>
           </div>
-          <button class="mt-3 w-full py-1.5 rounded-lg bg-primary-light/10 dark:bg-primary-dark/15 text-primary-light dark:text-primary-dark text-xs font-semibold hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark dark:hover:text-[#121212] transition" onclick="showToast('Added &quot;${b.title}&quot; to your borrowing cart','success')">Borrow</button>
+          <button class="mt-auto btn-sm btn-primary-sm w-full justify-center ${b.avail === 'out' ? 'opacity-50 cursor-not-allowed' : ''}"
+            onclick="${b.avail !== 'out' ? `requestBorrow(${b.id})` : `showToast('No copies available right now.','warning')`}">
+            ${b.avail === 'out' ? 'Unavailable' : 'Request to Borrow'}
+          </button>
         </div>
-      `).join('');
+      </div>
+    `).join('');
+  }
+
+  window.requestBorrow = function(bookId) {
+    const book = catalogue.find(b => b.id === bookId);
+    if (!book) return;
+    const exists = requestsData.find(r => r.title === book.title && r.status === 'pending');
+    if (exists) { showToast(`Request for "${book.title}" already pending.`, 'info'); return; }
+    requestsData.unshift({ id: Date.now(), title: book.title, author: book.author, status: 'pending', cover: book.cover, date: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) });
+    updateRequestBadge();
+    showToast(`Request submitted for "${book.title}"!`, 'success');
+  };
+
+  // ---------------------------------------------------------------
+  // RENDER: BORROWED BOOKS
+  // ---------------------------------------------------------------
+  function dueBadge(daysLeft) {
+    if (daysLeft < 0) return `<span class="badge badge-red">Overdue ${Math.abs(daysLeft)}d</span>`;
+    if (daysLeft <= 4) return `<span class="badge badge-orange">Due in ${daysLeft}d</span>`;
+    return `<span class="badge badge-green">On Time</span>`;
+  }
+
+  function renderBorrowed() {
+    const tbody = document.getElementById('borrowed-tbody');
+    if (!tbody) return;
+
+    if (borrowedBooks.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="5" class="text-center py-14 opacity-40 text-sm">No active borrowings.</td></tr>`;
+      return;
     }
 
-    function renderActivityTimeline() {
-      const el = document.getElementById('activity-timeline');
-      if (!el) return;
-      const items = [
-        { title: "Finished Chapter 14", desc: "The Midnight Library by Matt Haig", time: "Today, 10:15 AM", icon: "menu_book" },
-        { title: "Borrowed New Title", desc: "Salt & Marrow by Owen Baptiste", time: "Yesterday, 4:30 PM", icon: "download" },
-        { title: "Attended Event", desc: "An Evening with Inés Roldán", time: "Jul 20, 2026", icon: "event" },
-        { title: "Returned Book", desc: "A Brief History of Quiet", time: "Jul 18, 2026", icon: "assignment_return" }
-      ];
-      el.innerHTML = items.map(item => `
-        <div class="flex items-start gap-3.5">
-          <div class="w-8 h-8 rounded-full bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark grid place-items-center shrink-0 mt-0.5">
-            <span class="material-symbols-outlined !text-[17px]">${item.icon}</span>
-          </div>
-          <div class="flex-1 min-w-0 border-b border-hairline-light/50 dark:border-hairline-dark/50 pb-3">
-            <p class="text-xs font-semibold text-ink-light dark:text-ink-dark">${item.title}</p>
-            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 truncate">${item.desc}</p>
-            <span class="text-[10px] text-ink-light/40 dark:text-ink-dark/40 mt-1 block">${item.time}</span>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function renderMonthlyChart() {
-      const chart = document.getElementById('monthly-chart');
-      if (!chart) return;
-      const months = [
-        { month: 'Jan', hours: 14, books: 4, height: '40%' },
-        { month: 'Feb', hours: 18, books: 5, height: '55%' },
-        { month: 'Mar', hours: 12, books: 3, height: '35%' },
-        { month: 'Apr', hours: 22, books: 7, height: '70%' },
-        { month: 'May', hours: 16, books: 5, height: '48%' },
-        { month: 'Jun', hours: 26, books: 8, height: '85%' },
-        { month: 'Jul', hours: 20, books: 6, height: '65%' }
-      ];
-      chart.innerHTML = `
-        <div class="flex items-end justify-between gap-2 sm:gap-4 h-full w-full pt-6 pb-1">
-          ${months.map(m => `
-            <div class="flex flex-col items-center flex-1 h-full justify-end group cursor-pointer">
-              <span class="text-[10px] font-mono text-accent-light dark:text-accent-dark font-semibold opacity-0 group-hover:opacity-100 transition-opacity mb-1">${m.hours}h</span>
-              <div class="w-full bg-accent-light/20 dark:bg-accent-dark/20 rounded-t-xl transition-all duration-500 group-hover:bg-accent-light dark:group-hover:bg-accent-dark relative overflow-hidden" style="height: ${m.height}">
-                <div class="absolute bottom-0 inset-x-0 bg-primary-light/40 dark:bg-primary-dark/40" style="height: 35%"></div>
-              </div>
-              <span class="text-[11px] font-medium text-ink-light/70 dark:text-ink-dark/70 mt-2">${m.month}</span>
-            </div>
-          `).join('')}
-        </div>
-      `;
-    }
-
-    function renderGenreBars() {
-      const container = document.getElementById('genre-bars');
-      if (!container) return;
-      const genres = [
-        { name: 'Literary & Fiction', pct: 42, count: '28 books', color: 'bg-[#C79A3B]' },
-        { name: 'Mystery & Thriller', pct: 28, count: '18 books', color: 'bg-[#234E52] dark:bg-[#4FAF8F]' },
-        { name: 'Sci-Fi & Speculative', pct: 18, count: '12 books', color: 'bg-[#3B5B7B]' },
-        { name: 'History & Essays', pct: 12, count: '8 books', color: 'bg-[#7B3B3B]' }
-      ];
-      container.innerHTML = genres.map(g => `
-        <div class="space-y-1.5">
-          <div class="flex items-center justify-between text-xs">
-            <span class="font-medium text-ink-light dark:text-ink-dark">${g.name}</span>
-            <span class="text-ink-light/60 dark:text-ink-dark/60 font-mono text-[11px]">${g.count} (${g.pct}%)</span>
-          </div>
-          <div class="w-full h-2 rounded-full bg-hairline-light dark:bg-hairline-dark overflow-hidden">
-            <div class="h-full rounded-full ${g.color} transition-all duration-700" style="width: ${g.pct}%"></div>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function renderBadgesGrid() {
-      const grid = document.getElementById('badges-grid');
-      if (!grid) return;
-      const badges = [
-        { name: 'Avid Reader', desc: '50+ books read', icon: 'military_tech' },
-        { name: '14-Day Streak', desc: 'Read 2 weeks', icon: 'local_fire_department' },
-        { name: 'Bookworm', desc: '100+ hours spent', icon: 'auto_stories' },
-        { name: 'Night Owl', desc: 'Late night read', icon: 'bedtime' },
-        { name: 'Archivist', desc: 'Rare volume read', icon: 'history_edu' },
-        { name: 'Gold Member', desc: 'Top tier badge', icon: 'workspace_premium' }
-      ];
-      grid.innerHTML = badges.map(b => `
-        <div class="p-3 rounded-2xl bg-panel-light dark:bg-panel-dark border border-hairline-light dark:border-hairline-dark text-center flex flex-col items-center justify-center gap-1 hover:border-accent-light/50 transition group">
-          <div class="w-9 h-9 rounded-full bg-accent-light/15 text-accent-light dark:bg-accent-dark/20 dark:text-accent-dark grid place-items-center group-hover:scale-110 transition shrink-0">
-            <span class="material-symbols-outlined !text-[18px]">${b.icon}</span>
-          </div>
-          <p class="text-[11px] font-semibold text-ink-light dark:text-ink-dark leading-tight mt-0.5">${b.name}</p>
-          <p class="text-[9.5px] text-ink-light/50 dark:text-ink-dark/50 leading-tight">${b.desc}</p>
-        </div>
-      `).join('');
-    }
-
-    function renderDueDates() {
-      const el = document.getElementById('due-dates-list');
-      if (!el) return;
-      const items = [
-        { title: "The Midnight Library", author: "Matt Haig", due: "Jul 27, 2026", status: "Due Soon (4 days)", badge: "bg-amber-500/15 text-amber-600 dark:text-amber-400", avail: "4 copies in library" },
-        { title: "Salt & Marrow", author: "Owen Baptiste", due: "Aug 04, 2026", status: "Active (12 days)", badge: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400", avail: "2 copies in library" },
-        { title: "The Cartographer's Silence", author: "Inés Roldán", due: "Aug 11, 2026", status: "Active (19 days)", badge: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400", avail: "6 copies in library" }
-      ];
-      el.innerHTML = items.map(item => `
-        <div class="p-3.5 rounded-2xl bg-panel-light dark:bg-panel-dark border border-hairline-light dark:border-hairline-dark flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div class="min-w-0">
-            <div class="flex items-center gap-2">
-              <p class="text-xs font-semibold truncate text-ink-light dark:text-ink-dark">${item.title}</p>
-              <span class="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full ${item.badge}">${item.status}</span>
-            </div>
-            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 mt-1">Due Date: <strong class="text-ink-light dark:text-ink-dark">${item.due}</strong> · <span class="text-emerald-600 dark:text-emerald-400 font-mono">${item.avail}</span></p>
-          </div>
-          <button class="text-xs font-semibold py-1.5 px-3 rounded-lg bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark hover:bg-primary-light hover:text-white dark:hover:bg-primary-dark dark:hover:text-bg-dark transition shrink-0" onclick="showToast('Renewed borrowing period for &quot;${item.title}&quot;!','success')">Renew Book</button>
-        </div>
-      `).join('');
-    }
-
-    function renderMyBooks(filterType = 'borrowed') {
-      const grid = document.getElementById('mybooks-grid');
-      if (!grid) return;
-      const filtered = myBooksData.filter(b => filterType === 'all' || b.type === filterType);
-      grid.innerHTML = filtered.map(b => `
-        <div class="bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-2xl p-3.5 flex flex-col justify-between shadow-sm hover:shadow-md transition">
-          <div class="relative aspect-[3/4] w-full mb-3 rounded-xl overflow-hidden bg-hairline-light/30 dark:bg-hairline-dark/30">
-            <img src="${b.cover}" alt="${b.title}" class="w-full h-full object-cover">
-            <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[9.5px] font-bold uppercase ${b.type === 'borrowed' ? 'bg-emerald-600 text-white' : b.type === 'reserved' ? 'bg-amber-600 text-white' : 'bg-primary-light text-white'}">${b.type}</span>
-          </div>
-          <div class="space-y-1">
-            <span class="text-[10px] uppercase font-bold tracking-wider text-accent-light dark:text-accent-dark">${b.genre}</span>
-            <p class="font-serif text-sm font-semibold truncate text-ink-light dark:text-ink-dark">${b.title}</p>
-            <p class="text-[11px] text-ink-light/60 dark:text-ink-dark/60 truncate">${b.author}</p>
-            
-            <div class="pt-2 border-t border-hairline-light dark:border-hairline-dark text-[10.5px]">
-              <p class="text-ink-light/70 dark:text-ink-dark/70 font-medium">Due: <span class="font-bold text-ink-light dark:text-ink-dark">${b.due}</span></p>
-              <p class="text-emerald-600 dark:text-emerald-400 font-mono text-[10px] mt-0.5">✦ 8 copies available</p>
+    tbody.innerHTML = borrowedBooks.map(b => `
+      <tr>
+        <td>
+          <div class="flex items-center gap-3">
+            <img src="${b.cover}" alt="${b.title}" class="w-10 h-14 rounded-lg object-cover shrink-0 shadow-sm">
+            <div>
+              <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">${b.title}</p>
+              <p class="text-xs opacity-50">${b.author}</p>
             </div>
           </div>
-          <button class="mt-3.5 w-full py-1.5 rounded-lg bg-primary-light dark:bg-primary-dark text-white dark:text-[#121212] text-xs font-semibold hover:opacity-90 transition" onclick="showToast('Updated status for &quot;${b.title}&quot;','info')">Manage Book</button>
-        </div>
-      `).join('');
-    }
+        </td>
+        <td><span class="text-xs opacity-65">${b.borrowedDate}</span></td>
+        <td><span class="text-xs font-semibold">${b.dueDate}</span></td>
+        <td>${dueBadge(b.daysLeft)}</td>
+        <td>
+          <button class="btn-sm btn-renewal" onclick="renewBook(${b.id})">
+            <span class="material-symbols-outlined !text-[14px]">autorenew</span>
+            Request Renewal
+          </button>
+        </td>
+      </tr>
+    `).join('');
+  }
 
-    function renderNotifications(filter = 'all') {
-      const list = document.getElementById('notifications-list');
-      if (!list) return;
-      const filtered = notificationsData.filter(n => filter === 'all' || n.category === filter);
-      list.innerHTML = filtered.map(n => `
-        <div class="p-4 rounded-2xl bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark flex items-start gap-4 shadow-sm ${n.unread ? 'ring-1 ring-accent-light/30 dark:ring-accent-dark/30' : ''}">
-          <div class="w-10 h-10 rounded-full bg-accent-light/10 dark:bg-accent-dark/20 text-accent-light dark:text-accent-dark grid place-items-center shrink-0">
-            <span class="material-symbols-outlined !text-[20px]">notifications</span>
-          </div>
-          <div class="flex-1 min-w-0">
-            <div class="flex items-center justify-between gap-2">
-              <p class="text-sm font-semibold text-ink-light dark:text-ink-dark">${n.title}</p>
-              <span class="text-[10px] text-ink-light/40 dark:text-ink-dark/40">${n.time}</span>
-            </div>
-            <p class="text-xs text-ink-light/70 dark:text-ink-dark/70 mt-1 leading-relaxed">${n.desc}</p>
-          </div>
-        </div>
-      `).join('');
-    }
+  window.renewBook = function(id) {
+    const b = borrowedBooks.find(x => x.id === id);
+    if (!b) return;
+    b.daysLeft += 14;
+    const d = new Date(b.dueDate);
+    d.setDate(d.getDate() + 14);
+    b.dueDate = d.toISOString().slice(0, 10);
+    renderBorrowed();
+    showToast(`Renewal request sent for "${b.title}". Due date extended by 14 days.`, 'success');
+  };
 
-    // -------------------------------------------------------------
-    // INTERACTIVE CONTROLS (TABS & DRAWER)
-    // -------------------------------------------------------------
-    const drawerOverlay = document.getElementById('drawer-overlay');
-    const sidebar = document.getElementById('sidebar');
+  // ---------------------------------------------------------------
+  // RENDER: REQUESTS
+  // ---------------------------------------------------------------
+  function statusBadge(status) {
+    const map = { pending: 'badge-amber', approved: 'badge-emerald', rejected: 'badge-red' };
+    const icons = { pending: 'hourglass_top', approved: 'check_circle', rejected: 'cancel' };
+    const labels = { pending: 'Pending', approved: 'Approved', rejected: 'Rejected' };
+    return `<span class="badge ${map[status]}"><span class="material-symbols-outlined !text-[12px]">${icons[status]}</span>${labels[status]}</span>`;
+  }
 
-    function closeDrawer() {
-      if (sidebar && window.innerWidth < 1024) {
-        sidebar.classList.add('-translate-x-full');
-      }
-      if (drawerOverlay) drawerOverlay.classList.add('hidden');
-    }
+  function renderRequests(filter = 'all') {
+    const list = document.getElementById('requests-list');
+    if (!list) return;
+    const filtered = filter === 'all' ? requestsData : requestsData.filter(r => r.status === filter);
 
-    const hamburger = document.getElementById('hamburger');
-    if (hamburger) {
-      hamburger.addEventListener('click', function(e) {
-        e.preventDefault();
-        if (sidebar) sidebar.classList.remove('-translate-x-full');
-        if (drawerOverlay) drawerOverlay.classList.remove('hidden');
-      });
-    }
-
-    if (drawerOverlay) {
-      drawerOverlay.addEventListener('click', closeDrawer);
-    }
-
-    // My Books Tab Buttons
-    document.querySelectorAll('#mybooks-tabs [data-tab]').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('#mybooks-tabs [data-tab]').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        renderMyBooks(this.getAttribute('data-tab'));
-      });
+    // Update counts in tabs
+    ['all','pending','approved','rejected'].forEach(s => {
+      const el = document.getElementById(`req-count-${s}`);
+      if (el) el.textContent = `(${s === 'all' ? requestsData.length : requestsData.filter(r => r.status === s).length})`;
     });
 
-    // Custom Genre Dropdown Controls
-    const genreBtn = document.getElementById('genre-dropdown-btn');
-    const genreMenu = document.getElementById('genre-dropdown-menu');
-    const genreArrow = document.getElementById('genre-dropdown-arrow');
-    const genreInput = document.getElementById('genre-filter');
-    const genreSelectedText = document.getElementById('genre-selected-text');
-
-    if (genreBtn && genreMenu) {
-      genreBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        const isHidden = genreMenu.classList.contains('hidden');
-        genreMenu.classList.toggle('hidden', !isHidden);
-        if (genreArrow) genreArrow.style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
-      });
-
-      document.querySelectorAll('.genre-option').forEach(opt => {
-        opt.addEventListener('click', function(e) {
-          e.stopPropagation();
-          const val = this.getAttribute('data-value');
-          const text = this.querySelector('span').textContent;
-          if (genreInput) {
-            genreInput.value = val;
-            genreInput.dispatchEvent(new Event('change', { bubbles: true }));
-          }
-          if (genreSelectedText) genreSelectedText.textContent = text;
-          
-          document.querySelectorAll('.genre-option').forEach(o => {
-            const check = o.querySelector('.check-icon');
-            if (check) check.classList.add('hidden');
-            o.classList.remove('font-semibold', 'bg-panel-light/60', 'dark:bg-panel-dark/60');
-          });
-          const thisCheck = this.querySelector('.check-icon');
-          if (thisCheck) thisCheck.classList.remove('hidden');
-          this.classList.add('font-semibold', 'bg-panel-light/60', 'dark:bg-panel-dark/60');
-
-          genreMenu.classList.add('hidden');
-          if (genreArrow) genreArrow.style.transform = 'rotate(0deg)';
-        });
-      });
-
-      document.addEventListener('click', function(e) {
-        if (genreMenu && !genreMenu.classList.contains('hidden')) {
-          genreMenu.classList.add('hidden');
-          if (genreArrow) genreArrow.style.transform = 'rotate(0deg)';
-        }
-      });
+    if (filtered.length === 0) {
+      list.innerHTML = `<div class="text-center py-14 opacity-40 text-sm">No ${filter} requests.</div>`;
+      return;
     }
 
-    // Notification Filters
-    document.querySelectorAll('#notif-filters [data-filter]').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('#notif-filters [data-filter]').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        renderNotifications(this.getAttribute('data-filter'));
-      });
+    list.innerHTML = filtered.map(r => `
+      <div class="req-row">
+        <img src="${r.cover}" alt="${r.title}" class="w-10 h-14 rounded-lg object-cover shrink-0 shadow-sm">
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-semibold text-ink-light dark:text-ink-dark truncate">${r.title}</p>
+          <p class="text-xs opacity-50 truncate">${r.author}</p>
+          <p class="text-[11px] opacity-40 mt-0.5">Requested: ${r.date}</p>
+        </div>
+        <div class="flex flex-col sm:flex-row items-end sm:items-center gap-2 shrink-0">
+          ${statusBadge(r.status)}
+          ${r.status === 'pending' ? `<button class="btn-sm btn-cancel" onclick="cancelRequest(${r.id})">Cancel</button>` : ''}
+          ${r.status === 'approved' ? `<span class="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">Ready for pickup</span>` : ''}
+          ${r.status === 'rejected' ? `<span class="text-xs opacity-40">Not available</span>` : ''}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.cancelRequest = function(id) {
+    const idx = requestsData.findIndex(r => r.id === id);
+    if (idx === -1) return;
+    const title = requestsData[idx].title;
+    requestsData.splice(idx, 1);
+    updateRequestBadge();
+    renderRequests('all');
+    // reset to all tab
+    document.querySelectorAll('[data-rtab]').forEach(t => t.classList.remove('active'));
+    document.querySelector('[data-rtab="all"]')?.classList.add('active');
+    showToast(`Request for "${title}" cancelled.`, 'info');
+  };
+
+  function updateRequestBadge() {
+    const pending = requestsData.filter(r => r.status === 'pending').length;
+    const badge = document.getElementById('nav-req-badge');
+    if (badge) { badge.textContent = pending; badge.style.display = pending > 0 ? 'grid' : 'none'; }
+  }
+
+  // ---------------------------------------------------------------
+  // RENDER: BORROWING HISTORY
+  // ---------------------------------------------------------------
+  function renderHistory() {
+    const list = document.getElementById('history-list');
+    if (!list) return;
+    list.innerHTML = historyData.map(h => `
+      <div class="hist-row border-b border-hairline-light dark:border-hairline-dark last:border-0">
+        <img src="${h.cover}" alt="${h.title}" class="w-10 h-14 rounded-lg object-cover shrink-0 shadow-sm">
+        <div class="flex-1 min-w-0">
+          <p class="text-sm font-semibold text-ink-light dark:text-ink-dark truncate">${h.title}</p>
+          <p class="text-xs opacity-50 truncate">${h.author}</p>
+          <p class="text-[11px] opacity-40 mt-0.5">Returned: ${h.returnedDate}</p>
+        </div>
+        <button class="btn-sm btn-borrow-again shrink-0" onclick="borrowAgain(${h.id})">
+          <span class="material-symbols-outlined !text-[14px]">bookmark_add</span>
+          Borrow Again
+        </button>
+      </div>
+    `).join('');
+  }
+
+  window.borrowAgain = function(id) {
+    const h = historyData.find(x => x.id === id);
+    if (!h) return;
+    const exists = requestsData.find(r => r.title === h.title && r.status === 'pending');
+    if (exists) { showToast(`A pending request for "${h.title}" already exists.`, 'info'); return; }
+    requestsData.unshift({ id: Date.now(), title: h.title, author: h.author, status: 'pending', cover: h.cover, date: new Date().toLocaleDateString('en-GB', { day:'numeric', month:'short', year:'numeric' }) });
+    updateRequestBadge();
+    showToast(`Borrow request submitted for "${h.title}"!`, 'success');
+  };
+
+  // ---------------------------------------------------------------
+  // RENDER: NOTIFICATIONS
+  // ---------------------------------------------------------------
+  function renderNotifications() {
+    const list = document.getElementById('notifications-list');
+    if (!list) return;
+    list.innerHTML = notificationsData.map(n => `
+      <div class="card-block flex items-start gap-4 ${n.unread ? 'ring-1 ring-accent-light/30 dark:ring-accent-dark/30' : ''}">
+        <div class="w-9 h-9 rounded-full bg-accent-light/10 dark:bg-accent-dark/15 text-accent-light dark:text-accent-dark grid place-items-center shrink-0">
+          <span class="material-symbols-outlined !text-[18px]">notifications</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center justify-between gap-2">
+            <p class="text-sm font-semibold">${n.title} ${n.unread ? '<span class="inline-block w-2 h-2 rounded-full bg-accent-light dark:bg-accent-dark ml-1"></span>' : ''}</p>
+            <span class="text-[11px] opacity-40 shrink-0">${n.time}</span>
+          </div>
+          <p class="text-xs opacity-65 mt-1 leading-relaxed">${n.desc}</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.markAllRead = function() {
+    notificationsData.forEach(n => n.unread = false);
+    document.getElementById('nav-notif-badge').style.display = 'none';
+    document.getElementById('notif-dot')?.classList.add('hidden');
+    renderNotifications();
+    showToast('All notifications marked as read.', 'success');
+  };
+
+  // ---------------------------------------------------------------
+  // CONTROLS: MOBILE DRAWER
+  // ---------------------------------------------------------------
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('drawer-overlay');
+  function closeDrawer() {
+    if (sidebar && window.innerWidth < 1024) sidebar.classList.add('-translate-x-full');
+    if (overlay) overlay.classList.add('hidden');
+  }
+  document.getElementById('hamburger')?.addEventListener('click', () => {
+    sidebar?.classList.remove('-translate-x-full');
+    overlay?.classList.remove('hidden');
+  });
+  overlay?.addEventListener('click', closeDrawer);
+
+  // ---------------------------------------------------------------
+  // CONTROLS: DARK MODE
+  // ---------------------------------------------------------------
+  function setDark(isDark) {
+    document.documentElement.classList.toggle('dark', isDark);
+    try { localStorage.setItem('mf-theme', isDark ? 'dark' : 'light'); } catch(e) {}
+    const icon  = document.getElementById('dark-icon');
+    const label = document.getElementById('dark-label');
+    if (icon)  icon.textContent  = isDark ? 'light_mode'  : 'dark_mode';
+    if (label) label.textContent = isDark ? 'Light Mode'  : 'Dark Mode';
+  }
+  document.getElementById('dark-toggle')?.addEventListener('click', () => {
+    setDark(!document.documentElement.classList.contains('dark'));
+  });
+  // Persist state from main site
+  try { if (localStorage.getItem('mf-theme') === 'dark') setDark(true); } catch(e) {}
+
+  // ---------------------------------------------------------------
+  // CONTROLS: LOGOUT
+  // ---------------------------------------------------------------
+  document.getElementById('logout-btn')?.addEventListener('click', () => {
+    showToast('Signed out successfully. Redirecting…', 'success');
+    setTimeout(() => window.location.href = 'index.html', 1400);
+  });
+
+  // ---------------------------------------------------------------
+  // CONTROLS: SEARCH & FILTER (Browse)
+  // ---------------------------------------------------------------
+  document.getElementById('browse-search')?.addEventListener('input', renderBrowse);
+  document.getElementById('browse-genre')?.addEventListener('change', renderBrowse);
+  document.getElementById('browse-avail')?.addEventListener('change', renderBrowse);
+
+  // Header search → go to browse and search
+  document.getElementById('header-search')?.addEventListener('input', function() {
+    const q = this.value.trim();
+    if (q) {
+      switchView('browse');
+      const browseSearch = document.getElementById('browse-search');
+      if (browseSearch) { browseSearch.value = q; renderBrowse(); }
+    }
+  });
+
+  // ---------------------------------------------------------------
+  // CONTROLS: REQUEST TABS
+  // ---------------------------------------------------------------
+  document.querySelectorAll('[data-rtab]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('[data-rtab]').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      renderRequests(this.getAttribute('data-rtab'));
     });
+  });
 
-    // -------------------------------------------------------------
-    // TOAST NOTIFICATION HELPER
-    // -------------------------------------------------------------
-    window.showToast = function(msg, type = 'success') {
-      let container = document.getElementById('toast-container');
-      if (!container) {
-        container = document.createElement('div');
-        container.id = 'toast-container';
-        container.className = 'fixed bottom-5 right-5 z-[100] space-y-2 pointer-events-none';
-        document.body.appendChild(container);
-      }
-      const t = document.createElement('div');
-      t.className = `px-4 py-3 rounded-2xl text-xs font-semibold text-white shadow-xl pointer-events-auto flex items-center gap-2 transition-all duration-300 transform translate-y-2 opacity-0 ${type === 'error' ? 'bg-red-600' : type === 'info' ? 'bg-primary-light dark:bg-primary-dark' : 'bg-emerald-600'}`;
-      t.innerHTML = `<span>${msg}</span>`;
-      container.appendChild(t);
-      setTimeout(() => { t.classList.remove('translate-y-2', 'opacity-0'); }, 10);
-      setTimeout(() => {
-        t.classList.add('opacity-0', 'translate-y-2');
-        setTimeout(() => t.remove(), 300);
-      }, 3000);
-    };
-
-    // -------------------------------------------------------------
-    // DARK MODE, RTL & LOGOUT BUTTON HANDLERS
-    // -------------------------------------------------------------
-    const darkToggle = document.getElementById('dark-toggle');
-    function updateDarkToggleUI(isDark) {
-      const darkIcon = document.getElementById('dark-icon');
-      const toggleDot = document.getElementById('toggle-dot');
-      if (darkIcon) darkIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
-      if (toggleDot) {
-        if (isDark) {
-          toggleDot.classList.add('translate-x-4');
-        } else {
-          toggleDot.classList.remove('translate-x-4');
-        }
-      }
-    }
-
-    if (darkToggle) {
-      darkToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        const isDark = !document.documentElement.classList.contains('dark');
-        document.documentElement.classList.toggle('dark', isDark);
-        try { localStorage.setItem('mf-theme', isDark ? 'dark' : 'light'); } catch(err) {}
-        updateDarkToggleUI(isDark);
-        showToast(`Switched to ${isDark ? 'Dark' : 'Light'} Mode`, 'info');
-      });
-    }
-
-    // Sync initial dark toggle UI state
-    updateDarkToggleUI(document.documentElement.classList.contains('dark'));
-
-    // RTL Toggle Handler
-    const rtlToggle = document.getElementById('rtl-toggle');
-    if (rtlToggle) {
-      rtlToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-        document.documentElement.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
-        try { localStorage.setItem('mf-rtl', isRTL ? '0' : '1'); } catch(err) {}
-        showToast(`Switched layout to ${isRTL ? 'LTR' : 'RTL'}`, 'info');
-      });
-    }
-
-    // Logout Handler
-    const logoutBtn = document.getElementById('logout-btn');
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        showToast('Signed out successfully! Redirecting to library...', 'success');
-        setTimeout(() => {
-          window.location.href = 'index.html';
-        }, 1200);
-      });
-    }
-
-    window.markAllRead = function() {
-      notificationsData.forEach(n => n.unread = false);
-      const badge = document.getElementById('nav-notif-badge');
-      if (badge) badge.style.display = 'none';
-      renderNotifications('all');
-      showToast('All notifications marked as read.', 'success');
-    };
-
-    // -------------------------------------------------------------
-    // INITIALIZATION ON LOAD
-    // -------------------------------------------------------------
-    renderRecommended();
-    renderActivityTimeline();
-    renderDueDates();
-    renderMonthlyChart();
-    renderGenreBars();
-    renderBadgesGrid();
-    renderMyBooks('borrowed');
-    renderNotifications('all');
-    renderNotifications('all');
-
-    // Stat counter animation
-    document.querySelectorAll('.stat-number').forEach(el => {
-      const target = parseInt(el.getAttribute('data-count'), 10) || 0;
+  // ---------------------------------------------------------------
+  // COUNTER ANIMATION
+  // ---------------------------------------------------------------
+  function animateCounters() {
+    document.querySelectorAll('.stat-num[data-count]').forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      if (isNaN(target)) return;
       let curr = 0;
-      const step = Math.max(1, Math.floor(target / 20));
+      const step = Math.max(1, Math.floor(target / 25));
       const timer = setInterval(() => {
-        curr += step;
-        if (curr >= target) {
-          curr = target;
-          clearInterval(timer);
-        }
+        curr = Math.min(curr + step, target);
         el.textContent = curr;
-      }, 40);
+        if (curr >= target) clearInterval(timer);
+      }, 30);
     });
+  }
 
-  })();
+  // ---------------------------------------------------------------
+  // INITIAL RENDER
+  // ---------------------------------------------------------------
+  animateCounters();
+  updateRequestBadge();
+  renderBrowse();
+
+})();
 </script>
-<script src="script.js"></script>
 </body>
 </html>
