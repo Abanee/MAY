@@ -222,12 +222,17 @@
     </nav>
 
     <!-- Bottom actions -->
-    <div class="px-3 pb-5 pt-3 border-t border-hairline-light dark:border-hairline-dark space-y-1">
-      <button id="dark-toggle" class="nav-item">
-        <span class="material-symbols-outlined !text-[20px]" id="dark-icon">dark_mode</span>
-        <span id="dark-label">Dark Mode</span>
-      </button>
-      <button id="logout-btn" class="nav-item text-red-500 dark:text-red-400 hover:!bg-red-500/10">
+    <div class="px-3 pb-5 pt-3 border-t border-hairline-light dark:border-hairline-dark space-y-2">
+      <!-- Theme & RTL in the SAME row -->
+      <div class="grid grid-cols-2 gap-2">
+        <button id="dark-toggle" aria-label="Toggle Theme" class="flex items-center justify-center py-2 px-2 rounded-xl bg-panel-light dark:bg-panel-dark hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 border border-hairline-light dark:border-hairline-dark text-xs font-semibold transition text-ink-light dark:text-ink-dark">
+          <span class="material-symbols-outlined !text-[18px]" id="dark-icon">dark_mode</span>
+        </button>
+        <button id="rtl-toggle" aria-label="Toggle RTL" class="flex items-center justify-center py-2 px-2 rounded-xl bg-panel-light dark:bg-panel-dark hover:bg-hairline-light/50 dark:hover:bg-hairline-dark/50 border border-hairline-light dark:border-hairline-dark text-xs font-semibold transition text-ink-light dark:text-ink-dark">
+          <span>RTL</span>
+        </button>
+      </div>
+      <button id="logout-btn" class="nav-item w-full text-red-500 dark:text-red-400 hover:!bg-red-500/10">
         <span class="material-symbols-outlined !text-[20px]">logout</span>
         Logout
       </button>
@@ -847,21 +852,32 @@
   overlay?.addEventListener('click', closeDrawer);
 
   // ---------------------------------------------------------------
-  // CONTROLS: DARK MODE
+  // CONTROLS: DARK MODE & RTL
   // ---------------------------------------------------------------
   function setDark(isDark) {
     document.documentElement.classList.toggle('dark', isDark);
     try { localStorage.setItem('mf-theme', isDark ? 'dark' : 'light'); } catch(e) {}
-    const icon  = document.getElementById('dark-icon');
-    const label = document.getElementById('dark-label');
-    if (icon)  icon.textContent  = isDark ? 'light_mode'  : 'dark_mode';
-    if (label) label.textContent = isDark ? 'Light Mode'  : 'Dark Mode';
+    const icon = document.getElementById('dark-icon');
+    if (icon) icon.textContent = isDark ? 'light_mode' : 'dark_mode';
   }
-  document.getElementById('dark-toggle')?.addEventListener('click', () => {
-    setDark(!document.documentElement.classList.contains('dark'));
+  document.getElementById('dark-toggle')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isDark = !document.documentElement.classList.contains('dark');
+    setDark(isDark);
+    showToast(`Switched to ${isDark ? 'Dark' : 'Light'} Mode`, 'info');
   });
-  // Persist state from main site
+  // Persist theme state
   try { if (localStorage.getItem('mf-theme') === 'dark') setDark(true); } catch(e) {}
+
+  // RTL Toggle
+  document.getElementById('rtl-toggle')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    document.documentElement.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+    try { localStorage.setItem('mf-rtl', isRTL ? '0' : '1'); } catch(err) {}
+    showToast(`Switched layout to ${isRTL ? 'LTR' : 'RTL'}`, 'info');
+  });
+  try { if (localStorage.getItem('mf-rtl') === '1') document.documentElement.setAttribute('dir', 'rtl'); } catch(err) {}
 
   // ---------------------------------------------------------------
   // CONTROLS: LOGOUT
