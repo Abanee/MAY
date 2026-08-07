@@ -1290,6 +1290,15 @@ html:not(.dark) .wooden-bookshelf-wrapper {
   .h2-radial-hub .h2-hub-desc { display: none; }
 }
 
+@media (max-width: 400px) {
+  .h2-radial-wrap { width: 260px; height: 260px; }
+  .h2-spoke { width: 26px; height: 76px; margin: -38px 0 0 -13px; transform: rotate(calc(var(--ang) * 1deg)) translateY(-114px); transform-origin: 13px 38px; }
+  .h2-spoke-book span { font-size: 10px; }
+  .h2-radial-hub { width: 106px; height: 106px; padding: .4rem; }
+  .h2-radial-hub .h2-hub-title { font-size: 0.82rem; }
+  .h2-radial-hub .h2-hub-count { font-size: 9px; margin-top: .3rem; }
+}
+
 /* =====================================================================
    ABOUT PAGE — "The Story of Marlowe & Finch"
    Scoped additions only. Reuses shared tokens, hero atmosphere, buttons,
