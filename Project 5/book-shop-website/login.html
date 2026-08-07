@@ -42,7 +42,7 @@
 <div id="toast-zone" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[80] flex flex-col gap-3 items-center pointer-events-none"></div>
 
 <!-- ============ TOP CONTROLS (Theme & RTL Buttons) ============ -->
-<div class="fixed top-3.5 right-3.5 sm:top-5 sm:right-8 z-50 flex items-center gap-2.5">
+<div class="fixed top-4 right-4 sm:top-5 sm:right-8 z-[100] flex items-center gap-2.5 pointer-events-auto">
   <button id="theme-toggle" aria-label="Toggle dark mode" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-card-light/90 dark:bg-card-dark/90 backdrop-blur-xl border border-hairline-light dark:border-hairline-dark shadow-md grid place-items-center relative text-ink-light dark:text-ink-dark hover:scale-105 transition duration-300">
     <svg id="icon-sun" width="16" height="16" viewBox="0 0 18 18" class="absolute transition-all duration-500"><circle cx="9" cy="9" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="9" y1="1" x2="9" y2="3"/><line x1="9" y1="15" x2="9" y2="17"/><line x1="1" y1="9" x2="3" y2="9"/><line x1="15" y1="9" x2="17" y2="9"/><line x1="3.5" y1="3.5" x2="4.9" y2="4.9"/><line x1="13.1" y1="13.1" x2="14.5" y2="14.5"/><line x1="3.5" y1="14.5" x2="4.9" y2="13.1"/><line x1="13.1" y1="4.9" x2="14.5" y2="3.5"/></g></svg>
     <svg id="icon-moon" width="16" height="16" viewBox="0 0 18 18" class="absolute transition-all duration-500 opacity-0"><path d="M15 10.5A6.5 6.5 0 0 1 7.5 3 6.5 6.5 0 1 0 15 10.5Z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
@@ -50,9 +50,9 @@
   <button id="rtl-toggle" aria-label="Toggle RTL layout" title="Toggle RTL / LTR" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-card-light/90 dark:bg-card-dark/90 backdrop-blur-xl border border-hairline-light dark:border-hairline-dark shadow-md grid place-items-center text-xs font-bold tracking-wider text-ink-light dark:text-ink-dark hover:scale-105 transition duration-300">RTL</button>
 </div>
 
-<main class="flex-1 flex items-center justify-center pt-20 pb-10 sm:py-16 px-4 sm:px-6">
+<main class="flex-1 flex items-center justify-center py-6 sm:py-12 px-4 sm:px-6">
   
-  <div class="w-full max-w-md bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden transition-all my-auto">
+  <div class="w-full max-w-md bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark rounded-3xl p-5 sm:p-8 shadow-xl relative overflow-hidden transition-all my-auto">
     
     <!-- Brand badge -->
     <div class="flex flex-col items-center justify-center text-center mb-8">

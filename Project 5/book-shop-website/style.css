@@ -1729,6 +1729,7 @@ html:not(.dark) .wooden-bookshelf-wrapper {
 @media (max-width: 767px) { .mem-step-connector { display: none; } }
 .mem-step-num { font-family: 'Fraunces', serif; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: #C79A3B; margin-top: 1rem; }
 .dark .mem-step-num { color: #D4A64A; }
+.dark .mem-step h4 { color: #F5F5F5; }
 
 /* --- DASHBOARD PREVIEW --- */
 .mem-dash-preview { background: #FFFFFF; border: 1px solid #E7E1D8; border-radius: 20px; overflow: hidden; display: flex; max-height: 280px; }
