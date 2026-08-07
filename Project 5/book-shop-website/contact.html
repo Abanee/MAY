@@ -124,9 +124,9 @@
   <img src="contact_hero_banner.png" alt="Marlowe &amp; Finch bookshop storefront at golden hour" class="absolute inset-0 w-full h-full object-cover object-center" loading="eager">
   <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/50 to-[#16231F]"></div>
   <div class="relative z-10 max-w-[1300px] mx-auto w-full px-6 py-14 flex flex-col items-center text-center">
-    <p class="inline-block px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.25em] uppercase text-[#D4A64A] bg-[#D4A64A]/20 border border-[#D4A64A]/30 backdrop-blur-md mb-4 shadow-md">Marlowe &amp; Finch · Est. 1994</p>
+    <p class="inline-block px-3.5 py-1.5 rounded-full text-[11px] font-semibold tracking-[0.25em] uppercase text-[#D4A64A] bg-[#D4A64A]/20 border border-[#D4A64A]/30 backdrop-blur-md mb-4 shadow-md">Ashwood Books · Est. 1994</p>
     <h1 class="font-serif text-4xl sm:text-5xl lg:text-[60px] font-light text-[#FAF7F2] leading-[1.1] mb-3">Come Visit Us</h1>
-    <p class="text-[#FAF7F2]/90 text-sm lg:text-base max-w-lg mx-auto leading-relaxed font-light">14 Birchwood Lane, Nungambakkam · Open every day · hello@marloweandfinch.co</p>
+    <p class="text-[#FAF7F2]/90 text-sm lg:text-base max-w-lg mx-auto leading-relaxed font-light">14 Birchwood Lane, Nungambakkam · Open every day · hello@ashwoodbooks.co</p>
   </div>
 </section>
 
@@ -137,33 +137,70 @@
     <div class="space-y-10 reveal" style="transition-delay: .1s">
       
       <!-- Info Cards -->
-      <div class="grid sm:grid-cols-2 gap-8">
-        <div>
-          <h3 class="font-serif text-lg text-primary-light dark:text-primary-dark mb-3">Our Location</h3>
-          <p class="text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">
+      <div class="grid sm:grid-cols-2 gap-6">
+        
+        <!-- CARD 1: LOCATION -->
+        <div class="p-5 rounded-2xl bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-md transition group">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark grid place-items-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="font-serif text-base sm:text-lg text-ink-light dark:text-ink-dark font-semibold">Our Location</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed pl-0.5">
             14 Birchwood Lane<br>
             Nungambakkam, Chennai<br>
             Tamil Nadu 600034
           </p>
         </div>
-        <div>
-          <h3 class="font-serif text-lg text-primary-light dark:text-primary-dark mb-3">Hours of Rest</h3>
-          <p class="text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">
-            Mon – Fri : 9 am – 8 pm<br>
-            Saturday : 10 am – 6 pm<br>
-            Sunday : 11 am – 5 pm
-          </p>
+
+        <!-- CARD 2: LIBRARY HOURS -->
+        <div class="p-5 rounded-2xl bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-md transition group">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-accent-light/10 dark:bg-accent-dark/20 text-accent-light dark:text-accent-dark grid place-items-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <h3 class="font-serif text-base sm:text-lg text-ink-light dark:text-ink-dark font-semibold">Library Hours</h3>
+          </div>
+          <ul class="space-y-1.5 text-xs sm:text-sm text-ink-light/75 dark:text-ink-dark/75 pl-0.5">
+            <li class="flex items-center justify-between"><span class="font-medium text-ink-light/90 dark:text-ink-dark/90">Mon – Fri</span><span>9 am – 8 pm</span></li>
+            <li class="flex items-center justify-between"><span class="font-medium text-ink-light/90 dark:text-ink-dark/90">Saturday</span><span>10 am – 6 pm</span></li>
+            <li class="flex items-center justify-between"><span class="font-medium text-ink-light/90 dark:text-ink-dark/90">Sunday</span><span>11 am – 5 pm</span></li>
+          </ul>
         </div>
-        <div>
-          <h3 class="font-serif text-lg text-primary-light dark:text-primary-dark mb-3">Direct Inquiries</h3>
-          <p class="text-sm text-ink-light/75 dark:text-ink-dark/75 leading-relaxed">
-            Phone: +91 44 2827 8844<br>
-            Email: hello@marloweandfinch.co
-          </p>
+
+        <!-- CARD 3: DIRECT INQUIRIES -->
+        <div class="p-5 rounded-2xl bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-md transition group">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-primary-light/10 dark:bg-primary-dark/20 text-primary-light dark:text-primary-dark grid place-items-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <h3 class="font-serif text-base sm:text-lg text-ink-light dark:text-ink-dark font-semibold">Direct Inquiries</h3>
+          </div>
+          <div class="space-y-2 text-xs sm:text-sm text-ink-light/75 dark:text-ink-dark/75 pl-0.5">
+            <p class="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-light dark:text-accent-dark shrink-0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+91 44 2827 8844</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-light dark:text-accent-dark shrink-0"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:hello@ashwoodbooks.co" class="hover:underline text-primary-light dark:text-primary-dark transition font-medium">hello@ashwoodbooks.co</a>
+            </p>
+          </div>
         </div>
-        <div>
-          <h3 class="font-serif text-lg text-primary-light dark:text-primary-dark mb-2">Social Desk</h3>
-          <div class="flex items-center gap-2.5 mt-3">
+
+        <!-- CARD 4: SOCIAL DESK -->
+        <div class="p-5 rounded-2xl bg-card-light dark:bg-card-dark border border-hairline-light dark:border-hairline-dark shadow-sm hover:shadow-md transition group flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-3">
+              <div class="w-10 h-10 rounded-xl bg-accent-light/10 dark:bg-accent-dark/20 text-accent-light dark:text-accent-dark grid place-items-center shrink-0 group-hover:scale-105 transition-transform duration-300">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              </div>
+              <h3 class="font-serif text-base sm:text-lg text-ink-light dark:text-ink-dark font-semibold">Social Desk</h3>
+            </div>
+            <p class="text-xs text-ink-light/60 dark:text-ink-dark/60 mb-3 pl-0.5">Follow our reading circles &amp; events</p>
+          </div>
+          <div class="flex items-center gap-2.5 pt-1">
             <!-- Instagram -->
             <a href="https://instagram.com" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-full bg-hairline-light/50 dark:bg-hairline-dark/60 border border-hairline-light dark:border-hairline-dark flex items-center justify-center text-ink-light/80 dark:text-ink-dark/80 hover:bg-[#E1306C] hover:text-white hover:border-transparent transition duration-300">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -182,6 +219,7 @@
             </a>
           </div>
         </div>
+
       </div>
 
       <!-- Real Google Map Embed -->

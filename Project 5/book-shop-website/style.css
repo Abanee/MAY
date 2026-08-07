@@ -15,8 +15,9 @@ body { -webkit-font-smoothing: antialiased; }
 /* ===================== TYPOGRAPHY HELPERS ===================== */
 .eyebrow { font-size: 12.5px; letter-spacing: 0.35em; text-transform: uppercase; color: #C79A3B; font-weight: 500; }
 .dark .eyebrow { color: #D4A64A; }
-.section-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.01em; }
+.section-title { font-family: 'Fraunces', serif; font-weight: 300; font-size: clamp(2rem, 4vw, 2.75rem); letter-spacing: -0.01em; font-optical-sizing: auto; font-variation-settings: 'opsz' 42; }
 .font-display { font-family: 'Cormorant Garamond', serif; }
+h1.font-serif, h2.font-serif, h3.font-serif, h4.font-serif, .font-serif { font-optical-sizing: auto; font-variation-settings: 'opsz' 42; }
 
 /* ===================== NAV ===================== */
 .nav-link { position: relative; padding-bottom: 4px; color: inherit; opacity: 0.85; transition: opacity .3s, color .3s; }
