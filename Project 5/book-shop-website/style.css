@@ -1708,6 +1708,7 @@ html:not(.dark) .wooden-bookshelf-wrapper {
 .mem-why-icon-wrap { width: 52px; height: 52px; border-radius: 14px; background: rgba(var(--ic-rgb, 35,78,82),.1); color: var(--ic, #234E52); display: grid; place-items: center; transition: transform .35s; }
 .mem-why-card:hover .mem-why-icon-wrap { transform: scale(1.1) rotate(-5deg); }
 .mem-why-icon-wrap { background: color-mix(in srgb, var(--ic, #234E52) 12%, transparent); }
+.dark .mem-why-icon-wrap { background: rgba(212, 166, 74, 0.15); color: #D4A64A; border: 1px solid rgba(212, 166, 74, 0.25); box-shadow: 0 4px 14px rgba(212, 166, 74, 0.1); }
 .mem-why-counter { display: flex; align-items: baseline; gap: 8px; }
 .mem-bg-silhouette { position: absolute; border-radius: 6px; opacity: .04; pointer-events: none; background: currentColor; }
 .sil-1 { width: 60px; height: 90px; top: 8%; right: 4%; transform: rotate(12deg); animation: heroFloat 9s ease-in-out infinite; }
@@ -1719,7 +1720,8 @@ html:not(.dark) .wooden-bookshelf-wrapper {
 @media (max-width: 480px) { .mem-timeline-wrap { grid-template-columns: 1fr; gap: 2rem; } }
 .mem-step { display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; padding: 0 0.5rem; }
 .mem-step-icon { width: 56px; height: 56px; border-radius: 50%; background: #FFFFFF; border: 2px solid #E7E1D8; display: grid; place-items: center; color: var(--si, #234E52); box-shadow: 0 8px 20px -8px rgba(0,0,0,.15); transition: all .35s; z-index: 1; position: relative; }
-.dark .mem-step-icon { background: #1D1D1D; border-color: #2D2D2D; }
+.dark .mem-step-icon { background: #252525; border-color: rgba(212, 166, 74, 0.45); color: #D4A64A; box-shadow: 0 0 16px rgba(212, 166, 74, 0.15); }
+.dark .mem-step:hover .mem-step-icon { border-color: #D4A64A; box-shadow: 0 0 22px rgba(212, 166, 74, 0.35); }
 .mem-step:hover .mem-step-icon { border-color: var(--si, #234E52); box-shadow: 0 0 0 4px color-mix(in srgb, var(--si,#234E52) 15%, transparent), 0 12px 24px -10px rgba(0,0,0,.2); transform: translateY(-4px); }
 .mem-step-connector { position: absolute; top: 28px; left: calc(50% + 28px); width: calc(100% - 56px); height: 1px; background: #E7E1D8; z-index: 0; }
 .dark .mem-step-connector { background: #2D2D2D; }
